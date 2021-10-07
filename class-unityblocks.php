@@ -15,24 +15,24 @@
  */
 
 // Exit if accessed directly.
-if (!defined('ABSPATH')) {
+if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define('UNITYBLOCKS_VERSION', '1.0.0');
-define('UNITYBLOCKS_PLUGIN_DIR', plugin_dir_path(__FILE__));
-define('UNITYBLOCKS_PLUGIN_URL', plugin_dir_url(__FILE__));
-define('UNITYBLOCKS_PLUGIN_FILE', __FILE__);
-define('UNITYBLOCKS_PLUGIN_BASE', plugin_basename(__FILE__));
+define( 'UNITYBLOCKS_VERSION', '1.0.0' );
+define( 'UNITYBLOCKS_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
+define( 'UNITYBLOCKS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+define( 'UNITYBLOCKS_PLUGIN_FILE', __FILE__ );
+define( 'UNITYBLOCKS_PLUGIN_BASE', plugin_basename( __FILE__ ) );
 
-if (!class_exists('UnityBlocks')) :
+if ( ! class_exists( 'UnityBlocks' ) ) :
 	/**
 	 * Main UnityBlocks Class.
 	 *
 	 * @since 1.0.0
 	 */
-	final class UnityBlocks
-	{
+	final class UnityBlocks {
+
 		/**
 		 * This plugin's instance.
 		 *
@@ -51,9 +51,8 @@ if (!class_exists('UnityBlocks')) :
 		 * @static
 		 * @return object|UnityBlocks The one true UnityBlocks
 		 */
-		public static function instance()
-		{
-			if (!isset(self::$instance) && !(self::$instance instanceof UnityBlocks)) {
+		public static function instance() {
+			if ( ! isset( self::$instance ) && ! ( self::$instance instanceof UnityBlocks ) ) {
 				self::$instance = new UnityBlocks();
 				self::$instance->init();
 				self::$instance->includes();
@@ -71,10 +70,9 @@ if (!class_exists('UnityBlocks')) :
 		 * @access protected
 		 * @return void
 		 */
-		public function __clone()
-		{
-			// Cloning instances of the class is forbidden.
-			_doing_it_wrong(__FUNCTION__, esc_html__('Something went wrong.', 'unityblocks'), '1.0');
+		public function __clone() {
+			 // Cloning instances of the class is forbidden.
+			_doing_it_wrong( __FUNCTION__, esc_html__( 'Something went wrong.', 'unityblocks' ), '1.0' );
 		}
 
 		/**
@@ -84,10 +82,9 @@ if (!class_exists('UnityBlocks')) :
 		 * @access protected
 		 * @return void
 		 */
-		public function __wakeup()
-		{
+		public function __wakeup() {
 			// Unserializing instances of the class is forbidden.
-			_doing_it_wrong(__FUNCTION__, esc_html__('Something went wrong.', 'unityblocks'), '1.0');
+			_doing_it_wrong( __FUNCTION__, esc_html__( 'Something went wrong.', 'unityblocks' ), '1.0' );
 		}
 
 		/**
@@ -97,8 +94,7 @@ if (!class_exists('UnityBlocks')) :
 		 * @since 1.0.0
 		 * @return void
 		 */
-		private function includes()
-		{
+		private function includes() {
 			// Traits.
 			require_once UNITYBLOCKS_PLUGIN_DIR . 'includes/traits/trait-unityblocks-singleton.php';
 
@@ -118,10 +114,10 @@ if (!class_exists('UnityBlocks')) :
 			require_once UNITYBLOCKS_PLUGIN_DIR . 'src/components/form-label-colors/label-color-wrapper.php';
 
 			// if (is_admin()) {
-			// 	require_once UNITYBLOCKS_PLUGIN_DIR . 'src/extensions/layout-selector/index.php';
+			// require_once UNITYBLOCKS_PLUGIN_DIR . 'src/extensions/layout-selector/index.php';
 			// }
 
-			if (is_admin() || (defined('WP_CLI') && WP_CLI)) {
+			if ( is_admin() || ( defined( 'WP_CLI' ) && WP_CLI ) ) {
 				require_once UNITYBLOCKS_PLUGIN_DIR . 'includes/admin/class-unityblocks-install.php';
 				require_once UNITYBLOCKS_PLUGIN_DIR . 'includes/admin/class-unityblocks-crop-settings.php';
 			}
@@ -132,10 +128,9 @@ if (!class_exists('UnityBlocks')) :
 		 *
 		 * @return void
 		 */
-		private function init()
-		{
-			add_action('plugins_loaded', array($this, 'load_textdomain'), 99);
-			add_action('enqueue_block_editor_assets', array($this, 'block_localization'));
+		private function init() {
+			add_action( 'plugins_loaded', array( $this, 'load_textdomain' ), 99 );
+			add_action( 'enqueue_block_editor_assets', array( $this, 'block_localization' ) );
 		}
 
 		/**
@@ -145,10 +140,9 @@ if (!class_exists('UnityBlocks')) :
 		 * @param string|string $type The type of resource.
 		 * @param string|string $directory Any extra directories needed.
 		 */
-		public function asset_source($type = 'js', $directory = null)
-		{
+		public function asset_source( $type = 'js', $directory = null ) {
 
-			if ('js' === $type) {
+			if ( 'js' === $type ) {
 				return UNITYBLOCKS_PLUGIN_URL . 'dist/' . $type . '/' . $directory;
 			} else {
 				return UNITYBLOCKS_PLUGIN_URL . 'dist/css/' . $directory;
@@ -162,9 +156,8 @@ if (!class_exists('UnityBlocks')) :
 		 * @since 1.0.0
 		 * @return void
 		 */
-		public function load_textdomain()
-		{
-			load_plugin_textdomain('unityblocks', false, basename(UNITYBLOCKS_PLUGIN_DIR) . '/languages');
+		public function load_textdomain() {
+			 load_plugin_textdomain( 'unityblocks', false, basename( UNITYBLOCKS_PLUGIN_DIR ) . '/languages' );
 		}
 
 		/**
@@ -172,10 +165,9 @@ if (!class_exists('UnityBlocks')) :
 		 *
 		 * @access public
 		 */
-		public function block_localization()
-		{
-			if (function_exists('wp_set_script_translations')) {
-				wp_set_script_translations('unityblocks-editor', 'unityblocks', UNITYBLOCKS_PLUGIN_DIR . '/languages');
+		public function block_localization() {
+			if ( function_exists( 'wp_set_script_translations' ) ) {
+				wp_set_script_translations( 'unityblocks-editor', 'unityblocks', UNITYBLOCKS_PLUGIN_DIR . '/languages' );
 			}
 		}
 
@@ -184,9 +176,8 @@ if (!class_exists('UnityBlocks')) :
 		 *
 		 * @return bool Whether the current response will be AMP.
 		 */
-		public function is_amp()
-		{
-			return function_exists('is_amp_endpoint') && is_amp_endpoint();
+		public function is_amp() {
+			return function_exists( 'is_amp_endpoint' ) && is_amp_endpoint();
 		}
 	}
 endif;
@@ -205,14 +196,13 @@ endif;
  * @since 1.0.0
  * @return object|UnityBlocks The one true UnityBlocks Instance.
  */
-function unityblocks()
-{
+function unityblocks() {
 	return UnityBlocks::instance();
 }
 
 // Get the plugin running. Load on plugins_loaded action to avoid issue on multisite.
-if (function_exists('is_multisite') && is_multisite()) {
-	add_action('plugins_loaded', 'unityblocks', 90);
+if ( function_exists( 'is_multisite' ) && is_multisite() ) {
+	add_action( 'plugins_loaded', 'unityblocks', 90 );
 } else {
 	unityblocks();
 }
