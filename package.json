@@ -37,7 +37,9 @@
     "plugin-name": "UnityBlocks",
     "welcome-build-command": "npm run start"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@godaddy-wordpress/coblocks-icons": "^1.6.0"
+  },
   "devDependencies": {
     "@asu-ke-web-services/stylelint-config": "^0.1.0",
     "@babel/plugin-proposal-class-properties": "7.10.4",
