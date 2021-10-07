@@ -29,13 +29,13 @@ const categories = [
 if ( supportsCollections() ) {
 	registerBlockCollection( 'unityblocks', {
 		title: 'UnityBlocks',
-		icon: 'smiley',
+		icon: 'welcome-learn-more',
 	} );
 } else {
 	categories.unshift( {
 		slug: 'unityblocks',
 		title: 'UnityBlocks',
-		icon: 'smiley',
+		icon: 'welcome-learn-more',
 	} );
 }
 
