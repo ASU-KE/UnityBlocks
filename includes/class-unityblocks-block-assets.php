@@ -80,7 +80,7 @@ class UnityBlocks_Block_Assets {
 		global $post;
 
 		// Only load the front end CSS if a Coblock is in use.
-		$has_coblock = ! is_singular();
+		$has_unityblock = ! is_singular();
 
 		if ( ! is_admin() && is_singular() ) {
 			$wp_post = get_post( $post );
@@ -89,7 +89,7 @@ class UnityBlocks_Block_Assets {
 			// in the unityblocks/* namespace.
 			if ( $wp_post instanceof WP_Post ) {
 
-				$has_coblock = $this->has_unityblocks_block( $wp_post );
+				$has_unityblock = $this->has_unityblocks_block( $wp_post );
 			}
 
 			$unityblocks_template_part_query = get_transient( 'unityblocks_template_parts_query' );
@@ -107,19 +107,19 @@ class UnityBlocks_Block_Assets {
 				set_transient( 'unityblocks_template_parts_query', $unityblocks_template_part_query, WEEK_IN_SECONDS );
 			}
 
-			if ( ! $has_coblock && ! empty( $unityblocks_template_part_query ) ) {
+			if ( ! $has_unityblock && ! empty( $unityblocks_template_part_query ) ) {
 
 				foreach ( $unityblocks_template_part_query as $template_part ) {
 
 					if ( $this->has_unityblocks_block( $template_part ) ) {
 
-						$has_coblock = true;
+						$has_unityblock = true;
 					}
 				}
 			}
 		}
 
-		if ( ! $has_coblock && ! $this->is_page_gutenberg() ) {
+		if ( ! $has_unityblock && ! $this->is_page_gutenberg() ) {
 			return;
 		}
 
