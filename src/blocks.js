@@ -7,8 +7,8 @@ import { registerBlockType } from '@wordpress/blocks';
 import './utils/block-category';
 
 // Internal Extensions / Components
-import './components/gutter-control';
-import './components/form-label-colors';
+// import './components/gutter-control';
+// import './components/form-label-colors';
 
 // Formats
 import './formats';
