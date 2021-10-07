@@ -1,58 +1,57 @@
 /**
  * WordPress dependencies
  */
-const DependencyExtractionWebpackPlugin = require("@wordpress/dependency-extraction-webpack-plugin");
+const DependencyExtractionWebpackPlugin = require( '@wordpress/dependency-extraction-webpack-plugin' );
 
 /**
  * Internal dependencies
  */
-const postcssConfig = require("./postcss.config");
-const { hasBabelConfig } = require("./utils");
+const postcssConfig = require( './postcss.config' );
+const { hasBabelConfig } = require( './utils' );
 
 /**
  * External dependencies
  */
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const RtlCssPlugin = require("rtlcss-webpack-plugin");
-const path = require("path");
-const FixStyleOnlyEntriesPlugin = require("webpack-fix-style-only-entries");
-const nodeSassGlobImporter = require("node-sass-glob-importer");
+const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' );
+const path = require( 'path' );
+const FixStyleOnlyEntriesPlugin = require( 'webpack-fix-style-only-entries' );
+const nodeSassGlobImporter = require( 'node-sass-glob-importer' );
 
-const isProduction = process.env.NODE_ENV === "production";
+const isProduction = process.env.NODE_ENV === 'production';
 
 module.exports = {
 	entry: {
-		unityblocks: path.resolve(process.cwd(), "src/blocks.js"),
+		unityblocks: path.resolve( process.cwd(), 'src/blocks.js' ),
 
 		// Styles
-		"unityblocks-editor": path.resolve(
+		'unityblocks-editor': path.resolve(
 			process.cwd(),
-			"src/styles/editor.scss"
+			'src/styles/editor.scss'
 		),
-		"unityblocks-style": path.resolve(
+		'unityblocks-style': path.resolve(
 			process.cwd(),
-			"src/styles/style.scss"
+			'src/styles/style.scss'
 		),
 	},
 
 	output: {
-		filename: "[name].js",
-		path: path.resolve(process.cwd(), "dist/"),
+		filename: '[name].js',
+		path: path.resolve( process.cwd(), 'dist/' ),
 	},
 
 	module: {
 		rules: [
 			{
 				test: /\.svg$/,
-				use: ["@svgr/webpack", "url-loader"],
+				use: [ '@svgr/webpack', 'url-loader' ],
 			},
 			{
 				test: /\.js$/,
 				exclude: /node_modules/,
 				use: [
-					require.resolve("thread-loader"),
+					require.resolve( 'thread-loader' ),
 					{
-						loader: require.resolve("babel-loader"),
+						loader: require.resolve( 'babel-loader' ),
 						options: {
 							// Babel uses a directory within local node_modules
 							// by default. Use the environment variable option
@@ -62,15 +61,15 @@ module.exports = {
 
 							// Provide a fallback configuration if there's not
 							// one explicitly available in the project.
-							...(!hasBabelConfig() && {
+							...( ! hasBabelConfig() && {
 								babelrc: false,
 								configFile: false,
 								presets: [
 									require.resolve(
-										"@wordpress/babel-preset-default"
+										'@wordpress/babel-preset-default'
 									),
 								],
-							}),
+							} ),
 						},
 					},
 				],
@@ -80,23 +79,23 @@ module.exports = {
 				use: [
 					MiniCssExtractPlugin.loader,
 					{
-						loader: "css-loader",
+						loader: 'css-loader',
 						options: {
 							url: false,
-							sourceMap: !isProduction,
+							sourceMap: ! isProduction,
 						},
 					},
 					{
-						loader: "postcss-loader",
+						loader: 'postcss-loader',
 						options: {
 							...postcssConfig,
-							sourceMap: !isProduction,
+							sourceMap: ! isProduction,
 						},
 					},
 					{
-						loader: "sass-loader",
+						loader: 'sass-loader',
 						options: {
-							sourceMap: !isProduction,
+							sourceMap: ! isProduction,
 							sassOptions: {
 								importer: nodeSassGlobImporter(),
 							},
@@ -114,10 +113,10 @@ module.exports = {
 	},
 
 	plugins: [
-		new DependencyExtractionWebpackPlugin({ injectPolyfill: true }),
-		new MiniCssExtractPlugin({
-			filename: "[name].css",
-		}),
+		new DependencyExtractionWebpackPlugin( { injectPolyfill: true } ),
+		new MiniCssExtractPlugin( {
+			filename: '[name].css',
+		} ),
 		new FixStyleOnlyEntriesPlugin(),
 	],
 };
