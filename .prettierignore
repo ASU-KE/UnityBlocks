@@ -1,3 +1,9 @@
-# Ignore all HTML files:
+node_modules
+vendor
+build
+dist
+.cache
+coverage
+*.md
 *.php
 *.scss
