@@ -103,7 +103,10 @@ class UnityBlocks_Register_Blocks_Tests extends WP_UnitTestCase
 
 		$this->unityblocks_register_blocks->register_blocks();
 
-		$expected_registered_blocks = [];
+		$expected_registered_blocks = [
+			// 'unityblocks/accordion',
+			// 'unityblocks/alert',
+		];
 
 		$registered_blocks = WP_Block_Type_Registry::get_instance()->get_all_registered();
 
