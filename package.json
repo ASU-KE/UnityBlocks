@@ -22,6 +22,7 @@
     "test:e2e:record": "cypress run --browser chrome",
     "test:e2e:debug": "npx cypress open",
     "env": "wp-scripts env",
+    "format": "wp-scripts format",
     "lint:css": "wp-scripts lint-style",
     "lint:css-fix": "wp-scripts lint-style --fix",
     "lint:js": "wp-scripts lint-js",
