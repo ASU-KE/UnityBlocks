@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`unityblocks/accordion should render with content 1`] = `
+"<!-- wp:unityblocks/accordion -->
+<div class=\\"wp-block-unityblocks-accordion\\"></div>
+<!-- /wp:unityblocks/accordion -->"
+`;
