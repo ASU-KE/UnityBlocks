@@ -13,8 +13,8 @@
   },
   "scripts": {
     "setup": "composer install && npm install && npm run build && wp-scripts env install",
-    "start": "wp-scripts start --config .dev/config/webpack.config.js --progress",
-    "build": "wp-scripts build --config .dev/config/webpack.config.js",
+    "start": "NODE_ENV=development wp-scripts start --config .dev/config/webpack.config.js --progress",
+    "build": "NODE_ENV=production wp-scripts build --config .dev/config/webpack.config.js",
     "clean": "wp-scripts env stop && rm -rf build dist/*.* dist/js node_modules vendor wordpress",
     "version": "grunt version && grunt update-pot && git add -A .",
     "postversion": "git push && git push --tags",
