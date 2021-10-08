@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Add body classes to particular themes to help style them.
  *
@@ -18,12 +17,11 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class UnityBlocks_Body_Classes {
 
-
 	/**
 	 * The Constructor.
 	 */
 	public function __construct() {
-		 add_filter( 'body_class', array( $this, 'body_class' ) );
+		add_filter( 'body_class', array( $this, 'body_class' ) );
 		add_filter( 'admin_body_class', array( $this, 'admin_body_class' ) );
 	}
 

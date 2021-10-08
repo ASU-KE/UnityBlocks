@@ -1,13 +1,13 @@
-module.exports = function (grunt) {
-	"use strict";
+module.exports = function ( grunt ) {
+	'use strict';
 
-	const pkg = grunt.file.readJSON("package.json");
+	const pkg = grunt.file.readJSON( 'package.json' );
 
-	grunt.initConfig({
+	grunt.initConfig( {
 		pkg,
 
 		clean: {
-			build: ["build/"],
+			build: [ 'build/' ],
 		},
 
 		copy: {
@@ -16,20 +16,20 @@ module.exports = function (grunt) {
 					{
 						expand: true,
 						src: [
-							"!**/*.{ai,eps,psd}",
-							"LICENSE",
-							"class-" + pkg.name + ".php",
-							"dist/**",
-							"includes/**",
-							"readme.txt",
-							"src/**/*.php",
+							'!**/*.{ai,eps,psd}',
+							'LICENSE',
+							'class-' + pkg.name + '.php',
+							'dist/**',
+							'includes/**',
+							'readme.txt',
+							'src/**/*.php',
 							// "src/blocks/events/*.json",
 							// "src/blocks/post-carousel/*.json",
 							// "src/blocks/posts/*.json",
 							// "src/blocks/share/*.json",
 							// "src/blocks/social-profiles/*.json",
 						],
-						dest: "build/<%= pkg.name %>",
+						dest: 'build/<%= pkg.name %>',
 					},
 				],
 			},
@@ -38,13 +38,13 @@ module.exports = function (grunt) {
 		compress: {
 			unityblocks: {
 				options: {
-					archive: "build/unityblocks-v<%= pkg.version %>.zip",
+					archive: 'build/unityblocks-v<%= pkg.version %>.zip',
 				},
 				files: [
 					{
-						cwd: "build/<%= pkg.name %>/",
-						dest: "<%= pkg.name %>/",
-						src: ["**"],
+						cwd: 'build/<%= pkg.name %>/',
+						dest: '<%= pkg.name %>/',
+						src: [ '**' ],
 					},
 				],
 			},
@@ -52,47 +52,48 @@ module.exports = function (grunt) {
 
 		replace: {
 			php: {
-				src: ["class-" + pkg.name + ".php", "includes/**/*.php"],
+				src: [ 'class-' + pkg.name + '.php', 'includes/**/*.php' ],
 				overwrite: true,
 				replacements: [
 					{
 						from: /Version:(\s*?)[a-zA-Z0-9\.\-\+]+$/m,
-						to: "Version:$1" + pkg.version,
+						to: 'Version:$1' + pkg.version,
 					},
 					{
 						from: /@since(.*?)NEXT/gm,
-						to: "@since$1" + pkg.version,
+						to: '@since$1' + pkg.version,
 					},
 					{
 						from: /Version:(\s*?)[a-zA-Z0-9\.\-\+]+$/m,
-						to: "Version:$1" + pkg.version,
+						to: 'Version:$1' + pkg.version,
 					},
 					{
 						from: /define\(\s*'UNITYBLOCKS_VERSION',\s*'(.*)'\s*\);/,
-						to: "define( 'UNITYBLOCKS_VERSION', '<%= pkg.version %>' );",
+						to:
+							"define( 'UNITYBLOCKS_VERSION', '<%= pkg.version %>' );",
 					},
 					{
 						from: /Tested up to:(\s*?)[a-zA-Z0-9\.\-\+]+$/m,
-						to: "Tested up to:$1" + pkg.tested_up_to,
+						to: 'Tested up to:$1' + pkg.tested_up_to,
 					},
 				],
 			},
 			readme: {
-				src: "readme.*",
+				src: 'readme.*',
 				overwrite: true,
 				replacements: [
 					{
 						from: /^(\*\*|)Stable tag:(\*\*|)(\s*?)[a-zA-Z0-9.-]+(\s*?)$/im,
-						to: "$1Stable tag:$2$3<%= pkg.version %>$4",
+						to: '$1Stable tag:$2$3<%= pkg.version %>$4',
 					},
 					{
 						from: /Tested up to:(\s*?)[a-zA-Z0-9\.\-\+]+$/m,
-						to: "Tested up to:$1" + pkg.tested_up_to,
+						to: 'Tested up to:$1' + pkg.tested_up_to,
 					},
 				],
 			},
 			tests: {
-				src: ".dev/tests/phpunit/**/*.php",
+				src: '.dev/tests/phpunit/**/*.php',
 				overwrite: true,
 				replacements: [
 					{
@@ -102,32 +103,35 @@ module.exports = function (grunt) {
 				],
 			},
 			languages: {
-				src: "languages/unityblocks.pot",
+				src: 'languages/unityblocks.pot',
 				overwrite: true,
 				replacements: [
 					{
 						from: /(Project-Id-Version: CoBlocks )[0-9\.]+/,
-						to: "$1" + pkg.version,
+						to: '$1' + pkg.version,
 					},
 				],
 			},
 		},
 
 		shell: {
-			build: ["npm run build"].join(" && "),
-			translations: ["npm run makepot"].join(" && "),
+			build: [ 'npm run build' ].join( ' && ' ),
+			translations: [ 'npm run makepot' ].join( ' && ' ),
 		},
-	});
+	} );
 
-	require("matchdep").filterDev("grunt-*").forEach(grunt.loadNpmTasks);
+	require( 'matchdep' ).filterDev( 'grunt-*' ).forEach( grunt.loadNpmTasks );
 
-	grunt.registerTask("build", [
-		"shell:build",
-		"update-pot",
-		"replace",
-		"clean:build",
-		"copy:build",
-	]);
-	grunt.registerTask("update-pot", ["shell:translations", "replace:languages"]);
-	grunt.registerTask("version", ["replace"]);
+	grunt.registerTask( 'build', [
+		'shell:build',
+		'update-pot',
+		'replace',
+		'clean:build',
+		'copy:build',
+	] );
+	grunt.registerTask( 'update-pot', [
+		'shell:translations',
+		'replace:languages',
+	] );
+	grunt.registerTask( 'version', [ 'replace' ] );
 };

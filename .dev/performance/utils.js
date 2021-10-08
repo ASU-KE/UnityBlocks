@@ -34,7 +34,7 @@ function runShellScript( script, cwd, env = {} ) {
 					...env,
 				},
 			},
-			function( error, _, stderr ) {
+			function ( error, _, stderr ) {
 				if ( error ) {
 					// eslint-disable-next-line no-console
 					console.log( stderr );

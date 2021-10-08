@@ -1,5 +1,4 @@
 <?php
-
 /**
  * UnityBlocks Uninstall
  *
@@ -7,7 +6,6 @@
  */
 
 if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
-
 	die;
 }
 
@@ -19,6 +17,5 @@ $unityblocks_options = array(
 );
 
 foreach ( $unityblocks_options as $unityblocks_option ) {
-
 	delete_option( $unityblocks_option );
 }

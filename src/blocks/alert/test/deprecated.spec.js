@@ -25,10 +25,31 @@ const variations = {
 	fontSize: [ undefined, 'small', 'large' ],
 	customFontSize: [ undefined, 0, 16, 100 ],
 	fontFamily: [ undefined, ...Object.keys( googleFonts ) ],
-	fontWeight: [ undefined, '', 'normal', 'bold', '100', '200', '300', '400', '500', '600', '700', '800', '900' ],
+	fontWeight: [
+		undefined,
+		'',
+		'normal',
+		'bold',
+		'100',
+		'200',
+		'300',
+		'400',
+		'500',
+		'600',
+		'700',
+		'800',
+		'900',
+	],
 	lineHeight: [ undefined, 0, 3, 2.5 ],
 	letterSpacing: [ undefined, 0, 3, -1, 2.5 ],
-	textTransform: [ undefined, '', 'uppercase', 'lowercase', 'capitalize', 'initial' ],
+	textTransform: [
+		undefined,
+		'',
+		'uppercase',
+		'lowercase',
+		'capitalize',
+		'initial',
+	],
 };
 
 helpers.testDeprecatedBlockVariations( name, settings, variations );

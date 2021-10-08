@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Crop settings extension.
  *
@@ -15,7 +14,6 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Crop Settings Class
  */
 class UnityBlocks_Crop_Settings {
-
 
 	const ORIGINAL_META_KEY = 'original-image-id';
 
@@ -40,12 +38,15 @@ class UnityBlocks_Crop_Settings {
 	 * @return object|UnityBlocks_Crop_Settings The one true UnityBlocks_Crop_Settings
 	 */
 	public static function instance() {
+
 		if ( empty( self::$instance ) ) {
 
 			self::$instance = new UnityBlocks_Crop_Settings();
+
 		}
 
 		return self::$instance;
+
 	}
 
 	/**
@@ -54,9 +55,11 @@ class UnityBlocks_Crop_Settings {
 	 * @since 1.14.0
 	 */
 	public function register_endpoints() {
+
 		add_filter( 'ajax_query_attachments_args', array( $this, 'hide_cropped_from_library' ) );
 		add_action( 'wp_ajax_unityblocks_crop_settings', array( $this, 'api_crop' ) );
 		add_action( 'wp_ajax_unityblocks_crop_settings_original_image', array( $this, 'get_original_image' ) );
+
 	}
 
 	/**
@@ -72,9 +75,11 @@ class UnityBlocks_Crop_Settings {
 		if ( ! empty( $tag ) ) {
 
 			$query['tag__not_in'][] = $tag->term_id;
+
 		}
 
 		return $query;
+
 	}
 
 	/**
@@ -94,6 +99,7 @@ class UnityBlocks_Crop_Settings {
 		if ( ! $id ) {
 
 			wp_send_json_error();
+
 		}
 
 		$attachment_meta   = wp_get_attachment_metadata( $id );
@@ -108,6 +114,7 @@ class UnityBlocks_Crop_Settings {
 				'crop' => $crop,
 			)
 		);
+
 	}
 
 	/**
@@ -132,6 +139,7 @@ class UnityBlocks_Crop_Settings {
 		) {
 
 			wp_send_json_error();
+
 		}
 
 		$new_id = $this->image_media_crop(
@@ -146,6 +154,7 @@ class UnityBlocks_Crop_Settings {
 		if ( null === $new_id ) {
 
 			wp_send_json_error();
+
 		}
 
 		wp_send_json_success(
@@ -155,6 +164,7 @@ class UnityBlocks_Crop_Settings {
 				'url'     => wp_get_attachment_image_url( $new_id, 'original' ),
 			)
 		);
+
 	}
 
 	/**
@@ -181,6 +191,7 @@ class UnityBlocks_Crop_Settings {
 		if ( empty( $file_path ) ) {
 
 			return null;
+
 		}
 
 		$image_editor = wp_get_image_editor( $file_path );
@@ -189,6 +200,7 @@ class UnityBlocks_Crop_Settings {
 		if ( ! $loaded ) {
 
 			return null;
+
 		}
 
 		$nr = ( 360 - round( $rotate ) ) % 360;
@@ -199,6 +211,7 @@ class UnityBlocks_Crop_Settings {
 			$original_width = $sz['width'];
 			$sz['width']    = $sz['height'];
 			$sz['height']   = $original_width;
+
 		}
 
 		$nx = round( $sz['width'] * $offset_x / 100 );
@@ -214,11 +227,13 @@ class UnityBlocks_Crop_Settings {
 		if ( ! empty( $existing_attachment ) ) {
 
 			return $existing_attachment['ID'];
+
 		}
 
 		if ( ! empty( $nr ) ) {
 
 			$image_editor->rotate( $nr );
+
 		}
 
 		$cropped = $image_editor->crop( $nx, $ny, $nw, $nh );
@@ -226,6 +241,7 @@ class UnityBlocks_Crop_Settings {
 		if ( ! $cropped ) {
 
 			return null;
+
 		}
 
 		$saved_image = $image_editor->save( $filename );
@@ -233,6 +249,7 @@ class UnityBlocks_Crop_Settings {
 		if ( $saved_image instanceof WP_Error ) {
 
 			return null;
+
 		}
 
 		$filename  = $saved_image['path'];
@@ -266,6 +283,7 @@ class UnityBlocks_Crop_Settings {
 		wp_set_post_tags( $attachment_id, 'unityblocks-cropped', true );
 
 		return $attachment_id;
+
 	}
 }
 

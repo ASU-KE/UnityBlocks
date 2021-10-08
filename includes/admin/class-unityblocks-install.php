@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Run on plugin install.
  *
@@ -16,12 +15,11 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class UnityBlocks_Install {
 
-
 	/**
 	 * Constructor
 	 */
 	public function __construct() {
-		 register_activation_hook( UNITYBLOCKS_PLUGIN_FILE, array( $this, 'register_defaults' ) );
+		register_activation_hook( UNITYBLOCKS_PLUGIN_FILE, array( $this, 'register_defaults' ) );
 	}
 
 	/**

@@ -18,10 +18,10 @@ export function deleteFile( filePath ) {
 function isEvent( item ) {
 	return (
 		item.cat === 'devtools.timeline' &&
-         item.name === 'EventDispatch' &&
-         item.dur &&
-         item.args &&
-         item.args.data
+		item.name === 'EventDispatch' &&
+		item.dur &&
+		item.args &&
+		item.args.data
 	);
 }
 

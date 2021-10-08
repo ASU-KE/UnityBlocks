@@ -46,6 +46,8 @@ export const supportsCollections = () => {
  *
  * @return {boolean} Value to indicate function support.
  */
-export const hasFormattingCategory = getCategories().some( function( category ) {
+export const hasFormattingCategory = getCategories().some( function (
+	category
+) {
 	return category.slug === 'formatting';
 } );

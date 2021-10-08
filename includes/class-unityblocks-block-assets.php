@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Load assets for our blocks.
  *
@@ -17,7 +16,6 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @since 1.0.0
  */
 class UnityBlocks_Block_Assets {
-
 
 
 	/**
@@ -44,7 +42,7 @@ class UnityBlocks_Block_Assets {
 	 * The Constructor.
 	 */
 	public function __construct() {
-		 add_action( 'enqueue_block_assets', array( $this, 'block_assets' ) );
+		add_action( 'enqueue_block_assets', array( $this, 'block_assets' ) );
 		add_action( 'init', array( $this, 'editor_assets' ) );
 		add_action( 'enqueue_block_editor_assets', array( $this, 'editor_scripts' ) );
 		add_action( 'enqueue_block_editor_assets', array( $this, 'frontend_scripts' ) );
@@ -79,7 +77,7 @@ class UnityBlocks_Block_Assets {
 	public function block_assets() {
 		global $post;
 
-		// Only load the front end CSS if a Coblock is in use.
+		// Only load the front end CSS if a UnityBlock is in use.
 		$has_unityblock = ! is_singular();
 
 		if ( ! is_admin() && is_singular() ) {
@@ -90,6 +88,7 @@ class UnityBlocks_Block_Assets {
 			if ( $wp_post instanceof WP_Post ) {
 
 				$has_unityblock = $this->has_unityblocks_block( $wp_post );
+
 			}
 
 			$unityblocks_template_part_query = get_transient( 'unityblocks_template_parts_query' );
@@ -105,6 +104,7 @@ class UnityBlocks_Block_Assets {
 				);
 
 				set_transient( 'unityblocks_template_parts_query', $unityblocks_template_part_query, WEEK_IN_SECONDS );
+
 			}
 
 			if ( ! $has_unityblock && ! empty( $unityblocks_template_part_query ) ) {
@@ -114,6 +114,7 @@ class UnityBlocks_Block_Assets {
 					if ( $this->has_unityblocks_block( $template_part ) ) {
 
 						$has_unityblock = true;
+
 					}
 				}
 			}
@@ -225,6 +226,7 @@ class UnityBlocks_Block_Assets {
 				'localeCode'                     => get_locale(),
 			)
 		);
+
 	}
 
 	/**
@@ -233,17 +235,20 @@ class UnityBlocks_Block_Assets {
 	 * @return array Custom icons array if they exist, else empty array.
 	 */
 	public function get_custom_icons() {
+
 		$config = array();
 		$icons  = glob( get_stylesheet_directory() . '/unityblocks/icons/*.svg' );
 
 		if ( empty( $icons ) ) {
 
 			return array();
+
 		}
 
 		if ( file_exists( get_stylesheet_directory() . '/unityblocks/icons/config.json' ) ) {
 
 			$config = json_decode( file_get_contents( get_stylesheet_directory() . '/unityblocks/icons/config.json' ), true );
+
 		}
 
 		$custom_icons = array();
@@ -259,6 +264,7 @@ class UnityBlocks_Block_Assets {
 				if ( ! array_key_exists( $icon_slug, $config ) ) {
 
 					continue;
+
 				}
 			}
 
@@ -271,6 +277,7 @@ class UnityBlocks_Block_Assets {
 				'keywords' => strtolower( $icon_name ),
 				'icon'     => $retrieved_icon,
 			);
+
 		}
 
 		if ( ! empty( $config ) ) {
@@ -280,17 +287,21 @@ class UnityBlocks_Block_Assets {
 				if ( ! array_key_exists( $icon, $custom_icons ) ) {
 
 					continue;
+
 				}
 
 				if ( array_key_exists( 'icon_outlined', $config[ $icon ] ) ) {
 
 					$metadata['icon_outlined'] = file_exists( get_stylesheet_directory() . '/unityblocks/icons/' . $metadata['icon_outlined'] ) ? file_get_contents( get_stylesheet_directory() . '/unityblocks/icons/' . $metadata['icon_outlined'] ) : '';
+
 				}
 
 				$custom_icons[ $icon ] = array_replace_recursive( $custom_icons[ $icon ], array_filter( $metadata ) );
+
 			}
 		}
 		return $custom_icons;
+
 	}
 
 	/**
@@ -300,6 +311,7 @@ class UnityBlocks_Block_Assets {
 	 * @since 1.9.5
 	 */
 	public function frontend_scripts() {
+
 		// Custom scripts are not allowed in AMP, so short-circuit.
 		if ( UnityBlocks()->is_amp() ) {
 			return;
@@ -426,7 +438,9 @@ class UnityBlocks_Block_Assets {
 	 * @since  2.14.2
 	 */
 	public function clear_template_transients() {
+
 		delete_transient( 'unityblocks_template_parts_query' );
+
 	}
 
 	/**
@@ -457,6 +471,7 @@ class UnityBlocks_Block_Assets {
 				)
 			)
 		);
+
 	}
 
 	/**

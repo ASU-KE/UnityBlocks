@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Register post meta.
  *
@@ -18,12 +17,11 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class UnityBlocks_Post_Meta {
 
-
 	/**
 	 * Constructor
 	 */
 	public function __construct() {
-		 add_filter( 'init', array( $this, 'register_meta' ) );
+		add_filter( 'init', array( $this, 'register_meta' ) );
 	}
 
 	/**
@@ -77,7 +75,9 @@ class UnityBlocks_Post_Meta {
 	 * @return bool True when can edit posts, else false.
 	 */
 	public function auth_callback() {
+
 		return current_user_can( 'edit_posts' );
+
 	}
 }
 

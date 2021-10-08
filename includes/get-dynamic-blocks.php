@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Loads dynamic blocks for server-side rendering.
  *

@@ -1,4 +1,4 @@
-const gitRepoOwner = "ASU-KE";
+const gitRepoOwner = 'ASU-KE';
 
 /**
  * @typedef WPPluginCLIConfig
@@ -23,17 +23,17 @@ const gitRepoOwner = "ASU-KE";
  * @type {WPPluginCLIConfig}
  */
 const config = {
-	slug: "unityblocks",
-	name: "UnityBlocks",
-	team: "ASU KE Web Services",
-	versionMilestoneFormat: "%(name)s %(major)s.%(minor)s",
+	slug: 'unityblocks',
+	name: 'UnityBlocks',
+	team: 'ASU KE Web Services',
+	versionMilestoneFormat: '%(name)s %(major)s.%(minor)s',
 	githubRepositoryOwner: gitRepoOwner,
-	githubRepositoryName: "unityblocks",
-	pluginEntryPoint: "class-unityblocks.php",
-	githubRepositoryURL: "https://github.com/" + gitRepoOwner + "/unityblocks/",
+	githubRepositoryName: 'unityblocks',
+	pluginEntryPoint: 'class-unityblocks.php',
+	githubRepositoryURL: 'https://github.com/' + gitRepoOwner + '/unityblocks/',
 	wpRepositoryReleasesURL:
-		"https://github.com/" + gitRepoOwner + "/unityblocks/releases/",
-	gitRepositoryURL: "https://github.com/" + gitRepoOwner + "/unityblocks.git",
+		'https://github.com/' + gitRepoOwner + '/unityblocks/releases/',
+	gitRepositoryURL: 'https://github.com/' + gitRepoOwner + '/unityblocks.git',
 };
 
 module.exports = config;

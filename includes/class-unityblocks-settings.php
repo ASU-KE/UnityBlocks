@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Register UnityBlocks Settings
  *
@@ -20,7 +19,6 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @since 2.0.0
  */
 class UnityBlocks_Settings {
-
 	/**
 	 * This plugin's instance.
 	 *
@@ -45,13 +43,13 @@ class UnityBlocks_Settings {
 	 * The Constructor.
 	 */
 	public function __construct() {
-		 add_action( 'init', array( $this, 'register_settings' ) );
+		add_action( 'init', array( $this, 'register_settings' ) );
 		add_action( 'init', array( $this, 'unityblocks_settings_assets' ) );
 		add_action( 'wp_loaded', array( $this, 'unityblocks_feature_propagation' ) );
 	}
 
 	/**
-	 * Localize CoBlock Settings Status UnityBlocks settings.
+	 * Localize UnityBlock Settings Status UnityBlocks settings.
 	 *
 	 * @access public
 	 */
@@ -173,6 +171,7 @@ class UnityBlocks_Settings {
 				'default'           => true,
 			)
 		);
+
 	}
 }
 

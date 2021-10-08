@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Trait for our Singleton pattern.
  *
@@ -12,7 +11,6 @@
  * @since 2.3.0
  */
 trait UnityBlocks_Singleton_Trait {
-
 	/**
 	 * The object instance.
 	 *

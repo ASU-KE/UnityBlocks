@@ -14,7 +14,9 @@ describe( 'utils/helper', () => {
 		} );
 
 		it( 'returns a css class prefixed with has-background-overlay-', () => {
-			expect( overlayToClass( 25 ) ).toMatch( /^has-background-overlay-/ );
+			expect( overlayToClass( 25 ) ).toMatch(
+				/^has-background-overlay-/
+			);
 		} );
 
 		it( 'rounds the ratio to the closest multiple of 10', () => {
@@ -36,19 +38,22 @@ describe( 'utils/helper', () => {
 					full: {
 						height: 1024,
 						orientation: 'landscape',
-						url: 'http://wordpress.local/wp-content/uploads/2019/06/123.jpg',
+						url:
+							'http://wordpress.local/wp-content/uploads/2019/06/123.jpg',
 						width: 1024,
 					},
 					thumbnail: {
 						height: 150,
 						orientation: 'landscape',
-						url: 'http://wordpress.local/wp-content/uploads/2019/06/123-150x150.jpg',
+						url:
+							'http://wordpress.local/wp-content/uploads/2019/06/123-150x150.jpg',
 						width: 150,
 					},
 				},
 				subtype: 'jpeg',
 				type: 'image',
-				url: 'http://wordpress.local/wp-content/uploads/2019/06/123.jpg',
+				url:
+					'http://wordpress.local/wp-content/uploads/2019/06/123.jpg',
 			};
 			const imageProps = pickRelevantMediaFiles( imageObject );
 			const expected = {
@@ -62,7 +67,8 @@ describe( 'utils/helper', () => {
 
 		it( 'returns image.url if sizes or media_details property does not exist', () => {
 			const imageObject = {
-				url: 'http://wordpress.local/wp-content/uploads/2019/06/123.jpg',
+				url:
+					'http://wordpress.local/wp-content/uploads/2019/06/123.jpg',
 			};
 			const imageProps = pickRelevantMediaFiles( imageObject );
 			const expected = {
@@ -76,11 +82,13 @@ describe( 'utils/helper', () => {
 				media_details: {
 					sizes: {
 						large: {
-							source_url: 'http://wordpress.local/wp-content/uploads/2019/06/image_media_details_sizes_large_source_url.jpg',
+							source_url:
+								'http://wordpress.local/wp-content/uploads/2019/06/image_media_details_sizes_large_source_url.jpg',
 						},
 					},
 				},
-				url: 'http://wordpress.local/wp-content/uploads/2019/06/image_url.jpg',
+				url:
+					'http://wordpress.local/wp-content/uploads/2019/06/image_url.jpg',
 			};
 			const imageProps = pickRelevantMediaFiles( imageObject );
 			const expected = {
@@ -94,10 +102,12 @@ describe( 'utils/helper', () => {
 		const imageObject = {
 			sizes: {
 				large: {
-					url: 'http://wordpress.local/wp-content/uploads/2019/06/image_media_details_sizes_large_source_url.jpg',
+					url:
+						'http://wordpress.local/wp-content/uploads/2019/06/image_media_details_sizes_large_source_url.jpg',
 				},
 			},
-			url: 'http://wordpress.local/wp-content/uploads/2019/06/image_url.jpg',
+			url:
+				'http://wordpress.local/wp-content/uploads/2019/06/image_url.jpg',
 		};
 		const imageProps = pickRelevantMediaFiles( imageObject );
 		const expected = {

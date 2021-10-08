@@ -3,15 +3,15 @@
 /**
  * External dependencies
  */
-const program = require("commander");
+const program = require( 'commander' );
 
-const catchException = (command) => {
-	return async (...args) => {
+const catchException = ( command ) => {
+	return async ( ...args ) => {
 		try {
-			await command(...args);
-		} catch (error) {
+			await command( ...args );
+		} catch ( error ) {
 			// eslint-disable-next-line no-console
-			console.error(error);
+			console.error( error );
 			process.exitCode = 1;
 		}
 	};
@@ -20,20 +20,23 @@ const catchException = (command) => {
 /**
  * Internal dependencies
  */
-const { runPerformanceTests } = require("./index.js");
+const { runPerformanceTests } = require( './index.js' );
 
 program
-	.command("performance-tests [branches...]")
-	.alias("perf")
-	.option("-c, --ci", "Run in CI (non interactive)")
-	.option("--tests-branch <branch>", "Use this branch's performance test files")
+	.command( 'performance-tests [branches...]' )
+	.alias( 'perf' )
+	.option( '-c, --ci', 'Run in CI (non interactive)' )
 	.option(
-		"--wp-version <version>",
-		"Specify a WordPress version on which to test all branches (Not yet implemented in UnityBlocks)"
+		'--tests-branch <branch>',
+		"Use this branch's performance test files"
+	)
+	.option(
+		'--wp-version <version>',
+		'Specify a WordPress version on which to test all branches (Not yet implemented in UnityBlocks)'
 	)
 	.description(
-		"Runs performance tests on two separate branches and outputs the result"
+		'Runs performance tests on two separate branches and outputs the result'
 	)
-	.action(catchException(runPerformanceTests));
+	.action( catchException( runPerformanceTests ) );
 
-program.parse(process.argv);
+program.parse( process.argv );

@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Render form block fields
  *
@@ -20,7 +19,6 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @since 2.0.0
  */
 class UnityBlocks_Form {
-
 
 	/**
 	 * Email content
@@ -49,7 +47,7 @@ class UnityBlocks_Form {
 	 * @var string
 	 */
 	public function default_subject() {
-		 // translators: placeholder for email shortcode.
+		// translators: placeholder for email shortcode.
 		return sprintf( __( 'Form submission from [%1$s]', 'unityblocks' ), 'email' );
 	}
 
@@ -69,10 +67,12 @@ class UnityBlocks_Form {
 	 * The Constructor.
 	 */
 	public function __construct() {
+
 		add_action( 'init', array( $this, 'register_settings' ) );
 		add_action( 'init', array( $this, 'register_form_blocks' ) );
 
 		add_action( 'wp_enqueue_scripts', array( $this, 'form_recaptcha_assets' ) );
+
 	}
 
 	/**
@@ -110,6 +110,7 @@ class UnityBlocks_Form {
 	 * Enqueue form block assets when recaptcha site & secret keys are present
 	 */
 	public function form_recaptcha_assets() {
+
 		$recaptcha_site_key   = get_option( 'unityblocks_google_recaptcha_site_key' );
 		$recaptcha_secret_key = get_option( 'unityblocks_google_recaptcha_secret_key' );
 
@@ -138,13 +139,16 @@ class UnityBlocks_Form {
 					'recaptchaSiteKey' => $recaptcha_site_key,
 				)
 			);
+
 		}
+
 	}
 
 	/**
 	 * Register the form blocks.
 	 */
 	public function register_form_blocks() {
+
 		register_block_type(
 			'unityblocks/form',
 			array(
@@ -176,12 +180,14 @@ class UnityBlocks_Form {
 					'render_callback' => array( $this, sprintf( 'render_field_%s', str_replace( '-', '_', $form_block ) ) ),
 				)
 			);
+
 		}
 
 		/**
 		 * Fires when the unityblocks/form block and sub-blocks are registered
 		 */
 		do_action( 'unityblocks_register_form_blocks' );
+
 	}
 
 	/**
@@ -219,9 +225,7 @@ class UnityBlocks_Form {
 			?>
 
 			<form action="<?php echo esc_url( sprintf( '%1$s#%2$s', set_url_scheme( get_the_permalink() ), $this->form_hash ) ); ?>" method="post">
-				<?php
-				echo do_blocks( $content ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-				?>
+				<?php echo do_blocks( $content ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 				<input class="unityblocks-field verify" type="email" name="unityblocks-verify-email" autocomplete="off" placeholder="<?php esc_attr_e( 'Email', 'unityblocks' ); ?>" tabindex="-1">
 				<input type="hidden" name="form-hash" value="<?php echo esc_attr( $this->form_hash ); ?>">
 
@@ -276,12 +280,12 @@ class UnityBlocks_Form {
 			<div class="unityblocks-form__inline-fields">
 				<div class="unityblocks-form__inline-field">
 					<input type="text" id="<?php echo esc_attr( $label_slug ); ?>-firstname" name="field-<?php echo esc_attr( $label_slug ); ?>[value][first-name]" class="unityblocks-field unityblocks-field--name first" <?php echo esc_attr( $required_attr ); ?> />
-					<small class="<?php echo esc_attr( $classes ); ?>" <?php echo wp_kses_post( $styles ); ?>><?php echo esc_html( $label_first_name ); ?></small>
+					<small class="<?php echo esc_attr( $classes ); ?>"<?php echo wp_kses_post( $styles ); ?>><?php echo esc_html( $label_first_name ); ?></small>
 				</div>
 
 				<div class="unityblocks-form__inline-field">
 					<input type="text" id="<?php echo esc_attr( $label_slug ); ?>-lastname" name="field-<?php echo esc_attr( $label_slug ); ?>[value][last-name]" class="unityblocks-field unityblocks-field--name last" <?php echo esc_attr( $required_attr ); ?> />
-					<small class="<?php echo esc_attr( $classes ); ?>" <?php echo wp_kses_post( $styles ); ?>><?php echo esc_html( $label_last_name ); ?></small>
+					<small class="<?php echo esc_attr( $classes ); ?>"<?php echo wp_kses_post( $styles ); ?>><?php echo esc_html( $label_last_name ); ?></small>
 				</div>
 			</div>
 
@@ -290,6 +294,7 @@ class UnityBlocks_Form {
 			$name_count++;
 
 			return ob_get_clean();
+
 		}
 
 		?>
@@ -301,6 +306,7 @@ class UnityBlocks_Form {
 		$name_count++;
 
 		return ob_get_clean();
+
 	}
 
 	/**
@@ -328,6 +334,7 @@ class UnityBlocks_Form {
 		<?php
 
 		return ob_get_clean();
+
 	}
 
 	/**
@@ -358,6 +365,7 @@ class UnityBlocks_Form {
 		$textarea_count++;
 
 		return ob_get_clean();
+
 	}
 
 	/**
@@ -388,6 +396,7 @@ class UnityBlocks_Form {
 		$text_count++;
 
 		return ob_get_clean();
+
 	}
 
 	/**
@@ -428,6 +437,7 @@ class UnityBlocks_Form {
 		$date_count++;
 
 		return ob_get_clean();
+
 	}
 
 	/**
@@ -458,6 +468,7 @@ class UnityBlocks_Form {
 		$phone_count++;
 
 		return ob_get_clean();
+
 	}
 
 	/**
@@ -472,6 +483,7 @@ class UnityBlocks_Form {
 		if ( empty( $atts['options'] ) ) {
 
 			return;
+
 		}
 
 		static $radio_count = 1;
@@ -492,6 +504,7 @@ class UnityBlocks_Form {
 		if ( isset( $atts['isInline'] ) ) {
 
 			print( '<div class="unityblocks--inline">' );
+
 		}
 
 		foreach ( $the_options as $key => $value ) {
@@ -505,11 +518,13 @@ class UnityBlocks_Form {
 				0 === $key ? esc_attr( $required_attr ) : '',
 				esc_html( $value )
 			);
+
 		}
 
 		if ( isset( $atts['isInline'] ) ) {
 
 			print( '</div>' );
+
 		}
 
 		print( '</div>' );
@@ -517,6 +532,7 @@ class UnityBlocks_Form {
 		$radio_count++;
 
 		return ob_get_clean();
+
 	}
 
 	/**
@@ -531,6 +547,7 @@ class UnityBlocks_Form {
 		if ( empty( $atts['options'] ) ) {
 
 			return;
+
 		}
 
 		static $select_count = 1;
@@ -556,6 +573,7 @@ class UnityBlocks_Form {
 				esc_attr( $value ),
 				esc_html( $value )
 			);
+
 		}
 
 		print( '</select>' );
@@ -563,6 +581,7 @@ class UnityBlocks_Form {
 		$select_count++;
 
 		return ob_get_clean();
+
 	}
 
 	/**
@@ -577,6 +596,7 @@ class UnityBlocks_Form {
 		if ( empty( $atts['options'] ) ) {
 
 			return;
+
 		}
 
 		static $checkbox_count = 1;
@@ -596,6 +616,7 @@ class UnityBlocks_Form {
 				UNITYBLOCKS_VERSION,
 				true
 			);
+
 		}
 
 		ob_start();
@@ -608,11 +629,11 @@ class UnityBlocks_Form {
 				$required ? sprintf(
 					'<div class="required-error hidden">%s</div>',
 					/**
-					 * Filter the checkbox required text that displays when no checkbox is
-					 * selected when the form is submitted.
-					 *
-					 * @param string $error_text Error text displayed to the user.
-					 */
+					* Filter the checkbox required text that displays when no checkbox is
+					* selected when the form is submitted.
+					*
+					* @param string $error_text Error text displayed to the user.
+					*/
 					apply_filters( 'unityblocks_form_checkbox_required_text', __( 'Please select at least one checkbox.', 'unityblocks' ) )
 				) : ''
 			)
@@ -623,6 +644,7 @@ class UnityBlocks_Form {
 		if ( isset( $atts['isInline'] ) ) {
 
 			print( '<div class="unityblocks--inline">' );
+
 		}
 
 		foreach ( $the_options as $value ) {
@@ -635,11 +657,13 @@ class UnityBlocks_Form {
 				esc_attr( $value ),
 				esc_html( $value )
 			);
+
 		}
 
 		if ( isset( $atts['isInline'] ) ) {
 
 			print( '</div>' );
+
 		}
 
 		print( '</div>' );
@@ -647,6 +671,7 @@ class UnityBlocks_Form {
 		$checkbox_count++;
 
 		return ob_get_clean();
+
 	}
 
 	/**
@@ -677,6 +702,7 @@ class UnityBlocks_Form {
 		$website_count++;
 
 		return ob_get_clean();
+
 	}
 
 	/**
@@ -709,6 +735,7 @@ class UnityBlocks_Form {
 		$hidden_count++;
 
 		return ob_get_clean();
+
 	}
 
 	/**
@@ -833,6 +860,7 @@ class UnityBlocks_Form {
 		if ( ! $form_submission || 'unityblocks-form-submit' !== $form_submission ) {
 
 			return;
+
 		}
 
 		$nonce = filter_input( INPUT_POST, 'form-submit', FILTER_SANITIZE_STRING );
@@ -840,6 +868,7 @@ class UnityBlocks_Form {
 		if ( ! $nonce || ! wp_verify_nonce( $nonce, 'unityblocks-form-submit' ) ) {
 
 			return;
+
 		}
 
 		/**
@@ -852,6 +881,7 @@ class UnityBlocks_Form {
 			$this->remove_url_form_hash();
 
 			return;
+
 		}
 
 		/**
@@ -872,6 +902,7 @@ class UnityBlocks_Form {
 		if ( ! $send_email ) {
 
 			return true;
+
 		}
 
 		$post_id        = filter_input( INPUT_GET, 'post', FILTER_SANITIZE_NUMBER_INT );
@@ -890,9 +921,11 @@ class UnityBlocks_Form {
 				$this->remove_url_form_hash();
 
 				return false;
+
 			}
 
 			unset( $_POST['g-recaptcha-token'] );
+
 		}
 
 		$this->email_content = '<ul>';
@@ -902,9 +935,11 @@ class UnityBlocks_Form {
 			if ( is_array( $data['value'] ) ) {
 
 				$data['value'] = implode( ', ', $data['value'] );
+
 			}
 
 			$this->email_content .= '<li>' . wp_kses_post( $data['label'] ) . ': ' . wp_kses_post( $data['value'] ) . '</li>';
+
 		}
 
 		$this->email_content .= '</ul>';
@@ -971,6 +1006,7 @@ class UnityBlocks_Form {
 		do_action( 'unityblocks_form_submit', $_POST, $atts, $email );
 
 		return $email;
+
 	}
 
 	/**
@@ -993,7 +1029,7 @@ class UnityBlocks_Form {
 
 			array_walk(
 				$matches[1],
-				function ( $match, $key ) use ( $matches, &$subject, &$email_field_id, &$name_field_id ) {
+				function( $match, $key ) use ( $matches, &$subject, &$email_field_id, &$name_field_id ) {
 					$slug_match = strtolower( str_replace( ' ', '', $match ) );
 
 					// phpcs:disable WordPress.Security.NonceVerification.Missing
@@ -1003,13 +1039,16 @@ class UnityBlocks_Form {
 
 							$name_field_value = is_array( $_POST[ $name_field_id ]['value'] ) ? sanitize_text_field( implode( ' ', $_POST[ $name_field_id ]['value'] ) ) : sanitize_text_field( $_POST[ $name_field_id ]['value'] );
 							$value            = empty( $name_field_value ) ? $matches[0][ $key ] : $name_field_value;
+
 						} else {
 
 							$value = $matches[0][ $key ];
+
 						}
 					} elseif ( __( 'email', 'unityblocks' ) === $slug_match ) {
 
 						$value = isset( $_POST[ $email_field_id ]['value'] ) ? sanitize_text_field( $_POST[ $email_field_id ]['value'] ) : $matches[0][ $key ];
+
 					}
 
 					/**
@@ -1023,9 +1062,11 @@ class UnityBlocks_Form {
 					$subject = str_replace( $matches[0][ $key ], $replacement, $subject );
 				}
 			);
+
 		}
 
 		return $subject;
+
 	}
 
 	/**
@@ -1034,7 +1075,9 @@ class UnityBlocks_Form {
 	 * @return string HTML content type header
 	 */
 	public function enable_html_email() {
+
 		return 'text/html';
+
 	}
 
 	/**
@@ -1067,19 +1110,21 @@ class UnityBlocks_Form {
 		$this->remove_url_form_hash();
 
 		echo wp_kses_post( $success_message );
+
 	}
 
 	/**
 	 * Remove the form has from the URL in the browser address bar
 	 */
 	private function remove_url_form_hash() {
+
 		?>
 
 		<script type="text/javascript">
-			if (window.history.replaceState && window.location.hash) {
-				document.getElementById(window.location.hash.substring(1)).scrollIntoView();
-				window.history.replaceState(null, null, ' ');
-			}
+		if ( window.history.replaceState && window.location.hash ) {
+			document.getElementById( window.location.hash.substring( 1 ) ).scrollIntoView();
+			window.history.replaceState( null, null, ' ' );
+		}
 		</script>
 
 		<?php
@@ -1109,6 +1154,7 @@ class UnityBlocks_Form {
 		if ( is_wp_error( $verify_token_request ) ) {
 
 			return false;
+
 		}
 
 		$response = wp_remote_retrieve_body( $verify_token_request );
@@ -1116,6 +1162,7 @@ class UnityBlocks_Form {
 		if ( is_wp_error( $response ) ) {
 
 			return false;
+
 		}
 
 		$response = json_decode( $response, true );
@@ -1123,9 +1170,11 @@ class UnityBlocks_Form {
 		if ( ! isset( $response['success'] ) ) {
 
 			return false;
+
 		}
 
 		return $response['success'];
+
 	}
 }
 

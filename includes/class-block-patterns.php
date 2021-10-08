@@ -1,20 +1,18 @@
 <?php
-
 /**
  * The Block Patterns.
  *
  * @package UnityBlocks
  */
 
-defined('ABSPATH') || exit;
+defined( 'ABSPATH' ) || exit;
 
 /**
  * Registers the custom post type and custom taxonomies used for storing block patterns.
  *
  * @since 2.3.0
  */
-class UnityBlocks_Block_Patterns
-{
+class UnityBlocks_Block_Patterns {
 	use UnityBlocks_Singleton_Trait;
 
 	const POST_TYPE         = 'unityblocks_pattern';
@@ -24,32 +22,30 @@ class UnityBlocks_Block_Patterns
 	/**
 	 * The Constructor.
 	 */
-	public function __construct()
-	{
+	public function __construct() {
 
-		add_action('admin_enqueue_scripts', array($this, 'conditional_load_patterns'));
+		add_action( 'admin_enqueue_scripts', array( $this, 'conditional_load_patterns' ) );
 
-		if (is_wp_version_compatible('5.5')) {
-			add_action('init', array($this, 'register_post_type'));
-			add_action('init', array($this, 'register_type_taxonomy'));
-			add_action('init', array($this, 'register_category_taxonomy'));
-			add_action('init', array($this, 'load_block_patterns'));
-			add_action('rest_insert_' . self::POST_TYPE, array($this, 'add_taxonomies_on_insert_post'), 10, 2);
+		if ( is_wp_version_compatible( '5.5' ) ) {
+			add_action( 'init', array( $this, 'register_post_type' ) );
+			add_action( 'init', array( $this, 'register_type_taxonomy' ) );
+			add_action( 'init', array( $this, 'register_category_taxonomy' ) );
+			add_action( 'init', array( $this, 'load_block_patterns' ) );
+			add_action( 'rest_insert_' . self::POST_TYPE, array( $this, 'add_taxonomies_on_insert_post' ), 10, 2 );
 
-			add_filter('unityblocks_layout_selector_categories', array($this, 'load_categories'));
-			add_filter('unityblocks_layout_selector_layouts', array($this, 'load_layouts'));
+			add_filter( 'unityblocks_layout_selector_categories', array( $this, 'load_categories' ) );
+			add_filter( 'unityblocks_layout_selector_layouts', array( $this, 'load_layouts' ) );
 		}
 	}
 
 	/**
 	 * Register the Custom Post Type.
 	 */
-	public function register_post_type()
-	{
+	public function register_post_type() {
 		$args = array(
-			'label'             => __('Block Patterns', 'unityblocks'),
-			'description'       => __('Description', 'unityblocks'),
-			'supports'          => array('title', 'editor', 'excerpt'),
+			'label'             => __( 'Block Patterns', 'unityblocks' ),
+			'description'       => __( 'Description', 'unityblocks' ),
+			'supports'          => array( 'title', 'editor', 'excerpt' ),
 			'taxonomies'        => array(
 				self::TYPE_TAXONOMY,
 				self::CATEGORY_TAXONOMY,
@@ -61,7 +57,7 @@ class UnityBlocks_Block_Patterns
 			'show_in_admin_bar' => false,
 		);
 
-		register_post_type(self::POST_TYPE, $args);
+		register_post_type( self::POST_TYPE, $args );
 	}
 
 	/**
@@ -70,16 +66,15 @@ class UnityBlocks_Block_Patterns
 	 * "Type" is used to differentiate between a full page "layout" and
 	 * a block "pattern" so we can utilize the same CPT for different contexts.
 	 */
-	public function register_type_taxonomy()
-	{
+	public function register_type_taxonomy() {
 		$args = array(
-			'label'        => __('Pattern Type', 'unityblocks'),
+			'label'        => __( 'Pattern Type', 'unityblocks' ),
 			'hierarchical' => true,
 			'rewrite'      => false,
 			'show_in_rest' => true,
 		);
 
-		register_taxonomy(self::TYPE_TAXONOMY, array(self::POST_TYPE), $args);
+		register_taxonomy( self::TYPE_TAXONOMY, array( self::POST_TYPE ), $args );
 	}
 
 	/**
@@ -87,16 +82,15 @@ class UnityBlocks_Block_Patterns
 	 *
 	 * "Category" is used to categorize different block patterns and layouts which are grouped together in the UI.
 	 */
-	public function register_category_taxonomy()
-	{
+	public function register_category_taxonomy() {
 		$args = array(
-			'label'        => __('Pattern Category', 'unityblocks'),
+			'label'        => __( 'Pattern Category', 'unityblocks' ),
 			'hierarchical' => true,
 			'rewrite'      => false,
 			'show_in_rest' => true,
 		);
 
-		register_taxonomy(self::CATEGORY_TAXONOMY, array(self::POST_TYPE), $args);
+		register_taxonomy( self::CATEGORY_TAXONOMY, array( self::POST_TYPE ), $args );
 	}
 
 	/**
@@ -105,13 +99,12 @@ class UnityBlocks_Block_Patterns
 	 * @param WP_Post         $post     Inserted or updated post object.
 	 * @param WP_REST_Request $request  Request object.
 	 */
-	public function add_taxonomies_on_insert_post($post, $request)
-	{
+	public function add_taxonomies_on_insert_post( $post, $request ) {
 		$params = $request->get_json_params();
 
-		if (array_key_exists('terms', $params)) {
-			foreach ($params['terms'] as $taxonomy => $terms) {
-				wp_set_object_terms($post->ID, $terms, $taxonomy);
+		if ( array_key_exists( 'terms', $params ) ) {
+			foreach ( $params['terms'] as $taxonomy => $terms ) {
+				wp_set_object_terms( $post->ID, $terms, $taxonomy );
 			}
 		}
 	}
@@ -121,13 +114,12 @@ class UnityBlocks_Block_Patterns
 	 *
 	 * @access public
 	 */
-	public function conditional_load_patterns()
-	{
+	public function conditional_load_patterns() {
 		wp_localize_script(
 			'unityblocks-editor',
 			'unityblocksBlockPatterns',
 			array(
-				'patternsEnabled' => is_wp_version_compatible('5.5'),
+				'patternsEnabled' => is_wp_version_compatible( '5.5' ),
 			)
 		);
 	}
@@ -139,12 +131,11 @@ class UnityBlocks_Block_Patterns
 	 *
 	 * @return array
 	 */
-	public function load_categories($categories)
-	{
-		$categories_flattened = wp_list_pluck($categories, 'title', 'slug');
+	public function load_categories( $categories ) {
+		$categories_flattened = wp_list_pluck( $categories, 'title', 'slug' );
 
-		$pattern_categories           = get_terms(self::CATEGORY_TAXONOMY);
-		$pattern_categories_flattened = wp_list_pluck($pattern_categories, 'name', 'slug');
+		$pattern_categories           = get_terms( self::CATEGORY_TAXONOMY );
+		$pattern_categories_flattened = wp_list_pluck( $pattern_categories, 'name', 'slug' );
 
 		$merged_categories = array_merge(
 			$categories_flattened,
@@ -152,14 +143,14 @@ class UnityBlocks_Block_Patterns
 		);
 
 		return array_map(
-			function ($val, $key) {
+			function( $val, $key ) {
 				return array(
 					'slug'  => $key,
 					'title' => $val,
 				);
 			},
 			$merged_categories,
-			array_keys($merged_categories)
+			array_keys( $merged_categories )
 		);
 	}
 
@@ -170,8 +161,7 @@ class UnityBlocks_Block_Patterns
 	 *
 	 * @return array
 	 */
-	public function load_layouts($layouts)
-	{
+	public function load_layouts( $layouts ) {
 		$query_args = array(
 			'post_type'              => self::POST_TYPE,
 
@@ -188,14 +178,14 @@ class UnityBlocks_Block_Patterns
 			),
 		);
 
-		$block_patterns_query = new \WP_Query($query_args);
+		$block_patterns_query = new \WP_Query( $query_args );
 		wp_reset_postdata();
 
-		foreach ($block_patterns_query->posts as $block_pattern) {
-			$categories = get_the_terms($block_pattern->ID, self::CATEGORY_TAXONOMY);
+		foreach ( $block_patterns_query->posts as $block_pattern ) {
+			$categories = get_the_terms( $block_pattern->ID, self::CATEGORY_TAXONOMY );
 
 			$layouts[] = array(
-				'category'    => wp_list_pluck($categories, 'slug')[0],
+				'category'    => wp_list_pluck( $categories, 'slug' )[0],
 				'postContent' => $block_pattern->post_content,
 			);
 		}
@@ -206,8 +196,7 @@ class UnityBlocks_Block_Patterns
 	/**
 	 * Register custom post type posts (with the 'pattern' type) as block patterns.
 	 */
-	public function load_block_patterns()
-	{
+	public function load_block_patterns() {
 		$query_args = array(
 			'post_type'              => self::POST_TYPE,
 			'posts_per_page'         => -1,
@@ -225,22 +214,22 @@ class UnityBlocks_Block_Patterns
 			),
 		);
 
-		$block_patterns_query = new \WP_Query($query_args);
+		$block_patterns_query = new \WP_Query( $query_args );
 		wp_reset_postdata();
 
-		if (empty($block_patterns_query->posts)) {
+		if ( empty( $block_patterns_query->posts ) ) {
 			return;
 		}
 
-		foreach ($block_patterns_query->posts as $block_pattern) {
-			$categories = get_the_terms($block_pattern->ID, self::CATEGORY_TAXONOMY);
+		foreach ( $block_patterns_query->posts as $block_pattern ) {
+			$categories = get_the_terms( $block_pattern->ID, self::CATEGORY_TAXONOMY );
 
 			register_block_pattern(
 				self::POST_TYPE . '/' . $block_pattern->post_name,
 				array(
 					'title'       => $block_pattern->post_title,
 					'content'     => $block_pattern->post_content,
-					'categories'  => empty($categories) ? array() : wp_list_pluck($categories, 'slug'),
+					'categories'  => empty( $categories ) ? array() : wp_list_pluck( $categories, 'slug' ),
 					'description' => $block_pattern->post_excerpt,
 				)
 			);

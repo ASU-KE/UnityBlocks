@@ -132,7 +132,7 @@ function observeConsoleLogging() {
 		// offline mode.
 		if (
 			text.includes( 'net::ERR_INTERNET_DISCONNECTED' ) &&
-             isOfflineMode()
+			isOfflineMode()
 		) {
 			return;
 		}

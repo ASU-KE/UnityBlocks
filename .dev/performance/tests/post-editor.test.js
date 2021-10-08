@@ -43,9 +43,7 @@ describe( 'Post Editor Performance', () => {
 			inserterSearch: [],
 		};
 
-		const html = readFile(
-			join( __dirname, './assets/large-post.html' )
-		);
+		const html = readFile( join( __dirname, './assets/large-post.html' ) );
 
 		await createNewPost();
 		await page.evaluate( ( _html ) => {
@@ -112,12 +110,12 @@ describe( 'Post Editor Performance', () => {
 			] = getTypingEventDurations( traceResults );
 			if (
 				keyDownEvents.length === keyPressEvents.length &&
-                 keyPressEvents.length === keyUpEvents.length
+				keyPressEvents.length === keyUpEvents.length
 			) {
 				results.inserterSearch.push(
 					sum( keyDownEvents ) +
-                         sum( keyPressEvents ) +
-                         sum( keyUpEvents )
+						sum( keyPressEvents ) +
+						sum( keyUpEvents )
 				);
 			}
 			await page.keyboard.press( 'Backspace' );
@@ -126,9 +124,9 @@ describe( 'Post Editor Performance', () => {
 
 		// Measure inserter hover performance
 		const paragraphBlockItem =
-             '.block-editor-inserter__menu .editor-block-list-item-paragraph';
+			'.block-editor-inserter__menu .editor-block-list-item-paragraph';
 		const headingBlockItem =
-             '.block-editor-inserter__menu .editor-block-list-item-heading';
+			'.block-editor-inserter__menu .editor-block-list-item-heading';
 		await openGlobalBlockInserter();
 		await page.waitForSelector( paragraphBlockItem );
 		await page.hover( paragraphBlockItem );
@@ -181,7 +179,7 @@ describe( 'Post Editor Performance', () => {
 		] = getTypingEventDurations( traceResults );
 		if (
 			keyDownEvents.length === keyPressEvents.length &&
-             keyPressEvents.length === keyUpEvents.length
+			keyPressEvents.length === keyUpEvents.length
 		) {
 			for ( let j = 0; j < keyDownEvents.length; j++ ) {
 				results.type.push(

@@ -11,8 +11,9 @@ module.exports = {
 		'@wordpress/jest-puppeteer-axe',
 		'expect-puppeteer',
 	],
-	transformIgnorePatterns: [
-		'/node_modules/',
+	transformIgnorePatterns: [ '/node_modules/' ],
+	reporters: [
+		'default',
+		'<rootDir>.dev/performance/tests/config/performance-reporter.js',
 	],
-	reporters: [ 'default', '<rootDir>.dev/performance/tests/config/performance-reporter.js' ],
 };

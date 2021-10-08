@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Load generated styles for our blocks.
  *
@@ -17,7 +16,6 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @since 1.6.0
  */
 class UnityBlocks_Generated_Styles {
-
 
 
 	/**
@@ -44,7 +42,7 @@ class UnityBlocks_Generated_Styles {
 	 * The Constructor.
 	 */
 	public function __construct() {
-		 add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_styles' ) );
 	}
 
@@ -145,47 +143,49 @@ class UnityBlocks_Generated_Styles {
 					if ( ! empty( $divider_obj ) ) {
 						foreach ( $divider_obj as $divider_element => $divider_el_obj ) {
 							$output .= '@media only screen and (max-width: ' . apply_filters( 'unityblocks_tablet_breakpoint', '768px' ) . ') {';
-							if ('height' === $divider_element && isset($divider_el_obj->heightTablet)) { // @codingStandardsIgnoreLine
-								$output .= sprintf( '.%1$s > [class*="__inner"]:not(.is-fullscreen) {', esc_attr( $divider_key ) );
-								$output .= 'min-height:' . $divider_el_obj->heightTablet . 'px !important'; // @codingStandardsIgnoreLine
-								$output .= '}';
+							if ( 'height' === $divider_element && isset( $divider_el_obj->heightTablet ) ) { // @codingStandardsIgnoreLine
+								$output     .= sprintf( '.%1$s > [class*="__inner"]:not(.is-fullscreen) {', esc_attr( $divider_key ) );
+									$output .= 'min-height:' . $divider_el_obj->heightTablet . 'px !important'; // @codingStandardsIgnoreLine
+								$output     .= '}';
 							}
 
-							if ('shapeHeight' === $divider_element && isset($divider_el_obj->heightTablet)) { // @codingStandardsIgnoreLine
-								$output .= sprintf( '.%1$s > .wp-block-unityblocks-shape-divider__svg-wrapper {', esc_attr( $divider_key ) );
-								$output .= 'min-height:' . $divider_el_obj->heightTablet . 'px !important'; // @codingStandardsIgnoreLine
-								$output .= '}';
+							if ( 'shapeHeight' === $divider_element && isset( $divider_el_obj->heightTablet ) ) { // @codingStandardsIgnoreLine
+								$output     .= sprintf( '.%1$s > .wp-block-unityblocks-shape-divider__svg-wrapper {', esc_attr( $divider_key ) );
+									$output .= 'min-height:' . $divider_el_obj->heightTablet . 'px !important'; // @codingStandardsIgnoreLine
+								$output     .= '}';
 							}
-							if ('backgroundHeight' === $divider_element && isset($divider_el_obj->heightTablet)) { // @codingStandardsIgnoreLine
-								$output .= sprintf( '.%1$s > .wp-block-unityblocks-shape-divider__alt-wrapper {', esc_attr( $divider_key ) );
-								$output .= 'min-height:' . $divider_el_obj->heightTablet . 'px !important'; // @codingStandardsIgnoreLine
-								$output .= '}';
+							if ( 'backgroundHeight' === $divider_element && isset( $divider_el_obj->heightTablet ) ) { // @codingStandardsIgnoreLine
+								$output     .= sprintf( '.%1$s > .wp-block-unityblocks-shape-divider__alt-wrapper {', esc_attr( $divider_key ) );
+									$output .= 'min-height:' . $divider_el_obj->heightTablet . 'px !important'; // @codingStandardsIgnoreLine
+								$output     .= '}';
 							}
 							$output .= '}';
 
 							$output .= '@media only screen and (max-width: ' . apply_filters( 'unityblocks_desktop_breakpoint', '514px' ) . ') {';
-							if ('shapeHeight' === $divider_element && isset($divider_el_obj->heightMobile)) { // @codingStandardsIgnoreLine
-								$output .= sprintf( '.%1$s > .wp-block-unityblocks-shape-divider__svg-wrapper {', esc_attr( $divider_key ) );
-								$output .= 'min-height:' . $divider_el_obj->heightMobile . 'px !important'; // @codingStandardsIgnoreLine
-								$output .= '}';
+							if ( 'shapeHeight' === $divider_element && isset( $divider_el_obj->heightMobile ) ) { // @codingStandardsIgnoreLine
+								$output     .= sprintf( '.%1$s > .wp-block-unityblocks-shape-divider__svg-wrapper {', esc_attr( $divider_key ) );
+									$output .= 'min-height:' . $divider_el_obj->heightMobile . 'px !important'; // @codingStandardsIgnoreLine
+								$output     .= '}';
 							}
-							if ('backgroundHeight' === $divider_element && isset($divider_el_obj->heightMobile)) { // @codingStandardsIgnoreLine
-								$output .= sprintf( '.%1$s > .wp-block-unityblocks-shape-divider__alt-wrapper {', esc_attr( $divider_key ) );
-								$output .= 'min-height:' . $divider_el_obj->heightMobile . 'px !important'; // @codingStandardsIgnoreLine
-								$output .= '}';
+							if ( 'backgroundHeight' === $divider_element && isset( $divider_el_obj->heightMobile ) ) { // @codingStandardsIgnoreLine
+								$output     .= sprintf( '.%1$s > .wp-block-unityblocks-shape-divider__alt-wrapper {', esc_attr( $divider_key ) );
+									$output .= 'min-height:' . $divider_el_obj->heightMobile . 'px !important'; // @codingStandardsIgnoreLine
+								$output     .= '}';
 							}
-							if ('height' === $divider_element && isset($divider_el_obj->heightMobile)) { // @codingStandardsIgnoreLine
-								$output .= sprintf( '.%1$s > [class*="__inner"]:not(.is-fullscreen)  {', esc_attr( $divider_key ) );
-								$output .= 'min-height:' . $divider_el_obj->heightMobile . 'px !important'; // @codingStandardsIgnoreLine
-								$output .= '}';
+							if ( 'height' === $divider_element && isset( $divider_el_obj->heightMobile ) ) { // @codingStandardsIgnoreLine
+								$output     .= sprintf( '.%1$s > [class*="__inner"]:not(.is-fullscreen)  {', esc_attr( $divider_key ) );
+									$output .= 'min-height:' . $divider_el_obj->heightMobile . 'px !important'; // @codingStandardsIgnoreLine
+								$output     .= '}';
 							}
 							$output .= '}';
+
 						}
 					}
 				}
 			}
 
 			return wp_strip_all_tags( $output );
+
 		}
 	}
 }

@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import { omit } from "lodash";
+import { omit } from 'lodash';
 
 /**
  * Internal dependencies.
@@ -93,7 +93,7 @@ import {
 	getBlockTransforms,
 	serialize,
 	parse,
-} from "@wordpress/blocks";
+} from '@wordpress/blocks';
 
 /**
  * Register all gallery blocks to be used for transforms testing.
@@ -165,15 +165,15 @@ export const registerFormBlocks = () => {
  * @param {string} content   The content of the block when a prefix is found.
  * @return {Object} The block object.
  */
-export const performPrefixTransformation = (blockName, prefix, content) => {
-	const prefixTransforms = getBlockTransforms("from", blockName).filter(
-		({ type: transformType, prefix: transformPrefix }) =>
-			transformType === "prefix" && prefix === transformPrefix
+export const performPrefixTransformation = ( blockName, prefix, content ) => {
+	const prefixTransforms = getBlockTransforms( 'from', blockName ).filter(
+		( { type: transformType, prefix: transformPrefix } ) =>
+			transformType === 'prefix' && prefix === transformPrefix
 	);
 
 	// Remove prefix trigger from content before performing the transform.
-	const blockContent = content.replace(prefix, "").trim();
-	const block = prefixTransforms[0].transform(blockContent);
+	const blockContent = content.replace( prefix, '' ).trim();
+	const block = prefixTransforms[ 0 ].transform( blockContent );
 
 	return block;
 };
@@ -195,23 +195,26 @@ export const testDeprecatedBlockVariations = (
 	let deprecatedSettings;
 	let deprecatedBlockType;
 
-	blockSettings.deprecated.forEach((deprecated, index) => {
+	blockSettings.deprecated.forEach( ( deprecated, index ) => {
 		// Register the deprecated block to get the attributes with filters applied.
 		deprecatedSettings = Object.assign(
-			{ category: "common" },
-			omit(blockSettings, ["attributes", "save", "deprecated"]),
+			{ category: 'common' },
+			omit( blockSettings, [ 'attributes', 'save', 'deprecated' ] ),
 			{
 				attributes: deprecated.attributes,
 				save: deprecated.save,
 			}
 		);
-		deprecatedBlockType = registerBlockType(blockName, deprecatedSettings);
+		deprecatedBlockType = registerBlockType(
+			blockName,
+			deprecatedSettings
+		);
 
 		// Unregister the registered block.
-		unregisterBlockType(blockName);
+		unregisterBlockType( blockName );
 
-		describe(`${blockName} deprecation ${index}`, () => {
-			beforeEach(() => {
+		describe( `${ blockName } deprecation ${ index }`, () => {
+			beforeEach( () => {
 				// Register the deprecated block.
 				deprecatedBlockType = registerBlockType(
 					blockName,
@@ -219,114 +222,118 @@ export const testDeprecatedBlockVariations = (
 				);
 
 				// Create the block with no attributes.
-				deprecatedBlock = createBlock(blockName);
-			});
+				deprecatedBlock = createBlock( blockName );
+			} );
 
-			afterEach(() => {
+			afterEach( () => {
 				// Unregister the registered block.
-				unregisterBlockType(blockName);
-			});
+				unregisterBlockType( blockName );
+			} );
 
-			it("should deprecate old version", () => {
-				const deprecatedSerialized = serialize(deprecatedBlock);
+			it( 'should deprecate old version', () => {
+				const deprecatedSerialized = serialize( deprecatedBlock );
 
 				// Unregister the deprecated block version.
-				unregisterBlockType(blockName);
+				unregisterBlockType( blockName );
 
 				// Register the current block version.
-				registerBlockType(blockName, {
-					category: "common",
+				registerBlockType( blockName, {
+					category: 'common',
 					...blockSettings,
-				});
+				} );
 
-				const blocks = parse(deprecatedSerialized);
+				const blocks = parse( deprecatedSerialized );
 
 				expect(
 					blocks
-						.filter((block) => !block.isValid)
-						.map(filterBlockObjectResult)
-				).toEqual([]);
-			});
+						.filter( ( block ) => ! block.isValid )
+						.map( filterBlockObjectResult )
+				).toEqual( [] );
+			} );
 
-			Object.keys(deprecatedBlockType.attributes).forEach((attribute) => {
-				// This test helps expose attributes we need variations for.
-				it(`should have variations for attribute.${attribute}`, () => {
-					expect(blockVariations.hasOwnProperty(attribute)).toBe(
-						true
-					);
-				});
-
-				// Allow each attribute test to pre-set block attributes before testing the attributes deprecation.
-				let testVariations;
-				let testBaseAttributes = {};
-
-				if (
-					blockVariations[attribute] &&
-					Array.isArray(blockVariations[attribute])
-				) {
-					testVariations = blockVariations[attribute];
-				} else {
-					testVariations = blockVariations[attribute].values;
-					testBaseAttributes =
-						blockVariations[attribute].baseAttributes || {};
-				}
-
-				testVariations.forEach((variation) => {
-					it(`should support attribute.${attribute} set to '${JSON.stringify(
-						variation
-					)}'`, () => {
-						// Allow baseAttributes defined in the test to override deprecated attribute defaults.
-						deprecatedBlock.attributes = {
-							...deprecatedBlock.attributes,
-							...testBaseAttributes,
-						};
-
-						// Allow variations to override the baseAttributes defined in the test.
-						deprecatedBlock.attributes[attribute] = variation;
-						const deprecatedSerialized = serialize(deprecatedBlock);
-
-						// Unregister the deprecated block version.
-						unregisterBlockType(blockName);
-
-						// Register the current block version.
-						registerBlockType(blockName, {
-							category: "common",
-							...blockSettings,
-						});
-
-						const blocks = parse(deprecatedSerialized);
-
-						// This assertion should be removed when issue #2025 is resolved.
-						// https://github.com/godaddy-wordpress/unityblocks/issues/2025
-						const IssueBlocks = [
-							"unityblocks/column",
-							"unityblocks/hero",
-							"unityblocks/gallery-stacked",
-							"unityblocks/gallery-masonry",
-						];
-						// The indexToCheckAgainst refers to the block deprecated.js array of attributes and save functions.
-						// Index is relevant because specific deprecated save functions cause the keys bug reported in #2025.
-						const indexToCheckAgainst =
-							blockName === "unityblocks/column" ? 1 : 0;
-						if (
-							IssueBlocks.includes(blockName) &&
-							attribute === "backgroundType" &&
-							JSON.stringify(variation) === '"video"' &&
-							index === indexToCheckAgainst
-						) {
-							expect(console).toHaveErrored();
-						}
-
+			Object.keys( deprecatedBlockType.attributes ).forEach(
+				( attribute ) => {
+					// This test helps expose attributes we need variations for.
+					it( `should have variations for attribute.${ attribute }`, () => {
 						expect(
-							blocks
-								.filter((block) => !block.isValid)
-								.map(filterBlockObjectResult)
-						).toEqual([]);
-					});
-				});
-			});
-		});
-	});
+							blockVariations.hasOwnProperty( attribute )
+						).toBe( true );
+					} );
+
+					// Allow each attribute test to pre-set block attributes before testing the attributes deprecation.
+					let testVariations;
+					let testBaseAttributes = {};
+
+					if (
+						blockVariations[ attribute ] &&
+						Array.isArray( blockVariations[ attribute ] )
+					) {
+						testVariations = blockVariations[ attribute ];
+					} else {
+						testVariations = blockVariations[ attribute ].values;
+						testBaseAttributes =
+							blockVariations[ attribute ].baseAttributes || {};
+					}
+
+					testVariations.forEach( ( variation ) => {
+						it( `should support attribute.${ attribute } set to '${ JSON.stringify(
+							variation
+						) }'`, () => {
+							// Allow baseAttributes defined in the test to override deprecated attribute defaults.
+							deprecatedBlock.attributes = {
+								...deprecatedBlock.attributes,
+								...testBaseAttributes,
+							};
+
+							// Allow variations to override the baseAttributes defined in the test.
+							deprecatedBlock.attributes[ attribute ] = variation;
+							const deprecatedSerialized = serialize(
+								deprecatedBlock
+							);
+
+							// Unregister the deprecated block version.
+							unregisterBlockType( blockName );
+
+							// Register the current block version.
+							registerBlockType( blockName, {
+								category: 'common',
+								...blockSettings,
+							} );
+
+							const blocks = parse( deprecatedSerialized );
+
+							// This assertion should be removed when issue #2025 is resolved.
+							// https://github.com/godaddy-wordpress/unityblocks/issues/2025
+							const IssueBlocks = [
+								'unityblocks/column',
+								'unityblocks/hero',
+								'unityblocks/gallery-stacked',
+								'unityblocks/gallery-masonry',
+							];
+							// The indexToCheckAgainst refers to the block deprecated.js array of attributes and save functions.
+							// Index is relevant because specific deprecated save functions cause the keys bug reported in #2025.
+							const indexToCheckAgainst =
+								blockName === 'unityblocks/column' ? 1 : 0;
+							if (
+								IssueBlocks.includes( blockName ) &&
+								attribute === 'backgroundType' &&
+								JSON.stringify( variation ) === '"video"' &&
+								index === indexToCheckAgainst
+							) {
+								expect( console ).toHaveErrored();
+							}
+
+							expect(
+								blocks
+									.filter( ( block ) => ! block.isValid )
+									.map( filterBlockObjectResult )
+							).toEqual( [] );
+						} );
+					} );
+				}
+			);
+		} );
+	} );
 };
 
 /**
@@ -335,10 +342,10 @@ export const testDeprecatedBlockVariations = (
  * @param {Object} blockObject The block object returned from parse().
  * @return {Object} The filtered block object.
  */
-export const filterBlockObjectResult = (blockObject) => {
+export const filterBlockObjectResult = ( blockObject ) => {
 	const { name, attributes, isValid } = blockObject;
 	const validationIssues = blockObject.validationIssues.map(
-		(issue) => issue.args
+		( issue ) => issue.args
 	);
 	return { name, attributes, isValid, validationIssues };
 };

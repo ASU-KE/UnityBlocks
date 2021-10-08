@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Register blocks.
  *
@@ -17,7 +16,6 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @since 1.6.0
  */
 class UnityBlocks_Register_Blocks {
-
 
 
 	/**
@@ -51,7 +49,7 @@ class UnityBlocks_Register_Blocks {
 	 * The Constructor.
 	 */
 	public function __construct() {
-		 $this->slug = 'unityblocks';
+		$this->slug = 'unityblocks';
 
 		add_action( 'init', array( $this, 'register_blocks' ), 99 );
 	}
@@ -62,6 +60,7 @@ class UnityBlocks_Register_Blocks {
 	 * @access public
 	 */
 	public function register_blocks() {
+
 		// Return early if this function does not exist.
 		if ( ! function_exists( 'register_block_type' ) ) {
 			return;

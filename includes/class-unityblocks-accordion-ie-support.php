@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Load assets and meta for browser legacy support.
  *
@@ -17,7 +16,6 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @since 1.0.0
  */
 class UnityBlocks_Accordion_IE_Support {
-
 
 
 	/**
@@ -58,8 +56,8 @@ class UnityBlocks_Accordion_IE_Support {
 	 * The Constructor.
 	 */
 	public function __construct() {
-		 $this->slug = 'unityblocks';
-		$this->url   = untrailingslashit( plugins_url( '/', dirname( __FILE__ ) ) );
+		$this->slug = 'unityblocks';
+		$this->url  = untrailingslashit( plugins_url( '/', dirname( __FILE__ ) ) );
 
 		add_action( 'wp_enqueue_scripts', array( $this, 'load_assets' ) );
 		add_action( 'the_post', array( $this, 'load_assets' ) );
@@ -71,12 +69,14 @@ class UnityBlocks_Accordion_IE_Support {
 	 * @access public
 	 */
 	public function load_assets() {
+
 		global $post;
 
 		// Validate Post ID.
 		if ( ! isset( $post->ID ) || empty( $post->ID ) ) {
 
 			return;
+
 		}
 
 		$legacy_support = get_post_meta( $post->ID, '_unityblocks_accordion_ie_support', true );
