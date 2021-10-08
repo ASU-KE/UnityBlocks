@@ -4,9 +4,6 @@
 **/vendor/**
 **/build/**
 wordpress*/
-.vscode/
-*.sublime-project
-*.sublime-workspace
 *.cache
 .ftppass
 coverage/
@@ -19,8 +16,8 @@ dist/*
 sandbox.json
 /.idea/
 **/.DS_Store
-languages/coblocks-js.pot
-languages/*-coblocks-editor.json
+languages/unityblocks-js.pot
+languages/*-unityblocks-editor.json
 languages/*.mo
 languages/*.po
 cypress.env.json
