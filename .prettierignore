@@ -6,4 +6,5 @@ dist
 coverage
 *.md
 *.php
+*.css
 *.scss

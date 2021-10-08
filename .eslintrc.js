@@ -1,6 +1,7 @@
 module.exports = {
 	extends: [
-		'plugin:@wordpress/eslint-plugin/recommended-with-formatting',
+		'plugin:@wordpress/eslint-plugin/recommended',
+		'plugin:prettier/recommended',
 	],
 	env: {
 		browser: true,
@@ -10,15 +11,16 @@ module.exports = {
 	globals: {
 		page: true,
 	},
-	plugins: [
-		'cypress',
-		'chai-friendly',
-	],
+	plugins: [ 'cypress', 'chai-friendly' ],
 	rules: {
 		'jest/expect-expect': [
 			'error',
 			{
-				assertFunctionNames: [ 'expect', 'cy.get', 'helpers.checkForBlockErrors' ],
+				assertFunctionNames: [
+					'expect',
+					'cy.get',
+					'helpers.checkForBlockErrors',
+				],
 			},
 		],
 		// Disable issue: https://github.com/godaddy-wordpress/coblocks/issues/2036
