@@ -108,9 +108,11 @@ if ( ! class_exists( 'UnityBlocks' ) ) :
 			require_once UNITYBLOCKS_PLUGIN_DIR . 'includes/class-unityblocks-settings.php';
 			require_once UNITYBLOCKS_PLUGIN_DIR . 'includes/get-dynamic-blocks.php';
 
+			/*
 			// Require UnityBlocks custom filters.
-			// require_once UNITYBLOCKS_PLUGIN_DIR . 'src/components/gutter-control/gutter-wrapper.php';
-			// require_once UNITYBLOCKS_PLUGIN_DIR . 'src/components/form-label-colors/label-color-wrapper.php';
+			require_once UNITYBLOCKS_PLUGIN_DIR . 'src/components/gutter-control/gutter-wrapper.php';
+			require_once UNITYBLOCKS_PLUGIN_DIR . 'src/components/form-label-colors/label-color-wrapper.php';
+			*/
 
 			/*
 				Disabled since we don't use this now (maybe in future?)
