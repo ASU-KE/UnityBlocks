@@ -1,16 +1,16 @@
 /* eslint react/jsx-props-no-spreading: "off", no-alert: "off" */
-import React from "react";
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import React from 'react';
+import { BrowserRouter as Router, Link } from 'react-router-dom';
 
-import { Button } from ".";
+import { Button } from '.';
 
 export default {
-  title: "UDS/Button",
-  component: Button,
-  parameters: {
-    docs: {
-      description: {
-        component: `The Button component can be used to generate UDS-compliant \`<button>\` DOM elements and Button-styled \`<a>\` links. If you are working with third-party React link components, such as react-router's Link, this Button component will accept those components and and style them in UDS.
+	title: 'UDS/Button',
+	component: Button,
+	parameters: {
+		docs: {
+			description: {
+				component: `The Button component can be used to generate UDS-compliant \`<button>\` DOM elements and Button-styled \`<a>\` links. If you are working with third-party React link components, such as react-router's Link, this Button component will accept those components and and style them in UDS.
 
 ## Usage
 
@@ -20,35 +20,35 @@ To use the React Router Link in the Button component, pass an instance of \`<Lin
 
 View component examples and source code below.
         `,
-      },
-    },
-  },
+			},
+		},
+	},
 };
 
-const handleClick = e => {
-  e.preventDefault();
-  alert("The button was clicked.");
+const handleClick = ( e ) => {
+	e.preventDefault();
+	alert( 'The button was clicked.' );
 };
 
-const Template = args => {
-  return (
-    <div className="container-fluid">
-      <div className="col col-sm-12 p-3">
-        <Button {...args} />
-      </div>
-    </div>
-  );
+const Template = ( args ) => {
+	return (
+		<div className="container-fluid">
+			<div className="col col-sm-12 p-3">
+				<Button { ...args } />
+			</div>
+		</div>
+	);
 };
 
-export const DefaultButton = Template.bind({});
+export const DefaultButton = Template.bind( {} );
 DefaultButton.args = {
-  label: "Default Button",
-  onClick: handleClick,
+	label: 'Default Button',
+	onClick: handleClick,
 };
 DefaultButton.parameters = {
-  docs: {
-    source: {
-      code: `const handleClick = e => {
+	docs: {
+		source: {
+			code: `const handleClick = e => {
   e.preventDefault();
   alert("The button was clicked.");
 };
@@ -56,21 +56,21 @@ DefaultButton.parameters = {
 <Button
   onClick: handleClick,
 />Default Button</Button>`,
-    },
-  },
+		},
+	},
 };
 
-export const SmallGoldButton = Template.bind({});
+export const SmallGoldButton = Template.bind( {} );
 SmallGoldButton.args = {
-  color: "gold",
-  label: "Small Gold Button",
-  onClick: handleClick,
-  size: "small",
+	color: 'gold',
+	label: 'Small Gold Button',
+	onClick: handleClick,
+	size: 'small',
 };
 SmallGoldButton.parameters = {
-  docs: {
-    description: {
-      story: `When the Button component is provided with an onClick handler function, the Button is rendered as a \`<button type="button">\`.
+	docs: {
+		description: {
+			story: `When the Button component is provided with an onClick handler function, the Button is rendered as a \`<button type="button">\`.
 
     const handleClick = e => {
       e.preventDefault();
@@ -82,9 +82,9 @@ SmallGoldButton.parameters = {
       onClick: handleClick,
       size: "small",
     />Small Gold Button</Button>`,
-    },
-    source: {
-      code: `const handleClick = e => {
+		},
+		source: {
+			code: `const handleClick = e => {
   e.preventDefault();
   alert("The button was clicked.");
 };
@@ -94,21 +94,21 @@ SmallGoldButton.parameters = {
   onClick: handleClick,
   size: "small",
 />Small Gold Button</Button>`,
-    },
-  },
+		},
+	},
 };
 
-export const IconButton = Template.bind({});
+export const IconButton = Template.bind( {} );
 IconButton.args = {
-  color: "gold",
-  icon: ["fas", "rocket"],
-  label: "Icon Button",
-  onClick: handleClick,
+	color: 'gold',
+	icon: [ 'fas', 'rocket' ],
+	label: 'Icon Button',
+	onClick: handleClick,
 };
 IconButton.parameters = {
-  docs: {
-    description: {
-      story: `To include a Font Awesome icon in the button label, import the desired React icon and pass it to the Button component via the \`icon\` prop.:
+	docs: {
+		description: {
+			story: `To include a Font Awesome icon in the button label, import the desired React icon and pass it to the Button component via the \`icon\` prop.:
 
     const handleClick = e => {
       e.preventDefault();
@@ -120,9 +120,9 @@ IconButton.parameters = {
       icon: ["fas", "rocket"],
       onClick: handleClick,
     >Icon Button</Button>`,
-    },
-    source: {
-      code: `
+		},
+		source: {
+			code: `
       const handleClick = e => {
         e.preventDefault();
         alert("The button was clicked.");
@@ -133,64 +133,64 @@ IconButton.parameters = {
         icon: ["fas", "rocket"],
         onClick: handleClick,
       >Icon Button</Button>`,
-    },
-  },
+		},
+	},
 };
 
-export const LinkButton = Template.bind({});
+export const LinkButton = Template.bind( {} );
 LinkButton.args = {
-  color: "maroon",
-  href: "/#example-link",
-  label: "Link Button",
+	color: 'maroon',
+	href: '/#example-link',
+	label: 'Link Button',
 };
 LinkButton.parameters = {
-  docs: {
-    description: {
-      story: `To render a button-style link, \`<a>\`-tag, use the \`href\` prop to set the destination url for this link. When a button is primarily intended for page navigation, this is the recommended solution for accessibility.
+	docs: {
+		description: {
+			story: `To render a button-style link, \`<a>\`-tag, use the \`href\` prop to set the destination url for this link. When a button is primarily intended for page navigation, this is the recommended solution for accessibility.
 
     <Button
       color="maroon"
       href="/#example-link"
     />Link Button</Button>`,
-    },
-    source: {
-      code: `<Button
+		},
+		source: {
+			code: `<Button
   color="maroon"
   href="/#example-link"
 />Link Button</Button>`,
-    },
-  },
+		},
+	},
 };
 
-export const TargetBlankButton = Template.bind({});
+export const TargetBlankButton = Template.bind( {} );
 TargetBlankButton.args = {
-  color: "maroon",
-  href: "/#example-link",
-  label: "Link Button",
-  target: "_blank",
+	color: 'maroon',
+	href: '/#example-link',
+	label: 'Link Button',
+	target: '_blank',
 };
 
-const ReactRouterTemplate = args => (
-  <Router>
-    <div className="container-fluid">
-      <div className="col col-sm-12 p-3">
-        <Button {...args} />
-      </div>
-    </div>
-  </Router>
+const ReactRouterTemplate = ( args ) => (
+	<Router>
+		<div className="container-fluid">
+			<div className="col col-sm-12 p-3">
+				<Button { ...args } />
+			</div>
+		</div>
+	</Router>
 );
 
-export const ReactRouterLinkButton = ReactRouterTemplate.bind({});
+export const ReactRouterLinkButton = ReactRouterTemplate.bind( {} );
 ReactRouterLinkButton.args = {
-  color: "gold",
-  element: Link,
-  label: "React Router Link",
-  to: "/#example-link",
+	color: 'gold',
+	element: Link,
+	label: 'React Router Link',
+	to: '/#example-link',
 };
 ReactRouterLinkButton.parameters = {
-  docs: {
-    description: {
-      story: `To use the React Router Link in the Button component, pass an instance of \`<Link>\` to the \`element\` prop and any additional props required by Link, e.g. the \`to\` prop required for the destination URL. The rendered link will leverage all features of React Router, and be visually styled for UDS.
+	docs: {
+		description: {
+			story: `To use the React Router Link in the Button component, pass an instance of \`<Link>\` to the \`element\` prop and any additional props required by Link, e.g. the \`to\` prop required for the destination URL. The rendered link will leverage all features of React Router, and be visually styled for UDS.
 
     import { BrowserRouter as Router, Link } from "react-router-dom";
 
@@ -204,9 +204,9 @@ ReactRouterLinkButton.parameters = {
         />
       </...>
     </Router>`,
-    },
-    source: {
-      code: `import { BrowserRouter as Router, Link } from "react-router-dom";
+		},
+		source: {
+			code: `import { BrowserRouter as Router, Link } from "react-router-dom";
 
 <Router>
   <...>
@@ -218,6 +218,6 @@ ReactRouterLinkButton.parameters = {
     />
   </...>
 </Router>`,
-    },
-  },
+		},
+	},
 };

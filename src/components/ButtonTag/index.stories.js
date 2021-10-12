@@ -1,16 +1,16 @@
 /* eslint react/jsx-props-no-spreading: "off" */
-import React from "react";
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import React from 'react';
+import { BrowserRouter as Router, Link } from 'react-router-dom';
 
-import { ButtonTag } from ".";
+import { ButtonTag } from '.';
 
 export default {
-  title: "UDS/ButtonTag",
-  component: ButtonTag,
-  parameters: {
-    docs: {
-      description: {
-        component: `The ButtonTag component can be used to generate UDS-compliant \`<button>\`
+	title: 'UDS/ButtonTag',
+	component: ButtonTag,
+	parameters: {
+		docs: {
+			description: {
+				component: `The ButtonTag component can be used to generate UDS-compliant \`<button>\`
         and button-styled \`<a>\` links. If you are working with third-party React link components,
         such as react-router's Link, this ButtonTag component will accept those components and style
         them in UDS.
@@ -28,53 +28,53 @@ The rendered link will leverage all features of React Router, and be visually st
 
 View component examples and source code below.
         `,
-      },
-    },
-  },
+			},
+		},
+	},
 };
 
-const handleClick = e => {
-  e.preventDefault();
+const handleClick = ( e ) => {
+	e.preventDefault();
 };
 
-const Template = args => {
-  return (
-    <div className="container-fluid">
-      <div className="col col-sm-12 p-3">
-        <ButtonTag {...args} />
-      </div>
-    </div>
-  );
+const Template = ( args ) => {
+	return (
+		<div className="container-fluid">
+			<div className="col col-sm-12 p-3">
+				<ButtonTag { ...args } />
+			</div>
+		</div>
+	);
 };
 
-export const TagButton = Template.bind({});
+export const TagButton = Template.bind( {} );
 TagButton.args = {
-  label: "Tag Button",
-  color: "gray",
-  onClick: handleClick,
+	label: 'Tag Button',
+	color: 'gray',
+	onClick: handleClick,
 };
 
-export const TagLink = Template.bind({});
+export const TagLink = Template.bind( {} );
 TagLink.args = {
-  label: "Tag Link",
-  color: "white",
-  href: "/#example-link",
+	label: 'Tag Link',
+	color: 'white',
+	href: '/#example-link',
 };
 
-const ReactRouterTemplate = args => (
-  <Router>
-    <div className="container-fluid">
-      <div className="col col-sm-12 p-3">
-        <ButtonTag {...args} />
-      </div>
-    </div>
-  </Router>
+const ReactRouterTemplate = ( args ) => (
+	<Router>
+		<div className="container-fluid">
+			<div className="col col-sm-12 p-3">
+				<ButtonTag { ...args } />
+			</div>
+		</div>
+	</Router>
 );
 
-export const ReactRouterLinkTag = ReactRouterTemplate.bind({});
+export const ReactRouterLinkTag = ReactRouterTemplate.bind( {} );
 ReactRouterLinkTag.args = {
-  color: "white",
-  label: "Ract Router Link",
-  element: Link,
-  to: "/#example-link",
+	color: 'white',
+	label: 'Ract Router Link',
+	element: Link,
+	to: '/#example-link',
 };

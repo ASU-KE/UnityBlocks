@@ -36,4 +36,4 @@
  * This helps VSCODE and JSOC to recognize the syntax
  * `import(FILE_PATH).EXPORTED_THING`
  */
-export const JSDOC = "jsdoc";
+export const JSDOC = 'jsdoc';

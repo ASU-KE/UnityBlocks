@@ -1,6 +1,6 @@
 // @ts-check
-import PropTypes from "prop-types";
-import React from "react";
+import PropTypes from 'prop-types';
+import React from 'react';
 
 /**
  *
@@ -9,14 +9,14 @@ import React from "react";
  * }} props
  * @returns
  */
-const FeedBody = ({ children }) => (
-  <div className="row" data-testid="feed-body">
-    <div className="col">{children}</div>
-  </div>
+const FeedBody = ( { children } ) => (
+	<div className="row" data-testid="feed-body">
+		<div className="col">{ children }</div>
+	</div>
 );
 
 FeedBody.propTypes = {
-  children: PropTypes.element,
+	children: PropTypes.element,
 };
 
 export { FeedBody };

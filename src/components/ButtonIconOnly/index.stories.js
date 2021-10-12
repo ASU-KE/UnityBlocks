@@ -1,15 +1,15 @@
 /* eslint react/jsx-props-no-spreading: "off" */
-import React from "react";
+import React from 'react';
 
-import { ButtonIconOnly } from ".";
+import { ButtonIconOnly } from '.';
 
 export default {
-  title: "UDS/ButtonIconOnly",
-  component: ButtonIconOnly,
-  parameters: {
-    docs: {
-      description: {
-        component: `The ButtonIconOnly component can be used to generate UDS-compliant \`<button>\` DOM
+	title: 'UDS/ButtonIconOnly',
+	component: ButtonIconOnly,
+	parameters: {
+		docs: {
+			description: {
+				component: `The ButtonIconOnly component can be used to generate UDS-compliant \`<button>\` DOM
         elements.
 
 ## Usage
@@ -19,42 +19,42 @@ for the \`onClick\` prop.
 
 View component examples and source code below.
         `,
-      },
-    },
-  },
+			},
+		},
+	},
 };
 
-const handleClick = e => {
-  e.preventDefault();
+const handleClick = ( e ) => {
+	e.preventDefault();
 };
 
-const Template = args => (
-  <div className="container-fluid">
-    <div className="row">
-      <div className="col col-sm-12 p-3">
-        <ButtonIconOnly {...args} />
-      </div>
-    </div>
-  </div>
+const Template = ( args ) => (
+	<div className="container-fluid">
+		<div className="row">
+			<div className="col col-sm-12 p-3">
+				<ButtonIconOnly { ...args } />
+			</div>
+		</div>
+	</div>
 );
 
-export const DefaultButton = Template.bind({});
+export const DefaultButton = Template.bind( {} );
 DefaultButton.args = {
-  color: "white",
-  icon: ["fas", "times"],
-  onClick: handleClick,
+	color: 'white',
+	icon: [ 'fas', 'times' ],
+	onClick: handleClick,
 };
 
-export const CloseButton = Template.bind({});
+export const CloseButton = Template.bind( {} );
 CloseButton.args = {
-  color: "white",
-  icon: ["fas", "times"],
-  onClick: handleClick,
+	color: 'white',
+	icon: [ 'fas', 'times' ],
+	onClick: handleClick,
 };
 CloseButton.parameters = {
-  docs: {
-    description: {
-      story: `
+	docs: {
+		description: {
+			story: `
     const handleClick = e => {
       e.preventDefault();
       alert("The button was clicked.");
@@ -65,9 +65,9 @@ CloseButton.parameters = {
       icon: ["fas", "times"]
       onClick: {handleClick}
     />Default Button</Button>`,
-    },
-    source: {
-      code: `
+		},
+		source: {
+			code: `
       const handleClick = e => {
   e.preventDefault();
   alert("The button was clicked.");
@@ -78,21 +78,21 @@ CloseButton.parameters = {
   icon: ["fas", "times"]
   onClick: {handleClick}
 />Default Button</Button>`,
-    },
-  },
+		},
+	},
 };
 
-export const NextButton = Template.bind({});
+export const NextButton = Template.bind( {} );
 NextButton.args = {
-  color: "white",
-  icon: ["fas", "chevron-right"],
-  onClick: handleClick,
-  size: "large",
+	color: 'white',
+	icon: [ 'fas', 'chevron-right' ],
+	onClick: handleClick,
+	size: 'large',
 };
 NextButton.parameters = {
-  docs: {
-    description: {
-      story: `
+	docs: {
+		description: {
+			story: `
     const handleClick = e => {
       e.preventDefault();
       alert("The button was clicked.");
@@ -104,9 +104,9 @@ NextButton.parameters = {
       onClick: {handleClick}
       size: "large"
     />Next Button</Button>`,
-    },
-    source: {
-      code: `
+		},
+		source: {
+			code: `
       const handleClick = e => {
   e.preventDefault();
   alert("The button was clicked.");
@@ -118,21 +118,21 @@ NextButton.parameters = {
   onClick: {handleClick}
   size: "large"
 />Next Button</Button>`,
-    },
-  },
+		},
+	},
 };
 
-export const PrevButton = Template.bind({});
+export const PrevButton = Template.bind( {} );
 PrevButton.args = {
-  color: "white",
-  icon: ["fas", "chevron-left"],
-  onClick: handleClick,
-  size: "large",
+	color: 'white',
+	icon: [ 'fas', 'chevron-left' ],
+	onClick: handleClick,
+	size: 'large',
 };
 PrevButton.parameters = {
-  docs: {
-    description: {
-      story: `
+	docs: {
+		description: {
+			story: `
     const handleClick = e => {
       e.preventDefault();
       alert("The button was clicked.");
@@ -144,9 +144,9 @@ PrevButton.parameters = {
       onClick: {handleClick}
       size: "large"
     />Prev Button</Button>`,
-    },
-    source: {
-      code: `
+		},
+		source: {
+			code: `
       const handleClick = e => {
   e.preventDefault();
   alert("The button was clicked.");
@@ -158,6 +158,6 @@ PrevButton.parameters = {
   onClick: {handleClick}
   size: "large"
 />Prev Button</Button>`,
-    },
-  },
+		},
+	},
 };
