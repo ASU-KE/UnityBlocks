@@ -38,7 +38,7 @@ const registerBlock = ( block ) => {
 
 	const { name, settings } = block;
 
-	if ( ! supportsCollections() && ! name.includes( 'gallery' ) ) {
+	if ( ! supportsCollections() ) {
 		category = 'unityblocks';
 	}
 
