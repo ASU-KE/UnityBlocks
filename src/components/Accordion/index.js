@@ -1,3 +1,4 @@
+/* eslint-disable jsdoc/valid-types, jsdoc/check-tag-names */
 // @ts-check
 import PropTypes from 'prop-types';
 import React, { useState, useEffect } from 'react';

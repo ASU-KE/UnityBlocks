@@ -1,5 +1,5 @@
+/* eslint-disable react/jsx-props-no-spreading, jsdoc/check-alignment, jsdoc/valid-types, jsdoc/check-tag-names */
 // @ts-check
-/* eslint react/jsx-props-no-spreading: "off" */
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -137,7 +137,7 @@ Button.propTypes = {
   */
 	classes: PropTypes.arrayOf( PropTypes.string ),
 	/**
-   Link target type
+    Link target type
    */
 	target: PropTypes.oneOf( [ '_blank', '_self', '_top', '_parent' ] ),
 };

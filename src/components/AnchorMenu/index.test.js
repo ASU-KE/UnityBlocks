@@ -1,3 +1,4 @@
+/* eslint-disable jsdoc/valid-types */
 // @ts-check
 import { render, fireEvent, cleanup } from '@testing-library/react';
 import React from 'react';

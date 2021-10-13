@@ -1,4 +1,4 @@
-/* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable react/jsx-props-no-spreading, jsdoc/valid-types, jsdoc/check-tag-names, jsdoc/no-undefined-types */
 // @ts-check
 import { render, cleanup } from '@testing-library/react';
 import React from 'react';

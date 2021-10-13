@@ -1,4 +1,4 @@
-/* eslint-disable react/prop-types */
+/* eslint-disable react/prop-types, jsdoc/check-alignment, jsdoc/tag-lines, jsdoc/valid-types, jsdoc/check-tag-names, jsdoc/no-undefined-types */
 // @ts-check
 import PropTypes from 'prop-types';
 import React, { useState, useEffect, createContext } from 'react';

@@ -1,3 +1,4 @@
+/* eslint-disable jsdoc/valid-types, jsdoc/check-tag-names, jsdoc/no-undefined-types */
 // @ts-check
 import classNames from 'classnames';
 import PropTypes from 'prop-types';

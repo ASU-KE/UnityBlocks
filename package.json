@@ -38,7 +38,11 @@
     "plugin-name": "UnityBlocks",
     "welcome-build-command": "npm run start"
   },
-  "dependencies": {},
+  "dependencies": {
+    "dompurify": "^2.2.7",
+    "react-router-dom": "^5.2.0",
+    "styled-components": "^5.3.0"
+  },
   "devDependencies": {
     "@asu-ke-web-services/stylelint-config": "^0.1.0",
     "@babel/plugin-proposal-class-properties": "7.10.4",
@@ -46,6 +50,7 @@
     "@godaddy-wordpress/coblocks-icons": "^1.6.0",
     "@jest/core": "^27.1.0",
     "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^12.0.0",
     "@wordpress/base-styles": "2.0.1",
     "@wordpress/block-editor": "3.1.0",
     "@wordpress/block-library": "2.8.0",
@@ -110,8 +115,10 @@
     "react-flickity-component": "^3.4.0",
     "react-google-maps": "^9.4.5",
     "react-masonry-component": "^6.2.1",
+    "react-share": "^4.4.0",
     "react-slick": "^0.25.2",
     "react-test-renderer": "^16.13.1",
+    "reactstrap": "^8.9.0",
     "recompose": "^0.30.0",
     "sass-loader": "^8.0.0",
     "style-loader": "^0.19.1",

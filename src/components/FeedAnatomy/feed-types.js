@@ -1,3 +1,4 @@
+/* eslint-disable jsdoc/check-alignment, jsdoc/tag-lines */
 // ts-check
 
 /**

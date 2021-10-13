@@ -1,5 +1,5 @@
+/* eslint-disable react/jsx-props-no-spreading, jsdoc/valid-types, jsdoc/no-undefined-types */
 // @ts-check
-/* eslint react/jsx-props-no-spreading: "off" */
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';

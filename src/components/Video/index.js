@@ -1,4 +1,5 @@
 // @ts-check
+/* eslint react-hooks/rules-of-hooks: "off" */
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React, { useRef, useState } from 'react';
