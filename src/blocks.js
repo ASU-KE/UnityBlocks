@@ -22,6 +22,7 @@ import { supportsCollections } from './utils/block-helpers';
 
 // Register Blocks
 import * as alert from './blocks/alert';
+import * as anchorMenu from './blocks/anchor-menu';
 
 /**
  * Function to register an individual block.
@@ -55,6 +56,7 @@ export const registerUnityBlocksBlocks = () => {
 		// accordion,
 		// accordionItem,
 		alert,
+		anchorMenu,
 	].forEach( registerBlock );
 };
 
