@@ -318,117 +318,20 @@ class UnityBlocks_Block_Assets {
 		}
 
 		// Define where the asset is loaded from.
-		$dir = UnityBlocks()->asset_source( 'js' );
+		// $dir = UnityBlocks()->asset_source( 'js' );
 
 		// Define where the vendor asset is loaded from.
-		$vendors_dir = UnityBlocks()->asset_source( 'js', 'vendors' );
+		// $vendors_dir = UnityBlocks()->asset_source( 'js', 'vendors' );
 
-		// Enqueue for unityblocks animations.
-		wp_enqueue_script(
-			'unityblocks-animation',
-			$dir . 'unityblocks-animation.js',
-			array(),
-			UNITYBLOCKS_VERSION,
-			true
-		);
-
-		// Masonry block.
-		if ( $this->is_page_gutenberg() || has_block( 'unityblocks/gallery-masonry' ) || has_block( 'core/block' ) ) {
-			wp_enqueue_script(
-				'unityblocks-masonry',
-				$dir . 'unityblocks-masonry.js',
-				array( 'jquery', 'masonry', 'imagesloaded' ),
-				UNITYBLOCKS_VERSION,
-				true
-			);
-		}
-
-		// Carousel block.
-		if ( $this->is_page_gutenberg() || has_block( 'unityblocks/gallery-carousel' ) || has_block( 'core/block' ) ) {
-			wp_enqueue_script(
-				'unityblocks-flickity',
-				$vendors_dir . '/flickity.js',
-				array( 'jquery' ),
-				UNITYBLOCKS_VERSION,
-				true
-			);
-
-			if ( $this->is_page_gutenberg() || has_block( 'unityblocks/accordion' ) || has_block( 'core/block' ) ) {
-				wp_enqueue_script(
-					'unityblocks-accordion-carousel',
-					$dir . 'unityblocks-accordion-carousel.js',
-					array( 'unityblocks-flickity' ),
-					UNITYBLOCKS_VERSION,
-					true
-				);
-			}
-		}
-
-		// Post Carousel block.
-		if ( $this->is_page_gutenberg() || has_block( 'unityblocks/post-carousel' ) || has_block( 'core/block' ) ) {
-			wp_enqueue_script(
-				'unityblocks-slick',
-				$vendors_dir . '/slick.js',
-				array( 'jquery' ),
-				UNITYBLOCKS_VERSION,
-				true
-			);
-			wp_enqueue_script(
-				'unityblocks-slick-initializer-front',
-				$dir . 'unityblocks-slick-initializer-front.js',
-				array( 'jquery' ),
-				UNITYBLOCKS_VERSION,
-				true
-			);
-		}
-
-		// Events block.
-		if ( $this->is_page_gutenberg() || has_block( 'unityblocks/events' ) || has_block( 'core/block' ) ) {
-			wp_enqueue_script(
-				'unityblocks-slick',
-				$vendors_dir . '/slick.js',
-				array( 'jquery' ),
-				UNITYBLOCKS_VERSION,
-				true
-			);
-			wp_enqueue_script(
-				'unityblocks-events',
-				$dir . 'unityblocks-events.js',
-				array( 'jquery' ),
-				UNITYBLOCKS_VERSION,
-				true
-			);
-		}
-
-		// Lightbox.
-		if (
-			has_block( 'unityblocks/gallery-masonry' ) ||
-			has_block( 'unityblocks/gallery-stacked' ) ||
-			has_block( 'unityblocks/gallery-collage' ) ||
-			has_block( 'unityblocks/gallery-carousel' ) ||
-			has_block( 'unityblocks/gallery-offset' ) ||
-			has_block( 'core/gallery' ) ||
-			has_block( 'core/image' ) ||
-			has_block( 'core/block' )
-		) {
-			wp_enqueue_script(
-				'unityblocks-lightbox',
-				$dir . 'unityblocks-lightbox.js',
-				array(),
-				UNITYBLOCKS_VERSION,
-				true
-			);
-		}
-
-		wp_localize_script(
-			'unityblocks-lightbox',
-			'unityblocksLigthboxData',
-			array(
-				'closeLabel' => __( 'Close Gallery', 'unityblocks' ),
-				'leftLabel'  => __( 'Previous', 'unityblocks' ),
-				'rightLabel' => __( 'Next', 'unityblocks' ),
-			)
-		);
+		// wp_localize_script(
+		// 	'unityblocks-lightbox',
+		// 	'unityblocksLigthboxData',
+		// 	array(
+		// 		'closeLabel' => __( 'Close Gallery', 'unityblocks' ),
+		// 		'leftLabel'  => __( 'Previous', 'unityblocks' ),
+		// 		'rightLabel' => __( 'Next', 'unityblocks' ),
+		// 	)
+		// );
 	}
 
 	/**
@@ -482,16 +385,16 @@ class UnityBlocks_Block_Assets {
 	 */
 	public function editor_scripts() {
 		// Define where the vendor asset is loaded from.
-		$vendors_dir = UnityBlocks()->asset_source( 'js', 'vendors' );
+		// $vendors_dir = UnityBlocks()->asset_source( 'js', 'vendors' );
 
 		// Required by the events block.
-		wp_enqueue_script(
-			'unityblocks-slick',
-			$vendors_dir . '/slick.js',
-			array( 'jquery' ),
-			UNITYBLOCKS_VERSION,
-			true
-		);
+		// wp_enqueue_script(
+		// 	'unityblocks-slick',
+		// 	$vendors_dir . '/slick.js',
+		// 	array( 'jquery' ),
+		// 	UNITYBLOCKS_VERSION,
+		// 	true
+		// );
 	}
 
 	/**
