@@ -6,22 +6,13 @@ import {
 	setCategories,
 	registerBlockCollection,
 } from '@wordpress/blocks';
-import { __ } from '@wordpress/i18n';
 
 /**
  * Internal dependencies
  */
 import { supportsCollections } from './block-helpers';
 
-const categories = [
-	{
-		slug: 'unityblocks-galleries',
-		title: __( 'Galleries', 'unityblocks' ),
-	},
-	...getCategories().filter(
-		( { slug } ) => slug !== 'unityblocks-galleries'
-	),
-];
+const categories = getCategories();
 
 /**
  * Function to register a block collection for our blocks.
