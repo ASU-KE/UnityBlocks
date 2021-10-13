@@ -29,5 +29,14 @@ module.exports = {
 		'@wordpress/no-unsafe-wp-apis': 0,
 		// Disable issue: https://github.com/godaddy-wordpress/coblocks/issues/2038
 		'import/named': 0,
+		'jsdoc/check-param-names': 0,
+		'jsdoc/check-tag-names': 0,
+		'jsdoc/check-types': 0,
+		'jsdoc/no-undefined-types': 0,
+		'jsdoc/valid-types': 0,
+		'jsdoc/require-param': 0,
+		'jsdoc/require-returns-check': 0,
+		'jsdoc/require-returns-description': 0,
+		'jsdoc/require-yields': 0,
 	},
 };
