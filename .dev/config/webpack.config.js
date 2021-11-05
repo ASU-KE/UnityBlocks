@@ -32,6 +32,12 @@ module.exports = {
 			process.cwd(),
 			'src/styles/style.scss'
 		),
+
+		// Front-End Scripts
+		'js/unityblocks-anchormenu': path.resolve(
+			process.cwd(),
+			'src/blocks/anchor-menu/frontend.js'
+		),
 	},
 
 	output: {

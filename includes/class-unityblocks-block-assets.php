@@ -318,20 +318,53 @@ class UnityBlocks_Block_Assets {
 		}
 
 		// Define where the asset is loaded from.
-		// $dir = UnityBlocks()->asset_source( 'js' );
+		$dir_url = UnityBlocks()->asset_source( 'js' );
+		$dir_path = plugin_dir_path(dirname(__FILE__)) . 'dist/js/';
 
 		// Define where the vendor asset is loaded from.
 		// $vendors_dir = UnityBlocks()->asset_source( 'js', 'vendors' );
 
-		// wp_localize_script(
-		// 	'unityblocks-lightbox',
-		// 	'unityblocksLigthboxData',
-		// 	array(
-		// 		'closeLabel' => __( 'Close Gallery', 'unityblocks' ),
-		// 		'leftLabel'  => __( 'Previous', 'unityblocks' ),
-		// 		'rightLabel' => __( 'Next', 'unityblocks' ),
-		// 	)
-		// );
+		// AnchorMenu.
+		if (
+			has_block( 'unityblocks/anchor-menu' )
+		) {
+			$anchormenu_file = $dir_url . 'unityblocks-anchormenu.js';
+			$anchormenu_version = UNITYBLOCKS_VERSION . '.' . filemtime($dir_path . 'unityblocks-anchormenu.js');
+
+			wp_enqueue_script(
+				'unityblocks-anchormenu',
+				$anchormenu_file,
+				['wp-element', 'wp-components'],
+				$anchormenu_version,
+				true
+			);
+		}
+
+		$anchorMenuItems = array();
+		$anchorMenuItems[] = [
+			'text' => 'First container',
+			'targetIdName' => 'first-container',
+			'icon' => [ 'fas', 'link' ]
+		];
+		$anchorMenuItems[] = [
+			'text' => 'Second container',
+			'targetIdName' => 'second-container',
+		];
+		$anchorMenuItems[] = [
+			'text' => 'Third container',
+			'targetIdName' => 'third-container',
+		];
+		$anchorMenuFirstElementId = 'firstElementId';
+
+		wp_localize_script(
+			'unityblocks-anchormenu',
+			'unityblocksAnchorMenuData',
+			array(
+				'items' => $anchorMenuItems,
+				'firstElementId'  => $anchorMenuFirstElementId,
+				'focusFirstFocusableElement' => '',
+			)
+		);
 	}
 
 	/**

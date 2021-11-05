@@ -1,0 +1,35 @@
+{
+  "name": "unityblocks/anchor-menu",
+  "category": "widgets",
+  "attributes": {
+    "items": {
+      "type": "array",
+      "default": [
+        {
+          "text": "First container",
+          "targetIdName": "first-container",
+          "icon": [
+            "fas",
+            "link"
+          ]
+        },
+        {
+          "text": "Second container",
+          "targetIdName": "second-container"
+        },
+        {
+          "text": "Third container",
+          "targetIdName": "third-container"
+        }
+      ]
+    },
+    "firstElementId": {
+      "type": "string",
+      "default": "first-container"
+    },
+    "focusFirstFocusableElement": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

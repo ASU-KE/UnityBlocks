@@ -77,6 +77,14 @@ class UnityBlocks_Register_Blocks {
 				'style'         => $slug . '-frontend',
 			)
 		);
+		register_block_type(
+			$slug . '/anchor-menu',
+			array(
+				'editor_script' => $slug . '-editor',
+				'editor_style'  => $slug . '-editor',
+				'style'         => $slug . '-frontend',
+			)
+		);
 	}
 }
 
