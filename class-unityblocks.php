@@ -100,11 +100,8 @@ if ( ! class_exists( 'UnityBlocks' ) ) :
 			require_once UNITYBLOCKS_PLUGIN_DIR . 'includes/class-block-patterns.php';
 			require_once UNITYBLOCKS_PLUGIN_DIR . 'includes/class-unityblocks-block-assets.php';
 			require_once UNITYBLOCKS_PLUGIN_DIR . 'includes/class-unityblocks-register-blocks.php';
-			require_once UNITYBLOCKS_PLUGIN_DIR . 'includes/class-unityblocks-generated-styles.php';
-			require_once UNITYBLOCKS_PLUGIN_DIR . 'includes/class-unityblocks-body-classes.php';
 			require_once UNITYBLOCKS_PLUGIN_DIR . 'includes/class-unityblocks-form.php';
 			require_once UNITYBLOCKS_PLUGIN_DIR . 'includes/class-unityblocks-post-meta.php';
-			require_once UNITYBLOCKS_PLUGIN_DIR . 'includes/class-unityblocks-accordion-ie-support.php';
 			require_once UNITYBLOCKS_PLUGIN_DIR . 'includes/class-unityblocks-settings.php';
 			require_once UNITYBLOCKS_PLUGIN_DIR . 'includes/get-dynamic-blocks.php';
 
@@ -124,7 +121,7 @@ if ( ! class_exists( 'UnityBlocks' ) ) :
 
 			if ( is_admin() || ( defined( 'WP_CLI' ) && WP_CLI ) ) {
 				require_once UNITYBLOCKS_PLUGIN_DIR . 'includes/admin/class-unityblocks-install.php';
-				require_once UNITYBLOCKS_PLUGIN_DIR . 'includes/admin/class-unityblocks-crop-settings.php';
+				// require_once UNITYBLOCKS_PLUGIN_DIR . 'includes/admin/class-unityblocks-crop-settings.php';
 			}
 		}
 
