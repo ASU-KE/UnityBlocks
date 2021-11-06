@@ -16,6 +16,7 @@ const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' );
 const path = require( 'path' );
 const FixStyleOnlyEntriesPlugin = require( 'webpack-fix-style-only-entries' );
 const nodeSassGlobImporter = require( 'node-sass-glob-importer' );
+const CopyPlugin = require( 'copy-webpack-plugin' );
 
 const isProduction = process.env.NODE_ENV === 'production';
 
@@ -124,5 +125,14 @@ module.exports = {
 			filename: '[name].css',
 		} ),
 		new FixStyleOnlyEntriesPlugin(),
+		new CopyPlugin( {
+			patterns: [
+				{
+					from:
+						'node_modules/@asu-ke/components-core/dist/libCore.min.js',
+					to: 'js/vendors/',
+				},
+			],
+		} ),
 	],
 };

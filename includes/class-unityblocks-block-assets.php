@@ -322,12 +322,24 @@ class UnityBlocks_Block_Assets {
 		$dir_path = plugin_dir_path(dirname(__FILE__)) . 'dist/js/';
 
 		// Define where the vendor asset is loaded from.
-		// $vendors_dir = UnityBlocks()->asset_source( 'js', 'vendors' );
+		$vendors_url = UnityBlocks()->asset_source( 'js', 'vendors' );
+		$vendors_path = plugin_dir_path(dirname(__FILE__)) . 'dist/js/vendors/';
 
 		// AnchorMenu.
 		if (
 			has_block( 'unityblocks/anchor-menu' )
 		) {
+			$unity_core_file = $vendors_url . '/libCore.min.js';
+			$unity_core_version = UNITYBLOCKS_VERSION . '.' . filemtime($vendors_path . 'libCore.min.js');
+
+			wp_enqueue_script(
+				'unity-core',
+				$unity_core_file,
+				['wp-element', 'wp-components'],
+				$unity_core_version,
+				true
+			);
+
 			$anchormenu_file = $dir_url . 'unityblocks-anchormenu.js';
 			$anchormenu_version = UNITYBLOCKS_VERSION . '.' . filemtime($dir_path . 'unityblocks-anchormenu.js');
 

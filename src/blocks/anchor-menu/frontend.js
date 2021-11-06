@@ -1,20 +1,36 @@
-import { render } from 'react-dom';
+// const {
+// 	items,
+// 	firstElementId,
+// 	focusFirstFocusableElement,
+// } = unityblocksAnchorMenuData; // eslint-disable-line no-undef
 
-import { AnchorMenu } from '../../components';
+// eslint-disable-next-line
+// AsuWebCore.initAnchorMenu( {
+// 	targetSelector: '#unityblocks-anchor-menu',
+// 	props: {
+// 		items: { items },
+// 		firstElementId: { firstElementId },
+// 		focusFirstFocusableElement: { focusFirstFocusableElement },
+// 	},
+// } );
 
-const root = document.getElementById( 'unityblocks-anchor-menu' );
-
-const {
-	items,
-	firstElementId,
-	focusFirstFocusableElement,
-} = unityblocksAnchorMenuData; // eslint-disable-line no-undef
-
-render(
-	<AnchorMenu
-		items={ items }
-		firstElementId={ firstElementId }
-		focusFirstFocusableElement={ focusFirstFocusableElement }
-	/>,
-	root
-);
+// eslint-disable-next-line
+AsuWebCore.initAnchorMenu( {
+	targetSelector: '#unityblocks-anchor-menu',
+	props: {
+		items: [
+			{
+				text: 'First container',
+				targetIdName: 'first-container',
+				icon: [ 'fas', 'link' ],
+			},
+			{ text: 'Second container', targetIdName: 'second-container' },
+			{ text: 'Third container', targetIdName: 'third-container' },
+			{
+				text: 'Fourth container',
+				targetIdName: 'fourth-container',
+				icon: [ 'fas', 'link' ],
+			},
+		],
+	},
+} );
