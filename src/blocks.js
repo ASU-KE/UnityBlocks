@@ -21,7 +21,6 @@ import { supportsCollections } from './utils/block-helpers';
 // import './js/deprecations/deprecate-unityblocks-media-card.js';
 
 // Register Blocks
-import * as alert from './blocks/alert';
 import * as anchorMenu from './blocks/anchor-menu';
 
 /**
