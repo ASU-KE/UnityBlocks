@@ -39,7 +39,7 @@
     "welcome-build-command": "npm run start"
   },
   "dependencies": {
-    "@asu-ke/components-core": "^1.17.1",
+    "@asu-ke/components-core": "^1.17.6",
     "dompurify": "^2.2.7",
     "react-router-dom": "^5.2.0",
     "styled-components": "^5.3.3"
@@ -57,9 +57,9 @@
     "@wordpress/block-library": "2.8.0",
     "@wordpress/blocks": "^6.10.0",
     "@wordpress/dom": "~2.16.2",
-    "@wordpress/e2e-test-utils": "^5.4.5",
+    "@wordpress/e2e-test-utils": "^5.4.6",
     "@wordpress/edit-post": "3.7.0",
-    "@wordpress/env": "^4.1.2",
+    "@wordpress/env": "^4.1.3",
     "@wordpress/eslint-plugin": "9.0.5",
     "@wordpress/i18n": "3.6.0",
     "@wordpress/jest-console": "^4.1.0",
