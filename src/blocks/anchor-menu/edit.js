@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import { AnchorMenu } from '../../components';
+import { AnchorMenu } from '@asu-ke/components-core';
 
 /**
  * Internal dependencies
