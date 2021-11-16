@@ -318,62 +318,62 @@ class UnityBlocks_Block_Assets {
 		}
 
 		// Define where the asset is loaded from.
-		$dir_url = UnityBlocks()->asset_source( 'js' );
-		$dir_path = plugin_dir_path(dirname(__FILE__)) . 'dist/js/';
+		$dir_url  = UnityBlocks()->asset_source( 'js' );
+		$dir_path = plugin_dir_path( dirname( __FILE__ ) ) . 'dist/js/';
 
 		// Define where the vendor asset is loaded from.
-		$vendors_url = UnityBlocks()->asset_source( 'js', 'vendors' );
-		$vendors_path = plugin_dir_path(dirname(__FILE__)) . 'dist/js/vendors/';
+		$vendors_url  = UnityBlocks()->asset_source( 'js', 'vendors' );
+		$vendors_path = plugin_dir_path( dirname( __FILE__ ) ) . 'dist/js/vendors/';
 
 		// AnchorMenu.
 		if (
 			has_block( 'unityblocks/anchor-menu' )
 		) {
-			$unity_core_file = $vendors_url . '/libCore.min.js';
-			$unity_core_version = UNITYBLOCKS_VERSION . '.' . filemtime($vendors_path . 'libCore.min.js');
+			$unity_core_file    = $vendors_url . '/libCore.min.js';
+			$unity_core_version = UNITYBLOCKS_VERSION . '.' . filemtime( $vendors_path . 'libCore.min.js' );
 
 			wp_enqueue_script(
 				'unity-core',
 				$unity_core_file,
-				['wp-element', 'wp-components'],
+				array( 'wp-element', 'wp-components' ),
 				$unity_core_version,
 				true
 			);
 
-			$anchormenu_file = $dir_url . 'unityblocks-anchormenu.js';
-			$anchormenu_version = UNITYBLOCKS_VERSION . '.' . filemtime($dir_path . 'unityblocks-anchormenu.js');
+			$anchormenu_file    = $dir_url . 'unityblocks-anchormenu.js';
+			$anchormenu_version = UNITYBLOCKS_VERSION . '.' . filemtime( $dir_path . 'unityblocks-anchormenu.js' );
 
 			wp_enqueue_script(
 				'unityblocks-anchormenu',
 				$anchormenu_file,
-				['wp-element', 'wp-components'],
+				array( 'wp-element', 'wp-components' ),
 				$anchormenu_version,
 				true
 			);
 		}
 
-		$anchorMenuItems = array();
-		$anchorMenuItems[] = [
-			'text' => 'First container',
+		$anchor_menu_items            = array();
+		$anchor_menu_items[]          = array(
+			'text'         => 'First container',
 			'targetIdName' => 'first-container',
-			'icon' => [ 'fas', 'link' ]
-		];
-		$anchorMenuItems[] = [
-			'text' => 'Second container',
+			'icon'         => array( 'fas', 'link' ),
+		);
+		$anchor_menu_items[]          = array(
+			'text'         => 'Second container',
 			'targetIdName' => 'second-container',
-		];
-		$anchorMenuItems[] = [
-			'text' => 'Third container',
+		);
+		$anchor_menu_items[]          = array(
+			'text'         => 'Third container',
 			'targetIdName' => 'third-container',
-		];
-		$anchorMenuFirstElementId = 'firstElementId';
+		);
+		$anchor_menu_first_element_id = 'firstElementId';
 
 		wp_localize_script(
 			'unityblocks-anchormenu',
 			'unityblocksAnchorMenuData',
 			array(
-				'items' => $anchorMenuItems,
-				'firstElementId'  => $anchorMenuFirstElementId,
+				'items'                      => $anchor_menu_items,
+				'firstElementId'             => $anchor_menu_first_element_id,
 				'focusFirstFocusableElement' => '',
 			)
 		);
@@ -429,17 +429,21 @@ class UnityBlocks_Block_Assets {
 	 * @since 1.9.5
 	 */
 	public function editor_scripts() {
+		/*
+		 * Disabled block until needed later.
+
 		// Define where the vendor asset is loaded from.
-		// $vendors_dir = UnityBlocks()->asset_source( 'js', 'vendors' );
+		$vendors_dir = UnityBlocks()->asset_source( 'js', 'vendors' );
 
 		// Required by the events block.
-		// wp_enqueue_script(
-		// 	'unityblocks-slick',
-		// 	$vendors_dir . '/slick.js',
-		// 	array( 'jquery' ),
-		// 	UNITYBLOCKS_VERSION,
-		// 	true
-		// );
+		wp_enqueue_script(
+		'unityblocks-slick',
+		$vendors_dir . '/slick.js',
+		array( 'jquery' ),
+		UNITYBLOCKS_VERSION,
+		true
+		);
+		*/
 	}
 
 	/**
