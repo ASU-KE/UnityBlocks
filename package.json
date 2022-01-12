@@ -39,7 +39,7 @@
     "welcome-build-command": "npm run start"
   },
   "dependencies": {
-    "@asu-ke/components-core": "^1.17.6",
+    "@asu-design-system/components-core": "^1.19.0",
     "dompurify": "^2.2.7",
     "react-router-dom": "^5.2.0",
     "styled-components": "^5.3.3"
