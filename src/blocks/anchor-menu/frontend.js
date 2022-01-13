@@ -1,10 +1,3 @@
-import React from 'react';
-import render from 'react-dom';
-
-import { AnchorMenu } from '@asu-design-system/components-core';
-
-const blockRoot = document.getElementById( 'unityblocks-anchor-menu' );
-
 const items = [
 	{
 		text: 'First container',
@@ -19,8 +12,6 @@ const items = [
 		icon: [ 'fas', 'link' ],
 	},
 ];
-
-render( <AnchorMenu items={ items } />, blockRoot );
 
 // const {
 // 	items,
@@ -39,22 +30,9 @@ render( <AnchorMenu items={ items } />, blockRoot );
 // } );
 
 // eslint-disable-next-line
-// AsuWebCore.initAnchorMenu( {
-// 	targetSelector: '#unityblocks-anchor-menu',
-// 	props: {
-// 		items: [
-// 			{
-// 				text: 'First container',
-// 				targetIdName: 'first-container',
-// 				icon: [ 'fas', 'link' ],
-// 			},
-// 			{ text: 'Second container', targetIdName: 'second-container' },
-// 			{ text: 'Third container', targetIdName: 'third-container' },
-// 			{
-// 				text: 'Fourth container',
-// 				targetIdName: 'fourth-container',
-// 				icon: [ 'fas', 'link' ],
-// 			},
-// 		],
-// 	},
-// } );
+AsuWebCore.initAnchorMenu( {
+	targetSelector: '#unityblocks-anchor-menu',
+	props: {
+		items,
+	},
+} );

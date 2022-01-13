@@ -4,24 +4,7 @@
   "attributes": {
     "items": {
       "type": "array",
-      "default": [
-        {
-          "text": "First container",
-          "targetIdName": "first-container",
-          "icon": [
-            "fas",
-            "link"
-          ]
-        },
-        {
-          "text": "Second container",
-          "targetIdName": "second-container"
-        },
-        {
-          "text": "Third container",
-          "targetIdName": "third-container"
-        }
-      ]
+      "default": []
     },
     "firstElementId": {
       "type": "string",
