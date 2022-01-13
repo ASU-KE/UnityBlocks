@@ -30,14 +30,19 @@ import { __ } from '@wordpress/i18n';
  */
 const Edit = ( props ) => {
 	const {
-		attributes: { firstElementId, focusFirstFocusableElement, items },
+		attributes: {
+			firstElementId,
+			focusFirstFocusableElement,
+			items: menuItems,
+		},
 		className,
 		setAttributes,
 	} = props;
 
-	const args = { firstElementId, focusFirstFocusableElement, items };
+	const args = { firstElementId, focusFirstFocusableElement, menuItems };
 
 	const handleAddItem = () => {
+		const items = [ ...props.attributes.items ];
 		items.push( {
 			text: '',
 			targetIdName: '',
