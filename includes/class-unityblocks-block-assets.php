@@ -77,7 +77,7 @@ class UnityBlocks_Block_Assets {
 	public function block_assets() {
 		global $post;
 
-		// Only load the front end CSS if a UnityBlock is in use.
+		// Only load the frontend CSS if a UnityBlock is in use.
 		$has_unityblock = ! is_singular();
 
 		if ( ! is_admin() && is_singular() ) {
@@ -181,62 +181,12 @@ class UnityBlocks_Block_Assets {
 		$dir_url  = UnityBlocks()->asset_source( 'js' );
 		$dir_path = plugin_dir_path( dirname( __FILE__ ) ) . 'dist/js/';
 
-		// Define where the vendor asset is loaded from.
+		// Define where the vendor assets are loaded from.
 		$vendors_url  = UnityBlocks()->asset_source( 'js', 'vendors' );
 		$vendors_path = plugin_dir_path( dirname( __FILE__ ) ) . 'dist/js/vendors/';
 
-		// AnchorMenu.
-		if (
-			has_block( 'unityblocks/anchor-menu' )
-		) {
-			$unity_core_file    = $vendors_url . '/libCore.min.js';
-			$unity_core_version = UNITYBLOCKS_VERSION . '.' . filemtime( $vendors_path . 'libCore.min.js' );
+		require_once UNITYBLOCKS_PLUGIN_DIR . 'includes/enqueue-blocks/anchor-menu.php';
 
-			wp_enqueue_script(
-				'unity-core',
-				$unity_core_file,
-				array( 'wp-element', 'wp-components' ),
-				$unity_core_version,
-				true
-			);
-
-			$anchormenu_file    = $dir_url . 'unityblocks-anchormenu.js';
-			$anchormenu_version = UNITYBLOCKS_VERSION . '.' . filemtime( $dir_path . 'unityblocks-anchormenu.js' );
-
-			wp_enqueue_script(
-				'unityblocks-anchormenu',
-				$anchormenu_file,
-				array( 'wp-element', 'wp-components' ),
-				$anchormenu_version,
-				true
-			);
-		}
-
-		$anchor_menu_items            = array();
-		$anchor_menu_items[]          = array(
-			'text'         => 'First container',
-			'targetIdName' => 'first-container',
-			'icon'         => array( 'fas', 'link' ),
-		);
-		$anchor_menu_items[]          = array(
-			'text'         => 'Second container',
-			'targetIdName' => 'second-container',
-		);
-		$anchor_menu_items[]          = array(
-			'text'         => 'Third container',
-			'targetIdName' => 'third-container',
-		);
-		$anchor_menu_first_element_id = 'firstElementId';
-
-		wp_localize_script(
-			'unityblocks-anchormenu',
-			'unityblocksAnchorMenuData',
-			array(
-				'items'                      => $anchor_menu_items,
-				'firstElementId'             => $anchor_menu_first_element_id,
-				'focusFirstFocusableElement' => '',
-			)
-		);
 	}
 
 	/**
