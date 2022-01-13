@@ -6,9 +6,6 @@ import { registerBlockType } from '@wordpress/blocks';
 // Register block category
 import './utils/block-category';
 
-// Formats
-import './formats';
-
 // Categories Helper
 import { supportsCollections } from './utils/block-helpers';
 

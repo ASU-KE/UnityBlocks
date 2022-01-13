@@ -128,11 +128,10 @@ class UnityBlocks_Block_Assets {
 		$name       = 'unityblocks-style';
 		$filepath   = 'dist/' . $name;
 		$asset_file = $this->get_asset_file( $filepath );
-		$rtl        = ! is_rtl() ? '' : '-rtl';
 
 		wp_enqueue_style(
 			'unityblocks-frontend',
-			UNITYBLOCKS_PLUGIN_URL . $filepath . $rtl . '.css',
+			UNITYBLOCKS_PLUGIN_URL . $filepath . '.css',
 			array(),
 			$asset_file['version']
 		);
@@ -148,11 +147,10 @@ class UnityBlocks_Block_Assets {
 		$name       = 'unityblocks-editor';
 		$filepath   = 'dist/' . $name;
 		$asset_file = $this->get_asset_file( $filepath );
-		$rtl        = ! is_rtl() ? '' : '-rtl';
 
 		wp_register_style(
 			'unityblocks-editor',
-			UNITYBLOCKS_PLUGIN_URL . $filepath . $rtl . '.css',
+			UNITYBLOCKS_PLUGIN_URL . $filepath . '.css',
 			array(),
 			$asset_file['version']
 		);
@@ -169,139 +167,6 @@ class UnityBlocks_Block_Assets {
 			$asset_file['version'],
 			true
 		);
-
-		$post_id = filter_input( INPUT_GET, 'post', FILTER_SANITIZE_NUMBER_INT );
-
-		/**
-		 * Filter the default block email address value
-		 *
-		 * @param string  $to      Admin email.
-		 * @param integer $post_id Current post ID.
-		 */
-		$email_to = (string) apply_filters( 'unityblocks_form_default_email', get_option( 'admin_email' ), (int) $post_id );
-
-		/**
-		 * Filter to disable the typography controls
-		 *
-		 * @param bool    true Whether or not the controls are enabled.
-		 * @param integer $post_id Current post ID.
-		 */
-		$typography_controls_enabled = (bool) apply_filters( 'unityblocks_typography_controls_enabled', true, (int) $post_id );
-
-		/**
-		 * Filter to disable the animation controls
-		 *
-		 * @param bool    true Whether or not the controls are enabled.
-		 * @param integer $post_id Current post ID.
-		 */
-		$animation_controls_enabled = (bool) apply_filters( 'unityblocks_animation_controls_enabled', true, (int) $post_id );
-
-		/**
-		 * Filter to disable all bundled UnityBlocks svg icons
-		 *
-		 * @param bool true Whether or not the bundled icons are displayed.
-		 */
-		$bundled_icons_enabled = (bool) apply_filters( 'unityblocks_bundled_icons_enabled', true );
-
-		$form         = new UnityBlocks_Form();
-		$form_subject = $form->default_subject();
-		$success_text = $form->default_success_text();
-
-		wp_localize_script(
-			'unityblocks-editor',
-			'unityblocksBlockData',
-			array(
-				'form'                           => array(
-					'adminEmail'   => $email_to,
-					'emailSubject' => $form_subject,
-					'successText'  => $success_text,
-				),
-				'cropSettingsOriginalImageNonce' => wp_create_nonce( 'cropSettingsOriginalImageNonce' ),
-				'cropSettingsNonce'              => wp_create_nonce( 'cropSettingsNonce' ),
-				'bundledIconsEnabled'            => $bundled_icons_enabled,
-				'customIcons'                    => $this->get_custom_icons(),
-				'customIconConfigExists'         => file_exists( get_stylesheet_directory() . '/unityblocks/icons/config.json' ),
-				'typographyControlsEnabled'      => $typography_controls_enabled,
-				'animationControlsEnabled'       => $animation_controls_enabled,
-				'localeCode'                     => get_locale(),
-			)
-		);
-
-	}
-
-	/**
-	 * Load custom icons from the theme directory, if they exist
-	 *
-	 * @return array Custom icons array if they exist, else empty array.
-	 */
-	public function get_custom_icons() {
-
-		$config = array();
-		$icons  = glob( get_stylesheet_directory() . '/unityblocks/icons/*.svg' );
-
-		if ( empty( $icons ) ) {
-
-			return array();
-
-		}
-
-		if ( file_exists( get_stylesheet_directory() . '/unityblocks/icons/config.json' ) ) {
-
-			$config = json_decode( file_get_contents( get_stylesheet_directory() . '/unityblocks/icons/config.json' ), true );
-
-		}
-
-		$custom_icons = array();
-
-		foreach ( $icons as $icon ) {
-
-			$icon_slug = str_replace( '.svg', '', basename( $icon ) );
-			$icon_name = ucwords( str_replace( '-', ' ', $icon_slug ) );
-
-			if ( ! empty( $config ) ) {
-
-				// Icon exists in directory, but not found in config.
-				if ( ! array_key_exists( $icon_slug, $config ) ) {
-
-					continue;
-
-				}
-			}
-
-			ob_start();
-			include $icon;
-			$retrieved_icon = ob_get_clean();
-
-			$custom_icons[ $icon_slug ] = array(
-				'label'    => $icon_name,
-				'keywords' => strtolower( $icon_name ),
-				'icon'     => $retrieved_icon,
-			);
-
-		}
-
-		if ( ! empty( $config ) ) {
-
-			foreach ( $config as $icon => $metadata ) {
-
-				if ( ! array_key_exists( $icon, $custom_icons ) ) {
-
-					continue;
-
-				}
-
-				if ( array_key_exists( 'icon_outlined', $config[ $icon ] ) ) {
-
-					$metadata['icon_outlined'] = file_exists( get_stylesheet_directory() . '/unityblocks/icons/' . $metadata['icon_outlined'] ) ? file_get_contents( get_stylesheet_directory() . '/unityblocks/icons/' . $metadata['icon_outlined'] ) : '';
-
-				}
-
-				$custom_icons[ $icon ] = array_replace_recursive( $custom_icons[ $icon ], array_filter( $metadata ) );
-
-			}
-		}
-		return $custom_icons;
-
 	}
 
 	/**
@@ -311,11 +176,6 @@ class UnityBlocks_Block_Assets {
 	 * @since 1.9.5
 	 */
 	public function frontend_scripts() {
-
-		// Custom scripts are not allowed in AMP, so short-circuit.
-		if ( UnityBlocks()->is_amp() ) {
-			return;
-		}
 
 		// Define where the asset is loaded from.
 		$dir_url  = UnityBlocks()->asset_source( 'js' );
