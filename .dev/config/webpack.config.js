@@ -129,7 +129,7 @@ module.exports = {
 			patterns: [
 				{
 					from:
-						'node_modules/@asu-ke/components-core/dist/libCore.min.js',
+						'node_modules/@asu-design-system/components-core/dist/libCore.umd.js',
 					to: 'js/vendors/',
 				},
 			],
