@@ -60,6 +60,6 @@ wp_localize_script(
 	array(
 		'items'                      => $anchor_menu_items,
 		'firstElementId'             => $anchor_menu_first_element_id,
-		'focusFirstFocusableElement' => undefined, // bool; not really sure whether to use this.
+		'focusFirstFocusableElement' => null, // bool; not really sure whether to use this.
 	)
 );
