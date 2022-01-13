@@ -94,15 +94,8 @@ if ( ! class_exists( 'UnityBlocks' ) ) :
 		 * @return void
 		 */
 		private function includes() {
-			// Traits.
-			require_once UNITYBLOCKS_PLUGIN_DIR . 'includes/traits/trait-unityblocks-singleton.php';
-
-			require_once UNITYBLOCKS_PLUGIN_DIR . 'includes/class-block-patterns.php';
 			require_once UNITYBLOCKS_PLUGIN_DIR . 'includes/class-unityblocks-block-assets.php';
 			require_once UNITYBLOCKS_PLUGIN_DIR . 'includes/class-unityblocks-register-blocks.php';
-			require_once UNITYBLOCKS_PLUGIN_DIR . 'includes/class-unityblocks-form.php';
-			require_once UNITYBLOCKS_PLUGIN_DIR . 'includes/class-unityblocks-post-meta.php';
-			require_once UNITYBLOCKS_PLUGIN_DIR . 'includes/class-unityblocks-settings.php';
 			require_once UNITYBLOCKS_PLUGIN_DIR . 'includes/get-dynamic-blocks.php';
 
 			if ( is_admin() || ( defined( 'WP_CLI' ) && WP_CLI ) ) {
@@ -156,15 +149,6 @@ if ( ! class_exists( 'UnityBlocks' ) ) :
 			if ( function_exists( 'wp_set_script_translations' ) ) {
 				wp_set_script_translations( 'unityblocks-editor', 'unityblocks', UNITYBLOCKS_PLUGIN_DIR . '/languages' );
 			}
-		}
-
-		/**
-		 * Is an AMP endpoint.
-		 *
-		 * @return bool Whether the current response will be AMP.
-		 */
-		public function is_amp() {
-			return function_exists( 'is_amp_endpoint' ) && is_amp_endpoint();
 		}
 	}
 endif;
