@@ -1,0 +1,55 @@
+{
+  "name": "unityblocks/heo",
+  "category": "widgets",
+  "attributes": {
+    "imageUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "imageAltText": {
+      "type": "string",
+      "default": ""
+    },
+    "imageSize": {
+      "enum": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "default": "medium"
+    },
+    "subTitleText": {
+      "type": "string",
+      "default": ""
+    },
+    "subTitleHighlightColor": {
+      "enum": [
+        "white",
+        "black"
+      ],
+      "default": "white"
+    },
+    "titleText": {
+      "type": "string",
+      "default": ""
+    },
+    "titleHighlightColor": {
+      "enum": [
+        "white",
+        "black"
+      ],
+      "default": "white"
+    },
+    "contentsColor": {
+      "enum": [
+        "white",
+        "black"
+      ],
+      "default": "white"
+    },
+    "contents": {
+      "type": "string",
+      "default": ""
+    }
+  }
+}
