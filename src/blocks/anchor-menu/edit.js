@@ -9,9 +9,11 @@ import { AnchorMenu } from '@asu-design-system/components-core/dist/libCore.es';
 // import Controls from './controls';
 // import Inspector from './inspector';
 
-import { InspectorControls, IconButton, Button } from '@wordpress/block-editor';
+import { InspectorControls } from '@wordpress/block-editor';
 import { Fragment } from '@wordpress/element';
 import {
+	Button,
+	IconButton,
 	PanelBody,
 	PanelRow,
 	TextControl,
@@ -39,7 +41,11 @@ const Edit = ( props ) => {
 		setAttributes,
 	} = props;
 
-	const args = { firstElementId, focusFirstFocusableElement, menuItems };
+	const args = {
+		firstElementId,
+		focusFirstFocusableElement,
+		items: menuItems,
+	};
 
 	const handleAddItem = () => {
 		const items = [ ...props.attributes.items ];
@@ -63,7 +69,7 @@ const Edit = ( props ) => {
 		props.setAttributes( { items } );
 	};
 
-	let itemFields, itemDisplay;
+	let itemFields;
 
 	if ( props.attributes.items.length ) {
 		itemFields = props.attributes.items.map( ( item, index ) => {
@@ -83,10 +89,6 @@ const Edit = ( props ) => {
 					/>
 				</Fragment>
 			);
-		} );
-
-		itemDisplay = props.attributes.items.map( ( item, index ) => {
-			return <p key={ index }>{ item.text }</p>;
 		} );
 	}
 	return [
