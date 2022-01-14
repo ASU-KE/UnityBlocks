@@ -6,7 +6,9 @@ A suite of page building content blocks for the ASU Web Standards Unity WordPres
 
 ## Development Notes
 
-The Unity React components libraries are required dependencies for our Gutenberg blocks. At this time, the published packages available via npm are not compatible with this plugin's build system. In order to run and build this plugin, the [asu-unity-stack repo](https://github.com/ASU/asu-unity-stack) needs to be cloned to your local machine and the UnityBlocks plugin needs to be manually linked to the local copy of the unity repo.
+The Unity React components libraries (e.g. @asu-design-system/components-core) are required dependencies for our Gutenberg blocks. Normally, the published packages available via npm should work fine for UnityBlocks. However, if we need to test feature updates in the asu-unity-stack that have not yet been published to npm, it is possible to link the UnityBlocks plugin to a local copy of the asu-unity-stack repo and the desired branch or commit that contains code we want to test with our plugin.
+
+In order to run and build this plugin against a local copy of the [asu-unity-stack repo](https://github.com/ASU/asu-unity-stack), the unity repo needs to be cloned to your local machine and the UnityBlocks plugin needs to be manually linked to that local copy of the unity repo:
 
 1. Clone asu-unity-stack repo
 2. cd into asu-unity-stack
@@ -18,6 +20,8 @@ The Unity React components libraries are required dependencies for our Gutenberg
 8. `npm link "@asu-design-system/components-core"`
 9. `npm install`
 10. `npm run start` (for dev build) or `npm run build` (production)
+
+Note: This method using `npm link` is somewhat fragile and requires refreshing periodically. We have to use `npm link` with UnityBlocks and in the desired unity components folders, even though asu-unity-stack requires `yarn` to build and publish packages. Just keep in mind that the link can break and UnityBlocks will sometimes revert to pulling the published npm package which may not the version you are expecting to use.
 
 ## Register new block in library
 
