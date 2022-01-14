@@ -37,7 +37,7 @@ if (
 	);
 }
 
-// Build props object for the React component.
+// TODO: test data to pass to frontend React script.
 $anchor_menu_items            = array();
 $anchor_menu_items[]          = array(
 	'text'         => 'First container',
@@ -52,14 +52,17 @@ $anchor_menu_items[]          = array(
 	'text'         => 'Third container',
 	'targetIdName' => 'third-container',
 );
-$anchor_menu_first_element_id = 'firstElementId';
+$anchor_menu_items[]          = array(
+	'text'         => 'Fourth container',
+	'targetIdName' => 'fourth-container',
+);
 
 wp_localize_script(
-	'unity-anchormenu',
-	'unityAnchorMenuData',
+	'unityblocks-anchormenu',
+	'unityblocksAnchorMenuData',
 	array(
 		'items'                      => $anchor_menu_items,
-		'firstElementId'             => $anchor_menu_first_element_id,
+		'firstElementId'             => null,
 		'focusFirstFocusableElement' => null, // bool; not really sure whether to use this.
 	)
 );
