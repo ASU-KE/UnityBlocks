@@ -75,69 +75,73 @@ const Edit = ( props ) => {
 		itemFields = props.attributes.items.map( ( item, index ) => {
 			return (
 				<Fragment key={ index }>
-					<TextControl
-						className="anchormenu__item-text"
-						placeholder="Text for menu item"
-						value={ props.attributes.items[ index ].text }
-						onChange={ ( text ) => handleItemChange( text, index ) }
-					/>
-					<IconButton
-						className="anchormenu__remove-item-text"
-						icon="no-alt"
-						label="Delete item"
-						onClick={ () => handleRemoveItem( index ) }
-					/>
+					<PanelRow>
+						<TextControl
+							className="anchormenu__item-text"
+							placeholder="Text for menu item"
+							value={ props.attributes.items[ index ].text }
+							onChange={ ( text ) =>
+								handleItemChange( text, index )
+							}
+						/>
+						<IconButton
+							className="anchormenu__remove-item-text"
+							icon="no-alt"
+							label="Delete item"
+							onClick={ () => handleRemoveItem( index ) }
+						/>
+					</PanelRow>
 				</Fragment>
 			);
 		} );
 	}
-	return [
-		<InspectorControls key="1">
-			<PanelBody title={ __( 'UDS AnchorMenu Items', 'unityblocks' ) }>
-				{ itemFields }
-				<Button isDefault onClick={ handleAddItem.bind( this ) }>
-					{ __( 'Add Item' ) }
-				</Button>
-			</PanelBody>
-		</InspectorControls>,
-		<div key="2" className={ props.className }>
-			<h2>Block</h2>
-			{ itemDisplay }
-		</div>,
-		<PanelBody
-			key="3"
-			title={ __( 'UDS AnchorMenu Settings', 'unityblocks' ) }
-			initialOpen
-		>
-			<PanelRow>
-				<TextControl
-					label={ __( 'First Element ID', 'unityblocks' ) }
-					value={ firstElementId }
-					// eslint-disable-next-line no-shadow
-					onChange={ ( firstElementId ) =>
-						setAttributes( { firstElementId } )
-					}
-				/>
-			</PanelRow>
-			<PanelRow>
-				<ToggleControl
-					label={ __(
-						'Focus on First Focusable Element?',
-						'unityblocks'
-					) }
-					// help=""
-					checked={ focusFirstFocusableElement }
-					// eslint-disable-next-line no-shadow
-					onChange={ ( focusFirstFocusableElement ) =>
-						setAttributes( { focusFirstFocusableElement } )
-					}
-				/>
-			</PanelRow>
-		</PanelBody>,
-		<div key="4" className={ className }>
-			<AnchorMenu { ...args } />
-		</div>,
-	];
+
+	return (
+		<>
+			<InspectorControls>
+				<PanelBody
+					title={ __( 'UDS AnchorMenu Items', 'unityblocks' ) }
+				>
+					<PanelRow>
+						{ itemFields }
+						<Button
+							isDefault
+							onClick={ handleAddItem.bind( this ) }
+						>
+							{ __( 'Add Item' ) }
+						</Button>
+					</PanelRow>
+					<PanelRow>
+						<TextControl
+							label={ __( 'First Element ID', 'unityblocks' ) }
+							value={ firstElementId }
+							// eslint-disable-next-line no-shadow
+							onChange={ ( firstElementId ) =>
+								setAttributes( { firstElementId } )
+							}
+						/>
+					</PanelRow>
+					<PanelRow>
+						<ToggleControl
+							label={ __(
+								'Focus on First Focusable Element?',
+								'unityblocks'
+							) }
+							// help=""
+							checked={ focusFirstFocusableElement }
+							// eslint-disable-next-line no-shadow
+							onChange={ ( focusFirstFocusableElement ) =>
+								setAttributes( { focusFirstFocusableElement } )
+							}
+						/>
+					</PanelRow>
+				</PanelBody>
+			</InspectorControls>
+			<div className={ className }>
+				<AnchorMenu { ...args } />
+			</div>
+		</>
+	);
 };
 
 export default Edit;
