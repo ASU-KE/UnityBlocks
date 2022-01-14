@@ -2,14 +2,16 @@
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { InspectorControls, IconButton, Button } from '@wordpress/block-editor';
-import { Fragment } from '@wordpress/element';
+import { InspectorControls } from '@wordpress/block-editor';
 import {
+	Button,
+	IconButton,
 	PanelBody,
 	PanelRow,
 	TextControl,
 	ToggleControl,
 } from '@wordpress/components';
+// import { Fragment } from '@wordpress/element';
 
 /**
  * Inspector controls
@@ -44,12 +46,12 @@ const Inspector = ( props ) => {
 		props.setAttributes( { items } );
 	};
 
-	let itemFields, itemDisplay;
+	let itemFields;
 
 	if ( props.attributes.items.length ) {
 		itemFields = props.attributes.items.map( ( item, index ) => {
 			return (
-				<Fragment key={ index }>
+				<PanelRow key={ index }>
 					<TextControl
 						className="anchormenu__item-text"
 						placeholder="Text for menu item"
@@ -62,59 +64,47 @@ const Inspector = ( props ) => {
 						label="Delete item"
 						onClick={ () => handleRemoveItem( index ) }
 					/>
-				</Fragment>
+				</PanelRow>
 			);
-		} );
-
-		itemDisplay = props.attributes.items.map( ( item, index ) => {
-			return <p key={ index }>{ item.text }</p>;
 		} );
 	}
 
-	return [
-		<InspectorControls key="1">
+	return (
+		<InspectorControls>
 			<PanelBody title={ __( 'UDS AnchorMenu Items', 'unityblocks' ) }>
 				{ itemFields }
-				<Button isDefault onClick={ handleAddItem.bind( this ) }>
-					{ __( 'Add Item' ) }
-				</Button>
+				<PanelRow>
+					<Button isDefault onClick={ handleAddItem.bind( this ) }>
+						{ __( 'Add Item' ) }
+					</Button>
+				</PanelRow>
+				<PanelRow>
+					<TextControl
+						label={ __( 'First Element ID', 'unityblocks' ) }
+						value={ firstElementId }
+						// eslint-disable-next-line no-shadow
+						onChange={ ( firstElementId ) =>
+							setAttributes( { firstElementId } )
+						}
+					/>
+				</PanelRow>
+				<PanelRow>
+					<ToggleControl
+						label={ __(
+							'Focus on First Focusable Element?',
+							'unityblocks'
+						) }
+						// help=""
+						checked={ focusFirstFocusableElement }
+						// eslint-disable-next-line no-shadow
+						onChange={ ( focusFirstFocusableElement ) =>
+							setAttributes( { focusFirstFocusableElement } )
+						}
+					/>
+				</PanelRow>
 			</PanelBody>
-		</InspectorControls>,
-		<div key="2" className={ props.className }>
-			<h2>Block</h2>
-			{ itemDisplay }
-		</div>,
-		<PanelBody
-			key="2"
-			title={ __( 'UDS AnchorMenu Settings', 'unityblocks' ) }
-			initialOpen
-		>
-			<PanelRow>
-				<TextControl
-					label={ __( 'First Element ID', 'unityblocks' ) }
-					value={ firstElementId }
-					// eslint-disable-next-line no-shadow
-					onChange={ ( firstElementId ) =>
-						setAttributes( { firstElementId } )
-					}
-				/>
-			</PanelRow>
-			<PanelRow>
-				<ToggleControl
-					label={ __(
-						'Focus on First Focusable Element?',
-						'unityblocks'
-					) }
-					// help=""
-					checked={ focusFirstFocusableElement }
-					// eslint-disable-next-line no-shadow
-					onChange={ ( focusFirstFocusableElement ) =>
-						setAttributes( { focusFirstFocusableElement } )
-					}
-				/>
-			</PanelRow>
-		</PanelBody>,
-	];
+		</InspectorControls>
+	);
 };
 
 export default Inspector;
