@@ -16,7 +16,7 @@ import { __ } from '@wordpress/i18n';
 const { name, category, attributes } = metadata;
 
 const settings = {
-	title: __( 'AnchorMenu', 'unityblocks' ),
+	title: __( 'Unity AnchorMenu (WIP)', 'unityblocks' ),
 	description: __(
 		'Provide sticky menu bar to jump to anchor points on the current page.',
 		'unityblocks'
