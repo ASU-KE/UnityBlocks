@@ -9,9 +9,7 @@ import {
 	PanelBody,
 	PanelRow,
 	TextControl,
-	ToggleControl,
 } from '@wordpress/components';
-// import { Fragment } from '@wordpress/element';
 
 /**
  * Inspector controls
@@ -19,11 +17,6 @@ import {
  * @param {Object} props
  */
 const Inspector = ( props ) => {
-	const {
-		attributes: { firstElementId, focusFirstFocusableElement },
-		setAttributes,
-	} = props;
-
 	const handleAddItem = () => {
 		const items = [ ...props.attributes.items ];
 		items.push( {
@@ -85,30 +78,6 @@ const Inspector = ( props ) => {
 					<Button isDefault onClick={ handleAddItem.bind( this ) }>
 						{ __( 'Add Item' ) }
 					</Button>
-				</PanelRow>
-				<PanelRow>
-					<TextControl
-						label={ __( 'First Element ID', 'unityblocks' ) }
-						value={ firstElementId }
-						// eslint-disable-next-line no-shadow
-						onChange={ ( firstElementId ) =>
-							setAttributes( { firstElementId } )
-						}
-					/>
-				</PanelRow>
-				<PanelRow>
-					<ToggleControl
-						label={ __(
-							'Focus on First Focusable Element?',
-							'unityblocks'
-						) }
-						// help=""
-						checked={ focusFirstFocusableElement }
-						// eslint-disable-next-line no-shadow
-						onChange={ ( focusFirstFocusableElement ) =>
-							setAttributes( { focusFirstFocusableElement } )
-						}
-					/>
 				</PanelRow>
 			</PanelBody>
 		</InspectorControls>
