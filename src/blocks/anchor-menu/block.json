@@ -8,7 +8,7 @@
     },
     "firstElementId": {
       "type": "string",
-      "default": "first-container"
+      "default": ""
     },
     "focusFirstFocusableElement": {
       "type": "boolean",
