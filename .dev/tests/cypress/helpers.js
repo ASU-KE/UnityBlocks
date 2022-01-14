@@ -1,25 +1,25 @@
 /**
  * Internal dependencies.
  */
-// import unityblocksLayoutSelector from "../../../src/extensions/layout-selector/test/cypress-layouts";
+import unityblocksLayoutSelector from '../../../src/extensions/layout-selector/test/cypress-layouts';
 
 /**
  * Close layout selector.
  */
-// export function closeLayoutSelector() {
-// 	cy.get(".unityblocks-layout-selector-modal")
-// 		.its("length")
-// 		.then((layoutSelectorModal) => {
-// 			if (layoutSelectorModal > 0) {
-// 				cy.get(".unityblocks-layout-selector-modal")
-// 					.find('.components-button[aria-label="Close dialog"]')
-// 					.first()
-// 					.click();
-// 			}
-// 		});
+export function closeLayoutSelector() {
+	cy.get( '.unityblocks-layout-selector-modal' )
+		.its( 'length' )
+		.then( ( layoutSelectorModal ) => {
+			if ( layoutSelectorModal > 0 ) {
+				cy.get( '.unityblocks-layout-selector-modal' )
+					.find( '.components-button[aria-label="Close dialog"]' )
+					.first()
+					.click();
+			}
+		} );
 
-// 	cy.get(".unityblocks-layout-selector-modal").should("not.exist");
-// }
+	cy.get( '.unityblocks-layout-selector-modal' ).should( 'not.exist' );
+}
 
 /**
  * Login to our test WordPress site

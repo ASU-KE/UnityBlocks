@@ -6,22 +6,11 @@ import { registerBlockType } from '@wordpress/blocks';
 // Register block category
 import './utils/block-category';
 
-// Internal Extensions / Components
-// import './components/gutter-control';
-// import './components/form-label-colors';
-
-// Formats
-import './formats';
-
 // Categories Helper
 import { supportsCollections } from './utils/block-helpers';
 
-// Deprecated Blocks
-// import './js/deprecations/deprecate-unityblocks-buttons.js';
-// import './js/deprecations/deprecate-unityblocks-media-card.js';
-
 // Register Blocks
-import * as alert from './blocks/alert';
+import * as anchorMenu from './blocks/anchor-menu';
 
 /**
  * Function to register an individual block.
@@ -37,7 +26,7 @@ const registerBlock = ( block ) => {
 
 	const { name, settings } = block;
 
-	if ( ! supportsCollections() && ! name.includes( 'gallery' ) ) {
+	if ( ! supportsCollections() ) {
 		category = 'unityblocks';
 	}
 
@@ -51,11 +40,7 @@ const registerBlock = ( block ) => {
  * Function to register blocks provided by UnityBlocks.
  */
 export const registerUnityBlocksBlocks = () => {
-	[
-		// accordion,
-		// accordionItem,
-		alert,
-	].forEach( registerBlock );
+	[ anchorMenu ].forEach( registerBlock );
 };
 
 registerUnityBlocksBlocks();

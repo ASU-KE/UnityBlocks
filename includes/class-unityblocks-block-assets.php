@@ -77,7 +77,7 @@ class UnityBlocks_Block_Assets {
 	public function block_assets() {
 		global $post;
 
-		// Only load the front end CSS if a UnityBlock is in use.
+		// Only load the frontend CSS if a UnityBlock is in use.
 		$has_unityblock = ! is_singular();
 
 		if ( ! is_admin() && is_singular() ) {
@@ -128,11 +128,10 @@ class UnityBlocks_Block_Assets {
 		$name       = 'unityblocks-style';
 		$filepath   = 'dist/' . $name;
 		$asset_file = $this->get_asset_file( $filepath );
-		$rtl        = ! is_rtl() ? '' : '-rtl';
 
 		wp_enqueue_style(
 			'unityblocks-frontend',
-			UNITYBLOCKS_PLUGIN_URL . $filepath . $rtl . '.css',
+			UNITYBLOCKS_PLUGIN_URL . $filepath . '.css',
 			array(),
 			$asset_file['version']
 		);
@@ -148,11 +147,10 @@ class UnityBlocks_Block_Assets {
 		$name       = 'unityblocks-editor';
 		$filepath   = 'dist/' . $name;
 		$asset_file = $this->get_asset_file( $filepath );
-		$rtl        = ! is_rtl() ? '' : '-rtl';
 
 		wp_register_style(
 			'unityblocks-editor',
-			UNITYBLOCKS_PLUGIN_URL . $filepath . $rtl . '.css',
+			UNITYBLOCKS_PLUGIN_URL . $filepath . '.css',
 			array(),
 			$asset_file['version']
 		);
@@ -169,139 +167,6 @@ class UnityBlocks_Block_Assets {
 			$asset_file['version'],
 			true
 		);
-
-		$post_id = filter_input( INPUT_GET, 'post', FILTER_SANITIZE_NUMBER_INT );
-
-		/**
-		 * Filter the default block email address value
-		 *
-		 * @param string  $to      Admin email.
-		 * @param integer $post_id Current post ID.
-		 */
-		$email_to = (string) apply_filters( 'unityblocks_form_default_email', get_option( 'admin_email' ), (int) $post_id );
-
-		/**
-		 * Filter to disable the typography controls
-		 *
-		 * @param bool    true Whether or not the controls are enabled.
-		 * @param integer $post_id Current post ID.
-		 */
-		$typography_controls_enabled = (bool) apply_filters( 'unityblocks_typography_controls_enabled', true, (int) $post_id );
-
-		/**
-		 * Filter to disable the animation controls
-		 *
-		 * @param bool    true Whether or not the controls are enabled.
-		 * @param integer $post_id Current post ID.
-		 */
-		$animation_controls_enabled = (bool) apply_filters( 'unityblocks_animation_controls_enabled', true, (int) $post_id );
-
-		/**
-		 * Filter to disable all bundled UnityBlocks svg icons
-		 *
-		 * @param bool true Whether or not the bundled icons are displayed.
-		 */
-		$bundled_icons_enabled = (bool) apply_filters( 'unityblocks_bundled_icons_enabled', true );
-
-		$form         = new UnityBlocks_Form();
-		$form_subject = $form->default_subject();
-		$success_text = $form->default_success_text();
-
-		wp_localize_script(
-			'unityblocks-editor',
-			'unityblocksBlockData',
-			array(
-				'form'                           => array(
-					'adminEmail'   => $email_to,
-					'emailSubject' => $form_subject,
-					'successText'  => $success_text,
-				),
-				'cropSettingsOriginalImageNonce' => wp_create_nonce( 'cropSettingsOriginalImageNonce' ),
-				'cropSettingsNonce'              => wp_create_nonce( 'cropSettingsNonce' ),
-				'bundledIconsEnabled'            => $bundled_icons_enabled,
-				'customIcons'                    => $this->get_custom_icons(),
-				'customIconConfigExists'         => file_exists( get_stylesheet_directory() . '/unityblocks/icons/config.json' ),
-				'typographyControlsEnabled'      => $typography_controls_enabled,
-				'animationControlsEnabled'       => $animation_controls_enabled,
-				'localeCode'                     => get_locale(),
-			)
-		);
-
-	}
-
-	/**
-	 * Load custom icons from the theme directory, if they exist
-	 *
-	 * @return array Custom icons array if they exist, else empty array.
-	 */
-	public function get_custom_icons() {
-
-		$config = array();
-		$icons  = glob( get_stylesheet_directory() . '/unityblocks/icons/*.svg' );
-
-		if ( empty( $icons ) ) {
-
-			return array();
-
-		}
-
-		if ( file_exists( get_stylesheet_directory() . '/unityblocks/icons/config.json' ) ) {
-
-			$config = json_decode( file_get_contents( get_stylesheet_directory() . '/unityblocks/icons/config.json' ), true );
-
-		}
-
-		$custom_icons = array();
-
-		foreach ( $icons as $icon ) {
-
-			$icon_slug = str_replace( '.svg', '', basename( $icon ) );
-			$icon_name = ucwords( str_replace( '-', ' ', $icon_slug ) );
-
-			if ( ! empty( $config ) ) {
-
-				// Icon exists in directory, but not found in config.
-				if ( ! array_key_exists( $icon_slug, $config ) ) {
-
-					continue;
-
-				}
-			}
-
-			ob_start();
-			include $icon;
-			$retrieved_icon = ob_get_clean();
-
-			$custom_icons[ $icon_slug ] = array(
-				'label'    => $icon_name,
-				'keywords' => strtolower( $icon_name ),
-				'icon'     => $retrieved_icon,
-			);
-
-		}
-
-		if ( ! empty( $config ) ) {
-
-			foreach ( $config as $icon => $metadata ) {
-
-				if ( ! array_key_exists( $icon, $custom_icons ) ) {
-
-					continue;
-
-				}
-
-				if ( array_key_exists( 'icon_outlined', $config[ $icon ] ) ) {
-
-					$metadata['icon_outlined'] = file_exists( get_stylesheet_directory() . '/unityblocks/icons/' . $metadata['icon_outlined'] ) ? file_get_contents( get_stylesheet_directory() . '/unityblocks/icons/' . $metadata['icon_outlined'] ) : '';
-
-				}
-
-				$custom_icons[ $icon ] = array_replace_recursive( $custom_icons[ $icon ], array_filter( $metadata ) );
-
-			}
-		}
-		return $custom_icons;
-
 	}
 
 	/**
@@ -312,123 +177,16 @@ class UnityBlocks_Block_Assets {
 	 */
 	public function frontend_scripts() {
 
-		// Custom scripts are not allowed in AMP, so short-circuit.
-		if ( UnityBlocks()->is_amp() ) {
-			return;
-		}
-
 		// Define where the asset is loaded from.
-		$dir = UnityBlocks()->asset_source( 'js' );
+		$dir_url  = UnityBlocks()->asset_source( 'js' );
+		$dir_path = plugin_dir_path( dirname( __FILE__ ) ) . 'dist/js/';
 
-		// Define where the vendor asset is loaded from.
-		$vendors_dir = UnityBlocks()->asset_source( 'js', 'vendors' );
+		// Define where the vendor assets are loaded from.
+		$vendors_url  = UnityBlocks()->asset_source( 'js', 'vendors' );
+		$vendors_path = plugin_dir_path( dirname( __FILE__ ) ) . 'dist/js/vendors/';
 
-		// Enqueue for unityblocks animations.
-		wp_enqueue_script(
-			'unityblocks-animation',
-			$dir . 'unityblocks-animation.js',
-			array(),
-			UNITYBLOCKS_VERSION,
-			true
-		);
+		require_once UNITYBLOCKS_PLUGIN_DIR . 'includes/enqueue-blocks/anchor-menu.php';
 
-		// Masonry block.
-		if ( $this->is_page_gutenberg() || has_block( 'unityblocks/gallery-masonry' ) || has_block( 'core/block' ) ) {
-			wp_enqueue_script(
-				'unityblocks-masonry',
-				$dir . 'unityblocks-masonry.js',
-				array( 'jquery', 'masonry', 'imagesloaded' ),
-				UNITYBLOCKS_VERSION,
-				true
-			);
-		}
-
-		// Carousel block.
-		if ( $this->is_page_gutenberg() || has_block( 'unityblocks/gallery-carousel' ) || has_block( 'core/block' ) ) {
-			wp_enqueue_script(
-				'unityblocks-flickity',
-				$vendors_dir . '/flickity.js',
-				array( 'jquery' ),
-				UNITYBLOCKS_VERSION,
-				true
-			);
-
-			if ( $this->is_page_gutenberg() || has_block( 'unityblocks/accordion' ) || has_block( 'core/block' ) ) {
-				wp_enqueue_script(
-					'unityblocks-accordion-carousel',
-					$dir . 'unityblocks-accordion-carousel.js',
-					array( 'unityblocks-flickity' ),
-					UNITYBLOCKS_VERSION,
-					true
-				);
-			}
-		}
-
-		// Post Carousel block.
-		if ( $this->is_page_gutenberg() || has_block( 'unityblocks/post-carousel' ) || has_block( 'core/block' ) ) {
-			wp_enqueue_script(
-				'unityblocks-slick',
-				$vendors_dir . '/slick.js',
-				array( 'jquery' ),
-				UNITYBLOCKS_VERSION,
-				true
-			);
-			wp_enqueue_script(
-				'unityblocks-slick-initializer-front',
-				$dir . 'unityblocks-slick-initializer-front.js',
-				array( 'jquery' ),
-				UNITYBLOCKS_VERSION,
-				true
-			);
-		}
-
-		// Events block.
-		if ( $this->is_page_gutenberg() || has_block( 'unityblocks/events' ) || has_block( 'core/block' ) ) {
-			wp_enqueue_script(
-				'unityblocks-slick',
-				$vendors_dir . '/slick.js',
-				array( 'jquery' ),
-				UNITYBLOCKS_VERSION,
-				true
-			);
-			wp_enqueue_script(
-				'unityblocks-events',
-				$dir . 'unityblocks-events.js',
-				array( 'jquery' ),
-				UNITYBLOCKS_VERSION,
-				true
-			);
-		}
-
-		// Lightbox.
-		if (
-			has_block( 'unityblocks/gallery-masonry' ) ||
-			has_block( 'unityblocks/gallery-stacked' ) ||
-			has_block( 'unityblocks/gallery-collage' ) ||
-			has_block( 'unityblocks/gallery-carousel' ) ||
-			has_block( 'unityblocks/gallery-offset' ) ||
-			has_block( 'core/gallery' ) ||
-			has_block( 'core/image' ) ||
-			has_block( 'core/block' )
-		) {
-			wp_enqueue_script(
-				'unityblocks-lightbox',
-				$dir . 'unityblocks-lightbox.js',
-				array(),
-				UNITYBLOCKS_VERSION,
-				true
-			);
-		}
-
-		wp_localize_script(
-			'unityblocks-lightbox',
-			'unityblocksLigthboxData',
-			array(
-				'closeLabel' => __( 'Close Gallery', 'unityblocks' ),
-				'leftLabel'  => __( 'Previous', 'unityblocks' ),
-				'rightLabel' => __( 'Next', 'unityblocks' ),
-			)
-		);
 	}
 
 	/**
@@ -481,17 +239,21 @@ class UnityBlocks_Block_Assets {
 	 * @since 1.9.5
 	 */
 	public function editor_scripts() {
+		/*
+		 * Disabled block until needed later.
+
 		// Define where the vendor asset is loaded from.
 		$vendors_dir = UnityBlocks()->asset_source( 'js', 'vendors' );
 
 		// Required by the events block.
 		wp_enqueue_script(
-			'unityblocks-slick',
-			$vendors_dir . '/slick.js',
-			array( 'jquery' ),
-			UNITYBLOCKS_VERSION,
-			true
+		'unityblocks-slick',
+		$vendors_dir . '/slick.js',
+		array( 'jquery' ),
+		UNITYBLOCKS_VERSION,
+		true
 		);
+		*/
 	}
 
 	/**
