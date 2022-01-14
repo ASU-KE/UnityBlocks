@@ -58,6 +58,14 @@ const Inspector = ( props ) => {
 						value={ props.attributes.items[ index ].text }
 						onChange={ ( text ) => handleItemChange( text, index ) }
 					/>
+					<TextControl
+						className="anchormenu__item-targetIdName"
+						placeholder="Target ID for menu item"
+						value={ props.attributes.items[ index ].targetIdName }
+						onChange={ ( targetIdName ) =>
+							handleItemChange( targetIdName, index )
+						}
+					/>
 					<IconButton
 						className="anchormenu__remove-item-text"
 						icon="no-alt"
