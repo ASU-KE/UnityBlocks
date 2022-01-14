@@ -1,6 +1,9 @@
 # UnityBlocks
 A suite of page building content blocks for the ASU Web Standards Unity WordPress theme.
 
+## Available UnityBlocks
+ * Anchor Menu (WIP) -- As a first example, this demonstrates how blocks are added to the UnityBlocks library. Not all features have been completed.
+
 ## Development Notes
 
 The Unity React components libraries are required dependencies for our Gutenberg blocks. At this time, the published packages available via npm are not compatible with this plugin's build system. In order to run and build this plugin, the [asu-unity-stack repo](https://github.com/ASU/asu-unity-stack) needs to be cloned to your local machine and the UnityBlocks plugin needs to be manually linked to the local copy of the unity repo.
