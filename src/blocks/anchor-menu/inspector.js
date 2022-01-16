@@ -18,25 +18,31 @@ import {
  */
 const Inspector = ( props ) => {
 	const handleAddItem = () => {
-		const items = [ ...props.attributes.items ];
-		items.push( {
-			text: '',
-			targetIdName: '',
-			icon: '',
-		} );
-		props.setAttributes( { items } );
+		const itemsTexts = [ ...props.attributes.itemsTexts ];
+		const itemsTargets = [ ...props.attributes.itemsTargets ];
+		itemsTexts.push( '' );
+		itemsTargets.push( '' );
+		props.setAttributes( { itemsTexts, itemsTargets } );
 	};
 
 	const handleRemoveItem = ( index ) => {
-		const items = [ ...props.attributes.items ];
-		items.splice( index, 1 );
-		props.setAttributes( { items } );
+		const itemsTexts = [ ...props.attributes.itemsTexts ];
+		const itemsTargets = [ ...props.attributes.itemsTargets ];
+		itemsTexts.splice( index, 1 );
+		itemsTargets.splice( index, 1 );
+		props.setAttributes( { itemsTexts, itemsTargets } );
 	};
 
-	const handleItemChange = ( text, index ) => {
-		const items = [ ...props.attributes.items ];
-		items[ index ].text = text;
-		props.setAttributes( { items } );
+	const handleItemTextChange = ( text, index ) => {
+		const itemsTexts = [ ...props.attributes.itemsTexts ];
+		itemsTexts[ index ] = text;
+		props.setAttributes( { itemsTexts } );
+	};
+
+	const handleItemTargetChange = ( targetIdName, index ) => {
+		const itemsTargets = [ ...props.attributes.itemsTargets ];
+		itemsTargets[ index ] = targetIdName;
+		props.setAttributes( { itemsTargets } );
 	};
 
 	let itemFields;
@@ -48,15 +54,17 @@ const Inspector = ( props ) => {
 					<TextControl
 						className="anchormenu__item-text"
 						placeholder="Text for menu item"
-						value={ props.attributes.items[ index ].text }
-						onChange={ ( text ) => handleItemChange( text, index ) }
+						value={ props.attributes.itemsTexts[ index ] }
+						onChange={ ( text ) =>
+							handleItemTextChange( text, index )
+						}
 					/>
 					<TextControl
 						className="anchormenu__item-targetIdName"
 						placeholder="Target ID for menu item"
-						value={ props.attributes.items[ index ].targetIdName }
+						value={ props.attributes.itemsTargets[ index ] }
 						onChange={ ( targetIdName ) =>
-							handleItemChange( targetIdName, index )
+							handleItemTargetChange( targetIdName, index )
 						}
 					/>
 					<IconButton

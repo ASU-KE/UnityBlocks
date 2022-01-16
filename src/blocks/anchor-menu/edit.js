@@ -21,11 +21,21 @@ import Inspector from './inspector';
  */
 const Edit = ( props ) => {
 	const {
-		attributes: { firstElementId, focusFirstFocusableElement, items },
+		attributes: {
+			firstElementId,
+			focusFirstFocusableElement,
+			itemsTexts,
+			itemsTargets,
+		},
 		className,
 	} = props;
 
-	const args = { firstElementId, focusFirstFocusableElement, items };
+	const args = {
+		firstElementId,
+		focusFirstFocusableElement,
+		itemsTexts,
+		itemsTargets,
+	};
 
 	return (
 		<>
