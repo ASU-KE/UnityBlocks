@@ -18,43 +18,43 @@ import {
  */
 const Inspector = ( props ) => {
 	const handleAddItem = () => {
-		const itemsTexts = [ ...props.attributes.itemsTexts ];
-		const itemsTargets = [ ...props.attributes.itemsTargets ];
-		itemsTexts.push( '' );
-		itemsTargets.push( '' );
-		props.setAttributes( { itemsTexts, itemsTargets } );
+		const itemTexts = [ ...props.attributes.itemTexts ];
+		const itemTargets = [ ...props.attributes.itemTargets ];
+		itemTexts.push( '' );
+		itemTargets.push( '' );
+		props.setAttributes( { itemTexts } );
 	};
 
 	const handleRemoveItem = ( index ) => {
-		const itemsTexts = [ ...props.attributes.itemsTexts ];
-		const itemsTargets = [ ...props.attributes.itemsTargets ];
-		itemsTexts.splice( index, 1 );
-		itemsTargets.splice( index, 1 );
-		props.setAttributes( { itemsTexts, itemsTargets } );
+		const itemTexts = [ ...props.attributes.itemTexts ];
+		const itemTargets = [ ...props.attributes.itemTargets ];
+		itemTexts.splice( index, 1 );
+		itemTargets.splice( index, 1 );
+		props.setAttributes( { itemTexts } );
 	};
 
 	const handleItemTextChange = ( text, index ) => {
-		const itemsTexts = [ ...props.attributes.itemsTexts ];
-		itemsTexts[ index ] = text;
-		props.setAttributes( { itemsTexts } );
+		const itemTexts = [ ...props.attributes.itemTexts ];
+		itemTexts[ index ] = text;
+		props.setAttributes( { itemTexts } );
 	};
 
 	const handleItemTargetChange = ( targetIdName, index ) => {
-		const itemsTargets = [ ...props.attributes.itemsTargets ];
-		itemsTargets[ index ] = targetIdName;
-		props.setAttributes( { itemsTargets } );
+		const itemTargets = [ ...props.attributes.itemTargets ];
+		itemTargets[ index ] = targetIdName;
+		props.setAttributes( { itemTargets } );
 	};
 
 	let itemFields;
 
-	if ( props.attributes.items.length ) {
-		itemFields = props.attributes.items.map( ( item, index ) => {
+	if ( props.attributes.itemTexts.length ) {
+		itemFields = props.attributes.itemTexts.map( ( itemText, index ) => {
 			return (
 				<PanelRow key={ index }>
 					<TextControl
 						className="anchormenu__item-text"
 						placeholder="Text for menu item"
-						value={ props.attributes.itemsTexts[ index ] }
+						value={ props.attributes.itemTexts[ index ] }
 						onChange={ ( text ) =>
 							handleItemTextChange( text, index )
 						}
@@ -62,7 +62,7 @@ const Inspector = ( props ) => {
 					<TextControl
 						className="anchormenu__item-targetIdName"
 						placeholder="Target ID for menu item"
-						value={ props.attributes.itemsTargets[ index ] }
+						value={ props.attributes.itemTargets[ index ] }
 						onChange={ ( targetIdName ) =>
 							handleItemTargetChange( targetIdName, index )
 						}
