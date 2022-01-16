@@ -30,11 +30,17 @@ const Edit = ( props ) => {
 		className,
 	} = props;
 
+	const items = itemTexts.map( ( itemText, index ) => {
+		return {
+			text: itemText,
+			targetIdName: itemTargets[ index ],
+		};
+	} );
+
 	const args = {
 		firstElementId,
 		focusFirstFocusableElement,
-		itemsTexts,
-		itemsTargets,
+		items,
 	};
 
 	return (
