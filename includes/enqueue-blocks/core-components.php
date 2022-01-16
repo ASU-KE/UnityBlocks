@@ -10,9 +10,13 @@ if (! defined('ABSPATH')) {
     exit;
 }
 
-// Enqueue Core Components scripts.
+// Enqueue Core Components library.
 if (
-    has_block('unityblocks/anchor-menu')
+    $this->is_page_gutenberg()
+    || has_block('unityblocks/anchor-menu')
+    // || has_block('unityblocks/hero')
+    // || has_block('unityblocks/testimonial')
+
 ) {
     $unityblocks_core_file    = $vendors_url . '/libCore.umd.js';
     $unityblocks_core_version = UNITYBLOCKS_VERSION . '.' . filemtime($vendors_path . 'libCore.umd.js');
@@ -24,7 +28,9 @@ if (
         $unityblocks_core_version,
         true
     );
+}
 
+if ($this->is_page_gutenberg() || has_block('unityblocks/anchor-menu')) {
     $unityblocks_anchormenu_file    = $dir_url . 'unityblocks-anchormenu.js';
     $unityblocks_anchormenu_version = UNITYBLOCKS_VERSION . '.' . filemtime($dir_path . 'unityblocks-anchormenu.js');
 
