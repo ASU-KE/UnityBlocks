@@ -24,8 +24,8 @@ const Edit = ( props ) => {
 		attributes: {
 			firstElementId,
 			focusFirstFocusableElement,
-			itemsTexts,
-			itemsTargets,
+			itemTexts,
+			itemTargets,
 		},
 		className,
 	} = props;

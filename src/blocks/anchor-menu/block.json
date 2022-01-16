@@ -2,11 +2,11 @@
   "name": "unityblocks/anchor-menu",
   "category": "widgets",
   "attributes": {
-    "itemsTexts": {
+    "itemTexts": {
       "type": "array",
       "default": []
     },
-    "itemsTargets": {
+    "itemTargets": {
       "type": "array",
       "default": []
     },
