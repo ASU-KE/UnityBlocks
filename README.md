@@ -2,7 +2,7 @@
 A suite of page building content blocks for the ASU Web Standards Unity WordPress theme.
 
 ## Available UnityBlocks
- * Anchor Menu (WIP) -- As a first example, this demonstrates how blocks are added to the UnityBlocks library. Not all features have been completed.
+ * Anchor Menu (WIP)
 
 ## Development Notes
 
