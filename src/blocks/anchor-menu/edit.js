@@ -21,11 +21,27 @@ import Inspector from './inspector';
  */
 const Edit = ( props ) => {
 	const {
-		attributes: { firstElementId, focusFirstFocusableElement, items },
+		attributes: {
+			firstElementId,
+			focusFirstFocusableElement,
+			itemTexts,
+			itemTargets,
+		},
 		className,
 	} = props;
 
-	const args = { firstElementId, focusFirstFocusableElement, items };
+	const items = itemTexts.map( ( itemText, index ) => {
+		return {
+			text: itemText,
+			targetIdName: itemTargets[ index ],
+		};
+	} );
+
+	const args = {
+		firstElementId,
+		focusFirstFocusableElement,
+		items,
+	};
 
 	return (
 		<>

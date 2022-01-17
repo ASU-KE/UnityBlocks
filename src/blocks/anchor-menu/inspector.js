@@ -18,45 +18,53 @@ import {
  */
 const Inspector = ( props ) => {
 	const handleAddItem = () => {
-		const items = [ ...props.attributes.items ];
-		items.push( {
-			text: '',
-			targetIdName: '',
-			icon: '',
-		} );
-		props.setAttributes( { items } );
+		const itemTexts = [ ...props.attributes.itemTexts ];
+		const itemTargets = [ ...props.attributes.itemTargets ];
+		itemTexts.push( '' );
+		itemTargets.push( '' );
+		props.setAttributes( { itemTexts } );
 	};
 
 	const handleRemoveItem = ( index ) => {
-		const items = [ ...props.attributes.items ];
-		items.splice( index, 1 );
-		props.setAttributes( { items } );
+		const itemTexts = [ ...props.attributes.itemTexts ];
+		const itemTargets = [ ...props.attributes.itemTargets ];
+		itemTexts.splice( index, 1 );
+		itemTargets.splice( index, 1 );
+		props.setAttributes( { itemTexts } );
 	};
 
-	const handleItemChange = ( text, index ) => {
-		const items = [ ...props.attributes.items ];
-		items[ index ].text = text;
-		props.setAttributes( { items } );
+	const handleItemTextChange = ( text, index ) => {
+		const itemTexts = [ ...props.attributes.itemTexts ];
+		itemTexts[ index ] = text;
+		props.setAttributes( { itemTexts } );
+	};
+
+	const handleItemTargetChange = ( targetIdName, index ) => {
+		const itemTargets = [ ...props.attributes.itemTargets ];
+		itemTargets[ index ] = targetIdName;
+		props.setAttributes( { itemTargets } );
 	};
 
 	let itemFields;
 
-	if ( props.attributes.items.length ) {
-		itemFields = props.attributes.items.map( ( item, index ) => {
+	if ( props.attributes.itemTexts.length ) {
+		itemFields = props.attributes.itemTexts.map( ( itemText, index ) => {
 			return (
 				<PanelRow key={ index }>
 					<TextControl
 						className="anchormenu__item-text"
 						placeholder="Text for menu item"
-						value={ props.attributes.items[ index ].text }
-						onChange={ ( text ) => handleItemChange( text, index ) }
+						value={ props.attributes.itemTexts[ index ] }
+						onChange={ ( text ) =>
+							handleItemTextChange( text, index )
+						}
 					/>
 					<TextControl
 						className="anchormenu__item-targetIdName"
 						placeholder="Target ID for menu item"
-						value={ props.attributes.items[ index ].targetIdName }
+						value={ props.attributes.itemTargets[ index ] }
 						onChange={ ( targetIdName ) =>
-							handleItemChange( targetIdName, index )
+							handleItemTargetChange( targetIdName, index )
 						}
 					/>
 					<IconButton
