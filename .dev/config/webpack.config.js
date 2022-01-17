@@ -12,6 +12,7 @@ const { hasBabelConfig } = require( './utils' );
 /**
  * External dependencies
  */
+const { CleanWebpackPlugin } = require( 'clean-webpack-plugin' );
 const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' );
 const path = require( 'path' );
 const FixStyleOnlyEntriesPlugin = require( 'webpack-fix-style-only-entries' );
@@ -120,6 +121,7 @@ module.exports = {
 	},
 
 	plugins: [
+		new CleanWebpackPlugin(),
 		new DependencyExtractionWebpackPlugin( { injectPolyfill: true } ),
 		new MiniCssExtractPlugin( {
 			filename: '[name].css',
