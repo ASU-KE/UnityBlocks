@@ -6,6 +6,7 @@ A suite of page building content blocks for the ASU Web Standards Unity WordPres
 
 ## Known Issues
 * Anchor Menu - Positioning behavior is based on Unity React Header. Some additional positioning rules may be needed upstream component. Doesn't adapt postioning to WP Admin Bar. Overriding encapsulated component styles is challenging. We will probably need to submit some WP-specific rules to the Unity React component.
+
 ## Development Notes
 
 The Unity React components libraries (e.g. @asu-design-system/components-core) are required dependencies for our Gutenberg blocks. Normally, the published packages available via npm should work fine for UnityBlocks. However, if we need to test feature updates in the asu-unity-stack that have not yet been published to npm, it is possible to link the UnityBlocks plugin to a local copy of the asu-unity-stack repo and the desired branch or commit that contains code we want to test with our plugin.
