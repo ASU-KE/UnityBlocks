@@ -81,13 +81,13 @@ const Inspector = ( props ) => {
 								render={ ( { open } ) => (
 									<Button
 										className={
-											mediaId == 0
+											mediaId === 0
 												? 'editor-post-featured-image__toggle'
 												: 'editor-post-featured-image__preview'
 										}
 										onClick={ open }
 									>
-										{ mediaId == 0 &&
+										{ mediaId === 0 &&
 											__(
 												'Choose an image',
 												'unityblocks'
