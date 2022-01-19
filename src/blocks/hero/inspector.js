@@ -3,21 +3,17 @@
  */
 import { __ } from '@wordpress/i18n';
 import {
-	BlockControls,
 	InspectorControls,
 	MediaUpload,
 	MediaUploadCheck,
-	MediaPlaceholder,
 } from '@wordpress/block-editor';
 import {
 	Button,
-	IconButton,
 	PanelBody,
 	PanelRow,
 	RadioControl,
 	ResponsiveWrapper,
 	TextControl,
-	Toolbar,
 } from '@wordpress/components';
 
 /**
@@ -30,25 +26,22 @@ const Inspector = ( props ) => {
 		attributes: {
 			heroType,
 			mediaId,
-			mediaUrl,
-			mediaAltText,
-			mediaCssClass,
+			// mediaCssClass,
 			mediaSize,
 			subTitleText,
 			subTitleHighlightColor,
 			subTitleMaxWidth,
-			subTitleCssClass,
+			// subTitleCssClass,
 			titleText,
 			titleHighlightColor,
 			titleMaxWidth,
-			titleCssClass,
+			// titleCssClass,
 			contentsText,
 			contentsMaxWidth,
-			contentsCssClass,
+			// contentsCssClass,
 			contentsHighlightColor,
 			contentsColor,
 		},
-		className,
 		setAttributes,
 	} = props;
 
