@@ -122,7 +122,7 @@ const Inspector = ( props ) => {
 								) }
 							/>
 						</MediaUploadCheck>
-						{ mediaId == 0 && (
+						{ mediaId !== 0 && (
 							<MediaUploadCheck>
 								<MediaUpload
 									title={ __(
@@ -147,7 +147,7 @@ const Inspector = ( props ) => {
 								/>
 							</MediaUploadCheck>
 						) }
-						{ mediaId != 0 && (
+						{ mediaId !== 0 && (
 							<MediaUploadCheck>
 								<Button
 									onClick={ removeMedia }
