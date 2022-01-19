@@ -10,11 +10,6 @@ import { Hero } from '@asu-design-system/components-core/dist/libCore.es';
 import Inspector from './inspector';
 
 /**
- * WordPress dependencies
- */
-// import { __ } from '@wordpress/i18n';
-
-/**
  * Block edit function
  *
  * @param {Object} props
@@ -22,31 +17,57 @@ import Inspector from './inspector';
 const Edit = ( props ) => {
 	const {
 		attributes: {
-			imageUrl,
-			imageAltText,
-			imageSize,
+			heroType,
+			mediaUrl,
+			mediaAltText,
+			mediaCssClass,
+			mediaSize,
 			subTitleText,
 			subTitleHighlightColor,
+			subTitleMaxWidth,
+			subTitleCssClass,
 			titleText,
 			titleHighlightColor,
+			titleMaxWidth,
+			titleCssClass,
+			contentsText,
+			contentsMaxWidth,
+			contentsCssClass,
+			contentsHighlightColor,
 			contentsColor,
-			contents,
 		},
 		className,
 	} = props;
 
 	const args = {
-		image: { imageUrl, imageAltText, imageSize },
+		heroType,
+		image: {
+			url: mediaUrl,
+			altText: mediaAltText,
+			cssClass: mediaCssClass,
+			size: mediaSize,
+		},
 		subTitle: {
-			subTitleText,
-			subTitleHighlightColor,
+			text: subTitleText,
+			highlightColor: subTitleHighlightColor,
+			maxWidth: subTitleMaxWidth,
+			cssClass: subTitleCssClass,
 		},
 		title: {
-			titleText,
-			titleHighlightColor,
+			text: titleText,
+			highlightColor: titleHighlightColor,
+			maxWidth: titleMaxWidth,
+			cssClass: titleCssClass,
 		},
+		contents: [
+			{
+				text: contentsText,
+				maxWidth: contentsMaxWidth,
+				cssClass: contentsCssClass,
+				highlightColor: contentsHighlightColor,
+			},
+		],
 		contentsColor,
-		contents,
 	};
 
 	return (
