@@ -53,8 +53,6 @@ const Inspector = ( props ) => {
 	};
 
 	const onSelectMedia = ( media ) => {
-		// console.error( media );
-
 		props.setAttributes( {
 			mediaId: media.id,
 			mediaUrl: media.url,
