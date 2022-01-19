@@ -14,7 +14,7 @@ if (! defined('ABSPATH')) {
 if (
     $this->is_page_gutenberg()
     || has_block('unityblocks/anchor-menu')
-    // || has_block('unityblocks/hero')
+    || has_block('unityblocks/hero')
     // || has_block('unityblocks/testimonial')
 
 ) {
@@ -39,6 +39,19 @@ if ($this->is_page_gutenberg() || has_block('unityblocks/anchor-menu')) {
         $unityblocks_anchormenu_file,
         array( 'wp-element', 'wp-components' ),
         $unityblocks_anchormenu_version,
+        true
+    );
+}
+
+if ($this->is_page_gutenberg() || has_block('unityblocks/hero')) {
+    $unityblocks_hero_file    = $dir_url . 'unityblocks-hero.js';
+    $unityblocks_hero_version = UNITYBLOCKS_VERSION . '.' . filemtime($dir_path . 'unityblocks-hero.js');
+
+    wp_enqueue_script(
+        'unityblocks-hero',
+        $unityblocks_hero_file,
+        array( 'wp-element', 'wp-components' ),
+        $unityblocks_hero_version,
         true
     );
 }
