@@ -162,12 +162,34 @@ const Inspector = ( props ) => {
 				</PanelBody>
 
 				<PanelBody
-					title={ __( 'Unity hero settings', 'unityblocks' ) }
-					initialOpen={ true }
+					title={ __( 'Hero format', 'unityblocks' ) }
+					initialOpen={ false }
 				>
 					<PanelRow>
 						<RadioControl
-							label={ __( 'Hero size', 'unityblocks' ) }
+							label={ __( 'Type', 'unityblocks' ) }
+							selected={ heroType }
+							options={ [
+								{
+									label: __( 'Standard', 'unityblocks' ),
+									value: 'heading-hero',
+								},
+								{
+									label: __(
+										'Story (Not Implemented)',
+										'unityblocks'
+									),
+									value: 'story-hero',
+								},
+							] }
+							onChange={ ( heroType ) =>
+								setAttributes( { heroType } )
+							}
+						/>
+					</PanelRow>
+					<PanelRow>
+						<RadioControl
+							label={ __( 'Size', 'unityblocks' ) }
 							selected={ mediaSize }
 							options={ [
 								{
@@ -197,11 +219,17 @@ const Inspector = ( props ) => {
 							}
 						/>
 					</PanelRow>
+				</PanelBody>
+
+				<PanelBody
+					title={ __( 'Hero title', 'unityblocks' ) }
+					initialOpen={ false }
+				>
 					<PanelRow>
 						<TextControl
 							className="hero__title-text"
-							label={ 'Hero title text' }
-							placeholder="Title text"
+							label={ 'Title text' }
+							placeholder="Text"
 							value={ titleText }
 							onChange={ ( titleText ) =>
 								setAttributes( { titleText } )
@@ -211,7 +239,7 @@ const Inspector = ( props ) => {
 					<PanelRow>
 						<RadioControl
 							label={ __(
-								'Hero title highlight color',
+								'Title highlight color',
 								'unityblocks'
 							) }
 							selected={ titleHighlightColor }
@@ -236,9 +264,26 @@ const Inspector = ( props ) => {
 					</PanelRow>
 					<PanelRow>
 						<TextControl
+							className="hero__title-maxwidth"
+							label={ 'Title max width' }
+							placeholder="e.g. 0px"
+							value={ titleMaxWidth }
+							onChange={ ( titleMaxWidth ) =>
+								setAttributes( { titleMaxWidth } )
+							}
+						/>
+					</PanelRow>
+				</PanelBody>
+
+				<PanelBody
+					title={ __( 'Hero subtitle', 'unityblocks' ) }
+					initialOpen={ false }
+				>
+					<PanelRow>
+						<TextControl
 							className="hero__subtitle-text"
-							label={ 'Hero subtitle text' }
-							placeholder="Subtitle text"
+							label={ 'Subtitle text' }
+							placeholder="Text"
 							value={ subTitleText }
 							onChange={ ( subTitleText ) =>
 								setAttributes( { subTitleText } )
@@ -248,7 +293,7 @@ const Inspector = ( props ) => {
 					<PanelRow>
 						<RadioControl
 							label={ __(
-								'Hero subtitle highlight color',
+								'Subtitle highlight color',
 								'unityblocks'
 							) }
 							selected={ subTitleHighlightColor }
@@ -267,7 +312,101 @@ const Inspector = ( props ) => {
 								},
 							] }
 							onChange={ ( subTitleHighlightColor ) =>
-								setAttributes( { subTitleHighlightColor } )
+								setAttributes( {
+									subTitleHighlightColor,
+								} )
+							}
+						/>
+					</PanelRow>
+					<PanelRow>
+						<TextControl
+							className="hero__subtitle-maxwidth"
+							label={ 'Subtitle max width' }
+							placeholder="e.g. 0px"
+							value={ subTitleMaxWidth }
+							onChange={ ( subTitleMaxWidth ) =>
+								setAttributes( { subTitleMaxWidth } )
+							}
+						/>
+					</PanelRow>
+				</PanelBody>
+
+				<PanelBody
+					title={ __( 'Hero contents', 'unityblocks' ) }
+					initialOpen={ false }
+				>
+					<PanelRow>
+						<TextControl
+							className="hero__contents-text"
+							label={ 'Contents text' }
+							placeholder="Text"
+							value={ contentsText }
+							onChange={ ( contentsText ) =>
+								setAttributes( { contentsText } )
+							}
+						/>
+					</PanelRow>
+					<PanelRow>
+						<RadioControl
+							label={ __( 'Contents text color', 'unityblocks' ) }
+							selected={ contentsColor }
+							options={ [
+								{
+									label: __( 'White', 'unityblocks' ),
+									value: 'white',
+								},
+								{
+									label: __( 'Gold', 'unityblocks' ),
+									value: 'gold',
+								},
+								{
+									label: __( 'Black', 'unityblocks' ),
+									value: 'black',
+								},
+							] }
+							onChange={ ( contentsColor ) =>
+								setAttributes( {
+									contentsColor,
+								} )
+							}
+						/>
+					</PanelRow>
+					<PanelRow>
+						<RadioControl
+							label={ __(
+								'Contents highlight color',
+								'unityblocks'
+							) }
+							selected={ contentsHighlightColor }
+							options={ [
+								{
+									label: __( 'White', 'unityblocks' ),
+									value: 'white',
+								},
+								{
+									label: __( 'Gold', 'unityblocks' ),
+									value: 'gold',
+								},
+								{
+									label: __( 'Black', 'unityblocks' ),
+									value: 'black',
+								},
+							] }
+							onChange={ ( contentsHighlightColor ) =>
+								setAttributes( {
+									contentsHighlightColor,
+								} )
+							}
+						/>
+					</PanelRow>
+					<PanelRow>
+						<TextControl
+							className="hero__contents-maxwidth"
+							label={ 'Contents max width' }
+							placeholder="e.g. 0px"
+							value={ contentsMaxWidth }
+							onChange={ ( contentsMaxWidth ) =>
+								setAttributes( { contentsMaxWidth } )
 							}
 						/>
 					</PanelRow>
