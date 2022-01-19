@@ -3,6 +3,7 @@ A suite of page building content blocks for the ASU Web Standards Unity WordPres
 
 ## Available UnityBlocks
  * Anchor Menu (WIP)
+ * Hero
 
 ## Known Issues
 * Anchor Menu - Positioning behavior is based on Unity React Header. Some additional positioning rules may be needed upstream component. Doesn't adapt postioning to WP Admin Bar. Overriding encapsulated component styles is challenging. We will probably need to submit some WP-specific rules to the Unity React component.
@@ -33,3 +34,4 @@ Note: This method using `npm link` is somewhat fragile and requires refreshing p
 3. Add file to enqueue frontend script for new block: `includes/enqueue-blocks/new-block.php`
 4. `includes/class-unityblocks-block-assets.php` - In `frontend_scripts()` add line to require_once enqueue script from step 3.
 5. `includes/class-unityblocks-register-blocks.php` - In `register_blocks()`, add `register_block_type()` for new block.
+6. `.dev./config/webpack.config.js` - Add block to compile frontend.js for block (approx. line 38)

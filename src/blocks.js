@@ -11,6 +11,7 @@ import { supportsCollections } from './utils/block-helpers';
 
 // Register Blocks
 import * as anchorMenu from './blocks/anchor-menu';
+import * as hero from './blocks/hero';
 
 /**
  * Function to register an individual block.
@@ -40,7 +41,7 @@ const registerBlock = ( block ) => {
  * Function to register blocks provided by UnityBlocks.
  */
 export const registerUnityBlocksBlocks = () => {
-	[ anchorMenu ].forEach( registerBlock );
+	[ anchorMenu, hero ].forEach( registerBlock );
 };
 
 registerUnityBlocksBlocks();

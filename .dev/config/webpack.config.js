@@ -40,6 +40,10 @@ module.exports = {
 			process.cwd(),
 			'src/blocks/anchor-menu/frontend.js'
 		),
+		'js/unityblocks-hero': path.resolve(
+			process.cwd(),
+			'src/blocks/hero/frontend.js'
+		),
 	},
 
 	output: {
