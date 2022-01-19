@@ -4,6 +4,9 @@ A suite of page building content blocks for the ASU Web Standards Unity WordPres
 ## Available UnityBlocks
  * Anchor Menu (WIP)
 
+## Known Issues
+* Anchor Menu - Positioning behavior is based on Unity React Header. Some additional positioning rules may be needed upstream component. Doesn't adapt postioning to WP Admin Bar. Overriding encapsulated component styles is challenging. We will probably need to submit some WP-specific rules to the Unity React component.
+
 ## Development Notes
 
 The Unity React components libraries (e.g. @asu-design-system/components-core) are required dependencies for our Gutenberg blocks. Normally, the published packages available via npm should work fine for UnityBlocks. However, if we need to test feature updates in the asu-unity-stack that have not yet been published to npm, it is possible to link the UnityBlocks plugin to a local copy of the asu-unity-stack repo and the desired branch or commit that contains code we want to test with our plugin.
@@ -23,7 +26,7 @@ In order to run and build this plugin against a local copy of the [asu-unity-sta
 
 Note: This method using `npm link` is somewhat fragile and requires refreshing periodically. We have to use `npm link` with UnityBlocks and in the desired unity components folders, even though asu-unity-stack requires `yarn` to build and publish packages. Just keep in mind that the link can break and UnityBlocks will sometimes revert to pulling the published npm package which may not the version you are expecting to use.
 
-## Register new block in library
+### Register new block in library
 
 1. Create new block folder in `src/blocks/`
 2. `src/blocks.js` - Add import for new block: `import * as newBlock from './blocks/new-block';`
