@@ -1,7 +1,6 @@
 /**
  * Internal dependencies.
  */
-import unityblocksLayoutSelector from '../../../src/extensions/layout-selector/test/cypress-layouts';
 
 /**
  * Close layout selector.
@@ -24,44 +23,44 @@ export function closeLayoutSelector() {
 /**
  * Login to our test WordPress site
  */
-export function loginToSite() {
-	goTo( '/wp-admin/post-new.php?post_type=post' ).then( ( window ) => {
-		if ( window.location.pathname === '/wp-login.php' ) {
-			// WordPress has a wp_attempt_focus() function that fires 200ms after the wp-login.php page loads.
-			// We need to wait a short time before trying to login.
-			cy.wait( 250 );
+// export function loginToSite() {
+// 	goTo( '/wp-admin/post-new.php?post_type=post' ).then( ( window ) => {
+// 		if ( window.location.pathname === '/wp-login.php' ) {
+// 			// WordPress has a wp_attempt_focus() function that fires 200ms after the wp-login.php page loads.
+// 			// We need to wait a short time before trying to login.
+// 			cy.wait( 250 );
 
-			cy.get( '#user_login' ).type( Cypress.env( 'wpUsername' ) );
-			cy.get( '#user_pass' ).type( Cypress.env( 'wpPassword' ) );
-			cy.get( '#wp-submit' ).click();
-		}
-	} );
+// 			cy.get( '#user_login' ).type( Cypress.env( 'wpUsername' ) );
+// 			cy.get( '#user_pass' ).type( Cypress.env( 'wpPassword' ) );
+// 			cy.get( '#wp-submit' ).click();
+// 		}
+// 	} );
 
-	cy.get( '.block-editor-page' ).should( 'exist' );
-}
+// 	cy.get( '.block-editor-page' ).should( 'exist' );
+// }
 
 /**
  * Go to a specific URI.
  *
  * @param {string} path The URI path to go to.
  */
-export function goTo( path = '/wp-admin' ) {
-	cy.visit( Cypress.env( 'testURL' ) + path );
+// export function goTo( path = '/wp-admin' ) {
+// 	cy.visit( Cypress.env( 'testURL' ) + path );
 
-	return getWindowObject().then( ( safeWin ) => {
-		// Only set global `safeWin.unityblocksLayoutSelector` on new pages.
-		if ( safeWin.location.href.includes( 'post-new.php?post_type=page' ) ) {
-			safeWin.unityblocksLayoutSelector = unityblocksLayoutSelector;
+// 	return getWindowObject().then( ( safeWin ) => {
+// 		// Only set global `safeWin.unityblocksLayoutSelector` on new pages.
+// 		if ( safeWin.location.href.includes( 'post-new.php?post_type=page' ) ) {
+// 			safeWin.unityblocksLayoutSelector = unityblocksLayoutSelector;
 
-			safeWin.wp.data
-				.dispatch( 'unityblocks/template-selector' )
-				.updateLayouts( unityblocksLayoutSelector.layouts );
-			safeWin.wp.data
-				.dispatch( 'unityblocks/template-selector' )
-				.updateCategories( unityblocksLayoutSelector.categories );
-		}
-	} );
-}
+// 			safeWin.wp.data
+// 				.dispatch( 'unityblocks/template-selector' )
+// 				.updateLayouts( unityblocksLayoutSelector.layouts );
+// 			safeWin.wp.data
+// 				.dispatch( 'unityblocks/template-selector' )
+// 				.updateCategories( unityblocksLayoutSelector.categories );
+// 		}
+// 	} );
+// }
 
 /**
  * Safely obtain the window object or error
