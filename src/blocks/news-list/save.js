@@ -45,7 +45,7 @@ const save = ( props ) => {
 
 	return (
 		<div
-			id="unityblocks-news-list"
+			// id="unityblocks-news-list"
 			className={ classnames( className ) }
 			data-header={ JSON.stringify( header ) }
 			data-cardbutton={ JSON.stringify( cardButton ) }

@@ -45,7 +45,7 @@ const save = ( props ) => {
 
 	return (
 		<div
-			// id="unityblocks-card-carousel"
+			// id="unityblocks-news-carousel"
 			className={ classnames( className ) }
 			data-header={ JSON.stringify( header ) }
 			data-cardbutton={ JSON.stringify( cardButton ) }
