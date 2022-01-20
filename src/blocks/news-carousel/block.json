@@ -40,6 +40,10 @@
       "type": "string",
       "default": "Click to see more news"
     },
+    "ctaUrl": {
+      "type": "string",
+      "default": "https://news.asu.edu"
+    },
     "ctaColor": {
       "enum": [
         "gold",

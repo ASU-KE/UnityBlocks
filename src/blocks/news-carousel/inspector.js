@@ -24,6 +24,7 @@ const Inspector = ( props ) => {
 			cardButtonColor,
 			cardButtonSize,
 			ctaText,
+			ctaUrl,
 			ctaColor,
 			dataSourceUrl,
 			dataSourceFilters,
@@ -158,6 +159,17 @@ const Inspector = ( props ) => {
 							value={ ctaText }
 							onChange={ ( ctaText ) =>
 								setAttributes( { ctaText } )
+							}
+						/>
+					</PanelRow>
+					<PanelRow>
+						<TextControl
+							className="newscarousel__cardbutton-url"
+							label={ 'CTA URL' }
+							placeholder="https://news.asu.edu"
+							value={ ctaUrl }
+							onChange={ ( ctaUrl ) =>
+								setAttributes( { ctaUrl } )
 							}
 						/>
 					</PanelRow>

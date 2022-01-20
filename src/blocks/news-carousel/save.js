@@ -12,6 +12,7 @@ const save = ( props ) => {
 			cardButtonColor,
 			cardButtonSize,
 			ctaText,
+			ctaUrl,
 			ctaColor,
 			dataSourceUrl,
 			dataSourceFilters,
@@ -34,6 +35,7 @@ const save = ( props ) => {
 	const ctaButton = {
 		color: ctaColor,
 		text: ctaText,
+		url: ctaUrl,
 	};
 
 	const dataSource = {
