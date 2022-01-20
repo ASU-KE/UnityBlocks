@@ -1,0 +1,65 @@
+{
+  "name": "unityblocks/news-carousel",
+  "category": "widgets",
+  "attributes": {
+    "headerText": {
+      "type": "string",
+      "default": "News"
+    },
+    "headerColor": {
+      "enum": [
+        "dark",
+        "gray",
+        "white"
+      ],
+      "default": "dark"
+    },
+    "cardButtonText": {
+      "type": "string",
+      "default": "Read news"
+    },
+    "cardButtonColor": {
+      "enum": [
+        "gold",
+        "maroon",
+        "gray",
+        "dark"
+      ],
+      "default": "gold"
+    },
+    "cardButtonSize": {
+      "enum": [
+        "default",
+        "small",
+        "medium",
+        "large"
+      ],
+      "default": "default"
+    },
+    "ctaText": {
+      "type": "string",
+      "default": "Click to see more news"
+    },
+    "ctaColor": {
+      "enum": [
+        "gold",
+        "maroon",
+        "gray",
+        "dark"
+      ],
+      "default": "maroon"
+    },
+    "dataSourceUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "dataSourceFilters": {
+      "type": "string",
+      "default": ""
+    },
+    "maxItems": {
+      "type": "number",
+      "default": 10
+    }
+  }
+}
