@@ -48,6 +48,14 @@ module.exports = {
 			process.cwd(),
 			'src/blocks/news-carousel/frontend.js'
 		),
+		'js/unityblocks-news-grid': path.resolve(
+			process.cwd(),
+			'src/blocks/news-grid/frontend.js'
+		),
+		'js/unityblocks-news-list': path.resolve(
+			process.cwd(),
+			'src/blocks/news-list/frontend.js'
+		),
 	},
 
 	output: {
