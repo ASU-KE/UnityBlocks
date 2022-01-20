@@ -57,16 +57,20 @@ const Inspector = ( props ) => {
 							selected={ headerColor }
 							options={ [
 								{
-									label: __( 'Dark', 'unityblocks' ),
-									value: 'dark',
+									label: __( 'Gold', 'unityblocks' ),
+									value: 'gold',
+								},
+								{
+									label: __( 'Maroon', 'unityblocks' ),
+									value: 'maroon',
 								},
 								{
 									label: __( 'Gray', 'unityblocks' ),
 									value: 'gray',
 								},
 								{
-									label: __( 'White', 'unityblocks' ),
-									value: 'white',
+									label: __( 'Dark', 'unityblocks' ),
+									value: 'dark',
 								},
 							] }
 							onChange={ ( headerColor ) =>
@@ -109,8 +113,8 @@ const Inspector = ( props ) => {
 									value: 'gray',
 								},
 								{
-									label: __( 'Black', 'unityblocks' ),
-									value: 'black',
+									label: __( 'Dark', 'unityblocks' ),
+									value: 'dark',
 								},
 							] }
 							onChange={ ( cardButtonColor ) =>
@@ -191,8 +195,8 @@ const Inspector = ( props ) => {
 									value: 'gray',
 								},
 								{
-									label: __( 'Black', 'unityblocks' ),
-									value: 'black',
+									label: __( 'Dark', 'unityblocks' ),
+									value: 'dark',
 								},
 							] }
 							onChange={ ( ctaColor ) =>
