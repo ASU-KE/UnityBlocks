@@ -4,7 +4,7 @@
   "attributes": {
     "headerText": {
       "type": "string",
-      "default": "News"
+      "default": "News Carousel"
     },
     "headerColor": {
       "enum": [
@@ -55,7 +55,7 @@
     },
     "dataSourceUrl": {
       "type": "string",
-      "default": ""
+      "default": "https://cors.api.rtd.asu.edu/asunow.asu.edu:443/feeds-json/"
     },
     "dataSourceFilters": {
       "type": "string",

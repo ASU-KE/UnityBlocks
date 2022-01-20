@@ -44,7 +44,7 @@ const Inspector = ( props ) => {
 						<TextControl
 							className="newscarousel__header-text"
 							label={ 'Header text' }
-							placeholder="Text"
+							placeholder="News Carousel"
 							value={ headerText }
 							onChange={ ( headerText ) =>
 								setAttributes( { headerText } )
@@ -84,7 +84,7 @@ const Inspector = ( props ) => {
 						<TextControl
 							className="newscarousel__cardbutton-text"
 							label={ 'Button text' }
-							placeholder="Text"
+							placeholder="Read news"
 							value={ cardButtonText }
 							onChange={ ( cardButtonText ) =>
 								setAttributes( { cardButtonText } )
@@ -155,7 +155,7 @@ const Inspector = ( props ) => {
 						<TextControl
 							className="newscarousel__cardbutton-text"
 							label={ 'CTA text' }
-							placeholder="Text"
+							placeholder="Click to see more news"
 							value={ ctaText }
 							onChange={ ( ctaText ) =>
 								setAttributes( { ctaText } )
@@ -212,7 +212,7 @@ const Inspector = ( props ) => {
 						<TextControl
 							className="newscarousel__datasource-url"
 							label={ 'Url' }
-							placeholder="Url"
+							placeholder="https://cors.api.rtd.asu.edu/asunow.asu.edu:443/feeds-json/"
 							value={ dataSourceUrl }
 							onChange={ ( dataSourceUrl ) =>
 								setAttributes( { dataSourceUrl } )
