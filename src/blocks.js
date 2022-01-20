@@ -12,6 +12,7 @@ import { supportsCollections } from './utils/block-helpers';
 // Register Blocks
 import * as anchorMenu from './blocks/anchor-menu';
 import * as hero from './blocks/hero';
+import * as newsCarousel from './blocks/news-carousel';
 
 /**
  * Function to register an individual block.
@@ -41,7 +42,7 @@ const registerBlock = ( block ) => {
  * Function to register blocks provided by UnityBlocks.
  */
 export const registerUnityBlocksBlocks = () => {
-	[ anchorMenu, hero ].forEach( registerBlock );
+	[ anchorMenu, hero, newsCarousel ].forEach( registerBlock );
 };
 
 registerUnityBlocksBlocks();

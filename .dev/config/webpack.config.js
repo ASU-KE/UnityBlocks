@@ -44,6 +44,10 @@ module.exports = {
 			process.cwd(),
 			'src/blocks/hero/frontend.js'
 		),
+		'js/unityblocks-news-carousel': path.resolve(
+			process.cwd(),
+			'src/blocks/news-carousel/frontend.js'
+		),
 	},
 
 	output: {
@@ -136,6 +140,11 @@ module.exports = {
 				{
 					from:
 						'node_modules/@asu-design-system/components-core/dist/libCore.umd.js',
+					to: 'js/vendors/',
+				},
+				{
+					from:
+						'node_modules/@asu-design-system/component-news/dist/asuNews.umd.js',
 					to: 'js/vendors/',
 				},
 			],
