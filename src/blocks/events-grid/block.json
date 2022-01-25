@@ -1,0 +1,46 @@
+{
+  "name": "unityblocks/events-grid",
+  "category": "widgets",
+  "attributes": {
+    "headerText": {
+      "type": "string",
+      "default": "Events Grid"
+    },
+    "headerColor": {
+      "enum": [
+        "white",
+        "dark"
+      ],
+      "default": "dark"
+    },
+    "ctaText": {
+      "type": "string",
+      "default": "Click to see more events"
+    },
+    "ctaUrl": {
+      "type": "string",
+      "default": "https://asuevents.asu.edu/"
+    },
+    "ctaColor": {
+      "enum": [
+        "gold",
+        "maroon",
+        "gray",
+        "dark"
+      ],
+      "default": "maroon"
+    },
+    "dataSourceUrl": {
+      "type": "string",
+      "default": "https://cors.api.rtd.asu.edu/asuevents.asu.edu/feed-json/online"
+    },
+    "dataSourceFilters": {
+      "type": "string",
+      "default": ""
+    },
+    "maxItems": {
+      "type": "number",
+      "default": 9
+    }
+  }
+}
