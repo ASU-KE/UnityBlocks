@@ -69,6 +69,12 @@ module.exports = {
 	output: {
 		filename: '[name].js',
 		path: path.resolve( process.cwd(), 'dist/' ),
+		libraryTarget: 'window',
+	},
+
+	externals: {
+		react: 'React',
+		'react-dom': 'ReactDOM',
 	},
 
 	module: {
