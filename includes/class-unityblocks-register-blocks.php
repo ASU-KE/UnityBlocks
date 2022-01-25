@@ -21,6 +21,7 @@ class UnityBlocks_Register_Blocks {
 
 
 
+
 	/**
 	 * This plugin's instance.
 	 *
@@ -83,6 +84,24 @@ class UnityBlocks_Register_Blocks {
 
 		register_block_type(
 			$slug . '/hero',
+			array(
+				'editor_script' => $slug . '-editor',
+				'editor_style'  => $slug . '-editor',
+				'style'         => $slug . '-frontend',
+			)
+		);
+
+		register_block_type(
+			$slug . '/events-grid',
+			array(
+				'editor_script' => $slug . '-editor',
+				'editor_style'  => $slug . '-editor',
+				'style'         => $slug . '-frontend',
+			)
+		);
+
+		register_block_type(
+			$slug . '/events-list',
 			array(
 				'editor_script' => $slug . '-editor',
 				'editor_style'  => $slug . '-editor',

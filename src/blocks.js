@@ -12,6 +12,8 @@ import { supportsCollections } from './utils/block-helpers';
 // Register Blocks
 import * as anchorMenu from './blocks/anchor-menu';
 import * as hero from './blocks/hero';
+import * as eventsGrid from './blocks/events-grid';
+import * as eventsList from './blocks/events-list';
 import * as newsCarousel from './blocks/news-carousel';
 import * as newsGrid from './blocks/news-grid';
 import * as newsList from './blocks/news-list';
@@ -44,9 +46,15 @@ const registerBlock = ( block ) => {
  * Function to register blocks provided by UnityBlocks.
  */
 export const registerUnityBlocksBlocks = () => {
-	[ anchorMenu, hero, newsCarousel, newsGrid, newsList ].forEach(
-		registerBlock
-	);
+	[
+		anchorMenu,
+		hero,
+		eventsGrid,
+		eventsList,
+		newsCarousel,
+		newsGrid,
+		newsList,
+	].forEach( registerBlock );
 };
 
 registerUnityBlocksBlocks();

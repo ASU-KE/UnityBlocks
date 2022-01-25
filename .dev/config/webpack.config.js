@@ -44,6 +44,14 @@ module.exports = {
 			process.cwd(),
 			'src/blocks/hero/frontend.js'
 		),
+		'js/unityblocks-events-grid': path.resolve(
+			process.cwd(),
+			'src/blocks/events-grid/frontend.js'
+		),
+		'js/unityblocks-events-list': path.resolve(
+			process.cwd(),
+			'src/blocks/events-list/frontend.js'
+		),
 		'js/unityblocks-news-carousel': path.resolve(
 			process.cwd(),
 			'src/blocks/news-carousel/frontend.js'
@@ -148,6 +156,11 @@ module.exports = {
 				{
 					from:
 						'node_modules/@asu-design-system/components-core/dist/libCore.umd.js',
+					to: 'js/vendors/',
+				},
+				{
+					from:
+						'node_modules/@asu-design-system/component-events/dist/asuEvents.umd.js',
 					to: 'js/vendors/',
 				},
 				{
