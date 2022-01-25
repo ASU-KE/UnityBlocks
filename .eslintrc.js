@@ -13,6 +13,7 @@ module.exports = {
 	},
 	plugins: [ 'cypress', 'chai-friendly' ],
 	rules: {
+		'no-shadow': 'off',
 		'jest/expect-expect': [
 			'error',
 			{
