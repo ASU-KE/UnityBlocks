@@ -1,3 +1,7 @@
+const { render } = wp.element;
+
+import { Hero } from '@asu-design-system/components-core/dist/libCore.es';
+
 // Load first element with the unityblocks-hero id
 const hero = document.querySelector( '#unityblocks-hero' );
 
@@ -8,15 +12,14 @@ const title = JSON.parse( hero.dataset.title );
 const contents = JSON.parse( hero.dataset.contents );
 const contentsColor = hero.dataset.contentscolor;
 
-// eslint-disable-next-line
-AsuWebCore.initHero( {
-	targetSelector: '#unityblocks-hero',
-	props: {
-		type,
-		image,
-		subTitle,
-		title,
-		contents,
-		contentsColor,
-	},
-} );
+render(
+	<Hero
+		type={ type }
+		image={ image }
+		subTitle={ subTitle }
+		title={ title }
+		contents={ contents }
+		contentsColor={ contentsColor }
+	/>,
+	hero
+);
