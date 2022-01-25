@@ -1,3 +1,7 @@
+const { render } = wp.element;
+
+import { AnchorMenu } from '@asu-design-system/components-core/dist/libCore.es';
+
 /*
 Load the block attributes from the dom element attributes.
 
@@ -16,12 +20,11 @@ const items = JSON.parse( menu.dataset.items );
 const firstElementId = menu.dataset.firstElementId;
 const focusFirstFocusableElement = menu.dataset.focusFirstFocusableElement;
 
-// eslint-disable-next-line
-AsuWebCore.initAnchorMenu( {
-	targetSelector: '#unityblocks-anchor-menu',
-	props: {
-		items,
-		firstElementId,
-		focusFirstFocusableElement,
-	},
-} );
+render(
+	<AnchorMenu
+		items={ items }
+		firstElementId={ firstElementId }
+		focusFirstFocusableElement={ focusFirstFocusableElement }
+	/>,
+	menu
+);
