@@ -4,7 +4,7 @@
  * Description:       UnityBlocks is a suite of page building content blocks for the ASU Web Standards Unity (UDS) WordPress theme.
  * Author:            ASU KE Web Services
  * Author URI:        https://rto.asu.edu/web-services
- * Version:           1.1.0
+ * Version:           1.2.0
  * Text Domain:       unityblocks
  * Domain Path:       /languages
  * Requires at least: 5.8
@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'UNITYBLOCKS_VERSION', '1.1.0' );
+define( 'UNITYBLOCKS_VERSION', '1.2.0' );
 define( 'UNITYBLOCKS_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'UNITYBLOCKS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'UNITYBLOCKS_PLUGIN_FILE', __FILE__ );
@@ -31,6 +31,7 @@ if ( ! class_exists( 'UnityBlocks' ) ) :
 	 * @since 1.0.0
 	 */
 	final class UnityBlocks {
+
 
 
 		/**
