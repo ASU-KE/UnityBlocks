@@ -22,7 +22,7 @@ if (
 	$unityblocks_core_version = UNITYBLOCKS_VERSION . '.' . filemtime( $vendors_path . 'asuNews.umd.js' );
 
 	wp_enqueue_script(
-		'unity-news',
+		'unityblocks-news-vendor',
 		$unityblocks_core_file,
 		array( 'wp-element', 'wp-components' ),
 		$unityblocks_core_version,
@@ -37,7 +37,7 @@ if ( $this->is_page_gutenberg() || has_block( 'unityblocks/news-carousel' ) ) {
 	wp_enqueue_script(
 		'unityblocks-news-carousel',
 		$unityblocks_newscarousel_file,
-		array( 'wp-element', 'wp-components', 'unity-news' ),
+		array( 'wp-element', 'wp-components' ),
 		$unityblocks_newscarousel_version,
 		true
 	);
@@ -50,7 +50,7 @@ if ( $this->is_page_gutenberg() || has_block( 'unityblocks/news-grid' ) ) {
 	wp_enqueue_script(
 		'unityblocks-news-grid',
 		$unityblocks_newsgrid_file,
-		array( 'wp-element', 'wp-components', 'unity-news' ),
+		array( 'wp-element', 'wp-components' ),
 		$unityblocks_newsgrid_version,
 		true
 	);
@@ -63,7 +63,7 @@ if ( $this->is_page_gutenberg() || has_block( 'unityblocks/news-list' ) ) {
 	wp_enqueue_script(
 		'unityblocks-news-list',
 		$unityblocks_newslist_file,
-		array( 'wp-element', 'wp-components', 'unity-news' ),
+		array( 'wp-element', 'wp-components' ),
 		$unityblocks_newslist_version,
 		true
 	);
