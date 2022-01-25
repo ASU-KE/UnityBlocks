@@ -22,7 +22,7 @@ const isProduction = process.env.NODE_ENV === 'production';
 
 module.exports = {
 	entry: {
-		unityblocks: path.resolve( process.cwd(), 'src/blocks.js' ),
+		// unityblocks: path.resolve( process.cwd(), 'src/blocks.js' ),
 
 		// Styles
 		'unityblocks-editor': path.resolve(
