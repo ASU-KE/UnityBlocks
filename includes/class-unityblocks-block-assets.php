@@ -20,6 +20,8 @@ class UnityBlocks_Block_Assets {
 
 
 
+
+
 	/**
 	 * This plugin's instance.
 	 *
@@ -181,6 +183,8 @@ class UnityBlocks_Block_Assets {
 		$vendors_path = plugin_dir_path( dirname( __FILE__ ) ) . 'dist/js/vendors/';
 
 		require_once UNITYBLOCKS_PLUGIN_DIR . 'includes/enqueue-blocks/core-components.php';
+		require_once UNITYBLOCKS_PLUGIN_DIR . 'includes/enqueue-blocks/news-components.php';
+		require_once UNITYBLOCKS_PLUGIN_DIR . 'includes/enqueue-blocks/events-components.php';
 		/*
 		 require_once UNITYBLOCKS_PLUGIN_DIR . 'includes/enqueue-blocks/degree-search.php'; */
 		/* require_once UNITYBLOCKS_PLUGIN_DIR . 'includes/enqueue-blocks/rfi.php'; */

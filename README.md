@@ -3,16 +3,24 @@ A suite of page building content blocks for the ASU Web Standards Unity WordPres
 
 ## Available UnityBlocks
  * Anchor Menu (WIP)
+ * Events Grid
+ * Events List
  * Hero
+ * News Carousel
+ * News Grid
+ * News List
 
 ## Known Issues
 | Block       | Issues                                                                                                                                                                                                                                                                                                                                                                                                           |
 |-------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Anchor Menu | Positioning is not working correctly. Positioning behavior appears to depend upon the presence of the Unity React Header (currently in development for the UDS WP Theme). Some additional positioning rules or fixes may be needed in the upstream component.                                                                                                                                                    |
 | Anchor Menu | Doesn't adapt postioning to WP Admin Bar. Overriding encapsulated component styles is challenging. We will probably need to submit some WP-specific rules to the Unity React component.                                                                                                                                                                                                                          |
+| Events      | The Events blocks only support ASU Events. The KE Events service will be added in a future update. |
 | Hero        | The React component accepts an array of content sections, each with its own formatting props. This initial release only only uses a plain text input field and submits a single content paragraph. A future update should explore replacing text input with the `<RichText />` control, determine the scope of permissible of HTML content, as well as support for multiple content sections or paragraphs.      |
 | Hero        | Content format settings, such as max width and color highlighting do not yet appear to be implemented in the React component.                                                                                                                                                                                                                                                                                    |
 | Hero        | The React component also supports an array of custom CSS classes to be added to the wrapper containers for each type of content in the Hero: title, subtitle, and content. This has not been implemented in this initial release, due to it crowding the Inspector side panel even worse. This is recommended to be implemented in the future when the block settings are moved to the main block controls area. |
+| News        | The News blocks only support ASU News. The KE News service will be added in a future update. |
+
 
 ## Development Notes
 

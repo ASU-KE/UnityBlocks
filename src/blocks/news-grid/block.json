@@ -1,0 +1,70 @@
+{
+  "name": "unityblocks/news-grid",
+  "category": "widgets",
+  "attributes": {
+    "headerText": {
+      "type": "string",
+      "default": "News Grid"
+    },
+    "headerColor": {
+      "enum": [
+        "gold",
+        "maroon",
+        "gray",
+        "dark"
+      ],
+      "default": "dark"
+    },
+    "cardButtonText": {
+      "type": "string",
+      "default": "Read news"
+    },
+    "cardButtonColor": {
+      "enum": [
+        "gold",
+        "maroon",
+        "gray",
+        "dark"
+      ],
+      "default": "gold"
+    },
+    "cardButtonSize": {
+      "enum": [
+        "default",
+        "small",
+        "medium",
+        "large"
+      ],
+      "default": "default"
+    },
+    "ctaText": {
+      "type": "string",
+      "default": "Click to see more news"
+    },
+    "ctaUrl": {
+      "type": "string",
+      "default": "https://news.asu.edu"
+    },
+    "ctaColor": {
+      "enum": [
+        "gold",
+        "maroon",
+        "gray",
+        "dark"
+      ],
+      "default": "maroon"
+    },
+    "dataSourceUrl": {
+      "type": "string",
+      "default": "https://cors.api.rtd.asu.edu/asunow.asu.edu:443/feeds-json/"
+    },
+    "dataSourceFilters": {
+      "type": "string",
+      "default": ""
+    },
+    "maxItems": {
+      "type": "number",
+      "default": 9
+    }
+  }
+}

@@ -17,13 +17,12 @@ const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' );
 const path = require( 'path' );
 const FixStyleOnlyEntriesPlugin = require( 'webpack-fix-style-only-entries' );
 const nodeSassGlobImporter = require( 'node-sass-glob-importer' );
-const CopyPlugin = require( 'copy-webpack-plugin' );
 
 const isProduction = process.env.NODE_ENV === 'production';
 
 module.exports = {
 	entry: {
-		unityblocks: path.resolve( process.cwd(), 'src/blocks.js' ),
+		// unityblocks: path.resolve( process.cwd(), 'src/blocks.js' ),
 
 		// Styles
 		'unityblocks-editor': path.resolve(
@@ -44,11 +43,37 @@ module.exports = {
 			process.cwd(),
 			'src/blocks/hero/frontend.js'
 		),
+		'js/unityblocks-events-grid': path.resolve(
+			process.cwd(),
+			'src/blocks/events-grid/frontend.js'
+		),
+		'js/unityblocks-events-list': path.resolve(
+			process.cwd(),
+			'src/blocks/events-list/frontend.js'
+		),
+		'js/unityblocks-news-carousel': path.resolve(
+			process.cwd(),
+			'src/blocks/news-carousel/frontend.js'
+		),
+		'js/unityblocks-news-grid': path.resolve(
+			process.cwd(),
+			'src/blocks/news-grid/frontend.js'
+		),
+		'js/unityblocks-news-list': path.resolve(
+			process.cwd(),
+			'src/blocks/news-list/frontend.js'
+		),
 	},
 
 	output: {
 		filename: '[name].js',
 		path: path.resolve( process.cwd(), 'dist/' ),
+		libraryTarget: 'window',
+	},
+
+	externals: {
+		react: 'React',
+		'react-dom': 'ReactDOM',
 	},
 
 	module: {
@@ -131,14 +156,5 @@ module.exports = {
 			filename: '[name].css',
 		} ),
 		new FixStyleOnlyEntriesPlugin(),
-		new CopyPlugin( {
-			patterns: [
-				{
-					from:
-						'node_modules/@asu-design-system/components-core/dist/libCore.umd.js',
-					to: 'js/vendors/',
-				},
-			],
-		} ),
 	],
 };
