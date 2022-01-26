@@ -22,6 +22,7 @@ const Edit = ( props ) => {
 			headerColor,
 			ctaText,
 			ctaColor,
+			ctaUrl,
 			dataSourceUrl,
 			dataSourceFilters,
 			maxItems,
@@ -40,7 +41,8 @@ const Edit = ( props ) => {
 		? {
 				color: ctaColor,
 				text: ctaText,
-		},
+				url: ctaUrl,
+		  }
 		: undefined;
 
 	const args = {
