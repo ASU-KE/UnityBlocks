@@ -7,9 +7,12 @@ import { CardGridNews } from '@asu-design-system/component-news/dist/asuNews.es'
 const grids = document.querySelectorAll( '.wp-block-unityblocks-news-grid' );
 
 grids.forEach( ( newsGrid ) => {
-	const header = newsGrid.dataset.header;
+	const enableHeader = newsGrid.dataset.enableheader;
+	const header = enableHeader ? newsGrid.dataset.header : undefined;
+	const ctaButton = enableHeader
+		? JSON.parse( newsGrid.dataset.ctabutton )
+		: undefined;
 	const cardButton = JSON.parse( newsGrid.dataset.cardbutton );
-	const ctaButton = JSON.parse( newsGrid.dataset.ctabutton );
 	const dataSource = JSON.parse( newsGrid.dataset.datasource );
 	const maxItems = JSON.parse( newsGrid.dataset.maxitems );
 

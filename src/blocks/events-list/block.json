@@ -2,6 +2,10 @@
   "name": "unityblocks/events-list",
   "category": "widgets",
   "attributes": {
+    "enableHeader": {
+      "type": "boolean",
+      "default": true
+    },
     "headerText": {
       "type": "string",
       "default": "Events List"

@@ -17,10 +17,12 @@ import Inspector from './inspector';
 const Edit = ( props ) => {
 	const {
 		attributes: {
+			enableHeader,
 			headerText,
 			headerColor,
 			ctaText,
 			ctaColor,
+			ctaUrl,
 			dataSourceUrl,
 			dataSourceFilters,
 			maxItems,
@@ -28,15 +30,25 @@ const Edit = ( props ) => {
 		className,
 	} = props;
 
+	const header = enableHeader
+		? {
+				color: headerColor,
+				text: headerText,
+		  }
+		: undefined;
+
+	const ctaButton = enableHeader
+		? {
+				color: ctaColor,
+				text: ctaText,
+				url: ctaUrl,
+		  }
+		: undefined;
+
 	const args = {
-		header: {
-			color: headerColor,
-			text: headerText,
-		},
-		ctaButton: {
-			color: ctaColor,
-			text: ctaText,
-		},
+		enableHeader,
+		header,
+		ctaButton,
 		dataSource: {
 			url: dataSourceUrl,
 			filters: dataSourceFilters,

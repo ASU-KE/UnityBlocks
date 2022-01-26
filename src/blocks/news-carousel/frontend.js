@@ -9,9 +9,12 @@ const carousels = document.querySelectorAll(
 );
 
 carousels.forEach( ( newsCarousel ) => {
-	const header = newsCarousel.dataset.header;
+	const enableHeader = newsCarousel.dataset.enableheader;
+	const header = enableHeader ? newsCarousel.dataset.header : undefined;
+	const ctaButton = enableHeader
+		? JSON.parse( newsCarousel.dataset.ctabutton )
+		: undefined;
 	const cardButton = JSON.parse( newsCarousel.dataset.cardbutton );
-	const ctaButton = JSON.parse( newsCarousel.dataset.ctabutton );
 	const dataSource = JSON.parse( newsCarousel.dataset.datasource );
 	const maxItems = JSON.parse( newsCarousel.dataset.maxitems );
 
