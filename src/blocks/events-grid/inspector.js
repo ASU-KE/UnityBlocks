@@ -8,6 +8,7 @@ import {
 	PanelRow,
 	RadioControl,
 	TextControl,
+	ToggleControl,
 } from '@wordpress/components';
 
 /**
@@ -18,6 +19,7 @@ import {
 const Inspector = ( props ) => {
 	const {
 		attributes: {
+			enableHeader,
 			headerText,
 			headerColor,
 			ctaText,
@@ -38,35 +40,57 @@ const Inspector = ( props ) => {
 					initialOpen={ true }
 				>
 					<PanelRow>
-						<TextControl
-							className="eventsgrid__header-text"
-							label={ 'Header text' }
-							placeholder="Events Grid"
-							value={ headerText }
-							onChange={ ( headerText ) =>
-								setAttributes( { headerText } )
+						<ToggleControl
+							className="eventsgrid__header-toggle"
+							label={ 'Enable Header' }
+							help={
+								enableHeader
+									? 'Header enabled.'
+									: 'Header disabled.'
 							}
+							checked={ enableHeader }
+							onChange={ ( enableHeader ) => {
+								setAttributes( { enableHeader } );
+							} }
 						/>
 					</PanelRow>
-					<PanelRow>
-						<RadioControl
-							label={ __( 'Header color', 'unityblocks' ) }
-							selected={ headerColor }
-							options={ [
-								{
-									label: __( 'White', 'unityblocks' ),
-									value: 'white',
-								},
-								{
-									label: __( 'Dark', 'unityblocks' ),
-									value: 'dark',
-								},
-							] }
-							onChange={ ( headerColor ) =>
-								setAttributes( { headerColor } )
-							}
-						/>
-					</PanelRow>
+					{ enableHeader && (
+						<>
+							<PanelRow>
+								<TextControl
+									className="eventsgrid__header-text"
+									label={ 'Header text' }
+									placeholder="Events Grid"
+									value={ headerText }
+									onChange={ ( headerText ) =>
+										setAttributes( { headerText } )
+									}
+								/>
+							</PanelRow>
+							<PanelRow>
+								<RadioControl
+									label={ __(
+										'Header color',
+										'unityblocks'
+									) }
+									selected={ headerColor }
+									options={ [
+										{
+											label: __( 'White', 'unityblocks' ),
+											value: 'white',
+										},
+										{
+											label: __( 'Dark', 'unityblocks' ),
+											value: 'dark',
+										},
+									] }
+									onChange={ ( headerColor ) =>
+										setAttributes( { headerColor } )
+									}
+								/>
+							</PanelRow>
+						</>
+					) }
 				</PanelBody>
 
 				<PanelBody

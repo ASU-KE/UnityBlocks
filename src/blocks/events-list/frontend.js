@@ -7,8 +7,11 @@ import { CardsGridEvents } from '@asu-design-system/component-events/dist/asuEve
 const lists = document.querySelectorAll( '.wp-block-unityblocks-events-list' );
 
 lists.forEach( ( eventsList ) => {
-	const header = eventsList.dataset.header;
-	const ctaButton = JSON.parse( eventsList.dataset.ctabutton );
+	const enableHeader = eventsList.dataset.enableheader;
+	const header = enableHeader ? eventsList.dataset.header : undefined;
+	const ctaButton = enableHeader
+		? JSON.parse( eventsList.dataset.ctabutton )
+		: undefined;
 	const dataSource = JSON.parse( eventsList.dataset.datasource );
 	const maxItems = JSON.parse( eventsList.dataset.maxitems );
 
