@@ -41,7 +41,7 @@ const Inspector = ( props ) => {
 				>
 					<PanelRow>
 						<ToggleControl
-							className="eventsgrid__header-toggle"
+							className="eventslist__header-toggle"
 							label={ 'Enable Header' }
 							help={
 								enableHeader
