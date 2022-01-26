@@ -17,6 +17,7 @@ import Inspector from './inspector';
 const Edit = ( props ) => {
 	const {
 		attributes: {
+			enableHeader,
 			headerText,
 			headerColor,
 			cardButtonText,
@@ -24,6 +25,7 @@ const Edit = ( props ) => {
 			cardButtonSize,
 			ctaText,
 			ctaColor,
+			ctaUrl,
 			dataSourceUrl,
 			dataSourceFilters,
 			maxItems,
@@ -31,19 +33,29 @@ const Edit = ( props ) => {
 		className,
 	} = props;
 
+	const header = enableHeader
+		? {
+				color: headerColor,
+				text: headerText,
+		  }
+		: undefined;
+
+	const ctaButton = enableHeader
+		? {
+				color: ctaColor,
+				text: ctaText,
+				url: ctaUrl,
+		  }
+		: undefined;
+
 	const args = {
-		header: {
-			color: headerColor,
-			text: headerText,
-		},
+		enableHeader,
+		header,
+		ctaButton,
 		cardButton: {
 			color: cardButtonColor,
 			text: cardButtonText,
 			url: cardButtonSize,
-		},
-		ctaButton: {
-			color: ctaColor,
-			text: ctaText,
 		},
 		dataSource: {
 			url: dataSourceUrl,

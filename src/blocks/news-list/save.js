@@ -6,6 +6,7 @@ import classnames from 'classnames';
 const save = ( props ) => {
 	const {
 		attributes: {
+			enableHeader,
 			headerText,
 			headerColor,
 			cardButtonText,
@@ -21,21 +22,25 @@ const save = ( props ) => {
 		className,
 	} = props;
 
-	const header = {
-		color: headerColor,
-		text: headerText,
-	};
+	const header = enableHeader
+		? {
+				color: headerColor,
+				text: headerText,
+		  }
+		: undefined;
+
+	const ctaButton = enableHeader
+		? {
+				color: ctaColor,
+				text: ctaText,
+				url: ctaUrl,
+		  }
+		: undefined;
 
 	const cardButton = {
 		color: cardButtonColor,
 		text: cardButtonText,
 		url: cardButtonSize,
-	};
-
-	const ctaButton = {
-		color: ctaColor,
-		text: ctaText,
-		url: ctaUrl,
 	};
 
 	const dataSource = {
@@ -45,7 +50,6 @@ const save = ( props ) => {
 
 	return (
 		<div
-			// id="unityblocks-news-list"
 			className={ classnames( className ) }
 			data-header={ JSON.stringify( header ) }
 			data-cardbutton={ JSON.stringify( cardButton ) }
