@@ -1,6 +1,6 @@
 const { render } = wp.element;
 
-import { CardsGridEvents } from '@asu-design-system/component-events/dist/asuEvents.es';
+import { CardsListEvents } from '@asu-design-system/component-events/dist/asuEvents.es';
 
 // It is possible to load multiple events lists onto a page.
 // Load each DOM element on page using the Gutenberg-generated class for the Events List block
@@ -16,7 +16,7 @@ lists.forEach( ( eventsList ) => {
 	const maxItems = JSON.parse( eventsList.dataset.maxitems );
 
 	render(
-		<CardsGridEvents
+		<CardsListEvents
 			header={ header }
 			ctaButton={ ctaButton }
 			dataSource={ dataSource }
