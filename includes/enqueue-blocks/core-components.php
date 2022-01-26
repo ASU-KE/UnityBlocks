@@ -35,3 +35,16 @@ if ( $this->is_page_gutenberg() || has_block( 'unityblocks/hero' ) ) {
 		true
 	);
 }
+
+if ( $this->is_page_gutenberg() || has_block( 'unityblocks/testimonial' ) ) {
+	$unityblocks_testimonial_file    = $dir_url . 'unityblocks-testimonial.js';
+	$unityblocks_testimonial_version = UNITYBLOCKS_VERSION . '.' . filemtime( $dir_path . 'unityblocks-testimonial.js' );
+
+	wp_enqueue_script(
+		'unityblocks-testimonial',
+		$unityblocks_testimonial_file,
+		array( 'wp-element', 'wp-components' ),
+		$unityblocks_testimonial_version,
+		true
+	);
+}
