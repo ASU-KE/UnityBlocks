@@ -41,7 +41,6 @@ const save = ( props ) => {
 
 	return (
 		<div
-			// id="unityblocks-news-grid"
 			className={ classnames( className ) }
 			data-header={ JSON.stringify( header ) }
 			data-ctabutton={ JSON.stringify( ctaButton ) }
