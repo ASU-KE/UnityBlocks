@@ -18,7 +18,7 @@ const { name, category, attributes } = metadata;
 const settings = {
 	title: __( 'Unity Testimonial', 'unityblocks' ),
 	description: __( 'Provide Testimonial block.', 'unityblocks' ),
-	icon: 'cover-image',
+	icon: 'format-quote',
 	keywords: [
 		'unityblocks',
 		__( 'images', 'unityblocks' ),
