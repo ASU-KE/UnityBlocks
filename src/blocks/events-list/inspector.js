@@ -92,63 +92,67 @@ const Inspector = ( props ) => {
 						</>
 					) }
 				</PanelBody>
-
-				<PanelBody
-					title={ __( 'CTA button', 'unityblocks' ) }
-					initialOpen={ false }
-				>
-					<PanelRow>
-						<TextControl
-							className="eventslist__ctabutton-text"
-							label={ 'CTA text' }
-							placeholder="Click to see more events"
-							value={ ctaText }
-							onChange={ ( ctaText ) =>
-								setAttributes( { ctaText } )
-							}
-						/>
-					</PanelRow>
-					<PanelRow>
-						<TextControl
-							className="eventslist__ctabutton-url"
-							label={ 'CTA URL' }
-							placeholder="https://events.asu.edu"
-							value={ ctaUrl }
-							onChange={ ( ctaUrl ) =>
-								setAttributes( { ctaUrl } )
-							}
-						/>
-					</PanelRow>
-					<PanelRow>
-						<RadioControl
-							label={ __( 'CTA button color', 'unityblocks' ) }
-							selected={ ctaColor }
-							options={ [
-								{
-									label: __( 'Gold', 'unityblocks' ),
-									value: 'gold',
-								},
-								{
-									label: __( 'Maroon', 'unityblocks' ),
-									value: 'maroon',
-								},
-								{
-									label: __( 'Gray', 'unityblocks' ),
-									value: 'gray',
-								},
-								{
-									label: __( 'Dark', 'unityblocks' ),
-									value: 'dark',
-								},
-							] }
-							onChange={ ( ctaColor ) =>
-								setAttributes( {
-									ctaColor,
-								} )
-							}
-						/>
-					</PanelRow>
-				</PanelBody>
+				{ enableHeader && (
+					<PanelBody
+						title={ __( 'CTA button', 'unityblocks' ) }
+						initialOpen={ false }
+					>
+						<PanelRow>
+							<TextControl
+								className="eventslist__ctabutton-text"
+								label={ 'CTA text' }
+								placeholder="Click to see more events"
+								value={ ctaText }
+								onChange={ ( ctaText ) =>
+									setAttributes( { ctaText } )
+								}
+							/>
+						</PanelRow>
+						<PanelRow>
+							<TextControl
+								className="eventslist__ctabutton-url"
+								label={ 'CTA URL' }
+								placeholder="https://events.asu.edu"
+								value={ ctaUrl }
+								onChange={ ( ctaUrl ) =>
+									setAttributes( { ctaUrl } )
+								}
+							/>
+						</PanelRow>
+						<PanelRow>
+							<RadioControl
+								label={ __(
+									'CTA button color',
+									'unityblocks'
+								) }
+								selected={ ctaColor }
+								options={ [
+									{
+										label: __( 'Gold', 'unityblocks' ),
+										value: 'gold',
+									},
+									{
+										label: __( 'Maroon', 'unityblocks' ),
+										value: 'maroon',
+									},
+									{
+										label: __( 'Gray', 'unityblocks' ),
+										value: 'gray',
+									},
+									{
+										label: __( 'Dark', 'unityblocks' ),
+										value: 'dark',
+									},
+								] }
+								onChange={ ( ctaColor ) =>
+									setAttributes( {
+										ctaColor,
+									} )
+								}
+							/>
+						</PanelRow>
+					</PanelBody>
+				) }
 
 				<PanelBody
 					title={ __( 'Data Source', 'unityblocks' ) }
