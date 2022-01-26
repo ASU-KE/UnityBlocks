@@ -163,6 +163,9 @@ const Inspector = ( props ) => {
 						<TextControl
 							className="eventsgrid__datasource-url"
 							label={ 'Url' }
+							help={
+								'Data source url requires provided proxy. Edit end of url to select appropriate events feed. For master list of available events feeds, refer to: https://asuevents.asu.edu/reports/taxonomy-terms'
+							}
 							placeholder="https://cors.api.rtd.asu.edu/asuevents.asu.edu/feed-json/online"
 							value={ dataSourceUrl }
 							onChange={ ( dataSourceUrl ) =>
