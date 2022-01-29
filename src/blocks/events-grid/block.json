@@ -44,7 +44,7 @@
     },
     "maxItems": {
       "type": "number",
-      "default": 9
+      "default": 6
     }
   }
 }
