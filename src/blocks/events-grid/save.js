@@ -39,7 +39,7 @@ const save = ( props ) => {
 		filters: dataSourceFilters,
 	} );
 
-	const attributes = {
+	const dataAttributes = {
 		'data-enableheader': enableHeader,
 		'data-header': header,
 		'data-ctabutton': ctaButton,
@@ -47,7 +47,9 @@ const save = ( props ) => {
 		'data-maxitems': maxItems,
 	};
 
-	return <div className={ classnames( className ) } { ...attributes }></div>;
+	return (
+		<div className={ classnames( className ) } { ...dataAttributes }></div>
+	);
 };
 
 export default save;
