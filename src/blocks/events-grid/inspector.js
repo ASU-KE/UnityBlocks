@@ -155,6 +155,19 @@ const Inspector = ( props ) => {
 					</PanelBody>
 				) }
 
+				<PanelBody>
+					<PanelRow>
+						<TextControl
+							className="eventsgrid__maxitems-value"
+							label={ 'Max items to load' }
+							value={ maxItems }
+							onChange={ ( maxItems ) =>
+								setAttributes( { maxItems } )
+							}
+						/>
+					</PanelRow>
+				</PanelBody>
+
 				<PanelBody
 					title={ __( 'Data Source', 'unityblocks' ) }
 					initialOpen={ false }
@@ -183,20 +196,6 @@ const Inspector = ( props ) => {
 							value={ dataSourceFilters }
 							onChange={ ( dataSourceFilters ) =>
 								setAttributes( { dataSourceFilters } )
-							}
-						/>
-					</PanelRow>
-				</PanelBody>
-
-				<PanelBody>
-					<PanelRow>
-						<TextControl
-							className="eventsgrid__maxitems-value"
-							label={ 'Max items to load' }
-							placeholder={ '9' }
-							value={ maxItems }
-							onChange={ ( maxItems ) =>
-								setAttributes( { maxItems } )
 							}
 						/>
 					</PanelRow>
