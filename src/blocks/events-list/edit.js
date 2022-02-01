@@ -35,7 +35,7 @@ const Edit = ( props ) => {
 				color: headerColor,
 				text: headerText,
 		  }
-		: undefined;
+		: null;
 
 	const ctaButton = enableHeader
 		? {
@@ -43,16 +43,17 @@ const Edit = ( props ) => {
 				text: ctaText,
 				url: ctaUrl,
 		  }
-		: undefined;
+		: null;
+
+	const dataSource = {
+		url: dataSourceUrl,
+		filters: dataSourceFilters,
+	};
 
 	const args = {
-		enableHeader,
 		header,
 		ctaButton,
-		dataSource: {
-			url: dataSourceUrl,
-			filters: dataSourceFilters,
-		},
+		dataSource,
 		maxItems,
 	};
 

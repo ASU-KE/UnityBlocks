@@ -9,23 +9,24 @@ const carousels = document.querySelectorAll(
 );
 
 carousels.forEach( ( newsCarousel ) => {
-	const enableHeader = newsCarousel.dataset.enableheader;
-	const header = enableHeader ? newsCarousel.dataset.header : undefined;
-	const ctaButton = enableHeader
-		? JSON.parse( newsCarousel.dataset.ctabutton )
-		: undefined;
+	const enableHeader = newsCarousel.dataset.enableheader === 'true';
 	const cardButton = JSON.parse( newsCarousel.dataset.cardbutton );
 	const dataSource = JSON.parse( newsCarousel.dataset.datasource );
-	const maxItems = JSON.parse( newsCarousel.dataset.maxitems );
+	const maxItems = newsCarousel.dataset.maxitems;
 
-	render(
-		<CardCarouselNews
-			header={ header }
-			cardButton={ cardButton }
-			ctaButton={ ctaButton }
-			dataSource={ dataSource }
-			maxItems={ maxItems }
-		/>,
-		newsCarousel
-	);
+	const props = enableHeader
+		? {
+				header: JSON.parse( newsCarousel.dataset.header ),
+				ctaButton: JSON.parse( newsCarousel.dataset.ctabutton ),
+				cardButton,
+				dataSource,
+				maxItems,
+		  }
+		: {
+				cardButton,
+				dataSource,
+				maxItems,
+		  };
+
+	render( <CardCarouselNews { ...props } />, newsCarousel );
 } );

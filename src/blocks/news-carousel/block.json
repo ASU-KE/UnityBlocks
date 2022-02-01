@@ -13,10 +13,26 @@
     "headerColor": {
       "enum": [
         "dark",
-        "gray",
         "white"
       ],
       "default": "dark"
+    },
+    "ctaText": {
+      "type": "string",
+      "default": "Click to see more news"
+    },
+    "ctaUrl": {
+      "type": "string",
+      "default": "https://news.asu.edu/"
+    },
+    "ctaColor": {
+      "enum": [
+        "gold",
+        "maroon",
+        "gray",
+        "dark"
+      ],
+      "default": "maroon"
     },
     "cardButtonText": {
       "type": "string",
@@ -39,23 +55,6 @@
         "large"
       ],
       "default": "default"
-    },
-    "ctaText": {
-      "type": "string",
-      "default": "Click to see more news"
-    },
-    "ctaUrl": {
-      "type": "string",
-      "default": "https://news.asu.edu/"
-    },
-    "ctaColor": {
-      "enum": [
-        "gold",
-        "maroon",
-        "gray",
-        "dark"
-      ],
-      "default": "maroon"
     },
     "dataSourceUrl": {
       "type": "string",

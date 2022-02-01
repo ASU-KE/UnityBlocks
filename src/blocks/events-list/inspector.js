@@ -60,7 +60,6 @@ const Inspector = ( props ) => {
 								<TextControl
 									className="eventslist__header-text"
 									label={ 'Header text' }
-									placeholder="Events List"
 									value={ headerText }
 									onChange={ ( headerText ) =>
 										setAttributes( { headerText } )
@@ -70,7 +69,7 @@ const Inspector = ( props ) => {
 							<PanelRow>
 								<RadioControl
 									label={ __(
-										'Header color',
+										'Header text color',
 										'unityblocks'
 									) }
 									selected={ headerColor }
@@ -92,6 +91,7 @@ const Inspector = ( props ) => {
 						</>
 					) }
 				</PanelBody>
+
 				{ enableHeader && (
 					<PanelBody
 						title={ __( 'CTA button', 'unityblocks' ) }
@@ -101,7 +101,6 @@ const Inspector = ( props ) => {
 							<TextControl
 								className="eventslist__ctabutton-text"
 								label={ 'CTA text' }
-								placeholder="Click to see more events"
 								value={ ctaText }
 								onChange={ ( ctaText ) =>
 									setAttributes( { ctaText } )
@@ -112,7 +111,6 @@ const Inspector = ( props ) => {
 							<TextControl
 								className="eventslist__ctabutton-url"
 								label={ 'CTA URL' }
-								placeholder="https://events.asu.edu"
 								value={ ctaUrl }
 								onChange={ ( ctaUrl ) =>
 									setAttributes( { ctaUrl } )
@@ -154,6 +152,24 @@ const Inspector = ( props ) => {
 					</PanelBody>
 				) }
 
+				<PanelBody>
+					<PanelRow>
+						<TextControl
+							className="eventslist__maxitems-value"
+							label={ 'Max items to load' }
+							help={
+								"Changing this value doesn't update the Edit view immediately. Update and reload to refresh the editor."
+							}
+							value={ maxItems }
+							onChange={ ( maxItems ) =>
+								setAttributes( {
+									maxItems: Number( maxItems ), // Force attribute to number because this input field returns value as string.
+								} )
+							}
+						/>
+					</PanelRow>
+				</PanelBody>
+
 				<PanelBody
 					title={ __( 'Data Source', 'unityblocks' ) }
 					initialOpen={ false }
@@ -165,7 +181,6 @@ const Inspector = ( props ) => {
 							help={
 								'Data source url requires provided proxy. Edit end of url to select appropriate events feed. For master list of available events feeds, refer to: https://asuevents.asu.edu/reports/taxonomy-terms'
 							}
-							placeholder="https://cors.api.rtd.asu.edu/asuevents.asu.edu/feed-json/online"
 							value={ dataSourceUrl }
 							onChange={ ( dataSourceUrl ) =>
 								setAttributes( { dataSourceUrl } )
@@ -182,20 +197,6 @@ const Inspector = ( props ) => {
 							value={ dataSourceFilters }
 							onChange={ ( dataSourceFilters ) =>
 								setAttributes( { dataSourceFilters } )
-							}
-						/>
-					</PanelRow>
-				</PanelBody>
-
-				<PanelBody>
-					<PanelRow>
-						<TextControl
-							className="eventslist__maxitems-value"
-							label={ 'Max items to load' }
-							placeholder={ '10' }
-							value={ maxItems }
-							onChange={ ( maxItems ) =>
-								setAttributes( { maxItems } )
 							}
 						/>
 					</PanelRow>

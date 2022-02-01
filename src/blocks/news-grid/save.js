@@ -9,12 +9,12 @@ const save = ( props ) => {
 			enableHeader,
 			headerText,
 			headerColor,
-			cardButtonText,
-			cardButtonColor,
-			cardButtonSize,
 			ctaText,
 			ctaUrl,
 			ctaColor,
+			cardButtonText,
+			cardButtonColor,
+			cardButtonSize,
 			dataSourceUrl,
 			dataSourceFilters,
 			maxItems,
@@ -23,40 +23,42 @@ const save = ( props ) => {
 	} = props;
 
 	const header = enableHeader
-		? {
+		? JSON.stringify( {
 				color: headerColor,
 				text: headerText,
-		  }
-		: undefined;
+		  } )
+		: null;
 
 	const ctaButton = enableHeader
-		? {
+		? JSON.stringify( {
 				color: ctaColor,
 				text: ctaText,
 				url: ctaUrl,
-		  }
-		: undefined;
+		  } )
+		: null;
 
-	const cardButton = {
+	const cardButton = JSON.stringify( {
 		color: cardButtonColor,
 		text: cardButtonText,
 		url: cardButtonSize,
-	};
+	} );
 
-	const dataSource = {
+	const dataSource = JSON.stringify( {
 		url: dataSourceUrl,
 		filters: dataSourceFilters,
+	} );
+
+	const dataAttributes = {
+		'data-enableheader': enableHeader,
+		'data-header': header,
+		'data-ctabutton': ctaButton,
+		'data-cardbutton': cardButton,
+		'data-datasource': dataSource,
+		'data-maxitems': maxItems,
 	};
 
 	return (
-		<div
-			className={ classnames( className ) }
-			data-header={ JSON.stringify( header ) }
-			data-cardbutton={ JSON.stringify( cardButton ) }
-			data-ctabutton={ JSON.stringify( ctaButton ) }
-			data-datasource={ JSON.stringify( dataSource ) }
-			data-maxitems={ maxItems }
-		></div>
+		<div className={ classnames( className ) } { ...dataAttributes }></div>
 	);
 };
 
