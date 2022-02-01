@@ -2,6 +2,10 @@
   "name": "unityblocks/news-list",
   "category": "widgets",
   "attributes": {
+    "enableHeader": {
+      "type": "boolean",
+      "default": true
+    },
     "headerText": {
       "type": "string",
       "default": "News List"
@@ -43,7 +47,7 @@
     },
     "ctaUrl": {
       "type": "string",
-      "default": "https://news.asu.edu"
+      "default": "https://news.asu.edu/"
     },
     "ctaColor": {
       "enum": [

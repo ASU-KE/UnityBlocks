@@ -21,7 +21,7 @@ const settings = {
 	icon: 'list-view',
 	keywords: [
 		'unityblocks',
-		__( 'news', 'unityblocks' ),
+		__( 'events', 'unityblocks' ),
 		__( 'list', 'unityblocks' ),
 	],
 	supports: {

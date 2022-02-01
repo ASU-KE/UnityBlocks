@@ -2,6 +2,10 @@
   "name": "unityblocks/events-grid",
   "category": "widgets",
   "attributes": {
+    "enableHeader": {
+      "type": "boolean",
+      "default": true
+    },
     "headerText": {
       "type": "string",
       "default": "Events Grid"

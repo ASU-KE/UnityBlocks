@@ -2,6 +2,10 @@
   "name": "unityblocks/news-carousel",
   "category": "widgets",
   "attributes": {
+    "enableHeader": {
+      "type": "boolean",
+      "default": true
+    },
     "headerText": {
       "type": "string",
       "default": "News Carousel"
@@ -42,7 +46,7 @@
     },
     "ctaUrl": {
       "type": "string",
-      "default": "https://news.asu.edu"
+      "default": "https://news.asu.edu/"
     },
     "ctaColor": {
       "enum": [

@@ -7,9 +7,12 @@ import { CardListlNews } from '@asu-design-system/component-news/dist/asuNews.es
 const lists = document.querySelectorAll( '.wp-block-unityblocks-news-list' );
 
 lists.forEach( ( newsList ) => {
-	const header = newsList.dataset.header;
+	const enableHeader = newsList.dataset.enableheader;
+	const header = enableHeader ? newsList.dataset.header : undefined;
+	const ctaButton = enableHeader
+		? JSON.parse( newsList.dataset.ctabutton )
+		: undefined;
 	const cardButton = JSON.parse( newsList.dataset.cardbutton );
-	const ctaButton = JSON.parse( newsList.dataset.ctabutton );
 	const dataSource = JSON.parse( newsList.dataset.datasource );
 	const maxItems = JSON.parse( newsList.dataset.maxitems );
 

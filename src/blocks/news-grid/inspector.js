@@ -8,6 +8,7 @@ import {
 	PanelRow,
 	RadioControl,
 	TextControl,
+	ToggleControl,
 } from '@wordpress/components';
 
 /**
@@ -18,6 +19,7 @@ import {
 const Inspector = ( props ) => {
 	const {
 		attributes: {
+			enableHeader,
 			headerText,
 			headerColor,
 			cardButtonText,
@@ -41,44 +43,131 @@ const Inspector = ( props ) => {
 					initialOpen={ true }
 				>
 					<PanelRow>
-						<TextControl
-							className="newsgrid__header-text"
-							label={ 'Header text' }
-							placeholder="News Grid"
-							value={ headerText }
-							onChange={ ( headerText ) =>
-								setAttributes( { headerText } )
+						<ToggleControl
+							className="eventsgrid__header-toggle"
+							label={ 'Enable Header' }
+							help={
+								enableHeader
+									? 'Header enabled.'
+									: 'Header disabled.'
 							}
+							checked={ enableHeader }
+							onChange={ ( enableHeader ) => {
+								setAttributes( { enableHeader } );
+							} }
 						/>
 					</PanelRow>
-					<PanelRow>
-						<RadioControl
-							label={ __( 'Header color', 'unityblocks' ) }
-							selected={ headerColor }
-							options={ [
-								{
-									label: __( 'Gold', 'unityblocks' ),
-									value: 'gold',
-								},
-								{
-									label: __( 'Maroon', 'unityblocks' ),
-									value: 'maroon',
-								},
-								{
-									label: __( 'Gray', 'unityblocks' ),
-									value: 'gray',
-								},
-								{
-									label: __( 'Dark', 'unityblocks' ),
-									value: 'dark',
-								},
-							] }
-							onChange={ ( headerColor ) =>
-								setAttributes( { headerColor } )
-							}
-						/>
-					</PanelRow>
+					{ enableHeader && (
+						<>
+							<PanelRow>
+								<TextControl
+									className="newsgrid__header-text"
+									label={ 'Header text' }
+									placeholder="News Grid"
+									value={ headerText }
+									onChange={ ( headerText ) =>
+										setAttributes( { headerText } )
+									}
+								/>
+							</PanelRow>
+							<PanelRow>
+								<RadioControl
+									label={ __(
+										'Header color',
+										'unityblocks'
+									) }
+									selected={ headerColor }
+									options={ [
+										{
+											label: __( 'Gold', 'unityblocks' ),
+											value: 'gold',
+										},
+										{
+											label: __(
+												'Maroon',
+												'unityblocks'
+											),
+											value: 'maroon',
+										},
+										{
+											label: __( 'Gray', 'unityblocks' ),
+											value: 'gray',
+										},
+										{
+											label: __( 'Dark', 'unityblocks' ),
+											value: 'dark',
+										},
+									] }
+									onChange={ ( headerColor ) =>
+										setAttributes( { headerColor } )
+									}
+								/>
+							</PanelRow>
+						</>
+					) }
 				</PanelBody>
+
+				{ enableHeader && (
+					<PanelBody
+						title={ __( 'CTA button', 'unityblocks' ) }
+						initialOpen={ false }
+					>
+						<PanelRow>
+							<TextControl
+								className="newsgrid__cardbutton-text"
+								label={ 'CTA text' }
+								placeholder="Click to see more news"
+								value={ ctaText }
+								onChange={ ( ctaText ) =>
+									setAttributes( { ctaText } )
+								}
+							/>
+						</PanelRow>
+						<PanelRow>
+							<TextControl
+								className="newsgrid__cardbutton-url"
+								label={ 'CTA URL' }
+								placeholder="https://news.asu.edu/"
+								value={ ctaUrl }
+								onChange={ ( ctaUrl ) =>
+									setAttributes( { ctaUrl } )
+								}
+							/>
+						</PanelRow>
+						<PanelRow>
+							<RadioControl
+								label={ __(
+									'CTA button color',
+									'unityblocks'
+								) }
+								selected={ ctaColor }
+								options={ [
+									{
+										label: __( 'Gold', 'unityblocks' ),
+										value: 'gold',
+									},
+									{
+										label: __( 'Maroon', 'unityblocks' ),
+										value: 'maroon',
+									},
+									{
+										label: __( 'Gray', 'unityblocks' ),
+										value: 'gray',
+									},
+									{
+										label: __( 'Dark', 'unityblocks' ),
+										value: 'dark',
+									},
+								] }
+								onChange={ ( ctaColor ) =>
+									setAttributes( {
+										ctaColor,
+									} )
+								}
+							/>
+						</PanelRow>
+					</PanelBody>
+				) }
 
 				<PanelBody
 					title={ __( 'Card buttons', 'unityblocks' ) }
@@ -152,63 +241,6 @@ const Inspector = ( props ) => {
 				</PanelBody>
 
 				<PanelBody
-					title={ __( 'CTA button', 'unityblocks' ) }
-					initialOpen={ false }
-				>
-					<PanelRow>
-						<TextControl
-							className="newsgrid__cardbutton-text"
-							label={ 'CTA text' }
-							placeholder="Click to see more news"
-							value={ ctaText }
-							onChange={ ( ctaText ) =>
-								setAttributes( { ctaText } )
-							}
-						/>
-					</PanelRow>
-					<PanelRow>
-						<TextControl
-							className="newsgrid__cardbutton-url"
-							label={ 'CTA URL' }
-							placeholder="https://news.asu.edu"
-							value={ ctaUrl }
-							onChange={ ( ctaUrl ) =>
-								setAttributes( { ctaUrl } )
-							}
-						/>
-					</PanelRow>
-					<PanelRow>
-						<RadioControl
-							label={ __( 'CTA button color', 'unityblocks' ) }
-							selected={ ctaColor }
-							options={ [
-								{
-									label: __( 'Gold', 'unityblocks' ),
-									value: 'gold',
-								},
-								{
-									label: __( 'Maroon', 'unityblocks' ),
-									value: 'maroon',
-								},
-								{
-									label: __( 'Gray', 'unityblocks' ),
-									value: 'gray',
-								},
-								{
-									label: __( 'Dark', 'unityblocks' ),
-									value: 'dark',
-								},
-							] }
-							onChange={ ( ctaColor ) =>
-								setAttributes( {
-									ctaColor,
-								} )
-							}
-						/>
-					</PanelRow>
-				</PanelBody>
-
-				<PanelBody
 					title={ __( 'Data Source', 'unityblocks' ) }
 					initialOpen={ false }
 				>
@@ -216,6 +248,9 @@ const Inspector = ( props ) => {
 						<TextControl
 							className="newsgrid__datasource-url"
 							label={ 'Url' }
+							help={
+								'Data source url requires reverse proxy. Edit end of url to select appropriate news feed. For master list of available news feeds, refer to: https://news.asu.edu/reports/taxonomy-terms-count'
+							}
 							placeholder="https://cors.api.rtd.asu.edu/asunow.asu.edu:443/feeds-json/"
 							value={ dataSourceUrl }
 							onChange={ ( dataSourceUrl ) =>

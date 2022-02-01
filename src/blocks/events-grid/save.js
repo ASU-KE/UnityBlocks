@@ -6,6 +6,7 @@ import classnames from 'classnames';
 const save = ( props ) => {
 	const {
 		attributes: {
+			enableHeader,
 			headerText,
 			headerColor,
 			ctaText,
@@ -18,16 +19,20 @@ const save = ( props ) => {
 		className,
 	} = props;
 
-	const header = {
-		color: headerColor,
-		text: headerText,
-	};
+	const header = enableHeader
+		? {
+				color: headerColor,
+				text: headerText,
+		  }
+		: undefined;
 
-	const ctaButton = {
-		color: ctaColor,
-		text: ctaText,
-		url: ctaUrl,
-	};
+	const ctaButton = enableHeader
+		? {
+				color: ctaColor,
+				text: ctaText,
+				url: ctaUrl,
+		  }
+		: undefined;
 
 	const dataSource = {
 		url: dataSourceUrl,
@@ -36,7 +41,6 @@ const save = ( props ) => {
 
 	return (
 		<div
-			// id="unityblocks-news-grid"
 			className={ classnames( className ) }
 			data-header={ JSON.stringify( header ) }
 			data-ctabutton={ JSON.stringify( ctaButton ) }
