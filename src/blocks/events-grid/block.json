@@ -36,7 +36,11 @@
     },
     "dataSourceUrl": {
       "type": "string",
-      "default": "https://cors.api.rtd.asu.edu/asuevents.asu.edu/feed-json/online"
+      "default": "https://cors.api.rtd.asu.edu/asuevents.asu.edu/feed-json/"
+    },
+    "dataSourceFeed": {
+      "type": "string",
+      "default": "online"
     },
     "dataSourceFilters": {
       "type": "string",
@@ -44,7 +48,7 @@
     },
     "maxItems": {
       "type": "number",
-      "default": 9
+      "default": 6
     }
   }
 }
