@@ -9,7 +9,7 @@ import {
 	MediaUploadCheck,
 } from '@wordpress/block-editor';
 import {
-	Button,
+	IconButton,
 	// RadioControl,
 	// TextControl,
 	Toolbar,
@@ -77,9 +77,15 @@ const Controls = ( props ) => {
 								onSelect={ onSelectMedia }
 								allowedTypes={ [ 'image' ] }
 								render={ ( { open } ) => (
-									<Button onClick={ open } isDefault isLarge>
-										{ __( 'Replace image', 'unityblocks' ) }
-									</Button>
+									<IconButton
+										className="components-toolbar__control"
+										label={ __(
+											'Edit image',
+											'unityblocks'
+										) }
+										icon="edit"
+										onClick={ open }
+									/>
 								) }
 							/>
 						</MediaUploadCheck>
