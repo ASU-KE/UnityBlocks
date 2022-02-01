@@ -13,10 +13,26 @@
     "headerColor": {
       "enum": [
         "dark",
-        "gray",
         "white"
       ],
       "default": "dark"
+    },
+    "ctaText": {
+      "type": "string",
+      "default": "Click to see more news"
+    },
+    "ctaUrl": {
+      "type": "string",
+      "default": "https://news.asu.edu/"
+    },
+    "ctaColor": {
+      "enum": [
+        "gold",
+        "maroon",
+        "gray",
+        "dark"
+      ],
+      "default": "maroon"
     },
     "cardButtonText": {
       "type": "string",
@@ -40,26 +56,13 @@
       ],
       "default": "default"
     },
-    "ctaText": {
-      "type": "string",
-      "default": "Click to see more news"
-    },
-    "ctaUrl": {
-      "type": "string",
-      "default": "https://news.asu.edu/"
-    },
-    "ctaColor": {
-      "enum": [
-        "gold",
-        "maroon",
-        "gray",
-        "dark"
-      ],
-      "default": "maroon"
-    },
     "dataSourceUrl": {
       "type": "string",
       "default": "https://cors.api.rtd.asu.edu/asunow.asu.edu:443/feeds-json/"
+    },
+    "dataSourceFeed": {
+      "type": "string",
+      "default": ""
     },
     "dataSourceFilters": {
       "type": "string",

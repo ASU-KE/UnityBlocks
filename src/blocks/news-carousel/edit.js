@@ -20,13 +20,14 @@ const Edit = ( props ) => {
 			enableHeader,
 			headerText,
 			headerColor,
-			cardButtonText,
-			cardButtonColor,
-			cardButtonSize,
 			ctaText,
 			ctaColor,
 			ctaUrl,
+			cardButtonText,
+			cardButtonColor,
+			cardButtonSize,
 			dataSourceUrl,
+			dataSourceFeed,
 			dataSourceFilters,
 			maxItems,
 		},
@@ -38,7 +39,7 @@ const Edit = ( props ) => {
 				color: headerColor,
 				text: headerText,
 		  }
-		: undefined;
+		: null;
 
 	const ctaButton = enableHeader
 		? {
@@ -46,21 +47,24 @@ const Edit = ( props ) => {
 				text: ctaText,
 				url: ctaUrl,
 		  }
-		: undefined;
+		: null;
+
+	const cardButton = {
+		color: cardButtonColor,
+		text: cardButtonText,
+		url: cardButtonSize,
+	};
+
+	const dataSource = {
+		url: dataSourceUrl + dataSourceFeed,
+		filters: dataSourceFilters,
+	};
 
 	const args = {
-		enableHeader,
 		header,
 		ctaButton,
-		cardButton: {
-			color: cardButtonColor,
-			text: cardButtonText,
-			url: cardButtonSize,
-		},
-		dataSource: {
-			url: dataSourceUrl,
-			filters: dataSourceFilters,
-		},
+		cardButton,
+		dataSource,
 		maxItems,
 	};
 

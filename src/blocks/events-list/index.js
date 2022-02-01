@@ -17,7 +17,7 @@ const { name, category, attributes } = metadata;
 
 const settings = {
 	title: __( 'Unity Events List', 'unityblocks' ),
-	description: __( 'Provide a list of ASU Events.', 'unityblocks' ),
+	description: __( 'Provide a list layout of ASU Events.', 'unityblocks' ),
 	icon: 'list-view',
 	keywords: [
 		'unityblocks',
