@@ -60,7 +60,6 @@ const Inspector = ( props ) => {
 								<TextControl
 									className="eventsgrid__header-text"
 									label={ 'Header text' }
-									placeholder="Events Grid"
 									value={ headerText }
 									onChange={ ( headerText ) =>
 										setAttributes( { headerText } )
@@ -70,7 +69,7 @@ const Inspector = ( props ) => {
 							<PanelRow>
 								<RadioControl
 									label={ __(
-										'Header color',
+										'Header text color',
 										'unityblocks'
 									) }
 									selected={ headerColor }
@@ -113,7 +112,6 @@ const Inspector = ( props ) => {
 							<TextControl
 								className="eventsgrid__cardbutton-url"
 								label={ 'CTA URL' }
-								placeholder="https://asuevents.asu.edu/"
 								value={ ctaUrl }
 								onChange={ ( ctaUrl ) =>
 									setAttributes( { ctaUrl } )
@@ -160,6 +158,9 @@ const Inspector = ( props ) => {
 						<TextControl
 							className="eventsgrid__maxitems-value"
 							label={ 'Max items to load' }
+							help={
+								"Changing this value doesn't update the Edit view immediately. Update and reload to refresh the editor."
+							}
 							value={ maxItems }
 							onChange={ ( maxItems ) =>
 								setAttributes( {
@@ -181,7 +182,6 @@ const Inspector = ( props ) => {
 							help={
 								'Data source url requires provided proxy. Edit end of url to select appropriate events feed. For master list of available events feeds, refer to: https://asuevents.asu.edu/reports/taxonomy-terms'
 							}
-							placeholder="https://cors.api.rtd.asu.edu/asuevents.asu.edu/feed-json/online"
 							value={ dataSourceUrl }
 							onChange={ ( dataSourceUrl ) =>
 								setAttributes( { dataSourceUrl } )
