@@ -8,12 +8,7 @@ import {
 	MediaUpload,
 	MediaUploadCheck,
 } from '@wordpress/block-editor';
-import {
-	IconButton,
-	// RadioControl,
-	// TextControl,
-	Toolbar,
-} from '@wordpress/components';
+import { IconButton, Toolbar } from '@wordpress/components';
 
 /**
  * Block dependencies
@@ -28,35 +23,9 @@ import icon from './icon';
  */
 const Controls = ( props ) => {
 	const {
-		attributes: {
-			// heroType,
-			mediaId,
-			// mediaCssClass,
-			// mediaSize,
-			// subTitleText,
-			// subTitleHighlightColor,
-			// subTitleMaxWidth,
-			// subTitleCssClass,
-			// titleText,
-			// titleHighlightColor,
-			// titleMaxWidth,
-			// titleCssClass,
-			// contentsText,
-			// contentsMaxWidth,
-			// contentsCssClass,
-			// contentsHighlightColor,
-			// contentsColor,
-		},
+		attributes: { mediaId },
 		className,
-		// setAttributes,
 	} = props;
-
-	// const removeMedia = () => {
-	// 	props.setAttributes( {
-	// 		mediaId: 0,
-	// 		mediaUrl: '',
-	// 	} );
-	// };
 
 	const onSelectMedia = ( media ) => {
 		props.setAttributes( {
