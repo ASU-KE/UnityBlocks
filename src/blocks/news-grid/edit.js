@@ -27,6 +27,7 @@ const Edit = ( props ) => {
 			cardButtonColor,
 			cardButtonSize,
 			dataSourceUrl,
+			dataSourceFeed,
 			dataSourceFilters,
 			maxItems,
 		},
@@ -55,7 +56,7 @@ const Edit = ( props ) => {
 	};
 
 	const dataSource = {
-		url: dataSourceUrl,
+		url: dataSourceUrl + dataSourceFeed,
 		filters: dataSourceFilters,
 	};
 

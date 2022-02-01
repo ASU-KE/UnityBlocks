@@ -60,6 +60,10 @@
       "type": "string",
       "default": "https://cors.api.rtd.asu.edu/asunow.asu.edu:443/feeds-json/"
     },
+    "dataSourceFeed": {
+      "type": "string",
+      "default": ""
+    },
     "dataSourceFilters": {
       "type": "string",
       "default": ""

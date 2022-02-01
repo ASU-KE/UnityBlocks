@@ -26,6 +26,7 @@ const Inspector = ( props ) => {
 			ctaUrl,
 			ctaColor,
 			dataSourceUrl,
+			dataSourceFeed,
 			dataSourceFilters,
 			maxItems,
 		},
@@ -180,7 +181,7 @@ const Inspector = ( props ) => {
 							className="eventsgrid__datasource-url"
 							label={ 'Url' }
 							help={
-								'Data source url requires provided proxy. Edit end of url to select appropriate events feed. For master list of available events feeds, refer to: https://asuevents.asu.edu/reports/taxonomy-terms'
+								'Data source url requires the provided proxy.'
 							}
 							value={ dataSourceUrl }
 							onChange={ ( dataSourceUrl ) =>
@@ -190,10 +191,26 @@ const Inspector = ( props ) => {
 					</PanelRow>
 					<PanelRow>
 						<TextControl
+							className="eventsgrid__datasource-feed"
+							label={ 'Base feed machine name' }
+							help={
+								'Enter the single taxonomy machine name to select the base events feed. For the master list of available events feeds, refer to: https://asuevents.asu.edu/reports/taxonomy-terms'
+							}
+							value={ dataSourceFeed }
+							onChange={ ( dataSourceFeed ) =>
+								setAttributes( { dataSourceFeed } )
+							}
+						/>
+					</PanelRow>
+					<PanelRow>
+						<TextControl
 							className="eventsgrid__datasource-filters"
 							label={ 'Filters' }
+							help={
+								'Enter optional taxonomy terms, comma delimited.'
+							}
 							placeholder={
-								'e.g. nursing_and_health_care,School of Mathematical and Natural Sciences,Student'
+								'nursing_and_health_care,School of Mathematical and Natural Sciences,Student'
 							}
 							value={ dataSourceFilters }
 							onChange={ ( dataSourceFilters ) =>

@@ -13,6 +13,7 @@ const save = ( props ) => {
 			ctaUrl,
 			ctaColor,
 			dataSourceUrl,
+			dataSourceFeed,
 			dataSourceFilters,
 			maxItems,
 		},
@@ -35,7 +36,7 @@ const save = ( props ) => {
 		: null;
 
 	const dataSource = JSON.stringify( {
-		url: dataSourceUrl,
+		url: dataSourceUrl + dataSourceFeed,
 		filters: dataSourceFilters,
 	} );
 

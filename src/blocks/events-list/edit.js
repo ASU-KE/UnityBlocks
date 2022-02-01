@@ -24,6 +24,7 @@ const Edit = ( props ) => {
 			ctaColor,
 			ctaUrl,
 			dataSourceUrl,
+			dataSourceFeed,
 			dataSourceFilters,
 			maxItems,
 		},
@@ -46,7 +47,7 @@ const Edit = ( props ) => {
 		: null;
 
 	const dataSource = {
-		url: dataSourceUrl,
+		url: dataSourceUrl + dataSourceFeed,
 		filters: dataSourceFilters,
 	};
 

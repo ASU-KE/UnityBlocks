@@ -16,6 +16,7 @@ const save = ( props ) => {
 			cardButtonColor,
 			cardButtonSize,
 			dataSourceUrl,
+			dataSourceFeed,
 			dataSourceFilters,
 			maxItems,
 		},
@@ -44,7 +45,7 @@ const save = ( props ) => {
 	} );
 
 	const dataSource = JSON.stringify( {
-		url: dataSourceUrl,
+		url: dataSourceUrl + dataSourceFeed,
 		filters: dataSourceFilters,
 	} );
 
