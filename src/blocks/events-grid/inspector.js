@@ -162,7 +162,9 @@ const Inspector = ( props ) => {
 							label={ 'Max items to load' }
 							value={ maxItems }
 							onChange={ ( maxItems ) =>
-								setAttributes( { maxItems } )
+								setAttributes( {
+									maxItems: Number( maxItems ), // Force attribute to number because this input field returns value as string.
+								} )
 							}
 						/>
 					</PanelRow>
