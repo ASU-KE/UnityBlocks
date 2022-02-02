@@ -17,6 +17,7 @@ import * as eventsList from './blocks/events-list';
 import * as newsCarousel from './blocks/news-carousel';
 import * as newsGrid from './blocks/news-grid';
 import * as newsList from './blocks/news-list';
+import * as testimonial from './blocks/testimonial';
 
 /**
  * Function to register an individual block.
@@ -54,6 +55,7 @@ export const registerUnityBlocksBlocks = () => {
 		newsCarousel,
 		newsGrid,
 		newsList,
+		testimonial,
 	].forEach( registerBlock );
 };
 
