@@ -63,6 +63,10 @@ module.exports = {
 			process.cwd(),
 			'src/blocks/news-list/frontend.js'
 		),
+		'js/unityblocks-testimonial': path.resolve(
+			process.cwd(),
+			'src/blocks/testimonial/frontend.js'
+		),
 	},
 
 	output: {
