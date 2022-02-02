@@ -7,23 +7,24 @@ import { CardGridNews } from '@asu-design-system/component-news/dist/asuNews.es'
 const grids = document.querySelectorAll( '.wp-block-unityblocks-news-grid' );
 
 grids.forEach( ( newsGrid ) => {
-	const enableHeader = newsGrid.dataset.enableheader;
-	const header = enableHeader ? newsGrid.dataset.header : undefined;
-	const ctaButton = enableHeader
-		? JSON.parse( newsGrid.dataset.ctabutton )
-		: undefined;
+	const enableHeader = newsGrid.dataset.enableheader === 'true';
 	const cardButton = JSON.parse( newsGrid.dataset.cardbutton );
 	const dataSource = JSON.parse( newsGrid.dataset.datasource );
-	const maxItems = JSON.parse( newsGrid.dataset.maxitems );
+	const maxItems = newsGrid.dataset.maxitems;
 
-	render(
-		<CardGridNews
-			header={ header }
-			cardButton={ cardButton }
-			ctaButton={ ctaButton }
-			dataSource={ dataSource }
-			maxItems={ maxItems }
-		/>,
-		newsGrid
-	);
+	const props = enableHeader
+		? {
+				header: JSON.parse( newsGrid.dataset.header ),
+				ctaButton: JSON.parse( newsGrid.dataset.ctabutton ),
+				cardButton,
+				dataSource,
+				maxItems,
+		  }
+		: {
+				cardButton,
+				dataSource,
+				maxItems,
+		  };
+
+	render( <CardGridNews { ...props } />, newsGrid );
 } );

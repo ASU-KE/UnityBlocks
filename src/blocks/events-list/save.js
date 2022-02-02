@@ -13,6 +13,7 @@ const save = ( props ) => {
 			ctaUrl,
 			ctaColor,
 			dataSourceUrl,
+			dataSourceFeed,
 			dataSourceFilters,
 			maxItems,
 		},
@@ -20,33 +21,35 @@ const save = ( props ) => {
 	} = props;
 
 	const header = enableHeader
-		? {
+		? JSON.stringify( {
 				color: headerColor,
 				text: headerText,
-		  }
-		: undefined;
+		  } )
+		: null;
 
 	const ctaButton = enableHeader
-		? {
+		? JSON.stringify( {
 				color: ctaColor,
 				text: ctaText,
 				url: ctaUrl,
-		  }
-		: undefined;
+		  } )
+		: null;
 
-	const dataSource = {
-		url: dataSourceUrl,
+	const dataSource = JSON.stringify( {
+		url: dataSourceUrl + dataSourceFeed,
 		filters: dataSourceFilters,
+	} );
+
+	const dataAttributes = {
+		'data-enableheader': enableHeader,
+		'data-header': header,
+		'data-ctabutton': ctaButton,
+		'data-datasource': dataSource,
+		'data-maxitems': maxItems,
 	};
 
 	return (
-		<div
-			className={ classnames( className ) }
-			data-header={ JSON.stringify( header ) }
-			data-ctabutton={ JSON.stringify( ctaButton ) }
-			data-datasource={ JSON.stringify( dataSource ) }
-			data-maxitems={ maxItems }
-		></div>
+		<div className={ classnames( className ) } { ...dataAttributes }></div>
 	);
 };
 

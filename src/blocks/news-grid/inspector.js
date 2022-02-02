@@ -22,13 +22,14 @@ const Inspector = ( props ) => {
 			enableHeader,
 			headerText,
 			headerColor,
-			cardButtonText,
-			cardButtonColor,
-			cardButtonSize,
 			ctaText,
 			ctaUrl,
 			ctaColor,
+			cardButtonText,
+			cardButtonColor,
+			cardButtonSize,
 			dataSourceUrl,
+			dataSourceFeed,
 			dataSourceFilters,
 			maxItems,
 		},
@@ -63,7 +64,6 @@ const Inspector = ( props ) => {
 								<TextControl
 									className="newsgrid__header-text"
 									label={ 'Header text' }
-									placeholder="News Grid"
 									value={ headerText }
 									onChange={ ( headerText ) =>
 										setAttributes( { headerText } )
@@ -73,25 +73,14 @@ const Inspector = ( props ) => {
 							<PanelRow>
 								<RadioControl
 									label={ __(
-										'Header color',
+										'Header text color',
 										'unityblocks'
 									) }
 									selected={ headerColor }
 									options={ [
 										{
-											label: __( 'Gold', 'unityblocks' ),
-											value: 'gold',
-										},
-										{
-											label: __(
-												'Maroon',
-												'unityblocks'
-											),
-											value: 'maroon',
-										},
-										{
-											label: __( 'Gray', 'unityblocks' ),
-											value: 'gray',
+											label: __( 'White', 'unityblocks' ),
+											value: 'white',
 										},
 										{
 											label: __( 'Dark', 'unityblocks' ),
@@ -116,7 +105,6 @@ const Inspector = ( props ) => {
 							<TextControl
 								className="newsgrid__cardbutton-text"
 								label={ 'CTA text' }
-								placeholder="Click to see more news"
 								value={ ctaText }
 								onChange={ ( ctaText ) =>
 									setAttributes( { ctaText } )
@@ -127,7 +115,6 @@ const Inspector = ( props ) => {
 							<TextControl
 								className="newsgrid__cardbutton-url"
 								label={ 'CTA URL' }
-								placeholder="https://news.asu.edu/"
 								value={ ctaUrl }
 								onChange={ ( ctaUrl ) =>
 									setAttributes( { ctaUrl } )
@@ -169,6 +156,24 @@ const Inspector = ( props ) => {
 					</PanelBody>
 				) }
 
+				<PanelBody>
+					<PanelRow>
+						<TextControl
+							className="newsgrid__maxitems-value"
+							label={ 'Max items to load' }
+							help={
+								"Changing this value doesn't update the Edit view immediately. Update and reload to refresh the editor."
+							}
+							value={ maxItems }
+							onChange={ ( maxItems ) =>
+								setAttributes( {
+									maxItems: Number( maxItems ), // Force attribute to number because this input field returns value as string.
+								} )
+							}
+						/>
+					</PanelRow>
+				</PanelBody>
+
 				<PanelBody
 					title={ __( 'Card buttons', 'unityblocks' ) }
 					initialOpen={ false }
@@ -177,7 +182,6 @@ const Inspector = ( props ) => {
 						<TextControl
 							className="newsgrid__cardbutton-text"
 							label={ 'Button text' }
-							placeholder="Read news"
 							value={ cardButtonText }
 							onChange={ ( cardButtonText ) =>
 								setAttributes( { cardButtonText } )
@@ -249,9 +253,8 @@ const Inspector = ( props ) => {
 							className="newsgrid__datasource-url"
 							label={ 'Url' }
 							help={
-								'Data source url requires reverse proxy. Edit end of url to select appropriate news feed. For master list of available news feeds, refer to: https://news.asu.edu/reports/taxonomy-terms-count'
+								'Data source url requires the provided proxy.'
 							}
-							placeholder="https://cors.api.rtd.asu.edu/asunow.asu.edu:443/feeds-json/"
 							value={ dataSourceUrl }
 							onChange={ ( dataSourceUrl ) =>
 								setAttributes( { dataSourceUrl } )
@@ -260,28 +263,30 @@ const Inspector = ( props ) => {
 					</PanelRow>
 					<PanelRow>
 						<TextControl
+							className="newsgrid__datasource-feed"
+							label={ 'Base feed machine name' }
+							help={
+								'Enter the single taxonomy machine name to select the base events feed. For the master list of available events feeds, refer to: https://asuevents.asu.edu/reports/taxonomy-terms'
+							}
+							value={ dataSourceFeed }
+							onChange={ ( dataSourceFeed ) =>
+								setAttributes( { dataSourceFeed } )
+							}
+						/>
+					</PanelRow>
+					<PanelRow>
+						<TextControl
 							className="newsgrid__datasource-filters"
 							label={ 'Filters' }
+							help={
+								'Enter optional taxonomy terms, comma delimited.'
+							}
 							placeholder={
-								'e.g. nursing_and_health_care,School of Mathematical and Natural Sciences,Student'
+								'nursing_and_health_care,School of Mathematical and Natural Sciences,Student'
 							}
 							value={ dataSourceFilters }
 							onChange={ ( dataSourceFilters ) =>
 								setAttributes( { dataSourceFilters } )
-							}
-						/>
-					</PanelRow>
-				</PanelBody>
-
-				<PanelBody>
-					<PanelRow>
-						<TextControl
-							className="newsgrid__maxitems-value"
-							label={ 'Max items to load' }
-							placeholder={ '10' }
-							value={ maxItems }
-							onChange={ ( maxItems ) =>
-								setAttributes( { maxItems } )
 							}
 						/>
 					</PanelRow>
