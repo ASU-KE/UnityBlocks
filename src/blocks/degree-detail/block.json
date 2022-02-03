@@ -1,0 +1,364 @@
+{
+  "name": "unityblocks/degree-detail",
+  "category": "widgets",
+  "attributes": {
+    "appPathFolder": {
+      "type": "string",
+      "default": "."
+    },
+    "endpoint": {
+      "type": "string",
+      "default": "https://degreesearch-proxy.apps.asu.edu/degreesearch/"
+    },
+    "acadPlan": {
+      "type": "string",
+      "default": ""
+    },
+    "anchorAtAGlance": {
+      "type": "boolean",
+      "default": true
+    },
+    "anchorApplicationRequirements": {
+      "type": "boolean",
+      "default": true
+    },
+    "anchorChangeMajorRequirements": {
+      "type": "boolean",
+      "default": true
+    },
+    "anchorNextSteps": {
+      "type": "boolean",
+      "default": true
+    },
+    "anchorAffordingCollege": {
+      "type": "boolean",
+      "default": true
+    },
+    "anchorFlexibleDegreeOptions": {
+      "type": "boolean",
+      "default": true
+    },
+    "anchorCareerOutlook": {
+      "type": "boolean",
+      "default": true
+    },
+    "anchorExampleCareers": {
+      "type": "boolean",
+      "default": true
+    },
+    "anchorCustomizeYourCollegeExperience": {
+      "type": "boolean",
+      "default": true
+    },
+    "anchorGlobalOpportunity": {
+      "type": "boolean",
+      "default": true
+    },
+    "anchorAttendOnline": {
+      "type": "boolean",
+      "default": true
+    },
+    "anchorProgramContactInfo": {
+      "type": "boolean",
+      "default": true
+    },
+    "anchorExternalAnchors": {
+      "type": "array",
+      "default": []
+    },
+    "heroType": {
+      "enum": [
+        "heading-hero",
+        "story-hero"
+      ],
+      "default": "heading-hero"
+    },
+    "heroMediaId": {
+      "type": "number",
+      "default": 0
+    },
+    "heroMediaUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "heroMediaAltText": {
+      "type": "string",
+      "default": ""
+    },
+    "heroMediaCssClass": {
+      "type": "array",
+      "default": []
+    },
+    "heroMediaSize": {
+      "enum": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "default": "medium"
+    },
+    "heroSubTitleText": {
+      "type": "string",
+      "default": ""
+    },
+    "heroSubTitleHighlightColor": {
+      "enum": [
+        "gold",
+        "white",
+        "black"
+      ],
+      "default": "white"
+    },
+    "heroSubTitleMaxWidth": {
+      "type": "string",
+      "default": ""
+    },
+    "heroSubTitleCssClass": {
+      "type": "array",
+      "default": []
+    },
+    "heroTitleText": {
+      "type": "string",
+      "default": ""
+    },
+    "heroTitleHighlightColor": {
+      "enum": [
+        "gold",
+        "white",
+        "black"
+      ],
+      "default": "gold"
+    },
+    "heroTitleMaxWidth": {
+      "type": "string",
+      "default": ""
+    },
+    "heroTitleCssClass": {
+      "type": "array",
+      "default": []
+    },
+    "heroContentsText": {
+      "type": "string",
+      "default": ""
+    },
+    "heroContentsMaxWidth": {
+      "type": "string",
+      "default": ""
+    },
+    "heroContentsCssClass": {
+      "type": "array",
+      "default": []
+    },
+    "heroContentsHighlightColor": {
+      "enum": [
+        "gold",
+        "white",
+        "black"
+      ],
+      "default": "white"
+    },
+    "heroContentsColor": {
+      "enum": [
+        "gold",
+        "white",
+        "black"
+      ],
+      "default": "white"
+    },
+    "introContent__hideMarketText": {
+      "type": "boolean",
+      "default": false
+    },
+    "introContent__hideProgramDesc": {
+      "type": "boolean",
+      "default": false
+    },
+    "introContent__hideRequiredCourses": {
+      "type": "boolean",
+      "default": false
+    },
+    "introContent__breadcrumbsUrl": {
+      "type": "array",
+      "default": []
+    },
+    "introContent__breadcrumbsText": {
+      "type": "array",
+      "default": []
+    },
+    "introContent__breadcrumbsisActive": {
+      "type": "array",
+      "default": []
+    },
+    "introContent__contentsText": {
+      "type": "array",
+      "default": []
+    },
+    "introContent__contentsCssClass": {
+      "type": "array",
+      "default": []
+    },
+    "introContent__videoType": {
+      "type": "string",
+      "default": ""
+    },
+    "introContent__videoUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "introContent__videoAltText": {
+      "type": "string",
+      "default": ""
+    },
+    "introContent__videoVttUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "introContent__videoTitle": {
+      "type": "string",
+      "default": ""
+    },
+    "introContent__imageUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "introContent__imageAltText": {
+      "type": "string",
+      "default": ""
+    },
+    "introContent__imageCssClass": {
+      "type": "array",
+      "default": []
+    },
+    "atAGlance__hide": {
+      "type": "boolean",
+      "default": false
+    },
+    "atAGlance__offeredByText": {
+      "type": "string",
+      "default": ""
+    },
+    "atAGlance__offeredByUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "atAGlance__offeredByIsActive": {
+      "type": "boolean",
+      "default": false
+    },
+    "atAGlance__locationsText": {
+      "type": "array",
+      "default": []
+    },
+    "atAGlance__locationsUrl": {
+      "type": "array",
+      "default": []
+    },
+    "atAGlance__locationsIsActive": {
+      "type": "array",
+      "default": []
+    },
+    "atAGlance__firstRequirementMathCourseHide": {
+      "type": "string"
+    },
+    "atAGlance__mathIntensity": {
+      "type": "string",
+      "default": ""
+    },
+    "atAGlance__timeCommitment": {
+      "type": "string",
+      "default": ""
+    },
+    "applicationRequirements__hide": {
+      "type": "boolean",
+      "default": false
+    },
+    "changeMajorRequirements__hide": {
+      "type": "boolean",
+      "default": false
+    },
+    "affordingCollege__hide": {
+      "type": "boolean",
+      "default": false
+    },
+    "flexibleDegreeOptions__hide": {
+      "type": "boolean",
+      "default": false
+    },
+    "careerOutlook__hide": {
+      "type": "boolean",
+      "default": false
+    },
+    "careerOutlook__imageUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "careerOutlook__imageAltText": {
+      "type": "string",
+      "default": ""
+    },
+    "careerOutlook__imageCssClass": {
+      "type": "array",
+      "default": ""
+    },
+    "exampleCareers__hide": {
+      "type": "boolean",
+      "default": false
+    },
+    "globalOpportunity__hide": {
+      "type": "boolean",
+      "default": false
+    },
+    "globalOpportunity__imageUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "globalOpportunity__imageAltText": {
+      "type": "string",
+      "default": ""
+    },
+    "globalOpportunity__imageCssClass": {
+      "type": "array",
+      "default": ""
+    },
+    "attendOnline__hide": {
+      "type": "boolean",
+      "default": false
+    },
+    "attendOnline__imageUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "attendOnline__imageAltText": {
+      "type": "string",
+      "default": ""
+    },
+    "attendOnline__imageCssClass": {
+      "type": "array",
+      "default": ""
+    },
+    "programContactInfo__hide": {
+      "type": "boolean",
+      "default": false
+    },
+    "programContactInfo__department": {
+      "type": "string",
+      "default": ""
+    },
+    "programContactInfo__email": {
+      "type": "string",
+      "default": ""
+    },
+    "nextSteps__hide": {
+      "type": "boolean",
+      "default": false
+    },
+    "whyChooseAsu__hide": {
+      "type": "boolean",
+      "default": false
+    },
+    "whyChooseAsu__sectionIntroText": {
+      "type": "string",
+      "default": ""
+    }
+  }
+}

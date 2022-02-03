@@ -39,6 +39,10 @@ module.exports = {
 			process.cwd(),
 			'src/blocks/anchor-menu/frontend.js'
 		),
+		'js/unityblocks-degree-detail': path.resolve(
+			process.cwd(),
+			'src/blocks/degree-detail/frontend.js'
+		),
 		'js/unityblocks-hero': path.resolve(
 			process.cwd(),
 			'src/blocks/hero/frontend.js'

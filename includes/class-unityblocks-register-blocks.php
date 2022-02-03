@@ -79,7 +79,7 @@ class UnityBlocks_Register_Blocks {
 		);
 
 		register_block_type(
-			$slug . '/hero',
+			$slug . '/degree-detail',
 			array(
 				'editor_script' => $slug . '-editor',
 				'editor_style'  => $slug . '-editor',
@@ -104,6 +104,15 @@ class UnityBlocks_Register_Blocks {
 				'style'         => $slug . '-frontend',
 			)
 		);
+
+        register_block_type(
+            $slug . '/hero',
+            array(
+                'editor_script' => $slug . '-editor',
+                'editor_style'  => $slug . '-editor',
+                'style'         => $slug . '-frontend',
+            )
+        );
 
 		register_block_type(
 			$slug . '/news-carousel',

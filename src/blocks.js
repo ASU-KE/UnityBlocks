@@ -11,6 +11,7 @@ import { supportsCollections } from './utils/block-helpers';
 
 // Register Blocks
 import * as anchorMenu from './blocks/anchor-menu';
+import * as degreeDetail from './blocks/degree-detail';
 import * as hero from './blocks/hero';
 import * as eventsGrid from './blocks/events-grid';
 import * as eventsList from './blocks/events-list';
@@ -49,6 +50,7 @@ const registerBlock = ( block ) => {
 export const registerUnityBlocksBlocks = () => {
 	[
 		anchorMenu,
+		degreeDetail,
 		hero,
 		eventsGrid,
 		eventsList,
