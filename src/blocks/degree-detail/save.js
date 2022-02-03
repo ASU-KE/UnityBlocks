@@ -1,3 +1,5 @@
+/* eslint camelcase: "off" */
+
 /**
  * External dependencies
  */

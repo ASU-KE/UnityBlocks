@@ -1,3 +1,5 @@
+/* eslint camelcase: "off" */
+
 const { render } = wp.element;
 
 import { DetailPage } from '@asu-design-system/app-degree-pages/dist/degreePages.es';
