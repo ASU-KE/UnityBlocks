@@ -86,8 +86,8 @@
       "default": ""
     },
     "heroMediaCssClass": {
-      "type": "array",
-      "default": []
+      "type": "string",
+      "default": ""
     },
     "heroMediaSize": {
       "enum": [
@@ -114,8 +114,8 @@
       "default": ""
     },
     "heroSubTitleCssClass": {
-      "type": "array",
-      "default": []
+      "type": "string",
+      "default": ""
     },
     "heroTitleText": {
       "type": "string",
@@ -134,8 +134,8 @@
       "default": ""
     },
     "heroTitleCssClass": {
-      "type": "array",
-      "default": []
+      "type": "string",
+      "default": ""
     },
     "heroContentsText": {
       "type": "string",
@@ -146,8 +146,8 @@
       "default": ""
     },
     "heroContentsCssClass": {
-      "type": "array",
-      "default": []
+      "type": "string",
+      "default": ""
     },
     "heroContentsHighlightColor": {
       "enum": [
@@ -190,12 +190,12 @@
       "default": []
     },
     "introContent__contentsText": {
-      "type": "array",
-      "default": []
+      "type": "string",
+      "default": ""
     },
     "introContent__contentsCssClass": {
-      "type": "array",
-      "default": []
+      "type": "string",
+      "default": ""
     },
     "introContent__videoType": {
       "type": "string",
@@ -226,8 +226,8 @@
       "default": ""
     },
     "introContent__imageCssClass": {
-      "type": "array",
-      "default": []
+      "type": "string",
+      "default": ""
     },
     "atAGlance__hide": {
       "type": "boolean",
@@ -297,7 +297,7 @@
       "default": ""
     },
     "careerOutlook__imageCssClass": {
-      "type": "array",
+      "type": "string",
       "default": ""
     },
     "exampleCareers__hide": {
@@ -317,7 +317,7 @@
       "default": ""
     },
     "globalOpportunity__imageCssClass": {
-      "type": "array",
+      "type": "string",
       "default": ""
     },
     "attendOnline__hide": {
@@ -333,7 +333,7 @@
       "default": ""
     },
     "attendOnline__imageCssClass": {
-      "type": "array",
+      "type": "string",
       "default": ""
     },
     "programContactInfo__hide": {

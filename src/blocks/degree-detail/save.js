@@ -55,7 +55,7 @@ const save = ( props ) => {
 			introContent__videoTitle,
 			introContent__imageUrl,
 			introContent__imageAltText,
-			// introContent__imageCssClass,
+			introContent__imageCssClass,
 			atAGlance__hide,
 			atAGlance__offeredByText,
 			atAGlance__offeredByUrl,
@@ -78,11 +78,11 @@ const save = ( props ) => {
 			globalOpportunity__hide,
 			globalOpportunity__imageUrl,
 			globalOpportunity__imageAltText,
-			// globalOpportunity__imageCssClass,
+			globalOpportunity__imageCssClass,
 			attendOnline__hide,
 			attendOnline__imageUrl,
 			attendOnline__imageAltText,
-			// attendOnline__imageCssClass,
+			attendOnline__imageCssClass,
 			programContactInfo__hide,
 			programContactInfo__department,
 			programContactInfo__email,
@@ -119,27 +119,29 @@ const save = ( props ) => {
 		image: {
 			url: heroMediaUrl,
 			altText: heroMediaAltText,
-			cssClass: heroMediaCssClass,
+			cssClass: heroMediaCssClass.split( ' ' ),
 			size: heroMediaSize,
 		},
 		title: {
 			text: heroTitleText,
 			highlightColor: heroTitleHighlightColor,
 			maxWidth: heroTitleMaxWidth,
-			cssClass: heroTitleCssClass,
+			cssClass: heroTitleCssClass.split( ' ' ),
 		},
 		subTitle: {
 			text: heroSubTitleText,
 			highlightColor: heroSubTitleHighlightColor,
 			maxWidth: heroSubTitleMaxWidth,
-			cssClass: heroSubTitleCssClass,
+			cssClass: heroSubTitleCssClass.split( ' ' ),
 		},
-		contents: {
-			text: heroContentsText,
-			highlightColor: heroContentsHighlightColor,
-			maxWidth: heroContentsMaxWidth,
-			cssClass: heroContentsCssClass,
-		},
+		contents: [
+			{
+				text: heroContentsText,
+				highlightColor: heroContentsHighlightColor,
+				maxWidth: heroContentsMaxWidth,
+				cssClass: heroContentsCssClass.split( ' ' ),
+			},
+		],
 		contentsColor: heroContentsColor,
 	};
 
@@ -151,12 +153,12 @@ const save = ( props ) => {
 		} )
 	);
 
-	const introContents = introContent__contentsText.map(
-		( contentText, index ) => ( {
-			text: contentText,
-			cssClass: introContent__contentsCssClass[ index ],
-		} )
-	);
+	const introText = [
+		{
+			text: introContent__contentsText,
+			cssClass: introContent__contentsCssClass.split( ' ' ),
+		},
+	];
 
 	const introVideo = {
 		type: introContent__videoType,
@@ -169,15 +171,15 @@ const save = ( props ) => {
 	const introImage = {
 		url: introContent__imageUrl,
 		altText: introContent__imageAltText,
-		// cssClass: introContent__imageCssClass.split( ' ' ),
+		cssClass: introContent__imageCssClass.split( ' ' ),
 	};
 
-	const introContent = {
+	const introContentSection = {
 		hideMarketText: introContent__hideMarketText,
 		hideProgramDesc: introContent__hideProgramDesc,
 		hideRequiredCourses: introContent__hideRequiredCourses,
 		breadcrumbs: introBreadcrumbs,
-		contents: introContents,
+		contents: introText,
 		video: introVideo,
 		image: introImage,
 	};
@@ -204,7 +206,7 @@ const save = ( props ) => {
 		image: {
 			url: careerOutlook__imageUrl,
 			text: careerOutlook__imageAltText,
-			cssClass: careerOutlook__imageCssClass,
+			cssClass: careerOutlook__imageCssClass.split( ' ' ),
 		},
 	};
 
@@ -215,7 +217,7 @@ const save = ( props ) => {
 		image: {
 			url: globalOpportunity__imageUrl,
 			altText: globalOpportunity__imageAltText,
-			// cssClass: globalOpportunity__imageCssClass.split( ' ' ),
+			cssClass: globalOpportunity__imageCssClass.split( ' ' ),
 		},
 	};
 
@@ -224,7 +226,7 @@ const save = ( props ) => {
 		image: {
 			url: attendOnline__imageUrl,
 			altText: attendOnline__imageAltText,
-			// cssClass: attendOnline__imageCssClass.split( ' ' ),
+			cssClass: attendOnline__imageCssClass.split( ' ' ),
 		},
 	};
 
@@ -249,7 +251,7 @@ const save = ( props ) => {
 			data-datasource={ JSON.stringify( dataSource ) }
 			data-anchormenu={ JSON.stringify( anchorMenu ) }
 			data-hero={ JSON.stringify( hero ) }
-			data-introcontent={ JSON.stringify( introContent ) }
+			data-introcontent={ JSON.stringify( introContentSection ) }
 			data-ataglance={ JSON.stringify( atAGlance ) }
 			data-apprequirements={ applicationRequirements__hide }
 			data-changemajor={ changeMajorRequirements__hide }

@@ -66,7 +66,7 @@ const Edit = ( props ) => {
 			introContent__videoTitle,
 			introContent__imageUrl,
 			introContent__imageAltText,
-			// introContent__imageCssClass,
+			introContent__imageCssClass,
 			atAGlance__hide,
 			atAGlance__offeredByText,
 			atAGlance__offeredByUrl,
@@ -89,11 +89,11 @@ const Edit = ( props ) => {
 			globalOpportunity__hide,
 			globalOpportunity__imageUrl,
 			globalOpportunity__imageAltText,
-			// globalOpportunity__imageCssClass,
+			globalOpportunity__imageCssClass,
 			attendOnline__hide,
 			attendOnline__imageUrl,
 			attendOnline__imageAltText,
-			// attendOnline__imageCssClass,
+			attendOnline__imageCssClass,
 			programContactInfo__hide,
 			programContactInfo__department,
 			programContactInfo__email,
@@ -130,27 +130,29 @@ const Edit = ( props ) => {
 		image: {
 			url: heroMediaUrl,
 			altText: heroMediaAltText,
-			cssClass: heroMediaCssClass,
+			cssClass: heroMediaCssClass.split( ' ' ),
 			size: heroMediaSize,
 		},
 		title: {
 			text: heroTitleText,
 			highlightColor: heroTitleHighlightColor,
 			maxWidth: heroTitleMaxWidth,
-			cssClass: heroTitleCssClass,
+			cssClass: heroTitleCssClass.split( ' ' ),
 		},
 		subTitle: {
 			text: heroSubTitleText,
 			highlightColor: heroSubTitleHighlightColor,
 			maxWidth: heroSubTitleMaxWidth,
-			cssClass: heroSubTitleCssClass,
+			cssClass: heroSubTitleCssClass.split( ' ' ),
 		},
-		contents: {
-			text: heroContentsText,
-			highlightColor: heroContentsHighlightColor,
-			maxWidth: heroContentsMaxWidth,
-			cssClass: heroContentsCssClass,
-		},
+		contents: [
+			{
+				text: heroContentsText,
+				highlightColor: heroContentsHighlightColor,
+				maxWidth: heroContentsMaxWidth,
+				cssClass: heroContentsCssClass.split( ' ' ),
+			},
+		],
 		contentsColor: heroContentsColor,
 	};
 
@@ -162,12 +164,12 @@ const Edit = ( props ) => {
 		} )
 	);
 
-	const introContents = introContent__contentsText.map(
-		( contentText, index ) => ( {
-			text: contentText,
-			cssClass: introContent__contentsCssClass[ index ],
-		} )
-	);
+	const introText = [
+		{
+			text: introContent__contentsText,
+			cssClass: introContent__contentsCssClass,
+		},
+	];
 
 	const introVideo = {
 		type: introContent__videoType,
@@ -180,15 +182,15 @@ const Edit = ( props ) => {
 	const introImage = {
 		url: introContent__imageUrl,
 		altText: introContent__imageAltText,
-		// cssClass: introContent__imageCssClass.split( ' ' ),
+		cssClass: introContent__imageCssClass.split( ' ' ),
 	};
 
-	const introContent = {
+	const introContentSection = {
 		hideMarketText: introContent__hideMarketText,
 		hideProgramDesc: introContent__hideProgramDesc,
 		hideRequiredCourses: introContent__hideRequiredCourses,
 		breadcrumbs: introBreadcrumbs,
-		contents: introContents,
+		contents: introText,
 		video: introVideo,
 		image: introImage,
 	};
@@ -215,7 +217,7 @@ const Edit = ( props ) => {
 		dataSource,
 		anchorMenu,
 		hero,
-		introContent,
+		introContentSection,
 		atAGlance,
 		applicationRequirements: applicationRequirements__hide,
 		changeMajorRequirements: changeMajorRequirements__hide,
@@ -235,7 +237,7 @@ const Edit = ( props ) => {
 			image: {
 				url: globalOpportunity__imageUrl,
 				altText: globalOpportunity__imageAltText,
-				// cssClass: globalOpportunity__imageCssClass.split( ' ' ),
+				cssClass: globalOpportunity__imageCssClass.split( ' ' ),
 			},
 		},
 		attendOnline: {
@@ -243,7 +245,7 @@ const Edit = ( props ) => {
 			image: {
 				url: attendOnline__imageUrl,
 				altText: attendOnline__imageAltText,
-				// cssClass: attendOnline__imageCssClass.split( ' ' ),
+				cssClass: attendOnline__imageCssClass.split( ' ' ),
 			},
 		},
 		programContactInfo: {
