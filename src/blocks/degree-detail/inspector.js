@@ -43,7 +43,7 @@ const Inspector = ( props ) => {
 					</PanelRow>
 					<PanelRow>
 						<TextControl
-							label={ 'Title max width' }
+							label={ 'Academic Plan Code' }
 							value={ acadPlan }
 							onChange={ ( acadPlan ) =>
 								setAttributes( { acadPlan } )
