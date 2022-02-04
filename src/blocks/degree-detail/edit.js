@@ -267,9 +267,11 @@ const Edit = ( props ) => {
 			<Controls { ...props } />
 			<Inspector { ...props } />
 
-			<div className={ className }>
-				<DetailPage { ...args } />
-			</div>
+			{ acadPlan > '' && (
+				<div className={ className }>
+					<DetailPage { ...args } />
+				</div>
+			) }
 		</>
 	);
 };
