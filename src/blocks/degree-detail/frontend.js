@@ -5,7 +5,7 @@ const { render } = wp.element;
 import { DetailPage } from '@asu-design-system/app-degree-pages/dist/degreePages.es';
 
 // Load first element with the unityblocks-degree-detail id
-const degree = document.querySelector( '#unityblocks-degree-detail' );
+const degree = document.querySelector( '#unityblocks-degree-details' );
 
 const appPathFolder = degree.dataset.appfolder;
 const dataSource = JSON.parse( degree.dataset.datasource );
