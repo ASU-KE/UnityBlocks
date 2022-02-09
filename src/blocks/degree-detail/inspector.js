@@ -14,7 +14,7 @@ import { PanelBody, PanelRow, TextControl } from '@wordpress/components';
  */
 const Inspector = ( props ) => {
 	const {
-		attributes: { appPathFolder, endpoint, acadPlan },
+		attributes: { appPathFolder, endpoint },
 		setAttributes,
 	} = props;
 
@@ -40,15 +40,6 @@ const Inspector = ( props ) => {
 							value={ endpoint }
 							onChange={ ( endpoint ) =>
 								setAttributes( { endpoint } )
-							}
-						/>
-					</PanelRow>
-					<PanelRow>
-						<TextControl
-							label={ 'Academic Plan Code' }
-							value={ acadPlan }
-							onChange={ ( acadPlan ) =>
-								setAttributes( { acadPlan } )
 							}
 						/>
 					</PanelRow>
