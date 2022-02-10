@@ -5,13 +5,19 @@
  */
 import { __ } from '@wordpress/i18n';
 import {
+	BlockControls,
+	MediaUploadCheck,
+	MediaUpload,
+	MediaPlaceholder,
+} from '@wordpress/block-editor';
+import {
 	Card,
 	CardBody,
 	CardHeader,
 	CardMedia,
-	MediaPlaceholder,
-	MediaUploadCheck,
+	IconButton,
 	ToggleControl,
+	Toolbar,
 } from '@wordpress/components';
 
 import icon from './icon';
@@ -27,26 +33,26 @@ const IntroductionSettings = ( props ) => {
 			introContent__hideMarketText,
 			introContent__hideProgramDesc,
 			introContent__hideRequiredCourses,
-			introContent__breadcrumbsUrl,
-			introContent__breadcrumbsText,
-			introContent__breadcrumbsisActive,
-			introContent__contentsText,
-			introContent__contentsCssClass,
-			introContent__videoType,
-			introContent__videoId,
-			introContent__videoUrl,
-			introContent__videoAltText,
-			introContent__videoVttUrl,
-			introContent__videoTitle,
+			// introContent__breadcrumbsUrl,
+			// introContent__breadcrumbsText,
+			// introContent__breadcrumbsisActive,
+			// introContent__contentsText,
+			// introContent__contentsCssClass,
+			// introContent__videoType,
+			// introContent__videoId,
+			// introContent__videoUrl,
+			// introContent__videoAltText,
+			// introContent__videoVttUrl,
+			// introContent__videoTitle,
 			introContent__imageId,
 			introContent__imageUrl,
 			introContent__imageAltText,
-			introContent__imageCssClass,
+			// introContent__imageCssClass,
 		},
 		setAttributes,
 	} = props;
 
-	const onSelectIntroMedia = ( media ) => {
+	const onSelectMedia = ( media ) => {
 		props.setAttributes( {
 			introContent__imageId: media.id,
 			introContent__imageUrl: media.url,
@@ -55,77 +61,76 @@ const IntroductionSettings = ( props ) => {
 	};
 
 	return (
-		<Card>
-			<CardHeader>
-				<h2>Configure the Introduction content section</h2>
-			</CardHeader>
-			<CardBody>
-				<ToggleControl
-					label={ 'Enable "Market Text"' }
-					help={
-						introContent__hideMarketText ? 'Hidden.' : 'Enabled.'
-					}
-					checked={ ! introContent__hideMarketText }
-					onChange={ ( newValue ) => {
-						setAttributes( {
-							introContent__hideMarketText: ! newValue,
-						} );
-					} }
-				/>
-				<ToggleControl
-					label={ 'Enable "Program Description"' }
-					help={
-						introContent__hideProgramDesc ? 'Hidden.' : 'Enabled.'
-					}
-					checked={ ! introContent__hideProgramDesc }
-					onChange={ ( newValue ) => {
-						setAttributes( {
-							introContent__hideProgramDesc: ! newValue,
-						} );
-					} }
-				/>
-				<ToggleControl
-					label={ 'Enable "Required Courses"' }
-					help={
-						introContent__hideRequiredCourses
-							? 'Hidden.'
-							: 'Enabled.'
-					}
-					checked={ ! introContent__hideRequiredCourses }
-					onChange={ ( newValue ) => {
-						setAttributes( {
-							introContent__hideRequiredCourses: ! newValue,
-						} );
-					} }
-				/>
-			</CardBody>
-			{ /* <CardBody>
-        <RichText
-          tagName="div"
-          className="card-content"
-          multiline="p"
-          value={ introContent__contentsText }
-          onChange={ ( newValue ) =>
-            setAttributes( {
-              introContent__contentsText: newValue,
-            } )
-          }
-          placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-        />
-      </CardBody>
-      <CardBody>
-        <TextControl
-          label={ 'Content CSS classes' }
-          help="Separate multiple classes with spaces."
-          value={ introContent__contentsCssClass }
-          onChange={ ( newValue ) =>
-            setAttributes( {
-              introContent__contentsCssClass: newValue,
-            } )
-          }
-        />
-      </CardBody> */ }
-			{ ! introContent__imageId && (
+		<>
+			{ !! introContent__imageId && (
+				<BlockControls>
+					<Toolbar>
+						<MediaUpload
+							value={ introContent__imageId }
+							onSelect={ onSelectMedia }
+							allowedTypes={ [ 'image' ] }
+							render={ ( { open } ) => (
+								<IconButton
+									label={ __( 'Edit image', 'unityblocks' ) }
+									icon="edit"
+									onClick={ open }
+								/>
+							) }
+						/>
+					</Toolbar>
+				</BlockControls>
+			) }
+
+			<Card>
+				<CardHeader>
+					<h2>Configure the Introduction content section</h2>
+				</CardHeader>
+
+				<CardBody>
+					<ToggleControl
+						label={ 'Enable "Market Text"' }
+						help={
+							introContent__hideMarketText
+								? 'Hidden.'
+								: 'Enabled.'
+						}
+						checked={ ! introContent__hideMarketText }
+						onChange={ ( newValue ) => {
+							setAttributes( {
+								introContent__hideMarketText: ! newValue,
+							} );
+						} }
+					/>
+					<ToggleControl
+						label={ 'Enable "Program Description"' }
+						help={
+							introContent__hideProgramDesc
+								? 'Hidden.'
+								: 'Enabled.'
+						}
+						checked={ ! introContent__hideProgramDesc }
+						onChange={ ( newValue ) => {
+							setAttributes( {
+								introContent__hideProgramDesc: ! newValue,
+							} );
+						} }
+					/>
+					<ToggleControl
+						label={ 'Enable "Required Courses"' }
+						help={
+							introContent__hideRequiredCourses
+								? 'Hidden.'
+								: 'Enabled.'
+						}
+						checked={ ! introContent__hideRequiredCourses }
+						onChange={ ( newValue ) => {
+							setAttributes( {
+								introContent__hideRequiredCourses: ! newValue,
+							} );
+						} }
+					/>
+				</CardBody>
+
 				<CardBody>
 					<MediaUploadCheck>
 						<MediaPlaceholder
@@ -140,33 +145,24 @@ const IntroductionSettings = ( props ) => {
 								),
 							} }
 							icon={ icon }
-							accept="images/*,video/*"
-							onSelect={ onSelectIntroMedia }
+							accept="images/*"
+							onSelect={ onSelectMedia }
 						/>
 					</MediaUploadCheck>
 				</CardBody>
-			) }
-			{ introContent__imageId !== 0 && (
-				<CardMedia>
-					<img
-						alt={ introContent__imageAltText }
-						src={ introContent__imageUrl }
-					/>
-				</CardMedia>
-			) }
-			{ /* { introContent__videoId !== 0 && (
-        <CardMedia>
-          <video controls width="250">
-            <source
-              src={ introContent__videoUrl }
-              type="video/mp4"
-            />
-            Sorry, your browser doesnt support
-            embedded videos.
-          </video>
-        </CardMedia>
-      ) } */ }
-		</Card>
+
+				{ introContent__imageId !== 0 && (
+					<CardBody>
+						<CardMedia>
+							<img
+								alt={ introContent__imageAltText }
+								src={ introContent__imageUrl }
+							/>
+						</CardMedia>
+					</CardBody>
+				) }
+			</Card>
+		</>
 	);
 };
 
