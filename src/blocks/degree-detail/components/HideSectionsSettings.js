@@ -35,7 +35,7 @@ const HideSectionsSettings = ( props ) => {
 	} = props;
 
 	return (
-		<Card>
+		<Card style={ { width: '50%' } }>
 			<CardHeader>
 				<h2>Hide undesired content sections</h2>
 			</CardHeader>

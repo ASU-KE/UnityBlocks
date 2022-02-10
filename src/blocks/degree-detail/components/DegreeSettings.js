@@ -15,7 +15,7 @@ const DegreeSettings = ( props ) => {
 	} = props;
 
 	return (
-		<Card>
+		<Card style={ { width: '50%' } }>
 			<CardHeader>
 				<h2>Degree Code</h2>
 			</CardHeader>

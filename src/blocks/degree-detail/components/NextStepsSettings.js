@@ -146,13 +146,14 @@ const NextStepsSettings = ( props ) => {
 	}
 
 	return (
-		<Card>
+		<Card style={ { width: '50%' } }>
 			<CardHeader>
-				<h2>Replace Next Steps cards</h2>
+				<h2>Customize Next Steps cards</h2>
 			</CardHeader>
 			<CardBody>
 				<p>
-					Note that replacement cards need to be added in sets of 3.
+					Note that cards should be added in sets of 3 for each row
+					desired.
 				</p>
 			</CardBody>
 

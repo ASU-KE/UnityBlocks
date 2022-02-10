@@ -81,9 +81,9 @@ const IntroductionSettings = ( props ) => {
 				</BlockControls>
 			) }
 
-			<Card>
+			<Card style={ { width: '50%' } }>
 				<CardHeader>
-					<h2>Configure the Introduction content section</h2>
+					<h2>Customize the Introduction</h2>
 				</CardHeader>
 
 				<CardBody>

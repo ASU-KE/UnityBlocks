@@ -20,10 +20,11 @@ const ProgramContactsSettings = ( props ) => {
 	} = props;
 
 	return (
-		<Card>
+		<Card style={ { width: '50%' } }>
 			<CardHeader>
-				<h2>Override Program Contact details</h2>
+				<h2>Customize Program Contact details</h2>
 			</CardHeader>
+
 			<CardBody>
 				<TextControl
 					label={ 'Department' }

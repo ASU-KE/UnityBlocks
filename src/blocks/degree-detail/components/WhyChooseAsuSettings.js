@@ -12,22 +12,23 @@ import { Card, CardBody, CardHeader, TextControl } from '@wordpress/components';
  */
 const WhyChooseAsuSettings = ( props ) => {
 	const {
-		attributes: { whyChooseAsu__hide, whyChooseAsu__sectionIntroText },
+		attributes: { whyChooseAsu__sectionIntroText },
 		setAttributes,
 	} = props;
 
 	return (
-		<Card>
+		<Card style={ { width: '50%' } }>
 			<CardHeader>
-				<h2>Override section images</h2>
+				<h2>Customize the Why Choose ASU content.</h2>
 			</CardHeader>
+
 			<CardBody>
 				<TextControl
-					label={ 'Academic Plan Code' }
-					value={ acadPlan }
+					label={ 'Introductory text.' }
+					value={ whyChooseAsu__sectionIntroText }
 					onChange={ ( newValue ) =>
 						setAttributes( {
-							acadPlan: newValue,
+							whyChooseAsu__sectionIntroText: newValue,
 						} )
 					}
 				/>

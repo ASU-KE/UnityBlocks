@@ -82,9 +82,9 @@ const HeroSettings = ( props ) => {
 				</BlockControls>
 			) }
 
-			<Card elevation={ 0 } size={ 'small' }>
+			<Card elevation={ 0 } size={ 'small' } style={ { width: '50%' } }>
 				<CardHeader>
-					<h2>Configure the page Hero</h2>
+					<h2>Customize the degree page hero</h2>
 				</CardHeader>
 
 				<CardBody>
