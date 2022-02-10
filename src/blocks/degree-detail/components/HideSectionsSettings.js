@@ -39,9 +39,24 @@ const HideSectionsSettings = ( props ) => {
 			<CardHeader>
 				<h2>Hide undesired content sections</h2>
 			</CardHeader>
+
 			<CardBody>
 				<ToggleControl
-					label={ 'Hide "Application Reqs"' }
+					label={ 'Hide "At a Glance" section' }
+					help={
+						atAGlance__hide
+							? '"At a Glance" hidden.'
+							: '"At a Glance" enabled.'
+					}
+					checked={ atAGlance__hide }
+					onChange={ ( newValue ) => {
+						setAttributes( {
+							atAGlance__hide: newValue,
+						} );
+					} }
+				/>
+				<ToggleControl
+					label={ 'Hide "Application Reqs" section' }
 					help={
 						applicationRequirements__hide
 							? '"Application Reqs" hidden.'
@@ -55,7 +70,7 @@ const HideSectionsSettings = ( props ) => {
 					} }
 				/>
 				<ToggleControl
-					label={ 'Hide "Change Major"' }
+					label={ 'Hide "Change Major" section' }
 					help={
 						changeMajorRequirements__hide
 							? '"Change Major" hidden.'
@@ -69,7 +84,7 @@ const HideSectionsSettings = ( props ) => {
 					} }
 				/>
 				<ToggleControl
-					label={ 'Hide "Affording College"' }
+					label={ 'Hide "Affording College" section' }
 					help={
 						affordingCollege__hide
 							? '"Affording College" hidden.'
@@ -83,7 +98,21 @@ const HideSectionsSettings = ( props ) => {
 					} }
 				/>
 				<ToggleControl
-					label={ 'Hide "Career Outlook"' }
+					label={ 'Hide "Flexible Degree Options" section' }
+					help={
+						flexibleDegreeOptions__hide
+							? '"Flexible Degree Options" hidden.'
+							: '"Flexible Degree Options" enabled.'
+					}
+					checked={ flexibleDegreeOptions__hide }
+					onChange={ ( newValue ) => {
+						setAttributes( {
+							flexibleDegreeOptions__hide: newValue,
+						} );
+					} }
+				/>
+				<ToggleControl
+					label={ 'Hide "Career Outlook" section' }
 					help={
 						careerOutlook__hide
 							? '"Career Outlook" hidden.'
@@ -97,7 +126,7 @@ const HideSectionsSettings = ( props ) => {
 					} }
 				/>
 				<ToggleControl
-					label={ 'Hide "Example Degrees"' }
+					label={ 'Hide "Example Degrees" section' }
 					help={
 						exampleCareers__hide
 							? '"Example Degrees" hidden.'
@@ -111,7 +140,7 @@ const HideSectionsSettings = ( props ) => {
 					} }
 				/>
 				<ToggleControl
-					label={ 'Hide "Global Opportunity"' }
+					label={ 'Hide "Global Opportunity" section' }
 					help={
 						globalOpportunity__hide
 							? '"Global Opportunity" hidden.'
@@ -125,7 +154,7 @@ const HideSectionsSettings = ( props ) => {
 					} }
 				/>
 				<ToggleControl
-					label={ 'Hide "Attend Online"' }
+					label={ 'Hide "Attend Online" section' }
 					help={
 						attendOnline__hide
 							? '"Attend Online" hidden.'
@@ -139,7 +168,7 @@ const HideSectionsSettings = ( props ) => {
 					} }
 				/>
 				<ToggleControl
-					label={ 'Hide "Program Contact Info"' }
+					label={ 'Hide "Program Contact Info" section' }
 					help={
 						programContactInfo__hide
 							? '"Program Contact Info" hidden.'
@@ -153,7 +182,7 @@ const HideSectionsSettings = ( props ) => {
 					} }
 				/>
 				<ToggleControl
-					label={ 'Hide "Next Steps"' }
+					label={ 'Hide "Next Steps" section' }
 					help={
 						nextSteps__hide
 							? '"Next Steps" hidden.'
@@ -163,6 +192,20 @@ const HideSectionsSettings = ( props ) => {
 					onChange={ ( newValue ) => {
 						setAttributes( {
 							nextSteps__hide: newValue,
+						} );
+					} }
+				/>
+				<ToggleControl
+					label={ 'Hide "Why Choose ASU" section' }
+					help={
+						whyChooseAsu__hide
+							? '"Why Choose ASU" hidden.'
+							: '"Why Choose ASU" enabled.'
+					}
+					checked={ whyChooseAsu__hide }
+					onChange={ ( newValue ) => {
+						setAttributes( {
+							whyChooseAsu__hide: newValue,
 						} );
 					} }
 				/>

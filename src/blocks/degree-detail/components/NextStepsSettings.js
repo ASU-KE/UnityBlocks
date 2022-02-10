@@ -148,12 +148,17 @@ const NextStepsSettings = ( props ) => {
 	return (
 		<Card>
 			<CardHeader>
-				<h2>Override Next Steps cards</h2>
+				<h2>Replace Next Steps cards</h2>
 			</CardHeader>
+			<CardBody>
+				<p>
+					Note that replacement cards need to be added in sets of 3.
+				</p>
+			</CardBody>
 
 			<CardBody>
 				<Button isDefault onClick={ handleAddCard.bind( this ) }>
-					{ __( 'Add Cards' ) }
+					{ __( 'Add Card' ) }
 				</Button>
 			</CardBody>
 
