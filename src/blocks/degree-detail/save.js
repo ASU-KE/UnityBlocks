@@ -62,7 +62,7 @@ const save = ( props ) => {
 			atAGlance__offeredByText,
 			atAGlance__offeredByUrl,
 			atAGlance__offeredByIsActive,
-			atAGlance__locationsText,
+			atAGlance__locationsTitle,
 			atAGlance__locationsUrl,
 			atAGlance__locationsIsActive,
 			atAGlance__firstRequirementMathCourse,
@@ -193,7 +193,7 @@ const save = ( props ) => {
 			url: atAGlance__offeredByUrl,
 			isActive: atAGlance__offeredByIsActive,
 		},
-		locations: atAGlance__locationsText.map( ( locationText, index ) => ( {
+		locations: atAGlance__locationsTitle.map( ( locationText, index ) => ( {
 			text: locationText,
 			url: atAGlance__locationsUrl[ index ],
 			isActive: atAGlance__locationsIsActive[ index ],

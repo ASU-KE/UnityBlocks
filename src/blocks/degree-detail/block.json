@@ -245,7 +245,7 @@
       "type": "boolean",
       "default": false
     },
-    "atAGlance__locationsText": {
+    "atAGlance__locationsTitle": {
       "type": "array",
       "default": []
     },
