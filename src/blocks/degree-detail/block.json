@@ -24,7 +24,7 @@
     },
     "anchorChangeMajorRequirements": {
       "type": "boolean",
-      "default": true
+      "default": false
     },
     "anchorNextSteps": {
       "type": "boolean",
@@ -36,7 +36,7 @@
     },
     "anchorFlexibleDegreeOptions": {
       "type": "boolean",
-      "default": true
+      "default": false
     },
     "anchorCareerOutlook": {
       "type": "boolean",
@@ -44,11 +44,11 @@
     },
     "anchorExampleCareers": {
       "type": "boolean",
-      "default": true
+      "default": false
     },
     "anchorCustomizeYourCollegeExperience": {
       "type": "boolean",
-      "default": true
+      "default": false
     },
     "anchorGlobalOpportunity": {
       "type": "boolean",
@@ -56,7 +56,7 @@
     },
     "anchorAttendOnline": {
       "type": "boolean",
-      "default": true
+      "default": false
     },
     "anchorProgramContactInfo": {
       "type": "boolean",
@@ -351,6 +351,22 @@
     "nextSteps__hide": {
       "type": "boolean",
       "default": false
+    },
+    "nextSteps__cardsIcon": {
+      "type": "array",
+      "default": []
+    },
+    "nextSteps__cardsTitle": {
+      "type": "array",
+      "default": []
+    },
+    "nextSteps__cardsContent": {
+      "type": "array",
+      "default": []
+    },
+    "nextSteps__cardsButtonLink": {
+      "type": "array",
+      "default": []
     },
     "whyChooseAsu__hide": {
       "type": "boolean",
