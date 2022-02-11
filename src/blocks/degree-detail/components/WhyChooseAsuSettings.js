@@ -17,7 +17,7 @@ const WhyChooseAsuSettings = ( props ) => {
 	} = props;
 
 	return (
-		<Card style={ { width: '50%' } }>
+		<Card size={ 'small' } style={ { width: '50%' } }>
 			<CardHeader>
 				<h2>Customize the Why Choose ASU content.</h2>
 			</CardHeader>

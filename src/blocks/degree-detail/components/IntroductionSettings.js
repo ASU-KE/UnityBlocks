@@ -81,7 +81,7 @@ const IntroductionSettings = ( props ) => {
 				</BlockControls>
 			) }
 
-			<Card style={ { width: '50%' } }>
+			<Card size={ 'small' } style={ { width: '50%' } }>
 				<CardHeader>
 					<h2>Customize the Introduction</h2>
 				</CardHeader>

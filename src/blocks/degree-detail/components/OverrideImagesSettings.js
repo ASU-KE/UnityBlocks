@@ -74,7 +74,7 @@ const OverrideImagesSettings = ( props ) => {
 
 	return (
 		<>
-			<Card style={ { width: '50%' } }>
+			<Card size={ 'small' } style={ { width: '50%' } }>
 				<CardHeader>
 					<h2>Customize featured images</h2>
 				</CardHeader>

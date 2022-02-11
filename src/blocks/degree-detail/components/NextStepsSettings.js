@@ -146,7 +146,7 @@ const NextStepsSettings = ( props ) => {
 	}
 
 	return (
-		<Card style={ { width: '50%' } }>
+		<Card size={ 'small' } style={ { width: '50%' } }>
 			<CardHeader>
 				<h2>Customize Next Steps cards</h2>
 			</CardHeader>

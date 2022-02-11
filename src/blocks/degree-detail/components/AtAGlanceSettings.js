@@ -116,7 +116,7 @@ const AtAGlanceSettings = ( props ) => {
 	}
 
 	return (
-		<Card style={ { width: '50%' } }>
+		<Card size={ 'small' } style={ { width: '50%' } }>
 			<CardHeader>
 				<h2>Customize Program At a Glance settings</h2>
 			</CardHeader>
