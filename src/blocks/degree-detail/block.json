@@ -368,7 +368,23 @@
       "type": "array",
       "default": []
     },
-    "nextSteps__cardsButtonLink": {
+    "nextSteps__cardsButtonIcon": {
+      "type": "array",
+      "default": []
+    },
+    "nextSteps__cardsButtonLabel": {
+      "type": "array",
+      "default": []
+    },
+    "nextSteps__cardsButtonUrl": {
+      "type": "array",
+      "default": []
+    },
+    "nextSteps__cardsButtonColor": {
+      "type": "array",
+      "default": []
+    },
+    "nextSteps__cardsButtonSize": {
       "type": "array",
       "default": []
     },
