@@ -122,32 +122,44 @@ const transformAttributes = ( attributes ) => {
 
 	const hero = {
 		type: heroType,
-		image: {
-			url: heroMediaUrl,
-			altText: heroMediaAltText,
-			cssClass: heroMediaCssClass.split( ' ' ),
-			size: heroMediaSize,
-		},
-		title: {
-			text: heroTitleText,
-			highlightColor: heroTitleHighlightColor,
-			maxWidth: heroTitleMaxWidth,
-			cssClass: heroTitleCssClass.split( ' ' ),
-		},
-		subTitle: {
-			text: heroSubTitleText,
-			highlightColor: heroSubTitleHighlightColor,
-			maxWidth: heroSubTitleMaxWidth,
-			cssClass: heroSubTitleCssClass.split( ' ' ),
-		},
-		contents: [
-			{
-				text: heroContentsText,
-				highlightColor: heroContentsHighlightColor,
-				maxWidth: heroContentsMaxWidth,
-				cssClass: heroContentsCssClass.split( ' ' ),
-			},
-		],
+		image:
+			heroMediaUrl > ''
+				? {
+						url: heroMediaUrl,
+						altText: heroMediaAltText,
+						cssClass: heroMediaCssClass.split( ' ' ),
+						size: heroMediaSize,
+				  }
+				: undefined,
+		title:
+			heroTitleText > ''
+				? {
+						text: heroTitleText,
+						highlightColor: heroTitleHighlightColor,
+						maxWidth: heroTitleMaxWidth,
+						cssClass: heroTitleCssClass.split( ' ' ),
+				  }
+				: undefined,
+		subTitle:
+			heroSubTitleText > ''
+				? {
+						text: heroSubTitleText,
+						highlightColor: heroSubTitleHighlightColor,
+						maxWidth: heroSubTitleMaxWidth,
+						cssClass: heroSubTitleCssClass.split( ' ' ),
+				  }
+				: undefined,
+		contents:
+			heroContentsText > ''
+				? [
+						{
+							text: heroContentsText,
+							highlightColor: heroContentsHighlightColor,
+							maxWidth: heroContentsMaxWidth,
+							cssClass: heroContentsCssClass.split( ' ' ),
+						},
+				  ]
+				: undefined,
 		contentsColor: heroContentsColor,
 	};
 
