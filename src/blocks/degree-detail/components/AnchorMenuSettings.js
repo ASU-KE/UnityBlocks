@@ -1,10 +1,14 @@
 /**
  * WordPress dependencies
  */
+import { __ } from '@wordpress/i18n';
 import {
+	Button,
 	Card,
 	CardBody,
 	CardHeader,
+	IconButton,
+	TextControl,
 	ToggleControl,
 } from '@wordpress/components';
 
@@ -28,10 +32,93 @@ const AnchorMenuSettings = ( props ) => {
 			anchorGlobalOpportunity,
 			anchorAttendOnline,
 			anchorProgramContactInfo,
-			// anchorExternalAnchors,
 		},
 		setAttributes,
 	} = props;
+
+	const handleAddLink = () => {
+		const linkText = [ ...props.attributes.anchorExternalAnchorsText ];
+		const linkTargetId = [
+			...props.attributes.anchorExternalAnchorsTargetId,
+		];
+
+		linkText.push( '' );
+		linkTargetId.push( '' );
+
+		props.setAttributes( {
+			anchorExternalAnchorsText: linkText,
+			anchorExternalAnchorsTargetId: linkTargetId,
+		} );
+	};
+
+	const handleRemoveLink = ( index ) => {
+		const linkText = [ ...props.attributes.anchorExternalAnchorsText ];
+		const linkTargetId = [
+			...props.attributes.anchorExternalAnchorsTargetId,
+		];
+
+		linkText.splice( index, 1 );
+		linkTargetId.splice( index, 1 );
+
+		props.setAttributes( {
+			anchorExternalAnchorsText: linkText,
+			anchorExternalAnchorsTargetId: linkTargetId,
+		} );
+	};
+
+	const handleTextChange = ( text, index ) => {
+		const linkText = [ ...props.attributes.anchorExternalAnchorsText ];
+		linkText[ index ] = text;
+		props.setAttributes( { anchorExternalAnchorsText: linkText } );
+	};
+
+	const handleTargetIdChange = ( link, index ) => {
+		const linkTargetId = [
+			...props.attributes.anchorExternalAnchorsTargetId,
+		];
+		linkTargetId[ index ] = link;
+		props.setAttributes( { anchorExternalAnchorsTargetId: linkTargetId } );
+	};
+
+	let links;
+
+	if ( props.attributes.anchorExternalAnchorsText.length ) {
+		links = props.attributes.anchorExternalAnchorsText.map(
+			( text, index ) => {
+				return (
+					<CardBody key={ index }>
+						<TextControl
+							label={ 'Link text' }
+							value={
+								props.attributes.anchorExternalAnchorsText[
+									index
+								]
+							}
+							onChange={ ( newValue ) =>
+								handleTextChange( newValue, index )
+							}
+						/>
+						<TextControl
+							label={ 'Link target id' }
+							value={
+								props.attributes.anchorExternalAnchorsTargetId[
+									index
+								]
+							}
+							onChange={ ( newValue ) =>
+								handleTargetIdChange( newValue, index )
+							}
+						/>
+						<IconButton
+							icon="no-alt"
+							label="Delete item"
+							onClick={ () => handleRemoveLink( index ) }
+						/>
+					</CardBody>
+				);
+			}
+		);
+	}
 
 	return (
 		<Card size={ 'small' } style={ { width: '50%' } }>
@@ -203,6 +290,16 @@ const AnchorMenuSettings = ( props ) => {
 						} );
 					} }
 				/>
+			</CardBody>
+
+			<CardBody>
+				<h4>Add custom menu links</h4>
+			</CardBody>
+			{ links }
+			<CardBody>
+				<Button isDefault onClick={ handleAddLink.bind( this ) }>
+					{ __( 'Add Location' ) }
+				</Button>
 			</CardBody>
 		</Card>
 	);

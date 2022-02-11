@@ -62,7 +62,11 @@
       "type": "boolean",
       "default": true
     },
-    "anchorExternalAnchors": {
+    "anchorExternalAnchorsText": {
+      "type": "array",
+      "default": []
+    },
+    "anchorExternalAnchorsTargetId": {
       "type": "array",
       "default": []
     },

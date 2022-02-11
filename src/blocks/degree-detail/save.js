@@ -23,7 +23,8 @@ const save = ( props ) => {
 			anchorGlobalOpportunity,
 			anchorAttendOnline,
 			anchorProgramContactInfo,
-			// anchorExternalAnchors,
+			anchorExternalAnchorsText,
+			anchorExternalAnchorsTargetId,
 			heroType,
 			heroMediaUrl,
 			heroMediaAltText,
@@ -113,7 +114,10 @@ const save = ( props ) => {
 		globalOpportunity: anchorGlobalOpportunity,
 		attendOnline: anchorAttendOnline,
 		programContactInfo: anchorProgramContactInfo,
-		// externalAnchors: {},
+		externalAnchors: anchorExternalAnchorsText.map( ( text, index ) => ( {
+			text,
+			targetIdName: anchorExternalAnchorsTargetId[ index ],
+		} ) ),
 	};
 
 	const hero = {
