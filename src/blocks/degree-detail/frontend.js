@@ -17,13 +17,13 @@ const applicationRequirements = degree.dataset.apprequirements;
 const changeMajorRequirements = degree.dataset.changemajor;
 const affordingCollege = degree.dataset.affordcollege;
 const flexibleDegreeOptions = degree.dataset.flexdegreeoptions;
-const careerOutlook = JSON.parse( degree.dataset.contentscolor );
-const exampleCareers = JSON.parse( degree.dataset.contentscolor );
-const globalOpportunity = JSON.parse( degree.dataset.contentscolor );
-const attendOnline = JSON.parse( degree.dataset.contentscolor );
-const programContactInfo = JSON.parse( degree.dataset.contentscolor );
-const nextSteps = JSON.parse( degree.dataset.contentscolor );
-const whyChooseAsu = JSON.parse( degree.dataset.contentscolor );
+const careerOutlook = JSON.parse( degree.dataset.careeroutlook );
+const exampleCareers = JSON.parse( degree.dataset.examplecareers );
+const globalOpportunity = JSON.parse( degree.dataset.globalopportunity );
+const attendOnline = JSON.parse( degree.dataset.attendonline );
+const programContactInfo = JSON.parse( degree.dataset.programcontact );
+const nextSteps = JSON.parse( degree.dataset.nextsteps );
+const whyChooseAsu = JSON.parse( degree.dataset.chooseasu );
 
 render(
 	<DetailPage
