@@ -10,6 +10,7 @@ import {
 	CardBody,
 	CardHeader,
 	IconButton,
+	RadioControl,
 	TextControl,
 } from '@wordpress/components';
 
@@ -19,130 +20,231 @@ import {
  * @param {Object} props
  */
 const NextStepsSettings = ( props ) => {
+	const {
+		attributes: {
+			nextSteps__cardsIcon,
+			nextSteps__cardsTitle,
+			nextSteps__cardsContent,
+			nextSteps__cardsButtonIcon,
+			nextSteps__cardsButtonLabel,
+			nextSteps__cardsButtonUrl,
+			nextSteps__cardsButtonColor,
+			nextSteps__cardsButtonSize,
+		},
+	} = props;
+
 	const handleAddCard = () => {
-		const cardIcons = [ ...props.attributes.nextSteps__cardsIcon ];
-		const cardTitles = [ ...props.attributes.nextSteps__cardsTitle ];
-		const cardContents = [ ...props.attributes.nextSteps__cardsContent ];
-		const cardButtonLinks = [
-			...props.attributes.nextSteps__cardsButtonLink,
-		];
+		const cardIcons = [ ...nextSteps__cardsIcon ];
+		const cardTitles = [ ...nextSteps__cardsTitle ];
+		const cardContents = [ ...nextSteps__cardsContent ];
+		const cardButtonIcons = [ ...nextSteps__cardsButtonIcon ];
+		const cardButtonLabels = [ ...nextSteps__cardsButtonLabel ];
+		const cardButtonUrls = [ ...nextSteps__cardsButtonUrl ];
+		const cardButtonColors = [ ...nextSteps__cardsButtonColor ];
+		const cardButtonSizes = [ ...nextSteps__cardsButtonSize ];
 
 		cardIcons.push( '' );
 		cardTitles.push( '' );
 		cardContents.push( '' );
-		cardButtonLinks.push( '' );
+		cardButtonIcons.push( '' );
+		cardButtonLabels.push( '' );
+		cardButtonUrls.push( '' );
+		cardButtonColors.push( '' );
+		cardButtonSizes.push( '' );
 
 		props.setAttributes( {
 			nextSteps__cardsIcon: cardIcons,
 			nextSteps__cardsTitle: cardTitles,
 			nextSteps__cardsContent: cardContents,
-			nextSteps__cardsButtonLink: cardButtonLinks,
+			nextSteps__cardsButtonIcon: cardButtonIcons,
+			nextSteps__cardsButtonLabel: cardButtonLabels,
+			nextSteps__cardsButtonUrl: cardButtonUrls,
+			nextSteps__cardsButtonColor: cardButtonColors,
+			nextSteps__cardsButtonSize: cardButtonSizes,
 		} );
 	};
 
 	const handleRemoveCard = ( index ) => {
-		const cardIcons = [ ...props.attributes.nextSteps__cardsIcon ];
-		const cardTitles = [ ...props.attributes.nextSteps__cardsTitle ];
-		const cardContents = [ ...props.attributes.nextSteps__cardsContent ];
-		const cardButtonLinks = [
-			...props.attributes.nextSteps__cardsButtonLink,
-		];
+		const cardIcons = [ ...nextSteps__cardsIcon ];
+		const cardTitles = [ ...nextSteps__cardsTitle ];
+		const cardContents = [ ...nextSteps__cardsContent ];
+		const cardButtonIcons = [ ...nextSteps__cardsButtonIcon ];
+		const cardButtonLabels = [ ...nextSteps__cardsButtonLabel ];
+		const cardButtonUrls = [ ...nextSteps__cardsButtonUrl ];
+		const cardButtonColors = [ ...nextSteps__cardsButtonColor ];
+		const cardButtonSizes = [ ...nextSteps__cardsButtonSize ];
 
 		cardIcons.splice( index, 1 );
 		cardTitles.splice( index, 1 );
 		cardContents.splice( index, 1 );
-		cardButtonLinks.splice( index, 1 );
+		cardButtonIcons.splice( index, 1 );
+		cardButtonLabels.splice( index, 1 );
+		cardButtonUrls.splice( index, 1 );
+		cardButtonColors.splice( index, 1 );
+		cardButtonSizes.splice( index, 1 );
 
 		props.setAttributes( {
 			nextSteps__cardsIcon: cardIcons,
 			nextSteps__cardsTitle: cardTitles,
 			nextSteps__cardsContent: cardContents,
-			nextSteps__cardsButtonLink: cardButtonLinks,
+			nextSteps__cardsButtonIcon: cardButtonIcons,
+			nextSteps__cardsButtonLabel: cardButtonLabels,
+			nextSteps__cardsButtonUrl: cardButtonUrls,
+			nextSteps__cardsButtonColor: cardButtonColors,
+			nextSteps__cardsButtonSize: cardButtonSizes,
 		} );
 	};
 
-	const handleIconChange = ( icon, index ) => {
-		const cardIcons = [ ...props.attributes.nextSteps__cardsIcon ];
-		cardIcons[ index ] = icon;
+	const handleIconChange = ( value, index ) => {
+		const cardIcons = [ ...nextSteps__cardsIcon ];
+		cardIcons[ index ] = value;
 		props.setAttributes( { nextSteps__cardsIcon: cardIcons } );
 	};
 
-	const handleTitleChange = ( title, index ) => {
-		const cardTitles = [ ...props.attributes.nextSteps__cardsTitle ];
-		cardTitles[ index ] = title;
+	const handleTitleChange = ( value, index ) => {
+		const cardTitles = [ ...nextSteps__cardsTitle ];
+		cardTitles[ index ] = value;
 		props.setAttributes( { nextSteps__cardsTitle: cardTitles } );
 	};
 
-	const handleContentChange = ( content, index ) => {
-		const cardContents = [ ...props.attributes.nextSteps__cardsContent ];
-		cardContents[ index ] = content;
+	const handleContentChange = ( value, index ) => {
+		const cardContents = [ ...nextSteps__cardsContent ];
+		cardContents[ index ] = value;
 		props.setAttributes( { nextSteps__cardsContent: cardContents } );
 	};
 
-	const handleButtonLinkChange = ( link, index ) => {
-		const cardButtonLinks = [
-			...props.attributes.nextSteps__cardsButtonLink,
-		];
-		cardButtonLinks[ index ] = link;
-		props.setAttributes( { nextSteps__cardsButtonLink: cardButtonLinks } );
+	const handleButtonIconChange = ( value, index ) => {
+		const cardButtonIcons = [ ...nextSteps__cardsButtonIcon ];
+		cardButtonIcons[ index ] = value;
+		props.setAttributes( { nextSteps__cardsButtonIcon: cardButtonIcons } );
+	};
+
+	const handleButtonLabelChange = ( value, index ) => {
+		const cardButtonLabels = [ ...nextSteps__cardsButtonLabel ];
+		cardButtonLabels[ index ] = value;
+		props.setAttributes( {
+			nextSteps__cardsButtonLabel: cardButtonLabels,
+		} );
+	};
+
+	const handleButtonUrlChange = ( value, index ) => {
+		const cardButtonUrls = [ ...nextSteps__cardsButtonUrl ];
+		cardButtonUrls[ index ] = value;
+		props.setAttributes( { nextSteps__cardsButtonUrl: cardButtonUrls } );
+	};
+
+	const handleButtonColorChange = ( value, index ) => {
+		const cardButtonColors = [ ...nextSteps__cardsButtonColor ];
+		cardButtonColors[ index ] = value;
+		props.setAttributes( {
+			nextSteps__cardsButtonColor: cardButtonColors,
+		} );
+	};
+
+	const handleButtonSizeChange = ( value, index ) => {
+		const cardButtonSizes = [ ...nextSteps__cardsButtonSize ];
+		cardButtonSizes[ index ] = value;
+		props.setAttributes( { nextSteps__cardsButtonSize: cardButtonSizes } );
 	};
 
 	let cards;
 
-	if ( props.attributes.nextSteps__cardsTitle.length ) {
-		cards = props.attributes.nextSteps__cardsTitle.map(
-			( title, index ) => {
-				return (
-					<CardBody key={ index }>
-						<TextControl
-							label={ 'Card icon' }
-							value={
-								props.attributes.nextSteps__cardsIcon[ index ]
-							}
-							onChange={ ( newValue ) =>
-								handleIconChange( newValue, index )
-							}
-						/>
-						<TextControl
-							label={ 'Card title' }
-							value={
-								props.attributes.nextSteps__cardsTitle[ index ]
-							}
-							onChange={ ( newValue ) =>
-								handleTitleChange( newValue, index )
-							}
-						/>
-						<TextControl
-							label={ 'Card content' }
-							value={
-								props.attributes.nextSteps__cardsContent[
-									index
-								]
-							}
-							onChange={ ( newValue ) =>
-								handleContentChange( newValue, index )
-							}
-						/>
-						<TextControl
-							label={ 'Card button link' }
-							value={
-								props.attributes.nextSteps__cardsButtonLink[
-									index
-								]
-							}
-							onChange={ ( newValue ) =>
-								handleButtonLinkChange( newValue, index )
-							}
-						/>
-						<IconButton
-							icon="no-alt"
-							label="Delete item"
-							onClick={ () => handleRemoveCard( index ) }
-						/>
-					</CardBody>
-				);
-			}
-		);
+	if ( nextSteps__cardsTitle.length ) {
+		cards = nextSteps__cardsTitle.map( ( title, index ) => {
+			return (
+				<CardBody key={ index }>
+					<TextControl
+						label={ 'Card icon' }
+						value={ nextSteps__cardsIcon[ index ] }
+						onChange={ ( newValue ) =>
+							handleIconChange( newValue, index )
+						}
+					/>
+					<TextControl
+						label={ 'Card title' }
+						value={ nextSteps__cardsTitle[ index ] }
+						onChange={ ( newValue ) =>
+							handleTitleChange( newValue, index )
+						}
+					/>
+					<TextControl
+						label={ 'Card content' }
+						value={ nextSteps__cardsContent[ index ] }
+						onChange={ ( newValue ) =>
+							handleContentChange( newValue, index )
+						}
+					/>
+					<TextControl
+						label={ 'Card button icon' }
+						value={ nextSteps__cardsButtonIcon[ index ] }
+						onChange={ ( newValue ) =>
+							handleButtonIconChange( newValue, index )
+						}
+					/>
+					<TextControl
+						label={ 'Card button label' }
+						value={ nextSteps__cardsButtonLabel[ index ] }
+						onChange={ ( newValue ) =>
+							handleButtonLabelChange( newValue, index )
+						}
+					/>
+					<TextControl
+						label={ 'Card button url' }
+						value={ nextSteps__cardsButtonUrl[ index ] }
+						onChange={ ( newValue ) =>
+							handleButtonUrlChange( newValue, index )
+						}
+					/>
+					<RadioControl
+						label={ __( 'Card button color', 'unityblocks' ) }
+						selected={ nextSteps__cardsButtonColor[ index ] }
+						options={ [
+							{
+								label: __( 'Gold', 'unityblocks' ),
+								value: 'gold',
+							},
+							{
+								label: __( 'Maroon', 'unityblocks' ),
+								value: 'maroon',
+							},
+							{
+								label: __( 'Gray', 'unityblocks' ),
+								value: 'gray',
+							},
+							{
+								label: __( 'Dark', 'unityblocks' ),
+								value: 'dark',
+							},
+						] }
+						onChange={ ( newValue ) =>
+							handleButtonColorChange( newValue, index )
+						}
+					/>
+					<RadioControl
+						label={ __( 'Card button size', 'unityblocks' ) }
+						selected={ nextSteps__cardsButtonSize[ index ] }
+						options={ [
+							{
+								label: __( 'Small', 'unityblocks' ),
+								value: 'small',
+							},
+							{
+								label: __( 'Xsmall', 'unityblocks' ),
+								value: 'xsmall',
+							},
+						] }
+						onChange={ ( newValue ) =>
+							handleButtonSizeChange( newValue, index )
+						}
+					/>
+					<IconButton
+						icon="no-alt"
+						label="Delete item"
+						onClick={ () => handleRemoveCard( index ) }
+					/>
+				</CardBody>
+			);
+		} );
 	}
 
 	return (
