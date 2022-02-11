@@ -96,7 +96,7 @@ const OverrideImagesSettings = ( props ) => {
 					</MediaUploadCheck>
 
 					<TextControl
-						label={ 'Add CSS classnames' }
+						label={ '"Career Outlook" feature image CSS classes.' }
 						help="Separate multiple classes with spaces."
 						value={ careerOutlook__imageCssClass }
 						onChange={ ( newValue ) =>
@@ -150,7 +150,9 @@ const OverrideImagesSettings = ( props ) => {
 					</MediaUploadCheck>
 
 					<TextControl
-						label={ 'Add CSS classnames' }
+						label={
+							'"Global Opportunity" feature image CSS class.'
+						}
 						help="Separate multiple classes with spaces."
 						value={ globalOpportunity__imageCssClass }
 						onChange={ ( newValue ) =>
@@ -205,7 +207,7 @@ const OverrideImagesSettings = ( props ) => {
 					</MediaUploadCheck>
 
 					<TextControl
-						label={ 'Add CSS classnames' }
+						label={ '"Attend Online" feature image CSS classes.' }
 						help="Separate multiple classes with spaces."
 						value={ attendOnline__imageCssClass }
 						onChange={ ( newValue ) =>
