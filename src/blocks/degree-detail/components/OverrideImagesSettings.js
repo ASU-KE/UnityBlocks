@@ -97,6 +97,7 @@ const OverrideImagesSettings = ( props ) => {
 
 					<TextControl
 						label={ 'Add CSS classnames' }
+						help="Separate multiple classes with spaces."
 						value={ careerOutlook__imageCssClass }
 						onChange={ ( newValue ) =>
 							setAttributes( {
@@ -150,6 +151,7 @@ const OverrideImagesSettings = ( props ) => {
 
 					<TextControl
 						label={ 'Add CSS classnames' }
+						help="Separate multiple classes with spaces."
 						value={ globalOpportunity__imageCssClass }
 						onChange={ ( newValue ) =>
 							setAttributes( {
@@ -204,6 +206,7 @@ const OverrideImagesSettings = ( props ) => {
 
 					<TextControl
 						label={ 'Add CSS classnames' }
+						help="Separate multiple classes with spaces."
 						value={ attendOnline__imageCssClass }
 						onChange={ ( newValue ) =>
 							setAttributes( {
