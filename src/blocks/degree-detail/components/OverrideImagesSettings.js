@@ -4,17 +4,14 @@
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import {
-	MediaUploadCheck,
-	MediaUpload,
-	MediaPlaceholder,
-} from '@wordpress/block-editor';
+import { MediaUploadCheck, MediaPlaceholder } from '@wordpress/block-editor';
 import {
 	Card,
 	CardBody,
 	CardHeader,
 	CardMedia,
 	ResponsiveWrapper,
+	TextControl,
 } from '@wordpress/components';
 import { compose } from '@wordpress/compose';
 import { withSelect } from '@wordpress/data';
@@ -32,20 +29,20 @@ const OverrideImagesSettings = ( props ) => {
 			careerOutlook__imageId,
 			careerOutlook__imageUrl,
 			careerOutlook__imageAltText,
-			// careerOutlook__imageCssClass,
+			careerOutlook__imageCssClass,
 			globalOpportunity__imageId,
 			globalOpportunity__imageUrl,
 			globalOpportunity__imageAltText,
-			// globalOpportunity__imageCssClass,
+			globalOpportunity__imageCssClass,
 			attendOnline__imageId,
 			attendOnline__imageUrl,
 			attendOnline__imageAltText,
-			// attendOnline__imageCssClass,
+			attendOnline__imageCssClass,
 		},
 		careerOutlookImage,
 		globalOpportunityImage,
 		attendOnlineImage,
-		// setAttributes,
+		setAttributes,
 	} = props;
 
 	const onSelectCareerOutlookMedia = ( media ) => {
@@ -98,6 +95,16 @@ const OverrideImagesSettings = ( props ) => {
 						/>
 					</MediaUploadCheck>
 
+					<TextControl
+						label={ 'Add CSS classnames' }
+						value={ careerOutlook__imageCssClass }
+						onChange={ ( newValue ) =>
+							setAttributes( {
+								careerOutlook__imageCssClass: newValue,
+							} )
+						}
+					/>
+
 					{ careerOutlook__imageId && (
 						<CardMedia>
 							<ResponsiveWrapper
@@ -140,6 +147,16 @@ const OverrideImagesSettings = ( props ) => {
 							onSelect={ onSelectGlobalOpportunityMedia }
 						/>
 					</MediaUploadCheck>
+
+					<TextControl
+						label={ 'Add CSS classnames' }
+						value={ globalOpportunity__imageCssClass }
+						onChange={ ( newValue ) =>
+							setAttributes( {
+								globalOpportunity__imageCssClass: newValue,
+							} )
+						}
+					/>
 
 					{ globalOpportunity__imageId && (
 						<CardMedia>
@@ -184,6 +201,16 @@ const OverrideImagesSettings = ( props ) => {
 							onSelect={ onSelectAttendOnlineMedia }
 						/>
 					</MediaUploadCheck>
+
+					<TextControl
+						label={ 'Add CSS classnames' }
+						value={ attendOnline__imageCssClass }
+						onChange={ ( newValue ) =>
+							setAttributes( {
+								attendOnline__imageCssClass: newValue,
+							} )
+						}
+					/>
 
 					{ attendOnline__imageId && (
 						<CardMedia>
