@@ -53,7 +53,7 @@ const HeroSettings = ( props ) => {
 		setAttributes,
 	} = props;
 
-	const onSelectHeroMedia = ( media ) => {
+	const onSelectMedia = ( media ) => {
 		props.setAttributes( {
 			heroMediaId: media.id,
 			heroMediaUrl: media.url,
@@ -68,7 +68,7 @@ const HeroSettings = ( props ) => {
 					<Toolbar>
 						<MediaUpload
 							value={ heroMediaId }
-							onSelect={ onSelectHeroMedia }
+							onSelect={ onSelectMedia }
 							allowedTypes={ [ 'image' ] }
 							render={ ( { open } ) => (
 								<IconButton
@@ -164,7 +164,7 @@ const HeroSettings = ( props ) => {
 								} }
 								icon={ icon }
 								accept="images/*"
-								onSelect={ onSelectHeroMedia }
+								onSelect={ onSelectMedia }
 							/>
 						</MediaUploadCheck>
 					</CardBody>
