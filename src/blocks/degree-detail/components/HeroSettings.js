@@ -89,6 +89,7 @@ const HeroSettings = ( props ) => {
 
 				<CardBody>
 					<RadioControl
+						disabled
 						label={ __( 'Type', 'unityblocks' ) }
 						selected={ heroType }
 						options={ [
@@ -307,7 +308,11 @@ const HeroSettings = ( props ) => {
 						}
 					/>
 					<RadioControl
-						label={ __( 'Contents text color', 'unityblocks' ) }
+						disabled
+						label={ __(
+							'Contents text color (Not Implemented)',
+							'unityblocks'
+						) }
 						selected={ heroContentsColor }
 						options={ [
 							{
@@ -330,8 +335,9 @@ const HeroSettings = ( props ) => {
 						}
 					/>
 					<RadioControl
+						disabled
 						label={ __(
-							'Contents highlight color',
+							'Contents highlight color (Not Implemented)',
 							'unityblocks'
 						) }
 						selected={ heroContentsHighlightColor }
