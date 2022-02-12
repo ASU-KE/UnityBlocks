@@ -376,6 +376,10 @@
       "type": "string",
       "default": ""
     },
+    "nextSteps__learnMoreButtonAria": {
+      "type": "string",
+      "default": ""
+    },
     "nextSteps__learnMoreButtonUrl": {
       "type": "string",
       "default": ""
@@ -408,6 +412,10 @@
       "type": "string",
       "default": ""
     },
+    "nextSteps__applyButtonAria": {
+      "type": "string",
+      "default": ""
+    },
     "nextSteps__applyButtonUrl": {
       "type": "string",
       "default": ""
@@ -437,6 +445,10 @@
       "default": ""
     },
     "nextSteps__visitButtonLabel": {
+      "type": "string",
+      "default": ""
+    },
+    "nextSteps__visitButtonAria": {
       "type": "string",
       "default": ""
     },
@@ -488,6 +500,10 @@
       "type": "string",
       "default": ""
     },
+    "whyChooseAsu__facultyButtonAria": {
+      "type": "string",
+      "default": ""
+    },
     "whyChooseAsu__facultyButtonUrl": {
       "type": "string",
       "default": ""
@@ -525,6 +541,10 @@
       "default": ""
     },
     "whyChooseAsu__programsButtonLabel": {
+      "type": "string",
+      "default": ""
+    },
+    "whyChooseAsu__programsButtonAria": {
       "type": "string",
       "default": ""
     },
@@ -568,6 +588,10 @@
       "type": "string",
       "default": ""
     },
+    "whyChooseAsu__researchButtonAria": {
+      "type": "string",
+      "default": ""
+    },
     "whyChooseAsu__researchButtonUrl": {
       "type": "string",
       "default": ""
@@ -605,6 +629,10 @@
       "default": ""
     },
     "whyChooseAsu__inclusionButtonLabel": {
+      "type": "string",
+      "default": ""
+    },
+    "whyChooseAsu__inclusionButtonAria": {
       "type": "string",
       "default": ""
     },
@@ -648,6 +676,10 @@
       "type": "string",
       "default": ""
     },
+    "whyChooseAsu__mentorsButtonAria": {
+      "type": "string",
+      "default": ""
+    },
     "whyChooseAsu__mentorsButtonUrl": {
       "type": "string",
       "default": ""
@@ -685,6 +717,10 @@
       "default": ""
     },
     "whyChooseAsu__honorsButtonLabel": {
+      "type": "string",
+      "default": ""
+    },
+    "whyChooseAsu__honorsButtonAria": {
       "type": "string",
       "default": ""
     },
