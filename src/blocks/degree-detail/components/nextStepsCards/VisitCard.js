@@ -40,6 +40,9 @@ const VisitCard = ( props ) => {
 				<CardBody>
 					<TextControl
 						label={ 'Card icon' }
+						help={
+							'Enter Font Awesome icon classnames separated by spaces. e.g. "fas info-circle"'
+						}
 						value={ nextSteps__visitIcon }
 						onChange={ ( newValue ) =>
 							setAttributes( {

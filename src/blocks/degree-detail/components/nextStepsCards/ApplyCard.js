@@ -40,6 +40,9 @@ const ApplyCard = ( props ) => {
 				<CardBody>
 					<TextControl
 						label={ 'Card icon' }
+						help={
+							'Enter Font Awesome icon classnames separated by spaces. e.g. "fas info-circle"'
+						}
 						value={ nextSteps__applyIcon }
 						onChange={ ( newValue ) =>
 							setAttributes( {
