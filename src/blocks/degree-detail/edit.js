@@ -8,8 +8,8 @@ import { DetailPage } from '@asu-design-system/app-degree-pages/dist/degreePages
 /**
  * Internal dependencies
  */
-import { Controls } from './controls';
-import { Inspector } from './inspector';
+import { Controls } from './Controls';
+import { Inspector } from './Inspector';
 import { transformAttributes } from './transformAttributes';
 
 /**
@@ -17,7 +17,7 @@ import { transformAttributes } from './transformAttributes';
  *
  * @param {Object} props
  */
-const Edit = ( props ) => {
+const edit = ( props ) => {
 	const {
 		attributes: { acadPlan },
 		className,
@@ -39,4 +39,4 @@ const Edit = ( props ) => {
 	);
 };
 
-export { Edit };
+export { edit };
