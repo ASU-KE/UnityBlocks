@@ -5,12 +5,14 @@
  */
 import { Card, CardBody, TextareaControl } from '@wordpress/components';
 
-import FacultyCard from './FacultyCard';
-import HonorsCard from './HonorsCard';
-import InclusionCard from './InclusionCard';
-import MentorsCard from './MentorsCard';
-import ProgramsCard from './ProgramsCard';
-import ResearchCard from './ResearchCard';
+import {
+	FacultyCard,
+	HonorsCard,
+	InclusionCard,
+	MentorsCard,
+	ProgramsCard,
+	ResearchCard,
+} from '../whyChooseAsuCards';
 
 /**
  * Block controls
