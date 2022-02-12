@@ -43,8 +43,6 @@ const Controls = ( props ) => {
 			<TabPanel
 				className="my-tab-panel"
 				orientation={ 'horizontal' }
-				// activeClass="active-tab"
-				// onSelect={ onSelect }
 				tabs={ [
 					{
 						name: 'degree-settings',
