@@ -3,7 +3,7 @@
 /**
  * WordPress dependencies
  */
-import { Card, CardBody, CardHeader, TextControl } from '@wordpress/components';
+import { Card, CardBody, TextControl } from '@wordpress/components';
 
 /**
  * Block controls
@@ -20,34 +20,33 @@ const ProgramContactsSettings = ( props ) => {
 	} = props;
 
 	return (
-		<Card size={ 'small' } style={ { width: '50%' } }>
-			<CardHeader>
-				<h2>Customize Program Contact details</h2>
-			</CardHeader>
-
-			<CardBody>
-				<TextControl
-					label={ 'Department' }
-					value={ programContactInfo__department }
-					onChange={ ( newValue ) =>
-						setAttributes( {
-							programContactInfo__department: newValue,
-						} )
-					}
-				/>
-			</CardBody>
-			<CardBody>
-				<TextControl
-					label={ 'Email' }
-					value={ programContactInfo__email }
-					onChange={ ( newValue ) =>
-						setAttributes( {
-							programContactInfo__email: newValue,
-						} )
-					}
-				/>
-			</CardBody>
-		</Card>
+		<>
+			<h2>Customize Program Contact details</h2>
+			<Card size={ 'small' } style={ { width: '50%' } }>
+				<CardBody>
+					<TextControl
+						label={ 'Department' }
+						value={ programContactInfo__department }
+						onChange={ ( newValue ) =>
+							setAttributes( {
+								programContactInfo__department: newValue,
+							} )
+						}
+					/>
+				</CardBody>
+				<CardBody>
+					<TextControl
+						label={ 'Email' }
+						value={ programContactInfo__email }
+						onChange={ ( newValue ) =>
+							setAttributes( {
+								programContactInfo__email: newValue,
+							} )
+						}
+					/>
+				</CardBody>
+			</Card>
+		</>
 	);
 };
 

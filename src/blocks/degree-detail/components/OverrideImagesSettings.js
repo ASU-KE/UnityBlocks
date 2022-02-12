@@ -8,7 +8,6 @@ import { MediaUploadCheck, MediaPlaceholder } from '@wordpress/block-editor';
 import {
 	Card,
 	CardBody,
-	CardHeader,
 	CardMedia,
 	ResponsiveWrapper,
 	TextControl,
@@ -71,11 +70,8 @@ const OverrideImagesSettings = ( props ) => {
 
 	return (
 		<>
+			<h2>Customize featured images</h2>
 			<Card size={ 'small' } style={ { width: '50%' } }>
-				<CardHeader>
-					<h2>Customize featured images</h2>
-				</CardHeader>
-
 				<CardBody>
 					<MediaUploadCheck>
 						<MediaPlaceholder

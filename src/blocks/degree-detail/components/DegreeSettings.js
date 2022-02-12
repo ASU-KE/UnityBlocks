@@ -1,7 +1,7 @@
 /**
  * WordPress dependencies
  */
-import { Card, CardBody, CardHeader, TextControl } from '@wordpress/components';
+import { Card, CardBody, TextControl } from '@wordpress/components';
 
 /**
  * Block controls
@@ -15,22 +15,22 @@ const DegreeSettings = ( props ) => {
 	} = props;
 
 	return (
-		<Card size={ 'small' } style={ { width: '50%' } }>
-			<CardHeader>
-				<h2>Degree Code</h2>
-			</CardHeader>
-			<CardBody>
-				<TextControl
-					label={ 'Academic Plan Code' }
-					value={ acadPlan }
-					onChange={ ( newValue ) =>
-						setAttributes( {
-							acadPlan: newValue,
-						} )
-					}
-				/>
-			</CardBody>
-		</Card>
+		<>
+			<h2>Degree Code</h2>
+			<Card size={ 'small' } style={ { width: '50%' } }>
+				<CardBody>
+					<TextControl
+						label={ 'Academic Plan Code' }
+						value={ acadPlan }
+						onChange={ ( newValue ) =>
+							setAttributes( {
+								acadPlan: newValue,
+							} )
+						}
+					/>
+				</CardBody>
+			</Card>
+		</>
 	);
 };
 

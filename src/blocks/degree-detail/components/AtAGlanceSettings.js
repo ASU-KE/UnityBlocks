@@ -9,7 +9,6 @@ import {
 	Card,
 	CardBody,
 	CardDivider,
-	CardHeader,
 	IconButton,
 	TextControl,
 } from '@wordpress/components';
@@ -116,74 +115,76 @@ const AtAGlanceSettings = ( props ) => {
 	}
 
 	return (
-		<Card size={ 'small' } style={ { width: '50%' } }>
-			<CardHeader>
-				<h2>Customize Program At a Glance settings</h2>
-			</CardHeader>
+		<>
+			<h2>Customize Program At a Glance settings</h2>
+			<Card size={ 'small' } style={ { width: '50%' } }>
+				<CardBody>
+					<TextControl
+						label={ 'Degree Offered By - Text' }
+						value={ atAGlance__offeredByText }
+						onChange={ ( newValue ) =>
+							setAttributes( {
+								atAGlance__offeredByText: newValue,
+							} )
+						}
+					/>
+					<TextControl
+						label={ 'Degree Offered By - URL' }
+						value={ atAGlance__offeredByUrl }
+						onChange={ ( newValue ) =>
+							setAttributes( {
+								atAGlance__offeredByUrl: newValue,
+							} )
+						}
+					/>
+				</CardBody>
 
-			<CardBody>
-				<TextControl
-					label={ 'Degree Offered By - Text' }
-					value={ atAGlance__offeredByText }
-					onChange={ ( newValue ) =>
-						setAttributes( {
-							atAGlance__offeredByText: newValue,
-						} )
-					}
-				/>
-				<TextControl
-					label={ 'Degree Offered By - URL' }
-					value={ atAGlance__offeredByUrl }
-					onChange={ ( newValue ) =>
-						setAttributes( {
-							atAGlance__offeredByUrl: newValue,
-						} )
-					}
-				/>
-			</CardBody>
+				<CardBody>
+					<TextControl
+						label={ 'First requirement math course' }
+						value={ atAGlance__firstRequirementMathCourse }
+						onChange={ ( newValue ) =>
+							setAttributes( {
+								atAGlance__firstRequirementMathCourse: newValue,
+							} )
+						}
+					/>
+					<TextControl
+						label={ 'Math intensity' }
+						value={ atAGlance__mathIntensity }
+						onChange={ ( newValue ) =>
+							setAttributes( {
+								atAGlance__mathIntensity: newValue,
+							} )
+						}
+					/>
+					<TextControl
+						label={ 'Time commitment' }
+						value={ atAGlance__timeCommitment }
+						onChange={ ( newValue ) =>
+							setAttributes( {
+								atAGlance__timeCommitment: newValue,
+							} )
+						}
+					/>
+				</CardBody>
 
-			<CardBody>
-				<TextControl
-					label={ 'First requirement math course' }
-					value={ atAGlance__firstRequirementMathCourse }
-					onChange={ ( newValue ) =>
-						setAttributes( {
-							atAGlance__firstRequirementMathCourse: newValue,
-						} )
-					}
-				/>
-				<TextControl
-					label={ 'Math intensity' }
-					value={ atAGlance__mathIntensity }
-					onChange={ ( newValue ) =>
-						setAttributes( {
-							atAGlance__mathIntensity: newValue,
-						} )
-					}
-				/>
-				<TextControl
-					label={ 'Time commitment' }
-					value={ atAGlance__timeCommitment }
-					onChange={ ( newValue ) =>
-						setAttributes( {
-							atAGlance__timeCommitment: newValue,
-						} )
-					}
-				/>
-			</CardBody>
+				<CardDivider />
 
-			<CardDivider />
-
-			<CardBody>
-				<h4>Custom locations</h4>
-			</CardBody>
-			{ locations }
-			<CardBody>
-				<Button isDefault onClick={ handleAddLocation.bind( this ) }>
-					{ __( 'Add Location' ) }
-				</Button>
-			</CardBody>
-		</Card>
+				<CardBody>
+					<h4>Custom locations</h4>
+				</CardBody>
+				{ locations }
+				<CardBody>
+					<Button
+						isDefault
+						onClick={ handleAddLocation.bind( this ) }
+					>
+						{ __( 'Add Location' ) }
+					</Button>
+				</CardBody>
+			</Card>
+		</>
 	);
 };
 

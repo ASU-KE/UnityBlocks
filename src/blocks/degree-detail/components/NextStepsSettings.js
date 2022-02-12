@@ -8,7 +8,6 @@ import {
 	Button,
 	Card,
 	CardBody,
-	CardHeader,
 	IconButton,
 	RadioControl,
 	TextControl,
@@ -248,25 +247,25 @@ const NextStepsSettings = ( props ) => {
 	}
 
 	return (
-		<Card size={ 'small' } style={ { width: '50%' } }>
-			<CardHeader>
-				<h2>Customize Next Steps cards</h2>
-			</CardHeader>
-			<CardBody>
-				<p>
-					Note that cards should be added in sets of 3 for each row
-					desired.
-				</p>
-			</CardBody>
+		<>
+			<h2>Customize Next Steps cards</h2>
+			<Card size={ 'small' } style={ { width: '50%' } }>
+				<CardBody>
+					<p>
+						Note that cards should be added in sets of 3 for each
+						row desired.
+					</p>
+				</CardBody>
 
-			<CardBody>
-				<Button isDefault onClick={ handleAddCard.bind( this ) }>
-					{ __( 'Add Card' ) }
-				</Button>
-			</CardBody>
+				<CardBody>
+					<Button isDefault onClick={ handleAddCard.bind( this ) }>
+						{ __( 'Add Card' ) }
+					</Button>
+				</CardBody>
 
-			{ cards }
-		</Card>
+				{ cards }
+			</Card>
+		</>
 	);
 };
 

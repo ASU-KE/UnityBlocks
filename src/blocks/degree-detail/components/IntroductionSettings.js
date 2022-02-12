@@ -14,7 +14,7 @@ import {
 import {
 	Card,
 	CardBody,
-	// CardHeader,
+	CardDivider,
 	CardMedia,
 	IconButton,
 	// TextControl,
@@ -88,7 +88,7 @@ const IntroductionSettings = ( props ) => {
 			<RichText
 				tagName="div"
 				multiline="p"
-				placeholder={ 'Enter custom content here' }
+				placeholder={ __( 'Enter custom content here', 'unityblocks' ) }
 				value={ introContent__contentsText }
 				onChange={ ( newValue ) =>
 					setAttributes( {
@@ -98,6 +98,7 @@ const IntroductionSettings = ( props ) => {
 			/>
 
 			<Card size={ 'small' } style={ { width: '50%' } }>
+				<CardDivider />
 				<CardBody>
 					<ToggleControl
 						label={ 'Enable "Market Text"' }

@@ -12,7 +12,6 @@ import {
 	Card,
 	CardBody,
 	CardDivider,
-	CardHeader,
 	CardMedia,
 	IconButton,
 	RadioControl,
@@ -82,11 +81,8 @@ const HeroSettings = ( props ) => {
 				</BlockControls>
 			) }
 
+			<h2>Customize the degree page hero</h2>
 			<Card elevation={ 0 } size={ 'small' } style={ { width: '50%' } }>
-				<CardHeader>
-					<h2>Customize the degree page hero</h2>
-				</CardHeader>
-
 				<CardBody>
 					<RadioControl
 						disabled
