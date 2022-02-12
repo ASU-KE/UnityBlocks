@@ -119,7 +119,7 @@ const Controls = ( props ) => {
 						return <AtAGlanceSettings { ...props } />;
 					}
 
-					if ( 'program-contacts' === tab.name ) {
+					if ( 'program-contact' === tab.name ) {
 						return <ProgramContactSettings { ...props } />;
 					}
 
