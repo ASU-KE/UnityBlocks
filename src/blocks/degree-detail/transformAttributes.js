@@ -84,14 +84,30 @@ const transformAttributes = ( attributes ) => {
 		programContactInfo__department,
 		programContactInfo__email,
 		nextSteps__hide,
-		nextSteps__cardsIcon,
-		nextSteps__cardsTitle,
-		nextSteps__cardsContent,
-		nextSteps__cardsButtonIcon,
-		nextSteps__cardsButtonLabel,
-		nextSteps__cardsButtonUrl,
-		nextSteps__cardsButtonColor,
-		nextSteps__cardsButtonSize,
+		nextSteps__learnMoreIcon,
+		nextSteps__learnMoreTitle,
+		nextSteps__learnMoreContent,
+		nextSteps__learnMoreButtonIcon,
+		nextSteps__learnMoreButtonLabel,
+		nextSteps__learnMoreButtonUrl,
+		nextSteps__learnMoreButtonColor,
+		nextSteps__learnMoreButtonSize,
+		nextSteps__applyIcon,
+		nextSteps__applyTitle,
+		nextSteps__applyContent,
+		nextSteps__applyButtonIcon,
+		nextSteps__applyButtonLabel,
+		nextSteps__applyButtonUrl,
+		nextSteps__applyButtonColor,
+		nextSteps__applyButtonSize,
+		nextSteps__visitIcon,
+		nextSteps__visitTitle,
+		nextSteps__visitContent,
+		nextSteps__visitButtonIcon,
+		nextSteps__visitButtonLabel,
+		nextSteps__visitButtonUrl,
+		nextSteps__visitButtonColor,
+		nextSteps__visitButtonSize,
 		whyChooseAsu__hide,
 		whyChooseAsu__sectionIntroText,
 		whyChooseAsu__facultyImageUrl,
@@ -358,22 +374,50 @@ const transformAttributes = ( attributes ) => {
 		},
 		nextSteps: {
 			hide: nextSteps__hide,
-			cards: nextSteps__cardsTitle.length
-				? nextSteps__cardsTitle.map( ( cardTitle, index ) => ( {
-						title: cardTitle,
-						icon: nextSteps__cardsIcon[ index ],
-						content: nextSteps__cardsContent[ index ],
-						buttonLink: nextSteps__cardsButtonUrl.map(
-							( url, index ) => ( {
-								url,
-								label: nextSteps__cardsButtonLabel[ index ],
-								icon: nextSteps__cardsButtonIcon[ index ],
-								color: nextSteps__cardsButtonColor[ index ],
-								size: nextSteps__cardsButtonSize[ index ],
-							} )
-						),
-				  } ) )
-				: undefined,
+			cards: {
+				learnMore: nextSteps__learnMoreTitle
+					? {
+							icon: [ nextSteps__learnMoreIcon ],
+							title: nextSteps__learnMoreTitle,
+							content: nextSteps__learnMoreContent,
+							buttonLink: {
+								icon: nextSteps__learnMoreButtonIcon,
+								label: nextSteps__learnMoreButtonLabel,
+								url: nextSteps__learnMoreButtonUrl,
+								color: nextSteps__learnMoreButtonColor,
+								size: nextSteps__learnMoreButtonSize,
+							},
+					  }
+					: undefined,
+				apply: nextSteps__applyTitle
+					? {
+							icon: [ nextSteps__applyIcon ],
+							title: nextSteps__applyTitle,
+							content: nextSteps__applyContent,
+							buttonLink: {
+								icon: nextSteps__applyButtonIcon,
+								label: nextSteps__applyButtonLabel,
+								url: nextSteps__applyButtonUrl,
+								color: nextSteps__applyButtonColor,
+								size: nextSteps__applyButtonSize,
+							},
+					  }
+					: undefined,
+				visit: nextSteps__visitTitle
+					? {
+							icon: [ nextSteps__visitIcon ],
+							title: nextSteps__visitTitle,
+							content: nextSteps__visitContent,
+							buttonLink: {
+								icon: nextSteps__visitButtonIcon,
+								label: nextSteps__visitButtonLabel,
+								url: nextSteps__visitButtonUrl,
+								color: nextSteps__visitButtonColor,
+								size: nextSteps__visitButtonSize,
+							},
+					  }
+					: undefined,
+			},
 		},
 		whyChooseAsu: {
 			hide: whyChooseAsu__hide,

@@ -356,37 +356,101 @@
       "type": "boolean",
       "default": false
     },
-    "nextSteps__cardsIcon": {
-      "type": "array",
-      "default": []
+    "nextSteps__learnMoreIcon": {
+      "type": "string",
+      "default": ""
     },
-    "nextSteps__cardsTitle": {
-      "type": "array",
-      "default": []
+    "nextSteps__learnMoreTitle": {
+      "type": "string",
+      "default": ""
     },
-    "nextSteps__cardsContent": {
-      "type": "array",
-      "default": []
+    "nextSteps__learnMoreContent": {
+      "type": "string",
+      "default": ""
     },
-    "nextSteps__cardsButtonIcon": {
-      "type": "array",
-      "default": []
+    "nextSteps__learnMoreButtonIcon": {
+      "type": "string",
+      "default": ""
     },
-    "nextSteps__cardsButtonLabel": {
-      "type": "array",
-      "default": []
+    "nextSteps__learnMoreButtonLabel": {
+      "type": "string",
+      "default": ""
     },
-    "nextSteps__cardsButtonUrl": {
-      "type": "array",
-      "default": []
+    "nextSteps__learnMoreButtonUrl": {
+      "type": "string",
+      "default": ""
     },
-    "nextSteps__cardsButtonColor": {
-      "type": "array",
-      "default": []
+    "nextSteps__learnMoreButtonColor": {
+      "type": "string",
+      "default": "maroon"
     },
-    "nextSteps__cardsButtonSize": {
-      "type": "array",
-      "default": []
+    "nextSteps__learnMoreButtonSize": {
+      "type": "string",
+      "default": "default"
+    },
+    "nextSteps__applyIcon": {
+      "type": "string",
+      "default": ""
+    },
+    "nextSteps__applyTitle": {
+      "type": "string",
+      "default": ""
+    },
+    "nextSteps__applyContent": {
+      "type": "string",
+      "default": ""
+    },
+    "nextSteps__applyButtonIcon": {
+      "type": "string",
+      "default": ""
+    },
+    "nextSteps__applyButtonLabel": {
+      "type": "string",
+      "default": ""
+    },
+    "nextSteps__applyButtonUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "nextSteps__applyButtonColor": {
+      "type": "string",
+      "default": "maroon"
+    },
+    "nextSteps__applyButtonSize": {
+      "type": "string",
+      "default": "default"
+    },
+    "nextSteps__visitIcon": {
+      "type": "string",
+      "default": ""
+    },
+    "nextSteps__visitTitle": {
+      "type": "string",
+      "default": ""
+    },
+    "nextSteps__visitContent": {
+      "type": "string",
+      "default": ""
+    },
+    "nextSteps__visitButtonIcon": {
+      "type": "string",
+      "default": ""
+    },
+    "nextSteps__visitButtonLabel": {
+      "type": "string",
+      "default": ""
+    },
+    "nextSteps__visitButtonUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "nextSteps__visitButtonColor": {
+      "type": "string",
+      "default": "maroon"
+    },
+    "nextSteps__visitButtonSize": {
+      "type": "string",
+      "default": "default"
     },
     "whyChooseAsu__hide": {
       "type": "boolean",
