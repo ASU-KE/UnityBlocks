@@ -379,7 +379,7 @@ const transformAttributes = ( attributes ) => {
 			cards: {
 				learnMore: nextSteps__learnMoreTitle
 					? {
-							icon: [ nextSteps__learnMoreIcon ],
+							icon: [ nextSteps__learnMoreIcon.split( ' ' ) ],
 							title: nextSteps__learnMoreTitle,
 							content: nextSteps__learnMoreContent,
 							buttonLink: {
@@ -393,7 +393,7 @@ const transformAttributes = ( attributes ) => {
 					: undefined,
 				apply: nextSteps__applyTitle
 					? {
-							icon: [ nextSteps__applyIcon ],
+							icon: [ nextSteps__applyIcon.split( ' ' ) ],
 							title: nextSteps__applyTitle,
 							content: nextSteps__applyContent,
 							buttonLink: {
@@ -407,7 +407,7 @@ const transformAttributes = ( attributes ) => {
 					: undefined,
 				visit: nextSteps__visitTitle
 					? {
-							icon: [ nextSteps__visitIcon ],
+							icon: [ nextSteps__visitIcon.split( ' ' ) ],
 							title: nextSteps__visitTitle,
 							content: nextSteps__visitContent,
 							buttonLink: {
