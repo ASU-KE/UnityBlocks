@@ -8,7 +8,7 @@ import { Card, CardBody, TextControl } from '@wordpress/components';
  *
  * @param {Object} props
  */
-const DegreeSettings = ( props ) => {
+const DegreeSelectorSettings = ( props ) => {
 	const {
 		attributes: { acadPlan },
 		setAttributes,
@@ -34,4 +34,4 @@ const DegreeSettings = ( props ) => {
 	);
 };
 
-export default DegreeSettings;
+export default DegreeSelectorSettings;

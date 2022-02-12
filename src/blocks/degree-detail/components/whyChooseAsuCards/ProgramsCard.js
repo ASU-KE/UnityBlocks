@@ -23,46 +23,47 @@ import {
 	Toolbar,
 } from '@wordpress/components';
 
-import icon from './icon';
+import icon from '../icon';
 
 /**
  * Block controls
  *
  * @param {Object} props
  */
-const FacultyCard = ( props ) => {
+const ProgramsCard = ( props ) => {
 	const {
 		attributes: {
-			whyChooseAsu__honorsImageId,
-			whyChooseAsu__honorsImageUrl,
-			whyChooseAsu__honorsImageAltText,
-			whyChooseAsu__honorsImageCss,
-			whyChooseAsu__honorsTitle,
-			whyChooseAsu__honorsText,
-			whyChooseAsu__honorsButtonIcon,
-			whyChooseAsu__honorsButtonLabel,
-			whyChooseAsu__honorsButtonUrl,
-			whyChooseAsu__honorsButtonColor,
-			whyChooseAsu__honorsButtonSize,
+			whyChooseAsu__programsImageId,
+			whyChooseAsu__programsImageUrl,
+			whyChooseAsu__programsImageAltText,
+			whyChooseAsu__programsImageCss,
+			whyChooseAsu__programsTitle,
+			whyChooseAsu__programsText,
+			whyChooseAsu__programsButtonIcon,
+			whyChooseAsu__programsButtonLabel,
+			whyChooseAsu__programsButtonAria,
+			whyChooseAsu__programsButtonUrl,
+			whyChooseAsu__programsButtonColor,
+			whyChooseAsu__programsButtonSize,
 		},
 		setAttributes,
 	} = props;
 
 	const onSelectMedia = ( media ) => {
 		props.setAttributes( {
-			whyChooseAsu__honorsImageId: media.id,
-			whyChooseAsu__honorsImageUrl: media.url,
-			whyChooseAsu__honorsImageAltText: media.alt,
+			whyChooseAsu__programsImageId: media.id,
+			whyChooseAsu__programsImageUrl: media.url,
+			whyChooseAsu__programsImageAltText: media.alt,
 		} );
 	};
 
 	return (
 		<>
-			{ whyChooseAsu__honorsImageId !== undefined && (
+			{ whyChooseAsu__programsImageId !== undefined && (
 				<BlockControls>
 					<Toolbar>
 						<MediaUpload
-							value={ whyChooseAsu__honorsImageId }
+							value={ whyChooseAsu__programsImageId }
 							onSelect={ onSelectMedia }
 							allowedTypes={ [ 'image' ] }
 							render={ ( { open } ) => (
@@ -78,12 +79,12 @@ const FacultyCard = ( props ) => {
 			) }
 
 			<Card size={ 'small' } style={ { width: '50%' } }>
-				<PanelBody title="Faculty Card" initialOpen={ false }>
+				<PanelBody title="Programs Card" initialOpen={ false }>
 					<CardBody>
 						<MediaUploadCheck>
 							<MediaPlaceholder
 								labels={ {
-									whyChooseAsu__honorsTitle: __(
+									whyChooseAsu__programsTitle: __(
 										'Hero image',
 										'unityblocks'
 									),
@@ -98,12 +99,12 @@ const FacultyCard = ( props ) => {
 							/>
 						</MediaUploadCheck>
 					</CardBody>
-					{ whyChooseAsu__honorsImageId !== undefined && (
+					{ whyChooseAsu__programsImageId !== undefined && (
 						<CardBody>
 							<CardMedia>
 								<img
-									alt={ whyChooseAsu__honorsImageAltText }
-									src={ whyChooseAsu__honorsImageUrl }
+									alt={ whyChooseAsu__programsImageAltText }
+									src={ whyChooseAsu__programsImageUrl }
 								/>
 							</CardMedia>
 						</CardBody>
@@ -112,10 +113,10 @@ const FacultyCard = ( props ) => {
 						<TextControl
 							label={ 'Image CSS classes' }
 							help="Separate multiple classes with spaces."
-							value={ whyChooseAsu__honorsImageCss }
+							value={ whyChooseAsu__programsImageCss }
 							onChange={ ( newValue ) =>
 								setAttributes( {
-									whyChooseAsu__honorsImageCss: newValue,
+									whyChooseAsu__programsImageCss: newValue,
 								} )
 							}
 						/>
@@ -126,10 +127,10 @@ const FacultyCard = ( props ) => {
 					<CardBody>
 						<TextControl
 							label={ 'Card title' }
-							value={ whyChooseAsu__honorsTitle }
+							value={ whyChooseAsu__programsTitle }
 							onChange={ ( newValue ) =>
 								setAttributes( {
-									whyChooseAsu__honorsTitle: newValue,
+									whyChooseAsu__programsTitle: newValue,
 								} )
 							}
 						/>
@@ -137,10 +138,10 @@ const FacultyCard = ( props ) => {
 					<CardBody>
 						<TextareaControl
 							label={ 'Card content' }
-							value={ whyChooseAsu__honorsText }
+							value={ whyChooseAsu__programsText }
 							onChange={ ( newValue ) =>
 								setAttributes( {
-									whyChooseAsu__honorsText: newValue,
+									whyChooseAsu__programsText: newValue,
 								} )
 							}
 						/>
@@ -151,10 +152,13 @@ const FacultyCard = ( props ) => {
 					<CardBody>
 						<TextControl
 							label={ 'Card button icon' }
-							value={ whyChooseAsu__honorsButtonIcon }
+							help={
+								'Enter Font Awesome icon classnames separated by spaces. e.g. "fas info-circle"'
+							}
+							value={ whyChooseAsu__programsButtonIcon }
 							onChange={ ( newValue ) =>
 								setAttributes( {
-									whyChooseAsu__honorsButtonIcon: newValue,
+									whyChooseAsu__programsButtonIcon: newValue,
 								} )
 							}
 						/>
@@ -162,10 +166,21 @@ const FacultyCard = ( props ) => {
 					<CardBody>
 						<TextControl
 							label={ 'Card button label' }
-							value={ whyChooseAsu__honorsButtonLabel }
+							value={ whyChooseAsu__programsButtonLabel }
 							onChange={ ( newValue ) =>
 								setAttributes( {
-									whyChooseAsu__honorsButtonLabel: newValue,
+									whyChooseAsu__programsButtonLabel: newValue,
+								} )
+							}
+						/>
+					</CardBody>
+					<CardBody>
+						<TextControl
+							label={ 'Card button ARIA label' }
+							value={ whyChooseAsu__programsButtonAria }
+							onChange={ ( newValue ) =>
+								setAttributes( {
+									whyChooseAsu__programsButtonAria: newValue,
 								} )
 							}
 						/>
@@ -173,10 +188,10 @@ const FacultyCard = ( props ) => {
 					<CardBody>
 						<TextControl
 							label={ 'Card button URL' }
-							value={ whyChooseAsu__honorsButtonUrl }
+							value={ whyChooseAsu__programsButtonUrl }
 							onChange={ ( newValue ) =>
 								setAttributes( {
-									whyChooseAsu__honorsButtonUrl: newValue,
+									whyChooseAsu__programsButtonUrl: newValue,
 								} )
 							}
 						/>
@@ -184,7 +199,7 @@ const FacultyCard = ( props ) => {
 					<CardBody>
 						<RadioControl
 							label={ __( 'Card button color', 'unityblocks' ) }
-							selected={ whyChooseAsu__honorsButtonColor }
+							selected={ whyChooseAsu__programsButtonColor }
 							options={ [
 								{
 									label: __( 'Maroon', 'unityblocks' ),
@@ -205,7 +220,7 @@ const FacultyCard = ( props ) => {
 							] }
 							onChange={ ( newValue ) =>
 								setAttributes( {
-									whyChooseAsu__honorsButtonColor: newValue,
+									whyChooseAsu__programsButtonColor: newValue,
 								} )
 							}
 						/>
@@ -213,7 +228,7 @@ const FacultyCard = ( props ) => {
 					<CardBody>
 						<RadioControl
 							label={ __( 'Card button size', 'unityblocks' ) }
-							selected={ whyChooseAsu__honorsButtonSize }
+							selected={ whyChooseAsu__programsButtonSize }
 							options={ [
 								{
 									label: __( 'Default', 'unityblocks' ),
@@ -230,7 +245,7 @@ const FacultyCard = ( props ) => {
 							] }
 							onChange={ ( newValue ) =>
 								setAttributes( {
-									whyChooseAsu__honorsButtonSize: newValue,
+									whyChooseAsu__programsButtonSize: newValue,
 								} )
 							}
 						/>
@@ -241,4 +256,4 @@ const FacultyCard = ( props ) => {
 	);
 };
 
-export default FacultyCard;
+export default ProgramsCard;

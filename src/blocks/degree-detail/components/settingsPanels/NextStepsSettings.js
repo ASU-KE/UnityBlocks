@@ -1,6 +1,4 @@
-import ApplyCard from './ApplyCard';
-import LearnMoreCard from './LearnMoreCard';
-import VisitCard from './VisitCard';
+import { ApplyCard, LearnMoreCard, VisitCard } from '../nextStepsCards';
 
 /**
  * Block controls

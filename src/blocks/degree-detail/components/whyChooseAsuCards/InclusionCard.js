@@ -23,46 +23,47 @@ import {
 	Toolbar,
 } from '@wordpress/components';
 
-import icon from './icon';
+import icon from '../icon';
 
 /**
  * Block controls
  *
  * @param {Object} props
  */
-const FacultyCard = ( props ) => {
+const InclusionCard = ( props ) => {
 	const {
 		attributes: {
-			whyChooseAsu__facultyImageId,
-			whyChooseAsu__facultyImageUrl,
-			whyChooseAsu__facultyImageAltText,
-			whyChooseAsu__facultyImageCss,
-			whyChooseAsu__facultyTitle,
-			whyChooseAsu__facultyText,
-			whyChooseAsu__facultyButtonIcon,
-			whyChooseAsu__facultyButtonLabel,
-			whyChooseAsu__facultyButtonUrl,
-			whyChooseAsu__facultyButtonColor,
-			whyChooseAsu__facultyButtonSize,
+			whyChooseAsu__inclusionImageId,
+			whyChooseAsu__inclusionImageUrl,
+			whyChooseAsu__inclusionImageAltText,
+			whyChooseAsu__inclusionImageCss,
+			whyChooseAsu__inclusionTitle,
+			whyChooseAsu__inclusionText,
+			whyChooseAsu__inclusionButtonIcon,
+			whyChooseAsu__inclusionButtonLabel,
+			whyChooseAsu__inclusionButtonAria,
+			whyChooseAsu__inclusionButtonUrl,
+			whyChooseAsu__inclusionButtonColor,
+			whyChooseAsu__inclusionButtonSize,
 		},
 		setAttributes,
 	} = props;
 
 	const onSelectMedia = ( media ) => {
 		props.setAttributes( {
-			whyChooseAsu__facultyImageId: media.id,
-			whyChooseAsu__facultyImageUrl: media.url,
-			whyChooseAsu__facultyImageAltText: media.alt,
+			whyChooseAsu__inclusionImageId: media.id,
+			whyChooseAsu__inclusionImageUrl: media.url,
+			whyChooseAsu__inclusionImageAltText: media.alt,
 		} );
 	};
 
 	return (
 		<>
-			{ whyChooseAsu__facultyImageId !== undefined && (
+			{ whyChooseAsu__inclusionImageId !== undefined && (
 				<BlockControls>
 					<Toolbar>
 						<MediaUpload
-							value={ whyChooseAsu__facultyImageId }
+							value={ whyChooseAsu__inclusionImageId }
 							onSelect={ onSelectMedia }
 							allowedTypes={ [ 'image' ] }
 							render={ ( { open } ) => (
@@ -78,12 +79,12 @@ const FacultyCard = ( props ) => {
 			) }
 
 			<Card size={ 'small' } style={ { width: '50%' } }>
-				<PanelBody title="Faculty Card" initialOpen={ false }>
+				<PanelBody title="Inclusion Card" initialOpen={ false }>
 					<CardBody>
 						<MediaUploadCheck>
 							<MediaPlaceholder
 								labels={ {
-									whyChooseAsu__facultyTitle: __(
+									whyChooseAsu__inclusionTitle: __(
 										'Hero image',
 										'unityblocks'
 									),
@@ -98,12 +99,12 @@ const FacultyCard = ( props ) => {
 							/>
 						</MediaUploadCheck>
 					</CardBody>
-					{ whyChooseAsu__facultyImageId !== undefined && (
+					{ whyChooseAsu__inclusionImageId !== undefined && (
 						<CardBody>
 							<CardMedia>
 								<img
-									alt={ whyChooseAsu__facultyImageAltText }
-									src={ whyChooseAsu__facultyImageUrl }
+									alt={ whyChooseAsu__inclusionImageAltText }
+									src={ whyChooseAsu__inclusionImageUrl }
 								/>
 							</CardMedia>
 						</CardBody>
@@ -112,10 +113,10 @@ const FacultyCard = ( props ) => {
 						<TextControl
 							label={ 'Image CSS classes' }
 							help="Separate multiple classes with spaces."
-							value={ whyChooseAsu__facultyImageCss }
+							value={ whyChooseAsu__inclusionImageCss }
 							onChange={ ( newValue ) =>
 								setAttributes( {
-									whyChooseAsu__facultyImageCss: newValue,
+									whyChooseAsu__inclusionImageCss: newValue,
 								} )
 							}
 						/>
@@ -126,10 +127,10 @@ const FacultyCard = ( props ) => {
 					<CardBody>
 						<TextControl
 							label={ 'Card title' }
-							value={ whyChooseAsu__facultyTitle }
+							value={ whyChooseAsu__inclusionTitle }
 							onChange={ ( newValue ) =>
 								setAttributes( {
-									whyChooseAsu__facultyTitle: newValue,
+									whyChooseAsu__inclusionTitle: newValue,
 								} )
 							}
 						/>
@@ -137,10 +138,10 @@ const FacultyCard = ( props ) => {
 					<CardBody>
 						<TextareaControl
 							label={ 'Card content' }
-							value={ whyChooseAsu__facultyText }
+							value={ whyChooseAsu__inclusionText }
 							onChange={ ( newValue ) =>
 								setAttributes( {
-									whyChooseAsu__facultyText: newValue,
+									whyChooseAsu__inclusionText: newValue,
 								} )
 							}
 						/>
@@ -151,10 +152,13 @@ const FacultyCard = ( props ) => {
 					<CardBody>
 						<TextControl
 							label={ 'Card button icon' }
-							value={ whyChooseAsu__facultyButtonIcon }
+							help={
+								'Enter Font Awesome icon classnames separated by spaces. e.g. "fas info-circle"'
+							}
+							value={ whyChooseAsu__inclusionButtonIcon }
 							onChange={ ( newValue ) =>
 								setAttributes( {
-									whyChooseAsu__facultyButtonIcon: newValue,
+									whyChooseAsu__inclusionButtonIcon: newValue,
 								} )
 							}
 						/>
@@ -162,10 +166,21 @@ const FacultyCard = ( props ) => {
 					<CardBody>
 						<TextControl
 							label={ 'Card button label' }
-							value={ whyChooseAsu__facultyButtonLabel }
+							value={ whyChooseAsu__inclusionButtonLabel }
 							onChange={ ( newValue ) =>
 								setAttributes( {
-									whyChooseAsu__facultyButtonLabel: newValue,
+									whyChooseAsu__inclusionButtonLabel: newValue,
+								} )
+							}
+						/>
+					</CardBody>
+					<CardBody>
+						<TextControl
+							label={ 'Card button ARIA label' }
+							value={ whyChooseAsu__inclusionButtonAria }
+							onChange={ ( newValue ) =>
+								setAttributes( {
+									whyChooseAsu__inclusionButtonAria: newValue,
 								} )
 							}
 						/>
@@ -173,10 +188,10 @@ const FacultyCard = ( props ) => {
 					<CardBody>
 						<TextControl
 							label={ 'Card button URL' }
-							value={ whyChooseAsu__facultyButtonUrl }
+							value={ whyChooseAsu__inclusionButtonUrl }
 							onChange={ ( newValue ) =>
 								setAttributes( {
-									whyChooseAsu__facultyButtonUrl: newValue,
+									whyChooseAsu__inclusionButtonUrl: newValue,
 								} )
 							}
 						/>
@@ -184,7 +199,7 @@ const FacultyCard = ( props ) => {
 					<CardBody>
 						<RadioControl
 							label={ __( 'Card button color', 'unityblocks' ) }
-							selected={ whyChooseAsu__facultyButtonColor }
+							selected={ whyChooseAsu__inclusionButtonColor }
 							options={ [
 								{
 									label: __( 'Maroon', 'unityblocks' ),
@@ -205,7 +220,7 @@ const FacultyCard = ( props ) => {
 							] }
 							onChange={ ( newValue ) =>
 								setAttributes( {
-									whyChooseAsu__facultyButtonColor: newValue,
+									whyChooseAsu__inclusionButtonColor: newValue,
 								} )
 							}
 						/>
@@ -213,7 +228,7 @@ const FacultyCard = ( props ) => {
 					<CardBody>
 						<RadioControl
 							label={ __( 'Card button size', 'unityblocks' ) }
-							selected={ whyChooseAsu__facultyButtonSize }
+							selected={ whyChooseAsu__inclusionButtonSize }
 							options={ [
 								{
 									label: __( 'Default', 'unityblocks' ),
@@ -230,7 +245,7 @@ const FacultyCard = ( props ) => {
 							] }
 							onChange={ ( newValue ) =>
 								setAttributes( {
-									whyChooseAsu__facultyButtonSize: newValue,
+									whyChooseAsu__inclusionButtonSize: newValue,
 								} )
 							}
 						/>
@@ -241,4 +256,4 @@ const FacultyCard = ( props ) => {
 	);
 };
 
-export default FacultyCard;
+export default InclusionCard;

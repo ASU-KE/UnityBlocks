@@ -23,46 +23,47 @@ import {
 	Toolbar,
 } from '@wordpress/components';
 
-import icon from './icon';
+import icon from '../icon';
 
 /**
  * Block controls
  *
  * @param {Object} props
  */
-const InclusionCard = ( props ) => {
+const ResearchCard = ( props ) => {
 	const {
 		attributes: {
-			whyChooseAsu__inclusionImageId,
-			whyChooseAsu__inclusionImageUrl,
-			whyChooseAsu__inclusionImageAltText,
-			whyChooseAsu__inclusionImageCss,
-			whyChooseAsu__inclusionTitle,
-			whyChooseAsu__inclusionText,
-			whyChooseAsu__inclusionButtonIcon,
-			whyChooseAsu__inclusionButtonLabel,
-			whyChooseAsu__inclusionButtonUrl,
-			whyChooseAsu__inclusionButtonColor,
-			whyChooseAsu__inclusionButtonSize,
+			whyChooseAsu__researchImageId,
+			whyChooseAsu__researchImageUrl,
+			whyChooseAsu__researchImageAltText,
+			whyChooseAsu__researchImageCss,
+			whyChooseAsu__researchTitle,
+			whyChooseAsu__researchText,
+			whyChooseAsu__researchButtonIcon,
+			whyChooseAsu__researchButtonLabel,
+			whyChooseAsu__researchButtonAria,
+			whyChooseAsu__researchButtonUrl,
+			whyChooseAsu__researchButtonColor,
+			whyChooseAsu__researchButtonSize,
 		},
 		setAttributes,
 	} = props;
 
 	const onSelectMedia = ( media ) => {
 		props.setAttributes( {
-			whyChooseAsu__inclusionImageId: media.id,
-			whyChooseAsu__inclusionImageUrl: media.url,
-			whyChooseAsu__inclusionImageAltText: media.alt,
+			whyChooseAsu__researchImageId: media.id,
+			whyChooseAsu__researchImageUrl: media.url,
+			whyChooseAsu__researchImageAltText: media.alt,
 		} );
 	};
 
 	return (
 		<>
-			{ whyChooseAsu__inclusionImageId !== undefined && (
+			{ whyChooseAsu__researchImageId !== undefined && (
 				<BlockControls>
 					<Toolbar>
 						<MediaUpload
-							value={ whyChooseAsu__inclusionImageId }
+							value={ whyChooseAsu__researchImageId }
 							onSelect={ onSelectMedia }
 							allowedTypes={ [ 'image' ] }
 							render={ ( { open } ) => (
@@ -78,12 +79,12 @@ const InclusionCard = ( props ) => {
 			) }
 
 			<Card size={ 'small' } style={ { width: '50%' } }>
-				<PanelBody title="Inclusion Card" initialOpen={ false }>
+				<PanelBody title="Research Card" initialOpen={ false }>
 					<CardBody>
 						<MediaUploadCheck>
 							<MediaPlaceholder
 								labels={ {
-									whyChooseAsu__inclusionTitle: __(
+									whyChooseAsu__researchTitle: __(
 										'Hero image',
 										'unityblocks'
 									),
@@ -98,12 +99,12 @@ const InclusionCard = ( props ) => {
 							/>
 						</MediaUploadCheck>
 					</CardBody>
-					{ whyChooseAsu__inclusionImageId !== undefined && (
+					{ whyChooseAsu__researchImageId !== undefined && (
 						<CardBody>
 							<CardMedia>
 								<img
-									alt={ whyChooseAsu__inclusionImageAltText }
-									src={ whyChooseAsu__inclusionImageUrl }
+									alt={ whyChooseAsu__researchImageAltText }
+									src={ whyChooseAsu__researchImageUrl }
 								/>
 							</CardMedia>
 						</CardBody>
@@ -112,10 +113,10 @@ const InclusionCard = ( props ) => {
 						<TextControl
 							label={ 'Image CSS classes' }
 							help="Separate multiple classes with spaces."
-							value={ whyChooseAsu__inclusionImageCss }
+							value={ whyChooseAsu__researchImageCss }
 							onChange={ ( newValue ) =>
 								setAttributes( {
-									whyChooseAsu__inclusionImageCss: newValue,
+									whyChooseAsu__researchImageCss: newValue,
 								} )
 							}
 						/>
@@ -126,10 +127,10 @@ const InclusionCard = ( props ) => {
 					<CardBody>
 						<TextControl
 							label={ 'Card title' }
-							value={ whyChooseAsu__inclusionTitle }
+							value={ whyChooseAsu__researchTitle }
 							onChange={ ( newValue ) =>
 								setAttributes( {
-									whyChooseAsu__inclusionTitle: newValue,
+									whyChooseAsu__researchTitle: newValue,
 								} )
 							}
 						/>
@@ -137,10 +138,10 @@ const InclusionCard = ( props ) => {
 					<CardBody>
 						<TextareaControl
 							label={ 'Card content' }
-							value={ whyChooseAsu__inclusionText }
+							value={ whyChooseAsu__researchText }
 							onChange={ ( newValue ) =>
 								setAttributes( {
-									whyChooseAsu__inclusionText: newValue,
+									whyChooseAsu__researchText: newValue,
 								} )
 							}
 						/>
@@ -151,10 +152,13 @@ const InclusionCard = ( props ) => {
 					<CardBody>
 						<TextControl
 							label={ 'Card button icon' }
-							value={ whyChooseAsu__inclusionButtonIcon }
+							help={
+								'Enter Font Awesome icon classnames separated by spaces. e.g. "fas info-circle"'
+							}
+							value={ whyChooseAsu__researchButtonIcon }
 							onChange={ ( newValue ) =>
 								setAttributes( {
-									whyChooseAsu__inclusionButtonIcon: newValue,
+									whyChooseAsu__researchButtonIcon: newValue,
 								} )
 							}
 						/>
@@ -162,10 +166,21 @@ const InclusionCard = ( props ) => {
 					<CardBody>
 						<TextControl
 							label={ 'Card button label' }
-							value={ whyChooseAsu__inclusionButtonLabel }
+							value={ whyChooseAsu__researchButtonLabel }
 							onChange={ ( newValue ) =>
 								setAttributes( {
-									whyChooseAsu__inclusionButtonLabel: newValue,
+									whyChooseAsu__researchButtonLabel: newValue,
+								} )
+							}
+						/>
+					</CardBody>
+					<CardBody>
+						<TextControl
+							label={ 'Card button ARIA label' }
+							value={ whyChooseAsu__researchButtonAria }
+							onChange={ ( newValue ) =>
+								setAttributes( {
+									whyChooseAsu__researchButtonAria: newValue,
 								} )
 							}
 						/>
@@ -173,10 +188,10 @@ const InclusionCard = ( props ) => {
 					<CardBody>
 						<TextControl
 							label={ 'Card button URL' }
-							value={ whyChooseAsu__inclusionButtonUrl }
+							value={ whyChooseAsu__researchButtonUrl }
 							onChange={ ( newValue ) =>
 								setAttributes( {
-									whyChooseAsu__inclusionButtonUrl: newValue,
+									whyChooseAsu__researchButtonUrl: newValue,
 								} )
 							}
 						/>
@@ -184,7 +199,7 @@ const InclusionCard = ( props ) => {
 					<CardBody>
 						<RadioControl
 							label={ __( 'Card button color', 'unityblocks' ) }
-							selected={ whyChooseAsu__inclusionButtonColor }
+							selected={ whyChooseAsu__researchButtonColor }
 							options={ [
 								{
 									label: __( 'Maroon', 'unityblocks' ),
@@ -205,7 +220,7 @@ const InclusionCard = ( props ) => {
 							] }
 							onChange={ ( newValue ) =>
 								setAttributes( {
-									whyChooseAsu__inclusionButtonColor: newValue,
+									whyChooseAsu__researchButtonColor: newValue,
 								} )
 							}
 						/>
@@ -213,7 +228,7 @@ const InclusionCard = ( props ) => {
 					<CardBody>
 						<RadioControl
 							label={ __( 'Card button size', 'unityblocks' ) }
-							selected={ whyChooseAsu__inclusionButtonSize }
+							selected={ whyChooseAsu__researchButtonSize }
 							options={ [
 								{
 									label: __( 'Default', 'unityblocks' ),
@@ -230,7 +245,7 @@ const InclusionCard = ( props ) => {
 							] }
 							onChange={ ( newValue ) =>
 								setAttributes( {
-									whyChooseAsu__inclusionButtonSize: newValue,
+									whyChooseAsu__researchButtonSize: newValue,
 								} )
 							}
 						/>
@@ -241,4 +256,4 @@ const InclusionCard = ( props ) => {
 	);
 };
 
-export default InclusionCard;
+export default ResearchCard;

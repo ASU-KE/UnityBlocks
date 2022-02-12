@@ -27,6 +27,7 @@ const ApplyCard = ( props ) => {
 			nextSteps__applyContent,
 			nextSteps__applyButtonIcon,
 			nextSteps__applyButtonLabel,
+			nextSteps__applyButtonAria,
 			nextSteps__applyButtonUrl,
 			nextSteps__applyButtonColor,
 			nextSteps__applyButtonSize,
@@ -76,6 +77,9 @@ const ApplyCard = ( props ) => {
 				<CardBody>
 					<TextControl
 						label={ 'Card button icon' }
+						help={
+							'Enter Font Awesome icon classnames separated by spaces. e.g. "fas info-circle"'
+						}
 						value={ nextSteps__applyButtonIcon }
 						onChange={ ( newValue ) =>
 							setAttributes( {
@@ -91,6 +95,17 @@ const ApplyCard = ( props ) => {
 						onChange={ ( newValue ) =>
 							setAttributes( {
 								nextSteps__applyButtonLabel: newValue,
+							} )
+						}
+					/>
+				</CardBody>
+				<CardBody>
+					<TextControl
+						label={ 'Card button ARIA label' }
+						value={ nextSteps__applyButtonAria }
+						onChange={ ( newValue ) =>
+							setAttributes( {
+								nextSteps__applyButtonAria: newValue,
 							} )
 						}
 					/>

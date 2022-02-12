@@ -10,7 +10,7 @@ import { Card, CardBody, TextControl } from '@wordpress/components';
  *
  * @param {Object} props
  */
-const ProgramContactsSettings = ( props ) => {
+const ProgramContactSettings = ( props ) => {
 	const {
 		attributes: {
 			programContactInfo__department,
@@ -50,4 +50,4 @@ const ProgramContactsSettings = ( props ) => {
 	);
 };
 
-export default ProgramContactsSettings;
+export default ProgramContactSettings;

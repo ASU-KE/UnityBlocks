@@ -19,31 +19,32 @@ import {
  *
  * @param {Object} props
  */
-const LearnMoreCard = ( props ) => {
+const VisitCard = ( props ) => {
 	const {
 		attributes: {
-			nextSteps__learnMoreIcon,
-			nextSteps__learnMoreTitle,
-			nextSteps__learnMoreContent,
-			nextSteps__learnMoreButtonIcon,
-			nextSteps__learnMoreButtonLabel,
-			nextSteps__learnMoreButtonUrl,
-			nextSteps__learnMoreButtonColor,
-			nextSteps__learnMoreButtonSize,
+			nextSteps__visitIcon,
+			nextSteps__visitTitle,
+			nextSteps__visitContent,
+			nextSteps__visitButtonIcon,
+			nextSteps__visitButtonLabel,
+			nextSteps__visitButtonAria,
+			nextSteps__visitButtonUrl,
+			nextSteps__visitButtonColor,
+			nextSteps__visitButtonSize,
 		},
 		setAttributes,
 	} = props;
 
 	return (
 		<Card size={ 'small' } style={ { width: '50%' } }>
-			<PanelBody title="Learn More card" initialOpen={ false }>
+			<PanelBody title="Visit card" initialOpen={ false }>
 				<CardBody>
 					<TextControl
 						label={ 'Card icon' }
-						value={ nextSteps__learnMoreIcon }
+						value={ nextSteps__visitIcon }
 						onChange={ ( newValue ) =>
 							setAttributes( {
-								nextSteps__learnMoreIcon: newValue,
+								nextSteps__visitIcon: newValue,
 							} )
 						}
 					/>
@@ -51,10 +52,10 @@ const LearnMoreCard = ( props ) => {
 				<CardBody>
 					<TextControl
 						label={ 'Card title' }
-						value={ nextSteps__learnMoreTitle }
+						value={ nextSteps__visitTitle }
 						onChange={ ( newValue ) =>
 							setAttributes( {
-								nextSteps__learnMoreTitle: newValue,
+								nextSteps__visitTitle: newValue,
 							} )
 						}
 					/>
@@ -62,10 +63,10 @@ const LearnMoreCard = ( props ) => {
 				<CardBody>
 					<TextareaControl
 						label={ 'Card content' }
-						value={ nextSteps__learnMoreContent }
+						value={ nextSteps__visitContent }
 						onChange={ ( newValue ) =>
 							setAttributes( {
-								nextSteps__learnMoreContent: newValue,
+								nextSteps__visitContent: newValue,
 							} )
 						}
 					/>
@@ -76,10 +77,13 @@ const LearnMoreCard = ( props ) => {
 				<CardBody>
 					<TextControl
 						label={ 'Card button icon' }
-						value={ nextSteps__learnMoreButtonIcon }
+						help={
+							'Enter Font Awesome icon classnames separated by spaces. e.g. "fas info-circle"'
+						}
+						value={ nextSteps__visitButtonIcon }
 						onChange={ ( newValue ) =>
 							setAttributes( {
-								nextSteps__learnMoreButtonIcon: newValue,
+								nextSteps__visitButtonIcon: newValue,
 							} )
 						}
 					/>
@@ -87,10 +91,21 @@ const LearnMoreCard = ( props ) => {
 				<CardBody>
 					<TextControl
 						label={ 'Card button label' }
-						value={ nextSteps__learnMoreButtonLabel }
+						value={ nextSteps__visitButtonLabel }
 						onChange={ ( newValue ) =>
 							setAttributes( {
-								nextSteps__learnMoreButtonLabel: newValue,
+								nextSteps__visitButtonLabel: newValue,
+							} )
+						}
+					/>
+				</CardBody>
+				<CardBody>
+					<TextControl
+						label={ 'Card button ARIA label' }
+						value={ nextSteps__visitButtonAria }
+						onChange={ ( newValue ) =>
+							setAttributes( {
+								nextSteps__visitButtonAria: newValue,
 							} )
 						}
 					/>
@@ -98,10 +113,10 @@ const LearnMoreCard = ( props ) => {
 				<CardBody>
 					<TextControl
 						label={ 'Card button URL' }
-						value={ nextSteps__learnMoreButtonUrl }
+						value={ nextSteps__visitButtonUrl }
 						onChange={ ( newValue ) =>
 							setAttributes( {
-								nextSteps__learnMoreButtonUrl: newValue,
+								nextSteps__visitButtonUrl: newValue,
 							} )
 						}
 					/>
@@ -109,7 +124,7 @@ const LearnMoreCard = ( props ) => {
 				<CardBody>
 					<RadioControl
 						label={ __( 'Card button color', 'unityblocks' ) }
-						selected={ nextSteps__learnMoreButtonColor }
+						selected={ nextSteps__visitButtonColor }
 						options={ [
 							{
 								label: __( 'Maroon', 'unityblocks' ),
@@ -130,7 +145,7 @@ const LearnMoreCard = ( props ) => {
 						] }
 						onChange={ ( newValue ) =>
 							setAttributes( {
-								nextSteps__learnMoreButtonColor: newValue,
+								nextSteps__visitButtonColor: newValue,
 							} )
 						}
 					/>
@@ -138,7 +153,7 @@ const LearnMoreCard = ( props ) => {
 				<CardBody>
 					<RadioControl
 						label={ __( 'Card button size', 'unityblocks' ) }
-						selected={ nextSteps__learnMoreButtonSize }
+						selected={ nextSteps__visitButtonSize }
 						options={ [
 							{
 								label: __( 'Default', 'unityblocks' ),
@@ -155,7 +170,7 @@ const LearnMoreCard = ( props ) => {
 						] }
 						onChange={ ( newValue ) =>
 							setAttributes( {
-								nextSteps__learnMoreButtonSize: newValue,
+								nextSteps__visitButtonSize: newValue,
 							} )
 						}
 					/>
@@ -165,4 +180,4 @@ const LearnMoreCard = ( props ) => {
 	);
 };
 
-export default LearnMoreCard;
+export default VisitCard;

@@ -15,14 +15,14 @@ import {
 import { compose } from '@wordpress/compose';
 import { withSelect } from '@wordpress/data';
 
-import icon from './icon';
+import icon from '../icon';
 
 /**
  * Block controls
  *
  * @param {Object} props
  */
-const OverrideImagesSettings = ( props ) => {
+const CustomImagesSettings = ( props ) => {
 	const {
 		attributes: {
 			careerOutlook__imageId,
@@ -261,4 +261,4 @@ export default compose(
 				: null,
 		};
 	} )
-)( OverrideImagesSettings );
+)( CustomImagesSettings );
