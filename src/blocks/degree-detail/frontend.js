@@ -10,7 +10,9 @@ const degree = document.querySelector( '#unityblocks-degree-details' );
 const appPathFolder = degree.dataset.appfolder;
 const dataSource = JSON.parse( degree.dataset.datasource );
 const anchorMenu = JSON.parse( degree.dataset.anchormenu );
-const hero = JSON.parse( degree.dataset.hero );
+const hero = degree.dataset.hero
+	? JSON.parse( degree.dataset.hero )
+	: undefined;
 const introContent = JSON.parse( degree.dataset.introcontent );
 const atAGlance = JSON.parse( degree.dataset.ataglance );
 const applicationRequirements = degree.dataset.apprequirements;

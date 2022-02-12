@@ -114,83 +114,93 @@ const transformAttributes = ( attributes ) => {
 		globalOpportunity: anchorGlobalOpportunity,
 		attendOnline: anchorAttendOnline,
 		programContactInfo: anchorProgramContactInfo,
-		externalAnchors: anchorExternalAnchorsText.map( ( text, index ) => ( {
-			text,
-			targetIdName: anchorExternalAnchorsTargetId[ index ],
-		} ) ),
+		externalAnchors: anchorExternalAnchorsText.length
+			? anchorExternalAnchorsText.map( ( text, index ) => ( {
+					text,
+					targetIdName: anchorExternalAnchorsTargetId[ index ],
+			  } ) )
+			: undefined,
 	};
 
-	const hero = {
-		type: heroType,
-		image:
-			heroMediaUrl > ''
-				? {
-						url: heroMediaUrl,
-						altText: heroMediaAltText,
-						cssClass: heroMediaCssClass.split( ' ' ),
-						size: heroMediaSize,
-				  }
-				: undefined,
-		title:
-			heroTitleText > ''
-				? {
-						text: heroTitleText,
-						highlightColor: heroTitleHighlightColor,
-						maxWidth: heroTitleMaxWidth,
-						cssClass: heroTitleCssClass.split( ' ' ),
-				  }
-				: undefined,
-		subTitle:
-			heroSubTitleText > ''
-				? {
-						text: heroSubTitleText,
-						highlightColor: heroSubTitleHighlightColor,
-						maxWidth: heroSubTitleMaxWidth,
-						cssClass: heroSubTitleCssClass.split( ' ' ),
-				  }
-				: undefined,
-		contents:
-			heroContentsText > ''
-				? [
-						{
-							text: heroContentsText,
-							highlightColor: heroContentsHighlightColor,
-							maxWidth: heroContentsMaxWidth,
-							cssClass: heroContentsCssClass.split( ' ' ),
-						},
-				  ]
-				: undefined,
-		contentsColor: heroContentsColor,
-	};
+	const hero = heroMediaUrl
+		? {
+				type: heroType,
+				image:
+					heroMediaUrl > ''
+						? {
+								url: heroMediaUrl,
+								altText: heroMediaAltText,
+								cssClass: heroMediaCssClass.split( ' ' ),
+								size: heroMediaSize,
+						  }
+						: undefined,
+				title:
+					heroTitleText > ''
+						? {
+								text: heroTitleText,
+								highlightColor: heroTitleHighlightColor,
+								maxWidth: heroTitleMaxWidth,
+								cssClass: heroTitleCssClass.split( ' ' ),
+						  }
+						: undefined,
+				subTitle:
+					heroSubTitleText > ''
+						? {
+								text: heroSubTitleText,
+								highlightColor: heroSubTitleHighlightColor,
+								maxWidth: heroSubTitleMaxWidth,
+								cssClass: heroSubTitleCssClass.split( ' ' ),
+						  }
+						: undefined,
+				contents:
+					heroContentsText > ''
+						? [
+								{
+									text: heroContentsText,
+									highlightColor: heroContentsHighlightColor,
+									maxWidth: heroContentsMaxWidth,
+									cssClass: heroContentsCssClass.split( ' ' ),
+								},
+						  ]
+						: undefined,
+				contentsColor: heroContentsColor,
+		  }
+		: undefined;
 
-	const introBreadcrumbs = introContent__breadcrumbsUrl.map(
-		( breadcrumbUrl, index ) => ( {
-			url: breadcrumbUrl,
-			text: introContent__breadcrumbsText[ index ],
-			isActive: introContent__breadcrumbsisActive[ index ],
-		} )
-	);
+	const introBreadcrumbs = introContent__breadcrumbsUrl.length
+		? introContent__breadcrumbsUrl.map( ( breadcrumbUrl, index ) => ( {
+				url: breadcrumbUrl,
+				text: introContent__breadcrumbsText[ index ],
+				isActive: introContent__breadcrumbsisActive[ index ],
+		  } ) )
+		: undefined;
 
-	const introText = [
-		{
-			text: introContent__contentsText,
-			cssClass: introContent__contentsCssClass,
-		},
-	];
+	const introText = introContent__contentsText
+		? [
+				{
+					text: introContent__contentsText,
+					cssClass: introContent__contentsCssClass,
+				},
+		  ]
+		: undefined;
 
-	const introVideo = {
-		type: introContent__videoType,
-		url: introContent__videoUrl,
-		altText: introContent__videoAltText,
-		vttUrl: introContent__videoVttUrl,
-		title: introContent__videoTitle,
-	};
+	const introVideo = introContent__videoUrl
+		? {
+				type: introContent__videoType,
+				url: introContent__videoUrl,
+				altText: introContent__videoAltText,
+				vttUrl: introContent__videoVttUrl,
+				title: introContent__videoTitle,
+		  }
+		: undefined;
 
-	const introImage = {
-		url: introContent__imageUrl,
-		altText: introContent__imageAltText,
-		cssClass: introContent__imageCssClass.split( ' ' ),
-	};
+	const introImage = introContent__imageUrl
+		? {
+				url: introContent__imageUrl,
+				altText: introContent__imageAltText,
+				cssClass: introContent__imageCssClass.split( ' ' ),
+		  }
+		: undefined;
 
 	const introContentSection = {
 		hideMarketText: introContent__hideMarketText,
@@ -204,16 +214,20 @@ const transformAttributes = ( attributes ) => {
 
 	const atAGlance = {
 		hide: atAGlance__hide,
-		offeredBy: {
-			text: atAGlance__offeredByText,
-			url: atAGlance__offeredByUrl,
-			isActive: atAGlance__offeredByIsActive,
-		},
-		locations: atAGlance__locationsTitle.map( ( locationText, index ) => ( {
-			text: locationText,
-			url: atAGlance__locationsUrl[ index ],
-			isActive: atAGlance__locationsIsActive[ index ],
-		} ) ),
+		offeredBy: atAGlance__offeredByUrl
+			? {
+					text: atAGlance__offeredByText,
+					url: atAGlance__offeredByUrl,
+					isActive: atAGlance__offeredByIsActive,
+			  }
+			: undefined,
+		locations: atAGlance__locationsUrl.length
+			? atAGlance__locationsTitle.map( ( text, index ) => ( {
+					text,
+					url: atAGlance__locationsUrl[ index ],
+					isActive: atAGlance__locationsIsActive[ index ],
+			  } ) )
+			: undefined,
 		firstRequirementMathCourse: atAGlance__firstRequirementMathCourse,
 		mathIntensity: atAGlance__mathIntensity,
 		timeCommitment: atAGlance__timeCommitment,
@@ -232,28 +246,34 @@ const transformAttributes = ( attributes ) => {
 		flexibleDegreeOptions: flexibleDegreeOptions__hide,
 		careerOutlook: {
 			hide: careerOutlook__hide,
-			image: {
-				url: careerOutlook__imageUrl,
-				text: careerOutlook__imageAltText,
-				cssClass: careerOutlook__imageCssClass.split( ' ' ),
-			},
+			image: careerOutlook__imageUrl
+				? {
+						url: careerOutlook__imageUrl,
+						text: careerOutlook__imageAltText,
+						cssClass: careerOutlook__imageCssClass.split( ' ' ),
+				  }
+				: undefined,
 		},
 		exampleCareers: { hide: exampleCareers__hide },
 		globalOpportunity: {
 			hide: globalOpportunity__hide,
-			image: {
-				url: globalOpportunity__imageUrl,
-				altText: globalOpportunity__imageAltText,
-				cssClass: globalOpportunity__imageCssClass.split( ' ' ),
-			},
+			image: globalOpportunity__imageUrl
+				? {
+						url: globalOpportunity__imageUrl,
+						altText: globalOpportunity__imageAltText,
+						cssClass: globalOpportunity__imageCssClass.split( ' ' ),
+				  }
+				: undefined,
 		},
 		attendOnline: {
 			hide: attendOnline__hide,
-			image: {
-				url: attendOnline__imageUrl,
-				altText: attendOnline__imageAltText,
-				cssClass: attendOnline__imageCssClass.split( ' ' ),
-			},
+			image: attendOnline__imageUrl
+				? {
+						url: attendOnline__imageUrl,
+						altText: attendOnline__imageAltText,
+						cssClass: attendOnline__imageCssClass.split( ' ' ),
+				  }
+				: undefined,
 		},
 		programContactInfo: {
 			hide: programContactInfo__hide,
@@ -262,18 +282,22 @@ const transformAttributes = ( attributes ) => {
 		},
 		nextSteps: {
 			hide: nextSteps__hide,
-			cards: nextSteps__cardsTitle.map( ( cardTitle, index ) => ( {
-				title: cardTitle,
-				icon: nextSteps__cardsIcon[ index ],
-				content: nextSteps__cardsContent[ index ],
-				buttonLink: nextSteps__cardsButtonUrl.map( ( url, index ) => ( {
-					url,
-					label: nextSteps__cardsButtonLabel[ index ],
-					icon: nextSteps__cardsButtonIcon[ index ],
-					color: nextSteps__cardsButtonColor[ index ],
-					size: nextSteps__cardsButtonSize[ index ],
-				} ) ),
-			} ) ),
+			cards: nextSteps__cardsTitle.length
+				? nextSteps__cardsTitle.map( ( cardTitle, index ) => ( {
+						title: cardTitle,
+						icon: nextSteps__cardsIcon[ index ],
+						content: nextSteps__cardsContent[ index ],
+						buttonLink: nextSteps__cardsButtonUrl.map(
+							( url, index ) => ( {
+								url,
+								label: nextSteps__cardsButtonLabel[ index ],
+								icon: nextSteps__cardsButtonIcon[ index ],
+								color: nextSteps__cardsButtonColor[ index ],
+								size: nextSteps__cardsButtonSize[ index ],
+							} )
+						),
+				  } ) )
+				: undefined,
 		},
 		whyChooseAsu: {
 			hide: whyChooseAsu__hide,
