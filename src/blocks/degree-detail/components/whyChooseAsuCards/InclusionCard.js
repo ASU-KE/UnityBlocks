@@ -256,4 +256,4 @@ const InclusionCard = ( props ) => {
 	);
 };
 
-export default InclusionCard;
+export { InclusionCard };

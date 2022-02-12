@@ -1,9 +1,9 @@
 /**
  * Internal dependencies
  */
-import edit from './edit';
+import { edit } from './edit';
 import metadata from './block.json';
-import save from './save';
+import { save } from './save';
 
 /**
  * WordPress dependencies

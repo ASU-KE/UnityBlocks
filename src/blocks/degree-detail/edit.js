@@ -6,9 +6,9 @@ import { DetailPage } from '@asu-design-system/app-degree-pages/dist/degreePages
 /**
  * Internal dependencies
  */
-import Controls from './controls';
-import Inspector from './inspector';
-import transformAttributes from './transformAttributes';
+import { Controls } from './controls';
+import { Inspector } from './inspector';
+import { transformAttributes } from './transformAttributes';
 
 /**
  * Block edit function
@@ -37,4 +37,4 @@ const Edit = ( props ) => {
 	);
 };
 
-export default Edit;
+export { Edit };

@@ -49,4 +49,4 @@ const Inspector = ( props ) => {
 	);
 };
 
-export default Inspector;
+export { Inspector };

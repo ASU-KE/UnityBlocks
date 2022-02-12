@@ -34,4 +34,4 @@ const DegreeSelectorSettings = ( props ) => {
 	);
 };
 
-export default DegreeSelectorSettings;
+export { DegreeSelectorSettings };

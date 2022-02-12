@@ -52,4 +52,4 @@ const WhyChooseAsuSettings = ( props ) => {
 	);
 };
 
-export default WhyChooseAsuSettings;
+export { WhyChooseAsuSettings };

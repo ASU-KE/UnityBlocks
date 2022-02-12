@@ -22,7 +22,7 @@ import icon from '../icon';
  *
  * @param {Object} props
  */
-const CustomImagesSettings = ( props ) => {
+const ImagesSettings = ( props ) => {
 	const {
 		attributes: {
 			careerOutlook__imageId,
@@ -240,7 +240,7 @@ const CustomImagesSettings = ( props ) => {
 	);
 };
 
-export default compose(
+export const CustomImagesSettings = compose(
 	withSelect( ( select, props ) => {
 		const { getMedia } = select( 'core' );
 		const {
@@ -261,4 +261,4 @@ export default compose(
 				: null,
 		};
 	} )
-)( CustomImagesSettings );
+)( ImagesSettings );

@@ -554,4 +554,4 @@ const transformAttributes = ( attributes ) => {
 	};
 };
 
-export default transformAttributes;
+export { transformAttributes };

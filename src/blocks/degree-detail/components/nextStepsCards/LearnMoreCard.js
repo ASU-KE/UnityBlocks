@@ -180,4 +180,4 @@ const LearnMoreCard = ( props ) => {
 	);
 };
 
-export default LearnMoreCard;
+export { LearnMoreCard };

@@ -256,4 +256,4 @@ const HonorsCard = ( props ) => {
 	);
 };
 
-export default HonorsCard;
+export { HonorsCard };

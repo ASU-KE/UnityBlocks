@@ -208,4 +208,4 @@ const HideSectionsSettings = ( props ) => {
 	);
 };
 
-export default HideSectionsSettings;
+export { HideSectionsSettings };

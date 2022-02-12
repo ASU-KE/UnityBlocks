@@ -180,4 +180,4 @@ const VisitCard = ( props ) => {
 	);
 };
 
-export default VisitCard;
+export { VisitCard };

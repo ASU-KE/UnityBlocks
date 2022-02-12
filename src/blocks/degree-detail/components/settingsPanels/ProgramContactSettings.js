@@ -50,4 +50,4 @@ const ProgramContactSettings = ( props ) => {
 	);
 };
 
-export default ProgramContactSettings;
+export { ProgramContactSettings };

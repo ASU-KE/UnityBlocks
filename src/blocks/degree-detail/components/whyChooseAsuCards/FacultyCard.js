@@ -256,4 +256,4 @@ const FacultyCard = ( props ) => {
 	);
 };
 
-export default FacultyCard;
+export { FacultyCard };

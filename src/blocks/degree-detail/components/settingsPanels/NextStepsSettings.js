@@ -17,4 +17,4 @@ const NextStepsSettings = ( props ) => {
 	);
 };
 
-export default NextStepsSettings;
+export { NextStepsSettings };

@@ -256,4 +256,4 @@ const ResearchCard = ( props ) => {
 	);
 };
 
-export default ResearchCard;
+export { ResearchCard };

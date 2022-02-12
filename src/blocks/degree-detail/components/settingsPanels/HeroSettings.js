@@ -383,4 +383,4 @@ const HeroSettings = ( props ) => {
 	);
 };
 
-export default HeroSettings;
+export { HeroSettings };

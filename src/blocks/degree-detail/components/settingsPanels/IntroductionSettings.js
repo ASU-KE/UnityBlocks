@@ -205,4 +205,4 @@ const IntroductionSettings = ( props ) => {
 	);
 };
 
-export default IntroductionSettings;
+export { IntroductionSettings };

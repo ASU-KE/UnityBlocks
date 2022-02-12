@@ -256,4 +256,4 @@ const ProgramsCard = ( props ) => {
 	);
 };
 
-export default ProgramsCard;
+export { ProgramsCard };

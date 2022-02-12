@@ -256,4 +256,4 @@ const MentorsCard = ( props ) => {
 	);
 };
 
-export default MentorsCard;
+export { MentorsCard };

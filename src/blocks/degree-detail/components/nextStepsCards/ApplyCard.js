@@ -180,4 +180,4 @@ const ApplyCard = ( props ) => {
 	);
 };
 
-export default ApplyCard;
+export { ApplyCard };

@@ -188,4 +188,4 @@ const AtAGlanceSettings = ( props ) => {
 	);
 };
 
-export default AtAGlanceSettings;
+export { AtAGlanceSettings };

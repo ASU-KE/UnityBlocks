@@ -8,7 +8,7 @@ import classnames from 'classnames';
 /**
  * Internal dependencies
  */
-import transformAttributes from './transformAttributes';
+import { transformAttributes } from './transformAttributes';
 
 const save = ( props ) => {
 	const {
@@ -60,4 +60,4 @@ const save = ( props ) => {
 	);
 };
 
-export default save;
+export { save };

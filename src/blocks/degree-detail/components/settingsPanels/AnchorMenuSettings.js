@@ -317,4 +317,4 @@ const AnchorMenuSettings = ( props ) => {
 	);
 };
 
-export default AnchorMenuSettings;
+export { AnchorMenuSettings };
