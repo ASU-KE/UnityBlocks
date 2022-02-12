@@ -6,16 +6,18 @@ import { TabPanel } from '@wordpress/components';
 /**
  * Block dependencies
  */
-import AnchorMenuSettings from './components/AnchorMenuSettings';
-import DegreeSettings from './components/DegreeSettings';
-import HeroSettings from './components/HeroSettings';
-import IntroductionSettings from './components/IntroductionSettings';
-import HideSectionsSettings from './components/HideSectionsSettings';
-import OverrideImagesSettings from './components/OverrideImagesSettings';
-import AtAGlanceSettings from './components/AtAGlanceSettings';
-import ProgramContactsSettings from './components/ProgramContactsSettings';
-import NextStepsSettings from './components/NextStepsSettings';
-import WhyChooseAsuSettings from './components/WhyChooseAsuSettings';
+import {
+	AnchorMenuSettings,
+	DegreeSelectorSettings,
+	HeroSettings,
+	IntroductionSettings,
+	HideSectionsSettings,
+	CustomImagesSettings,
+	AtAGlanceSettings,
+	ProgramContactSettings,
+	NextStepsSettings,
+	WhyChooseAsuSettings,
+} from './components';
 
 /**
  * Block controls
@@ -45,60 +47,50 @@ const Controls = ( props ) => {
 				orientation={ 'horizontal' }
 				tabs={ [
 					{
-						name: 'degree-settings',
-						title: 'Degree',
-						className: '',
+						name: 'degree-selection',
+						title: 'Degree Selector',
 					},
 					{
 						name: 'anchor-menu',
 						title: 'Anchor Menu',
-						className: '',
 					},
 					{
 						name: 'hero-settings',
 						title: 'Hero',
-						className: '',
-					},
-					{
-						name: 'intro-content',
-						title: 'Introduction',
-						className: '',
 					},
 					{
 						name: 'hide-sections',
 						title: 'Hide Sections',
-						className: '',
 					},
 					{
-						name: 'override-images',
-						title: 'Override images',
-						className: '',
+						name: 'custom-images',
+						title: 'Custom images',
+					},
+					{
+						name: 'intro-content',
+						title: 'Introduction',
 					},
 					{
 						name: 'at-a-glance',
 						title: 'At a Glance',
-						className: '',
 					},
 					{
-						name: 'program-contacts',
-						title: 'Program Contacts',
-						className: '',
+						name: 'program-contact',
+						title: 'Program Contact',
 					},
 					{
 						name: 'next-steps',
 						title: 'Next steps',
-						className: '',
 					},
 					{
 						name: 'why-choose-asu',
 						title: 'Why ASU',
-						className: '',
 					},
 				] }
 			>
 				{ ( tab ) => {
-					if ( 'degree-settings' === tab.name ) {
-						return <DegreeSettings { ...props } />;
+					if ( 'degree-selection' === tab.name ) {
+						return <DegreeSelectorSettings { ...props } />;
 					}
 
 					if ( 'anchor-menu' === tab.name ) {
@@ -109,16 +101,16 @@ const Controls = ( props ) => {
 						return <HeroSettings { ...props } />;
 					}
 
-					if ( 'intro-content' === tab.name ) {
-						return <IntroductionSettings { ...props } />;
-					}
-
 					if ( 'hide-sections' === tab.name ) {
 						return <HideSectionsSettings { ...props } />;
 					}
 
-					if ( 'override-images' === tab.name ) {
-						return <OverrideImagesSettings { ...props } />;
+					if ( 'custom-images' === tab.name ) {
+						return <CustomImagesSettings { ...props } />;
+					}
+
+					if ( 'intro-content' === tab.name ) {
+						return <IntroductionSettings { ...props } />;
 					}
 
 					if ( 'at-a-glance' === tab.name ) {
@@ -126,7 +118,7 @@ const Controls = ( props ) => {
 					}
 
 					if ( 'program-contacts' === tab.name ) {
-						return <ProgramContactsSettings { ...props } />;
+						return <ProgramContactSettings { ...props } />;
 					}
 
 					if ( 'next-steps' === tab.name ) {
