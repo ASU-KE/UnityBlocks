@@ -1,3 +1,5 @@
+// @ts-check
+
 export * from './AnchorMenuSettings';
 export * from './AtAGlanceSettings';
 export * from './DegreeSelectorSettings';

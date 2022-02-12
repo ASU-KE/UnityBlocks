@@ -1,3 +1,5 @@
+// @ts-check
+
 import { ApplyCard, LearnMoreCard, VisitCard } from '../nextStepsCards';
 
 /**

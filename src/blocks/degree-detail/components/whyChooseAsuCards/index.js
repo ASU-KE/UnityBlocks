@@ -1,3 +1,5 @@
+// @ts-check
+
 export * from './FacultyCard';
 export * from './HonorsCard';
 export * from './InclusionCard';

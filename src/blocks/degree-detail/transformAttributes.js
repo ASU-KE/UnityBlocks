@@ -1,3 +1,5 @@
+// @ts-check
+
 /* eslint camelcase: "off" */
 
 const transformAttributes = ( attributes ) => {
