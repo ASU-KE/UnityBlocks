@@ -9,13 +9,15 @@ import {
 	MediaUploadCheck,
 	MediaUpload,
 	MediaPlaceholder,
+	RichText,
 } from '@wordpress/block-editor';
 import {
 	Card,
 	CardBody,
-	CardHeader,
+	// CardHeader,
 	CardMedia,
 	IconButton,
+	// TextControl,
 	ToggleControl,
 	Toolbar,
 } from '@wordpress/components';
@@ -30,13 +32,14 @@ import icon from './icon';
 const IntroductionSettings = ( props ) => {
 	const {
 		attributes: {
+			appPathFolder,
 			introContent__hideMarketText,
 			introContent__hideProgramDesc,
 			introContent__hideRequiredCourses,
 			// introContent__breadcrumbsUrl,
 			// introContent__breadcrumbsText,
 			// introContent__breadcrumbsisActive,
-			// introContent__contentsText,
+			introContent__contentsText,
 			// introContent__contentsCssClass,
 			// introContent__videoType,
 			// introContent__videoId,
@@ -81,11 +84,20 @@ const IntroductionSettings = ( props ) => {
 				</BlockControls>
 			) }
 
-			<Card size={ 'small' } style={ { width: '50%' } }>
-				<CardHeader>
-					<h2>Customize the Introduction</h2>
-				</CardHeader>
+			<h2>Customize the Introduction</h2>
+			<RichText
+				tagName="div"
+				multiline="p"
+				placeholder={ 'Enter custom content here' }
+				value={ introContent__contentsText }
+				onChange={ ( newValue ) =>
+					setAttributes( {
+						introContent__contentsText: newValue,
+					} )
+				}
+			/>
 
+			<Card size={ 'small' } style={ { width: '50%' } }>
 				<CardBody>
 					<ToggleControl
 						label={ 'Enable "Market Text"' }
@@ -131,6 +143,19 @@ const IntroductionSettings = ( props ) => {
 					/>
 				</CardBody>
 
+				{ /* <CardBody>
+					<TextControl
+						label={ 'Content CSS classes' }
+						help="Separate multiple classes with spaces."
+						value={ introContent__contentsCssClass }
+						onChange={ ( newValue ) =>
+							setAttributes( {
+								introContent__contentsCssClass: newValue,
+							} )
+						}
+					/>
+				</CardBody> */ }
+
 				<CardBody>
 					<MediaUploadCheck>
 						<MediaPlaceholder
@@ -151,12 +176,25 @@ const IntroductionSettings = ( props ) => {
 					</MediaUploadCheck>
 				</CardBody>
 
-				{ introContent__imageId !== 0 && (
+				{ introContent__imageId !== undefined && (
 					<CardBody>
 						<CardMedia>
 							<img
 								alt={ introContent__imageAltText }
 								src={ introContent__imageUrl }
+							/>
+						</CardMedia>
+					</CardBody>
+				) }
+				{ introContent__imageId === undefined && (
+					<CardBody>
+						<CardMedia>
+							<img
+								alt=""
+								src={
+									appPathFolder +
+									'/assets/img/detail-page/intro.jpg'
+								}
 							/>
 						</CardMedia>
 					</CardBody>
