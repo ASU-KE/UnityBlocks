@@ -27,23 +27,8 @@ import {
  * @param {Object} props
  */
 const Controls = ( props ) => {
-	// const [ previewBlock, setPreviewBlock ] = useState( false );
-
 	return (
 		<>
-			{ /* <BlockControls>
-				<Toolbar>
-					<IconButton
-						label={
-							previewBlock
-								? __( 'Preview', 'unityblocks' )
-								: __( 'Edit', 'unityblocks' )
-						}
-						icon={ previewBlock ? 'edit' : 'image' }
-						onClick={ setPreviewBlock( ! previewBlock ) }
-					/>
-				</Toolbar>
-			</BlockControls> */ }
 			<TabPanel
 				className="my-tab-panel"
 				orientation={ 'horizontal' }
