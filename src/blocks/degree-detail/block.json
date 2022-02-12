@@ -395,6 +395,246 @@
     "whyChooseAsu__sectionIntroText": {
       "type": "string",
       "default": ""
+    },
+    "whyChooseAsu__facultyImageUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "whyChooseAsu__facultyImageAltText": {
+      "type": "string",
+      "default": ""
+    },
+    "whyChooseAsu__facultyImageCss": {
+      "type": "string",
+      "default": ""
+    },
+    "whyChooseAsu__facultyTitle": {
+      "type": "string",
+      "default": ""
+    },
+    "whyChooseAsu__facultyText": {
+      "type": "string",
+      "default": ""
+    },
+    "whyChooseAsu__facultyButtonIcon": {
+      "type": "string",
+      "default": ""
+    },
+    "whyChooseAsu__facultyButtonLabel": {
+      "type": "string",
+      "default": ""
+    },
+    "whyChooseAsu__facultyButtonUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "whyChooseAsu__facultyButtonColor": {
+      "type": "string",
+      "default": "maroon"
+    },
+    "whyChooseAsu__facultyButtonSize": {
+      "type": "string",
+      "default": "default"
+    },
+    "whyChooseAsu__programsImageUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "whyChooseAsu__programsImageAltText": {
+      "type": "string",
+      "default": ""
+    },
+    "whyChooseAsu__programsImageCss": {
+      "type": "string",
+      "default": ""
+    },
+    "whyChooseAsu__programsTitle": {
+      "type": "string",
+      "default": ""
+    },
+    "whyChooseAsu__programsText": {
+      "type": "string",
+      "default": ""
+    },
+    "whyChooseAsu__programsButtonIcon": {
+      "type": "string",
+      "default": ""
+    },
+    "whyChooseAsu__programsButtonLabel": {
+      "type": "string",
+      "default": ""
+    },
+    "whyChooseAsu__programsButtonUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "whyChooseAsu__programsButtonColor": {
+      "type": "string",
+      "default": "maroon"
+    },
+    "whyChooseAsu__programsButtonSize": {
+      "type": "string",
+      "default": "default"
+    },
+    "whyChooseAsu__researchImageUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "whyChooseAsu__researchImageAltText": {
+      "type": "string",
+      "default": ""
+    },
+    "whyChooseAsu__researchImageCss": {
+      "type": "string",
+      "default": ""
+    },
+    "whyChooseAsu__researchTitle": {
+      "type": "string",
+      "default": ""
+    },
+    "whyChooseAsu__researchText": {
+      "type": "string",
+      "default": ""
+    },
+    "whyChooseAsu__researchButtonIcon": {
+      "type": "string",
+      "default": ""
+    },
+    "whyChooseAsu__researchButtonLabel": {
+      "type": "string",
+      "default": ""
+    },
+    "whyChooseAsu__researchButtonUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "whyChooseAsu__researchButtonColor": {
+      "type": "string",
+      "default": "maroon"
+    },
+    "whyChooseAsu__researchButtonSize": {
+      "type": "string",
+      "default": "default"
+    },
+    "whyChooseAsu__inclusionImageUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "whyChooseAsu__inclusionImageAltText": {
+      "type": "string",
+      "default": ""
+    },
+    "whyChooseAsu__inclusionImageCss": {
+      "type": "string",
+      "default": ""
+    },
+    "whyChooseAsu__inclusionTitle": {
+      "type": "string",
+      "default": ""
+    },
+    "whyChooseAsu__inclusionText": {
+      "type": "string",
+      "default": ""
+    },
+    "whyChooseAsu__inclusionButtonIcon": {
+      "type": "string",
+      "default": ""
+    },
+    "whyChooseAsu__inclusionButtonLabel": {
+      "type": "string",
+      "default": ""
+    },
+    "whyChooseAsu__inclusionButtonUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "whyChooseAsu__inclusionButtonColor": {
+      "type": "string",
+      "default": "maroon"
+    },
+    "whyChooseAsu__inclusionButtonSize": {
+      "type": "string",
+      "default": "default"
+    },
+    "whyChooseAsu__mentorsImageUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "whyChooseAsu__mentorsImageAltText": {
+      "type": "string",
+      "default": ""
+    },
+    "whyChooseAsu__mentorsImageCss": {
+      "type": "string",
+      "default": ""
+    },
+    "whyChooseAsu__mentorsTitle": {
+      "type": "string",
+      "default": ""
+    },
+    "whyChooseAsu__mentorsText": {
+      "type": "string",
+      "default": ""
+    },
+    "whyChooseAsu__mentorsButtonIcon": {
+      "type": "string",
+      "default": ""
+    },
+    "whyChooseAsu__mentorsButtonLabel": {
+      "type": "string",
+      "default": ""
+    },
+    "whyChooseAsu__mentorsButtonUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "whyChooseAsu__mentorsButtonColor": {
+      "type": "string",
+      "default": "maroon"
+    },
+    "whyChooseAsu__mentorsButtonSize": {
+      "type": "string",
+      "default": "default"
+    },
+    "whyChooseAsu__honorsImageUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "whyChooseAsu__honorsImageAltText": {
+      "type": "string",
+      "default": ""
+    },
+    "whyChooseAsu__honorsImageCss": {
+      "type": "string",
+      "default": ""
+    },
+    "whyChooseAsu__honorsTitle": {
+      "type": "string",
+      "default": ""
+    },
+    "whyChooseAsu__honorsText": {
+      "type": "string",
+      "default": ""
+    },
+    "whyChooseAsu__honorsButtonIcon": {
+      "type": "string",
+      "default": ""
+    },
+    "whyChooseAsu__honorsButtonLabel": {
+      "type": "string",
+      "default": ""
+    },
+    "whyChooseAsu__honorsButtonUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "whyChooseAsu__honorsButtonColor": {
+      "type": "string",
+      "default": "maroon"
+    },
+    "whyChooseAsu__honorsButtonSize": {
+      "type": "string",
+      "default": "default"
     }
   }
 }
