@@ -39,7 +39,6 @@ const InclusionCard = ( props ) => {
 			whyChooseAsu__inclusionImageCss,
 			whyChooseAsu__inclusionTitle,
 			whyChooseAsu__inclusionText,
-			whyChooseAsu__inclusionButtonIcon,
 			whyChooseAsu__inclusionButtonLabel,
 			whyChooseAsu__inclusionButtonAria,
 			whyChooseAsu__inclusionButtonUrl,
@@ -149,20 +148,6 @@ const InclusionCard = ( props ) => {
 
 					<CardDivider />
 
-					<CardBody>
-						<TextControl
-							label={ 'Card button icon' }
-							help={
-								'Enter Font Awesome icon classnames separated by spaces. e.g. "fas info-circle"'
-							}
-							value={ whyChooseAsu__inclusionButtonIcon }
-							onChange={ ( newValue ) =>
-								setAttributes( {
-									whyChooseAsu__inclusionButtonIcon: newValue,
-								} )
-							}
-						/>
-					</CardBody>
 					<CardBody>
 						<TextControl
 							label={ 'Card button label' }

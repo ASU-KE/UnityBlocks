@@ -25,7 +25,6 @@ const ApplyCard = ( props ) => {
 			nextSteps__applyIcon,
 			nextSteps__applyTitle,
 			nextSteps__applyContent,
-			nextSteps__applyButtonIcon,
 			nextSteps__applyButtonLabel,
 			nextSteps__applyButtonAria,
 			nextSteps__applyButtonUrl,
@@ -74,20 +73,6 @@ const ApplyCard = ( props ) => {
 
 				<CardDivider />
 
-				<CardBody>
-					<TextControl
-						label={ 'Card button icon' }
-						help={
-							'Enter Font Awesome icon classnames separated by spaces. e.g. "fas info-circle"'
-						}
-						value={ nextSteps__applyButtonIcon }
-						onChange={ ( newValue ) =>
-							setAttributes( {
-								nextSteps__applyButtonIcon: newValue,
-							} )
-						}
-					/>
-				</CardBody>
 				<CardBody>
 					<TextControl
 						label={ 'Card button label' }

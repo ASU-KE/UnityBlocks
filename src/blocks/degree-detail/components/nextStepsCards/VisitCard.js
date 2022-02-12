@@ -25,7 +25,6 @@ const VisitCard = ( props ) => {
 			nextSteps__visitIcon,
 			nextSteps__visitTitle,
 			nextSteps__visitContent,
-			nextSteps__visitButtonIcon,
 			nextSteps__visitButtonLabel,
 			nextSteps__visitButtonAria,
 			nextSteps__visitButtonUrl,
@@ -74,20 +73,6 @@ const VisitCard = ( props ) => {
 
 				<CardDivider />
 
-				<CardBody>
-					<TextControl
-						label={ 'Card button icon' }
-						help={
-							'Enter Font Awesome icon classnames separated by spaces. e.g. "fas info-circle"'
-						}
-						value={ nextSteps__visitButtonIcon }
-						onChange={ ( newValue ) =>
-							setAttributes( {
-								nextSteps__visitButtonIcon: newValue,
-							} )
-						}
-					/>
-				</CardBody>
 				<CardBody>
 					<TextControl
 						label={ 'Card button label' }

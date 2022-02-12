@@ -39,7 +39,6 @@ const HonorsCard = ( props ) => {
 			whyChooseAsu__honorsImageCss,
 			whyChooseAsu__honorsTitle,
 			whyChooseAsu__honorsText,
-			whyChooseAsu__honorsButtonIcon,
 			whyChooseAsu__honorsButtonLabel,
 			whyChooseAsu__honorsButtonAria,
 			whyChooseAsu__honorsButtonUrl,
@@ -149,20 +148,6 @@ const HonorsCard = ( props ) => {
 
 					<CardDivider />
 
-					<CardBody>
-						<TextControl
-							label={ 'Card button icon' }
-							help={
-								'Enter Font Awesome icon classnames separated by spaces. e.g. "fas info-circle"'
-							}
-							value={ whyChooseAsu__honorsButtonIcon }
-							onChange={ ( newValue ) =>
-								setAttributes( {
-									whyChooseAsu__honorsButtonIcon: newValue,
-								} )
-							}
-						/>
-					</CardBody>
 					<CardBody>
 						<TextControl
 							label={ 'Card button label' }

@@ -368,10 +368,6 @@
       "type": "string",
       "default": ""
     },
-    "nextSteps__learnMoreButtonIcon": {
-      "type": "string",
-      "default": ""
-    },
     "nextSteps__learnMoreButtonLabel": {
       "type": "string",
       "default": ""
@@ -404,10 +400,6 @@
       "type": "string",
       "default": ""
     },
-    "nextSteps__applyButtonIcon": {
-      "type": "string",
-      "default": ""
-    },
     "nextSteps__applyButtonLabel": {
       "type": "string",
       "default": ""
@@ -437,10 +429,6 @@
       "default": ""
     },
     "nextSteps__visitContent": {
-      "type": "string",
-      "default": ""
-    },
-    "nextSteps__visitButtonIcon": {
       "type": "string",
       "default": ""
     },
@@ -492,10 +480,6 @@
       "type": "string",
       "default": ""
     },
-    "whyChooseAsu__facultyButtonIcon": {
-      "type": "string",
-      "default": ""
-    },
     "whyChooseAsu__facultyButtonLabel": {
       "type": "string",
       "default": ""
@@ -533,10 +517,6 @@
       "default": ""
     },
     "whyChooseAsu__programsText": {
-      "type": "string",
-      "default": ""
-    },
-    "whyChooseAsu__programsButtonIcon": {
       "type": "string",
       "default": ""
     },
@@ -580,10 +560,6 @@
       "type": "string",
       "default": ""
     },
-    "whyChooseAsu__researchButtonIcon": {
-      "type": "string",
-      "default": ""
-    },
     "whyChooseAsu__researchButtonLabel": {
       "type": "string",
       "default": ""
@@ -621,10 +597,6 @@
       "default": ""
     },
     "whyChooseAsu__inclusionText": {
-      "type": "string",
-      "default": ""
-    },
-    "whyChooseAsu__inclusionButtonIcon": {
       "type": "string",
       "default": ""
     },
@@ -668,10 +640,6 @@
       "type": "string",
       "default": ""
     },
-    "whyChooseAsu__mentorsButtonIcon": {
-      "type": "string",
-      "default": ""
-    },
     "whyChooseAsu__mentorsButtonLabel": {
       "type": "string",
       "default": ""
@@ -709,10 +677,6 @@
       "default": ""
     },
     "whyChooseAsu__honorsText": {
-      "type": "string",
-      "default": ""
-    },
-    "whyChooseAsu__honorsButtonIcon": {
       "type": "string",
       "default": ""
     },

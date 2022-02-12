@@ -39,7 +39,6 @@ const MentorsCard = ( props ) => {
 			whyChooseAsu__mentorsImageCss,
 			whyChooseAsu__mentorsTitle,
 			whyChooseAsu__mentorsText,
-			whyChooseAsu__mentorsButtonIcon,
 			whyChooseAsu__mentorsButtonLabel,
 			whyChooseAsu__mentorsButtonAria,
 			whyChooseAsu__mentorsButtonUrl,
@@ -149,20 +148,6 @@ const MentorsCard = ( props ) => {
 
 					<CardDivider />
 
-					<CardBody>
-						<TextControl
-							label={ 'Card button icon' }
-							help={
-								'Enter Font Awesome icon classnames separated by spaces. e.g. "fas info-circle"'
-							}
-							value={ whyChooseAsu__mentorsButtonIcon }
-							onChange={ ( newValue ) =>
-								setAttributes( {
-									whyChooseAsu__mentorsButtonIcon: newValue,
-								} )
-							}
-						/>
-					</CardBody>
 					<CardBody>
 						<TextControl
 							label={ 'Card button label' }

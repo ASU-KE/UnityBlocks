@@ -25,7 +25,6 @@ const LearnMoreCard = ( props ) => {
 			nextSteps__learnMoreIcon,
 			nextSteps__learnMoreTitle,
 			nextSteps__learnMoreContent,
-			nextSteps__learnMoreButtonIcon,
 			nextSteps__learnMoreButtonLabel,
 			nextSteps__learnMoreButtonAria,
 			nextSteps__learnMoreButtonUrl,
@@ -74,20 +73,6 @@ const LearnMoreCard = ( props ) => {
 
 				<CardDivider />
 
-				<CardBody>
-					<TextControl
-						label={ 'Card button icon' }
-						help={
-							'Enter Font Awesome icon classnames separated by spaces. e.g. "fas info-circle"'
-						}
-						value={ nextSteps__learnMoreButtonIcon }
-						onChange={ ( newValue ) =>
-							setAttributes( {
-								nextSteps__learnMoreButtonIcon: newValue,
-							} )
-						}
-					/>
-				</CardBody>
 				<CardBody>
 					<TextControl
 						label={ 'Card button label' }

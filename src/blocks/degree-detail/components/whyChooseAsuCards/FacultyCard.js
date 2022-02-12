@@ -39,7 +39,6 @@ const FacultyCard = ( props ) => {
 			whyChooseAsu__facultyImageCss,
 			whyChooseAsu__facultyTitle,
 			whyChooseAsu__facultyText,
-			whyChooseAsu__facultyButtonIcon,
 			whyChooseAsu__facultyButtonLabel,
 			whyChooseAsu__facultyButtonAria,
 			whyChooseAsu__facultyButtonUrl,
@@ -149,20 +148,6 @@ const FacultyCard = ( props ) => {
 
 					<CardDivider />
 
-					<CardBody>
-						<TextControl
-							label={ 'Card button icon' }
-							help={
-								'Enter Font Awesome icon classnames separated by spaces. e.g. "fas info-circle"'
-							}
-							value={ whyChooseAsu__facultyButtonIcon }
-							onChange={ ( newValue ) =>
-								setAttributes( {
-									whyChooseAsu__facultyButtonIcon: newValue,
-								} )
-							}
-						/>
-					</CardBody>
 					<CardBody>
 						<TextControl
 							label={ 'Card button label' }

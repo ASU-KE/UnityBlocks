@@ -39,7 +39,6 @@ const ProgramsCard = ( props ) => {
 			whyChooseAsu__programsImageCss,
 			whyChooseAsu__programsTitle,
 			whyChooseAsu__programsText,
-			whyChooseAsu__programsButtonIcon,
 			whyChooseAsu__programsButtonLabel,
 			whyChooseAsu__programsButtonAria,
 			whyChooseAsu__programsButtonUrl,
@@ -149,20 +148,6 @@ const ProgramsCard = ( props ) => {
 
 					<CardDivider />
 
-					<CardBody>
-						<TextControl
-							label={ 'Card button icon' }
-							help={
-								'Enter Font Awesome icon classnames separated by spaces. e.g. "fas info-circle"'
-							}
-							value={ whyChooseAsu__programsButtonIcon }
-							onChange={ ( newValue ) =>
-								setAttributes( {
-									whyChooseAsu__programsButtonIcon: newValue,
-								} )
-							}
-						/>
-					</CardBody>
 					<CardBody>
 						<TextControl
 							label={ 'Card button label' }

@@ -39,7 +39,6 @@ const ResearchCard = ( props ) => {
 			whyChooseAsu__researchImageCss,
 			whyChooseAsu__researchTitle,
 			whyChooseAsu__researchText,
-			whyChooseAsu__researchButtonIcon,
 			whyChooseAsu__researchButtonLabel,
 			whyChooseAsu__researchButtonAria,
 			whyChooseAsu__researchButtonUrl,
@@ -149,20 +148,6 @@ const ResearchCard = ( props ) => {
 
 					<CardDivider />
 
-					<CardBody>
-						<TextControl
-							label={ 'Card button icon' }
-							help={
-								'Enter Font Awesome icon classnames separated by spaces. e.g. "fas info-circle"'
-							}
-							value={ whyChooseAsu__researchButtonIcon }
-							onChange={ ( newValue ) =>
-								setAttributes( {
-									whyChooseAsu__researchButtonIcon: newValue,
-								} )
-							}
-						/>
-					</CardBody>
 					<CardBody>
 						<TextControl
 							label={ 'Card button label' }
