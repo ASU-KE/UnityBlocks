@@ -18,10 +18,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 class UnityBlocks_Register_Blocks {
 
 
-
-
-
-
 	/**
 	 * This plugin's instance.
 	 *
@@ -129,6 +125,15 @@ class UnityBlocks_Register_Blocks {
 
 		register_block_type(
 			$slug . '/news-list',
+			array(
+				'editor_script' => $slug . '-editor',
+				'editor_style'  => $slug . '-editor',
+				'style'         => $slug . '-frontend',
+			)
+		);
+
+		register_block_type(
+			$slug . '/testimonial',
 			array(
 				'editor_script' => $slug . '-editor',
 				'editor_style'  => $slug . '-editor',

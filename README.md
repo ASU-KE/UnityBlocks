@@ -9,6 +9,7 @@ A suite of page building content blocks for the ASU Web Standards Unity WordPres
  * News Carousel
  * News Grid
  * News List
+ * Testimonial
 
 ## Known Issues
 | Block       | Issues                                                                                                                                                                                                                                                                                                                                                                                                           |
