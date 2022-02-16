@@ -2,17 +2,11 @@
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
+import { InspectorControls } from '@wordpress/block-editor';
 import {
-	InspectorControls,
-	MediaUpload,
-	MediaUploadCheck,
-} from '@wordpress/block-editor';
-import {
-	Button,
 	PanelBody,
 	PanelRow,
 	RadioControl,
-	ResponsiveWrapper,
 	TextControl,
 } from '@wordpress/components';
 
@@ -25,7 +19,6 @@ const Inspector = ( props ) => {
 	const {
 		attributes: {
 			heroType,
-			mediaId,
 			// mediaCssClass,
 			mediaSize,
 			subTitleText,
@@ -45,113 +38,9 @@ const Inspector = ( props ) => {
 		setAttributes,
 	} = props;
 
-	const removeMedia = () => {
-		props.setAttributes( {
-			mediaId: 0,
-			mediaUrl: '',
-		} );
-	};
-
-	const onSelectMedia = ( media ) => {
-		props.setAttributes( {
-			mediaId: media.id,
-			mediaUrl: media.url,
-			mediaAltText: media.alt,
-		} );
-	};
-
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody
-					title={ __(
-						'Select hero background image',
-						'unityblocks'
-					) }
-					initialOpen={ true }
-				>
-					<div className="editor-post-featured-image">
-						<MediaUploadCheck>
-							<MediaUpload
-								onSelect={ onSelectMedia }
-								value={ mediaId }
-								allowedTypes={ [ 'image' ] }
-								render={ ( { open } ) => (
-									<Button
-										className={
-											mediaId === 0
-												? 'editor-post-featured-image__toggle'
-												: 'editor-post-featured-image__preview'
-										}
-										onClick={ open }
-									>
-										{ mediaId === 0 &&
-											__(
-												'Choose an image',
-												'unityblocks'
-											) }
-										{ props.media !== undefined && (
-											<ResponsiveWrapper
-												naturalWidth={
-													props.media.media_details
-														.width
-												}
-												naturalHeight={
-													props.media.media_details
-														.height
-												}
-											>
-												<img
-													alt={ props.media.alt }
-													src={
-														props.media.source_url
-													}
-												/>
-											</ResponsiveWrapper>
-										) }
-									</Button>
-								) }
-							/>
-						</MediaUploadCheck>
-						{ mediaId !== 0 && (
-							<MediaUploadCheck>
-								<MediaUpload
-									title={ __(
-										'Replace image',
-										'unityblocks'
-									) }
-									value={ mediaId }
-									onSelect={ onSelectMedia }
-									allowedTypes={ [ 'image' ] }
-									render={ ( { open } ) => (
-										<Button
-											onClick={ open }
-											isDefault
-											isLarge
-										>
-											{ __(
-												'Replace image',
-												'unityblocks'
-											) }
-										</Button>
-									) }
-								/>
-							</MediaUploadCheck>
-						) }
-						{ mediaId !== 0 && (
-							<MediaUploadCheck>
-								<Button
-									onClick={ removeMedia }
-									isLink
-									isDestructive
-								>
-									{ __( 'Remove image', 'unityblocks' ) }
-								</Button>
-							</MediaUploadCheck>
-						) }
-					</div>
-				</PanelBody>
-
 				<PanelBody
 					title={ __( 'Hero format', 'unityblocks' ) }
 					initialOpen={ false }

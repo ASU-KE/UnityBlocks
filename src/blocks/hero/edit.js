@@ -6,7 +6,7 @@ import { Hero } from '@asu-design-system/components-core/dist/libCore.es';
 /**
  * Internal dependencies
  */
-// import Controls from './controls';
+import Controls from './controls';
 import Inspector from './inspector';
 
 /**
@@ -18,6 +18,7 @@ const Edit = ( props ) => {
 	const {
 		attributes: {
 			heroType,
+			mediaId,
 			mediaUrl,
 			mediaAltText,
 			mediaCssClass,
@@ -73,9 +74,13 @@ const Edit = ( props ) => {
 	return (
 		<>
 			<Inspector { ...props } />
-			<div className={ className }>
-				<Hero { ...args } />
-			</div>
+			<Controls { ...props } />
+
+			{ mediaId !== 0 && (
+				<div className={ className }>
+					<Hero { ...args } />
+				</div>
+			) }
 		</>
 	);
 };
