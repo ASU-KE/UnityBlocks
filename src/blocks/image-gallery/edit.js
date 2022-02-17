@@ -16,17 +16,22 @@ import { transformAttributes } from './transformAttributes';
  * @param {Object} props
  */
 const edit = ( props ) => {
-	const { className } = props;
+	const {
+		attributes: { imageIds },
+		className,
+	} = props;
 
 	return (
 		<>
 			<Controls { ...props } />
 			<Inspector { ...props } />
-			<div className={ className }>
-				{ /* <ImageGalleryCarousel
-					{ ...transformAttributes( props.attributes ) }
-				/> */ }
-			</div>
+			{ imageIds.length > 0 && (
+				<div className={ className }>
+					<ImageGalleryCarousel
+						{ ...transformAttributes( props.attributes ) }
+					/>
+				</div>
+			) }
 		</>
 	);
 };

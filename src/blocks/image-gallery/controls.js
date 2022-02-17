@@ -31,14 +31,12 @@ const Controls = ( props ) => {
 
 	const onSelectMedia = ( gallery ) => {
 		const images = gallery.map( ( media ) => {
-			// console.error( media );
-
 			return {
 				id: media.id,
-				imageSource: media.sizes.large.url,
+				imageSource: media.sizes.full.url,
 				imageAltText: media.alt,
-				thumbnailSource: media.sizes.small.url,
-				// title: media.title,
+				thumbnailSource: media.sizes.medium.url,
+				title: media.title,
 				content: media.caption,
 			};
 		} );
@@ -49,8 +47,7 @@ const Controls = ( props ) => {
 		const imageThumbnailSources = images.map(
 			( img ) => img.thumbnailSource
 		);
-		// const imageTitles = images.map( ( img ) => img.title );
-		const imageTitles = images.map( () => 'img.title' );
+		const imageTitles = images.map( ( img ) => img.title );
 		const imageContents = images.map( ( img ) => img.content );
 
 		setAttributes( {
@@ -65,7 +62,7 @@ const Controls = ( props ) => {
 
 	return (
 		<>
-			{ !!! imageIds.length && (
+			{ imageIds.length > 0 && (
 				<BlockControls>
 					<Toolbar>
 						<MediaUpload
@@ -88,7 +85,7 @@ const Controls = ( props ) => {
 					</Toolbar>
 				</BlockControls>
 			) }
-			{ !!! imageIds.length && (
+			{ imageIds.length === 0 && (
 				<MediaUploadCheck>
 					<MediaPlaceholder
 						labels={ {
