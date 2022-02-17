@@ -1,0 +1,46 @@
+{
+  "name": "unityblocks/image-gallery",
+  "category": "widgets",
+  "attributes": {
+    "imageIds": {
+      "type": "array",
+      "default": []
+    },
+    "imageSources": {
+      "type": "array",
+      "default": []
+    },
+    "imageAltTexts": {
+      "type": "array",
+      "default": []
+    },
+    "imageThumbnailSources": {
+      "type": "array",
+      "default": []
+    },
+    "imageTitles": {
+      "type": "array",
+      "default": []
+    },
+    "imageContents": {
+      "type": "array",
+      "default": []
+    },
+    "hasContent": {
+      "type": "boolean",
+      "default": true
+    },
+    "imageAutoSize": {
+      "type": "boolean",
+      "default": true
+    },
+    "width": {
+      "type": "string",
+      "default": ""
+    },
+    "maxWidth": {
+      "type": "string",
+      "default": ""
+    }
+  }
+}
