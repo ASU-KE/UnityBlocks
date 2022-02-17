@@ -31,7 +31,7 @@ const edit = ( props ) => {
 						hasContent={ hasContent }
 						imageAutoSize={ imageAutoSize }
 						width={ width }
-						maxWisth={ maxWidth }
+						maxWidth={ maxWidth }
 					/>
 				</div>
 			) }

@@ -18,10 +18,10 @@ galleries.forEach( ( gallery ) => {
 	render(
 		<ImageGalleryCarousel
 			imageItems={ imageItems }
-			width={ width }
-			maxWidth={ maxWidth }
 			hasContent={ hasContent }
 			imageAutoSize={ imageAutoSize }
+			width={ width }
+			maxWidth={ maxWidth }
 		/>,
 		gallery
 	);
