@@ -2,27 +2,7 @@
   "name": "unityblocks/image-gallery",
   "category": "widgets",
   "attributes": {
-    "imageIds": {
-      "type": "array",
-      "default": []
-    },
-    "imageSources": {
-      "type": "array",
-      "default": []
-    },
-    "imageAltTexts": {
-      "type": "array",
-      "default": []
-    },
-    "imageThumbnailSources": {
-      "type": "array",
-      "default": []
-    },
-    "imageTitles": {
-      "type": "array",
-      "default": []
-    },
-    "imageContents": {
+    "images": {
       "type": "array",
       "default": []
     },

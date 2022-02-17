@@ -8,7 +8,6 @@ import { ImageGalleryCarousel } from '@asu-design-system/component-carousel/dist
  */
 import { Controls } from './controls';
 import { Inspector } from './inspector';
-import { transformAttributes } from './transformAttributes';
 
 /**
  * Block edit function
@@ -17,7 +16,7 @@ import { transformAttributes } from './transformAttributes';
  */
 const edit = ( props ) => {
 	const {
-		attributes: { imageIds },
+		attributes: { images, hasContent, imageAutoSize, width, maxWidth },
 		className,
 	} = props;
 
@@ -25,10 +24,14 @@ const edit = ( props ) => {
 		<>
 			<Controls { ...props } />
 			<Inspector { ...props } />
-			{ imageIds.length > 0 && (
+			{ images.length > 0 && (
 				<div className={ className }>
 					<ImageGalleryCarousel
-						{ ...transformAttributes( props.attributes ) }
+						imageItems={ images }
+						hasContent={ hasContent }
+						imageAutoSize={ imageAutoSize }
+						width={ width }
+						maxWisth={ maxWidth }
 					/>
 				</div>
 			) }

@@ -25,48 +25,32 @@ import icon from './iconEdit';
  */
 const Controls = ( props ) => {
 	const {
-		attributes: { imageIds },
+		attributes: { images },
 		setAttributes,
 	} = props;
 
-	const onSelectMedia = ( gallery ) => {
-		const images = gallery.map( ( media ) => {
+	const onSelectMedia = ( newImages ) => {
+		const images = newImages.map( ( img ) => {
 			return {
-				id: media.id,
-				imageSource: media.sizes.full.url,
-				imageAltText: media.alt,
-				thumbnailSource: media.sizes.medium.url,
-				title: media.title,
-				content: media.caption,
+				id: img.id,
+				imageSource: img.sizes.full.url,
+				imageAltText: img.alt,
+				thumbnailSource: img.sizes.medium.url,
+				title: img.title,
+				content: img.caption,
 			};
 		} );
 
-		const imageIds = images.map( ( img ) => img.id );
-		const imageSources = images.map( ( img ) => img.imageSource );
-		const imageAltTexts = images.map( ( img ) => img.imageAltText );
-		const imageThumbnailSources = images.map(
-			( img ) => img.thumbnailSource
-		);
-		const imageTitles = images.map( ( img ) => img.title );
-		const imageContents = images.map( ( img ) => img.content );
-
-		setAttributes( {
-			imageIds,
-			imageSources,
-			imageAltTexts,
-			imageThumbnailSources,
-			imageTitles,
-			imageContents,
-		} );
+		setAttributes( { images } );
 	};
 
 	return (
 		<>
-			{ imageIds.length > 0 && (
+			{ images.length > 0 && (
 				<BlockControls>
 					<Toolbar>
 						<MediaUpload
-							value={ imageIds }
+							value={ images.map( ( img ) => img.id ) }
 							onSelect={ onSelectMedia }
 							allowedTypes={ [ 'image' ] }
 							multiple
@@ -85,7 +69,7 @@ const Controls = ( props ) => {
 					</Toolbar>
 				</BlockControls>
 			) }
-			{ imageIds.length === 0 && (
+			{ images.length === 0 && (
 				<MediaUploadCheck>
 					<MediaPlaceholder
 						labels={ {

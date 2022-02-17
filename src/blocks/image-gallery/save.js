@@ -2,23 +2,22 @@
  * External dependencies
  */
 import classnames from 'classnames';
-import { transformAttributes } from './transformAttributes';
 
 const save = ( props ) => {
 	const { className } = props;
 
 	const {
-		imageItems,
+		images,
 		width,
 		maxWidth,
 		hasContent,
 		imageAutoSize,
-	} = transformAttributes( props.attributes );
+	} = props.attributes;
 
 	return (
 		<div
 			className={ classnames( className ) }
-			data-imageitems={ JSON.stringify( imageItems ) }
+			data-imageitems={ JSON.stringify( images ) }
 			data-width={ width }
 			data-maxwidth={ maxWidth }
 			data-hascontent={ hasContent }

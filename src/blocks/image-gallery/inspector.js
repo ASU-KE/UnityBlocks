@@ -25,7 +25,7 @@ const Inspector = ( props ) => {
 		<>
 			<InspectorControls>
 				<PanelBody
-					title={ __( 'Gallery settings', 'unityblocks' ) }
+					title={ __( 'Unity Image Gallery', 'unityblocks' ) }
 					initialOpen={ false }
 				>
 					<PanelRow>
