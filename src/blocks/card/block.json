@@ -1,0 +1,114 @@
+{
+  "name": "unityblocks/card",
+  "category": "widgets",
+  "attributes": {
+    "type": {
+      "type": "string",
+      "default": "default"
+    },
+    "width": {
+      "type": "string",
+      "default": "100%"
+    },
+    "horizontal": {
+      "type": "boolean",
+      "default": false
+    },
+    "clickable": {
+      "type": "boolean",
+      "default": false
+    },
+    "clickHref": {
+      "type": "string",
+      "default": ""
+    },
+    "imageId": {
+      "type": "number",
+      "default": 0
+    },
+    "image": {
+      "type": "string",
+      "default": "https://thesundevils.com/common/controls/image_handler.aspx?thumb_id=0&image_path=/images/2020/4/27/ASU_Sun_Devil_Athetics_Video_Background_77.jpg"
+    },
+    "imageAltText": {
+      "type": "string",
+      "default": ""
+    },
+    "title": {
+      "type": "string",
+      "default": "Card title"
+    },
+    "icon": {
+      "type": "string",
+      "default": ""
+    },
+    "body": {
+      "type": "string",
+      "default": "Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo."
+    },
+    "eventFormat": {
+      "type": "string",
+      "default": "stack"
+    },
+    "eventLocation": {
+      "type": "string",
+      "default": ""
+    },
+    "buttonsAriaLabel": {
+      "type": "array",
+      "default": []
+    },
+    "buttonsColor": {
+      "type": "array",
+      "default": []
+    },
+    "buttonsIcon": {
+      "type": "array",
+      "default": []
+    },
+    "buttonsHref": {
+      "type": "array",
+      "default": []
+    },
+    "buttonsLabel": {
+      "type": "array",
+      "default": []
+    },
+    "buttonsOnclick": {
+      "type": "array",
+      "default": []
+    },
+    "buttonsSize": {
+      "type": "array",
+      "default": []
+    },
+    "linkLabel": {
+      "type": "string",
+      "default": ""
+    },
+    "linkUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "tagsAriaLabel": {
+      "type": "array",
+      "default": []
+    },
+    "tagsColor": {
+      "type": "array",
+      "default": []
+    },
+    "tagsHref": {
+      "type": "array",
+      "default": []
+    },
+    "tagsLabel": {
+      "type": "array",
+      "default": []
+    },
+    "tagsOnclick": {
+      "type": "array",
+      "default": []
+    }
+  }
+}

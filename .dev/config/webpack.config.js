@@ -67,6 +67,10 @@ module.exports = {
 			process.cwd(),
 			'src/blocks/testimonial/frontend.js'
 		),
+    'js/unityblocks-card': path.resolve(
+			process.cwd(),
+			'src/blocks/card/frontend.js'
+		),
 	},
 
 	output: {

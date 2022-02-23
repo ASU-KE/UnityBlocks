@@ -48,3 +48,17 @@ if ( $this->is_page_gutenberg() || has_block( 'unityblocks/testimonial' ) ) {
 		true
 	);
 }
+
+
+if ( $this->is_page_gutenberg() || has_block( 'unityblocks/card' ) ) {
+	$unityblocks_card_file    = $dir_url . 'unityblocks-card.js';
+	$unityblocks_card_version = UNITYBLOCKS_VERSION . '.' . filemtime( $dir_path . 'unityblocks-card.js' );
+
+	wp_enqueue_script(
+		'unityblocks-card',
+		$unityblocks_card_file,
+		array( 'wp-element', 'wp-components' ),
+		$unityblocks_card_version,
+		true
+	);
+}
