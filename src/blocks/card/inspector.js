@@ -88,7 +88,6 @@ const Inspector = ( props ) => {
   const typeId = `type-toggle-control-${ instanceId2 }`;
 
 
-
 	return (
 		<>
 			<InspectorControls>
@@ -202,6 +201,26 @@ const Inspector = ( props ) => {
           </ButtonGroup>
         </PanelRow>
 
+        { type=='event' &&
+                <PanelRow>
+                <label htmlFor={ eventFormatId } className="components-toggle-control__label">
+                  { __( 'Event Format', 'unityblocks' ) }
+                </label>
+                <ButtonGroup id={ eventFormatId }>
+                  <Button
+                  key={ 'stack' }
+                  isPrimary={ 'stack' === eventFormat? true : undefined}
+                  onClick={ () =>setAttributes( { eventFormat: 'stack' } ) }
+                  >Stack</Button>
+                  <Button
+                  key={ 'inline' }
+                  isPrimary={ 'inline' === eventFormat? true : undefined}
+                  onClick={ () =>setAttributes( { eventFormat: 'inline' } ) }
+                  >Inline</Button>
+                  </ButtonGroup>
+                </PanelRow>
+        }
+
         <PanelRow>
         <label htmlFor={ widthId } className="components-button-group__label">
           { __( 'Card width', 'unityblocks' ) }
@@ -298,25 +317,7 @@ const Inspector = ( props ) => {
         	/>
         </PanelRow>
 
-
-        <PanelRow>
-        <label htmlFor={ eventFormatId } className="components-toggle-control__label">
-          { __( 'Event Format', 'unityblocks' ) }
-        </label>
-        <ButtonGroup id={ eventFormatId }>
-          <Button
-          key={ 'stack' }
-          isPrimary={ 'stack' === eventFormat? true : undefined}
-          onClick={ () =>setAttributes( { eventFormat: 'stack' } ) }
-          >Stack</Button>
-          <Button
-          key={ 'inline' }
-          isPrimary={ 'inline' === eventFormat? true : undefined}
-          onClick={ () =>setAttributes( { eventFormat: 'inline' } ) }
-          >Inline</Button>
-          </ButtonGroup>
-        </PanelRow>
-
+{ type=='event' &&
         <PanelRow>
           <TextControl
             label={ 'Event Location' }
@@ -326,7 +327,8 @@ const Inspector = ( props ) => {
             }
           />
         </PanelRow>
-
+}
+{ type=='event' &&
         <PanelRow>
           <TextControl
             label={ 'Event Time' }
@@ -336,7 +338,7 @@ const Inspector = ( props ) => {
             }
           />
         </PanelRow>
-
+}
         <PanelRow>
           <TextControl
             label={ 'Link label' }
@@ -347,6 +349,7 @@ const Inspector = ( props ) => {
           />
         </PanelRow>
 
+
         <PanelRow>
           <TextControl
             label={ 'Link URL' }
@@ -356,7 +359,6 @@ const Inspector = ( props ) => {
             }
           />
         </PanelRow>
-
 
 
 

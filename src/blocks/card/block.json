@@ -52,7 +52,11 @@
     },
     "eventLocation": {
       "type": "string",
-      "default": ""
+      "default": "Memorial Union, Tempe Campus"
+    },
+    "eventTime": {
+      "type": "string",
+      "default": "Month D, Year, HH:MM "
     },
     "buttonsAriaLabel": {
       "type": "array",
@@ -84,11 +88,11 @@
     },
     "linkLabel": {
       "type": "string",
-      "default": ""
+      "default": "Link"
     },
     "linkUrl": {
       "type": "string",
-      "default": ""
+      "default": "#"
     },
     "tagsAriaLabel": {
       "type": "array",
