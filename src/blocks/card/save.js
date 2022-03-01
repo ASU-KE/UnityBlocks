@@ -65,7 +65,7 @@ const save = ( props ) => {
 
 	return (
 		<div
-			className={ classnames( className, 'zee' ) }
+			className={ classnames( className ) }
       data-type={ type }
       data-width={ width }
       data-horizontal={ horizontal }

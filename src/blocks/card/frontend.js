@@ -11,8 +11,8 @@ const cards = document.querySelectorAll(
 cards.forEach( ( card ) => {
   const type = card.dataset.type;
   const width = card.dataset.width;
-  const horizontal = card.dataset.horizontal;
-  const clickable = card.dataset.clickable;
+  const horizontal = card.dataset.horizontal==='true'? true:false;
+  const clickable = card.dataset.clickable==='true'? true:false;
   const clickHref = card.dataset.clickHref;
   const image = card.dataset.image;
   const imageAltText = card.dataset.imageAltText;
@@ -26,6 +26,8 @@ cards.forEach( ( card ) => {
   const linkLabel = card.dataset.linkLabel;
   const linkUrl = card.dataset.linkUrl;
   const tags = JSON.parse( card.dataset.tags );
+
+
 
 
 	render(
