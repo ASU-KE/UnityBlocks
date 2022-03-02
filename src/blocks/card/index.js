@@ -19,9 +19,7 @@ const settings = {
 	title: __( 'Unity Card', 'unityblocks' ),
 	description: __( 'Provide Card block.', 'unityblocks' ),
 	icon: 'index-card',
-	keywords: [
-		'unityblocks','card', 'cards', 'story', 'horizontal'
-	],
+	keywords: [ 'unityblocks', 'card', 'cards', 'story', 'horizontal' ],
 	supports: {
 		align: [ 'wide', 'full' ],
 	},

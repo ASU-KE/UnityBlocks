@@ -17,83 +17,75 @@ import Inspector from './inspector';
 const Edit = ( props ) => {
 	const {
 		attributes: {
-      type,
-      width,
-      horizontal,
-      clickable,
-      clickHref,
-      image,
-      imageAltText,
-      title,
-      icon,
-      body,
-      eventFormat,
-      eventLocation,
-      eventTime,
-      buttonsAriaLabel,
-      buttonsColor,
-      buttonsIcon,
-      buttonsHref,
-      buttonsLabel,
-      buttonsOnclick,
-      buttonsSize,
-      buttonsTarget,
-      linkLabel,
-      linkUrl,
-      tagsAriaLabel,
-      tagsColor,
-      tagsHref,
-      tagsLabel,
-      tagsOnclick,
+			type,
+			width,
+			horizontal,
+			clickable,
+			clickHref,
+			image,
+			imageAltText,
+			title,
+			icon,
+			body,
+			eventFormat,
+			eventLocation,
+			eventTime,
+			buttonsColor,
+			buttonsIcon,
+			buttonsHref,
+			buttonsLabel,
+			buttonsOnclick,
+			buttonsSize,
+			buttonsTarget,
+			linkLabel,
+			linkUrl,
+			tagsColor,
+			tagsHref,
+			tagsLabel,
+			tagsOnclick,
 		},
 		className,
 	} = props;
 
+	const buttons = buttonsLabel.map( ( buttonsLabel, index ) => {
+		return {
+			color: buttonsColor[ index ],
+			icon: buttonsIcon[ index ],
+			href: buttonsHref[ index ],
+			label: buttonsLabel[ index ],
+			onClick: buttonsOnclick[ index ],
+			size: buttonsSize[ index ],
+			target: buttonsTarget[ index ],
+		};
+	} );
 
-  const buttons = buttonsAriaLabel.map( ( buttonAriaLabel, index ) => {
-   return {
-      ariaLabel: buttonAriaLabel,
-      color: buttonsColor[ index ],
-      icon: buttonsIcon[ index ],
-      href: buttonsHref[ index ],
-      label: buttonsLabel[ index ],
-      onClick: buttonsOnclick[ index ],
-      size: buttonsSize[ index ],
-      target: buttonsTarget[ index ],
-   };
- } );
-
-
-
-  const tags = tagsAriaLabel.map( ( tagAriaLabel, index ) => {
-    return {
-      ariaLabel: tagAriaLabel,
-      color: tagsColor[ index ],
-      href: tagsHref[ index ],
-      label: tagsLabel[ index ],
-      onClick: tagsOnclick[ index ],
-    };
-  } );
-
+	const tags = tagsLabel.map( ( tagsLabel, index ) => {
+		return {
+			color: tagsColor[ index ],
+			href: tagsHref[ index ],
+			label: tagsLabel[ index ],
+			onClick: tagsOnclick[ index ],
+		};
+	} );
 
 	const args = {
-    type,
-    width,
-    horizontal,
-    clickable,
-    clickHref,
-    image,
-    imageAltText,
-    title,
-    icon,
-    body,
-    eventFormat,
-    eventLocation,
-    eventTime,
-    buttons,
-    linkLabel,
-    linkUrl,
-    tags,
+		type,
+		width,
+		horizontal,
+		clickable,
+		clickHref,
+		image,
+		imageAltText,
+		title,
+		icon,
+		body,
+		eventFormat,
+		eventLocation,
+		eventTime,
+		buttons,
+		linkLabel,
+		linkUrl,
+		tags,
 	};
 
 	return (
