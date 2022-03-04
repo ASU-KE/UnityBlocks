@@ -2,6 +2,7 @@
  * External dependencies
  */
 import classnames from 'classnames';
+import { InnerBlocks } from '@wordpress/block-editor';
 
 const save = ( props ) => {
 	const {
@@ -77,7 +78,8 @@ const save = ( props ) => {
 			data-linkLabel={ linkLabel }
 			data-linkUrl={ linkUrl }
 			data-tags={ JSON.stringify( tags ) }
-		></div>
+		>
+    <InnerBlocks.Content /></div>
 	);
 };
 

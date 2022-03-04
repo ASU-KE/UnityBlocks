@@ -168,21 +168,7 @@ const {
                </a>
              </div>
            </div>
-           <div class="card-link">
-             <a
-               class=""
-               data-ga="Regular text link here"
-               data-ga-action="click"
-               data-ga-event="link"
-               data-ga-name="onclick"
-               data-ga-region="main content"
-               data-ga-section="card default title"
-               data-ga-type="internal link"
-               href="#"
-             >
-               Regular text link here
-             </a>
-           </div>
+
            <div class="card-tags">
              <a
                class="btn btn-tag btn-tag-alt-white"
@@ -240,7 +226,7 @@ const {
           <div className="card-body">
 					<RichText
 						className="card-text"
-						identifier="biography"
+						identifier="body"
 						multiline={ false }
 						onChange={ ( body ) => {
 							setAttributes( { body: body } );
@@ -253,12 +239,32 @@ const {
 					/>
           </div>
 
-					<InnerBlocks
-						__experimentalCaptureToolbars={ true }
-						allowedBlocks={ [ 'core/button' ] }
-						template={ [ [ 'core/button', { placeholder: /* translators: content placeholder */ __( 'Card button ...', 'unityblocks' ) } ] ] }
-						templateInsertUpdatesSelection={ false }
+          <div className="card-buttons">
+          <div className="card-button">
+ 					<InnerBlocks
+ 						__experimentalCaptureToolbars={ true }
+ 						allowedBlocks={ [ 'acf/uds-button' ] }
+ 						template={ [ [ 'acf/uds-button', { placeholder: __( 'Card button ...', 'unityblocks' ), className: '' } ] ] }
+ 						templateInsertUpdatesSelection={ false }
+ 					/>
+           </div>
+           </div>
+
+
+
+          <div className="card-link">
+					<RichText
+						className=""
+						identifier="link"
+						multiline={ false }
+						onChange={ ( linkLabel ) => {
+							setAttributes( { linkLabel: linkLabel } );
+						} }
+						tagName="p"
+						value={ linkLabel }
 					/>
+          </div>
+
 
 
 			</div>
