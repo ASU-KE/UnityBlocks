@@ -26,6 +26,10 @@
 			"type": "number",
 			"default": 0
 		},
+    "showImage": {
+			"type": "boolean",
+			"default": true
+		},
 		"image": {
 			"type": "string",
 			"default": "https://thesundevils.com/common/controls/image_handler.aspx?thumb_id=0&image_path=/images/2020/4/27/ASU_Sun_Devil_Athetics_Video_Background_77.jpg"
@@ -39,8 +43,8 @@
 			"default": "Card title"
 		},
 		"icon": {
-			"type": "array",
-			"default": []
+			"type": "string",
+			"default": ""
 		},
 		"body": {
 			"type": "string",

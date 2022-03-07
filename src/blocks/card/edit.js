@@ -77,7 +77,7 @@ const Edit = ( props ) => {
 		image,
 		imageAltText,
 		title,
-		icon,
+		icon: icon.split(' '),
 		body,
 		eventFormat,
 		eventLocation,

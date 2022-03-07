@@ -38,6 +38,7 @@ const Inspector = ( props ) => {
 			clickable,
 			clickHref,
 			imageId,
+      showImage,
 			title,
 			icon,
 			body,
@@ -75,10 +76,16 @@ const Inspector = ( props ) => {
 		} );
 	};
 
+  const handleShowImageChange = ( showImage ) => {
+    removeMedia();
+		props.setAttributes( { showImage: ! showImage } );
+	};
+
 	const instanceId = useInstanceId( FormToggle );
 	const horizontalId = `horizontal-toggle-control-${ instanceId }`;
 	const clickableId = `clickable-toggle-control-${ instanceId }`;
 	const bodyId = `body-toggle-control-${ instanceId }`;
+  const showImagelId = `show-image-toggle-control-${ instanceId }`;
 
 	const instanceId2 = useInstanceId( ButtonGroup );
 	const eventFormatId = `event-format-toggle-control-${ instanceId2 }`;
@@ -458,23 +465,42 @@ const Inspector = ( props ) => {
 	}
 
 
-  const handleCardIconChange = ( text ) => {
-    //const icon = [ ...props.attributes.icon ];
-    //icon.push('fa');
-    let icon1 = text.split(' ');
-    //console.log(icon1);
-    props.setAttributes( { icon:text } );
-
-    //console.log(icon);
-  };
 	return (
 		<>
 			<InspectorControls>
 				<PanelBody
-					title={ __( 'Card image', 'unityblocks' ) }
+					title={ __( 'Card image & icon', 'unityblocks' ) }
 					initialOpen={ true }
 				>
-					<div className="editor-post-featured-image">
+        <PanelRow>
+          <label
+            htmlFor={ showImagelId }
+            className="components-toggle-control__label"
+          >
+            { __( 'Show Image?', 'unityblocks' ) }
+          </label>
+          <FormToggle
+            id={ showImagelId }
+            checked={ showImage }
+            onChange={ () =>
+              handleShowImageChange(showImage)
+            }
+          />
+          </PanelRow>
+
+
+        {!showImage &&	<PanelRow>
+
+						<TextControl
+							label={ 'Card icon' }
+							value={ icon }
+							onChange={ ( icon ) => setAttributes( { icon } ) }
+						/>
+					</PanelRow>
+}
+
+					{showImage && <div className="editor-post-featured-image">
+          <small>{ __( 'To add icon, turn image off', 'unityblocks' ) }</small>
 						<MediaUploadCheck>
 							<MediaUpload
 								onSelect={ onSelectMedia }
@@ -554,6 +580,7 @@ const Inspector = ( props ) => {
 							</MediaUploadCheck>
 						) }
 					</div>
+        }
 				</PanelBody>
 
 				<PanelBody
@@ -733,14 +760,6 @@ const Inspector = ( props ) => {
 					</PanelRow>
 
 					<PanelRow>
-						<TextControl
-							label={ 'Card icon' }
-							value={ icon }
-							onChange={ ( icon ) => handleCardIconChange( icon ) }
-						/>
-					</PanelRow>
-
-					<PanelRow>
 						<label
 							htmlFor={ bodyId }
 							className="components-toggle-control__label"
@@ -798,7 +817,7 @@ const Inspector = ( props ) => {
 					</PanelRow>
 				</PanelBody>
 
-				<PanelBody title={ __( 'Buttons', 'unityblocks' ) }>
+				<PanelBody title={ __( 'Buttons', 'unityblocks' ) } initialOpen={ false }>
 					{ buttonFields }
 					<PanelRow>
 						<Button
@@ -810,7 +829,7 @@ const Inspector = ( props ) => {
 					</PanelRow>
 				</PanelBody>
 
-				<PanelBody title={ __( 'Tags', 'unityblocks' ) }>
+				<PanelBody title={ __( 'Tags', 'unityblocks' ) } initialOpen={ false }>
 					{ tagFields }
 					<PanelRow>
 						<Button isDefault onClick={ handleAddTag.bind( this ) }>
