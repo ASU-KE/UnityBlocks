@@ -51,6 +51,10 @@ module.exports = {
 			process.cwd(),
 			'src/blocks/events-list/frontend.js'
 		),
+		'js/unityblocks-image-gallery': path.resolve(
+			process.cwd(),
+			'src/blocks/image-gallery/frontend.js'
+		),
 		'js/unityblocks-news-carousel': path.resolve(
 			process.cwd(),
 			'src/blocks/news-carousel/frontend.js'

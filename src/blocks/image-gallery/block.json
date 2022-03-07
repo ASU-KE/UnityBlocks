@@ -1,0 +1,26 @@
+{
+  "name": "unityblocks/image-gallery",
+  "category": "widgets",
+  "attributes": {
+    "images": {
+      "type": "array",
+      "default": []
+    },
+    "hasContent": {
+      "type": "boolean",
+      "default": true
+    },
+    "imageAutoSize": {
+      "type": "boolean",
+      "default": true
+    },
+    "width": {
+      "type": "string",
+      "default": ""
+    },
+    "maxWidth": {
+      "type": "string",
+      "default": ""
+    }
+  }
+}

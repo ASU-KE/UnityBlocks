@@ -6,6 +6,7 @@ A suite of page building content blocks for the ASU Web Standards Unity WordPres
  * Events Grid
  * Events List
  * Hero
+ * Image Gallery
  * News Carousel
  * News Grid
  * News List

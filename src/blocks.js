@@ -14,6 +14,7 @@ import * as anchorMenu from './blocks/anchor-menu';
 import * as hero from './blocks/hero';
 import * as eventsGrid from './blocks/events-grid';
 import * as eventsList from './blocks/events-list';
+import * as imageGallery from './blocks/image-gallery';
 import * as newsCarousel from './blocks/news-carousel';
 import * as newsGrid from './blocks/news-grid';
 import * as newsList from './blocks/news-list';
@@ -53,6 +54,7 @@ export const registerUnityBlocksBlocks = () => {
 		hero,
 		eventsGrid,
 		eventsList,
+		imageGallery,
 		newsCarousel,
 		newsGrid,
 		newsList,
