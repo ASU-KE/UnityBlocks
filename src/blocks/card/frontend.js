@@ -11,18 +11,18 @@ cards.forEach( ( card ) => {
 	const width = card.dataset.width;
 	const horizontal = card.dataset.horizontal === 'true' ? true : false;
 	const clickable = card.dataset.clickable === 'true' ? true : false;
-	const clickHref = card.dataset.clickHref;
+	const clickHref = card.dataset.clickhref;
 	const image = card.dataset.image;
-	const imageAltText = card.dataset.imageAltText;
+	const imageAltText = card.dataset.imagealttext;
 	const title = card.dataset.title;
 	const icon = card.dataset.icon;
 	const body = card.dataset.body;
-	const eventFormat = card.dataset.eventFormat;
-	const eventLocation = card.dataset.eventLocation;
-	const eventTime = card.dataset.eventTime;
+	const eventFormat = card.dataset.eventformat;
+	const eventLocation = card.dataset.eventlocation;
+	const eventTime = card.dataset.eventtime;
 	const buttons = JSON.parse( card.dataset.buttons );
-	const linkLabel = card.dataset.linkLabel;
-	const linkUrl = card.dataset.linkUrl;
+	const linkLabel = card.dataset.linklabel;
+	const linkUrl = card.dataset.linkurl;
 	const tags = JSON.parse( card.dataset.tags );
 
 	render(

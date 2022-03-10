@@ -47,7 +47,7 @@ const Edit = ( props ) => {
 		className,
 	} = props;
 
-	const buttons = buttonsLabel.map( ( buttonsLabel, index ) => {
+	const buttons = buttonsLabel.map( ( singleButton, index ) => {
 		return {
 			color: buttonsColor[ index ],
 			icon: buttonsIcon[ index ],
@@ -59,7 +59,7 @@ const Edit = ( props ) => {
 		};
 	} );
 
-	const tags = tagsLabel.map( ( tagsLabel, index ) => {
+	const tags = tagsLabel.map( ( singleTag, index ) => {
 		return {
 			color: tagsColor[ index ],
 			href: tagsHref[ index ],
