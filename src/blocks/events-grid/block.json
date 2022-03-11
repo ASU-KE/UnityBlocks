@@ -34,17 +34,41 @@
       ],
       "default": "maroon"
     },
+    "dataSourceType": {
+      "enum": [
+        "asuDrupal",
+        "keGraphql",
+        "wpRest"
+      ],
+      "default": "keGraphql"
+    },
     "dataSourceUrl": {
       "type": "string",
-      "default": "https://cors.api.rtd.asu.edu/asuevents.asu.edu/feed-json/"
+      "default": "https://infonet.api.rtd.asu.edu/graphql/"
     },
     "dataSourceFeed": {
       "type": "string",
       "default": "online"
     },
-    "dataSourceFilters": {
+    "dataSourceFilterCategories": {
       "type": "string",
-      "default": ""
+      "default": "college-of-global-futures"
+    },
+    "dataSourcePage": {
+      "type": "number",
+      "default": 1
+    },
+    "dataSourcePerPage": {
+      "type": "number",
+      "default": 9
+    },
+    "dataSourceOrder": {
+      "type": "string",
+      "default": "DESC"
+    },
+    "dataSourceOrderBy": {
+      "type": "string",
+      "default": "startAt"
     },
     "maxItems": {
       "type": "number",

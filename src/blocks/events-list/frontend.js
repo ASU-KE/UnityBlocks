@@ -1,6 +1,6 @@
 const { render } = wp.element;
 
-import { CardsListEvents } from '@asu-design-system/component-events/dist/asuEvents.es';
+import { CardsListEvents } from '../../unity/component-events/src/components/CardsListEvents';
 
 // It is possible to load multiple events lists onto a page.
 // Load each DOM element on page using the Gutenberg-generated class for the Events List block
