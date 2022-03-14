@@ -23,7 +23,8 @@ const Edit = ( props ) => {
 			ctaColor,
 			ctaUrl,
 			dataSourceType,
-			dataSourceUrl,
+			dataSourceAsuUrl,
+			dataSourceKeUrl,
 			dataSourceFeed,
 			dataSourceFilterCategories,
 			maxItems,
@@ -50,7 +51,7 @@ const Edit = ( props ) => {
 	if ( dataSourceType === 'asuDrupal' ) {
 		dataSource = {
 			type: 'asuDrupal',
-			url: dataSourceUrl + dataSourceFeed,
+			url: dataSourceAsuUrl + dataSourceFeed,
 			filters: {
 				categories: dataSourceFilterCategories,
 			},
@@ -58,7 +59,7 @@ const Edit = ( props ) => {
 	} else {
 		dataSource = {
 			type: 'keGraphql',
-			url: dataSourceUrl,
+			url: dataSourceKeUrl,
 			filters: {
 				categories: dataSourceFilterCategories.split( ' ' ),
 			},

@@ -13,7 +13,8 @@ const save = ( props ) => {
 			ctaUrl,
 			ctaColor,
 			dataSourceType,
-			dataSourceUrl,
+			dataSourceAsuUrl,
+			dataSourceKeUrl,
 			dataSourceFeed,
 			dataSourceFilterCategories,
 			// dataSourcePage,
@@ -44,7 +45,7 @@ const save = ( props ) => {
 	if ( dataSourceType === 'asuDrupal' ) {
 		dataSource = JSON.stringify( {
 			type: 'asuDrupal',
-			url: dataSourceUrl + dataSourceFeed,
+			url: dataSourceAsuUrl + dataSourceFeed,
 			filters: {
 				categories: dataSourceFilterCategories,
 			},
@@ -52,7 +53,7 @@ const save = ( props ) => {
 	} else {
 		dataSource = JSON.stringify( {
 			type: 'keGraphql',
-			url: dataSourceUrl,
+			url: dataSourceKeUrl,
 			filters: {
 				categories: dataSourceFilterCategories,
 			},

@@ -26,7 +26,8 @@ const Inspector = ( props ) => {
 			ctaUrl,
 			ctaColor,
 			dataSourceType,
-			dataSourceUrl,
+			dataSourceAsuUrl,
+			dataSourceKeUrl,
 			dataSourceFeed,
 			dataSourceFilterCategories,
 			maxItems,
@@ -190,30 +191,18 @@ const Inspector = ( props ) => {
 							}
 						/>
 					</PanelRow>
-					<PanelRow>
-						<TextControl
-							label={ 'Url' }
-							help={
-								'Data source url requires the provided proxy.'
-							}
-							value={ dataSourceUrl }
-							onChange={ ( value ) =>
-								setAttributes( { dataSourceUrl: value } )
-							}
-						/>
-					</PanelRow>
 					{ dataSourceType === 'asuDrupal' && (
 						<>
 							<PanelRow>
 								<TextControl
-									label={ 'Base feed machine name' }
+									label={ 'Url' }
 									help={
-										'Enter the single taxonomy machine name to select the base events feed. For the master list of available events feeds, refer to: https://asuevents.asu.edu/reports/taxonomy-terms'
+										'Data source url requires the provided proxy.'
 									}
-									value={ dataSourceFeed }
+									value={ dataSourceAsuUrl }
 									onChange={ ( value ) =>
 										setAttributes( {
-											dataSourceFeed: value,
+											dataSourceAsuUrl: value,
 										} )
 									}
 								/>
@@ -235,20 +224,33 @@ const Inspector = ( props ) => {
 						</>
 					) }
 					{ dataSourceType === 'keGraphql' && (
-						<PanelRow>
-							<TextControl
-								label={ 'Categories' }
-								help={
-									'Enter events categories, space delimited.'
-								}
-								value={ dataSourceFilterCategories }
-								onChange={ ( value ) =>
-									setAttributes( {
-										dataSourceFilterCategories: value,
-									} )
-								}
-							/>
-						</PanelRow>
+						<>
+							<PanelRow>
+								<TextControl
+									label={ 'Url' }
+									value={ dataSourceKeUrl }
+									onChange={ ( value ) =>
+										setAttributes( {
+											dataSourceKeUrl: value,
+										} )
+									}
+								/>
+							</PanelRow>
+							<PanelRow>
+								<TextControl
+									label={ 'Categories' }
+									help={
+										'Enter events categories, space delimited.'
+									}
+									value={ dataSourceFilterCategories }
+									onChange={ ( value ) =>
+										setAttributes( {
+											dataSourceFilterCategories: value,
+										} )
+									}
+								/>
+							</PanelRow>
+						</>
 					) }
 				</PanelBody>
 			</InspectorControls>
