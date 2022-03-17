@@ -20,8 +20,6 @@ import {
 	TextareaControl,
 } from '@wordpress/components';
 
-import classnames from 'classnames';
-import { useState } from '@wordpress/element';
 import { useInstanceId } from '@wordpress/compose';
 
 /**
@@ -48,7 +46,7 @@ const Inspector = ( props ) => {
 			buttonsColor,
 			buttonsIcon,
 			buttonsHref,
-      buttonsLabel,
+			buttonsLabel,
 			buttonsOnclick,
 			buttonsSize,
 			buttonsTarget,
@@ -79,6 +77,7 @@ const Inspector = ( props ) => {
 
 	const handleShowImageChange = ( showImage ) => {
 		removeMedia();
+		props.setAttributes( { icon: '' } );
 		props.setAttributes( { showImage: ! showImage } );
 	};
 
@@ -183,15 +182,15 @@ const Inspector = ( props ) => {
 				return (
 					<PanelBody key={ index }>
 						<PanelRow>
-            <label className="components-button-group__label">
-              { __( 'Delete ' , 'unityblocks' ) }
-              {index+1}
-              {(index+1)==1 && __( 'st ' , 'unityblocks' )}
-              {(index+1)==2 && __( 'nd ' , 'unityblocks' )}
-              {(index+1)==3 && __( 'rd ' , 'unityblocks' )}
-              {(index+1)==4 && __( 'th ' , 'unityblocks' )}
-              { __( ' Button' , 'unityblocks' ) }
-            </label>
+							<label className="components-button-group__label">
+								{ __( 'Delete ', 'unityblocks' ) }
+								{ index + 1 }
+								{ index + 1 == 1 && __( 'st ', 'unityblocks' ) }
+								{ index + 1 == 2 && __( 'nd ', 'unityblocks' ) }
+								{ index + 1 == 3 && __( 'rd ', 'unityblocks' ) }
+								{ index + 1 == 4 && __( 'th ', 'unityblocks' ) }
+								{ __( ' Button', 'unityblocks' ) }
+							</label>
 							<IconButton
 								className="card__remove-button"
 								icon="no-alt"
@@ -200,12 +199,12 @@ const Inspector = ( props ) => {
 							/>
 						</PanelRow>
 
-            <PanelRow>
+						<PanelRow>
 							<TextControl
 								className="card__button-label"
 								label={ __( 'Button label', 'unityblocks' ) }
 								value={ props.attributes.buttonsLabel[ index ] }
-                onChange={ ( buttonsLabel ) =>
+								onChange={ ( buttonsLabel ) =>
 									handleButtonsLabelChange(
 										buttonsLabel,
 										index
@@ -228,11 +227,11 @@ const Inspector = ( props ) => {
 							/>
 						</PanelRow>
 
-            <PanelRow>
+						<PanelRow>
 							<label className="components-button-group__label">
 								{ __( 'Button color', 'unityblocks' ) }
 							</label>
-              </PanelRow>
+						</PanelRow>
 						<PanelRow>
 							<RadioControl
 								selected={ buttonsColor[ index ] }
@@ -269,7 +268,11 @@ const Inspector = ( props ) => {
 						</PanelRow>
 						<PanelRow>
 							<RadioControl
-								selected={ buttonsSize[ index ]? buttonsSize[ index ]: 'default' }
+								selected={
+									buttonsSize[ index ]
+										? buttonsSize[ index ]
+										: 'default'
+								}
 								options={ [ 'default', 'small', 'xsmall' ].map(
 									( buttonsSizeValue ) => {
 										return {
@@ -293,28 +296,35 @@ const Inspector = ( props ) => {
 							/>
 						</PanelRow>
 
-            <PanelRow>
+						<PanelRow>
 							<label className="components-button-group__label">
 								{ __( 'Button Target', 'unityblocks' ) }
 							</label>
 						</PanelRow>
 						<PanelRow>
 							<RadioControl
-								selected={ buttonsTarget[ index ]? buttonsTarget[ index ]: '_self' }
-								options={ [ '_blank', '_self', '_top', '_parent' ].map(
-									( buttonsTargetValue ) => {
-										return {
-											label: __(
-												buttonsTargetValue
-													.charAt( 1 )
-													.toUpperCase() +
-													buttonsTargetValue.slice( 2 ),
-												'unityblocks'
-											),
-											value: buttonsTargetValue,
-										};
-									}
-								) }
+								selected={
+									buttonsTarget[ index ]
+										? buttonsTarget[ index ]
+										: '_self'
+								}
+								options={ [
+									'_blank',
+									'_self',
+									'_top',
+									'_parent',
+								].map( ( buttonsTargetValue ) => {
+									return {
+										label: __(
+											buttonsTargetValue
+												.charAt( 1 )
+												.toUpperCase() +
+												buttonsTargetValue.slice( 2 ),
+											'unityblocks'
+										),
+										value: buttonsTargetValue,
+									};
+								} ) }
 								onChange={ ( buttonsTarget ) =>
 									handleButtonsTargetChange(
 										buttonsTarget,
@@ -323,8 +333,6 @@ const Inspector = ( props ) => {
 								}
 							/>
 						</PanelRow>
-
-
 					</PanelBody>
 				);
 			}
@@ -386,25 +394,23 @@ const Inspector = ( props ) => {
 		tagFields = props.attributes.tagsLabel.map( ( singleTag, index ) => {
 			return (
 				<PanelBody key={ index }>
-
-        <PanelRow>
-        <label className="components-button-group__label">
-          { __( 'Delete ' , 'unityblocks' ) }
-          {index+1}
-          {(index+1)==1 && __( 'st ' , 'unityblocks' )}
-          {(index+1)==2 && __( 'nd ' , 'unityblocks' )}
-          {(index+1)==3 && __( 'rd ' , 'unityblocks' )}
-          {(index+1)==4 && __( 'th ' , 'unityblocks' )}
-          { __( ' Tag' , 'unityblocks' ) }
-        </label>
-        <IconButton
-          className="card__remove-tag"
-          icon="no-alt"
-          label="Delete Tag"
-          onClick={ () => handleRemoveTag( index ) }
-        />
-        </PanelRow>
-
+					<PanelRow>
+						<label className="components-button-group__label">
+							{ __( 'Delete ', 'unityblocks' ) }
+							{ index + 1 }
+							{ index + 1 == 1 && __( 'st ', 'unityblocks' ) }
+							{ index + 1 == 2 && __( 'nd ', 'unityblocks' ) }
+							{ index + 1 == 3 && __( 'rd ', 'unityblocks' ) }
+							{ index + 1 == 4 && __( 'th ', 'unityblocks' ) }
+							{ __( ' Tag', 'unityblocks' ) }
+						</label>
+						<IconButton
+							className="card__remove-tag"
+							icon="no-alt"
+							label="Delete Tag"
+							onClick={ () => handleRemoveTag( index ) }
+						/>
+					</PanelRow>
 
 					<PanelRow>
 						<TextControl
@@ -428,37 +434,35 @@ const Inspector = ( props ) => {
 						/>
 					</PanelRow>
 
-          <PanelRow>
-            <label className="components-button-group__label">
-              { __( 'Tag color', 'unityblocks' ) }
-            </label>
-          </PanelRow>
-          <PanelRow>
-            <RadioControl
-              selected={ tagsColor[ index ]? tagsColor[ index ]: 'gray' }
-              options={ [ 'white', 'gray', 'dark' ].map(
-                ( tagsColorValue ) => {
-                  return {
-                    label: __(
-                      tagsColorValue
-                        .charAt( 0 )
-                        .toUpperCase() +
-                        tagsColorValue.slice( 1 ),
-                      'unityblocks'
-                    ),
-                    value: tagsColorValue,
-                  };
-                }
-              ) }
-              onChange={ ( tagsColor ) =>
-                handleTagsColorChange(
-                  tagsColor,
-                  index
-                )
-              }
-            />
-          </PanelRow>
-
+					<PanelRow>
+						<label className="components-button-group__label">
+							{ __( 'Tag color', 'unityblocks' ) }
+						</label>
+					</PanelRow>
+					<PanelRow>
+						<RadioControl
+							selected={
+								tagsColor[ index ] ? tagsColor[ index ] : 'gray'
+							}
+							options={ [ 'white', 'gray', 'dark' ].map(
+								( tagsColorValue ) => {
+									return {
+										label: __(
+											tagsColorValue
+												.charAt( 0 )
+												.toUpperCase() +
+												tagsColorValue.slice( 1 ),
+											'unityblocks'
+										),
+										value: tagsColorValue,
+									};
+								}
+							) }
+							onChange={ ( tagsColor ) =>
+								handleTagsColorChange( tagsColor, index )
+							}
+						/>
+					</PanelRow>
 				</PanelBody>
 			);
 		} );
@@ -562,11 +566,7 @@ const Inspector = ( props ) => {
 										onSelect={ onSelectMedia }
 										allowedTypes={ [ 'image' ] }
 										render={ ( { open } ) => (
-											<Button
-												onClick={ open }
-												isDefault
-												isLarge
-											>
+											<Button onClick={ open } isDefault>
 												{ __(
 													'Replace image',
 													'unityblocks'
@@ -595,40 +595,35 @@ const Inspector = ( props ) => {
 					title={ __( 'Card settings', 'unityblocks' ) }
 					initialOpen={ false }
 				>
-        <PanelRow>
-          <label
-            className="components-button-group__label"
-          >
-            { __( 'Card type', 'unityblocks' ) }
-          </label>
-        </PanelRow>
-        <PanelRow>
-          <RadioControl
-            selected={ type }
-            options={ [ 'default',
-            'degree',
-            'event',
-            'news',
-            'story' ].map(
-              ( typeValue ) => {
-                return {
-                  label: __(
-                    typeValue
-                      .charAt( 0 )
-                      .toUpperCase() +
-                      typeValue.slice( 1 ),
-                    'unityblocks'
-                  ),
-                  value: typeValue,
-                };
-              }
-            ) }
-            onChange={ ( typeValue ) =>
-            	setAttributes( { type: typeValue } )
-            }
-          />
-        </PanelRow>
-
+					<PanelRow>
+						<label className="components-button-group__label">
+							{ __( 'Card type', 'unityblocks' ) }
+						</label>
+					</PanelRow>
+					<PanelRow>
+						<RadioControl
+							selected={ type }
+							options={ [
+								'default',
+								'degree',
+								'event',
+								'news',
+								'story',
+							].map( ( typeValue ) => {
+								return {
+									label: __(
+										typeValue.charAt( 0 ).toUpperCase() +
+											typeValue.slice( 1 ),
+										'unityblocks'
+									),
+									value: typeValue,
+								};
+							} ) }
+							onChange={ ( typeValue ) =>
+								setAttributes( { type: typeValue } )
+							}
+						/>
+					</PanelRow>
 
 					{ type == 'event' && (
 						<PanelRow>
