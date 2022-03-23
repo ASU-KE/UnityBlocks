@@ -1,12 +1,10 @@
 /* eslint-disable react/prop-types */
 // @ts-check
 import PropTypes from 'prop-types';
-import React, { createContext } from 'react';
+import React, { useState, useEffect, createContext } from 'react';
 import styled from 'styled-components';
 
-// import { useFetchDrupalFeed } from '../../core/hooks/use-fetch-drupal-feed';
-import { useFetchKeGraphql } from '../../core/hooks/use-fetch-ke-graphql';
-import { TEST_EVENTS_QUERY } from '../../../../component-events/src/core/graphql';
+import { useFetch } from '../../core/hooks/use-fetch';
 import { Loader } from '../Loader';
 
 const Container = styled.section``;
@@ -29,34 +27,34 @@ const FeedContext = createContext( null );
  * @ignore
  */
 const FeedContainerProvider = ( {
-	// defaultProps,
-	dataSource,
+	defaultProps,
+	dataSource: pDataSource,
 	noFeedText,
 	renderHeader,
 	renderBody,
 	dataTransformer = ( item ) => item,
-	// dataFilter = ( item ) => item,
+	dataFilter = ( item ) => item,
 	maxItems,
 } ) => {
-	// Fetch KE Graphql data.
-	const { payload, loading, error } = useFetchKeGraphql(
-		TEST_EVENTS_QUERY,
-		dataSource.url,
-		dataSource.filters,
-		dataSource.pagination
-	);
+	const [ { data: rawData, loading, error }, doFetching ] = useFetch(); // Call the fetching hook
+	const [ feeds, setFeeds ] = useState( [] );
 
-	let feeds = [];
-	if ( ! loading ) {
-		// Work all the data and set the filtered and mapped stories
-		const transformedData = payload?.allEvents?.data?.map(
-			dataTransformer
+	const dataSource = { ...defaultProps.dataSource, ...pDataSource };
+
+	useEffect( () => {
+		doFetching( dataSource?.url );
+	}, [ dataSource?.url ] );
+
+	useEffect( () => {
+		// Work all the data and set the filterd and mapped feeds
+		const transformedData = rawData?.nodes.map( dataTransformer );
+		const filteredData = transformedData?.filter( ( item ) =>
+			dataFilter( item, pDataSource?.filters )
 		);
-
-		feeds = maxItems
-			? transformedData?.slice( 0, maxItems )
-			: transformedData;
-	}
+		setFeeds(
+			maxItems ? filteredData?.slice( 0, maxItems ) : filteredData
+		);
+	}, [ rawData ] );
 
 	return (
 		// Init the context to be used on its childrens
