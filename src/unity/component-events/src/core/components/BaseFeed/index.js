@@ -1,6 +1,6 @@
 // @ts-check
 import {
-	FeedContainerProvider,
+	DrupalFeedContainerProvider,
 	FeedHeader,
 	FeedBody,
 	feedHeaderShape,
@@ -22,7 +22,7 @@ const BaseFeed = ( { children, header, ctaButton, dataSource, maxItems } ) => (
 	// We provide the maxItems prop to limit the items rendered
 	// We provide the dataSource to read the url to fetch the data
 	// We provide the defaultProps to use some needed default values in case they are not provided
-	<FeedContainerProvider
+	<DrupalFeedContainerProvider
 		renderHeader={
 			header && ctaButton ? (
 				<FeedHeader

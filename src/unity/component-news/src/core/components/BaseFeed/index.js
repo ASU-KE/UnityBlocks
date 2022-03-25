@@ -1,6 +1,6 @@
 // @ts-check
 import {
-	FeedContainerProvider,
+	KeNewsContainerProvider,
 	FeedHeader,
 	FeedBody,
 	feedHeaderShape,
@@ -12,7 +12,8 @@ import React from 'react';
 
 import { defaultProps } from '../../constants/default-props';
 import { filterData } from '../../services/data-manager';
-import { transformData } from '../../transformers/transform-data';
+import { transformData as transformDrupalData } from '../../transformers/drupal.transformer';
+import { transformData as transformWpData } from '../../transformers/wordpress.transformer';
 
 /**
  * @typedef {import("../../../../../components-core/src/core/types/feed-types").FeedType} FeedType
@@ -25,11 +26,12 @@ const BaseFeed = ( {
 	children,
 	header,
 	ctaButton,
-	dataSource: pDataSource,
+	drupalDataSource,
+	wpDataSource,
 	maxItems,
 } ) => {
-	const filters = pDataSource.filters?.replace( /_/g, ' ' );
-	const dataSource = { ...pDataSource, filters };
+	const filters = drupalDataSource.filters?.replace( /_/g, ' ' );
+	const formattedDataSource = { ...drupalDataSource, filters };
 
 	// We provide in the renderBody the view specified before in the parent component, recieved as "children" in this component.
 	// We provide in the renderHeader the components-core header, if it is desired to be shown
@@ -37,7 +39,7 @@ const BaseFeed = ( {
 	// We provide the dataSource to read the url to fetch the data
 	// We provide the defaultProps to use some needed default values in case they are not provided
 	return (
-		<FeedContainerProvider
+		<KeNewsContainerProvider
 			renderHeader={
 				header && ctaButton ? (
 					<FeedHeader
@@ -48,11 +50,13 @@ const BaseFeed = ( {
 				) : null
 			}
 			renderBody={ <FeedBody>{ children }</FeedBody> }
-			dataTransformer={ transformData }
-			dataFilter={ filterData }
-			dataSource={ dataSource }
 			defaultProps={ defaultProps }
-			noFeedText="No news to show."
+			drupalDataSource={ formattedDataSource }
+			drupalDataFilter={ filterData }
+			drupalDataTransformer={ transformDrupalData }
+			wpDataSource={ wpDataSource }
+			wpDataTransformer={ transformWpData }
+			noResultsText="No news to show."
 			maxItems={ maxItems }
 		/>
 	);
