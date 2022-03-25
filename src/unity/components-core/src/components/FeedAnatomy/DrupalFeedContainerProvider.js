@@ -1,15 +1,14 @@
 /* eslint-disable react/prop-types */
 // @ts-check
 import PropTypes from 'prop-types';
-import React, { useState, useEffect, createContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
-import { useFetch } from '../../core/hooks/use-fetch';
+import { FeedContext } from './FeedContext';
+import { useFetchDrupalFeed } from '../../core/hooks/use-fetch-drupal-feed';
 import { Loader } from '../Loader';
 
 const Container = styled.section``;
-
-const FeedContext = createContext( null );
 
 /**
  * This component is the HOC(high order component) used on component-events and component-news packages
@@ -26,7 +25,7 @@ const FeedContext = createContext( null );
  * @returns {JSX.Element}
  * @ignore
  */
-const FeedContainerProvider = ( {
+const DrupalFeedContainerProvider = ( {
 	defaultProps,
 	dataSource: pDataSource,
 	noFeedText,
@@ -36,7 +35,10 @@ const FeedContainerProvider = ( {
 	dataFilter = ( item ) => item,
 	maxItems,
 } ) => {
-	const [ { data: rawData, loading, error }, doFetching ] = useFetch(); // Call the fetching hook
+	const [
+		{ data: rawData, loading, error },
+		doFetching,
+	] = useFetchDrupalFeed(); // Call the fetching hook
 	const [ feeds, setFeeds ] = useState( [] );
 
 	const dataSource = { ...defaultProps.dataSource, ...pDataSource };
@@ -84,7 +86,7 @@ const FeedContainerProvider = ( {
 	);
 };
 
-FeedContainerProvider.propTypes = {
+DrupalFeedContainerProvider.propTypes = {
 	renderHeader: PropTypes.element,
 	renderBody: PropTypes.element,
 	maxItems: PropTypes.number,
@@ -93,4 +95,4 @@ FeedContainerProvider.propTypes = {
 	noFeedText: PropTypes.string,
 };
 
-export { FeedContainerProvider, FeedContext };
+export { DrupalFeedContainerProvider };
