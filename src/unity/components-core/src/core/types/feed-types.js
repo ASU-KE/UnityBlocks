@@ -12,7 +12,7 @@
  */
 
 /**
- * @typedef {Object} DataPagination
+ * @typedef {Object} WpDataPagination
  * @property {number} [page]
  * @property {number} [perPage]
  * @property {string} [order]
@@ -20,11 +20,16 @@
  */
 
 /**
- * @typedef {Object} DataSource
- * @property {string} [type]
+ * @typedef {Object} DrupalDataSource
  * @property {string} [url]
- * @property {string|WpDataFilters} [filters]
- * @property {DataPagination} [pagination]
+ * @property {string} [filters]
+ */
+
+/**
+ * @typedef {Object} WpDataSource
+ * @property {string} [url]
+ * @property {WpDataFilters} [filters]
+ * @property {WpDataPagination} [pagination]
  */
 
 /**

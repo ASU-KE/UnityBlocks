@@ -10,12 +10,12 @@
  *
  * @return {Generator<string, string, string>}
  */
-function* idGenerator(key = "id-", startIndex = 0) {
-  let i = startIndex;
-  while (true) {
-    i += 1;
-    yield key + i;
-  }
+function* idGenerator( key = 'id-', startIndex = 0 ) {
+	let i = startIndex;
+	while ( true ) {
+		i += 1;
+		yield key + i;
+	}
 }
 
 export { idGenerator };

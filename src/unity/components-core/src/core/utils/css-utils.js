@@ -4,6 +4,6 @@
  * @param {string []} classes
  * @returns {string}
  */
-const spreadClasses = classes => (classes || []).join(" ");
+const spreadClasses = ( classes ) => ( classes || [] ).join( ' ' );
 
 export { spreadClasses };

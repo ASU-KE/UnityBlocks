@@ -1,5 +1,5 @@
 // @ts-check
-import { sanitize } from "dompurify";
+import { sanitize } from 'dompurify';
 
 /**
  * @typedef {{
@@ -8,24 +8,24 @@ import { sanitize } from "dompurify";
  * @param {string} targetSelector
  * @returns {FocusableElement}
  */
-function queryFirstFocusable(targetSelector) {
-  const target = targetSelector
-    ? document.querySelector(targetSelector)
-    : document;
+function queryFirstFocusable( targetSelector ) {
+	const target = targetSelector
+		? document.querySelector( targetSelector )
+		: document;
 
-  /** @type {FocusableElement} */
-  const focusable = target.querySelector(
-    'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-  );
+	/** @type {FocusableElement} */
+	const focusable = target.querySelector(
+		'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+	);
 
-  return focusable;
+	return focusable;
 }
 /**
  * @param {string} content
  * @returns {Object}
  */
-export const sanitizeDangerousMarkup = content => {
-  return { __html: sanitize(content) };
+export const sanitizeDangerousMarkup = ( content ) => {
+	return { __html: sanitize( content ) };
 };
 
 export { queryFirstFocusable };

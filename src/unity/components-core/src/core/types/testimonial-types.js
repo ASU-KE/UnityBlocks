@@ -29,4 +29,4 @@
  * `import(FILE_PATH).EXPORTED_THING`
  *  @ignore
  */
-export const JSDOC = "jsdoc";
+export const JSDOC = 'jsdoc';

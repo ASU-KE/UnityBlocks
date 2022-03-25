@@ -1,32 +1,32 @@
 import {
-  Card,
-  Article,
-  Button,
-  ButtonIconOnly,
-  ButtonTag,
-  Pagination,
-  Testimonial,
-  AnchorMenu,
-  Hero,
-  Accordion,
-  Video,
-} from "./components";
+	Card,
+	Article,
+	Button,
+	ButtonIconOnly,
+	ButtonTag,
+	Pagination,
+	Testimonial,
+	AnchorMenu,
+	Hero,
+	Accordion,
+	Video,
+} from './components';
 
-export * from "./components/FeedAnatomy";
-export * from "./components/TabbedPanels";
-export * from "./core/utils";
-export * from "./core/hooks";
+export * from './components/FeedAnatomy';
+export * from './components/TabbedPanels';
+export * from './core/utils';
+export * from './core/hooks';
 
 export {
-  Card,
-  Article,
-  Button,
-  ButtonIconOnly,
-  ButtonTag,
-  Pagination,
-  Testimonial,
-  AnchorMenu,
-  Hero,
-  Accordion,
-  Video,
+	Card,
+	Article,
+	Button,
+	ButtonIconOnly,
+	ButtonTag,
+	Pagination,
+	Testimonial,
+	AnchorMenu,
+	Hero,
+	Accordion,
+	Video,
 };
