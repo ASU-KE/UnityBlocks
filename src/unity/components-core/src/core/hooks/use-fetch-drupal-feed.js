@@ -1,60 +1,78 @@
 // @ts-check
 
-import { useState, useEffect } from "react";
+import useSWR from 'swr';
+
+const fetcher = async ( url ) => {
+	let result;
+
+	try {
+		result = await fetch( url );
+	} catch ( e ) {
+		if (
+			! process.env.NODE_ENV ||
+			process.env.NODE_ENV === 'development'
+		) {
+			console.log(
+				'***** Problem with fetch that results in an exception'
+			);
+			console.error( e );
+		}
+		throw new Error( 'Invalid Response' );
+	}
+
+	if ( result.ok ) {
+		try {
+			return await result.json();
+		} catch ( e ) {
+			if (
+				! process.env.NODE_ENV ||
+				process.env.NODE_ENV === 'development'
+			) {
+				console.log( '***** Problem with JSON payload', e );
+			}
+			throw 'Result OK but JSON borked';
+		}
+	} else {
+		if (
+			! process.env.NODE_ENV ||
+			process.env.NODE_ENV === 'development'
+		) {
+			console.log(
+				'****** Result ! OK',
+				result.status,
+				result.statusText
+			);
+		}
+		throw result.statusText;
+	}
+};
 
 /**
  * @template S
- * @typedef {[FetchResponse<S>, FetchCallback]} UseFetchTuple
- */
-
-/**
- * @template E
  * @typedef {{
- *    data: E
- *    loading: boolean
+ *    payload: DrupalFetchPayload
+ *    loading: boolean,
  *    error: object
  * }} FetchResponse
  */
 
 /**
- *  @typedef {(url: string) => void} FetchCallback
+ *  @typedef {Object} DrupalFetchPayload
+ *  @property {Object} [nodes]
  */
 
 /**
  * @template T
- * @returns {[FetchResponse<T>, FetchCallback]}
+ * @returns {FetchResponse<T>}
  */
-const useFetchDrupalFeed = () => {
-  const [data, setData] = useState();
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
-  const [url, setUrl] = useState("");
+const useFetchDrupalFeed = ( url ) => {
+	const { data, error } = useSWR( url, fetcher );
 
-  useEffect(() => {
-    if (!url) return;
-    const fetchData = () => {
-      setError(null);
-      setLoading(true);
-      try {
-        fetch(url)
-          .then(res => res.json())
-          .then(result => {
-            setData(result);
-            setLoading(false);
-          })
-          .catch(err => {
-            setError(err);
-            setLoading(false);
-          });
-      } catch (err) {
-        setError(err);
-      }
-    };
-
-    fetchData();
-  }, [url]);
-
-  return [{ data, loading, error }, setUrl];
+	return {
+		payload: data,
+		loading: ! error && ! data,
+		error,
+	};
 };
 
 export { useFetchDrupalFeed };
