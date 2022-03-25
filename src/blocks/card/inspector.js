@@ -22,6 +22,8 @@ import {
 
 import { useInstanceId } from '@wordpress/compose';
 
+//import { dom, findIconDefinition } from '@fortawesome/fontawesome-svg-core';
+
 /**
  * Inspector controls
  *
@@ -47,7 +49,6 @@ const Inspector = ( props ) => {
 			buttonsIcon,
 			buttonsHref,
 			buttonsLabel,
-			buttonsOnclick,
 			buttonsSize,
 			buttonsTarget,
 			linkLabel,
@@ -55,7 +56,6 @@ const Inspector = ( props ) => {
 			tagsColor,
 			tagsHref,
 			tagsLabel,
-			tagsOnclick,
 		},
 		setAttributes,
 	} = props;
@@ -81,33 +81,46 @@ const Inspector = ( props ) => {
 		props.setAttributes( { showImage: ! showImage } );
 	};
 
-	const instanceId = useInstanceId( FormToggle );
-	const horizontalId = `horizontal-toggle-control-${ instanceId }`;
-	const clickableId = `clickable-toggle-control-${ instanceId }`;
-	const showImagelId = `show-image-toggle-control-${ instanceId }`;
+	const handleIconChange = ( icon ) => {
+		setAttributes( { icon } );
+		//const newIcon = icon.split( ' ' );
+		//const faUser = findIconDefinition( { iconName: 'user' } );
+		//const faUser = findIconDefinition( { prefix: newIcon[ 0 ] } );
+		//dom.i2svg();
+		//dom.find( 'svg' ).remove();
+	};
 
-	const instanceId2 = useInstanceId( ButtonGroup );
-	const eventFormatId = `event-format-toggle-control-${ instanceId2 }`;
-	const widthId = `width-toggle-control-${ instanceId2 }`;
-	const typeId = `type-toggle-control-${ instanceId2 }`;
-	const buttonsColorId = `button-color-toggle-control-${ instanceId2 }`;
-	const buttonsSizeId = `button-size-toggle-control-${ instanceId2 }`;
-	const buttonsTargetId = `button-Target-toggle-control-${ instanceId2 }`;
-	const tagsColorId = `tag-color-toggle-control-${ instanceId2 }`;
+	const formToggleInstanceId = useInstanceId( FormToggle );
+	const horizontalId = `horizontal-toggle-control-${ formToggleInstanceId }`;
+	const clickableId = `clickable-toggle-control-${ formToggleInstanceId }`;
+	const showImagelId = `show-image-toggle-control-${ formToggleInstanceId }`;
+
+	const buttonGroupInstanceId = useInstanceId( ButtonGroup );
+	const eventFormatId = `event-format-button-group-${ buttonGroupInstanceId }`;
+	const widthId = `width-button-group-${ buttonGroupInstanceId }`;
+
+	const iconButtonInstanceId = useInstanceId( IconButton );
+	const removeButtonId = `remove-button-icon-button-${ iconButtonInstanceId }`;
+	const removeTagId = `remove-tag-icon-button-${ iconButtonInstanceId }`;
+
+	const radioControlInstanceId = useInstanceId( RadioControl );
+	const buttonsColorId = `buttons-color-radio-control-${ radioControlInstanceId }`;
+	const buttonsSizeId = `buttons-size-radio-control-${ radioControlInstanceId }`;
+	const buttonsTargetId = `buttons-target-radio-control-${ radioControlInstanceId }`;
+	const tagsColorId = `tags-color-radio-control-${ radioControlInstanceId }`;
+	const cardTypeId = `card-type-radio-control-${ radioControlInstanceId }`;
 
 	const handleAddButton = () => {
 		const buttonsColor = [ ...props.attributes.buttonsColor ];
 		const buttonsIcon = [ ...props.attributes.buttonsIcon ];
 		const buttonsHref = [ ...props.attributes.buttonsHref ];
 		const buttonsLabel = [ ...props.attributes.buttonsLabel ];
-		const buttonsOnclick = [ ...props.attributes.buttonsOnclick ];
 		const buttonsSize = [ ...props.attributes.buttonsSize ];
 		const buttonsTarget = [ ...props.attributes.buttonsTarget ];
 		buttonsColor.push( 'maroon' );
 		buttonsIcon.push( '' );
 		buttonsHref.push( '' );
 		buttonsLabel.push( 'Read more' );
-		buttonsOnclick.push( '' );
 		buttonsSize.push( 'default' );
 		buttonsTarget.push( '_blank' );
 		props.setAttributes( { buttonsColor } );
@@ -119,14 +132,12 @@ const Inspector = ( props ) => {
 		const buttonsIcon = [ ...props.attributes.buttonsIcon ];
 		const buttonsHref = [ ...props.attributes.buttonsHref ];
 		const buttonsLabel = [ ...props.attributes.buttonsLabel ];
-		const buttonsOnclick = [ ...props.attributes.buttonsOnclick ];
 		const buttonsSize = [ ...props.attributes.buttonsSize ];
 		const buttonsTarget = [ ...props.attributes.buttonsTarget ];
 		buttonsColor.splice( index, 1 );
 		buttonsIcon.splice( index, 1 );
 		buttonsHref.splice( index, 1 );
 		buttonsLabel.splice( index, 1 );
-		buttonsOnclick.splice( index, 1 );
 		buttonsSize.splice( index, 1 );
 		buttonsTarget.splice( index, 1 );
 		props.setAttributes( { buttonsLabel } );
@@ -156,12 +167,6 @@ const Inspector = ( props ) => {
 		props.setAttributes( { buttonsLabel } );
 	};
 
-	const handleButtonsOnclickChange = ( text, index ) => {
-		const buttonsOnclick = [ ...props.attributes.buttonsOnclick ];
-		buttonsOnclick[ index ] = text;
-		props.setAttributes( { buttonsOnclick } );
-	};
-
 	const handleButtonsSizeChange = ( text, index ) => {
 		const buttonsSize = [ ...props.attributes.buttonsSize ];
 		buttonsSize[ index ] = text;
@@ -178,20 +183,28 @@ const Inspector = ( props ) => {
 
 	if ( props.attributes.buttonsLabel.length ) {
 		buttonFields = props.attributes.buttonsLabel.map(
-			( singleButton, index ) => {
+			( _singleButton, index ) => {
 				return (
 					<PanelBody key={ index }>
 						<PanelRow>
-							<label className="components-button-group__label">
+							<label
+								htmlFor={ removeButtonId }
+								className="components-button-group__label"
+							>
 								{ __( 'Delete ', 'unityblocks' ) }
 								{ index + 1 }
-								{ index + 1 == 1 && __( 'st ', 'unityblocks' ) }
-								{ index + 1 == 2 && __( 'nd ', 'unityblocks' ) }
-								{ index + 1 == 3 && __( 'rd ', 'unityblocks' ) }
-								{ index + 1 == 4 && __( 'th ', 'unityblocks' ) }
+								{ index + 1 === 1 &&
+									__( 'st ', 'unityblocks' ) }
+								{ index + 1 === 2 &&
+									__( 'nd ', 'unityblocks' ) }
+								{ index + 1 === 3 &&
+									__( 'rd ', 'unityblocks' ) }
+								{ index + 1 === 4 &&
+									__( 'th ', 'unityblocks' ) }
 								{ __( ' Button', 'unityblocks' ) }
 							</label>
 							<IconButton
+								id={ removeButtonId }
 								className="card__remove-button"
 								icon="no-alt"
 								label="Delete Button"
@@ -203,7 +216,7 @@ const Inspector = ( props ) => {
 							<TextControl
 								className="card__button-label"
 								label={ __( 'Button label', 'unityblocks' ) }
-								value={ props.attributes.buttonsLabel[ index ] }
+								value={ buttonsLabel[ index ] }
 								onChange={ ( buttonsLabel ) =>
 									handleButtonsLabelChange(
 										buttonsLabel,
@@ -217,7 +230,7 @@ const Inspector = ( props ) => {
 							<TextControl
 								className="card__button-href"
 								label={ __( 'Button URL', 'unityblocks' ) }
-								value={ props.attributes.buttonsHref[ index ] }
+								value={ buttonsHref[ index ] }
 								onChange={ ( buttonsHref ) =>
 									handleButtonsHrefChange(
 										buttonsHref,
@@ -228,12 +241,30 @@ const Inspector = ( props ) => {
 						</PanelRow>
 
 						<PanelRow>
-							<label className="components-button-group__label">
+							<TextControl
+								className="card__button-icon"
+								label={ __( 'Button icon', 'unityblocks' ) }
+								value={ buttonsIcon[ index ] }
+								onChange={ ( buttonsIcon ) =>
+									handleButtonsIconChange(
+										buttonsIcon,
+										index
+									)
+								}
+							/>
+						</PanelRow>
+
+						<PanelRow>
+							<label
+								htmlFor={ buttonsColorId }
+								className="components-button-group__label"
+							>
 								{ __( 'Button color', 'unityblocks' ) }
 							</label>
 						</PanelRow>
 						<PanelRow>
 							<RadioControl
+								id={ buttonsColorId }
 								selected={ buttonsColor[ index ] }
 								options={ [
 									'gold',
@@ -242,13 +273,11 @@ const Inspector = ( props ) => {
 									'dark',
 								].map( ( buttonsColorValue ) => {
 									return {
-										label: __(
+										label:
 											buttonsColorValue
 												.charAt( 0 )
 												.toUpperCase() +
-												buttonsColorValue.slice( 1 ),
-											'unityblocks'
-										),
+											buttonsColorValue.slice( 1 ),
 										value: buttonsColorValue,
 									};
 								} ) }
@@ -262,12 +291,16 @@ const Inspector = ( props ) => {
 						</PanelRow>
 
 						<PanelRow>
-							<label className="components-button-group__label">
+							<label
+								htmlFor={ buttonsSizeId }
+								className="components-button-group__label"
+							>
 								{ __( 'Button size', 'unityblocks' ) }
 							</label>
 						</PanelRow>
 						<PanelRow>
 							<RadioControl
+								id={ buttonsSizeId }
 								selected={
 									buttonsSize[ index ]
 										? buttonsSize[ index ]
@@ -276,13 +309,11 @@ const Inspector = ( props ) => {
 								options={ [ 'default', 'small', 'xsmall' ].map(
 									( buttonsSizeValue ) => {
 										return {
-											label: __(
+											label:
 												buttonsSizeValue
 													.charAt( 0 )
 													.toUpperCase() +
-													buttonsSizeValue.slice( 1 ),
-												'unityblocks'
-											),
+												buttonsSizeValue.slice( 1 ),
 											value: buttonsSizeValue,
 										};
 									}
@@ -297,12 +328,16 @@ const Inspector = ( props ) => {
 						</PanelRow>
 
 						<PanelRow>
-							<label className="components-button-group__label">
+							<label
+								htmlFor={ buttonsTargetId }
+								className="components-button-group__label"
+							>
 								{ __( 'Button Target', 'unityblocks' ) }
 							</label>
 						</PanelRow>
 						<PanelRow>
 							<RadioControl
+								id={ buttonsTargetId }
 								selected={
 									buttonsTarget[ index ]
 										? buttonsTarget[ index ]
@@ -315,13 +350,11 @@ const Inspector = ( props ) => {
 									'_parent',
 								].map( ( buttonsTargetValue ) => {
 									return {
-										label: __(
+										label:
 											buttonsTargetValue
 												.charAt( 1 )
 												.toUpperCase() +
-												buttonsTargetValue.slice( 2 ),
-											'unityblocks'
-										),
+											buttonsTargetValue.slice( 2 ),
 										value: buttonsTargetValue,
 									};
 								} ) }
@@ -343,11 +376,9 @@ const Inspector = ( props ) => {
 		const tagsColor = [ ...props.attributes.tagsColor ];
 		const tagsHref = [ ...props.attributes.tagsHref ];
 		const tagsLabel = [ ...props.attributes.tagsLabel ];
-		const tagsOnclick = [ ...props.attributes.tagsOnclick ];
 		tagsColor.push( 'gray' );
 		tagsHref.push( '' );
 		tagsLabel.push( 'Tag text' );
-		tagsOnclick.push( '' );
 		props.setAttributes( { tagsColor } );
 		props.setAttributes( { tagsLabel } );
 	};
@@ -356,11 +387,9 @@ const Inspector = ( props ) => {
 		const tagsColor = [ ...props.attributes.tagsColor ];
 		const tagsHref = [ ...props.attributes.tagsHref ];
 		const tagsLabel = [ ...props.attributes.tagsLabel ];
-		const tagsOnclick = [ ...props.attributes.tagsOnclick ];
 		tagsColor.splice( index, 1 );
 		tagsHref.splice( index, 1 );
 		tagsLabel.splice( index, 1 );
-		tagsOnclick.splice( index, 1 );
 		props.setAttributes( { tagsLabel } );
 	};
 
@@ -382,12 +411,6 @@ const Inspector = ( props ) => {
 		props.setAttributes( { tagsLabel } );
 	};
 
-	const handleTagsOnclickChange = ( text, index ) => {
-		const tagsOnclick = [ ...props.attributes.tagsOnclick ];
-		tagsOnclick[ index ] = text;
-		props.setAttributes( { tagsOnclick } );
-	};
-
 	let tagFields;
 
 	if ( props.attributes.tagsLabel.length ) {
@@ -395,16 +418,20 @@ const Inspector = ( props ) => {
 			return (
 				<PanelBody key={ index }>
 					<PanelRow>
-						<label className="components-button-group__label">
+						<label
+							htmlFor={ removeTagId }
+							className="components-button-group__label"
+						>
 							{ __( 'Delete ', 'unityblocks' ) }
 							{ index + 1 }
-							{ index + 1 == 1 && __( 'st ', 'unityblocks' ) }
-							{ index + 1 == 2 && __( 'nd ', 'unityblocks' ) }
-							{ index + 1 == 3 && __( 'rd ', 'unityblocks' ) }
-							{ index + 1 == 4 && __( 'th ', 'unityblocks' ) }
+							{ index + 1 === 1 && __( 'st ', 'unityblocks' ) }
+							{ index + 1 === 2 && __( 'nd ', 'unityblocks' ) }
+							{ index + 1 === 3 && __( 'rd ', 'unityblocks' ) }
+							{ index + 1 === 4 && __( 'th ', 'unityblocks' ) }
 							{ __( ' Tag', 'unityblocks' ) }
 						</label>
 						<IconButton
+							id={ removeTagId }
 							className="card__remove-tag"
 							icon="no-alt"
 							label="Delete Tag"
@@ -416,7 +443,7 @@ const Inspector = ( props ) => {
 						<TextControl
 							className="card__tag-label"
 							label={ __( 'Tag label', 'unityblocks' ) }
-							value={ props.attributes.tagsLabel[ index ] }
+							value={ tagsLabel[ index ] }
 							onChange={ ( tagsLabel ) =>
 								handleTagsLabelChange( tagsLabel, index )
 							}
@@ -427,7 +454,7 @@ const Inspector = ( props ) => {
 						<TextControl
 							className="card__tag-href"
 							label={ __( 'Tag URL', 'unityblocks' ) }
-							value={ props.attributes.tagsHref[ index ] }
+							value={ tagsHref[ index ] }
 							onChange={ ( tagsHref ) =>
 								handleTagsHrefChange( tagsHref, index )
 							}
@@ -435,25 +462,27 @@ const Inspector = ( props ) => {
 					</PanelRow>
 
 					<PanelRow>
-						<label className="components-button-group__label">
+						<label
+							htmlFor={ tagsColorId }
+							className="components-button-group__label"
+						>
 							{ __( 'Tag color', 'unityblocks' ) }
 						</label>
 					</PanelRow>
 					<PanelRow>
 						<RadioControl
+							id={ tagsColorId }
 							selected={
 								tagsColor[ index ] ? tagsColor[ index ] : 'gray'
 							}
 							options={ [ 'white', 'gray', 'dark' ].map(
 								( tagsColorValue ) => {
 									return {
-										label: __(
+										label:
 											tagsColorValue
 												.charAt( 0 )
 												.toUpperCase() +
-												tagsColorValue.slice( 1 ),
-											'unityblocks'
-										),
+											tagsColorValue.slice( 1 ),
 										value: tagsColorValue,
 									};
 								}
@@ -497,7 +526,7 @@ const Inspector = ( props ) => {
 								label={ 'Card icon' }
 								value={ icon }
 								onChange={ ( icon ) =>
-									setAttributes( { icon } )
+									handleIconChange( icon )
 								}
 							/>
 						</PanelRow>
@@ -596,12 +625,16 @@ const Inspector = ( props ) => {
 					initialOpen={ false }
 				>
 					<PanelRow>
-						<label className="components-button-group__label">
+						<label
+							htmlFor={ cardTypeId }
+							className="components-button-group__label"
+						>
 							{ __( 'Card type', 'unityblocks' ) }
 						</label>
 					</PanelRow>
 					<PanelRow>
 						<RadioControl
+							id={ cardTypeId }
 							selected={ type }
 							options={ [
 								'default',
@@ -611,11 +644,9 @@ const Inspector = ( props ) => {
 								'story',
 							].map( ( typeValue ) => {
 								return {
-									label: __(
+									label:
 										typeValue.charAt( 0 ).toUpperCase() +
-											typeValue.slice( 1 ),
-										'unityblocks'
-									),
+										typeValue.slice( 1 ),
 									value: typeValue,
 								};
 							} ) }
@@ -625,7 +656,7 @@ const Inspector = ( props ) => {
 						/>
 					</PanelRow>
 
-					{ type == 'event' && (
+					{ type === 'event' && (
 						<PanelRow>
 							<label
 								htmlFor={ eventFormatId }
@@ -733,7 +764,7 @@ const Inspector = ( props ) => {
 							}
 						/>
 					</PanelRow>
-					{ clickable == true && (
+					{ clickable === true && (
 						<PanelRow>
 							<TextControl
 								label={ 'Link to:' }
@@ -767,7 +798,7 @@ const Inspector = ( props ) => {
 						/>
 					</PanelRow>
 
-					{ type == 'event' && (
+					{ type === 'event' && (
 						<PanelRow>
 							<TextControl
 								label={ 'Event Location' }
@@ -778,7 +809,7 @@ const Inspector = ( props ) => {
 							/>
 						</PanelRow>
 					) }
-					{ type == 'event' && (
+					{ type === 'event' && (
 						<PanelRow>
 							<TextControl
 								label={ 'Event Time' }

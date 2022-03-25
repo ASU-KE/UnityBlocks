@@ -78,10 +78,6 @@
 			"type": "array",
 			"default": []
 		},
-		"buttonsOnclick": {
-			"type": "array",
-			"default": []
-		},
 		"buttonsSize": {
 			"type": "array",
 			"default": []
@@ -107,10 +103,6 @@
 			"default": []
 		},
 		"tagsLabel": {
-			"type": "array",
-			"default": []
-		},
-		"tagsOnclick": {
 			"type": "array",
 			"default": []
 		}

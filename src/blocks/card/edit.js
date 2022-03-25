@@ -34,7 +34,6 @@ const Edit = ( props ) => {
 			buttonsIcon,
 			buttonsHref,
 			buttonsLabel,
-			buttonsOnclick,
 			buttonsSize,
 			buttonsTarget,
 			linkLabel,
@@ -42,29 +41,26 @@ const Edit = ( props ) => {
 			tagsColor,
 			tagsHref,
 			tagsLabel,
-			tagsOnclick,
 		},
 		className,
 	} = props;
 
-	const buttons = buttonsLabel.map( ( singleButton, index ) => {
+	const buttons = buttonsLabel.map( ( _singleButton, index ) => {
 		return {
 			color: buttonsColor[ index ],
-			icon: buttonsIcon[ index ],
+			icon: buttonsIcon[ index ].split( ' ' ),
 			href: buttonsHref[ index ],
 			label: buttonsLabel[ index ],
-			onClick: buttonsOnclick[ index ],
 			size: buttonsSize[ index ],
 			target: buttonsTarget[ index ],
 		};
 	} );
 
-	const tags = tagsLabel.map( ( singleTag, index ) => {
+	const tags = tagsLabel.map( ( _singleTag, index ) => {
 		return {
 			color: tagsColor[ index ],
 			href: tagsHref[ index ],
 			label: tagsLabel[ index ],
-			onClick: tagsOnclick[ index ],
 		};
 	} );
 

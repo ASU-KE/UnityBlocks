@@ -23,7 +23,6 @@ const save = ( props ) => {
 			buttonsIcon,
 			buttonsHref,
 			buttonsLabel,
-			buttonsOnclick,
 			buttonsSize,
 			buttonsTarget,
 			linkLabel,
@@ -31,7 +30,6 @@ const save = ( props ) => {
 			tagsColor,
 			tagsHref,
 			tagsLabel,
-			tagsOnclick,
 		},
 		className,
 	} = props;
@@ -39,10 +37,9 @@ const save = ( props ) => {
 	const buttons = buttonsLabel.map( ( singleButton, index ) => {
 		return {
 			color: buttonsColor[ index ],
-			icon: buttonsIcon[ index ],
+			icon: buttonsIcon[ index ].split( ' ' ),
 			href: buttonsHref[ index ],
 			label: buttonsLabel[ index ],
-			onClick: buttonsOnclick[ index ],
 			size: buttonsSize[ index ],
 			target: buttonsTarget[ index ],
 		};
@@ -53,7 +50,6 @@ const save = ( props ) => {
 			color: tagsColor[ index ],
 			href: tagsHref[ index ],
 			label: tagsLabel[ index ],
-			onClick: tagsOnclick[ index ],
 		};
 	} );
 
