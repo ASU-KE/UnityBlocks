@@ -3,7 +3,7 @@ import {
 	Card,
 	feedCardButtonShape,
 	FeedContext,
-} from '../../../../../components-core/src';
+} from '../../../../components-core/src';
 import React, { useContext } from 'react';
 
 import { BaseFeed } from '../../core/components/BaseFeed';
