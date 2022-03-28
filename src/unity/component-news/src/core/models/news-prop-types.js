@@ -9,12 +9,16 @@ const componentCtaButtonShape = PropTypes.shape( {
 	color: PropTypes.oneOf( [ 'gold', 'maroon', 'gray', 'dark' ] ),
 	text: PropTypes.string,
 } );
-const componentDataSourceShape = PropTypes.shape( {
+const componentDrupalDataSourceShape = PropTypes.shape( {
+	url: PropTypes.string,
+} );
+const componentWpRestDataSourceShape = PropTypes.shape( {
 	url: PropTypes.string,
 } );
 
 export {
 	componentHeaderShape,
 	componentCtaButtonShape,
-	componentDataSourceShape,
+	componentDrupalDataSourceShape,
+	componentWpRestDataSourceShape,
 };

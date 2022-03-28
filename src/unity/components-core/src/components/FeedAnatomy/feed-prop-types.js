@@ -17,7 +17,12 @@ const feedCardButtonShape = PropTypes.shape( {
 	size: PropTypes.string,
 } );
 
-const feedWpApiFiltersShape = PropTypes.shape( {
+const feedWpRestFiltersShape = PropTypes.shape( {
+	categories: PropTypes.string,
+	tags: PropTypes.string,
+} );
+
+const feedKeGraphqlFiltersShape = PropTypes.shape( {
 	categories: PropTypes.string,
 	tags: PropTypes.string,
 	statusId: PropTypes.number,
@@ -30,24 +35,41 @@ const feedPaginationShape = PropTypes.shape( {
 	orderBy: PropTypes.string,
 } );
 
-const feedDataSourceShape = PropTypes.shape( {
-	type: PropTypes.oneOf( [ 'asuDrupal', 'wpApi', 'keGraphql' ] ),
+const feedDrupalDataSourceShape = PropTypes.shape( {
 	url: PropTypes.string,
-	filters: PropTypes.oneOfType( [ PropTypes.string, feedWpApiFiltersShape ] ),
+	filters: PropTypes.string,
+} );
+
+const feedWpRestDataSourceShape = PropTypes.shape( {
+	url: PropTypes.string,
+	filters: feedWpRestFiltersShape,
 	pagination: feedPaginationShape,
 } );
 
-const feedComponentShape = PropTypes.shape( {
-	header: feedHeaderShape,
-	ctaButton: feedCtaButtonShape,
-	dataSource: feedDataSourceShape,
-	maxItems: PropTypes.number,
+const feedKeGraphqlDataSourceShape = PropTypes.shape( {
+	url: PropTypes.string,
+	filters: feedKeGraphqlFiltersShape,
+	pagination: feedPaginationShape,
 } );
 
+// const feedComponentShape = PropTypes.shape( {
+// 	header: feedHeaderShape,
+// 	ctaButton: feedCtaButtonShape,
+// 	drupalDataSource: feedDrupalDataSourceShape,
+// 	keNewsDataSource: feedWpRestDataSourceShape,
+// 	keEventsDataSource: feedKeGraphqlDataSourceShape,
+// 	maxItems: PropTypes.number,
+// } );
+
 export {
-	feedComponentShape,
+	// feedComponentShape,
 	feedHeaderShape,
 	feedCtaButtonShape,
-	feedDataSourceShape,
+	feedWpRestFiltersShape,
+	feedKeGraphqlFiltersShape,
+	feedPaginationShape,
+	feedDrupalDataSourceShape,
+	feedWpRestDataSourceShape,
+	feedKeGraphqlDataSourceShape,
 	feedCardButtonShape,
 };

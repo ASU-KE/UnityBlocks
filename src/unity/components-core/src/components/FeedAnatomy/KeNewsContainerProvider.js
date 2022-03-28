@@ -5,6 +5,12 @@ import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
+import {
+	feedHeaderShape,
+	feedCtaButtonShape,
+	feedDrupalDataSourceShape,
+	feedWpRestDataSourceShape,
+} from '../../../../components-core/src';
 import { FeedContext } from './FeedContext';
 import { useFetchDrupalFeed } from '../../core/hooks/use-fetch-drupal-feed';
 import { useFetchWpRest } from '../../core/hooks/use-fetch-wp-rest';
@@ -17,8 +23,8 @@ const Container = styled.section``;
  * @param {{
  *  renderHeader: JSX.Element
  *  renderBody: JSX.Element
- *  drupalDataSource: import("../../core/types/feed-types").DataSource
- *  wpDataSource: import("../../core/types/feed-types").DataSource
+ *  drupalDataSource: import("../../core/types/feed-types").DrupalDataSource
+ *  wpDataSource: import("../../core/types/feed-types").WpDataSource
  *  maxItems?: number
  *  drupalDataTransformer?: (data: object) => object
  *  drupalDataFilter?: (data: object, filters: string) => object
@@ -122,11 +128,15 @@ const KeNewsContainerProvider = ( {
 };
 
 KeNewsContainerProvider.propTypes = {
+	defaultProps: PropTypes.object,
+	drupalDataSource: feedDrupalDataSourceShape,
+	wpDataSource: feedWpRestDataSourceShape,
 	renderHeader: PropTypes.element,
 	renderBody: PropTypes.element,
 	maxItems: PropTypes.number,
-	dataTransformer: PropTypes.func,
-	dataFilter: PropTypes.func,
+	drupalDataTransformer: PropTypes.func,
+	drupalDataFilter: PropTypes.func,
+	wpDataTransformer: PropTypes.func,
 	noResultsText: PropTypes.string,
 };
 

@@ -1,6 +1,9 @@
 // @ts-check
 
-export * from "./FeedContainerContext";
-export * from "./feed-prop-types";
-export * from "./FeedHeader";
-export * from "./FeedBody";
+export * from './DrupalFeedContainerProvider';
+export * from './KeEventsContainerProvider';
+export * from './KeNewsContainerProvider';
+export * from './feed-prop-types';
+export * from './FeedHeader';
+export * from './FeedBody';
+export * from './FeedContext';

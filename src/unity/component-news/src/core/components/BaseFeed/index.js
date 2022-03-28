@@ -5,13 +5,14 @@ import {
 	FeedBody,
 	feedHeaderShape,
 	feedCtaButtonShape,
-	feedDataSourceShape,
+	feedDrupalDataSourceShape,
+	feedWpRestDataSourceShape,
 } from '../../../../../components-core/src';
 import PropTypes from 'prop-types';
 import React from 'react';
 
 import { defaultProps } from '../../constants/default-props';
-import { filterData } from '../../services/data-manager';
+import { filterDrupalData } from '../../services/data-manager';
 import { transformData as transformDrupalData } from '../../transformers/drupal.transformer';
 import { transformData as transformWpData } from '../../transformers/wordpress.transformer';
 
@@ -31,7 +32,7 @@ const BaseFeed = ( {
 	maxItems,
 } ) => {
 	const filters = drupalDataSource.filters?.replace( /_/g, ' ' );
-	const formattedDataSource = { ...drupalDataSource, filters };
+	const formattedDrupalDataSource = { ...drupalDataSource, filters };
 
 	// We provide in the renderBody the view specified before in the parent component, recieved as "children" in this component.
 	// We provide in the renderHeader the components-core header, if it is desired to be shown
@@ -51,8 +52,8 @@ const BaseFeed = ( {
 			}
 			renderBody={ <FeedBody>{ children }</FeedBody> }
 			defaultProps={ defaultProps }
-			drupalDataSource={ formattedDataSource }
-			drupalDataFilter={ filterData }
+			drupalDataSource={ formattedDrupalDataSource }
+			drupalDataFilter={ filterDrupalData }
 			drupalDataTransformer={ transformDrupalData }
 			wpDataSource={ wpDataSource }
 			wpDataTransformer={ transformWpData }
@@ -65,7 +66,8 @@ const BaseFeed = ( {
 BaseFeed.propTypes = {
 	header: feedHeaderShape,
 	ctaButton: feedCtaButtonShape,
-	dataSource: feedDataSourceShape,
+	drupalDataSource: feedDrupalDataSourceShape,
+	wpDataSource: feedWpRestDataSourceShape,
 	maxItems: PropTypes.number,
 	children: PropTypes.element,
 };

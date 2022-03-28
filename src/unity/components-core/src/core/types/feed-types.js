@@ -6,7 +6,7 @@
  */
 
 /**
- * @typedef {Object} WpDataFilters
+ * @typedef {Object} WpRestDataFilters
  * @property {string} [categories]
  * @property {string} [tags]
  */
@@ -28,7 +28,7 @@
 /**
  * @typedef {Object} WpDataSource
  * @property {string} [url]
- * @property {WpDataFilters} [filters]
+ * @property {WpRestDataFilters} [filters]
  * @property {WpDataPagination} [pagination]
  */
 
