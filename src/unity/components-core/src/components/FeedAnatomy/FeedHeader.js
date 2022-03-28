@@ -29,10 +29,10 @@ const ButtonColumn = styled.div`
  */
 const FeedHeader = ( {
 	defaultProps,
-	header: pHeeder,
+	header: pHeader,
 	ctaButton: pCtaButton,
 } ) => {
-	const header = { ...defaultProps.header, ...pHeeder };
+	const header = { ...defaultProps.header, ...pHeader };
 	const ctaButton = { ...defaultProps.ctaButton, ...pCtaButton };
 
 	return (
