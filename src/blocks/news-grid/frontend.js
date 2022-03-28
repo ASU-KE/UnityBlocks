@@ -9,7 +9,15 @@ const grids = document.querySelectorAll( '.wp-block-unityblocks-news-grid' );
 grids.forEach( ( newsGrid ) => {
 	const enableHeader = newsGrid.dataset.enableheader === 'true';
 	const cardButton = JSON.parse( newsGrid.dataset.cardbutton );
-	const dataSource = JSON.parse( newsGrid.dataset.datasource );
+	const enableAsuSource = newsGrid.dataset.enableasusource === 'true';
+	const enableKeSource = newsGrid.dataset.enablekesource === 'true';
+
+	const asuDataSource = enableAsuSource
+		? JSON.parse( newsGrid.dataset.asudatasource )
+		: null;
+	const wpDataSource = enableKeSource
+		? JSON.parse( newsGrid.dataset.wpdatasource )
+		: null;
 	const maxItems = newsGrid.dataset.maxitems;
 
 	const props = enableHeader
@@ -17,12 +25,14 @@ grids.forEach( ( newsGrid ) => {
 				header: JSON.parse( newsGrid.dataset.header ),
 				ctaButton: JSON.parse( newsGrid.dataset.ctabutton ),
 				cardButton,
-				dataSource,
+				asuDataSource,
+				wpDataSource,
 				maxItems,
 		  }
 		: {
 				cardButton,
-				dataSource,
+				asuDataSource,
+				wpDataSource,
 				maxItems,
 		  };
 

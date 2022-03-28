@@ -26,9 +26,15 @@ const Edit = ( props ) => {
 			cardButtonText,
 			cardButtonColor,
 			cardButtonSize,
-			dataSourceUrl,
-			dataSourceFeed,
-			dataSourceFilters,
+			enableAsuDataSource,
+			asuDataSourceUrl,
+			asuDataSourceFeed,
+			asuDataSourceFilters,
+			enableKeDataSource,
+			keDataSourceUrl,
+			keDataSourceUnits,
+			keDataSourceInterests,
+			keDataSourceLocations,
 			maxItems,
 		},
 		className,
@@ -55,16 +61,40 @@ const Edit = ( props ) => {
 		url: cardButtonSize,
 	};
 
-	const dataSource = {
-		url: dataSourceUrl + dataSourceFeed,
-		filters: dataSourceFilters,
+	const asuDataSource = enableAsuDataSource
+		? {
+				url: asuDataSourceUrl + asuDataSourceFeed,
+				filters: asuDataSourceFilters,
+		  }
+		: null;
+
+	const wpSourceFilters = {
+		units: keDataSourceUnits,
+		interests: keDataSourceInterests,
+		locations: keDataSourceLocations,
 	};
+
+	// const wpSourcePagination = {
+	// 	page,
+	// 	perPage,
+	//   order,
+	//   orderBy
+	// };
+
+	const keDataSource = enableKeDataSource
+		? {
+				url: keDataSourceUrl,
+				filters: wpSourceFilters,
+				// pagination: wpSourcePagination
+		  }
+		: null;
 
 	const args = {
 		header,
 		ctaButton,
 		cardButton,
-		dataSource,
+		asuDataSource,
+		keDataSource,
 		maxItems,
 	};
 
