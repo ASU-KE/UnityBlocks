@@ -18,8 +18,9 @@ const feedCardButtonShape = PropTypes.shape( {
 } );
 
 const feedWpRestFiltersShape = PropTypes.shape( {
-	categories: PropTypes.string,
-	tags: PropTypes.string,
+	units: PropTypes.string,
+	interests: PropTypes.string,
+	locations: PropTypes.string,
 } );
 
 const feedKeGraphqlFiltersShape = PropTypes.shape( {
