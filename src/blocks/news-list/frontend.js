@@ -9,7 +9,15 @@ const lists = document.querySelectorAll( '.wp-block-unityblocks-news-list' );
 lists.forEach( ( newsList ) => {
 	const enableHeader = newsList.dataset.enableheader === 'true';
 	const cardButton = JSON.parse( newsList.dataset.cardbutton );
-	const dataSource = JSON.parse( newsList.dataset.datasource );
+	const enableAsuSource = newsList.dataset.enableasusource === 'true';
+	const enableKeSource = newsList.dataset.enablekesource === 'true';
+
+	const asuDataSource = enableAsuSource
+		? JSON.parse( newsList.dataset.asudatasource )
+		: null;
+	const wpDataSource = enableKeSource
+		? JSON.parse( newsList.dataset.wpdatasource )
+		: null;
 	const maxItems = newsList.dataset.maxitems;
 
 	const props = enableHeader
@@ -17,12 +25,14 @@ lists.forEach( ( newsList ) => {
 				header: JSON.parse( newsList.dataset.header ),
 				ctaButton: JSON.parse( newsList.dataset.ctabutton ),
 				cardButton,
-				dataSource,
+				asuDataSource,
+				wpDataSource,
 				maxItems,
 		  }
 		: {
 				cardButton,
-				dataSource,
+				asuDataSource,
+				wpDataSource,
 				maxItems,
 		  };
 

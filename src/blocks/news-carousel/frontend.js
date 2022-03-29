@@ -11,7 +11,15 @@ const carousels = document.querySelectorAll(
 carousels.forEach( ( newsCarousel ) => {
 	const enableHeader = newsCarousel.dataset.enableheader === 'true';
 	const cardButton = JSON.parse( newsCarousel.dataset.cardbutton );
-	const dataSource = JSON.parse( newsCarousel.dataset.datasource );
+	const enableAsuSource = newsCarousel.dataset.enableasusource === 'true';
+	const enableKeSource = newsCarousel.dataset.enablekesource === 'true';
+
+	const asuDataSource = enableAsuSource
+		? JSON.parse( newsCarousel.dataset.asudatasource )
+		: null;
+	const wpDataSource = enableKeSource
+		? JSON.parse( newsCarousel.dataset.wpdatasource )
+		: null;
 	const maxItems = newsCarousel.dataset.maxitems;
 
 	const props = enableHeader
@@ -19,12 +27,14 @@ carousels.forEach( ( newsCarousel ) => {
 				header: JSON.parse( newsCarousel.dataset.header ),
 				ctaButton: JSON.parse( newsCarousel.dataset.ctabutton ),
 				cardButton,
-				dataSource,
+				asuDataSource,
+				wpDataSource,
 				maxItems,
 		  }
 		: {
 				cardButton,
-				dataSource,
+				asuDataSource,
+				wpDataSource,
 				maxItems,
 		  };
 

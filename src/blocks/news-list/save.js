@@ -15,9 +15,15 @@ const save = ( props ) => {
 			cardButtonText,
 			cardButtonColor,
 			cardButtonSize,
-			dataSourceUrl,
-			dataSourceFeed,
-			dataSourceFilters,
+			enableAsuDataSource,
+			asuDataSourceUrl,
+			asuDataSourceFeed,
+			asuDataSourceFilters,
+			enableKeDataSource,
+			keDataSourceUrl,
+			keDataSourceUnits,
+			keDataSourceInterests,
+			keDataSourceLocations,
 			maxItems,
 		},
 		className,
@@ -44,17 +50,39 @@ const save = ( props ) => {
 		url: cardButtonSize,
 	} );
 
-	const dataSource = JSON.stringify( {
-		url: dataSourceUrl + dataSourceFeed,
-		filters: dataSourceFilters,
-	} );
+	const asuDataSource = {
+		url: asuDataSourceUrl + asuDataSourceFeed,
+		filters: asuDataSourceFilters,
+	};
+
+	const wpSourceFilters = {
+		units: keDataSourceUnits,
+		interests: keDataSourceInterests,
+		locations: keDataSourceLocations,
+	};
+
+	// const wpSourcePagination = {
+	// 	page,
+	// 	perPage,
+	//   order,
+	//   orderBy
+	// };
+
+	const keDataSource = {
+		url: keDataSourceUrl,
+		filters: wpSourceFilters,
+		// pagination: wpSourcePagination
+	};
 
 	const dataAttributes = {
 		'data-enableheader': enableHeader,
 		'data-header': header,
 		'data-ctabutton': ctaButton,
 		'data-cardbutton': cardButton,
-		'data-datasource': dataSource,
+		'data-enableasusource': enableAsuDataSource,
+		'data-enablekesource': enableKeDataSource,
+		'data-asudatasource': enableAsuDataSource ? asuDataSource : null,
+		'data-wpdatasource': enableKeDataSource ? keDataSource : null,
 		'data-maxitems': maxItems,
 	};
 
