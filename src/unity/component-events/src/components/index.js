@@ -1,2 +1,2 @@
-export * from "./CardsGridEvents";
-export * from "./CardsListEvents";
+export * from './CardsGridEvents';
+export * from './CardsListEvents';

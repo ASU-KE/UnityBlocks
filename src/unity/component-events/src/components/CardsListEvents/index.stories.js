@@ -1,88 +1,88 @@
-import React from "react";
-import withMock from "storybook-addon-mock";
+import React from 'react';
+import withMock from 'storybook-addon-mock';
 
-import { CardsListEvents } from ".";
+import { CardsListEvents } from '.';
 
-import { createMockParam } from "../../core/utils";
+import { createMockParam } from '../../core/utils';
 
 /** @typedef {import("@asu-design-system/components-core/src/core/types/feed-types").FeedType } FeedType */
 
 export default {
-  title: "Events component/Cards List",
-  component: CardsListEvents,
-  decorators: [withMock],
+	title: 'Events component/Cards List',
+	component: CardsListEvents,
+	decorators: [ withMock ],
 };
 
-const Template = args => <CardsListEvents {...args} />;
+const Template = ( args ) => <CardsListEvents { ...args } />;
 
 /**
  * @type {{ args: FeedType, parameters: object}}
  */
-export const Default = Template.bind({});
+export const Default = Template.bind( {} );
 Default.args = {
-  header: { color: "dark", text: "Events List" },
-  ctaButton: {
-    color: "gold",
-    url: "https://asuevents.asu.edu/",
-    text: "Click to see more events",
-  },
-  dataSource: {
-    url: "/api/mocks/feeds-json",
-  },
+	header: { color: 'dark', text: 'Events List' },
+	ctaButton: {
+		color: 'gold',
+		url: 'https://asuevents.asu.edu/',
+		text: 'Click to see more events',
+	},
+	dataSource: {
+		url: '/api/mocks/feeds-json',
+	},
 };
 Default.parameters = {
-  mockData: createMockParam(),
+	mockData: createMockParam(),
 };
 
 /**
  * @type {{ args: FeedType, parameters: object}}
  */
-export const WithFilters = Template.bind({});
+export const WithFilters = Template.bind( {} );
 WithFilters.args = {
-  header: { color: "dark", text: "Events List Filtered" },
-  ctaButton: {
-    color: "gold",
-    url: "https://asuevents.asu.edu/",
-    text: "Click to see more events",
-  },
-  dataSource: {
-    url: "/api/mocks/feeds-json",
-    filters: "easy_on_the_wallet,alumni_association,staff,sports",
-  },
+	header: { color: 'dark', text: 'Events List Filtered' },
+	ctaButton: {
+		color: 'gold',
+		url: 'https://asuevents.asu.edu/',
+		text: 'Click to see more events',
+	},
+	dataSource: {
+		url: '/api/mocks/feeds-json',
+		filters: 'easy_on_the_wallet,alumni_association,staff,sports',
+	},
 };
 WithFilters.parameters = {
-  mockData: createMockParam(),
+	mockData: createMockParam(),
 };
 
 /**
  * @type {{ args: FeedType, parameters: object}}
  */
-export const WithMaxItems = Template.bind({});
+export const WithMaxItems = Template.bind( {} );
 WithMaxItems.args = {
-  header: { color: "dark", text: "Events List" },
-  ctaButton: {
-    color: "gold",
-    url: "https://asuevents.asu.edu/",
-    text: "Click to see more events",
-  },
-  dataSource: {
-    url: "/api/mocks/feeds-json",
-  },
-  maxItems: 4,
+	header: { color: 'dark', text: 'Events List' },
+	ctaButton: {
+		color: 'gold',
+		url: 'https://asuevents.asu.edu/',
+		text: 'Click to see more events',
+	},
+	dataSource: {
+		url: '/api/mocks/feeds-json',
+	},
+	maxItems: 4,
 };
 WithMaxItems.parameters = {
-  mockData: createMockParam(),
+	mockData: createMockParam(),
 };
 
 /**
  * @type {{ args: FeedType, parameters: object}}
  */
-export const WithNoHeader = Template.bind({});
+export const WithNoHeader = Template.bind( {} );
 WithNoHeader.args = {
-  dataSource: {
-    url: "/api/mocks/feeds-json",
-  },
+	dataSource: {
+		url: '/api/mocks/feeds-json',
+	},
 };
 WithNoHeader.parameters = {
-  mockData: createMockParam(),
+	mockData: createMockParam(),
 };

@@ -1,8 +1,8 @@
 // @ts-check
-import React from "react";
-import ReactDOM from "react-dom";
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-import { CardsGridEvents, CardsListEvents } from "../../components";
+import { CardsGridEvents, CardsListEvents } from '../../components';
 
 /**
  * @typedef {Object} ComponentProps
@@ -12,22 +12,30 @@ import { CardsGridEvents, CardsListEvents } from "../../components";
  * Should only be set to true if the footer has been completely rendered server-side.
  */
 
-const RenderReact = (component, props, target) => {
-  ReactDOM.render(React.createElement(component, props), target);
+const RenderReact = ( component, props, target ) => {
+	ReactDOM.render( React.createElement( component, props ), target );
 };
 
 /**
  * @param {ComponentProps} props
  */
-const initCardsGridEventsComponent = ({ targetSelector, props }) => {
-  RenderReact(CardsGridEvents, props, document.querySelector(targetSelector));
+const initCardsGridEventsComponent = ( { targetSelector, props } ) => {
+	RenderReact(
+		CardsGridEvents,
+		props,
+		document.querySelector( targetSelector )
+	);
 };
 
 /**
  * @param {ComponentProps} props
  */
-const initCardsListEventsComponent = ({ targetSelector, props }) => {
-  RenderReact(CardsListEvents, props, document.querySelector(targetSelector));
+const initCardsListEventsComponent = ( { targetSelector, props } ) => {
+	RenderReact(
+		CardsListEvents,
+		props,
+		document.querySelector( targetSelector )
+	);
 };
 
 export { initCardsGridEventsComponent, initCardsListEventsComponent };
