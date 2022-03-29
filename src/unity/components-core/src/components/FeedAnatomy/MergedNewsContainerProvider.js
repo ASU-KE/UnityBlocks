@@ -1,12 +1,17 @@
 /* eslint-disable react/prop-types */
 // @ts-check
+import { union, sortBy } from 'lodash-es';
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-import { feedDrupalDataSourceShape } from '../../../../components-core/src';
+import {
+	feedDrupalDataSourceShape,
+	feedWpRestDataSourceShape,
+} from '../../../../components-core/src';
 import { FeedContext } from './FeedContext';
 import { useFetchDrupalFeed } from '../../core/hooks/use-fetch-drupal-feed';
+import { useFetchWpRest } from '../../core/hooks/use-fetch-wp-rest';
 import { Loader } from '../Loader';
 
 const Container = styled.section``;
@@ -20,23 +25,29 @@ const Container = styled.section``;
  *  drupalDataSource: import("../../core/types/feed-types").DrupalDataSource
  *  drupalDataTransformer?: (data: object) => object
  *  drupalDataFilter?: (data: object, filters: string) => object
+ *  wpDataSource: import("../../core/types/feed-types").WpDataSource
+ *  wpDataTransformer?: (data: object) => object
  *  maxItems?: number
  *  noResultsText: string
  * }} props
  * @returns {JSX.Element}
  * @ignore
  */
-const DrupalFeedContainerProvider = ( {
+const MergedNewsContainerProvider = ( {
 	defaultProps,
 	drupalDataSource,
 	drupalDataTransformer = ( item ) => item,
 	drupalDataFilter = ( item ) => item,
+	wpDataSource,
+	wpDataTransformer = ( item ) => item,
 	noResultsText,
 	renderHeader,
 	renderBody,
 	maxItems,
 } ) => {
 	const [ drupalStories, setDrupalStories ] = useState( [] );
+	const [ wpStories, setWpStories ] = useState( [] );
+	const [ mergedStories, setMergedStories ] = useState( [] );
 
 	const asuDataSource = { ...defaultProps.dataSource, ...drupalDataSource };
 
@@ -58,23 +69,51 @@ const DrupalFeedContainerProvider = ( {
 		);
 	}, [ drupalData ] );
 
+	// Fetch KE Events Graphql data.
+	const {
+		payload: wpPayload,
+		loading: wpLoading,
+		error: wpError,
+	} = useFetchWpRest(
+		wpDataSource.url,
+		wpDataSource.filters,
+		wpDataSource.pagination
+	);
+
+	useEffect( () => {
+		// Work all the data and set the filtered and mapped feeds
+		const transformedData = wpPayload?.data.map( wpDataTransformer );
+		setWpStories(
+			maxItems ? transformedData?.slice( 0, maxItems ) : transformedData
+		);
+	}, [ wpPayload ] );
+
+	useEffect( () => {
+		const merged = union( drupalStories, wpStories );
+		const sorted = sortBy( merged, [ 'date' ] ).reverse();
+
+		setMergedStories( maxItems ? sorted?.slice( 0, maxItems ) : sorted );
+	}, [ drupalStories, wpStories ] );
+
 	return (
 		// Init the context to be used on its childrens
-		<FeedContext.Provider value={ { drupalStories } }>
+		<FeedContext.Provider value={ { mergedStories } }>
 			<Container>
 				{ renderHeader }
-				{ drupalError ? (
+				{ drupalError || wpError ? (
 					<span>Error, try again!</span>
 				) : (
 					<>
-						{ drupalLoading && ! drupalStories?.length && (
-							<div className="text-center mt-4">
-								<Loader />
-							</div>
-						) }
-						{ drupalStories?.length
+						{ ( drupalLoading || wpLoading ) &&
+							! mergedStories?.length && (
+								<div className="text-center mt-4">
+									<Loader />
+								</div>
+							) }
+						{ mergedStories?.length
 							? renderBody
-							: ! drupalLoading && (
+							: ! drupalLoading &&
+							  ! wpLoading && (
 									<p className="text-center">
 										{ noResultsText }
 									</p>
@@ -86,15 +125,17 @@ const DrupalFeedContainerProvider = ( {
 	);
 };
 
-DrupalFeedContainerProvider.propTypes = {
+MergedNewsContainerProvider.propTypes = {
 	defaultProps: PropTypes.object,
 	drupalDataSource: feedDrupalDataSourceShape,
-	drupalDataTransformer: PropTypes.func,
-	drupalDataFilter: PropTypes.func,
+	wpDataSource: feedWpRestDataSourceShape,
 	renderHeader: PropTypes.element,
 	renderBody: PropTypes.element,
 	maxItems: PropTypes.number,
+	drupalDataTransformer: PropTypes.func,
+	drupalDataFilter: PropTypes.func,
+	wpDataTransformer: PropTypes.func,
 	noResultsText: PropTypes.string,
 };
 
-export { DrupalFeedContainerProvider };
+export { MergedNewsContainerProvider };

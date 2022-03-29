@@ -1,6 +1,8 @@
 // @ts-check
 import {
+	DrupalFeedContainerProvider,
 	KeNewsContainerProvider,
+	MergedNewsContainerProvider,
 	FeedHeader,
 	FeedBody,
 	feedHeaderShape,
@@ -31,36 +33,86 @@ const BaseFeed = ( {
 	wpDataSource,
 	maxItems,
 } ) => {
-	const filters = drupalDataSource.filters?.replace( /_/g, ' ' );
-	const formattedDrupalDataSource = { ...drupalDataSource, filters };
+	if ( drupalDataSource && ! wpDataSource ) {
+		const filters = drupalDataSource?.filters?.replace( /_/g, ' ' );
+		const formattedDrupalDataSource = drupalDataSource
+			? { ...drupalDataSource, filters }
+			: null;
 
-	// We provide in the renderBody the view specified before in the parent component, recieved as "children" in this component.
-	// We provide in the renderHeader the components-core header, if it is desired to be shown
-	// We provide the maxItems prop to limit the items rendered
-	// We provide the dataSource to read the url to fetch the data
-	// We provide the defaultProps to use some needed default values in case they are not provided
-	return (
-		<KeNewsContainerProvider
-			renderHeader={
-				header && ctaButton ? (
-					<FeedHeader
-						header={ header }
-						ctaButton={ ctaButton }
-						defaultProps={ defaultProps }
-					/>
-				) : null
-			}
-			renderBody={ <FeedBody>{ children }</FeedBody> }
-			defaultProps={ defaultProps }
-			drupalDataSource={ formattedDrupalDataSource }
-			drupalDataFilter={ filterDrupalData }
-			drupalDataTransformer={ transformDrupalData }
-			wpDataSource={ wpDataSource }
-			wpDataTransformer={ transformWpData }
-			noResultsText="No news to show."
-			maxItems={ maxItems }
-		/>
-	);
+		// We provide in the renderBody the view specified before in the parent component, received as "children" in this component.
+		// We provide in the renderHeader the components-core header, if it is desired to be shown
+		return (
+			<DrupalFeedContainerProvider
+				renderHeader={
+					header && ctaButton ? (
+						<FeedHeader
+							header={ header }
+							ctaButton={ ctaButton }
+							defaultProps={ defaultProps }
+						/>
+					) : null
+				}
+				renderBody={ <FeedBody>{ children }</FeedBody> }
+				defaultProps={ defaultProps }
+				drupalDataSource={ formattedDrupalDataSource }
+				drupalDataFilter={ filterDrupalData }
+				drupalDataTransformer={ transformDrupalData }
+				noResultsText="No news to show."
+				maxItems={ maxItems }
+			/>
+		);
+	}
+
+	if ( ! drupalDataSource && wpDataSource ) {
+		return (
+			<KeNewsContainerProvider
+				renderHeader={
+					header && ctaButton ? (
+						<FeedHeader
+							header={ header }
+							ctaButton={ ctaButton }
+							defaultProps={ defaultProps }
+						/>
+					) : null
+				}
+				renderBody={ <FeedBody>{ children }</FeedBody> }
+				wpDataSource={ wpDataSource }
+				wpDataTransformer={ transformWpData }
+				noResultsText="No news to show."
+				maxItems={ maxItems }
+			/>
+		);
+	}
+
+	if ( drupalDataSource && wpDataSource ) {
+		const filters = drupalDataSource?.filters?.replace( /_/g, ' ' );
+		const formattedDrupalDataSource = drupalDataSource
+			? { ...drupalDataSource, filters }
+			: null;
+
+		return (
+			<MergedNewsContainerProvider
+				renderHeader={
+					header && ctaButton ? (
+						<FeedHeader
+							header={ header }
+							ctaButton={ ctaButton }
+							defaultProps={ defaultProps }
+						/>
+					) : null
+				}
+				renderBody={ <FeedBody>{ children }</FeedBody> }
+				defaultProps={ defaultProps }
+				drupalDataSource={ formattedDrupalDataSource }
+				drupalDataFilter={ filterDrupalData }
+				drupalDataTransformer={ transformDrupalData }
+				wpDataSource={ wpDataSource }
+				wpDataTransformer={ transformWpData }
+				noResultsText="No news to show."
+				maxItems={ maxItems }
+			/>
+		);
+	}
 };
 
 BaseFeed.propTypes = {
