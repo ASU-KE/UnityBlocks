@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
 // @ts-check
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-import { feedDrupalDataSourceShape } from '../../../../components-core/src';
+// import { feedDrupalDataSourceShape } from '../../../../components-core/src';
 import { FeedContext } from './FeedContext';
 import { useFetchDrupalFeed } from '../../core/hooks/use-fetch-drupal-feed';
 import { Loader } from '../Loader';
@@ -17,9 +17,9 @@ const Container = styled.section``;
  *  renderHeader: JSX.Element
  *  renderBody: JSX.Element
  *  defaultProps: import("../../core/types/feed-types").FeedType
- *  drupalDataSource: import("../../core/types/feed-types").DrupalDataSource
- *  drupalDataTransformer?: (data: object) => object
- *  drupalDataFilter?: (data: object, filters: string) => object
+ *  dataSource: import("../../core/types/feed-types").DrupalDataSource
+ *  dataTransformer?: (data: object) => object
+ *  dataFilter?: (data: object, filters: string) => object
  *  maxItems?: number
  *  noResultsText: string
  * }} props
@@ -28,9 +28,9 @@ const Container = styled.section``;
  */
 const DrupalFeedContainerProvider = ( {
 	defaultProps,
-	drupalDataSource,
-	drupalDataTransformer = ( item ) => item,
-	drupalDataFilter = ( item ) => item,
+	dataSource,
+	dataTransformer = ( item ) => item,
+	dataFilter = ( item ) => item,
 	noResultsText,
 	renderHeader,
 	renderBody,
@@ -38,7 +38,7 @@ const DrupalFeedContainerProvider = ( {
 } ) => {
 	const [ drupalStories, setDrupalStories ] = useState( [] );
 
-	const asuDataSource = { ...defaultProps.dataSource, ...drupalDataSource };
+	const asuDataSource = { ...defaultProps.dataSource, ...dataSource };
 
 	// Fetch Drupal feed.
 	const {
@@ -49,9 +49,9 @@ const DrupalFeedContainerProvider = ( {
 
 	useEffect( () => {
 		// Work all the data and set the filterd and mapped feeds
-		const transformedData = drupalData?.nodes.map( drupalDataTransformer );
+		const transformedData = drupalData?.nodes.map( dataTransformer );
 		const filteredData = transformedData?.filter( ( item ) =>
-			drupalDataFilter( item, asuDataSource?.filters )
+			dataFilter( item, asuDataSource?.filters )
 		);
 		setDrupalStories(
 			maxItems ? filteredData?.slice( 0, maxItems ) : filteredData
@@ -60,7 +60,7 @@ const DrupalFeedContainerProvider = ( {
 
 	return (
 		// Init the context to be used on its childrens
-		<FeedContext.Provider value={ { drupalStories } }>
+		<FeedContext.Provider value={ { stories: drupalStories } }>
 			<Container>
 				{ renderHeader }
 				{ drupalError ? (
@@ -86,15 +86,15 @@ const DrupalFeedContainerProvider = ( {
 	);
 };
 
-DrupalFeedContainerProvider.propTypes = {
-	defaultProps: PropTypes.object,
-	drupalDataSource: feedDrupalDataSourceShape,
-	drupalDataTransformer: PropTypes.func,
-	drupalDataFilter: PropTypes.func,
-	renderHeader: PropTypes.element,
-	renderBody: PropTypes.element,
-	maxItems: PropTypes.number,
-	noResultsText: PropTypes.string,
-};
+// DrupalFeedContainerProvider.propTypes = {
+// 	defaultProps: PropTypes.object,
+// 	dataSource: feedDrupalDataSourceShape,
+// 	dataTransformer: PropTypes.func,
+// 	dataFilter: PropTypes.func,
+// 	renderHeader: PropTypes.element,
+// 	renderBody: PropTypes.element,
+// 	maxItems: PropTypes.number,
+// 	noResultsText: PropTypes.string,
+// };
 
 export { DrupalFeedContainerProvider };

@@ -20,20 +20,17 @@ const Container = styled.section``;
  *  maxItems?: number
  *  dataTransformer?: (data: object) => object
  *  dataFilter?: (data: object, filters: string) => object
- *  defaultProps: import("../../core/types/feed-types").FeedType
  *  noFeedText: string
  * }} props
  * @returns {JSX.Element}
  * @ignore
  */
 const KeEventsContainerProvider = ( {
-	// defaultProps,
 	dataSource,
 	noFeedText,
 	renderHeader,
 	renderBody,
 	dataTransformer = ( item ) => item,
-	// dataFilter = ( item ) => item,
 	maxItems,
 } ) => {
 	// Fetch KE Events Graphql data.
@@ -44,33 +41,33 @@ const KeEventsContainerProvider = ( {
 		dataSource.pagination
 	);
 
-	let feeds = [];
+	let events = [];
 	if ( ! loading ) {
 		// Work all the data and set the filtered and mapped stories
 		const transformedData = payload?.allEvents?.data?.map(
 			dataTransformer
 		);
 
-		feeds = maxItems
+		events = maxItems
 			? transformedData?.slice( 0, maxItems )
 			: transformedData;
 	}
 
 	return (
 		// Init the context to be used on its childrens
-		<FeedContext.Provider value={ { feeds } }>
+		<FeedContext.Provider value={ { events } }>
 			<Container>
 				{ renderHeader }
 				{ error ? (
 					<span>Error, try again!</span>
 				) : (
 					<>
-						{ loading && ! feeds?.length && (
+						{ loading && ! events?.length && (
 							<div className="text-center mt-4">
 								<Loader />
 							</div>
 						) }
-						{ feeds?.length
+						{ events?.length
 							? renderBody
 							: ! loading && (
 									<p className="text-center">
@@ -89,7 +86,6 @@ KeEventsContainerProvider.propTypes = {
 	renderBody: PropTypes.element,
 	maxItems: PropTypes.number,
 	dataTransformer: PropTypes.func,
-	dataFilter: PropTypes.func,
 	noFeedText: PropTypes.string,
 };
 

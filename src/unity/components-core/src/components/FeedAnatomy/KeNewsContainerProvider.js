@@ -17,8 +17,8 @@ const Container = styled.section``;
  *  renderHeader: JSX.Element
  *  renderBody: JSX.Element
  *  wpDataSource: import("../../core/types/feed-types").WpDataSource
- *  maxItems?: number
  *  wpDataTransformer?: (data: object) => object
+ *  maxItems?: number
  *  noResultsText: string
  * }} props
  * @returns {JSX.Element}
@@ -26,10 +26,10 @@ const Container = styled.section``;
  */
 const KeNewsContainerProvider = ( {
 	wpDataSource,
+	wpDataTransformer = ( item ) => item,
 	noResultsText,
 	renderHeader,
 	renderBody,
-	wpDataTransformer = ( item ) => item,
 	maxItems,
 } ) => {
 	const [ wpStories, setWpStories ] = useState( [] );
@@ -55,7 +55,7 @@ const KeNewsContainerProvider = ( {
 
 	return (
 		// Init the context to be used on its childrens
-		<FeedContext.Provider value={ { wpStories } }>
+		<FeedContext.Provider value={ { stories: wpStories } }>
 			<Container>
 				{ renderHeader }
 				{ wpError ? (

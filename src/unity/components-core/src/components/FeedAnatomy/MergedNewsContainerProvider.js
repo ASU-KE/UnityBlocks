@@ -97,7 +97,7 @@ const MergedNewsContainerProvider = ( {
 
 	return (
 		// Init the context to be used on its childrens
-		<FeedContext.Provider value={ { mergedStories } }>
+		<FeedContext.Provider value={ { stories: mergedStories } }>
 			<Container>
 				{ renderHeader }
 				{ drupalError || wpError ? (
