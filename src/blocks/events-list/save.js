@@ -16,11 +16,7 @@ const save = ( props ) => {
 			dataSourceAsuUrl,
 			dataSourceKeUrl,
 			dataSourceFeed,
-			dataSourceFilterCategories,
-			// dataSourcePage,
-			// dataSourcePerPage,
-			// dataSourceOrder,
-			// dataSourceOrderBy,
+			dataSourceFilterUnits,
 			maxItems,
 		},
 		className,
@@ -46,23 +42,15 @@ const save = ( props ) => {
 		dataSource = JSON.stringify( {
 			type: 'asuDrupal',
 			url: dataSourceAsuUrl + dataSourceFeed,
-			filters: {
-				categories: dataSourceFilterCategories,
-			},
+			// filters: dataSourceFilterUnits,
 		} );
 	} else {
 		dataSource = JSON.stringify( {
 			type: 'keGraphql',
 			url: dataSourceKeUrl,
 			filters: {
-				categories: dataSourceFilterCategories,
+				categories: dataSourceFilterUnits.split( ' ' ),
 			},
-			// pagination: {
-			// 	page: dataSourcePage,
-			// 	perPage: dataSourcePerPage,
-			// 	order: dataSourceOrder,
-			// 	orderBy: dataSourceOrderBy,
-			// },
 		} );
 	}
 

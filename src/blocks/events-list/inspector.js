@@ -29,7 +29,7 @@ const Inspector = ( props ) => {
 			dataSourceAsuUrl,
 			dataSourceKeUrl,
 			dataSourceFeed,
-			dataSourceFilterCategories,
+			dataSourceFilterUnits,
 			maxItems,
 		},
 		setAttributes,
@@ -240,10 +240,10 @@ const Inspector = ( props ) => {
 									help={
 										'Enter events categories, space delimited.'
 									}
-									value={ dataSourceFilterCategories }
+									value={ dataSourceFilterUnits }
 									onChange={ ( value ) =>
 										setAttributes( {
-											dataSourceFilterCategories: value,
+											dataSourceFilterUnits: value,
 										} )
 									}
 								/>

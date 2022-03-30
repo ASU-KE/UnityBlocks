@@ -6,11 +6,11 @@ import { formatDate, formatTime } from '../../../core/utils/date';
 import { ListViewWrapper } from './index.styles';
 
 const ListView = () => {
-	const { feeds } = useContext( FeedContext ); // Reading the "feeds" object from the context
+	const { events } = useContext( FeedContext ); // Reading the "events" object from the context
 
 	return (
 		<ListViewWrapper data-testid="list-view-container">
-			{ feeds?.map( ( event ) => (
+			{ events?.map( ( event ) => (
 				<li key={ event.id }>
 					<Card
 						type="event"
