@@ -1,11 +1,13 @@
 // @ts-check
 import {
 	DrupalFeedContainerProvider,
+	KeEventsContainerProvider,
 	FeedHeader,
 	FeedBody,
 	feedHeaderShape,
 	feedCtaButtonShape,
-	feedDataSourceShape,
+	feedDrupalDataSourceShape,
+	feedKeGraphqlDataSourceShape,
 } from '../../../../../components-core/src';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -15,43 +17,58 @@ import { filterData as filterDrupalData } from '../../services/dataManager';
 import { transformData as transformDrupalData } from '../../transformers/drupal.transformer';
 import { transformData as transformKeEventsData } from '../../transformers/ke-graphql.transformer';
 
-const BaseFeed = ( { children, header, ctaButton, dataSource, maxItems } ) => (
-	// Calling the components-core component to fetch the data, transform it and filter it
-	// We provide in the renderBody the view specified before in the parent component, recieved as "children" in this component.
-	// We provide in the renderHeader the components-core header, if it is desired to be shown
-	// We provide the maxItems prop to limit the items rendered
-	// We provide the dataSource to read the url to fetch the data
-	// We provide the defaultProps to use some needed default values in case they are not provided
-	<DrupalFeedContainerProvider
-		renderHeader={
-			header && ctaButton ? (
-				<FeedHeader
-					header={ header }
-					ctaButton={ ctaButton }
-					defaultProps={ defaultProps }
-				/>
-			) : null
-		}
-		renderBody={ <FeedBody>{ children }</FeedBody> }
-		dataTransformer={
-			dataSource.type === 'keGraphql'
-				? transformKeEventsData
-				: transformDrupalData
-		}
-		dataFilter={
-			dataSource.type === 'asuDrupal' ? filterDrupalData : undefined
-		}
-		dataSource={ dataSource }
-		defaultProps={ defaultProps }
-		noFeedText="No events to show."
-		maxItems={ maxItems }
-	/>
-);
+const BaseFeed = ( { children, header, ctaButton, dataSource, maxItems } ) => {
+	if ( 'asuDrupal' === dataSource.type ) {
+		// return null;
+		return (
+			<DrupalFeedContainerProvider
+				renderHeader={
+					header && ctaButton ? (
+						<FeedHeader
+							header={ header }
+							ctaButton={ ctaButton }
+							defaultProps={ defaultProps }
+						/>
+					) : null
+				}
+				renderBody={ <FeedBody>{ children }</FeedBody> }
+				dataSource={ dataSource }
+				dataTransformer={ transformDrupalData }
+				dataFilter={ filterDrupalData }
+				defaultProps={ defaultProps }
+				noResultsText="No events to show."
+				maxItems={ maxItems }
+			/>
+		);
+	}
+
+	if ( 'keGraphql' === dataSource.type ) {
+		return (
+			<KeEventsContainerProvider
+				renderHeader={
+					header && ctaButton ? (
+						<FeedHeader
+							header={ header }
+							ctaButton={ ctaButton }
+							defaultProps={ defaultProps }
+						/>
+					) : null
+				}
+				renderBody={ <FeedBody>{ children }</FeedBody> }
+				dataSource={ dataSource }
+				dataTransformer={ transformKeEventsData }
+				noFeedText="No events to show."
+				maxItems={ maxItems }
+			/>
+		);
+	}
+};
 
 BaseFeed.propTypes = {
 	header: feedHeaderShape,
 	ctaButton: feedCtaButtonShape,
-	dataSource: feedDataSourceShape,
+	drupalDataSource: feedDrupalDataSourceShape,
+	keGraphqlDataSource: feedKeGraphqlDataSourceShape,
 	maxItems: PropTypes.number,
 	children: PropTypes.element,
 };

@@ -13,9 +13,9 @@ const layoutCTAPropTypes = PropTypes.shape( {
 } );
 
 const dataSourcePropTypes = PropTypes.shape( {
-	type: PropTypes.oneOf( [ 'asuDrupal', 'wpRest', 'keGraphql' ] ),
+	type: PropTypes.oneOf( [ 'asuDrupal', 'keGraphql' ] ),
 	url: PropTypes.string.isRequired,
-	filters: PropTypes.string,
+	filters: PropTypes.string || PropTypes.object,
 	pagination: PropTypes.object,
 } ).isRequired;
 

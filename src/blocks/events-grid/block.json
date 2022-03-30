@@ -37,8 +37,7 @@
     "dataSourceType": {
       "enum": [
         "asuDrupal",
-        "keGraphql",
-        "wpRest"
+        "keGraphql"
       ],
       "default": "keGraphql"
     },
@@ -54,25 +53,9 @@
       "type": "string",
       "default": "online"
     },
-    "dataSourceFilterCategories": {
+    "dataSourceFilterUnits": {
       "type": "string",
       "default": "college-of-global-futures"
-    },
-    "dataSourcePage": {
-      "type": "number",
-      "default": 1
-    },
-    "dataSourcePerPage": {
-      "type": "number",
-      "default": 9
-    },
-    "dataSourceOrder": {
-      "type": "string",
-      "default": "DESC"
-    },
-    "dataSourceOrderBy": {
-      "type": "string",
-      "default": "startAt"
     },
     "maxItems": {
       "type": "number",

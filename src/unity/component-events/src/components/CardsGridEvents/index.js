@@ -16,7 +16,14 @@ import { GridView } from './GridView';
  */
 const CardsGridEvents = ( { header, ctaButton, dataSource, maxItems } ) => (
 	// Calling the high order component that fetch the data
-	<BaseFeed { ...{ header, ctaButton, dataSource, maxItems } }>
+	<BaseFeed
+		{ ...{
+			header,
+			ctaButton,
+			dataSource,
+			maxItems,
+		} }
+	>
 		<GridView />
 	</BaseFeed>
 );

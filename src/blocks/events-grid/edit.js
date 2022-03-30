@@ -26,7 +26,7 @@ const Edit = ( props ) => {
 			dataSourceAsuUrl,
 			dataSourceKeUrl,
 			dataSourceFeed,
-			dataSourceFilterCategories,
+			dataSourceFilterUnits,
 			maxItems,
 		},
 		className,
@@ -52,16 +52,14 @@ const Edit = ( props ) => {
 		dataSource = {
 			type: 'asuDrupal',
 			url: dataSourceAsuUrl + dataSourceFeed,
-			filters: {
-				categories: dataSourceFilterCategories,
-			},
+			// filters: dataSourceFilterUnits,
 		};
 	} else {
 		dataSource = {
 			type: 'keGraphql',
 			url: dataSourceKeUrl,
 			filters: {
-				categories: dataSourceFilterCategories.split( ' ' ),
+				categories: dataSourceFilterUnits.split( ' ' ),
 			},
 		};
 	}
