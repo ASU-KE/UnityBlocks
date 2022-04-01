@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
 // @ts-check
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-import { feedWpRestDataSourceShape } from '../../../../components-core/src';
+// import { feedWpRestDataSourceShape } from '../../../../components-core/src';
 import { FeedContext } from './FeedContext';
 import { useFetchWpRest } from '../../core/hooks/use-fetch-wp-rest';
 import { Loader } from '../Loader';
@@ -16,20 +16,20 @@ const Container = styled.section``;
  * @param {{
  *  renderHeader: JSX.Element
  *  renderBody: JSX.Element
- *  wpDataSource: import("../../core/types/feed-types").WpDataSource
+ *  wpDataSource: import("../../core/types/feed-types").WpRestDataSource
  *  wpDataTransformer?: (data: object) => object
- *  maxItems?: number
  *  noResultsText: string
+ *  maxItems?: number
  * }} props
  * @returns {JSX.Element}
  * @ignore
  */
 const KeNewsContainerProvider = ( {
+	renderHeader,
+	renderBody,
 	wpDataSource,
 	wpDataTransformer = ( item ) => item,
 	noResultsText,
-	renderHeader,
-	renderBody,
 	maxItems,
 } ) => {
 	const [ wpStories, setWpStories ] = useState( [] );
@@ -41,16 +41,22 @@ const KeNewsContainerProvider = ( {
 		error: wpError,
 	} = useFetchWpRest(
 		wpDataSource.url,
-		wpDataSource.filters,
-		wpDataSource.pagination
+		wpDataSource.filters
+		// wpDataSource.pagination
 	);
 
 	useEffect( () => {
 		// Work all the data and set the filtered and mapped feeds
-		const transformedData = wpPayload?.data.map( wpDataTransformer );
-		setWpStories(
-			maxItems ? transformedData?.slice( 0, maxItems ) : transformedData
-		);
+		const transformedData =
+			wpPayload && wpPayload.data
+				? wpPayload.data?.map( wpDataTransformer )
+				: [];
+
+		const trimmedData = maxItems
+			? transformedData?.slice( 0, maxItems )
+			: transformedData;
+
+		setWpStories( trimmedData );
 	}, [ wpPayload ] );
 
 	return (
@@ -81,13 +87,13 @@ const KeNewsContainerProvider = ( {
 	);
 };
 
-KeNewsContainerProvider.propTypes = {
-	wpDataSource: feedWpRestDataSourceShape,
-	renderHeader: PropTypes.element,
-	renderBody: PropTypes.element,
-	maxItems: PropTypes.number,
-	wpDataTransformer: PropTypes.func,
-	noResultsText: PropTypes.string,
-};
+// KeNewsContainerProvider.propTypes = {
+// 	wpDataSource: feedWpRestDataSourceShape,
+// 	wpDataTransformer: PropTypes.func,
+// 	renderHeader: PropTypes.element,
+// 	renderBody: PropTypes.element,
+// 	maxItems: PropTypes.number,
+// 	noResultsText: PropTypes.string,
+// };
 
 export { KeNewsContainerProvider };

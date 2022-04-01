@@ -1,14 +1,14 @@
 /* eslint-disable react/prop-types */
 // @ts-check
 import { union, sortBy } from 'lodash-es';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-import {
-	feedDrupalDataSourceShape,
-	feedWpRestDataSourceShape,
-} from '../../../../components-core/src';
+// import {
+// 	feedDrupalDataSourceShape,
+// 	feedWpRestDataSourceShape,
+// } from '../../../../components-core/src';
 import { FeedContext } from './FeedContext';
 import { useFetchDrupalFeed } from '../../core/hooks/use-fetch-drupal-feed';
 import { useFetchWpRest } from '../../core/hooks/use-fetch-wp-rest';
@@ -25,7 +25,7 @@ const Container = styled.section``;
  *  drupalDataSource: import("../../core/types/feed-types").DrupalDataSource
  *  drupalDataTransformer?: (data: object) => object
  *  drupalDataFilter?: (data: object, filters: string) => object
- *  wpDataSource: import("../../core/types/feed-types").WpDataSource
+ *  wpDataSource: import("../../core/types/feed-types").WpRestDataSource
  *  wpDataTransformer?: (data: object) => object
  *  maxItems?: number
  *  noResultsText: string
@@ -34,6 +34,8 @@ const Container = styled.section``;
  * @ignore
  */
 const MergedNewsContainerProvider = ( {
+	renderHeader,
+	renderBody,
 	defaultProps,
 	drupalDataSource,
 	drupalDataTransformer = ( item ) => item,
@@ -41,8 +43,6 @@ const MergedNewsContainerProvider = ( {
 	wpDataSource,
 	wpDataTransformer = ( item ) => item,
 	noResultsText,
-	renderHeader,
-	renderBody,
 	maxItems,
 } ) => {
 	const [ drupalStories, setDrupalStories ] = useState( [] );
@@ -64,35 +64,38 @@ const MergedNewsContainerProvider = ( {
 		const filteredData = transformedData?.filter( ( item ) =>
 			drupalDataFilter( item, asuDataSource?.filters )
 		);
-		setDrupalStories(
-			maxItems ? filteredData?.slice( 0, maxItems ) : filteredData
-		);
+		setDrupalStories( filteredData );
 	}, [ drupalData ] );
 
-	// Fetch KE Events Graphql data.
+	// Fetch KE News via WP-REST.
 	const {
 		payload: wpPayload,
 		loading: wpLoading,
 		error: wpError,
 	} = useFetchWpRest(
 		wpDataSource.url,
-		wpDataSource.filters,
-		wpDataSource.pagination
+		wpDataSource.filters
+		// wpDataSource.pagination
 	);
 
 	useEffect( () => {
 		// Work all the data and set the filtered and mapped feeds
-		const transformedData = wpPayload?.data.map( wpDataTransformer );
-		setWpStories(
-			maxItems ? transformedData?.slice( 0, maxItems ) : transformedData
-		);
+		const transformedData =
+			wpPayload && wpPayload.data
+				? wpPayload.data?.map( wpDataTransformer )
+				: [];
+
+		setWpStories( transformedData );
 	}, [ wpPayload ] );
 
 	useEffect( () => {
-		const merged = union( drupalStories, wpStories );
-		const sorted = sortBy( merged, [ 'date' ] ).reverse();
+		if ( drupalStories?.length && wpStories?.length ) {
+			const merged = union( drupalStories, wpStories );
+			const sorted = sortBy( merged, [ 'date' ] ).reverse();
+			const trimmed = maxItems ? sorted?.slice( 0, maxItems ) : sorted;
 
-		setMergedStories( maxItems ? sorted?.slice( 0, maxItems ) : sorted );
+			setMergedStories( trimmed );
+		}
 	}, [ drupalStories, wpStories ] );
 
 	return (
@@ -125,17 +128,17 @@ const MergedNewsContainerProvider = ( {
 	);
 };
 
-MergedNewsContainerProvider.propTypes = {
-	defaultProps: PropTypes.object,
-	drupalDataSource: feedDrupalDataSourceShape,
-	wpDataSource: feedWpRestDataSourceShape,
-	renderHeader: PropTypes.element,
-	renderBody: PropTypes.element,
-	maxItems: PropTypes.number,
-	drupalDataTransformer: PropTypes.func,
-	drupalDataFilter: PropTypes.func,
-	wpDataTransformer: PropTypes.func,
-	noResultsText: PropTypes.string,
-};
+// MergedNewsContainerProvider.propTypes = {
+// 	defaultProps: PropTypes.object,
+// 	drupalDataSource: feedDrupalDataSourceShape,
+// 	wpDataSource: feedWpRestDataSourceShape,
+// 	renderHeader: PropTypes.element,
+// 	renderBody: PropTypes.element,
+// 	maxItems: PropTypes.number,
+// 	drupalDataTransformer: PropTypes.func,
+// 	drupalDataFilter: PropTypes.func,
+// 	wpDataTransformer: PropTypes.func,
+// 	noResultsText: PropTypes.string,
+// };
 
 export { MergedNewsContainerProvider };

@@ -81,12 +81,12 @@ const KeEventsContainerProvider = ( {
 	);
 };
 
-KeEventsContainerProvider.propTypes = {
-	renderHeader: PropTypes.element,
-	renderBody: PropTypes.element,
-	maxItems: PropTypes.number,
-	dataTransformer: PropTypes.func,
-	noFeedText: PropTypes.string,
-};
+// KeEventsContainerProvider.propTypes = {
+// 	renderHeader: PropTypes.element,
+// 	renderBody: PropTypes.element,
+// 	maxItems: PropTypes.number,
+// 	dataTransformer: PropTypes.func,
+// 	noFeedText: PropTypes.string,
+// };
 
 export { KeEventsContainerProvider };
