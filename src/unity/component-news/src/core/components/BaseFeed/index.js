@@ -5,12 +5,12 @@ import {
 	MergedNewsContainerProvider,
 	FeedHeader,
 	FeedBody,
-	feedHeaderShape,
-	feedCtaButtonShape,
-	feedDrupalDataSourceShape,
-	feedWpRestDataSourceShape,
+	// feedHeaderShape,
+	// feedCtaButtonShape,
+	// feedDrupalDataSourceShape,
+	// feedWpRestDataSourceShape,
 } from '../../../../../components-core/src';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import React from 'react';
 
 import { defaultProps } from '../../constants/default-props';
@@ -54,9 +54,9 @@ const BaseFeed = ( {
 				}
 				renderBody={ <FeedBody>{ children }</FeedBody> }
 				defaultProps={ defaultProps }
-				drupalDataSource={ formattedDrupalDataSource }
-				drupalDataFilter={ filterDrupalData }
-				drupalDataTransformer={ transformDrupalData }
+				dataSource={ formattedDrupalDataSource }
+				dataFilter={ filterDrupalData }
+				dataTransformer={ transformDrupalData }
 				noResultsText="No news to show."
 				maxItems={ maxItems }
 			/>
@@ -115,13 +115,13 @@ const BaseFeed = ( {
 	}
 };
 
-BaseFeed.propTypes = {
-	header: feedHeaderShape,
-	ctaButton: feedCtaButtonShape,
-	drupalDataSource: feedDrupalDataSourceShape,
-	wpDataSource: feedWpRestDataSourceShape,
-	maxItems: PropTypes.number,
-	children: PropTypes.element,
-};
+// BaseFeed.propTypes = {
+// 	header: feedHeaderShape,
+// 	ctaButton: feedCtaButtonShape,
+// 	drupalDataSource: feedDrupalDataSourceShape,
+// 	wpDataSource: feedWpRestDataSourceShape,
+// 	maxItems: PropTypes.number,
+// 	children: PropTypes.element,
+// };
 
 export { BaseFeed };
