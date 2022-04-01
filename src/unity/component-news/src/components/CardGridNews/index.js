@@ -2,7 +2,7 @@
 import {
 	FeedContext,
 	Card,
-	feedCardButtonShape,
+	// feedCardButtonShape,
 } from '../../../../components-core/src';
 import React, { useContext } from 'react';
 
@@ -13,36 +13,34 @@ import { NewsWrapper } from './index.styles';
 
 /**
  *
- * @param {Object} feed
+ * @param {Object} story
  * @param {import("../../core/types/news-types").CardButton} cardButton
  */
-const gridRow = ( feed, cardButton ) => (
+const gridRow = ( story, cardButton ) => (
 	<div
 		className="col col-12 col-md-6 col-lg-4 cards-items-container"
-		key={ feed.id }
+		key={ story.id }
 	>
 		<Card
 			type="default"
-			eventFormat="inline"
-			eventLocation={ feed.location }
-			clickable={ !! feed.buttonLink }
-			clickHref={ feed.buttonLink }
-			title={ feed.title }
-			body={ `<p class="card-text text-dark">${ feed.content }</p>` }
-			image={ feed.imageUrl }
-			imageAltText={ feed.title }
-			linkLabel={ feed.eventButtonText }
-			linkUrl={ feed.eventButtonUrl }
+			clickable={ !! story.buttonLink }
+			clickHref={ story.buttonLink }
+			title={ story.title }
+			body={ `<p class="card-text text-dark">${ story.content }</p>` }
+			image={ story.imageUrl }
+			imageAltText={ story.title }
+			linkLabel={ story.eventButtonText }
+			linkUrl={ story.eventButtonUrl }
 			buttons={ [
 				{
 					ariaLabel: cardButton.text,
 					color: cardButton.color,
 					label: cardButton.text,
 					size: cardButton.size,
-					href: feed.buttonLink,
+					href: story.buttonLink,
 				},
 			] }
-			tags={ parseInterests( feed?.interests ) }
+			tags={ parseInterests( story?.interests ) }
 		/>
 	</div>
 );
@@ -52,17 +50,17 @@ const gridRow = ( feed, cardButton ) => (
  */
 // eslint-disable-next-line react/prop-types
 const GridTemplate = ( { cardButton } ) => {
-	const { feeds } = useContext( FeedContext ); // Reading the "feeds" object from the context
+	const { stories } = useContext( FeedContext ); // Reading the "stories" object from the context
 
 	return (
 		<NewsWrapper
 			className="row row-spaced"
 			data-testid="grid-view-container"
 		>
-			{ feeds?.map( ( feed, index ) => (
+			{ stories?.map( ( story, index ) => (
 				// eslint-disable-next-line react/no-array-index-key
 				<React.Fragment key={ index }>
-					{ gridRow( feed, cardButton ) }
+					{ gridRow( story, cardButton ) }
 				</React.Fragment>
 			) ) }
 		</NewsWrapper>
@@ -86,9 +84,9 @@ const CardGridNews = ( { cardButton, ...props } ) => (
 	</BaseFeed>
 );
 
-CardGridNews.propTypes = {
-	...BaseFeed.propTypes,
-	cardButton: feedCardButtonShape,
-};
+// CardGridNews.propTypes = {
+// 	...BaseFeed.propTypes,
+// 	cardButton: feedCardButtonShape,
+// };
 
 export { CardGridNews };
