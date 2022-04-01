@@ -1,6 +1,6 @@
 const { render } = wp.element;
 
-import { CardGridNews } from '@asu-design-system/component-news/dist/asuNews.es';
+import { CardGridNews } from '../../unity/component-news/src/components';
 
 // It is possible to load multiple news grids onto a page.
 // Load each DOM element on page using the Gutenberg-generated class for the News Grid block
@@ -15,24 +15,24 @@ grids.forEach( ( newsGrid ) => {
 	const asuDataSource = enableAsuSource
 		? JSON.parse( newsGrid.dataset.asudatasource )
 		: null;
-	const wpDataSource = enableKeSource
-		? JSON.parse( newsGrid.dataset.wpdatasource )
+	const keDataSource = enableKeSource
+		? JSON.parse( newsGrid.dataset.kedatasource )
 		: null;
-	const maxItems = newsGrid.dataset.maxitems;
+	const maxItems = Number( newsGrid.dataset.maxitems );
 
 	const props = enableHeader
 		? {
 				header: JSON.parse( newsGrid.dataset.header ),
 				ctaButton: JSON.parse( newsGrid.dataset.ctabutton ),
 				cardButton,
-				asuDataSource,
-				wpDataSource,
+				drupalDataSource: asuDataSource,
+				wpDataSource: keDataSource,
 				maxItems,
 		  }
 		: {
 				cardButton,
-				asuDataSource,
-				wpDataSource,
+				drupalDataSource: asuDataSource,
+				wpDataSource: keDataSource,
 				maxItems,
 		  };
 

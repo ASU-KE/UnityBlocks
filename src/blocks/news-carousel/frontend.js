@@ -1,6 +1,6 @@
 const { render } = wp.element;
 
-import { CardCarouselNews } from '@asu-design-system/component-news/dist/asuNews.es';
+import { CardCarouselNews } from '../../unity/component-news/src/components/CardCarouselNews';
 
 // It is possible to load multiple news carousels onto a page.
 // Load each DOM element on page using the Gutenberg-generated class for the News Carousel block
@@ -17,24 +17,24 @@ carousels.forEach( ( newsCarousel ) => {
 	const asuDataSource = enableAsuSource
 		? JSON.parse( newsCarousel.dataset.asudatasource )
 		: null;
-	const wpDataSource = enableKeSource
-		? JSON.parse( newsCarousel.dataset.wpdatasource )
+	const keDataSource = enableKeSource
+		? JSON.parse( newsCarousel.dataset.kedatasource )
 		: null;
-	const maxItems = newsCarousel.dataset.maxitems;
+	const maxItems = Number( newsCarousel.dataset.maxitems );
 
 	const props = enableHeader
 		? {
 				header: JSON.parse( newsCarousel.dataset.header ),
 				ctaButton: JSON.parse( newsCarousel.dataset.ctabutton ),
 				cardButton,
-				asuDataSource,
-				wpDataSource,
+				drupalDataSource: asuDataSource,
+				wpDataSource: keDataSource,
 				maxItems,
 		  }
 		: {
 				cardButton,
-				asuDataSource,
-				wpDataSource,
+				drupalDataSource: asuDataSource,
+				wpDataSource: keDataSource,
 				maxItems,
 		  };
 

@@ -30,38 +30,38 @@ const save = ( props ) => {
 	} = props;
 
 	const header = enableHeader
-		? JSON.stringify( {
+		? {
 				color: headerColor,
 				text: headerText,
-		  } )
+		  }
 		: null;
 
 	const ctaButton = enableHeader
-		? JSON.stringify( {
+		? {
 				color: ctaColor,
 				text: ctaText,
 				url: ctaUrl,
-		  } )
+		  }
 		: null;
 
-	const cardButton = JSON.stringify( {
+	const cardButton = {
 		color: cardButtonColor,
 		text: cardButtonText,
 		url: cardButtonSize,
-	} );
+	};
 
 	const asuDataSource = {
 		url: asuDataSourceUrl + asuDataSourceFeed,
 		filters: asuDataSourceFilters,
 	};
 
-	const wpSourceFilters = {
+	const keSourceFilters = {
 		units: keDataSourceUnits,
 		interests: keDataSourceInterests,
 		locations: keDataSourceLocations,
 	};
 
-	// const wpSourcePagination = {
+	// const keSourcePagination = {
 	// 	page,
 	// 	perPage,
 	//   order,
@@ -70,19 +70,23 @@ const save = ( props ) => {
 
 	const keDataSource = {
 		url: keDataSourceUrl,
-		filters: wpSourceFilters,
-		// pagination: wpSourcePagination
+		filters: keSourceFilters,
+		// pagination: keSourcePagination
 	};
 
 	const dataAttributes = {
 		'data-enableheader': enableHeader,
-		'data-header': header,
-		'data-ctabutton': ctaButton,
-		'data-cardbutton': cardButton,
+		'data-header': JSON.stringify( header ),
+		'data-ctabutton': JSON.stringify( ctaButton ),
+		'data-cardbutton': JSON.stringify( cardButton ),
 		'data-enableasusource': enableAsuDataSource,
 		'data-enablekesource': enableKeDataSource,
-		'data-asudatasource': enableAsuDataSource ? asuDataSource : null,
-		'data-wpdatasource': enableKeDataSource ? keDataSource : null,
+		'data-asudatasource': enableAsuDataSource
+			? JSON.stringify( asuDataSource )
+			: null,
+		'data-kedatasource': enableKeDataSource
+			? JSON.stringify( keDataSource )
+			: null,
 		'data-maxitems': maxItems,
 	};
 

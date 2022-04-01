@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import { CardGridNews } from '@asu-design-system/component-news/dist/asuNews.es';
+import { CardGridNews } from '../../unity/component-news/src/components';
 
 /**
  * Internal dependencies
@@ -68,13 +68,13 @@ const Edit = ( props ) => {
 		  }
 		: null;
 
-	const wpSourceFilters = {
+	const keSourceFilters = {
 		units: keDataSourceUnits,
 		interests: keDataSourceInterests,
 		locations: keDataSourceLocations,
 	};
 
-	// const wpSourcePagination = {
+	// const keSourcePagination = {
 	// 	page,
 	// 	perPage,
 	//   order,
@@ -84,8 +84,8 @@ const Edit = ( props ) => {
 	const keDataSource = enableKeDataSource
 		? {
 				url: keDataSourceUrl,
-				filters: wpSourceFilters,
-				// pagination: wpSourcePagination
+				filters: keSourceFilters,
+				// pagination: keSourcePagination
 		  }
 		: null;
 
@@ -93,8 +93,8 @@ const Edit = ( props ) => {
 		header,
 		ctaButton,
 		cardButton,
-		asuDataSource,
-		keDataSource,
+		drupalDataSource: asuDataSource,
+		wpDataSource: keDataSource,
 		maxItems,
 	};
 
