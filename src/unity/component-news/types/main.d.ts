@@ -15,9 +15,23 @@ export interface NewsProps {
 		text: string;
 		size: 'default' | 'small' | 'medium' | 'large';
 	};
-	dataSource: {
+	drupalDataSource: {
 		url: string;
 		filters?: string;
+	};
+	wpDataSource: {
+		url: string;
+		filters?: {
+			units?: string;
+			interests?: string;
+			locations?: string;
+		};
+		pagination?: {
+			page?: number;
+			perPage?: number;
+			order?: string;
+			orderBy?: string;
+		};
 	};
 	maxItems?: number;
 }

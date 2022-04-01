@@ -6,13 +6,20 @@
  */
 
 /**
- * @typedef {Object} WpRestDataFilters
- * @property {string} [categories]
- * @property {string} [tags]
+ * @typedef {Object} DrupalDataSource
+ * @property {string} [url]
+ * @property {string} [filters]
  */
 
 /**
- * @typedef {Object} WpDataPagination
+ * @typedef {Object} WpRestDataFilters
+ * @property {string} [units]
+ * @property {string} [interests]
+ * @property {string} [locations]
+ */
+
+/**
+ * @typedef {Object} WpRestDataPagination
  * @property {number} [page]
  * @property {number} [perPage]
  * @property {string} [order]
@@ -20,16 +27,10 @@
  */
 
 /**
- * @typedef {Object} DrupalDataSource
- * @property {string} [url]
- * @property {string} [filters]
- */
-
-/**
- * @typedef {Object} WpDataSource
+ * @typedef {Object} WpRestDataSource
  * @property {string} [url]
  * @property {WpRestDataFilters} [filters]
- * @property {WpDataPagination} [pagination]
+ * @property {WpRestDataPagination} [pagination]
  */
 
 /**

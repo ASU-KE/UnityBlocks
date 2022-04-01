@@ -17,16 +17,9 @@ const feedCardButtonShape = PropTypes.shape( {
 	size: PropTypes.string,
 } );
 
-const feedDataSourceShape = PropTypes.shape( {
+const feedDrupalDataSourceShape = PropTypes.shape( {
 	url: PropTypes.string,
 	filters: PropTypes.string,
-} );
-
-const feedComponentShape = PropTypes.shape( {
-	header: feedHeaderShape,
-	ctaButton: feedCtaButtonShape,
-	dataSource: feedDataSourceShape,
-	maxItems: PropTypes.number,
 } );
 
 const feedWpRestFiltersShape = PropTypes.shape( {
@@ -48,11 +41,6 @@ const feedPaginationShape = PropTypes.shape( {
 	orderBy: PropTypes.string,
 } );
 
-const feedDrupalDataSourceShape = PropTypes.shape( {
-	url: PropTypes.string,
-	filters: PropTypes.string,
-} );
-
 const feedWpRestDataSourceShape = PropTypes.shape( {
 	url: PropTypes.string,
 	filters: feedWpRestFiltersShape,
@@ -65,6 +53,13 @@ const feedKeGraphqlDataSourceShape = PropTypes.shape( {
 	pagination: feedPaginationShape,
 } );
 
+const feedComponentShape = PropTypes.shape( {
+	header: feedHeaderShape,
+	ctaButton: feedCtaButtonShape,
+	dataSource: feedDrupalDataSourceShape,
+	maxItems: PropTypes.number,
+} );
+
 // const feedComponentShape = PropTypes.shape( {
 // 	header: feedHeaderShape,
 // 	ctaButton: feedCtaButtonShape,
@@ -75,7 +70,6 @@ const feedKeGraphqlDataSourceShape = PropTypes.shape( {
 // } );
 
 export {
-	feedDataSourceShape,
 	feedComponentShape,
 	feedHeaderShape,
 	feedCtaButtonShape,
