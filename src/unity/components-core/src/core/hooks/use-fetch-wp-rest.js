@@ -3,28 +3,50 @@
 import useSWR from 'swr';
 
 const fetcher = async ( url, filters, pagination ) => {
-	const { categories } = filters;
-	const { page, perPage, order, orderBy } = pagination;
+	const units = filters.units ? filters.units.split( ' ' ) : [];
+	const interests = filters.interests ? filters.interests.split( ' ' ) : [];
+	const locations = filters.locations ? filters.locations.split( ' ' ) : [];
+
+	const page = 1;
+	const perPage = 10;
+	// const { page, perPage, order, orderBy } = pagination;
+	// const order = 'DESC';
+	// const orderBy = ''
 
 	let response;
-	let query = 'posts?';
+	let query = '';
 
-	if ( categories.length ) {
-		query = `${ query }categories=${ categories.shift() }`;
-	}
-
-	if ( categories.length ) {
-		query = categories.reduce(
+	if ( units.length ) {
+		query = units.reduce(
 			( accumulator, currentValue ) =>
-				`${ accumulator }&categories=${ currentValue }`,
+				`${ accumulator }&college_unit=${ currentValue }`,
 			query
 		);
 	}
 
+	if ( interests.length ) {
+		query = interests.reduce(
+			( accumulator, currentValue ) =>
+				`${ accumulator }&interest=${ currentValue }`,
+			query
+		);
+	}
+
+	if ( locations.length ) {
+		query = locations.reduce(
+			( accumulator, currentValue ) =>
+				`${ accumulator }&location=${ currentValue }`,
+			query
+		);
+	}
+
+	// trim leading '&' from our query string
+	query = query.substring( 1 );
+
 	query += `&per_page=${ perPage }`;
 	query += `&page=${ page }`;
-	query += `&order=${ order }`;
-	query += `&orderby=${ orderBy }`;
+	// query += `&order=${ order }`;
+	// query += `&orderby=${ orderBy }`;
 
 	try {
 		response = await fetch( url + query );
@@ -82,26 +104,23 @@ const fetcher = async ( url, filters, pagination ) => {
 
 /**
  *  @typedef {Object} WpFetchPayload
- *  @property {number} [totalPages]
  *  @property {Object} [data]
+ *  @property {number} [totalPages]
  */
 
 /**
  * @template T
  * @returns {FetchResponse<T>}
  */
-const useFetchWpRest = ( url, filters, pagination ) => {
-	const { data: response, error } = useSWR(
-		[ url, filters, pagination ],
-		fetcher
-	);
+const useFetchWpRest = ( url, filters ) => {
+	const { data: response, error } = useSWR( [ url, filters ], fetcher );
 
 	return {
 		payload: {
-			data: response.data,
-			totalPages: response.totalPages,
+			data: response?.data,
+			totalPages: response?.totalPages,
 		},
-		loading: ! error && ! response.data,
+		loading: ! error && ! response?.data,
 		error,
 	};
 };
