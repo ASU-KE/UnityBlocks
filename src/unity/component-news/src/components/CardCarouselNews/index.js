@@ -1,5 +1,5 @@
 // @ts-check
-import { CardCarousel } from '@asu-design-system/component-carousel';
+import { CardCarousel } from '../../../../component-carousel/src';
 import { FeedContext } from '../../../../components-core/src';
 import React, { useContext } from 'react';
 
