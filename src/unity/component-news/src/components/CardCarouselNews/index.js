@@ -68,6 +68,6 @@ const CardCarouselNews = ( { cardButton, ...props } ) => (
 	</BaseFeed>
 );
 
-CardCarouselNews.propTypes = BaseFeed.propTypes;
+// CardCarouselNews.propTypes = BaseFeed.propTypes;
 
 export { CardCarouselNews };
