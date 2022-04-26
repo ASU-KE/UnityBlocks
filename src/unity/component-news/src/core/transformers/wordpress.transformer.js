@@ -1,4 +1,5 @@
 // @ts-check
+import { format, parseISO } from 'date-fns';
 import { shortenText } from '../utils/shorten-text';
 
 // Transformer data function provided to the high order component
@@ -8,6 +9,7 @@ const transformData = ( post ) => ( {
 	imageAltText: post.uds_featured_image.alt_text,
 	title: shortenText( post.title.rendered, 80 ),
 	content: post.excerpt.rendered,
+	date: format( parseISO( post.date ), 'MMM d, yyyy' ),
 	buttonLink: post.slug,
 	interests: post.interest,
 	newsUnits: post.college_unit,
