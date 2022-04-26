@@ -28,6 +28,8 @@ const Inspector = ( props ) => {
 			cardButtonText,
 			cardButtonColor,
 			cardButtonSize,
+			enableStoryDate,
+			enableCardTags,
 			enableAsuDataSource,
 			asuDataSourceUrl,
 			asuDataSourceFeed,
@@ -161,6 +163,34 @@ const Inspector = ( props ) => {
 				) }
 
 				<PanelBody>
+					<PanelRow>
+						<ToggleControl
+							label={ 'Enable Story Date' }
+							help={
+								enableStoryDate
+									? 'Date enabled.'
+									: 'Date disabled.'
+							}
+							checked={ enableStoryDate }
+							onChange={ ( newValue ) => {
+								setAttributes( { enableStoryDate: newValue } );
+							} }
+						/>
+					</PanelRow>
+					<PanelRow>
+						<ToggleControl
+							label={ 'Enable Card Tags' }
+							help={
+								enableCardTags
+									? 'Tags enabled.'
+									: 'Tags disabled.'
+							}
+							checked={ enableCardTags }
+							onChange={ ( newValue ) => {
+								setAttributes( { enableCardTags: newValue } );
+							} }
+						/>
+					</PanelRow>
 					<PanelRow>
 						<TextControl
 							label={ 'Max items to load' }

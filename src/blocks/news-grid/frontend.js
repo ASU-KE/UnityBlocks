@@ -9,6 +9,8 @@ const grids = document.querySelectorAll( '.wp-block-unityblocks-news-grid' );
 grids.forEach( ( newsGrid ) => {
 	const enableHeader = newsGrid.dataset.enableheader === 'true';
 	const cardButton = JSON.parse( newsGrid.dataset.cardbutton );
+	const enableStoryDate = newsGrid.dataset.enablestorydate === 'true';
+	const enableCardTags = newsGrid.dataset.enablecardtags === 'true';
 	const enableAsuSource = newsGrid.dataset.enableasusource === 'true';
 	const enableKeSource = newsGrid.dataset.enablekesource === 'true';
 
@@ -25,12 +27,16 @@ grids.forEach( ( newsGrid ) => {
 				header: JSON.parse( newsGrid.dataset.header ),
 				ctaButton: JSON.parse( newsGrid.dataset.ctabutton ),
 				cardButton,
+				enableStoryDate,
+				enableCardTags,
 				drupalDataSource: asuDataSource,
 				wpDataSource: keDataSource,
 				maxItems,
 		  }
 		: {
 				cardButton,
+				enableStoryDate,
+				enableCardTags,
 				drupalDataSource: asuDataSource,
 				wpDataSource: keDataSource,
 				maxItems,
