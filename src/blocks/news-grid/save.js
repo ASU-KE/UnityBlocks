@@ -15,6 +15,7 @@ const save = ( props ) => {
 			cardButtonText,
 			cardButtonColor,
 			cardButtonSize,
+			enableCardTags,
 			enableAsuDataSource,
 			asuDataSourceUrl,
 			asuDataSourceFeed,
@@ -79,6 +80,7 @@ const save = ( props ) => {
 		'data-header': JSON.stringify( header ),
 		'data-ctabutton': JSON.stringify( ctaButton ),
 		'data-cardbutton': JSON.stringify( cardButton ),
+		'data-enablecardtags': enableCardTags,
 		'data-enableasusource': enableAsuDataSource,
 		'data-enablekesource': enableKeDataSource,
 		'data-asudatasource': enableAsuDataSource

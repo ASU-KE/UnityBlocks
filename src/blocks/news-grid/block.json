@@ -56,6 +56,10 @@
       ],
       "default": "default"
     },
+    "enableCardTags": {
+      "type": "boolean",
+      "default": false
+    },
     "enableAsuDataSource": {
       "type": "boolean",
       "default": true
