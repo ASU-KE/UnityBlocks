@@ -46,11 +46,13 @@ const save = ( props ) => {
 		  }
 		: null;
 
-	const cardButton = {
-		color: cardButtonColor,
-		text: cardButtonText,
-		url: cardButtonSize,
-	};
+	// const cardButton = {
+	// 	color: cardButtonColor,
+	// 	text: cardButtonText,
+	// 	size: cardButtonSize,
+	// };
+
+	const cardButton = '';
 
 	const asuDataSource = {
 		url: asuDataSourceUrl + asuDataSourceFeed,
