@@ -25,9 +25,9 @@ const Inspector = ( props ) => {
 			ctaText,
 			ctaUrl,
 			ctaColor,
-			cardButtonText,
-			cardButtonColor,
-			cardButtonSize,
+			// cardButtonText,
+			// cardButtonColor,
+			// cardButtonSize,
 			enableStoryDate,
 			enableStoryAuthor,
 			enableCardTags,
@@ -224,7 +224,7 @@ const Inspector = ( props ) => {
 					</PanelRow>
 				</PanelBody>
 
-				<PanelBody
+				{ /* <PanelBody
 					title={ __( 'Card buttons', 'unityblocks' ) }
 					initialOpen={ false }
 				>
@@ -291,7 +291,7 @@ const Inspector = ( props ) => {
 							}
 						/>
 					</PanelRow>
-				</PanelBody>
+				</PanelBody> */ }
 
 				<PanelBody
 					title={ __( 'ASU Data Source', 'unityblocks' ) }

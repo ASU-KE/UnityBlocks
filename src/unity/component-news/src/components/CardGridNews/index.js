@@ -88,7 +88,6 @@ const GridTemplate = ( {
 				<React.Fragment key={ index }>
 					{ gridRow(
 						story,
-						cardButton,
 						enableCardTags,
 						enableStoryAuthor,
 						enableStoryDate
@@ -108,7 +107,6 @@ const GridTemplate = ( {
  * @param {FeedType} props
  */
 const CardGridNews = ( {
-	cardButton,
 	enableCardTags,
 	enableStoryAuthor,
 	enableStoryDate,
@@ -117,7 +115,6 @@ const CardGridNews = ( {
 	// Calling the high order component that fetch the data
 	<BaseFeed { ...props }>
 		<GridTemplate
-			cardButton={ { ...defaultProps.cardButton, ...cardButton } }
 			enableCardTags={ enableCardTags }
 			enableStoryAuthor={ enableStoryAuthor }
 			enableStoryDate={ enableStoryDate }
@@ -127,7 +124,6 @@ const CardGridNews = ( {
 
 // CardGridNews.propTypes = {
 // 	...BaseFeed.propTypes,
-// 	cardButton: feedCardButtonShape,
 // };
 
 export { CardGridNews };
