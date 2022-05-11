@@ -32,10 +32,7 @@ export const Article = ( {
 	publicationDate,
 	title,
 	body,
-	authorEmail,
-	authorName,
-	authorPhone,
-	authorTitle,
+	author,
 	breadcrumbs,
 	calendarUrl,
 	eventLocation,
@@ -76,27 +73,27 @@ export const Article = ( {
 		return (
 			<div className="row pb-2" data-testid="author-info">
 				<div className="col col-12">
-					<div className="author highlight-gold">{ authorName }</div>
-					{ authorTitle && (
-						<div className="author-title">{ authorTitle }</div>
+					<div className="author highlight-gold">{ author.name }</div>
+					{ author.title && (
+						<div className="author-title">{ author.title }</div>
 					) }
-					{ authorEmail && (
+					{ author.email && (
 						<div className="author-contact">
 							<span className="icon-bg">
 								<i className="fas fa-envelope" />
 							</span>
-							<a href={ `mailto: ${ authorEmail }` }>
-								{ authorEmail }
+							<a href={ `mailto: ${ author.email }` }>
+								{ author.email }
 							</a>
 						</div>
 					) }
-					{ authorPhone && (
+					{ author.phone && (
 						<div className="author-contact">
 							<span className="icon-bg">
 								<i className="fas fa-phone" />
 							</span>
-							<a href={ `tel: ${ authorPhone }` }>
-								{ authorPhone }
+							<a href={ `tel: ${ author.phone }` }>
+								{ author.phone }
 							</a>
 						</div>
 					) }
@@ -113,21 +110,21 @@ export const Article = ( {
 			>
 				<div className="col col-lg-4 col-md-6 col-12">
 					<h4>For more information contact:</h4>
-					<div className="event-author">{ authorName }</div>
-					<div className="event-author-title">{ authorTitle }</div>
-					{ ( authorEmail || authorPhone ) && (
+					<div className="event-author">{ author.name }</div>
+					<div className="event-author-title">{ author.title }</div>
+					{ ( author.email || author.phone ) && (
 						<div className="event-author-info">
-							{ authorEmail && (
+							{ author.email && (
 								<div>
-									<a href={ `mailto: ${ authorEmail }` }>
-										{ authorEmail }
+									<a href={ `mailto: ${ author.email }` }>
+										{ author.email }
 									</a>
 								</div>
 							) }
-							{ authorPhone && (
+							{ author.phone && (
 								<div>
-									<a href={ `tel: ${ authorPhone }` }>
-										{ authorPhone }
+									<a href={ `tel: ${ author.phone }` }>
+										{ author.phone }
 									</a>
 								</div>
 							) }
@@ -367,19 +364,12 @@ Article.propTypes = {
 	/**
 	 * Article author email
 	 */
-	authorEmail: PropTypes.string,
-	/**
-	 * Article author full name
-	 */
-	authorName: PropTypes.string.isRequired,
-	/**
-	 * Article author phone number
-	 */
-	authorPhone: PropTypes.string,
-	/**
-	 * Article author title
-	 */
-	authorTitle: PropTypes.string,
+	author: PropTypes.shape( {
+		name: PropTypes.string,
+		title: PropTypes.string,
+		email: PropTypes.string,
+		phone: PropTypes.string,
+	} ),
 	/**
 	 * Breadcrumbs array
 	 */
@@ -418,9 +408,7 @@ Article.propTypes = {
 
 Article.defaultProps = {
 	type: 'news',
-	authorEmail: undefined,
-	authorPhone: undefined,
-	authorTitle: undefined,
+	author: undefined,
 	breadcrumbs: undefined,
 	calendarUrl: undefined,
 	headerImageUrl: undefined,
