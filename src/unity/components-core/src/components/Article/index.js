@@ -294,7 +294,7 @@ export const Article = ( {
 								{ /* @ts-ignore */ }
 								<TwitterShareButton
 									url={ articleUrl }
-									quote={ title }
+									// quote={ title }
 								>
 									<TwitterIcon
 										size={ 28 }
@@ -305,7 +305,7 @@ export const Article = ( {
 								{ /* @ts-ignore */ }
 								<LinkedinShareButton
 									url={ articleUrl }
-									quote={ title }
+									// quote={ title }
 								>
 									<LinkedinIcon
 										size={ 28 }
