@@ -191,23 +191,23 @@ export const Article = ( {
 		);
 	};
 
-	const activeBreadcrumb = ( item ) => {
-		if ( item.active ) {
-			return (
-				<BreadcrumbItem active tag="li" className="breadcrumb-item">
-					{ item.title }
-				</BreadcrumbItem>
-			);
-		}
+	// const activeBreadcrumb = ( item ) => {
+	// 	if ( item.active ) {
+	// 		return (
+	// 			<BreadcrumbItem active tag="li" className="breadcrumb-item">
+	// 				{ item.title }
+	// 			</BreadcrumbItem>
+	// 		);
+	// 	}
 
-		return (
-			<BreadcrumbItem tag="li" className="breadcrumb-item">
-				<BreadcrumbItem tag="a" href={ item.url }>
-					{ item.title }
-				</BreadcrumbItem>
-			</BreadcrumbItem>
-		);
-	};
+	// 	return (
+	// 		<BreadcrumbItem tag="li" className="breadcrumb-item">
+	// 			<BreadcrumbItem tag="a" href={ item.url }>
+	// 				{ item.title }
+	// 			</BreadcrumbItem>
+	// 		</BreadcrumbItem>
+	// 	);
+	// };
 
 	return (
 		<>
@@ -224,7 +224,7 @@ export const Article = ( {
 			<Wrapper
 				className={ `container ${ type }-container wrapper-container` }
 			>
-				{ breadcrumbs && (
+				{ /* { breadcrumbs && (
 					<div className="row pt-4" data-testid="breadcrumbs">
 						<div className="col col-12">
 							<Breadcrumb listClassName="breadcrumb">
@@ -234,7 +234,7 @@ export const Article = ( {
 							</Breadcrumb>
 						</div>
 					</div>
-				) }
+				) } */ }
 
 				<div className="row pb-2 pt-3">
 					<div className={ hClasses }>
