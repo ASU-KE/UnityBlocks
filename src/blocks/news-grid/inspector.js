@@ -29,6 +29,7 @@ const Inspector = ( props ) => {
 			cardButtonColor,
 			cardButtonSize,
 			enableStoryDate,
+			enableStoryAuthor,
 			enableCardTags,
 			enableAsuDataSource,
 			asuDataSourceUrl,
@@ -174,6 +175,22 @@ const Inspector = ( props ) => {
 							checked={ enableStoryDate }
 							onChange={ ( newValue ) => {
 								setAttributes( { enableStoryDate: newValue } );
+							} }
+						/>
+					</PanelRow>
+					<PanelRow>
+						<ToggleControl
+							label={ 'Enable Story Author' }
+							help={
+								enableStoryAuthor
+									? 'Author enabled.'
+									: 'Author disabled.'
+							}
+							checked={ enableStoryAuthor }
+							onChange={ ( newValue ) => {
+								setAttributes( {
+									enableStoryAuthor: newValue,
+								} );
 							} }
 						/>
 					</PanelRow>

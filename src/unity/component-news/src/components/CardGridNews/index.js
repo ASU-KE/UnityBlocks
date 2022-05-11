@@ -14,23 +14,32 @@ import { NewsWrapper } from './index.styles';
 /**
  *
  * @param {Object} story
+ * @param {Boolean} enableStoryAuthor
  * @param {Boolean} enableStoryDate
- * @param {import("../../core/types/news-types").CardButton} cardButton
  */
-const storyBody = ( story, enableStoryDate ) => {
-	return enableStoryDate
-		? `<p><b>${ story.date }</b></p><p class="card-text text-dark">${ story.content }</p>`
-		: `<p class="card-text text-dark">${ story.content }</p>`;
+const storyBody = ( story, enableStoryAuthor, enableStoryDate ) => {
+	if ( enableStoryDate ) {
+		return enableStoryAuthor && story.author
+			? `<p><b>${ story.date } - ${ story.author.name }</b></p><p class="card-text text-dark">${ story.excerpt }</p>`
+			: `<p><b>${ story.date }</b></p><p class="card-text text-dark">${ story.excerpt }</p>`;
+	}
+
+	return `<p class="card-text text-dark">${ story.excerpt }</p>`;
 };
 
 /**
  *
  * @param {Object} story
  * @param {Boolean} enableCardTags
+ * @param {Boolean} enableStoryAuthor
  * @param {Boolean} enableStoryDate
- * @param {import("../../core/types/news-types").CardButton} cardButton
  */
-const gridRow = ( story, cardButton, enableCardTags, enableStoryDate ) => (
+const gridRow = (
+	story,
+	enableCardTags,
+	enableStoryAuthor,
+	enableStoryDate
+) => (
 	<div
 		className="col col-12 col-md-6 col-lg-4 cards-items-container"
 		key={ story.id }
@@ -39,7 +48,7 @@ const gridRow = ( story, cardButton, enableCardTags, enableStoryDate ) => (
 			type="story"
 			clickable={ false }
 			title={ story.title }
-			body={ storyBody( story, enableStoryDate ) }
+			body={ storyBody( story, enableStoryAuthor, enableStoryDate ) }
 			image={ story.imageUrl }
 			imageAltText={ story.title }
 			linkLabel={ 'Read story' }
@@ -62,7 +71,11 @@ const gridRow = ( story, cardButton, enableCardTags, enableStoryDate ) => (
  * @param {import("../../core/types/news-types").TemplateProps} props
  */
 // eslint-disable-next-line react/prop-types
-const GridTemplate = ( { cardButton, enableCardTags, enableStoryDate } ) => {
+const GridTemplate = ( {
+	enableCardTags,
+	enableStoryAuthor,
+	enableStoryDate,
+} ) => {
 	const { stories } = useContext( FeedContext ); // Reading the "stories" object from the context
 
 	return (
@@ -77,6 +90,7 @@ const GridTemplate = ( { cardButton, enableCardTags, enableStoryDate } ) => {
 						story,
 						cardButton,
 						enableCardTags,
+						enableStoryAuthor,
 						enableStoryDate
 					) }
 				</React.Fragment>
@@ -96,6 +110,7 @@ const GridTemplate = ( { cardButton, enableCardTags, enableStoryDate } ) => {
 const CardGridNews = ( {
 	cardButton,
 	enableCardTags,
+	enableStoryAuthor,
 	enableStoryDate,
 	...props
 } ) => (
@@ -104,6 +119,7 @@ const CardGridNews = ( {
 		<GridTemplate
 			cardButton={ { ...defaultProps.cardButton, ...cardButton } }
 			enableCardTags={ enableCardTags }
+			enableStoryAuthor={ enableStoryAuthor }
 			enableStoryDate={ enableStoryDate }
 		/>
 	</BaseFeed>

@@ -10,6 +10,7 @@ grids.forEach( ( newsGrid ) => {
 	const enableHeader = newsGrid.dataset.enableheader === 'true';
 	const cardButton = JSON.parse( newsGrid.dataset.cardbutton );
 	const enableStoryDate = newsGrid.dataset.enablestorydate === 'true';
+	const enableStoryAuthor = newsGrid.dataset.enablestoryauthor === 'true';
 	const enableCardTags = newsGrid.dataset.enablecardtags === 'true';
 	const enableAsuSource = newsGrid.dataset.enableasusource === 'true';
 	const enableKeSource = newsGrid.dataset.enablekesource === 'true';
@@ -28,6 +29,7 @@ grids.forEach( ( newsGrid ) => {
 				ctaButton: JSON.parse( newsGrid.dataset.ctabutton ),
 				cardButton,
 				enableStoryDate,
+				enableStoryAuthor,
 				enableCardTags,
 				drupalDataSource: asuDataSource,
 				wpDataSource: keDataSource,
@@ -36,6 +38,7 @@ grids.forEach( ( newsGrid ) => {
 		: {
 				cardButton,
 				enableStoryDate,
+				enableStoryAuthor,
 				enableCardTags,
 				drupalDataSource: asuDataSource,
 				wpDataSource: keDataSource,
