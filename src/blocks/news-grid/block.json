@@ -90,7 +90,7 @@
     },
     "keDataSourceUrl": {
       "type": "string",
-      "default": "https://ke.news.prod.rtd.asu.edu/wp-json/wp/v2/posts?"
+      "default": "https://ke.news.prod.rtd.asu.edu/wp-json/wp/v2/"
     },
     "keDataSourceUnits": {
       "type": "string",

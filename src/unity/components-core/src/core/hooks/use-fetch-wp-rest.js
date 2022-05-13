@@ -14,7 +14,7 @@ const fetcher = async ( url, filters, pagination ) => {
 	// const orderBy = ''
 
 	let response;
-	let query = '';
+	const query = 'posts?';
 
 	if ( units.length ) {
 		query = units.reduce(
