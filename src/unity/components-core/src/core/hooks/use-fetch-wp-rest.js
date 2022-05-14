@@ -15,41 +15,42 @@ const fetcher = async ( url, filters, pagination ) => {
 
 	let response;
 	const query = 'posts?';
+	let params = '';
 
 	if ( units.length ) {
-		query = units.reduce(
+		params = units.reduce(
 			( accumulator, currentValue ) =>
 				`${ accumulator }&college_unit=${ currentValue }`,
-			query
+			params
 		);
 	}
 
 	if ( interests.length ) {
-		query = interests.reduce(
+		params = interests.reduce(
 			( accumulator, currentValue ) =>
 				`${ accumulator }&interest=${ currentValue }`,
-			query
+			params
 		);
 	}
 
 	if ( locations.length ) {
-		query = locations.reduce(
+		params = locations.reduce(
 			( accumulator, currentValue ) =>
 				`${ accumulator }&location=${ currentValue }`,
-			query
+			params
 		);
 	}
 
-	// trim leading '&' from our query string
-	query = query.substring( 1 );
+	// trim leading '&' from our params string
+	params = params.substring( 1 );
 
-	query += `&per_page=${ perPage }`;
-	query += `&page=${ page }`;
-	// query += `&order=${ order }`;
-	// query += `&orderby=${ orderBy }`;
+	params += `&per_page=${ perPage }`;
+	params += `&page=${ page }`;
+	// params += `&order=${ order }`;
+	// params += `&orderby=${ orderBy }`;
 
 	try {
-		response = await fetch( url + query );
+		response = await fetch( `${ url }${ query }${ params }` );
 	} catch ( e ) {
 		if (
 			! process.env.NODE_ENV ||
