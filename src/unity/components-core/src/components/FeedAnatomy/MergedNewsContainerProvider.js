@@ -2,7 +2,7 @@
 // @ts-check
 import { union, sortBy } from 'lodash-es';
 // import PropTypes from 'prop-types';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 // import {
@@ -45,10 +45,6 @@ const MergedNewsContainerProvider = ( {
 	noResultsText,
 	maxItems,
 } ) => {
-	const [ drupalStories, setDrupalStories ] = useState( [] );
-	const [ wpStories, setWpStories ] = useState( [] );
-	const [ mergedStories, setMergedStories ] = useState( [] );
-
 	const asuDataSource = { ...defaultProps.dataSource, ...drupalDataSource };
 
 	// Fetch Drupal feed.
@@ -58,14 +54,11 @@ const MergedNewsContainerProvider = ( {
 		error: drupalError,
 	} = useFetchDrupalFeed( asuDataSource.url );
 
-	useEffect( () => {
-		// Work all the data and set the filterd and mapped feeds
-		const transformedData = drupalData?.nodes.map( drupalDataTransformer );
-		const filteredData = transformedData?.filter( ( item ) =>
-			drupalDataFilter( item, asuDataSource?.filters )
-		);
-		setDrupalStories( filteredData );
-	}, [ drupalData ] );
+	// Work all the data and set the filterd and mapped feeds
+	const transformedData = drupalData?.nodes.map( drupalDataTransformer );
+	const drupalStories = transformedData?.filter( ( item ) =>
+		drupalDataFilter( item, asuDataSource?.filters )
+	);
 
 	// Fetch KE News via WP-REST.
 	const {
@@ -78,25 +71,17 @@ const MergedNewsContainerProvider = ( {
 		// wpDataSource.pagination
 	);
 
-	useEffect( () => {
-		// Work all the data and set the filtered and mapped feeds
-		const transformedData =
-			wpPayload && wpPayload.data
-				? wpPayload.data?.map( wpDataTransformer )
-				: [];
+	const wpStories =
+		wpPayload && wpPayload.data
+			? wpPayload.data?.map( wpDataTransformer )
+			: [];
 
-		setWpStories( transformedData );
-	}, [ wpPayload ] );
-
-	useEffect( () => {
-		if ( drupalStories?.length && wpStories?.length ) {
-			const merged = union( drupalStories, wpStories );
-			const sorted = sortBy( merged, [ 'date' ] ).reverse();
-			const trimmed = maxItems ? sorted?.slice( 0, maxItems ) : sorted;
-
-			setMergedStories( trimmed );
-		}
-	}, [ drupalStories, wpStories ] );
+	let mergedStories = [];
+	if ( drupalStories?.length && wpStories?.length ) {
+		const merged = union( drupalStories, wpStories );
+		const sorted = sortBy( merged, [ 'date' ] ).reverse();
+		mergedStories = maxItems ? sorted?.slice( 0, maxItems ) : sorted;
+	}
 
 	return (
 		// Init the context to be used on its childrens

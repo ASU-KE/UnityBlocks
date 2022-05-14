@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 // @ts-check
 // import PropTypes from 'prop-types';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 // import { feedWpRestDataSourceShape } from '../../../../components-core/src';
@@ -32,8 +32,6 @@ const KeNewsContainerProvider = ( {
 	noResultsText,
 	maxItems,
 } ) => {
-	const [ wpStories, setWpStories ] = useState( [] );
-
 	// Fetch KE News via WP-REST.
 	const {
 		payload: wpPayload,
@@ -45,19 +43,15 @@ const KeNewsContainerProvider = ( {
 		// wpDataSource.pagination
 	);
 
-	useEffect( () => {
-		// Work all the data and set the filtered and mapped feeds
-		const transformedData =
-			wpPayload && wpPayload.data
-				? wpPayload.data?.map( wpDataTransformer )
-				: [];
+	// Work all the data and set the filtered and mapped feeds
+	const transformedData =
+		wpPayload && wpPayload.data
+			? wpPayload.data?.map( wpDataTransformer )
+			: [];
 
-		const trimmedData = maxItems
-			? transformedData?.slice( 0, maxItems )
-			: transformedData;
-
-		setWpStories( trimmedData );
-	}, [ wpPayload ] );
+	const wpStories = maxItems
+		? transformedData?.slice( 0, maxItems )
+		: transformedData;
 
 	return (
 		// Init the context to be used on its childrens
