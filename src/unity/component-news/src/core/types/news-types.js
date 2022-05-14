@@ -11,7 +11,9 @@
 /**
  * @ignore
  * @typedef {Object} TemplateProps
- * @property {CardButton} cardButton
+ * @property {Boolean} enableCardTags
+ * @property {Boolean} enableStoryAuthor
+ * @property {Boolean} enableStoryDate
  */
 
 /**
