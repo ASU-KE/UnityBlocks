@@ -6,8 +6,8 @@ import { shortenText } from '../utils/shorten-text';
 const transformData = ( { node }, index ) => ( {
 	index,
 	id: node.nid,
-	imageUrl: node.image_url,
-	imageAltText: node.image_url,
+	headerImageUrl: node.image_url,
+	headerImageAltText: node.title,
 	title: shortenText( node.title, 80 ),
 	excerpt: shortenText( node?.clas_teaser, 140 ),
 	date: format(
