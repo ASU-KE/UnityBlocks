@@ -7,9 +7,11 @@ import {
 	PanelBody,
 	PanelRow,
 	RadioControl,
+	CustomSelectControl,
 	TextControl,
 	ToggleControl,
 } from '@wordpress/components';
+import { useFetchWpRestTaxonomy } from '../../utils/hooks/use-fetch-wp-rest-taxonomy';
 
 /**
  * Inspector controls
@@ -44,6 +46,39 @@ const Inspector = ( props ) => {
 		},
 		setAttributes,
 	} = props;
+
+	// Fetch College/Unit tags via WP-REST.
+	const {
+		payload: unitsPayload,
+		loading: unitsLoading,
+		error: unitsError,
+	} = useFetchWpRestTaxonomy( keDataSourceUrl, 'college_unit' );
+
+	const units = unitsPayload;
+	// console.error( units.data );
+	units.data?.unshift( { key: '', name: '--All units--' } );
+
+	// Fetch Interest tags via WP-REST.
+	const {
+		payload: interestsPayload,
+		loading: interestsLoading,
+		error: interestsError,
+	} = useFetchWpRestTaxonomy( keDataSourceUrl, 'interest' );
+
+	const interests = interestsPayload;
+	// console.error( interests.data );
+	interests.data?.unshift( { key: '', name: '--All interests--' } );
+
+	// Fetch Locations tags via WP-REST.
+	const {
+		payload: locationsPayload,
+		loading: locationsLoading,
+		error: locationsError,
+	} = useFetchWpRestTaxonomy( keDataSourceUrl, 'location' );
+
+	const locations = locationsPayload;
+	// console.error( locations.data );
+	locations.data?.unshift( { key: '', name: '--All locations--' } );
 
 	return (
 		<>
@@ -398,47 +433,71 @@ const Inspector = ( props ) => {
 								/>
 							</PanelRow>
 							<PanelRow>
-								<TextControl
-									label={ 'Filter Colleges/Units' }
-									help={
-										'Enter the machine-names for all desired colleges or units to include in results, separated by spaces.'
-									}
-									value={ keDataSourceUnits }
-									onChange={ ( newValue ) =>
-										setAttributes( {
-											keDataSourceUnits: newValue,
+								<CustomSelectControl
+									// multiple
+									label={ __( 'Filter Colleges/Units' ) }
+									options={ units?.data?.map(
+										( { id, name } ) => ( {
+											key: id,
+											name,
 										} )
-									}
+									) }
+									onChange={ ( newValue ) => {
+										console.error(
+											newValue.selectedItem.key
+										);
+
+										return setAttributes( {
+											keDataSourceUnits:
+												newValue.selectedItem.key,
+										} );
+									} }
 								/>
 							</PanelRow>
 							<PanelRow>
-								<TextControl
-									label={ 'Filter Interests' }
-									help={
-										'Enter the machine-names for all desired topics/interests to include in results, separated by spaces.'
-									}
-									value={ keDataSourceInterests }
-									onChange={ ( newValue ) =>
-										setAttributes( {
-											keDataSourceInterests: newValue,
+								<CustomSelectControl
+									// multiple
+									label={ __( 'Filter Interests' ) }
+									options={ interests?.data?.map(
+										( { id, name } ) => ( {
+											key: id,
+											name,
+											style: { fontSize: '100%' },
 										} )
-									}
+									) }
+									onChange={ ( newValue ) => {
+										console.error(
+											newValue.selectedItem.key
+										);
+
+										return setAttributes( {
+											keDataSourceInterests:
+												newValue.selectedItem.key,
+										} );
+									} }
 								/>
 							</PanelRow>
-							<PanelRow>
-								<TextControl
-									label={ 'Filter Locations' }
-									help={
-										'Enter the machine-names for all desired locations/campuses to include in results, separated by spaces.'
-									}
-									value={ keDataSourceLocations }
-									onChange={ ( newValue ) =>
-										setAttributes( {
-											keDataSourceLocations: newValue,
+							{ /* <PanelRow>
+								<CustomSelectControl
+									// multiple
+									label={ __( 'Filter Locations' ) }
+									options={ locations?.data?.map(
+										( { id, name } ) => ( {
+											key: id,
+											name,
+											style: { fontSize: '100%' },
 										} )
-									}
+									) }
+									onChange={ ( newValue ) => {
+										console.error( newValue.selectedItem );
+
+										return setAttributes( {
+											keDataSourceLocations:
+												newValue.selectedItem,
+										} );
+									} }
 								/>
-							</PanelRow>
+							</PanelRow> */ }
 						</>
 					) }
 				</PanelBody>
