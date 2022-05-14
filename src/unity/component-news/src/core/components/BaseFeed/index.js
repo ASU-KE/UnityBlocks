@@ -113,6 +113,8 @@ const BaseFeed = ( {
 			/>
 		);
 	}
+
+	return null;
 };
 
 // BaseFeed.propTypes = {
