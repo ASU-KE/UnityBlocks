@@ -49,17 +49,17 @@ const gridRow = (
 			clickable={ false }
 			title={ story.title }
 			body={ storyBody( story, enableStoryAuthor, enableStoryDate ) }
-			image={ story.imageUrl }
+			image={ story.headerImageUrl }
 			imageAltText={ story.title }
-			linkLabel={ 'Read story' }
-			linkUrl={ story.buttonLink }
+			linkLabel={ 'Read' }
+			linkUrl={ story.storyLink }
 			// buttons={ [
 			// 	{
 			// 		ariaLabel: cardButton.text,
 			// 		color: cardButton.color,
 			// 		label: cardButton.text,
 			// 		size: cardButton.size,
-			// 		href: story.buttonLink,
+			// 		href: story.storyLink,
 			// 	},
 			// ] }
 			tags={ enableCardTags ? parseInterests( story?.interests ) : null }

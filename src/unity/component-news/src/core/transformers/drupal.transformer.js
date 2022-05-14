@@ -9,12 +9,12 @@ const transformData = ( { node }, index ) => ( {
 	imageUrl: node.image_url,
 	imageAltText: node.image_url,
 	title: shortenText( node.title, 80 ),
-	content: shortenText( node?.clas_teaser, 140 ),
+	excerpt: shortenText( node?.clas_teaser, 140 ),
 	date: format(
 		parse( node.post_date, 'MM/dd/yyyy-h:mmaa', new Date() ),
 		'MMM d, yyyy'
 	),
-	buttonLink: node.path,
+	storyLink: node.path,
 	interests: node.interests,
 	newsUnits: node.news_units,
 	eventTypes: node.event_types,

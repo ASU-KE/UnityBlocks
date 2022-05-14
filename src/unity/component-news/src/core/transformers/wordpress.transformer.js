@@ -5,15 +5,15 @@ import { shortenText } from '../utils/shorten-text';
 // Transformer data function provided to the high order component
 const transformData = ( post ) => ( {
 	id: post.id,
-	headerImageUrl: post.uds_story_hero.background_image.url,
+	headerImageUrl: post.uds_story_hero.background_image?.sizes?.medium,
 	featuredImageUrl:
-		post.uds_featured_image.media_details.sizes.medium.source_url,
-	featuredImageAltText: post.uds_featured_image.alt_text,
+		post.uds_featured_image?.media_details.sizes.medium.source_url,
+	featuredImageAltText: post.uds_featured_image?.alt_text,
 	title: shortenText( post.title.rendered, 80 ),
 	content: post.content.rendered,
 	excerpt: post.excerpt.rendered,
 	date: format( parseISO( post.date ), 'MMM d, yyyy' ),
-	buttonLink: post.slug,
+	storyLink: `/news/story/${ post.slug }`,
 	interests: post.interest,
 	newsUnits: post.college_unit,
 	author: {
