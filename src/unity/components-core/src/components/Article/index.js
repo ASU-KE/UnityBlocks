@@ -150,13 +150,13 @@ export const Article = ( {
 							/>
 						</TwitterShareButton>
 						{ /* @ts-ignore */ }
-						<EmailShareButton url={ authorEmail } quote={ title }>
+						{ /* <EmailShareButton url={ author.email } quote={ title }>
 							<EmailIcon
 								size={ 28 }
 								borderRadius={ 4 }
 								bgStyle={ { fill: 'maroon' } }
 							/>
-						</EmailShareButton>
+						</EmailShareButton> */ }
 						{ /* @ts-ignore */ }
 						<LinkedinShareButton url={ articleUrl } quote={ title }>
 							<LinkedinIcon
