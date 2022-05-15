@@ -7,7 +7,7 @@ import {
 	PanelBody,
 	PanelRow,
 	RadioControl,
-	CustomSelectControl,
+	SelectControl,
 	TextControl,
 	ToggleControl,
 } from '@wordpress/components';
@@ -56,7 +56,7 @@ const Inspector = ( props ) => {
 
 	const units = unitsPayload;
 	// console.error( units.data );
-	units.data?.unshift( { key: '', name: '--All units--' } );
+	// units.data?.unshift( { key: '', name: '--All units--' } );
 
 	// Fetch Interest tags via WP-REST.
 	const {
@@ -67,7 +67,7 @@ const Inspector = ( props ) => {
 
 	const interests = interestsPayload;
 	// console.error( interests.data );
-	interests.data?.unshift( { key: '', name: '--All interests--' } );
+	// interests.data?.unshift( { key: '', name: '--All interests--' } );
 
 	// Fetch Locations tags via WP-REST.
 	const {
@@ -78,7 +78,7 @@ const Inspector = ( props ) => {
 
 	const locations = locationsPayload;
 	// console.error( locations.data );
-	locations.data?.unshift( { key: '', name: '--All locations--' } );
+	// locations.data?.unshift( { key: '', name: '--All locations--' } );
 
 	return (
 		<>
@@ -433,71 +433,57 @@ const Inspector = ( props ) => {
 								/>
 							</PanelRow>
 							<PanelRow>
-								<CustomSelectControl
-									// multiple
+								<SelectControl
+									multiple
 									label={ __( 'Filter Colleges/Units' ) }
+									// value={ keDataSourceUnits }
 									options={ units?.data?.map(
 										( { id, name } ) => ( {
-											key: id,
-											name,
+											value: id,
+											label: name,
 										} )
 									) }
 									onChange={ ( newValue ) => {
-										console.error(
-											newValue.selectedItem.key
-										);
-
 										return setAttributes( {
-											keDataSourceUnits:
-												newValue.selectedItem.key,
+											keDataSourceUnits: newValue,
 										} );
 									} }
 								/>
 							</PanelRow>
 							<PanelRow>
-								<CustomSelectControl
-									// multiple
+								<SelectControl
+									multiple
 									label={ __( 'Filter Interests' ) }
 									options={ interests?.data?.map(
 										( { id, name } ) => ( {
-											key: id,
-											name,
-											style: { fontSize: '100%' },
+											value: id,
+											label: name,
 										} )
 									) }
 									onChange={ ( newValue ) => {
-										console.error(
-											newValue.selectedItem.key
-										);
-
 										return setAttributes( {
-											keDataSourceInterests:
-												newValue.selectedItem.key,
+											keDataSourceInterests: newValue,
 										} );
 									} }
 								/>
 							</PanelRow>
-							{ /* <PanelRow>
-								<CustomSelectControl
-									// multiple
+							<PanelRow>
+								<SelectControl
+									multiple
 									label={ __( 'Filter Locations' ) }
 									options={ locations?.data?.map(
 										( { id, name } ) => ( {
-											key: id,
-											name,
-											style: { fontSize: '100%' },
+											value: id,
+											label: name,
 										} )
 									) }
 									onChange={ ( newValue ) => {
-										console.error( newValue.selectedItem );
-
 										return setAttributes( {
-											keDataSourceLocations:
-												newValue.selectedItem,
+											keDataSourceLocations: newValue,
 										} );
 									} }
 								/>
-							</PanelRow> */ }
+							</PanelRow>
 						</>
 					) }
 				</PanelBody>
