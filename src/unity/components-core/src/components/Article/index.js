@@ -12,7 +12,7 @@ import {
 	TwitterIcon,
 	TwitterShareButton,
 } from 'react-share';
-import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
+// import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
 
 import { sanitizeDangerousMarkup } from '../../core/utils/html-utils';
 import { Button } from '../Button';
@@ -33,7 +33,7 @@ export const Article = ( {
 	title,
 	body,
 	author,
-	breadcrumbs,
+	// breadcrumbs,
 	calendarUrl,
 	eventLocation,
 	eventTime,
