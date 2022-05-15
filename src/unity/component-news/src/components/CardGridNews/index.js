@@ -19,7 +19,7 @@ import { NewsWrapper } from './index.styles';
  */
 const storyBody = ( story, enableStoryAuthor, enableStoryDate ) => {
 	if ( enableStoryDate ) {
-		return enableStoryAuthor && story.author
+		return enableStoryAuthor && story.author?.name
 			? `<p><b>${ story.date } - ${ story.author.name }</b></p><p class="card-text text-dark">${ story.excerpt }</p>`
 			: `<p><b>${ story.date }</b></p><p class="card-text text-dark">${ story.excerpt }</p>`;
 	}

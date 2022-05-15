@@ -18,6 +18,13 @@ const transformData = ( { node }, index ) => ( {
 	interests: node.interests,
 	newsUnits: node.news_units,
 	eventTypes: node.event_types,
+	author: {
+		name: node[ 'contributor-contact-information-name' ],
+		title: node[ 'contributor-contact-information-title' ],
+		// affiliation: node[ 'contributor-contact-information-affiliation' ],
+		email: node[ 'contributor-contact-information-e-mail' ],
+		phone: node[ 'contributor-contact-information-phone_number' ],
+	},
 } );
 
 export { transformData };

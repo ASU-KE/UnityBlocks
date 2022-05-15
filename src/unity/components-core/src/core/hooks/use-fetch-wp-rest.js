@@ -3,9 +3,9 @@
 import useSWR from 'swr';
 
 const fetcher = async ( url, filters, pagination ) => {
-	const units = filters.units ? filters.units.split( ' ' ) : [];
-	const interests = filters.interests ? filters.interests.split( ' ' ) : [];
-	const locations = filters.locations ? filters.locations.split( ' ' ) : [];
+	const units = filters.units ?? [];
+	const interests = filters.interests ?? [];
+	const locations = filters.locations ?? [];
 
 	const page = 1;
 	const perPage = 10;

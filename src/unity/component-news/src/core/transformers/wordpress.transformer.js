@@ -17,10 +17,11 @@ const transformData = ( post ) => ( {
 	interests: post.interest,
 	newsUnits: post.college_unit,
 	author: {
-		name: post.uds_news_author.name,
-		title: post.uds_news_author.title,
-		email: post.uds_news_author.email,
-		phone: post.uds_news_author.phone,
+		name: post.uds_news_author?.name,
+		title: post.uds_news_author?.title,
+		// affiliation: post.uds_news_author?.affiliation,
+		email: post.uds_news_author?.email,
+		phone: post.uds_news_author?.phone,
 	},
 } );
 
