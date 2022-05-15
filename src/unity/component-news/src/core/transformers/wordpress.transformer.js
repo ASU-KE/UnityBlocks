@@ -10,6 +10,7 @@ const transformData = ( post ) => ( {
 		post.uds_featured_image?.media_details.sizes.medium.source_url,
 	featuredImageAltText: post.uds_featured_image?.alt_text,
 	title: shortenText( post.title.rendered, 80 ),
+	slug: post.slug,
 	content: post.content.rendered,
 	excerpt: post.excerpt.rendered,
 	date: format( parseISO( post.date ), 'MMM d, yyyy' ),
