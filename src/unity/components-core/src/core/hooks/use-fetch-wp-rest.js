@@ -18,27 +18,36 @@ const fetcher = async ( url, filters, pagination ) => {
 	let params = '';
 
 	if ( units.length ) {
-		params = units.reduce(
+		let unitParams = '';
+		unitParams = units.reduce(
 			( accumulator, currentValue ) =>
-				`${ accumulator }&college_unit=${ currentValue }`,
-			params
+				`${ accumulator },${ currentValue }`,
+			unitParams
 		);
+		// trim leading ',' from our params string and store full parameters string
+		params += `&college_unit=${ unitParams.substring( 1 ) }`;
 	}
 
 	if ( interests.length ) {
-		params = interests.reduce(
+		let interestParams = '';
+		interestParams = interests.reduce(
 			( accumulator, currentValue ) =>
-				`${ accumulator }&interest=${ currentValue }`,
-			params
+				`${ accumulator },${ currentValue }`,
+			interestParams
 		);
+		// trim leading ',' from our params string and store full parameters string
+		params += `&interest=${ interestParams.substring( 1 ) }`;
 	}
 
 	if ( locations.length ) {
-		params = locations.reduce(
+		let locationParams = '';
+		locationParams = locations.reduce(
 			( accumulator, currentValue ) =>
-				`${ accumulator }&location=${ currentValue }`,
-			params
+				`${ accumulator },${ currentValue }`,
+			locationParams
 		);
+		// trim leading ',' from our params string and store full parameters string
+		params += `&location=${ locationParams.substring( 1 ) }`;
 	}
 
 	// trim leading '&' from our params string
