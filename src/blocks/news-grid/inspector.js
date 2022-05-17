@@ -436,7 +436,7 @@ const Inspector = ( props ) => {
 								<SelectControl
 									multiple
 									label={ __( 'Filter Colleges/Units' ) }
-									// value={ keDataSourceUnits }
+									value={ keDataSourceUnits }
 									options={ units?.data?.map(
 										( { id, name } ) => ( {
 											value: id,
@@ -454,6 +454,7 @@ const Inspector = ( props ) => {
 								<SelectControl
 									multiple
 									label={ __( 'Filter Interests' ) }
+									value={ keDataSourceInterests }
 									options={ interests?.data?.map(
 										( { id, name } ) => ( {
 											value: id,
@@ -471,6 +472,7 @@ const Inspector = ( props ) => {
 								<SelectControl
 									multiple
 									label={ __( 'Filter Locations' ) }
+									value={ keDataSourceLocations }
 									options={ locations?.data?.map(
 										( { id, name } ) => ( {
 											value: id,

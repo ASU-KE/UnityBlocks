@@ -61,9 +61,9 @@ const save = ( props ) => {
 	};
 
 	const keSourceFilters = {
-		units: keDataSourceUnits ? keDataSourceUnits : '',
-		interests: keDataSourceInterests ? keDataSourceInterests : '',
-		locations: keDataSourceLocations ? keDataSourceLocations : '',
+		units: keDataSourceUnits,
+		interests: keDataSourceInterests,
+		locations: keDataSourceLocations,
 	};
 
 	// const keSourcePagination = {

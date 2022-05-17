@@ -93,16 +93,16 @@
       "default": "https://ke.news.prod.rtd.asu.edu/wp-json/wp/v2/"
     },
     "keDataSourceUnits": {
-      "type": "string",
-      "default": ""
+      "type": "array",
+      "default": []
     },
     "keDataSourceInterests": {
-      "type": "string",
-      "default": ""
+      "type": "array",
+      "default": []
     },
     "keDataSourceLocations": {
-      "type": "string",
-      "default": ""
+      "type": "array",
+      "default": []
     },
     "maxItems": {
       "type": "number",
