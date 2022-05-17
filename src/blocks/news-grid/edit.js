@@ -35,6 +35,7 @@ const Edit = ( props ) => {
 			asuDataSourceFilters,
 			enableKeDataSource,
 			keDataSourceUrl,
+			keStoryBasePath,
 			keDataSourceUnits,
 			keDataSourceInterests,
 			keDataSourceLocations,
@@ -87,6 +88,7 @@ const Edit = ( props ) => {
 	const keDataSource = enableKeDataSource
 		? {
 				url: keDataSourceUrl,
+				storyBasePath: keStoryBasePath,
 				filters: keSourceFilters,
 				// pagination: keSourcePagination
 		  }

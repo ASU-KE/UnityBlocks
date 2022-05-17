@@ -39,6 +39,7 @@ const Inspector = ( props ) => {
 			// asuDataSourceFilters,
 			enableKeDataSource,
 			keDataSourceUrl,
+			keStoryBasePath,
 			keDataSourceUnits,
 			keDataSourceInterests,
 			keDataSourceLocations,
@@ -420,7 +421,6 @@ const Inspector = ( props ) => {
 					</PanelRow>
 					{ enableKeDataSource && (
 						<>
-							{ ' ' }
 							<PanelRow>
 								<TextControl
 									label={ 'KE API Endpoint Url' }
@@ -428,6 +428,18 @@ const Inspector = ( props ) => {
 									onChange={ ( newValue ) =>
 										setAttributes( {
 											keDataSourceUrl: newValue,
+										} )
+									}
+								/>
+							</PanelRow>
+							<PanelRow>
+								<TextControl
+									label={ 'Story base path' }
+									help={ 'No leading or trailing slashes' }
+									value={ keStoryBasePath }
+									onChange={ ( newValue ) =>
+										setAttributes( {
+											keStoryBasePath: newValue,
 										} )
 									}
 								/>

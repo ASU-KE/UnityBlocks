@@ -48,6 +48,12 @@ const KeEventsContainerProvider = ( {
 			dataTransformer
 		);
 
+		// remap story link with base application path
+		transformedData.map(
+			( story ) =>
+				( story.storyLink = `${ dataSource.storyBasePath }${ story.storyLink }` )
+		);
+
 		events = maxItems
 			? transformedData?.slice( 0, maxItems )
 			: transformedData;

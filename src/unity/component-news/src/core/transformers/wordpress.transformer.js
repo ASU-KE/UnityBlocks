@@ -14,7 +14,7 @@ const transformData = ( post ) => ( {
 	content: post.content.rendered,
 	excerpt: post.excerpt.rendered,
 	date: format( parseISO( post.date ), 'MMM d, yyyy' ),
-	storyLink: `/news/story/${ post.slug }`,
+	storyLink: `/${ post.slug }`,
 	interests: post.interest,
 	newsUnits: post.college_unit,
 	author: {

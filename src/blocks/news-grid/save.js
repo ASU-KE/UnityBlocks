@@ -24,6 +24,7 @@ const save = ( props ) => {
 			asuDataSourceFilters,
 			enableKeDataSource,
 			keDataSourceUrl,
+			keStoryBasePath,
 			keDataSourceUnits,
 			keDataSourceInterests,
 			keDataSourceLocations,
@@ -75,6 +76,7 @@ const save = ( props ) => {
 
 	const keDataSource = {
 		url: keDataSourceUrl,
+		storyBasePath: keStoryBasePath,
 		filters: keSourceFilters,
 		// pagination: keSourcePagination
 	};

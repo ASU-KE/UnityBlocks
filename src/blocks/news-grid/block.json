@@ -92,6 +92,10 @@
       "type": "string",
       "default": "https://ke.news.prod.rtd.asu.edu/wp-json/wp/v2/"
     },
+    "keStoryBasePath": {
+      "type": "string",
+      "default": "news/story"
+    },
     "keDataSourceUnits": {
       "type": "array",
       "default": []
