@@ -115,6 +115,7 @@ const fetcher = async ( url, filters, pagination ) => {
 /**
  *  @typedef {Object} WpFetchPayload
  *  @property {Object} [data]
+ *  @property {string} [storyBasePath]
  *  @property {number} [totalPages]
  */
 
@@ -122,12 +123,15 @@ const fetcher = async ( url, filters, pagination ) => {
  * @template T
  * @returns {FetchResponse<T>}
  */
-const useFetchWpRest = ( url, filters ) => {
+const useFetchWpRest = ( url, storyBasePath, filters ) => {
 	const { data: response, error } = useSWR( [ url, filters ], fetcher );
 
 	return {
 		payload: {
-			data: response?.data,
+			data: response?.data.map( ( story ) => ( {
+				...story,
+				storyLink: `https://${ document.location.host }/${ storyBasePath }/${ story.slug }/`,
+			} ) ),
 			totalPages: response?.totalPages,
 		},
 		loading: ! error && ! response?.data,

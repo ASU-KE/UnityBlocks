@@ -39,6 +39,7 @@ const KeNewsContainerProvider = ( {
 		error: wpError,
 	} = useFetchWpRest(
 		wpDataSource.url,
+		wpDataSource.storyBasePath,
 		wpDataSource.filters
 		// wpDataSource.pagination
 	);

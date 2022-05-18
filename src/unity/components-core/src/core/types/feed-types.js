@@ -29,6 +29,7 @@
 /**
  * @typedef {Object} WpRestDataSource
  * @property {string} [url]
+ * @property {string} [storyBasePath]
  * @property {WpRestDataFilters} [filters]
  * @property {WpRestDataPagination} [pagination]
  */
