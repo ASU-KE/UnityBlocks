@@ -25,9 +25,11 @@ const Inspector = ( props ) => {
 			ctaText,
 			ctaUrl,
 			ctaColor,
-			dataSourceUrl,
+			dataSourceType,
+			dataSourceAsuUrl,
+			dataSourceKeUrl,
 			dataSourceFeed,
-			dataSourceFilters,
+			dataSourceFilterUnits,
 			maxItems,
 		},
 		setAttributes,
@@ -42,7 +44,6 @@ const Inspector = ( props ) => {
 				>
 					<PanelRow>
 						<ToggleControl
-							className="eventsgrid__header-toggle"
 							label={ 'Enable Header' }
 							help={
 								enableHeader
@@ -50,8 +51,8 @@ const Inspector = ( props ) => {
 									: 'Header disabled.'
 							}
 							checked={ enableHeader }
-							onChange={ ( enableHeader ) => {
-								setAttributes( { enableHeader } );
+							onChange={ ( value ) => {
+								setAttributes( { enableHeader: value } );
 							} }
 						/>
 					</PanelRow>
@@ -59,11 +60,10 @@ const Inspector = ( props ) => {
 						<>
 							<PanelRow>
 								<TextControl
-									className="eventsgrid__header-text"
 									label={ 'Header text' }
 									value={ headerText }
-									onChange={ ( headerText ) =>
-										setAttributes( { headerText } )
+									onChange={ ( value ) =>
+										setAttributes( { headerText: value } )
 									}
 								/>
 							</PanelRow>
@@ -84,8 +84,8 @@ const Inspector = ( props ) => {
 											value: 'dark',
 										},
 									] }
-									onChange={ ( headerColor ) =>
-										setAttributes( { headerColor } )
+									onChange={ ( value ) =>
+										setAttributes( { headerColor: value } )
 									}
 								/>
 							</PanelRow>
@@ -100,12 +100,11 @@ const Inspector = ( props ) => {
 					>
 						<PanelRow>
 							<TextControl
-								className="eventsgrid__cardbutton-text"
 								label={ 'CTA text' }
 								placeholder="Click to see more events"
 								value={ ctaText }
-								onChange={ ( ctaText ) =>
-									setAttributes( { ctaText } )
+								onChange={ ( value ) =>
+									setAttributes( { ctaText: value } )
 								}
 							/>
 						</PanelRow>
@@ -114,8 +113,8 @@ const Inspector = ( props ) => {
 								className="eventsgrid__cardbutton-url"
 								label={ 'CTA URL' }
 								value={ ctaUrl }
-								onChange={ ( ctaUrl ) =>
-									setAttributes( { ctaUrl } )
+								onChange={ ( value ) =>
+									setAttributes( { ctaUrl: value } )
 								}
 							/>
 						</PanelRow>
@@ -144,10 +143,8 @@ const Inspector = ( props ) => {
 										value: 'dark',
 									},
 								] }
-								onChange={ ( ctaColor ) =>
-									setAttributes( {
-										ctaColor,
-									} )
+								onChange={ ( value ) =>
+									setAttributes( { ctaColor: value } )
 								}
 							/>
 						</PanelRow>
@@ -157,15 +154,14 @@ const Inspector = ( props ) => {
 				<PanelBody>
 					<PanelRow>
 						<TextControl
-							className="eventsgrid__maxitems-value"
 							label={ 'Max items to load' }
 							help={
 								"Changing this value doesn't update the Edit view immediately. Update and reload to refresh the editor."
 							}
 							value={ maxItems }
-							onChange={ ( maxItems ) =>
+							onChange={ ( value ) =>
 								setAttributes( {
-									maxItems: Number( maxItems ), // Force attribute to number because this input field returns value as string.
+									maxItems: Number( value ), // Force attribute to number because this input field returns value as string.
 								} )
 							}
 						/>
@@ -177,47 +173,85 @@ const Inspector = ( props ) => {
 					initialOpen={ false }
 				>
 					<PanelRow>
-						<TextControl
-							className="eventsgrid__datasource-url"
-							label={ 'Url' }
-							help={
-								'Data source url requires the provided proxy.'
-							}
-							value={ dataSourceUrl }
-							onChange={ ( dataSourceUrl ) =>
-								setAttributes( { dataSourceUrl } )
-							}
-						/>
-					</PanelRow>
-					<PanelRow>
-						<TextControl
-							className="eventsgrid__datasource-feed"
-							label={ 'Base feed machine name' }
-							help={
-								'Enter the single taxonomy machine name to select the base events feed. For the master list of available events feeds, refer to: https://asuevents.asu.edu/reports/taxonomy-terms'
-							}
-							value={ dataSourceFeed }
-							onChange={ ( dataSourceFeed ) =>
-								setAttributes( { dataSourceFeed } )
+						<RadioControl
+							label={ __( 'Source type', 'unityblocks' ) }
+							selected={ dataSourceType }
+							options={ [
+								{
+									label: __( 'ASU Events', 'unityblocks' ),
+									value: 'asuDrupal',
+								},
+								{
+									label: __( 'KE Events', 'unityblocks' ),
+									value: 'keGraphql',
+								},
+							] }
+							onChange={ ( value ) =>
+								setAttributes( { dataSourceType: value } )
 							}
 						/>
 					</PanelRow>
-					<PanelRow>
-						<TextControl
-							className="eventsgrid__datasource-filters"
-							label={ 'Filters' }
-							help={
-								'Enter optional taxonomy terms, comma delimited.'
-							}
-							placeholder={
-								'nursing_and_health_care,School of Mathematical and Natural Sciences,Student'
-							}
-							value={ dataSourceFilters }
-							onChange={ ( dataSourceFilters ) =>
-								setAttributes( { dataSourceFilters } )
-							}
-						/>
-					</PanelRow>
+					{ dataSourceType === 'asuDrupal' && (
+						<>
+							<PanelRow>
+								<TextControl
+									label={ 'Url' }
+									help={
+										'Data source url requires the provided proxy.'
+									}
+									value={ dataSourceAsuUrl }
+									onChange={ ( value ) =>
+										setAttributes( {
+											dataSourceAsuUrl: value,
+										} )
+									}
+								/>
+							</PanelRow>
+							<PanelRow>
+								<TextControl
+									label={ 'Base feed machine name' }
+									help={
+										'Enter the single taxonomy machine name to select the base events feed. For the master list of available events feeds, refer to: https://asuevents.asu.edu/reports/taxonomy-terms'
+									}
+									value={ dataSourceFeed }
+									onChange={ ( value ) =>
+										setAttributes( {
+											dataSourceFeed: value,
+										} )
+									}
+								/>
+							</PanelRow>
+						</>
+					) }
+					{ dataSourceType === 'keGraphql' && (
+						<>
+							<PanelRow>
+								<TextControl
+									label={ 'Url' }
+									value={ dataSourceKeUrl }
+									onChange={ ( value ) =>
+										setAttributes( {
+											dataSourceKeUrl: value,
+										} )
+									}
+								/>
+							</PanelRow>
+							<PanelRow>
+								<TextControl
+									label={ 'Categories' }
+									help={
+										'Enter events categories, space delimited.'
+									}
+									value={ dataSourceFilterUnits }
+									onChange={ ( value ) =>
+										setAttributes( {
+											dataSourceFilterUnits: value,
+										} )
+									}
+								/>
+							</PanelRow>
+						</>
+					) }
 				</PanelBody>
 			</InspectorControls>
 		</>

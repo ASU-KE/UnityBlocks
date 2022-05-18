@@ -12,9 +12,11 @@ const save = ( props ) => {
 			ctaText,
 			ctaUrl,
 			ctaColor,
-			dataSourceUrl,
+			dataSourceType,
+			dataSourceAsuUrl,
+			dataSourceKeUrl,
 			dataSourceFeed,
-			dataSourceFilters,
+			dataSourceFilterUnits,
 			maxItems,
 		},
 		className,
@@ -35,10 +37,22 @@ const save = ( props ) => {
 		  } )
 		: null;
 
-	const dataSource = JSON.stringify( {
-		url: dataSourceUrl + dataSourceFeed,
-		filters: dataSourceFilters,
-	} );
+	let dataSource;
+	if ( dataSourceType === 'asuDrupal' ) {
+		dataSource = JSON.stringify( {
+			type: 'asuDrupal',
+			url: dataSourceAsuUrl + dataSourceFeed,
+			// filters: dataSourceFilterUnits,
+		} );
+	} else {
+		dataSource = JSON.stringify( {
+			type: 'keGraphql',
+			url: dataSourceKeUrl,
+			filters: {
+				categories: dataSourceFilterUnits.split( ' ' ),
+			},
+		} );
+	}
 
 	const dataAttributes = {
 		'data-enableheader': enableHeader,

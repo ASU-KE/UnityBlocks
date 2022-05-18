@@ -1,12 +1,11 @@
 /**
  * External dependencies
  */
-import { CardsListEvents } from '@asu-design-system/component-events/dist/asuEvents.es';
+import { CardsListEvents } from '../../unity/component-events/src/components/CardsListEvents';
 
 /**
  * Internal dependencies
  */
-// import Controls from './controls';
 import Inspector from './inspector';
 
 /**
@@ -23,9 +22,11 @@ const Edit = ( props ) => {
 			ctaText,
 			ctaColor,
 			ctaUrl,
-			dataSourceUrl,
+			dataSourceType,
+			dataSourceAsuUrl,
+			dataSourceKeUrl,
 			dataSourceFeed,
-			dataSourceFilters,
+			dataSourceFilterUnits,
 			maxItems,
 		},
 		className,
@@ -46,10 +47,22 @@ const Edit = ( props ) => {
 		  }
 		: null;
 
-	const dataSource = {
-		url: dataSourceUrl + dataSourceFeed,
-		filters: dataSourceFilters,
-	};
+	let dataSource;
+	if ( dataSourceType === 'asuDrupal' ) {
+		dataSource = {
+			type: 'asuDrupal',
+			url: dataSourceAsuUrl + dataSourceFeed,
+			// filters: dataSourceFilterUnits,
+		};
+	} else {
+		dataSource = {
+			type: 'keGraphql',
+			url: dataSourceKeUrl,
+			filters: {
+				categories: dataSourceFilterUnits.split( ' ' ),
+			},
+		};
+	}
 
 	const args = {
 		header,

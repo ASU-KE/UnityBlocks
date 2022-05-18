@@ -56,15 +56,39 @@
       ],
       "default": "default"
     },
-    "dataSourceUrl": {
+    "enableAsuDataSource": {
+      "type": "boolean",
+      "default": true
+    },
+    "asuDataSourceUrl": {
       "type": "string",
       "default": "https://cors.api.rtd.asu.edu/asunow.asu.edu:443/feeds-json/"
     },
-    "dataSourceFeed": {
+    "asuDataSourceFeed": {
       "type": "string",
       "default": ""
     },
-    "dataSourceFilters": {
+    "asuDataSourceFilters": {
+      "type": "string",
+      "default": ""
+    },
+    "enableKeDataSource": {
+      "type": "boolean",
+      "default": false
+    },
+    "keDataSourceUrl": {
+      "type": "string",
+      "default": "https://ke.news.prod.rtd.asu.edu/wp-json/wp/v2/posts?"
+    },
+    "keDataSourceUnits": {
+      "type": "string",
+      "default": ""
+    },
+    "keDataSourceInterests": {
+      "type": "string",
+      "default": ""
+    },
+    "keDataSourceLocations": {
       "type": "string",
       "default": ""
     },
