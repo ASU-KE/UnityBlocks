@@ -73,27 +73,29 @@ export const Article = ( {
 		return (
 			<div className="row pb-2" data-testid="author-info">
 				<div className="col col-12">
-					<div className="author highlight-gold">{ author.name }</div>
-					{ author.title && (
-						<div className="author-title">{ author.title }</div>
+					<div className="author highlight-gold">
+						{ author?.name }
+					</div>
+					{ author?.title && (
+						<div className="author-title">{ author?.title }</div>
 					) }
-					{ author.email && (
+					{ author?.email && (
 						<div className="author-contact">
 							<span className="icon-bg">
 								<i className="fas fa-envelope" />
 							</span>
-							<a href={ `mailto: ${ author.email }` }>
-								{ author.email }
+							<a href={ `mailto: ${ author?.email }` }>
+								{ author?.email }
 							</a>
 						</div>
 					) }
-					{ author.phone && (
+					{ author?.phone && (
 						<div className="author-contact">
 							<span className="icon-bg">
 								<i className="fas fa-phone" />
 							</span>
-							<a href={ `tel: ${ author.phone }` }>
-								{ author.phone }
+							<a href={ `tel: ${ author?.phone }` }>
+								{ author?.phone }
 							</a>
 						</div>
 					) }
@@ -108,29 +110,35 @@ export const Article = ( {
 				className="row row-spaced mt-3 pt-6 pb-2 event-info"
 				data-testid="event-info"
 			>
-				<div className="col col-lg-4 col-md-6 col-12">
-					<h4>For more information contact:</h4>
-					<div className="event-author">{ author.name }</div>
-					<div className="event-author-title">{ author.title }</div>
-					{ ( author.email || author.phone ) && (
-						<div className="event-author-info">
-							{ author.email && (
-								<div>
-									<a href={ `mailto: ${ author.email }` }>
-										{ author.email }
-									</a>
-								</div>
-							) }
-							{ author.phone && (
-								<div>
-									<a href={ `tel: ${ author.phone }` }>
-										{ author.phone }
-									</a>
-								</div>
-							) }
+				{ author && (
+					<div className="col col-lg-4 col-md-6 col-12">
+						<h4>For more information contact:</h4>
+						<div className="event-author">{ author?.name }</div>
+						<div className="event-author-title">
+							{ author?.title }
 						</div>
-					) }
-				</div>
+						{ ( author?.email || author?.phone ) && (
+							<div className="event-author-info">
+								{ author?.email && (
+									<div>
+										<a
+											href={ `mailto: ${ author?.email }` }
+										>
+											{ author?.email }
+										</a>
+									</div>
+								) }
+								{ author?.phone && (
+									<div>
+										<a href={ `tel: ${ author?.phone }` }>
+											{ author?.phone }
+										</a>
+									</div>
+								) }
+							</div>
+						) }
+					</div>
+				) }
 				<div className="col col-lg-4 col-md-6 col-12">
 					<h4>Share this event:</h4>
 					<div className="article-social-media">
@@ -150,7 +158,7 @@ export const Article = ( {
 							/>
 						</TwitterShareButton>
 						{ /* @ts-ignore */ }
-						{ /* <EmailShareButton url={ author.email } quote={ title }>
+						{ /* <EmailShareButton url={ author?.email } quote={ title }>
 							<EmailIcon
 								size={ 28 }
 								borderRadius={ 4 }
@@ -352,7 +360,7 @@ Article.propTypes = {
 	/**
 	 * Date for the article
 	 */
-	publicationDate: PropTypes.string.isRequired,
+	publicationDate: PropTypes.string,
 	/**
 	 * Title
 	 */
