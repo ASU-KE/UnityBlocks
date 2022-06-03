@@ -1,12 +1,12 @@
 /**
  * External dependencies
  */
-import { CardsGridEvents } from '@asu-design-system/component-events/dist/asuEvents.es';
+import { formatISO, startOfToday } from 'date-fns';
+import { CardsGridEvents } from '../../unity/component-events/src/components/CardsGridEvents';
 
 /**
  * Internal dependencies
  */
-// import Controls from './controls';
 import Inspector from './inspector';
 
 /**
@@ -23,9 +23,16 @@ const Edit = ( props ) => {
 			ctaText,
 			ctaColor,
 			ctaUrl,
-			dataSourceUrl,
+			dataSourceType,
+			dataSourceAsuUrl,
+			dataSourceKeUrl,
 			dataSourceFeed,
-			dataSourceFilters,
+			asuFilterUnits,
+			keFilterUnits,
+			keSortEvents,
+			keShowPastEvents,
+			keShowFutureEvents,
+			noResultsText,
 			maxItems,
 		},
 		className,
@@ -46,15 +53,45 @@ const Edit = ( props ) => {
 		  }
 		: null;
 
-	const dataSource = {
-		url: dataSourceUrl + dataSourceFeed,
-		filters: dataSourceFilters,
+	const keFilter = {
+		categorySlugs: keFilterUnits,
 	};
+
+	if ( ! keShowPastEvents ) {
+		keFilter.startAt_gt = formatISO( startOfToday() );
+	}
+
+	if ( ! keShowFutureEvents ) {
+		keFilter.startAt_lt = formatISO( startOfToday() );
+	}
+
+	const keSort = {
+		table: 'event',
+		field: 'startAt',
+		order: keSortEvents,
+	};
+
+	let dataSource;
+	if ( dataSourceType === 'asuDrupal' ) {
+		dataSource = {
+			type: 'asuDrupal',
+			url: dataSourceAsuUrl + dataSourceFeed,
+			filters: asuFilterUnits,
+		};
+	} else {
+		dataSource = {
+			type: 'keGraphql',
+			url: dataSourceKeUrl,
+			filter: keFilter,
+			sort: keSort,
+		};
+	}
 
 	const args = {
 		header,
 		ctaButton,
 		dataSource,
+		noResultsText,
 		maxItems,
 	};
 

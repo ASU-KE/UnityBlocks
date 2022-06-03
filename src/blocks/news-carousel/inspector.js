@@ -28,9 +28,15 @@ const Inspector = ( props ) => {
 			cardButtonText,
 			cardButtonColor,
 			cardButtonSize,
-			dataSourceUrl,
-			dataSourceFeed,
-			dataSourceFilters,
+			enableAsuDataSource,
+			asuDataSourceUrl,
+			asuDataSourceFeed,
+			// asuDataSourceFilters,
+			enableKeDataSource,
+			keDataSourceUrl,
+			keDataSourceUnits,
+			keDataSourceInterests,
+			keDataSourceLocations,
 			maxItems,
 		},
 		setAttributes,
@@ -45,7 +51,6 @@ const Inspector = ( props ) => {
 				>
 					<PanelRow>
 						<ToggleControl
-							className="newscarousel__header-toggle"
 							label={ 'Enable Header' }
 							help={
 								enableHeader
@@ -53,8 +58,8 @@ const Inspector = ( props ) => {
 									: 'Header disabled.'
 							}
 							checked={ enableHeader }
-							onChange={ ( enableHeader ) => {
-								setAttributes( { enableHeader } );
+							onChange={ ( newValue ) => {
+								setAttributes( { enableHeader: newValue } );
 							} }
 						/>
 					</PanelRow>
@@ -62,11 +67,12 @@ const Inspector = ( props ) => {
 						<>
 							<PanelRow>
 								<TextControl
-									className="newscarousel__header-text"
 									label={ 'Header text' }
 									value={ headerText }
-									onChange={ ( headerText ) =>
-										setAttributes( { headerText } )
+									onChange={ ( newValue ) =>
+										setAttributes( {
+											headerText: newValue,
+										} )
 									}
 								/>
 							</PanelRow>
@@ -87,8 +93,10 @@ const Inspector = ( props ) => {
 											value: 'dark',
 										},
 									] }
-									onChange={ ( headerColor ) =>
-										setAttributes( { headerColor } )
+									onChange={ ( newValue ) =>
+										setAttributes( {
+											headerColor: newValue,
+										} )
 									}
 								/>
 							</PanelRow>
@@ -103,21 +111,19 @@ const Inspector = ( props ) => {
 					>
 						<PanelRow>
 							<TextControl
-								className="newscarousel__ctabutton-text"
 								label={ 'CTA text' }
 								value={ ctaText }
-								onChange={ ( ctaText ) =>
-									setAttributes( { ctaText } )
+								onChange={ ( newValue ) =>
+									setAttributes( { ctaText: newValue } )
 								}
 							/>
 						</PanelRow>
 						<PanelRow>
 							<TextControl
-								className="newscarousel__ctabutton-url"
 								label={ 'CTA URL' }
 								value={ ctaUrl }
-								onChange={ ( ctaUrl ) =>
-									setAttributes( { ctaUrl } )
+								onChange={ ( newValue ) =>
+									setAttributes( { ctaUrl: newValue } )
 								}
 							/>
 						</PanelRow>
@@ -146,10 +152,8 @@ const Inspector = ( props ) => {
 										value: 'dark',
 									},
 								] }
-								onChange={ ( ctaColor ) =>
-									setAttributes( {
-										ctaColor,
-									} )
+								onChange={ ( newValue ) =>
+									setAttributes( { ctaColor: newValue } )
 								}
 							/>
 						</PanelRow>
@@ -159,15 +163,14 @@ const Inspector = ( props ) => {
 				<PanelBody>
 					<PanelRow>
 						<TextControl
-							className="newscarousel__maxitems-value"
 							label={ 'Max items to load' }
 							help={
 								"Changing this value doesn't update the Edit view immediately. Update and reload to refresh the editor."
 							}
 							value={ maxItems }
-							onChange={ ( maxItems ) =>
+							onChange={ ( newValue ) =>
 								setAttributes( {
-									maxItems: Number( maxItems ), // Force attribute to number because this input field returns value as string.
+									maxItems: Number( newValue ), // Force attribute to number because this input field returns value as string.
 								} )
 							}
 						/>
@@ -180,11 +183,10 @@ const Inspector = ( props ) => {
 				>
 					<PanelRow>
 						<TextControl
-							className="newscarousel__cardbutton-text"
 							label={ 'Button text' }
 							value={ cardButtonText }
-							onChange={ ( cardButtonText ) =>
-								setAttributes( { cardButtonText } )
+							onChange={ ( newValue ) =>
+								setAttributes( { cardButtonText: newValue } )
 							}
 						/>
 					</PanelRow>
@@ -210,8 +212,8 @@ const Inspector = ( props ) => {
 									value: 'dark',
 								},
 							] }
-							onChange={ ( cardButtonColor ) =>
-								setAttributes( { cardButtonColor } )
+							onChange={ ( newValue ) =>
+								setAttributes( { cardButtonColor: newValue } )
 							}
 						/>
 					</PanelRow>
@@ -237,59 +239,161 @@ const Inspector = ( props ) => {
 									value: 'large',
 								},
 							] }
-							onChange={ ( cardButtonSize ) =>
-								setAttributes( { cardButtonSize } )
+							onChange={ ( newValue ) =>
+								setAttributes( { cardButtonSize: newValue } )
 							}
 						/>
 					</PanelRow>
 				</PanelBody>
 
 				<PanelBody
-					title={ __( 'Data Source', 'unityblocks' ) }
+					title={ __( 'ASU Data Source', 'unityblocks' ) }
 					initialOpen={ false }
 				>
 					<PanelRow>
-						<TextControl
-							className="newscarousel__datasource-url"
-							label={ 'Url' }
+						<ToggleControl
+							label={ 'Enable ASU News' }
 							help={
-								'Data source url requires the provided proxy.'
+								enableAsuDataSource
+									? 'ASU enabled.'
+									: 'ASU disabled.'
 							}
-							value={ dataSourceUrl }
-							onChange={ ( dataSourceUrl ) =>
-								setAttributes( { dataSourceUrl } )
-							}
+							checked={ enableAsuDataSource }
+							onChange={ ( newValue ) => {
+								setAttributes( {
+									enableAsuDataSource: newValue,
+								} );
+							} }
 						/>
 					</PanelRow>
+					{ enableAsuDataSource && (
+						<>
+							{ ' ' }
+							<PanelRow>
+								<TextControl
+									label={ 'ASU Feed Url' }
+									help={
+										'The ASU News Feed url requires the provided proxy.'
+									}
+									value={ asuDataSourceUrl }
+									onChange={ ( newValue ) =>
+										setAttributes( {
+											asuDataSourceUrl: newValue,
+										} )
+									}
+								/>
+							</PanelRow>
+							<PanelRow>
+								<TextControl
+									label={ 'Base feed machine name' }
+									help={
+										'Enter the single taxonomy machine name to select the base news feed. For the master list of available news feeds, refer to: https://news.asu.edu/reports/taxonomy-terms-count'
+									}
+									value={ asuDataSourceFeed }
+									onChange={ ( newValue ) =>
+										setAttributes( {
+											asuDataSourceFeed: newValue,
+										} )
+									}
+								/>
+							</PanelRow>
+							{ /* <PanelRow>
+							<TextControl
+								label={ 'Filters' }
+								help={
+									'Enter optional taxonomy terms, comma delimited.'
+								}
+								placeholder={
+									'nursing_and_health_care,School of Mathematical and Natural Sciences,Student'
+								}
+								value={ asuDataSourceFilters }
+								onChange={ ( newValue ) =>
+									setAttributes( { asuDataSourceFilters: newValue } )
+								}
+							/>
+						</PanelRow> */ }
+						</>
+					) }
+				</PanelBody>
+
+				<PanelBody
+					title={ __( 'KE Data Source', 'unityblocks' ) }
+					initialOpen={ false }
+				>
 					<PanelRow>
-						<TextControl
-							className="newscarousel__datasource-feed"
-							label={ 'Base feed machine name' }
+						<ToggleControl
+							label={ 'Enable KE News' }
 							help={
-								'Enter the single taxonomy machine name to select the base events feed. For the master list of available events feeds, refer to: https://asuevents.asu.edu/reports/taxonomy-terms'
+								enableKeDataSource
+									? 'KE enabled.'
+									: 'KE disabled.'
 							}
-							value={ dataSourceFeed }
-							onChange={ ( dataSourceFeed ) =>
-								setAttributes( { dataSourceFeed } )
-							}
+							checked={ enableKeDataSource }
+							onChange={ ( newValue ) => {
+								setAttributes( {
+									enableKeDataSource: newValue,
+								} );
+							} }
 						/>
 					</PanelRow>
-					<PanelRow>
-						<TextControl
-							className="newscarousel__datasource-filters"
-							label={ 'Filters' }
-							help={
-								'Enter optional taxonomy terms, comma delimited.'
-							}
-							placeholder={
-								'nursing_and_health_care,School of Mathematical and Natural Sciences,Student'
-							}
-							value={ dataSourceFilters }
-							onChange={ ( dataSourceFilters ) =>
-								setAttributes( { dataSourceFilters } )
-							}
-						/>
-					</PanelRow>
+					{ enableKeDataSource && (
+						<>
+							{ ' ' }
+							<PanelRow>
+								<TextControl
+									label={ 'KE API Endpoint Url' }
+									value={ keDataSourceUrl }
+									onChange={ ( newValue ) =>
+										setAttributes( {
+											keDataSourceUrl: newValue,
+										} )
+									}
+								/>
+							</PanelRow>
+							<PanelRow>
+								<TextControl
+									label={ 'Filter Colleges/Units' }
+									help={
+										'Enter the machine-names for all desired colleges or units to include in results, separated by spaces.'
+									}
+									value={ keDataSourceUnits }
+									onChange={ ( newValue ) =>
+										setAttributes( {
+											keDataSourceUnits: newValue,
+										} )
+									}
+								/>
+							</PanelRow>
+							<PanelRow>
+								<TextControl
+									label={ 'Filter Interests' }
+									help={
+										'Enter the machine-names for all desired topics/interests to include in results, separated by spaces.'
+									}
+									value={ keDataSourceInterests }
+									onChange={ ( newValue ) =>
+										setAttributes( {
+											keDataSourceInterests: newValue,
+										} )
+									}
+								/>
+							</PanelRow>
+							<PanelRow>
+								<TextControl
+									label={ 'Filter Locations' }
+									help={
+										'Enter the machine-names for all desired locations/campuses to include in results, separated by spaces.'
+									}
+									value={ keDataSourceLocations }
+									onChange={ ( newValue ) =>
+										setAttributes( {
+											keDataSourceLocations: newValue,
+										} )
+									}
+								/>
+							</PanelRow>
+						</>
+					) }
 				</PanelBody>
 			</InspectorControls>
 		</>

@@ -15,46 +15,78 @@ const save = ( props ) => {
 			cardButtonText,
 			cardButtonColor,
 			cardButtonSize,
-			dataSourceUrl,
-			dataSourceFeed,
-			dataSourceFilters,
+			enableAsuDataSource,
+			asuDataSourceUrl,
+			asuDataSourceFeed,
+			asuDataSourceFilters,
+			enableKeDataSource,
+			keDataSourceUrl,
+			keDataSourceUnits,
+			keDataSourceInterests,
+			keDataSourceLocations,
 			maxItems,
 		},
 		className,
 	} = props;
 
 	const header = enableHeader
-		? JSON.stringify( {
+		? {
 				color: headerColor,
 				text: headerText,
-		  } )
+		  }
 		: null;
 
 	const ctaButton = enableHeader
-		? JSON.stringify( {
+		? {
 				color: ctaColor,
 				text: ctaText,
 				url: ctaUrl,
-		  } )
+		  }
 		: null;
 
-	const cardButton = JSON.stringify( {
+	const cardButton = {
 		color: cardButtonColor,
 		text: cardButtonText,
 		url: cardButtonSize,
-	} );
+	};
 
-	const dataSource = JSON.stringify( {
-		url: dataSourceUrl + dataSourceFeed,
-		filters: dataSourceFilters,
-	} );
+	const asuDataSource = {
+		url: asuDataSourceUrl + asuDataSourceFeed,
+		filters: asuDataSourceFilters,
+	};
+
+	const keSourceFilters = {
+		units: keDataSourceUnits,
+		interests: keDataSourceInterests,
+		locations: keDataSourceLocations,
+	};
+
+	// const keSourcePagination = {
+	// 	page,
+	// 	perPage,
+	//   order,
+	//   orderBy
+	// };
+
+	const keDataSource = {
+		url: keDataSourceUrl,
+		filters: keSourceFilters,
+		// pagination: keSourcePagination
+	};
 
 	const dataAttributes = {
 		'data-enableheader': enableHeader,
-		'data-header': header,
-		'data-ctabutton': ctaButton,
-		'data-cardbutton': cardButton,
-		'data-datasource': dataSource,
+		'data-header': JSON.stringify( header ),
+		'data-ctabutton': JSON.stringify( ctaButton ),
+		'data-cardbutton': JSON.stringify( cardButton ),
+		'data-enableasusource': enableAsuDataSource,
+		'data-enablekesource': enableKeDataSource,
+		'data-asudatasource': enableAsuDataSource
+			? JSON.stringify( asuDataSource )
+			: null,
+		'data-kedatasource': enableKeDataSource
+			? JSON.stringify( keDataSource )
+			: null,
 		'data-maxitems': maxItems,
 	};
 

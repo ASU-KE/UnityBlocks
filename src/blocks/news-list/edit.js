@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import { CardListlNews } from '@asu-design-system/component-news/dist/asuNews.es';
+import { CardListlNews } from '../../unity/component-news/src/components/CardListlNews';
 
 /**
  * Internal dependencies
@@ -26,9 +26,15 @@ const Edit = ( props ) => {
 			cardButtonText,
 			cardButtonColor,
 			cardButtonSize,
-			dataSourceUrl,
-			dataSourceFeed,
-			dataSourceFilters,
+			enableAsuDataSource,
+			asuDataSourceUrl,
+			asuDataSourceFeed,
+			asuDataSourceFilters,
+			enableKeDataSource,
+			keDataSourceUrl,
+			keDataSourceUnits,
+			keDataSourceInterests,
+			keDataSourceLocations,
 			maxItems,
 		},
 		className,
@@ -55,16 +61,40 @@ const Edit = ( props ) => {
 		url: cardButtonSize,
 	};
 
-	const dataSource = {
-		url: dataSourceUrl + dataSourceFeed,
-		filters: dataSourceFilters,
+	const asuDataSource = enableAsuDataSource
+		? {
+				url: asuDataSourceUrl + asuDataSourceFeed,
+				filters: asuDataSourceFilters,
+		  }
+		: null;
+
+	const keSourceFilters = {
+		units: keDataSourceUnits,
+		interests: keDataSourceInterests,
+		locations: keDataSourceLocations,
 	};
+
+	// const keSourcePagination = {
+	// 	page,
+	// 	perPage,
+	//   order,
+	//   orderBy
+	// };
+
+	const keDataSource = enableKeDataSource
+		? {
+				url: keDataSourceUrl,
+				filters: keSourceFilters,
+				// pagination: keSourcePagination
+		  }
+		: null;
 
 	const args = {
 		header,
 		ctaButton,
 		cardButton,
-		dataSource,
+		drupalDataSource: asuDataSource,
+		wpDataSource: keDataSource,
 		maxItems,
 	};
 

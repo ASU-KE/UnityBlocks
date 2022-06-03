@@ -34,17 +34,55 @@
       ],
       "default": "maroon"
     },
-    "dataSourceUrl": {
+    "dataSourceType": {
+      "enum": [
+        "asuDrupal",
+        "keGraphql"
+      ],
+      "default": "keGraphql"
+    },
+    "dataSourceAsuUrl": {
       "type": "string",
       "default": "https://cors.api.rtd.asu.edu/asuevents.asu.edu/feed-json/"
+    },
+    "dataSourceKeUrl": {
+      "type": "string",
+      "default": "https://infonet.api.rtd.asu.edu/graphql/"
+    },
+    "keEventBasePath": {
+      "type": "string",
+      "default": "events/view"
     },
     "dataSourceFeed": {
       "type": "string",
       "default": "online"
     },
-    "dataSourceFilters": {
+    "asuFilterUnits": {
       "type": "string",
       "default": ""
+    },
+    "keFilterUnits": {
+      "type": "array",
+      "default": []
+    },
+    "keSortEvents": {
+      "enum": [
+        "ASC",
+        "DESC"
+      ],
+      "default": "ASC"
+    },
+    "keShowPastEvents": {
+      "type": "boolean",
+      "default": false
+    },
+    "keShowFutureEvents": {
+      "type": "boolean",
+      "default": true
+    },
+    "noResultsText": {
+      "type": "string",
+      "default": "No events found"
     },
     "maxItems": {
       "type": "number",

@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import { CardGridNews } from '@asu-design-system/component-news/dist/asuNews.es';
+import { CardGridNews } from '../../unity/component-news/src/components';
 
 /**
  * Internal dependencies
@@ -26,9 +26,19 @@ const Edit = ( props ) => {
 			cardButtonText,
 			cardButtonColor,
 			cardButtonSize,
-			dataSourceUrl,
-			dataSourceFeed,
-			dataSourceFilters,
+			enableStoryDate,
+			enableStoryAuthor,
+			enableCardTags,
+			enableAsuDataSource,
+			asuDataSourceUrl,
+			asuDataSourceFeed,
+			asuDataSourceFilters,
+			enableKeDataSource,
+			keDataSourceUrl,
+			keStoryBasePath,
+			keDataSourceUnits,
+			keDataSourceInterests,
+			keDataSourceLocations,
 			maxItems,
 		},
 		className,
@@ -55,16 +65,44 @@ const Edit = ( props ) => {
 		url: cardButtonSize,
 	};
 
-	const dataSource = {
-		url: dataSourceUrl + dataSourceFeed,
-		filters: dataSourceFilters,
+	const asuDataSource = enableAsuDataSource
+		? {
+				url: asuDataSourceUrl + asuDataSourceFeed,
+				filters: asuDataSourceFilters,
+		  }
+		: null;
+
+	const keSourceFilters = {
+		units: keDataSourceUnits,
+		interests: keDataSourceInterests,
+		locations: keDataSourceLocations,
 	};
+
+	// const keSourcePagination = {
+	// 	page,
+	// 	perPage,
+	//   order,
+	//   orderBy
+	// };
+
+	const keDataSource = enableKeDataSource
+		? {
+				url: keDataSourceUrl,
+				storyBasePath: keStoryBasePath,
+				filters: keSourceFilters,
+				// pagination: keSourcePagination
+		  }
+		: null;
 
 	const args = {
 		header,
 		ctaButton,
 		cardButton,
-		dataSource,
+		enableStoryDate,
+		enableStoryAuthor,
+		enableCardTags,
+		drupalDataSource: asuDataSource,
+		wpDataSource: keDataSource,
 		maxItems,
 	};
 

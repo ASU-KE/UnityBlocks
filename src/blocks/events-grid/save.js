@@ -2,6 +2,7 @@
  * External dependencies
  */
 import classnames from 'classnames';
+import { formatISO, startOfToday } from 'date-fns';
 
 const save = ( props ) => {
 	const {
@@ -12,9 +13,16 @@ const save = ( props ) => {
 			ctaText,
 			ctaUrl,
 			ctaColor,
-			dataSourceUrl,
+			dataSourceType,
+			dataSourceAsuUrl,
+			dataSourceKeUrl,
 			dataSourceFeed,
-			dataSourceFilters,
+			asuFilterUnits,
+			keFilterUnits,
+			keSortEvents,
+			keShowPastEvents,
+			keShowFutureEvents,
+			noResultsText,
 			maxItems,
 		},
 		className,
@@ -35,16 +43,47 @@ const save = ( props ) => {
 		  } )
 		: null;
 
-	const dataSource = JSON.stringify( {
-		url: dataSourceUrl + dataSourceFeed,
-		filters: dataSourceFilters,
-	} );
+	const keFilter = {
+		categorySlugs: keFilterUnits,
+	};
+
+	if ( ! keShowPastEvents ) {
+		keFilter.startAt_gt = formatISO( startOfToday() );
+	}
+
+	if ( ! keShowFutureEvents ) {
+		keFilter.startAt_lt = formatISO( startOfToday() );
+	}
+
+	const keSort = {
+		table: 'event',
+		field: 'startAt',
+		order: keSortEvents,
+	};
+
+	let dataSource;
+	if ( dataSourceType === 'asuDrupal' ) {
+		dataSource = JSON.stringify( {
+			type: 'asuDrupal',
+			url: dataSourceAsuUrl + dataSourceFeed,
+			filters: asuFilterUnits,
+		} );
+	} else {
+		// console.error( keFilterUnits );
+		dataSource = JSON.stringify( {
+			type: 'keGraphql',
+			url: dataSourceKeUrl,
+			filter: keFilter,
+			sort: keSort,
+		} );
+	}
 
 	const dataAttributes = {
 		'data-enableheader': enableHeader,
 		'data-header': header,
 		'data-ctabutton': ctaButton,
 		'data-datasource': dataSource,
+		'data-noresultstext': noResultsText,
 		'data-maxitems': maxItems,
 	};
 
