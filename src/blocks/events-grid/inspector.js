@@ -36,6 +36,7 @@ const Inspector = ( props ) => {
 			keFilterUnits,
 			keSortEvents,
 			keShowPastEvents,
+			keShowFutureEvents,
 			maxItems,
 		},
 		setAttributes,
@@ -307,6 +308,22 @@ const Inspector = ( props ) => {
 									onChange={ ( value ) => {
 										setAttributes( {
 											keShowPastEvents: value,
+										} );
+									} }
+								/>
+							</PanelRow>
+							<PanelRow>
+								<ToggleControl
+									label={ 'Show future events?' }
+									help={
+										keShowFutureEvents
+											? 'Future events enabled.'
+											: 'Future events disabled.'
+									}
+									checked={ keShowFutureEvents }
+									onChange={ ( value ) => {
+										setAttributes( {
+											keShowFutureEvents: value,
 										} );
 									} }
 								/>

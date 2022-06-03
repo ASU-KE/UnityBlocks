@@ -21,6 +21,7 @@ const save = ( props ) => {
 			keFilterUnits,
 			keSortEvents,
 			keShowPastEvents,
+			keShowFutureEvents,
 			maxItems,
 		},
 		className,
@@ -47,6 +48,10 @@ const save = ( props ) => {
 
 	if ( ! keShowPastEvents ) {
 		keFilter.startAt_gt = formatISO( startOfToday() );
+	}
+
+	if ( ! keShowFutureEvents ) {
+		keFilter.startAt_lt = formatISO( startOfToday() );
 	}
 
 	const keSort = {

@@ -76,6 +76,10 @@
       "type": "boolean",
       "default": false
     },
+    "keShowFutureEvents": {
+      "type": "boolean",
+      "default": true
+    },
     "maxItems": {
       "type": "number",
       "default": 4
