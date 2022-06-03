@@ -1,6 +1,7 @@
 /**
  * External dependencies
  */
+import { formatISO, startOfToday } from 'date-fns';
 import { CardsGridEvents } from '../../unity/component-events/src/components/CardsGridEvents';
 
 /**
@@ -26,7 +27,10 @@ const Edit = ( props ) => {
 			dataSourceAsuUrl,
 			dataSourceKeUrl,
 			dataSourceFeed,
-			dataSourceFilterUnits,
+			asuFilterUnits,
+			keFilterUnits,
+			keSortEvents,
+			keShowPastEvents,
 			maxItems,
 		},
 		className,
@@ -47,20 +51,33 @@ const Edit = ( props ) => {
 		  }
 		: null;
 
+	const keFilter = {
+		categorySlugs: keFilterUnits,
+	};
+
+	if ( ! keShowPastEvents ) {
+		keFilter.startAt_gt = formatISO( startOfToday() );
+	}
+
+	const keSort = {
+		table: 'event',
+		field: 'startAt',
+		order: keSortEvents,
+	};
+
 	let dataSource;
 	if ( dataSourceType === 'asuDrupal' ) {
 		dataSource = {
 			type: 'asuDrupal',
 			url: dataSourceAsuUrl + dataSourceFeed,
-			// filters: dataSourceFilterUnits,
+			filters: asuFilterUnits,
 		};
 	} else {
 		dataSource = {
 			type: 'keGraphql',
 			url: dataSourceKeUrl,
-			filters: {
-				categories: dataSourceFilterUnits.split( ' ' ),
-			},
+			filter: keFilter,
+			sort: keSort,
 		};
 	}
 

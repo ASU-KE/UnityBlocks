@@ -2,6 +2,7 @@
  * External dependencies
  */
 import classnames from 'classnames';
+import { formatISO, startOfToday } from 'date-fns';
 
 const save = ( props ) => {
 	const {
@@ -16,7 +17,10 @@ const save = ( props ) => {
 			dataSourceAsuUrl,
 			dataSourceKeUrl,
 			dataSourceFeed,
-			dataSourceFilterUnits,
+			asuFilterUnits,
+			keFilterUnits,
+			keSortEvents,
+			keShowPastEvents,
 			maxItems,
 		},
 		className,
@@ -37,20 +41,34 @@ const save = ( props ) => {
 		  } )
 		: null;
 
+	const keFilter = {
+		categorySlugs: keFilterUnits,
+	};
+
+	if ( ! keShowPastEvents ) {
+		keFilter.startAt_gt = formatISO( startOfToday() );
+	}
+
+	const keSort = {
+		table: 'event',
+		field: 'startAt',
+		order: keSortEvents,
+	};
+
 	let dataSource;
 	if ( dataSourceType === 'asuDrupal' ) {
 		dataSource = JSON.stringify( {
 			type: 'asuDrupal',
 			url: dataSourceAsuUrl + dataSourceFeed,
-			// filters: dataSourceFilterUnits,
+			filters: asuFilterUnits,
 		} );
 	} else {
+		// console.error( keFilterUnits );
 		dataSource = JSON.stringify( {
 			type: 'keGraphql',
 			url: dataSourceKeUrl,
-			filters: {
-				categories: dataSourceFilterUnits.split( ' ' ),
-			},
+			filter: keFilter,
+			sort: keSort,
 		} );
 	}
 
