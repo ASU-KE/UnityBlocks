@@ -22,6 +22,7 @@ const save = ( props ) => {
 			keSortEvents,
 			keShowPastEvents,
 			keShowFutureEvents,
+			noResultsText,
 			maxItems,
 		},
 		className,
@@ -82,6 +83,7 @@ const save = ( props ) => {
 		'data-header': header,
 		'data-ctabutton': ctaButton,
 		'data-datasource': dataSource,
+		'data-noresultstext': noResultsText,
 		'data-maxitems': maxItems,
 	};
 

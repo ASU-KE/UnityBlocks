@@ -80,6 +80,10 @@
       "type": "boolean",
       "default": true
     },
+    "noResultsText": {
+      "type": "string",
+      "default": "No events found"
+    },
     "maxItems": {
       "type": "number",
       "default": 4

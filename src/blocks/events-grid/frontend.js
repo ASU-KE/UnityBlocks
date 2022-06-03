@@ -9,6 +9,7 @@ const grids = document.querySelectorAll( '.wp-block-unityblocks-events-grid' );
 grids.forEach( ( eventsGrid ) => {
 	const enableHeader = eventsGrid.dataset.enableheader === 'true';
 	const dataSource = JSON.parse( eventsGrid.dataset.datasource );
+	const noResultsText = eventsGrid.dataset.noresultstext;
 	const maxItems = eventsGrid.dataset.maxitems;
 
 	const props = enableHeader
@@ -16,10 +17,12 @@ grids.forEach( ( eventsGrid ) => {
 				header: JSON.parse( eventsGrid.dataset.header ),
 				ctaButton: JSON.parse( eventsGrid.dataset.ctabutton ),
 				dataSource,
+				noResultsText,
 				maxItems,
 		  }
 		: {
 				dataSource,
+				noResultsText,
 				maxItems,
 		  };
 

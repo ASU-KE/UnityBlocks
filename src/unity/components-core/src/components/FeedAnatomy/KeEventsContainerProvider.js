@@ -20,14 +20,14 @@ const Container = styled.section``;
  *  maxItems?: number
  *  dataTransformer?: (data: object) => object
  *  dataFilter?: (data: object, filter: string) => object
- *  noFeedText: string
+ *  noResultsText: string
  * }} props
  * @returns {JSX.Element}
  * @ignore
  */
 const KeEventsContainerProvider = ( {
 	dataSource,
-	noFeedText,
+	noResultsText = 'No events found.',
 	renderHeader,
 	renderBody,
 	dataTransformer = ( item ) => item,
@@ -71,11 +71,7 @@ const KeEventsContainerProvider = ( {
 						) }
 						{ events?.length
 							? renderBody
-							: ! loading && (
-									<p className="text-center">
-										{ noFeedText }
-									</p>
-							  ) }
+							: ! loading && <p>{ noResultsText }</p> }
 					</>
 				) }
 			</Container>
@@ -88,7 +84,7 @@ const KeEventsContainerProvider = ( {
 // 	renderBody: PropTypes.element,
 // 	maxItems: PropTypes.number,
 // 	dataTransformer: PropTypes.func,
-// 	noFeedText: PropTypes.string,
+// 	noResultsText: PropTypes.string,
 // };
 
 export { KeEventsContainerProvider };

@@ -9,6 +9,7 @@ const lists = document.querySelectorAll( '.wp-block-unityblocks-events-list' );
 lists.forEach( ( eventsList ) => {
 	const enableHeader = eventsList.dataset.enableheader === 'true';
 	const dataSource = JSON.parse( eventsList.dataset.datasource );
+	const noResultsText = eventsList.dataset.noresultstext;
 	const maxItems = eventsList.dataset.maxitems;
 
 	const props = enableHeader
@@ -16,10 +17,12 @@ lists.forEach( ( eventsList ) => {
 				header: JSON.parse( eventsList.dataset.header ),
 				ctaButton: JSON.parse( eventsList.dataset.ctabutton ),
 				dataSource,
+				noResultsText,
 				maxItems,
 		  }
 		: {
 				dataSource,
+				noResultsText,
 				maxItems,
 		  };
 
