@@ -6,7 +6,7 @@ import styled from 'styled-components';
 
 import { FeedContext } from './FeedContext';
 import { useFetchKeGraphql } from '../../core/hooks/use-fetch-ke-graphql';
-import { TEST_EVENTS_QUERY } from '../../../../component-events/src/core/graphql';
+import { LIST_EVENTS_QUERY } from '../../../../component-events/src/core/graphql';
 import { Loader } from '../Loader';
 
 const Container = styled.section``;
@@ -19,7 +19,7 @@ const Container = styled.section``;
  *  dataSource: import("../../core/types/feed-types").DataSource
  *  maxItems?: number
  *  dataTransformer?: (data: object) => object
- *  dataFilter?: (data: object, filters: string) => object
+ *  dataFilter?: (data: object, filter: string) => object
  *  noFeedText: string
  * }} props
  * @returns {JSX.Element}
@@ -34,11 +34,13 @@ const KeEventsContainerProvider = ( {
 	maxItems,
 } ) => {
 	// Fetch KE Events Graphql data.
+	const filter = { ...dataSource.filter, statusId: 3 };
 	const { payload, loading, error } = useFetchKeGraphql(
-		TEST_EVENTS_QUERY,
+		LIST_EVENTS_QUERY,
 		dataSource.url,
-		dataSource.filters,
-		dataSource.pagination
+		filter,
+		dataSource.pagination,
+		dataSource.sort
 	);
 
 	let events = [];

@@ -49,13 +49,32 @@
       "type": "string",
       "default": "https://infonet.api.rtd.asu.edu/graphql/"
     },
+    "keEventBasePath": {
+      "type": "string",
+      "default": "events/view"
+    },
     "dataSourceFeed": {
       "type": "string",
       "default": "online"
     },
-    "dataSourceFilterUnits": {
+    "asuFilterUnits": {
       "type": "string",
-      "default": "college-of-global-futures"
+      "default": ""
+    },
+    "keFilterUnits": {
+      "type": "array",
+      "default": []
+    },
+    "keSortEvents": {
+      "enum": [
+        "ASC",
+        "DESC"
+      ],
+      "default": "ASC"
+    },
+    "keShowPastEvents": {
+      "type": "boolean",
+      "default": false
     },
     "maxItems": {
       "type": "number",

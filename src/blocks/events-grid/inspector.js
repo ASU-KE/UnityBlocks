@@ -7,9 +7,12 @@ import {
 	PanelBody,
 	PanelRow,
 	RadioControl,
+	SelectControl,
 	TextControl,
 	ToggleControl,
 } from '@wordpress/components';
+import { useFetchKeGraphql } from '../../unity/components-core/src/core/hooks/use-fetch-ke-graphql';
+import { LIST_GROUPS_QUERY } from '../../unity/component-events/src/core/graphql';
 
 /**
  * Inspector controls
@@ -29,11 +32,39 @@ const Inspector = ( props ) => {
 			dataSourceAsuUrl,
 			dataSourceKeUrl,
 			dataSourceFeed,
-			dataSourceFilterUnits,
+			asuFilterUnits,
+			keFilterUnits,
+			keSortEvents,
+			keShowPastEvents,
 			maxItems,
 		},
 		setAttributes,
 	} = props;
+
+	// Fetch KE Unit tags for dropdown selector.
+	const filters = undefined;
+	const pagination = {
+		page: 1,
+		perPage: 1000,
+	};
+	const sort = {
+		table: 'group',
+		field: 'name',
+		order: 'ASC',
+	};
+	const { payload } = useFetchKeGraphql(
+		LIST_GROUPS_QUERY,
+		dataSourceKeUrl,
+		filters,
+		pagination,
+		sort
+	);
+
+	const units = payload?.allGroups.data.map( ( group ) => ( {
+		id: group.id,
+		name: group.name,
+		slug: group.slug,
+	} ) );
 
 	return (
 		<>
@@ -221,6 +252,18 @@ const Inspector = ( props ) => {
 									}
 								/>
 							</PanelRow>
+							<PanelRow>
+								<TextControl
+									label={ 'Filter topics' }
+									help={ 'Enter tags, space delimited.' }
+									value={ asuFilterUnits }
+									onChange={ ( value ) =>
+										setAttributes( {
+											asuFilterUnits: value,
+										} )
+									}
+								/>
+							</PanelRow>
 						</>
 					) }
 					{ dataSourceType === 'keGraphql' && (
@@ -237,16 +280,62 @@ const Inspector = ( props ) => {
 								/>
 							</PanelRow>
 							<PanelRow>
-								<TextControl
-									label={ 'Categories' }
+								<SelectControl
+									multiple
+									label={ __( 'Filter Colleges/Units' ) }
+									value={ keFilterUnits }
+									options={ units?.map( ( unit ) => ( {
+										value: unit.slug,
+										label: unit.name,
+									} ) ) }
+									onChange={ ( newValue ) => {
+										return setAttributes( {
+											keFilterUnits: newValue,
+										} );
+									} }
+								/>
+							</PanelRow>
+							<PanelRow>
+								<ToggleControl
+									label={ 'Show past events?' }
 									help={
-										'Enter events categories, space delimited.'
+										keShowPastEvents
+											? 'Past events enabled.'
+											: 'Past events disabled.'
 									}
-									value={ dataSourceFilterUnits }
-									onChange={ ( value ) =>
+									checked={ keShowPastEvents }
+									onChange={ ( value ) => {
 										setAttributes( {
-											dataSourceFilterUnits: value,
-										} )
+											keShowPastEvents: value,
+										} );
+									} }
+								/>
+							</PanelRow>
+							<PanelRow>
+								<RadioControl
+									label={ __(
+										'Events sort order',
+										'unityblocks'
+									) }
+									selected={ keSortEvents }
+									options={ [
+										{
+											label: __(
+												'Ascending (older to newer)',
+												'unityblocks'
+											),
+											value: 'ASC',
+										},
+										{
+											label: __(
+												'Descending (newer to older)',
+												'unityblocks'
+											),
+											value: 'DESC',
+										},
+									] }
+									onChange={ ( value ) =>
+										setAttributes( { keSortEvents: value } )
 									}
 								/>
 							</PanelRow>
