@@ -32,6 +32,7 @@ const Edit = ( props ) => {
 			keSortEvents,
 			keShowPastEvents,
 			keShowFutureEvents,
+			noResultsText,
 			maxItems,
 		},
 		className,
@@ -90,6 +91,7 @@ const Edit = ( props ) => {
 		header,
 		ctaButton,
 		dataSource,
+		noResultsText,
 		maxItems,
 	};
 

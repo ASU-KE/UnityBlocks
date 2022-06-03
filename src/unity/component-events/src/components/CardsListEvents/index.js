@@ -14,9 +14,15 @@ import { ListView } from './ListView';
  * @param {FeedType} props
  * @returns {JSX.Element}
  */
-const CardsListEvents = ( { header, ctaButton, dataSource, maxItems } ) => (
+const CardsListEvents = ( {
+	header,
+	ctaButton,
+	dataSource,
+	noResultsText,
+	maxItems,
+} ) => (
 	// Calling the high order component that fetch the data
-	<BaseFeed { ...{ header, ctaButton, dataSource, maxItems } }>
+	<BaseFeed { ...{ header, ctaButton, dataSource, noResultsText, maxItems } }>
 		<ListView />
 	</BaseFeed>
 );

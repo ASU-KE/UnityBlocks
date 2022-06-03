@@ -14,13 +14,20 @@ import { GridView } from './GridView';
  * @param {FeedType} props
  * @returns {JSX.Element}
  */
-const CardsGridEvents = ( { header, ctaButton, dataSource, maxItems } ) => (
+const CardsGridEvents = ( {
+	header,
+	ctaButton,
+	dataSource,
+	noResultsText,
+	maxItems,
+} ) => (
 	// Calling the high order component that fetch the data
 	<BaseFeed
 		{ ...{
 			header,
 			ctaButton,
 			dataSource,
+			noResultsText,
 			maxItems,
 		} }
 	>

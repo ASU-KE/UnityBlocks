@@ -37,6 +37,7 @@ const Inspector = ( props ) => {
 			keSortEvents,
 			keShowPastEvents,
 			keShowFutureEvents,
+			noResultsText,
 			maxItems,
 		},
 		setAttributes,
@@ -182,6 +183,15 @@ const Inspector = ( props ) => {
 				) }
 
 				<PanelBody>
+					<PanelRow>
+						<TextControl
+							label={ 'Text to display when no results found' }
+							value={ noResultsText }
+							onChange={ ( value ) =>
+								setAttributes( { noResultsText: value } )
+							}
+						/>
+					</PanelRow>
 					<PanelRow>
 						<TextControl
 							label={ 'Max items to load' }

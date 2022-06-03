@@ -31,7 +31,7 @@ const DrupalFeedContainerProvider = ( {
 	dataSource,
 	dataTransformer = ( item ) => item,
 	dataFilter = ( item ) => item,
-	noResultsText,
+	noResultsText = 'No events found.',
 	renderHeader,
 	renderBody,
 	maxItems,

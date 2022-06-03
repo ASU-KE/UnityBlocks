@@ -17,7 +17,14 @@ import { filterData as filterDrupalData } from '../../services/dataManager';
 import { transformData as transformDrupalData } from '../../transformers/drupal.transformer';
 import { transformData as transformKeEventsData } from '../../transformers/ke-graphql.transformer';
 
-const BaseFeed = ( { children, header, ctaButton, dataSource, maxItems } ) => {
+const BaseFeed = ( {
+	children,
+	header,
+	ctaButton,
+	dataSource,
+	noResultsText,
+	maxItems,
+} ) => {
 	if ( 'asuDrupal' === dataSource.type ) {
 		// return null;
 		return (
@@ -36,7 +43,7 @@ const BaseFeed = ( { children, header, ctaButton, dataSource, maxItems } ) => {
 				dataTransformer={ transformDrupalData }
 				dataFilter={ filterDrupalData }
 				defaultProps={ defaultProps }
-				noResultsText="No events to show."
+				noResultsText={ noResultsText }
 				maxItems={ maxItems }
 			/>
 		);
@@ -57,7 +64,7 @@ const BaseFeed = ( { children, header, ctaButton, dataSource, maxItems } ) => {
 				renderBody={ <FeedBody>{ children }</FeedBody> }
 				dataSource={ dataSource }
 				dataTransformer={ transformKeEventsData }
-				noFeedText="No events to show."
+				noResultsText={ noResultsText }
 				maxItems={ maxItems }
 			/>
 		);
