@@ -3,22 +3,24 @@
 import { request } from 'graphql-request';
 import useSWR from 'swr';
 
-const fetchData = ( url, query, filters, pagination ) => {
-	filters.statusId = 3; // Published events only
-
+const fetchData = (
+	url,
+	query,
+	filter,
+	pagination = {
+		page: 1,
+		perPage: 9,
+	},
+	sort = {
+		table: 'event',
+		field: 'startAt',
+		order: 'DESC',
+	}
+) => {
 	const variables = {
-		pagination: {
-			// page: parseInt( page, 10 ),
-			// perPage: parseInt( perPage, 10 ),
-			page: 1,
-			perPage: 9,
-		},
-		sort: {
-			table: 'event',
-			field: 'startAt',
-			order: 'DESC',
-		},
-		// filters,
+		pagination,
+		sort,
+		filter,
 	};
 
 	// Run GraphQL queries/mutations using a static function
@@ -44,9 +46,9 @@ const fetchData = ( url, query, filters, pagination ) => {
  * @template T
  * @returns {FetchResponse<T>}
  */
-const useFetchKeGraphql = ( query, url, filters, pagination ) => {
+const useFetchKeGraphql = ( query, url, filter, pagination, sort ) => {
 	const { data, error } = useSWR(
-		[ url, query, filters, pagination ],
+		[ url, query, filter, pagination, sort ],
 		fetchData
 	);
 
