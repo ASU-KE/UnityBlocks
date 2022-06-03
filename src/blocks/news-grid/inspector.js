@@ -50,36 +50,24 @@ const Inspector = ( props ) => {
 
 	// Fetch College/Unit tags via WP-REST.
 	const {
-		payload: unitsPayload,
+		payload: units,
 		loading: unitsLoading,
 		error: unitsError,
 	} = useFetchWpRestTaxonomy( keDataSourceUrl, 'college_unit' );
 
-	const units = unitsPayload;
-	// console.error( units.data );
-	// units.data?.unshift( { key: '', name: '--All units--' } );
-
 	// Fetch Interest tags via WP-REST.
 	const {
-		payload: interestsPayload,
+		payload: interests,
 		loading: interestsLoading,
 		error: interestsError,
 	} = useFetchWpRestTaxonomy( keDataSourceUrl, 'interest' );
 
-	const interests = interestsPayload;
-	// console.error( interests.data );
-	// interests.data?.unshift( { key: '', name: '--All interests--' } );
-
 	// Fetch Locations tags via WP-REST.
 	const {
-		payload: locationsPayload,
+		payload: locations,
 		loading: locationsLoading,
 		error: locationsError,
 	} = useFetchWpRestTaxonomy( keDataSourceUrl, 'location' );
-
-	const locations = locationsPayload;
-	// console.error( locations.data );
-	// locations.data?.unshift( { key: '', name: '--All locations--' } );
 
 	return (
 		<>
