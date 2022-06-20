@@ -29,6 +29,7 @@ const save = ( props ) => {
 			keDataSourceInterests,
 			keDataSourceLocations,
 			maxItems,
+			numberColumns,
 		},
 		className,
 	} = props;
@@ -98,6 +99,7 @@ const save = ( props ) => {
 			? JSON.stringify( keDataSource )
 			: null,
 		'data-maxitems': maxItems,
+		'data-numbercolumns': numberColumns,
 	};
 
 	return (

@@ -111,6 +111,13 @@
     "maxItems": {
       "type": "number",
       "default": 6
+    },
+    "numberColumns": {
+      "enum": [
+        "2",
+        "3"
+      ],
+      "default": "3"
     }
   }
 }

@@ -40,6 +40,7 @@ const Edit = ( props ) => {
 			keDataSourceInterests,
 			keDataSourceLocations,
 			maxItems,
+			numberColumns,
 		},
 		className,
 	} = props;
@@ -104,6 +105,7 @@ const Edit = ( props ) => {
 		drupalDataSource: asuDataSource,
 		wpDataSource: keDataSource,
 		maxItems,
+		numberColumns,
 	};
 
 	return (

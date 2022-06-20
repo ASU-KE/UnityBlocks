@@ -44,6 +44,7 @@ const Inspector = ( props ) => {
 			keDataSourceInterests,
 			keDataSourceLocations,
 			maxItems,
+			numberColumns,
 		},
 		setAttributes,
 	} = props;
@@ -242,6 +243,27 @@ const Inspector = ( props ) => {
 							onChange={ ( newValue ) =>
 								setAttributes( {
 									maxItems: Number( newValue ), // Force attribute to number because this input field returns value as string.
+								} )
+							}
+						/>
+					</PanelRow>
+					<PanelRow>
+						<RadioControl
+							label={ __( 'Grid column width', 'unityblocks' ) }
+							selected={ numberColumns }
+							options={ [
+								{
+									label: __( 'Two (2)', 'unityblocks' ),
+									value: '2',
+								},
+								{
+									label: __( 'Three (3)', 'unityblocks' ),
+									value: '3',
+								},
+							] }
+							onChange={ ( newValue ) =>
+								setAttributes( {
+									numberColumns: newValue,
 								} )
 							}
 						/>
