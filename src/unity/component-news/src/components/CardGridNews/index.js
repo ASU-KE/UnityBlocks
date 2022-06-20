@@ -5,6 +5,7 @@ import {
 	// feedCardButtonShape,
 } from '../../../../components-core/src';
 import React, { useContext } from 'react';
+import classNames from 'classnames';
 
 import { BaseFeed } from '../../core/components/BaseFeed';
 // import { defaultProps } from '../../core/constants/default-props';
@@ -33,39 +34,52 @@ const storyBody = ( story, enableStoryAuthor, enableStoryDate ) => {
  * @param {Boolean} enableCardTags
  * @param {Boolean} enableStoryAuthor
  * @param {Boolean} enableStoryDate
+ * @param {String} numberColumns
  */
 const gridRow = (
 	story,
 	enableCardTags,
 	enableStoryAuthor,
-	enableStoryDate
-) => (
-	<div
-		className="col col-12 col-md-6 col-lg-4 cards-items-container"
-		key={ story.id }
-	>
-		<Card
-			type="story"
-			clickable={ false }
-			title={ story.title }
-			body={ storyBody( story, enableStoryAuthor, enableStoryDate ) }
-			image={ story.headerImageUrl }
-			imageAltText={ story.title }
-			linkLabel={ 'Read' }
-			linkUrl={ story.storyLink }
-			// buttons={ [
-			// 	{
-			// 		ariaLabel: cardButton.text,
-			// 		color: cardButton.color,
-			// 		label: cardButton.text,
-			// 		size: cardButton.size,
-			// 		href: story.storyLink,
-			// 	},
-			// ] }
-			tags={ enableCardTags ? parseInterests( story?.interests ) : null }
-		/>
-	</div>
-);
+	enableStoryDate,
+	numberColumns
+) => {
+	const cardClasses = classNames(
+		'col',
+		'col-12',
+		'col-md-6',
+		'cards-items-container',
+		{
+			'col-lg-6': numberColumns === '2',
+			'col-lg-4': numberColumns === '3',
+		}
+	);
+	return (
+		<div className={ cardClasses } key={ story.id }>
+			<Card
+				type="story"
+				clickable={ false }
+				title={ story.title }
+				body={ storyBody( story, enableStoryAuthor, enableStoryDate ) }
+				image={ story.headerImageUrl }
+				imageAltText={ story.title }
+				linkLabel={ 'Read' }
+				linkUrl={ story.storyLink }
+				// buttons={ [
+				// 	{
+				// 		ariaLabel: cardButton.text,
+				// 		color: cardButton.color,
+				// 		label: cardButton.text,
+				// 		size: cardButton.size,
+				// 		href: story.storyLink,
+				// 	},
+				// ] }
+				tags={
+					enableCardTags ? parseInterests( story?.interests ) : null
+				}
+			/>
+		</div>
+	);
+};
 
 /**
  * @param {import("../../core/types/news-types").TemplateProps} props
@@ -75,6 +89,7 @@ const GridTemplate = ( {
 	enableCardTags,
 	enableStoryAuthor,
 	enableStoryDate,
+	numberColumns,
 } ) => {
 	const { stories } = useContext( FeedContext ); // Reading the "stories" object from the context
 
@@ -90,7 +105,8 @@ const GridTemplate = ( {
 						story,
 						enableCardTags,
 						enableStoryAuthor,
-						enableStoryDate
+						enableStoryDate,
+						numberColumns
 					) }
 				</React.Fragment>
 			) ) }
@@ -110,6 +126,7 @@ const CardGridNews = ( {
 	enableCardTags,
 	enableStoryAuthor,
 	enableStoryDate,
+	numberColumns,
 	...props
 } ) => (
 	// Calling the high order component that fetch the data
@@ -118,6 +135,7 @@ const CardGridNews = ( {
 			enableCardTags={ enableCardTags }
 			enableStoryAuthor={ enableStoryAuthor }
 			enableStoryDate={ enableStoryDate }
+			numberColumns={ numberColumns }
 		/>
 	</BaseFeed>
 );
