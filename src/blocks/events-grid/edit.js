@@ -58,11 +58,11 @@ const Edit = ( props ) => {
 	};
 
 	if ( ! keShowPastEvents ) {
-		keFilter.startAt_gt = formatISO( startOfToday() );
+		keFilter.endAt_gt = formatISO( startOfToday() );
 	}
 
 	if ( ! keShowFutureEvents ) {
-		keFilter.startAt_lt = formatISO( startOfToday() );
+		keFilter.endAt_lt = formatISO( startOfToday() );
 	}
 
 	const keSort = {
