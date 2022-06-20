@@ -22,6 +22,7 @@ grids.forEach( ( newsGrid ) => {
 		? JSON.parse( newsGrid.dataset.kedatasource )
 		: null;
 	const maxItems = Number( newsGrid.dataset.maxitems );
+	const numberColumns = newsGrid.dataset.numbercolumns;
 
 	const props = enableHeader
 		? {
@@ -34,6 +35,7 @@ grids.forEach( ( newsGrid ) => {
 				drupalDataSource: asuDataSource,
 				wpDataSource: keDataSource,
 				maxItems,
+				numberColumns,
 		  }
 		: {
 				cardButton,
@@ -43,6 +45,7 @@ grids.forEach( ( newsGrid ) => {
 				drupalDataSource: asuDataSource,
 				wpDataSource: keDataSource,
 				maxItems,
+				numberColumns,
 		  };
 
 	render( <CardGridNews { ...props } />, newsGrid );
