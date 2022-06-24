@@ -2,7 +2,7 @@
 import { FeedContext, Card } from '../../../../../components-core/src';
 import React, { useContext } from 'react';
 
-import { formatDate, formatTime } from '../../../core/utils/date';
+// import { formatDate, formatTime } from '../../../core/utils/date';
 import { ListViewWrapper } from './index.styles';
 
 const ListView = () => {
@@ -16,18 +16,10 @@ const ListView = () => {
 						type="event"
 						eventFormat="inline"
 						horizontal
-						eventTime={ `<span>
-                ${ formatDate(
-					event.startDate,
-					'COMPLETE'
-				) } <br /> ${ formatTime( event.startDate, event.endDate ) }
-              </span>` }
+						eventTime={ event.dateDescription }
 						eventLocation={ event.location }
-						clickable={ !! event.alias }
-						clickHref={ `${ event.alias }/?eventDate=${ formatDate(
-							event.startDate,
-							'ISO'
-						) }` }
+						clickable={ false }
+						// clickHref={  }
 						title={ event.title }
 						image={ event.imageUrl }
 						imageAltText={ event.title }
