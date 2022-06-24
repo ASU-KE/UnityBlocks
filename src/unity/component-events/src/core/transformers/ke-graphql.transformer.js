@@ -13,6 +13,7 @@ const transformData = ( data ) => {
 		// interests: data.interests,
 		startDate: data.startAt,
 		endDate: data.endAt,
+		dateDescription: data.dateDescription,
 		// alias: data.alias,
 		// audiences: data.audiences,
 		// eventUnits: data.event_units,
