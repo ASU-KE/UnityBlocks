@@ -18,8 +18,8 @@ const ListView = () => {
 						horizontal
 						eventTime={ event.dateDescription }
 						eventLocation={ event.location }
-						clickable={ false }
-						// clickHref={  }
+						clickable={ true }
+						clickHref={ event.eventLink }
 						title={ event.title }
 						image={ event.imageUrl }
 						imageAltText={ event.title }
