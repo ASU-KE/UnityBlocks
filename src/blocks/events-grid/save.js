@@ -22,6 +22,7 @@ const save = ( props ) => {
 			keSortEvents,
 			keShowPastEvents,
 			keShowFutureEvents,
+			keEventBasePath,
 			noResultsText,
 			maxItems,
 		},
@@ -75,6 +76,7 @@ const save = ( props ) => {
 			url: dataSourceKeUrl,
 			filter: keFilter,
 			sort: keSort,
+			eventBasePath: keEventBasePath,
 		} );
 	}
 

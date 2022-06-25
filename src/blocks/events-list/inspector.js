@@ -37,6 +37,7 @@ const Inspector = ( props ) => {
 			keSortEvents,
 			keShowPastEvents,
 			keShowFutureEvents,
+			keEventBasePath,
 			noResultsText,
 			maxItems,
 		},
@@ -62,7 +63,7 @@ const Inspector = ( props ) => {
 		sort
 	);
 
-	const units = payload?.allGroups.data.map( ( group ) => ( {
+	const units = payload?.allGroups.data?.map( ( group ) => ( {
 		id: group.id,
 		name: group.name,
 		slug: group.slug,
@@ -284,6 +285,18 @@ const Inspector = ( props ) => {
 									onChange={ ( value ) =>
 										setAttributes( {
 											dataSourceKeUrl: value,
+										} )
+									}
+								/>
+							</PanelRow>
+							<PanelRow>
+								<TextControl
+									label={ 'Event details base path' }
+									help={ 'No leading or trailing slashes' }
+									value={ keEventBasePath }
+									onChange={ ( newValue ) =>
+										setAttributes( {
+											keEventBasePath: newValue,
 										} )
 									}
 								/>

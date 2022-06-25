@@ -32,6 +32,7 @@ const Edit = ( props ) => {
 			keSortEvents,
 			keShowPastEvents,
 			keShowFutureEvents,
+			keEventBasePath,
 			noResultsText,
 			maxItems,
 		},
@@ -84,6 +85,7 @@ const Edit = ( props ) => {
 			url: dataSourceKeUrl,
 			filter: keFilter,
 			sort: keSort,
+			eventBasePath: keEventBasePath,
 		};
 	}
 

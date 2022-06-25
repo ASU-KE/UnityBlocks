@@ -22,6 +22,7 @@ const save = ( props ) => {
 			keSortEvents,
 			keShowPastEvents,
 			keShowFutureEvents,
+			keEventBasePath,
 			noResultsText,
 			maxItems,
 		},
@@ -69,12 +70,12 @@ const save = ( props ) => {
 			filters: asuFilterUnits,
 		} );
 	} else {
-		// console.error( keFilterUnits );
 		dataSource = JSON.stringify( {
 			type: 'keGraphql',
 			url: dataSourceKeUrl,
 			filter: keFilter,
 			sort: keSort,
+			eventBasePath: keEventBasePath,
 		} );
 	}
 
