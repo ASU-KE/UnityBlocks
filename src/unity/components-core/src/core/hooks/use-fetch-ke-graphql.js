@@ -38,8 +38,10 @@ const fetchData = (
 
 /**
  *  @typedef {Object} KeGraphqlFetchPayload
- *  @property {number} [totalPages]
  *  @property {Object} [data]
+ *  @property {number} [next]
+ *  @property {number} [previous]
+ *  @property {number} [pageCount]
  */
 
 /**

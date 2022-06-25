@@ -45,10 +45,13 @@ const KeEventsContainerProvider = ( {
 
 	let events = [];
 	if ( ! loading ) {
+		events = payload?.allEvents?.data?.map( ( event ) => ( {
+			...event,
+			eventLink: `https://${ document.location.host }/${ dataSource.eventBasePath }/${ event.slug }/`,
+		} ) );
+
 		// Work all the data and set the filtered and mapped stories
-		const transformedData = payload?.allEvents?.data?.map(
-			dataTransformer
-		);
+		const transformedData = events?.map( dataTransformer );
 
 		events = maxItems
 			? transformedData?.slice( 0, maxItems )
