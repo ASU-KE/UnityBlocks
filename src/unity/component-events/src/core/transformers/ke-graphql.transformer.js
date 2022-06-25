@@ -22,6 +22,7 @@ const transformData = ( data ) => {
 		// collegeUnit: data.college_unit,
 		eventButtonUrl: data.registrationUrl,
 		eventButtonText: 'Click to register',
+		eventLink: data.eventLink,
 	};
 };
 export { transformData };

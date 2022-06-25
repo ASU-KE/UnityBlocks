@@ -37,6 +37,7 @@ const Inspector = ( props ) => {
 			keSortEvents,
 			keShowPastEvents,
 			keShowFutureEvents,
+			keEventBasePath,
 			noResultsText,
 			maxItems,
 		},
@@ -286,6 +287,18 @@ const Inspector = ( props ) => {
 									onChange={ ( value ) =>
 										setAttributes( {
 											dataSourceKeUrl: value,
+										} )
+									}
+								/>
+							</PanelRow>
+							<PanelRow>
+								<TextControl
+									label={ 'Event details base path' }
+									help={ 'No leading or trailing slashes' }
+									value={ keEventBasePath }
+									onChange={ ( newValue ) =>
+										setAttributes( {
+											keEventBasePath: newValue,
 										} )
 									}
 								/>
