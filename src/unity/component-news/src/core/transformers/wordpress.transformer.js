@@ -6,6 +6,7 @@ import { shortenText } from '../utils/shorten-text';
 const transformData = ( post ) => ( {
 	id: post.id,
 	headerImageUrl: post.uds_story_hero.background_image?.sizes?.medium,
+	heroImageUrl: post.uds_story_hero.background_image?.url,
 	featuredImageUrl:
 		post.uds_featured_image?.media_details.sizes.medium.source_url,
 	featuredImageAltText: post.uds_featured_image?.alt_text,
