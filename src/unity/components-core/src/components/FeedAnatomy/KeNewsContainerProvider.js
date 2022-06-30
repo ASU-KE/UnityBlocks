@@ -70,11 +70,7 @@ const KeNewsContainerProvider = ( {
 						) }
 						{ wpStories?.length
 							? renderBody
-							: ! wpLoading && (
-									<p className="text-center">
-										{ noResultsText }
-									</p>
-							  ) }
+							: ! wpLoading && <p>{ noResultsText }</p> }
 					</>
 				) }
 			</Container>
