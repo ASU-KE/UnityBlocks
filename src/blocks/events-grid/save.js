@@ -2,7 +2,6 @@
  * External dependencies
  */
 import classnames from 'classnames';
-import { formatISO, startOfToday } from 'date-fns';
 
 const save = ( props ) => {
 	const {
@@ -49,11 +48,11 @@ const save = ( props ) => {
 	};
 
 	if ( ! keShowPastEvents ) {
-		keFilter.endAt_gt = formatISO( startOfToday() );
+		keFilter.endAt_gt = 'TODAY';
 	}
 
 	if ( ! keShowFutureEvents ) {
-		keFilter.endAt_lt = formatISO( startOfToday() );
+		keFilter.endAt_lt = 'TODAY';
 	}
 
 	const keSort = {

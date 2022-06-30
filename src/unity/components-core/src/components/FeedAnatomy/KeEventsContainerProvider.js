@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 // @ts-check
+import { formatISO, startOfToday } from 'date-fns';
 import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
@@ -35,6 +36,15 @@ const KeEventsContainerProvider = ( {
 } ) => {
 	// Fetch KE Events Graphql data.
 	const filter = { ...dataSource.filter, statusId: 3 };
+
+	// first, check for start and end filter, we need to turn into an actual datetime comparison
+	if ( dataSource.filter.endAt_lt ) {
+		filter.endAt_lt = formatISO( startOfToday() );
+	}
+	if ( dataSource.filter.endAt_gt ) {
+		filter.endAt_gt = formatISO( startOfToday() );
+	}
+
 	const { payload, loading, error } = useFetchKeGraphql(
 		LIST_EVENTS_QUERY,
 		dataSource.url,
