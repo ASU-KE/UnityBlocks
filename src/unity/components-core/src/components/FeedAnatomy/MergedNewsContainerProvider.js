@@ -77,16 +77,23 @@ const MergedNewsContainerProvider = ( {
 			? wpPayload.data?.map( wpDataTransformer )
 			: [];
 
-	let mergedStories = [];
+	let finalStories = [];
 	if ( drupalStories?.length && wpStories?.length ) {
 		const merged = union( drupalStories, wpStories );
 		const sorted = sortBy( merged, [ 'dateIso' ] ).reverse();
-		mergedStories = maxItems ? sorted?.slice( 0, maxItems ) : sorted;
-	}
+		finalStories = maxItems ? sorted?.slice( 0, maxItems ) : sorted;
+
+	} else if ( drupalStories?.length ) {
+		finalStories = maxItems ? drupalStories?.slice( 0, maxItems ) : drupalStories;
+
+  } else if ( wpStories?.length ) {
+		finalStories = maxItems ? wpStories?.slice( 0, maxItems ) : wpStories;
+
+  }
 
 	return (
 		// Init the context to be used on its childrens
-		<FeedContext.Provider value={ { stories: mergedStories } }>
+		<FeedContext.Provider value={ { stories: finalStories } }>
 			<Container>
 				{ renderHeader }
 				{ drupalError || wpError ? (
@@ -94,12 +101,12 @@ const MergedNewsContainerProvider = ( {
 				) : (
 					<>
 						{ ( drupalLoading || wpLoading ) &&
-							! mergedStories?.length && (
+							! finalStories?.length && (
 								<div className="text-center mt-4">
 									<Loader />
 								</div>
 							) }
-						{ mergedStories?.length
+						{ finalStories?.length
 							? renderBody
 							: ! drupalLoading &&
 							  ! wpLoading && (
