@@ -80,7 +80,7 @@ const MergedNewsContainerProvider = ( {
 	let mergedStories = [];
 	if ( drupalStories?.length && wpStories?.length ) {
 		const merged = union( drupalStories, wpStories );
-		const sorted = sortBy( merged, [ 'date' ] ).reverse();
+		const sorted = sortBy( merged, [ 'dateIso' ] ).reverse();
 		mergedStories = maxItems ? sorted?.slice( 0, maxItems ) : sorted;
 	}
 
