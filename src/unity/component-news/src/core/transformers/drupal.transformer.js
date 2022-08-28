@@ -1,5 +1,5 @@
 // @ts-check
-import { format, parse } from 'date-fns';
+import { format, formatISO, parse } from 'date-fns';
 import { shortenText } from '../utils/shorten-text';
 
 // Transformer data function provided to the high order component
@@ -13,6 +13,10 @@ const transformData = ( { node }, index ) => ( {
 	date: format(
 		parse( node.post_date, 'MM/dd/yyyy-h:mmaa', new Date() ),
 		'MMM d, yyyy'
+	),
+	dateIso: formatISO(
+		parse( node.post_date, 'MM/dd/yyyy-h:mmaa', new Date() ),
+		{ format: 'basic', representation: 'date' }
 	),
 	storyLink: node.path,
 	interests: node.interests,
