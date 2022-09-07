@@ -7,8 +7,8 @@ UDS Anchor menu
 --------------------------------------------------------------*/
   .uds-anchor-menu.sticky{
         z-index: 999;
-
   }
+
   body{
      &:not(.admin-bar){
      .uds-anchor-menu.sticky{
@@ -20,6 +20,4 @@ UDS Anchor menu
           top: 129px;
      }
   }
-
-
 }
