@@ -62,7 +62,7 @@
     },
     "enableStoryAuthor": {
       "type": "boolean",
-      "default": true
+      "default": false
     },
     "enableCardTags": {
       "type": "boolean",
