@@ -39,6 +39,10 @@ module.exports = {
 			process.cwd(),
 			'src/blocks/anchor-menu/frontend.js'
 		),
+		'js/unityblocks-degree-rfi-form': path.resolve(
+			process.cwd(),
+			'src/blocks/degree-rfi-form/frontend.js'
+		),
 		'js/unityblocks-events-grid': path.resolve(
 			process.cwd(),
 			'src/blocks/events-grid/frontend.js'

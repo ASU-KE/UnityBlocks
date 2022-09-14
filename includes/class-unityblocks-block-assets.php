@@ -180,9 +180,7 @@ class UnityBlocks_Block_Assets {
 		require_once UNITYBLOCKS_PLUGIN_DIR . 'includes/enqueue-blocks/carousel-components.php';
 		require_once UNITYBLOCKS_PLUGIN_DIR . 'includes/enqueue-blocks/news-components.php';
 		require_once UNITYBLOCKS_PLUGIN_DIR . 'includes/enqueue-blocks/events-components.php';
-		/*
-		 require_once UNITYBLOCKS_PLUGIN_DIR . 'includes/enqueue-blocks/degree-search.php'; */
-		/* require_once UNITYBLOCKS_PLUGIN_DIR . 'includes/enqueue-blocks/rfi.php'; */
+		require_once UNITYBLOCKS_PLUGIN_DIR . 'includes/enqueue-blocks/degree-blocks.php';
 	}
 
 	/**

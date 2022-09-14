@@ -18,6 +18,7 @@ import * as imageGallery from './blocks/image-gallery';
 import * as newsCarousel from './blocks/news-carousel';
 import * as newsGrid from './blocks/news-grid';
 import * as newsList from './blocks/news-list';
+import * as degreeRfiForm from './blocks/degree-rfi-form';
 import * as testimonial from './blocks/testimonial';
 
 /**
@@ -50,6 +51,7 @@ const registerBlock = ( block ) => {
 export const registerUnityBlocksBlocks = () => {
 	[
 		anchorMenu,
+		degreeRfiForm,
 		eventsGrid,
 		eventsList,
 		hero,
