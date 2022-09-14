@@ -152,6 +152,26 @@ module.exports = {
 					},
 				],
 			},
+			{
+				test: /\.css$/,
+				use: [
+					MiniCssExtractPlugin.loader,
+					{
+						loader: 'css-loader',
+						options: {
+							url: false,
+							sourceMap: ! isProduction,
+						},
+					},
+					{
+						loader: 'postcss-loader',
+						options: {
+							...postcssConfig,
+							sourceMap: ! isProduction,
+						},
+					},
+				],
+			},
 		],
 	},
 
