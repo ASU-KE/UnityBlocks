@@ -7,13 +7,15 @@ import { CardGridNews } from '../../unity/component-news/src/components';
 const grids = document.querySelectorAll( '.wp-block-unityblocks-news-grid' );
 
 grids.forEach( ( newsGrid ) => {
-	const enableHeader = newsGrid.dataset.enableheader === 'true';
-	const cardButton = JSON.parse( newsGrid.dataset.cardbutton );
-	const enableStoryDate = newsGrid.dataset.enablestorydate === 'true';
-	const enableStoryAuthor = newsGrid.dataset.enablestoryauthor === 'true';
-	const enableCardTags = newsGrid.dataset.enablecardtags === 'true';
-	const enableAsuSource = newsGrid.dataset.enableasusource === 'true';
-	const enableKeSource = newsGrid.dataset.enablekesource === 'true';
+	const enableHeader = newsGrid?.dataset?.enableheader === 'true';
+	const cardButton = newsGrid?.dataset?.cardbutton
+		? JSON.parse( newsGrid.dataset.cardbutton )
+		: {};
+	const enableStoryDate = newsGrid?.dataset?.enablestorydate === 'true';
+	const enableStoryAuthor = newsGrid?.dataset?.enablestoryauthor === 'true';
+	const enableCardTags = newsGrid?.dataset?.enablecardtags === 'true';
+	const enableAsuSource = newsGrid?.dataset?.enableasusource === 'true';
+	const enableKeSource = newsGrid?.dataset?.enablekesource === 'true';
 
 	const asuDataSource = enableAsuSource
 		? JSON.parse( newsGrid.dataset.asudatasource )
@@ -21,8 +23,8 @@ grids.forEach( ( newsGrid ) => {
 	const keDataSource = enableKeSource
 		? JSON.parse( newsGrid.dataset.kedatasource )
 		: null;
-	const maxItems = Number( newsGrid.dataset.maxitems );
-	const numberColumns = newsGrid.dataset.numbercolumns;
+	const maxItems = Number( newsGrid?.dataset?.maxitems );
+	const numberColumns = newsGrid?.dataset?.numbercolumns;
 
 	const props = enableHeader
 		? {

@@ -7,10 +7,12 @@ import { CardListlNews } from '../../unity/component-news/src/components/CardLis
 const lists = document.querySelectorAll( '.wp-block-unityblocks-news-list' );
 
 lists.forEach( ( newsList ) => {
-	const enableHeader = newsList.dataset.enableheader === 'true';
-	const cardButton = JSON.parse( newsList.dataset.cardbutton );
-	const enableAsuSource = newsList.dataset.enableasusource === 'true';
-	const enableKeSource = newsList.dataset.enablekesource === 'true';
+	const enableHeader = newsList?.dataset?.enableheader === 'true';
+	const cardButton = newsList?.dataset?.cardbutton
+		? JSON.parse( newsList.dataset.cardbutton )
+		: {};
+	const enableAsuSource = newsList?.dataset?.enableasusource === 'true';
+	const enableKeSource = newsList?.dataset?.enablekesource === 'true';
 
 	const asuDataSource = enableAsuSource
 		? JSON.parse( newsList.dataset.asudatasource )

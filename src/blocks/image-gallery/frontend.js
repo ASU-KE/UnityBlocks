@@ -9,11 +9,13 @@ const galleries = document.querySelectorAll(
 );
 
 galleries.forEach( ( gallery ) => {
-	const imageItems = JSON.parse( gallery.dataset.imageitems );
-	const width = gallery.dataset.width;
-	const maxWidth = gallery.dataset.maxwidth;
-	const hasContent = gallery.dataset.hascontent === 'true';
-	const imageAutoSize = gallery.dataset.imageautosize === 'true';
+	const imageItems = gallery?.dataset?.imageitems
+		? JSON.parse( gallery.dataset.imageitems )
+		: [];
+	const width = gallery?.dataset?.width;
+	const maxWidth = gallery?.dataset?.maxwidth;
+	const hasContent = gallery?.dataset?.hascontent === 'true';
+	const imageAutoSize = gallery?.dataset?.imageautosize === 'true';
 
 	render(
 		<ImageGalleryCarousel

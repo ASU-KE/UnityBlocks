@@ -9,10 +9,14 @@ const testimonials = document.querySelectorAll(
 );
 
 testimonials.forEach( ( testimonial ) => {
-	const quote = JSON.parse( testimonial.dataset.quote );
-	const itemStyle = JSON.parse( testimonial.dataset.itemstyle );
-	const imageSource = testimonial.dataset.imagesource;
-	const imageAltText = testimonial.dataset.imagealttext;
+	const quote = testimonial?.dataset?.quote
+		? JSON.parse( testimonial.dataset.quote )
+		: {};
+	const itemStyle = testimonial?.dataset?.itemstyle
+		? JSON.parse( testimonial.dataset.itemstyle )
+		: {};
+	const imageSource = testimonial?.dataset?.imagesource;
+	const imageAltText = testimonial?.dataset?.imagealttext;
 
 	render(
 		<Testimonial

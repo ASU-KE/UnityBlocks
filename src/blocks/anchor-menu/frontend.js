@@ -16,15 +16,17 @@ id.
 // Load first element with the unityblocks-anchormenu id
 const menu = document.querySelector( '#unityblocks-anchor-menu' );
 
-const items = JSON.parse( menu.dataset.items );
-const firstElementId = menu.dataset.firstElementId;
-const focusFirstFocusableElement = menu.dataset.focusFirstFocusableElement;
+const items = menu?.dataset?.items ? JSON.parse( menu.dataset.items ) : [];
+const firstElementId = menu?.dataset?.firstElementId;
+const focusFirstFocusableElement = menu?.dataset?.focusFirstFocusableElement;
 
-render(
-	<AnchorMenu
-		items={ items }
-		firstElementId={ firstElementId }
-		focusFirstFocusableElement={ focusFirstFocusableElement }
-	/>,
-	menu
-);
+if ( menu ) {
+	render(
+		<AnchorMenu
+			items={ items }
+			firstElementId={ firstElementId }
+			focusFirstFocusableElement={ focusFirstFocusableElement }
+		/>,
+		menu
+	);
+}

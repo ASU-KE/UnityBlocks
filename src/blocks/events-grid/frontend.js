@@ -7,10 +7,12 @@ import { CardsGridEvents } from '../../unity/component-events/src/components/Car
 const grids = document.querySelectorAll( '.wp-block-unityblocks-events-grid' );
 
 grids.forEach( ( eventsGrid ) => {
-	const enableHeader = eventsGrid.dataset.enableheader === 'true';
-	const dataSource = JSON.parse( eventsGrid.dataset.datasource );
-	const noResultsText = eventsGrid.dataset.noresultstext;
-	const maxItems = eventsGrid.dataset.maxitems;
+	const enableHeader = eventsGrid?.dataset?.enableheader === 'true';
+	const dataSource = eventsGrid?.dataset?.datasource
+		? JSON.parse( eventsGrid.dataset.datasource )
+		: {};
+	const noResultsText = eventsGrid?.dataset?.noresultstext;
+	const maxItems = eventsGrid?.dataset?.maxitems;
 
 	const props = enableHeader
 		? {

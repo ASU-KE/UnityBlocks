@@ -10,9 +10,11 @@ const carousels = document.querySelectorAll(
 
 carousels.forEach( ( newsCarousel ) => {
 	const enableHeader = newsCarousel.dataset.enableheader === 'true';
-	const cardButton = JSON.parse( newsCarousel.dataset.cardbutton );
-	const enableAsuSource = newsCarousel.dataset.enableasusource === 'true';
-	const enableKeSource = newsCarousel.dataset.enablekesource === 'true';
+	const cardButton = newsCarousel?.dataset?.cardbutton
+		? JSON.parse( newsCarousel.dataset.cardbutton )
+		: {};
+	const enableAsuSource = newsCarousel?.dataset?.enableasusource === 'true';
+	const enableKeSource = newsCarousel?.dataset?.enablekesource === 'true';
 
 	const asuDataSource = enableAsuSource
 		? JSON.parse( newsCarousel.dataset.asudatasource )
@@ -20,7 +22,7 @@ carousels.forEach( ( newsCarousel ) => {
 	const keDataSource = enableKeSource
 		? JSON.parse( newsCarousel.dataset.kedatasource )
 		: null;
-	const maxItems = Number( newsCarousel.dataset.maxitems );
+	const maxItems = Number( newsCarousel?.dataset?.maxitems );
 
 	const props = enableHeader
 		? {
