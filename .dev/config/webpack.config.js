@@ -39,10 +39,6 @@ module.exports = {
 			process.cwd(),
 			'src/blocks/anchor-menu/frontend.js'
 		),
-		'js/unityblocks-hero': path.resolve(
-			process.cwd(),
-			'src/blocks/hero/frontend.js'
-		),
 		'js/unityblocks-events-grid': path.resolve(
 			process.cwd(),
 			'src/blocks/events-grid/frontend.js'
@@ -50,6 +46,10 @@ module.exports = {
 		'js/unityblocks-events-list': path.resolve(
 			process.cwd(),
 			'src/blocks/events-list/frontend.js'
+		),
+		'js/unityblocks-hero': path.resolve(
+			process.cwd(),
+			'src/blocks/hero/frontend.js'
 		),
 		'js/unityblocks-image-gallery': path.resolve(
 			process.cwd(),

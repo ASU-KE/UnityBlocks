@@ -50,9 +50,9 @@ const registerBlock = ( block ) => {
 export const registerUnityBlocksBlocks = () => {
 	[
 		anchorMenu,
-		hero,
 		eventsGrid,
 		eventsList,
+		hero,
 		imageGallery,
 		newsCarousel,
 		newsGrid,
