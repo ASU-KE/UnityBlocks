@@ -31,6 +31,7 @@ const Inspector = ( props ) => {
 		itemTexts.splice( index, 1 );
 		itemTargets.splice( index, 1 );
 		props.setAttributes( { itemTexts } );
+		props.setAttributes( { itemTargets } );
 	};
 
 	const handleItemTextChange = ( text, index ) => {

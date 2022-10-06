@@ -1,6 +1,15 @@
 const { render } = wp.element;
 
 import { AnchorMenu } from '@asu-design-system/components-core/dist/libCore.es';
+import $ from 'jquery';
+
+$( window ).scroll( function () {
+	var stickyMenu = $( '.uds-anchor-menu' ),
+		scroll = $( window ).scrollTop();
+
+	if ( scroll <= 500 ) stickyMenu.removeClass( 'sticky' );
+	else stickyMenu.addClass( 'sticky' );
+} );
 
 /*
 Load the block attributes from the dom element attributes.
