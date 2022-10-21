@@ -10,7 +10,7 @@ import { AnchorMenu } from '@asu-design-system/components-core/dist/libCore.es';
 import Inspector from './inspector';
 
 /**
- * WordPress dependencies
+ * WordPress dependencies1
  */
 // import { __ } from '@wordpress/i18n';
 
