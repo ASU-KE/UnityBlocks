@@ -71,6 +71,10 @@ module.exports = {
 			process.cwd(),
 			'src/blocks/testimonial/frontend.js'
 		),
+		'js/unityblocks-brassring': path.resolve(
+			process.cwd(),
+			'src/blocks/brassring/frontend.js'
+		),
 	},
 
 	output: {

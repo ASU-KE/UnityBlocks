@@ -1,0 +1,14 @@
+{
+	"name": "unityblocks/brassring",
+	"category": "widgets",
+	"attributes": {
+		"siteType": {
+			"type": "string",
+			"default": "staff"
+		},
+		"depList": {
+			"type": "string",
+			"default": "Office of Univ Events&Protocol, Solar Fab, Knowledge Enterprise Events"
+		}
+	}
+}
