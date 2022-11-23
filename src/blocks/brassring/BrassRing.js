@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { decode } from 'html-entities';
+import Selection from './Selection';
 
 const { XMLParser } = require( 'fast-xml-parser' );
 
@@ -26,9 +27,6 @@ function BrassRing( props ) {
 	if ( siteType === 'staff' ) siteID = '5494'; //For staff jobs
 	else if ( siteType === 'student' ) siteID = '5495'; //For student jobs
 
-	/*const depList =
-		'College of Global Futures,CGF Recrt Admissions Outreach,CGF Undergrad Student Services,CGF Career & Alumni Services, CGF Instructional Support,CGF Student Services SW,CGF Ambassador SW,Global Futures Staff,CGF Executive & Prof Education,CGF Admin Support,Business Services,Events,Communications & Marketing,School of Sustainability,SOS Grad Student Services,SOS Faculty & Researchers,SOS Graduate Assistants Assocs,SOS Instructional Support,SOS International Programs,SOS Outreach & Relations,SOS Student Services,SOS Student Workers,Walton Sust Teachers Academics,Wetland Ecosystem Ecology Lab,SOS Instructional SW,Sch Future of Innov in Society,CSPO Grad Assists Assocs,Sci & Imag-Grad Assist/Assocs,Sch Complex Adaptive Systems,Ofc EVP Knowldge Enterprise,KE Staff Support,KE Planning Budget,Knowledge Enterprise HR,KE Luminosity Lab,Health & Clinical Partnerships,Knowledge Enterprise Events,Univ Research Space Planning,International Projects & Mgmt,Clinical Initiatives Dignity,McCain Inst Intl Leadership,Knowldg Enterprise Initiatives,University Innovation Alliance,Decision Theater,Economic Development,Knowledge Enterprise Analytics,Research Integrity & Assurance,ASU International Development,Global Security Initiative,Ctr Cybersec Digital Forensics,Ctr Accelerating Op Efficiency,Ctr Human AI & Robot Teaming,Ctr Narr, Disinfo & Strat Infl,SkySong M+E Logistics,Entrepreneurship + Innovation,E+I Venture Mentors,Office of VP Research Develop,Advanced Materials Initiative,Flexible Electronics Display,Research Development,Collg Research Eval Serv Team,Materials of the Universe Ctr,Corp Engagemt & Strat Partnshp,Center for Engagement Science,Education for Humanity,SFAz Center for STEM,KE Financial Services,KE Finance Process Development,KE Business Units Finance,KE Serv & Rechg Ctrs Finan,KE Initiatives Finance,KE Biodesign Institute Finance,KE Procurement,KE Global Futures Finance,Interplanetary Initiative,Research Technology Office,RTO Business Intelligence,RTO Information Security,RTO Research Computing,RTO Research Editing,RTO Scientific Software Engrng,RTO Training,Research Tech Development,Research Tech Support,RTO Strategic Solutions,RTO Enterprise Architecture,KE Web Services,Knowldg Enterprise Operations,Ofc Research/Sponsored Project,Research Advancement Services,Research Project Management,Global Operations,Operations PMO,ORSPA Award Management,ORSPA Proposals & Negotiations,ORSPA Fiscal Oversight,Global Futures Laboratory,Global Inst of Sustain & Innov,ASU Wrigley Inst Development,ASU Wrigley Inst Outreach,CAP LTER,Center Biodiversity Outcomes,Decision Center Desert City,Future H2O,Global Drylands Center,Global Locust Initiative,Global Partnerships, LightWorks,Swette Ctr Sust Food Systems,The Global KAITEKI Center,Healthy Urban Environments,Global Consort Sustain Outcome,R&M Walton Sust Solutions Svc,The Sustainability Consortium,Sustainable Cities Network,UREx Sustainability Research,Sustainbl Phosphorus Alliance,Biodesign Institute,Biodesign Admin Support Ops,Biodesign Facilities,Biodesign ITS,Biodesign Resrch Opp Adv & Dev,Biodesign Administration,Biodesign CXLS Operations,Biodesign IM,Biodesign IVV,Biodesign SMB,Biodesign Swette EB,Biodesign BB,Biodesign BE,Biodesign Virginia G Piper PD,Biodesign PC,Biodesign EHE,Biodesign MDB,Biodesign ASD,ASU Banner NDRC,Biodesign FAM,Biodesign ME,Biodesign BSS,Biodesign Beus CXFEL Lab,Biodesign SM3,Biodesign CTL,Biodesign HTM,Dept Animal Care Technologies,KE Core Facilities,Cores Sales & Marketing,Instrument Design Fabrication,Advncd Electronics & Photonics,NanoFabrication,Eyring Materials Center,Biosciences,Solar Fab,Health and Clinical Services,Industry Contracts,Complex Adaptive Systems,Strategic Marketing and Comms,Engagement & Prof Development';
-*/
 	useEffect( () => {
 		fetchData();
 	}, [] );
@@ -63,44 +61,33 @@ function BrassRing( props ) {
 	const selectContainer = document.getElementsByClassName(
 		'uds-brassring-selection'
 	);
+
+	const hideJobPosts = ( el ) => {
+		Object.values( el.querySelectorAll( '[class="jobPost"]' ) ).map(
+			( jobPost ) => {
+				return ( jobPost.style.display = 'none' );
+			}
+		);
+	};
+
 	for ( const el of selectContainer ) {
-		const jobPosts = el.querySelectorAll( '[class="jobPost"]' );
-		Object.values( jobPosts ).map( ( jobPost ) => {
-			return ( jobPost.style.display = 'none' );
-		} );
-		el.closest( '.card' )
+		hideJobPosts( el );
+
+		el.closest( '.uds-brassring-selection-wrapper' )
 			.querySelector( 'select' )
 			.addEventListener( 'change', function handleChange( event ) {
+				hideJobPosts( el );
 				const selected = event.target.value;
 
 				const thisJobPosts = el
-					.closest( '.card' )
+					.closest( '.uds-brassring-selection-wrapper' )
 					.querySelectorAll( '[sitetype="' + selected + '"]' );
 
 				Object.values( thisJobPosts ).map( ( thisJobPost ) => {
 					return ( thisJobPost.style.display = 'block' );
 				} );
-
-				//
-				//console.log( event );
-
-				//selected.style.display = 'block';
-				// 👇️ get selected VALUE even outside event handler
-				//console.log( select.options[ select.selectedIndex ].value );
-				// 👇️ get selected TEXT in or outside event handler
-				//console.log( select.options[ select.selectedIndex ].text );
 			} );
 	}
-
-	// const selectWrapper = document.getElementsByClassName(
-	// 	'uds-brassring-selection-wrapper'
-	// );
-	// for ( const el of selectWrapper ) {
-	// 	const value = el.options[ el.selectedIndex ].value;
-
-	// 	//var text = selectWrapper.options[ selectWrapper.selectedIndex ].text;
-	// 	console.log( value );
-	// }
 
 	return (
 		<div
@@ -111,7 +98,7 @@ function BrassRing( props ) {
 			TotalRecordsFound={ info.TotalRecordsFound }
 			siteType={ siteType }
 		>
-			<ul>
+			<ul className="list-unstyled">
 				{ jobs.length > 1 ? (
 					jobs.map( ( job, index ) => (
 						<li key={ index }>
@@ -135,7 +122,25 @@ function BrassRing( props ) {
 						</li>
 					) )
 				) : (
-					<li>No results found!</li>
+					<li>
+						{ siteID === '' ? (
+							<div className="uds-brassring-selection-wrapper">
+								<Selection />
+								<div className="uds-brassring-selection">
+									<BrassRing
+										siteType="staff"
+										depList={ depList }
+									/>
+									<BrassRing
+										siteType="student"
+										depList={ depList }
+									/>
+								</div>
+							</div>
+						) : (
+							'No results found!'
+						) }
+					</li>
 				) }
 			</ul>
 		</div>

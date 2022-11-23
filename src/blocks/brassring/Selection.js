@@ -10,7 +10,7 @@ function Selection() {
 	};
 
 	return (
-		<form id="jobTypeSelect">
+		<form className="jobTypeSelect">
 			<SelectControl
 				label={ __( 'Job type' ) }
 				value={ optionsState }

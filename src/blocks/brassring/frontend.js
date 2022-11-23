@@ -22,7 +22,7 @@ Object.values( brassringBlocks ).map( ( brassringBlock ) => {
 	);
 	if ( siteType === 'all' ) {
 		result = (
-			<div className={ [ 'card uds-brassring-selection-wrapper' ] }>
+			<div className="uds-brassring-selection-wrapper">
 				<Selection />
 				<div className="uds-brassring-selection">
 					<BrassRing siteType="staff" depList={ depList } />
