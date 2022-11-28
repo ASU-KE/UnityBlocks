@@ -3,7 +3,12 @@
  */
 import { __ } from '@wordpress/i18n';
 import { InspectorControls } from '@wordpress/block-editor';
-import { PanelBody, PanelRow, TextControl } from '@wordpress/components';
+import {
+	PanelBody,
+	PanelRow,
+	TextareaControl,
+	SelectControl,
+} from '@wordpress/components';
 
 /**
  * Inspector controls
@@ -20,18 +25,28 @@ const Inspector = ( props ) => {
 		<InspectorControls>
 			<PanelBody title={ __( 'Brassring Jobs', 'unityblocks' ) }>
 				<PanelRow>
-					<TextControl
-						label={ 'siteType' }
+					<SelectControl
+						label={ __( 'Staff or Student?' ) }
 						value={ siteType }
-						onChange={ ( value ) =>
-							setAttributes( { siteType: value } )
-						}
+						options={ [
+							{ label: 'Client can select', value: 'all' },
+							{ label: 'Staff', value: 'staff' },
+							{ label: 'Student', value: 'student' },
+						] }
+						onChange={ ( value ) => {
+							return setAttributes( {
+								siteType: value,
+							} );
+						} }
 					/>
 				</PanelRow>
 
 				<PanelRow>
-					<TextControl
-						label={ 'depList' }
+					<TextareaControl
+						label={ 'Department list' }
+						help={
+							'List department names separated by commas (,).'
+						}
 						value={ depList }
 						onChange={ ( value ) =>
 							setAttributes( { depList: value } )

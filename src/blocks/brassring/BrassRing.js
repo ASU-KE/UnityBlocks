@@ -50,9 +50,10 @@ function BrassRing( props ) {
 		const info = parser.parse( decode( text ) ).string.Envelope.Unit.Packet
 			.Payload.ResultSet.OtherInformation;
 
-		if ( ! Array.isArray( jobs ) ) {
+		if ( ! Array.isArray( jobs ) && jobs ) {
 			jobs = [ jobs ];
 		}
+
 		//setJobs( Array.from( jobs ) );
 		setJobs( jobs );
 		setInfo( info );
@@ -99,48 +100,44 @@ function BrassRing( props ) {
 			siteType={ siteType }
 		>
 			<ul className="list-unstyled">
-				{ jobs.length > 1 ? (
-					jobs.map( ( job, index ) => (
-						<li key={ index }>
-							<div>
-								<a
-									target="_blank"
-									rel="noreferrer"
-									href={ job.JobDetailLink }
-								>
-									{ job.Question[ 2 ][ '#text' ] }
-								</a>
-							</div>
-							<div>
-								<strong>Department: </strong>
-								{ job.Question[ 5 ][ '#text' ] }
-							</div>
-							<div>
-								<strong>Close date: </strong>
-								{ job.Question[ 8 ][ '#text' ] }
-							</div>
-						</li>
-					) )
+				{ siteID === '' ? (
+					<div className="uds-brassring-selection-wrapper">
+						<Selection />
+						<div className="uds-brassring-selection">
+							<BrassRing siteType="staff" depList={ depList } />
+							<BrassRing siteType="student" depList={ depList } />
+						</div>
+					</div>
 				) : (
-					<li>
-						{ siteID === '' ? (
-							<div className="uds-brassring-selection-wrapper">
-								<Selection />
-								<div className="uds-brassring-selection">
-									<BrassRing
-										siteType="staff"
-										depList={ depList }
-									/>
-									<BrassRing
-										siteType="student"
-										depList={ depList }
-									/>
-								</div>
-							</div>
+					<>
+						{ jobs?.length > 0 ? (
+							jobs.map( ( job, index ) => (
+								<li key={ index }>
+									<div>
+										<div>
+											<a
+												target="_blank"
+												rel="noreferrer"
+												href={ job.JobDetailLink }
+											>
+												{ job.Question[ 2 ][ '#text' ] }
+											</a>
+										</div>
+										<div>
+											<strong>Department: </strong>
+											{ job.Question[ 5 ][ '#text' ] }
+										</div>
+										<div>
+											<strong>Close date: </strong>
+											{ job.Question[ 8 ][ '#text' ] }
+										</div>
+									</div>
+								</li>
+							) )
 						) : (
-							'No results found!'
+							<li>No results found!</li>
 						) }
-					</li>
+					</>
 				) }
 			</ul>
 		</div>
