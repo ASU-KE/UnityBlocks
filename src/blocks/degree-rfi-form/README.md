@@ -80,7 +80,7 @@ The main technical barrier is that the ASU RFI service can take a while to respo
 
 However, WP Engine does not allow this timeout setting to be increased beyond 60.
 
-Additionally I'm skeptical that the proxy is even necessary. The Source ID isn't really any more secret than a web token used to authenticate REST API requests. I feel that this RFI process needs to be over-complicated. Include the Source ID in the React component and submit the RFI request directly to the ASU service endpoint.
+Additionally I'm skeptical that the proxy is even necessary. The Source ID isn't really any more secret than a web token used to authenticate REST API requests. I feel that there is no need for this RFI process to be over-complicated. Include the Source ID in the React component and submit the RFI request directly to the ASU service endpoint.
 
 We still need to verify that our Unity Block handles the slow request responses gracefully.
 
