@@ -20,11 +20,14 @@ See the the [Unity Storybook for the RFI component](https://unity.web.asu.edu/@a
 
 ## Important docs:
 
-**ASU-UNITY RFI React RFI app:**  
-https://github.com/ASU/asu-unity-stack/blob/dev/packages/app-rfi/README.md
+**ServiceNow Request Form to Setup RFI**  
+https://asudev.jira.com/servicedesk/customer/portal/5/group/28/create/89
 
-**Process Overview for Web Developers:**  
+**Summary Process Overview for Web Developers:**  
 https://docs.google.com/document/d/1zU_ZaXOnSgjcZNdvg17SrIk-3rvb0awa/edit
+
+**ASU-UNITY React RFI app:**  
+https://github.com/ASU/asu-unity-stack/blob/dev/packages/app-rfi/README.md
 
 **Webspark RFI module:**  
 https://github.com/ASUWebPlatforms/webspark-module-asu_degree_rfi
@@ -48,9 +51,12 @@ https://developers.google.com/tag-platform/tag-manager/web/datalayer
 
 **ASU Degree Search REST API** (currently proxied through Cloudflare worker for CORS permissions) for main degree data:
 
-* **findAllDegrees:** <https://degrees.apps.asu.edu/t5/service?cert=false&program=undergrad&method=findAllDegrees&fields=Descr100,Degree,CollegeAcadOrg,AcadPlanType,AcadPlan,AcadProg,CampusStringArray,SubPln,planCatDescr,EmailAddr,accelerateDegrees,concurrentDegrees,globalExp,careerData,AsuCareerOpp&init=false>
-* **findDegreeByAcadPlan:** <https://degrees.apps.asu.edu/t5/service?method=findDegreeByAcadPlan&acadPlan=LAACTMS&fields=Descr100,Degree,CollegeAcadOrg,AcadPlanType,AcadPlan,AcadProg,CampusStringArray,SubPln,planCatDescr,applyInfo,graduateAllApplyDates&init=false>
-* **findDegreeByCollege:** <https://degrees.apps.asu.edu/t5/service?method=findDegreeByCollege&fields=AcadPlan&program=undergrad&cert=false&collegeOrg=CBA&init=false>
+* **findAllDegrees:**  
+<https://degrees.apps.asu.edu/t5/service?cert=false&program=undergrad&method=findAllDegrees&fields=Descr100,Degree,CollegeAcadOrg,AcadPlanType,AcadPlan,AcadProg,CampusStringArray,SubPln,planCatDescr,EmailAddr,accelerateDegrees,concurrentDegrees,globalExp,careerData,AsuCareerOpp&init=false>
+* **findDegreeByAcadPlan:**  
+<https://degrees.apps.asu.edu/t5/service?method=findDegreeByAcadPlan&acadPlan=LAACTMS&fields=Descr100,Degree,CollegeAcadOrg,AcadPlanType,AcadPlan,AcadProg,CampusStringArray,SubPln,planCatDescr,applyInfo,graduateAllApplyDates&init=false>
+* **findDegreeByCollege:**  
+<https://degrees.apps.asu.edu/t5/service?method=findDegreeByCollege&fields=AcadPlan&program=undergrad&cert=false&collegeOrg=CBA&init=false>
 
 **Data Potluck for Countries and States data:**  
 * <https://api.myasuplat-dpl.asu.edu/api/codeset/countries?include=states>
