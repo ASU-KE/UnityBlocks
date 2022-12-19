@@ -2,7 +2,7 @@
 
 From the original asu-unity-stack component README:
 
-> The ASU RFI Component is a React-powered Request for Information form. It is intended to be implemented by a CMS module/plugin/extension that must provide a local endpoint to recieve the component's submission payload and add the host's source ID (which serves as an API key and identifier) to the payload, and then send it off to the RFI submissions service which processes and routes the submissions to Undergrad, Grad, and ASUOnline middleware destinations so that the RFI request ultimately lands in the appropriate Salesforce destination.
+> The ASU RFI Component is a React-powered Request for Information form. It is intended to be implemented by a CMS module/plugin/extension that must provide a local endpoint to receive the component's submission payload and add the host's source ID (which serves as an API key and identifier) to the payload, and then send it off to the RFI submissions service which processes and routes the submissions to Undergrad, Grad, and ASUOnline middleware destinations so that the RFI request ultimately lands in the appropriate Salesforce destination.
 
 ## Installation requirements:
 
@@ -70,9 +70,19 @@ https://developers.google.com/tag-platform/tag-manager/web/datalayer
 
 ## About the RFI Submission Proxy in Webspark
 
-The RFI submission proxy in webspark was set up to protect the Source ID. Rather than having the Reat component include the Source ID in the request, the idea is to pass the RFI request through a proxy function that appends the Source ID to the HTTP request before sending on to the Degree RFI service.
+The RFI submission proxy in Webspark was set up to protect the Source ID. Rather than having the React component include the Source ID in the request, the idea is to pass the RFI request through a proxy function that appends the Source ID to the HTTP request before sending on to the Degree RFI service.
 
-In reality, we could implement something similar with a PHP endpoint in WP Engine. But I'm skeptical that it is neessary. The Source ID isn't really any more secret than a web token used to authenticate REST API requests. I don't see the need to over complicate this. Inlcude the Source ID in the React component and submit the RFI request directly to the ASU service endpoint.
+In reality, we could implement something similar with a PHP endpoint in WP Engine.
+
+The main technical barrier is that the ASU RFI service can take a while to respond to a submission. The default PHP timeout limit of 60 seconds is not enough to guarantee all requests will succeed. ET recommends the PHP timeout to be increased to 120 seconds:
+
+`max_execution_time = 120;`
+
+However, WP Engine does not allow this timeout setting to be increased beyond 60.
+
+Additionally I'm skeptical that the proxy is even necessary. The Source ID isn't really any more secret than a web token used to authenticate REST API requests. I feel that this RFI process needs to be over-complicated. Include the Source ID in the React component and submit the RFI request directly to the ASU service endpoint.
+
+We still need to verify that our Unity Block handles the slow request responses gracefully.
 
 
 ## React component props
