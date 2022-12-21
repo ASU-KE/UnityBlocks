@@ -50,15 +50,15 @@ if ($this->is_page_gutenberg() || has_block('unityblocks/testimonial')) {
 	);
 }
 
-if ($this->is_page_gutenberg() || has_block('unityblocks/brassring')) {
-	$unityblocks_brassring_file    = $dir_url . 'unityblocks-brassring.js';
-	$unityblocks_brassring_version = UNITYBLOCKS_VERSION . '.' . filemtime($dir_path . 'unityblocks-brassring.js');
+if ($this->is_page_gutenberg() || has_block('unityblocks/asu-careers')) {
+	$unityblocks_asu_careers_file    = $dir_url . 'unityblocks-asu-careers.js';
+	$unityblocks_asu_careers_version = UNITYBLOCKS_VERSION . '.' . filemtime($dir_path . 'unityblocks-asu-careers.js');
 
 	wp_enqueue_script(
-		'unityblocks-brassring',
-		$unityblocks_brassring_file,
+		'unityblocks-asu-careers',
+		$unityblocks_asu_careers_file,
 		array('wp-element', 'wp-components'),
-		$unityblocks_brassring_version,
+		$unityblocks_asu_careers_version,
 		true
 	);
 }

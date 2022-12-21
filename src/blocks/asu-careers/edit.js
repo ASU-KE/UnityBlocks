@@ -1,4 +1,4 @@
-import BrassRing from './BrassRing';
+import ASUCareers from './ASUCareers';
 
 /**
  * Internal dependencies
@@ -38,7 +38,7 @@ const Edit = ( props ) => {
 		<>
 			<Inspector { ...props } />
 			<div className={ className }>
-				<BrassRing { ...args } />
+				<ASUCareers { ...args } />
 			</div>
 		</>
 	);

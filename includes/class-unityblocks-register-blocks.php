@@ -156,7 +156,7 @@ class UnityBlocks_Register_Blocks
 		);
 
 		register_block_type(
-			$slug . '/brassring',
+			$slug . '/asu-careers',
 			array(
 				'editor_script' => $slug . '-editor',
 				'editor_style'  => $slug . '-editor',

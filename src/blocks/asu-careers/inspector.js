@@ -23,7 +23,7 @@ const Inspector = ( props ) => {
 
 	return (
 		<InspectorControls>
-			<PanelBody title={ __( 'Brassring Jobs', 'unityblocks' ) }>
+			<PanelBody title={ __( 'ASU Careers', 'unityblocks' ) }>
 				<PanelRow>
 					<SelectControl
 						label={ __( 'Staff or Student?' ) }

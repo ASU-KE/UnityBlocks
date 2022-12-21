@@ -16,9 +16,9 @@ import { __ } from '@wordpress/i18n';
 const { name, category, attributes } = metadata;
 
 const settings = {
-	title: __( 'Brassring jobs', 'unityblocks' ),
+	title: __( 'ASU Careers', 'unityblocks' ),
 	description: __(
-		'Provides job openings from BrassRing listed by departments',
+		'Provides ASU Careers listed by departments',
 		'unityblocks'
 	),
 	icon: 'database-import',
@@ -32,6 +32,8 @@ const settings = {
 		__( 'opening', 'unityblocks' ),
 		__( 'staff', 'unityblocks' ),
 		__( 'student', 'unityblocks' ),
+		__( 'career', 'unityblocks' ),
+		__( 'asu', 'unityblocks' ),
 	],
 	supports: {
 		align: [ 'wide', 'full' ],

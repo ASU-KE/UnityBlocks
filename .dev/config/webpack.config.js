@@ -71,9 +71,9 @@ module.exports = {
 			process.cwd(),
 			'src/blocks/testimonial/frontend.js'
 		),
-		'js/unityblocks-brassring': path.resolve(
+		'js/unityblocks-asu-careers': path.resolve(
 			process.cwd(),
-			'src/blocks/brassring/frontend.js'
+			'src/blocks/asu-careers/frontend.js'
 		),
 	},
 

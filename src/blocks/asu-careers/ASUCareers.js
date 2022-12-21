@@ -10,7 +10,7 @@ const options = {
 
 const parser = new XMLParser( options );
 
-function BrassRing( props ) {
+function ASUCareers( props ) {
 	const siteType = props.siteType;
 	const depList = props.depList;
 	//	'Office of Univ Events&Protocol, Solar Fab, Knowledge Enterprise Events';
@@ -60,7 +60,7 @@ function BrassRing( props ) {
 	}
 
 	const selectContainer = document.getElementsByClassName(
-		'uds-brassring-selection'
+		'uds-asu-careers-selection'
 	);
 
 	const hideJobPosts = ( el ) => {
@@ -74,14 +74,14 @@ function BrassRing( props ) {
 	for ( const el of selectContainer ) {
 		hideJobPosts( el );
 
-		el.closest( '.uds-brassring-selection-wrapper' )
+		el.closest( '.uds-asu-careers-selection-wrapper' )
 			.querySelector( 'select' )
 			.addEventListener( 'change', function handleChange( event ) {
 				hideJobPosts( el );
 				const selected = event.target.value;
 
 				const thisJobPosts = el
-					.closest( '.uds-brassring-selection-wrapper' )
+					.closest( '.uds-asu-careers-selection-wrapper' )
 					.querySelectorAll( '[sitetype="' + selected + '"]' );
 
 				Object.values( thisJobPosts ).map( ( thisJobPost ) => {
@@ -101,11 +101,14 @@ function BrassRing( props ) {
 		>
 			<ul className="list-unstyled">
 				{ siteID === '' ? (
-					<div className="uds-brassring-selection-wrapper">
+					<div className="uds-asu-careers-selection-wrapper">
 						<Selection />
-						<div className="uds-brassring-selection">
-							<BrassRing siteType="staff" depList={ depList } />
-							<BrassRing siteType="student" depList={ depList } />
+						<div className="uds-asu-careers-selection">
+							<ASUCareers siteType="staff" depList={ depList } />
+							<ASUCareers
+								siteType="student"
+								depList={ depList }
+							/>
 						</div>
 					</div>
 				) : (
@@ -144,4 +147,4 @@ function BrassRing( props ) {
 	);
 }
 
-export default BrassRing;
+export default ASUCareers;
