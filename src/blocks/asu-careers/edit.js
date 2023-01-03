@@ -1,4 +1,4 @@
-import ASUCareers from './ASUCareers';
+import ASUCareers from './components/ASUCareers';
 
 /**
  * Internal dependencies
@@ -17,13 +17,13 @@ import Inspector from './inspector';
  */
 const Edit = ( props ) => {
 	const {
-		attributes: { siteType, depList },
+		attributes: { listType, deptList },
 		className,
 	} = props;
 
 	const args = {
-		siteType,
-		depList,
+		listType,
+		deptList,
 	};
 
 	return (

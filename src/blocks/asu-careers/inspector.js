@@ -26,12 +26,12 @@ const Inspector = ( props ) => {
 			<PanelBody title={ __( 'ASU Careers', 'unityblocks' ) }>
 				<PanelRow>
 					<SelectControl
-						label={ __( 'Staff or Student?' ) }
+						label={ __( 'Staff or Students?' ) }
 						value={ siteType }
 						options={ [
-							{ label: 'Client can select', value: 'all' },
+							{ label: 'User choice', value: 'user-choice' },
 							{ label: 'Staff', value: 'staff' },
-							{ label: 'Student', value: 'student' },
+							{ label: 'Students', value: 'students' },
 						] }
 						onChange={ ( value ) => {
 							return setAttributes( {
