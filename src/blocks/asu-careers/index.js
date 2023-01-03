@@ -18,21 +18,14 @@ const { name, category, attributes } = metadata;
 const settings = {
 	title: __( 'ASU Careers', 'unityblocks' ),
 	description: __(
-		'Provides ASU Careers listed by departments',
+		'Display an interactive job listings blocks for ASU Careers, organized by departments.',
 		'unityblocks'
 	),
 	icon: 'database-import',
 	keywords: [
 		'unityblocks',
 		__( 'jobs', 'unityblocks' ),
-		__( 'job', 'unityblocks' ),
 		__( 'brassring', 'unityblocks' ),
-		__( 'brass', 'unityblocks' ),
-		__( 'ring', 'unityblocks' ),
-		__( 'opening', 'unityblocks' ),
-		__( 'staff', 'unityblocks' ),
-		__( 'student', 'unityblocks' ),
-		__( 'career', 'unityblocks' ),
 		__( 'asu', 'unityblocks' ),
 	],
 	supports: {
