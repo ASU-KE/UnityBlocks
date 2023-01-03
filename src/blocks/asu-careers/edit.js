@@ -3,7 +3,6 @@ import ASUCareers from './ASUCareers';
 /**
  * Internal dependencies
  */
-// import Controls from './controls';
 import Inspector from './inspector';
 
 /**
@@ -22,18 +21,11 @@ const Edit = ( props ) => {
 		className,
 	} = props;
 
-	/*const args = {
-		siteType: 'staff',
-		depList: 'Office of Univ Events&Protocol, Solar Fab',
-	};
-*/
-
 	const args = {
 		siteType,
 		depList,
 	};
 
-	//console.log( args );
 	return (
 		<>
 			<Inspector { ...props } />
