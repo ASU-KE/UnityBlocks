@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { RotatingLines } from 'react-loader-spinner';
 import Select from 'react-select';
@@ -8,20 +8,33 @@ import { useBrassring } from '../hooks/useBrassring';
 const AsuCareers = ( props ) => {
 	const { listType, deptList } = props;
 
+	// default list type selection is user-choice.
+	// If Editor overrides this, then use our Select dropdown to ask user for their choice.
+	const [ selected, setSelected ] = useState( 'user-choice' );
+
 	const { payload, error, isLoading } = useBrassring( listType, deptList );
 
 	const jobs = payload?.jobs ?? [];
 
 	const dropdownOptions = [
-		{ value: 'none', label: '--Select--' },
+		{ value: 'user-choice', label: '-- Choose Listing --' },
 		{ value: 'staff', label: 'Staff postings' },
 		{ value: 'students', label: 'Student postings' },
 	];
 
+	const handleSelection = ( selectedOption ) => {
+		setSelected( selectedOption );
+		console.log( `Option selected:`, selectedOption );
+	};
+
 	return (
 		<div className="uds-asu-careers-listing">
 			<div className="uds-asu-careers-selection-wrapper">
-					<Select options={ dropdownOptions } />
+				<Select
+					options={ dropdownOptions }
+					defaultValue={ dropdownOptions[ 0 ] }
+					onChange={ handleSelection }
+				/>
 			</div>
 			<ul className="list-unstyled">
 				<>
