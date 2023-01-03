@@ -4,7 +4,7 @@ import Select from 'react-select';
 
 import { useBrassring } from '../hooks/useBrassringAPI';
 
-const ASUCareers = ( props ) => {
+const AsuCareers = ( props ) => {
 	const { listType, depList } = props;
 
 	const { payload, error, isLoading } = useBrassring( listType, depList );
@@ -76,4 +76,4 @@ const ASUCareers = ( props ) => {
 	);
 };
 
-export { ASUCareers };
+export { AsuCareers };

@@ -1,4 +1,4 @@
-import ASUCareers from './components/ASUCareers';
+import AsuCareers from './components/AsuCareers';
 
 /**
  * Internal dependencies
@@ -30,7 +30,7 @@ const Edit = ( props ) => {
 		<>
 			<Inspector { ...props } />
 			<div className={ className }>
-				<ASUCareers { ...args } />
+				<AsuCareers { ...args } />
 			</div>
 		</>
 	);
