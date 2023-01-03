@@ -38,7 +38,7 @@ const fetcher = async ( inputXml ) => {
 	}
 };
 
-const useBrassring = ( listType, depList ) => {
+const useBrassring = ( listType, deptList ) => {
 	// only query Brassring if the listType has been chosen (either in the Editor or by the user)
 	if ( 'user-choice' === listType ) {
 		return {
@@ -53,7 +53,7 @@ const useBrassring = ( listType, depList ) => {
 		siteID = '5495'; // select Student listing
 	}
 
-	const inputXml = `<Envelope version='01.00'><Sender><Id>12345</Id><Credential>25620</Credential></Sender><TransactInfo transactId='1' transactType='data'><TransactId>01/27/2010</TransactId><TimeStamp>12:00:00 AM</TimeStamp></TransactInfo><Unit UnitProcessor='SearchAPI'><Packet><PacketInfo packetType='data'><packetId>1</packetId></PacketInfo><Payload><InputString> <ClientId>25620</ClientId><SiteId>${ siteID }</SiteId><PageNumber>1</PageNumber><OutputXMLFormat>0</OutputXMLFormat> <AuthenticationToken/><HotJobs/><ProximitySearch><Distance/><Measurement/><Country/><State/><City/><zipCode/></ProximitySearch><JobMatchCriteriaText/><SelectedSearchLocaleId/><Questions><Question Sortorder='ASC' Sort='No'><Id>8318</Id> <Value><![CDATA[${ depList }]]></Value></Question></Questions></InputString></Payload></Packet></Unit></Envelope>`;
+	const inputXml = `<Envelope version='01.00'><Sender><Id>12345</Id><Credential>25620</Credential></Sender><TransactInfo transactId='1' transactType='data'><TransactId>01/27/2010</TransactId><TimeStamp>12:00:00 AM</TimeStamp></TransactInfo><Unit UnitProcessor='SearchAPI'><Packet><PacketInfo packetType='data'><packetId>1</packetId></PacketInfo><Payload><InputString> <ClientId>25620</ClientId><SiteId>${ siteID }</SiteId><PageNumber>1</PageNumber><OutputXMLFormat>0</OutputXMLFormat> <AuthenticationToken/><HotJobs/><ProximitySearch><Distance/><Measurement/><Country/><State/><City/><zipCode/></ProximitySearch><JobMatchCriteriaText/><SelectedSearchLocaleId/><Questions><Question Sortorder='ASC' Sort='No'><Id>8318</Id> <Value><![CDATA[${ deptList }]]></Value></Question></Questions></InputString></Payload></Packet></Unit></Envelope>`;
 
 	const { data, error, isLoading } = useSWR( inputXml, fetcher );
 
