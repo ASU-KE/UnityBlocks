@@ -2,7 +2,7 @@ import React from 'react';
 import { RotatingLines } from 'react-loader-spinner';
 import Select from 'react-select';
 
-import { useBrassring } from '../hooks/useBrassringAPI';
+import { useBrassring } from '../hooks/useBrassring';
 
 const AsuCareers = ( props ) => {
 	const { listType, depList } = props;
