@@ -5,9 +5,9 @@ import Select from 'react-select';
 import { useBrassring } from '../hooks/useBrassring';
 
 const AsuCareers = ( props ) => {
-	const { listType, depList } = props;
+	const { listType, deptList } = props;
 
-	const { payload, error, isLoading } = useBrassring( listType, depList );
+	const { payload, error, isLoading } = useBrassring( listType, deptList );
 
 	const jobs = payload?.jobs ?? [];
 
