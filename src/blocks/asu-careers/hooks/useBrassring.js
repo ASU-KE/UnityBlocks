@@ -72,10 +72,10 @@ const useBrassring = ( listType, deptList ) => {
 	return {
 		payload: {
 			jobs,
-			totalRecords: queryInfo.TotalRecordsFound,
-			maxPages: queryInfo.MaxPages,
-			startDoc: queryInfo.StartDoc,
-			pageNumber: queryInfo.PageNumber,
+			totalRecords: queryInfo?.TotalRecordsFound,
+			maxPages: queryInfo?.MaxPages,
+			startDoc: queryInfo?.StartDoc,
+			pageNumber: queryInfo?.PageNumber,
 		},
 		isLoading,
 		isError: error,
