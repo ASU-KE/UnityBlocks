@@ -10,7 +10,7 @@ const xmlParser = new XMLParser( {
 
 const fetcher = async ( inputXml ) => {
 	try {
-		response = await fetch(
+		const response = await fetch(
 			'https://import.brassring.com/WebRouter/WebRouter.asmx/route',
 			{
 				method: 'POST',
