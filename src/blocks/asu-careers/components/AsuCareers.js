@@ -31,7 +31,11 @@ const AsuCareers = ( props ) => {
 		<div className="uds-asu-careers-listing">
 			{ 'user-choice' === listType && (
 				<div className="uds-asu-careers-selection-wrapper">
-					<Select options={ dropdownOptions } />
+					<Select
+						options={ dropdownOptions }
+						defaultValue={ dropdownOptions[ 0 ] }
+						onChange={ handleSelection }
+					/>
 				</div>
 			) }
 			<ul className="list-unstyled">
