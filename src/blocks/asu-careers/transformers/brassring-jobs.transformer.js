@@ -8,7 +8,7 @@ const transformBrassringJobs = ( job ) => ( {
 	titleShort: job.Question[ 1 ][ '#text' ],
 	titleFull: job.Question[ 2 ][ '#text' ],
 	campus: job.Question[ 3 ][ '#text' ],
-	unknown: job.Question[ 4 ][ '#text' ],
+	classification: job.Question[ 4 ][ '#text' ],
 	department: job.Question[ 5 ][ '#text' ],
 	salary: job.Question[ 6 ][ '#text' ],
 	positionType: job.Question[ 7 ][ '#text' ],
