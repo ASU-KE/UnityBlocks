@@ -56,7 +56,7 @@
     "react-router-dom": "^6.6.1",
     "react-select": "^5.7.0",
     "styled-components": "^5.3.3",
-    "swr": "^1.2.2"
+    "swr": "^2.0.0"
   },
   "devDependencies": {
     "@asu-ke-web-services/stylelint-config": "^0.1.0",
