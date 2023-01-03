@@ -2,6 +2,8 @@ import { decode } from 'html-entities';
 import useSWR from 'swr';
 import { XMLParser } from 'fast-xml-parser';
 
+import { transformBrassringJobs } from '../transformers/brassring-jobs.transformer';
+
 const xmlParser = new XMLParser( {
 	ignoreAttributes: false,
 } );
