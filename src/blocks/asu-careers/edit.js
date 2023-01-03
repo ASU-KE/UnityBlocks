@@ -1,4 +1,4 @@
-import AsuCareers from './components/AsuCareers';
+import { AsuCareers } from './components/AsuCareers';
 
 /**
  * Internal dependencies
