@@ -1,7 +1,6 @@
 import { decode } from 'html-entities';
 import useSWR from 'swr';
 import { XMLParser } from 'fast-xml-parser';
-import { list } from 'postcss';
 
 const xmlParser = new XMLParser( {
 	ignoreAttributes: false,
