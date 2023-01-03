@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { RotatingLines } from 'react-loader-spinner';
 import Select from 'react-select';
 
@@ -74,6 +75,15 @@ const AsuCareers = ( props ) => {
 			</ul>
 		</div>
 	);
+};
+
+AsuCareers.propTypes = {
+	listType: PropTypes.oneOf( [ 'user-choice', 'staff', 'students' ] ),
+	deptList: PropTypes.string.isRequired,
+};
+
+AsuCareers.defaultProps = {
+	listType: 'user-choice',
 };
 
 export { AsuCareers };
