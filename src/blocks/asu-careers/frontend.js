@@ -1,35 +1,15 @@
 const { render } = wp.element;
-import ASUCareers from './ASUCareers';
-import Selection from './Selection';
+import { ASUCareers } from './components/ASUCareers';
 
-const ASUCareersBlocks = document.getElementsByClassName(
-	'wp-block-unityblocks-asu-careers'
+// It is possible to load multiple Careers blocks onto a page.
+// Load each DOM element on the page using the Gutenberg-generated class for the ASU Careers block
+const careers = document.querySelectorAll(
+	'.wp-block-unityblocks-asu-careers'
 );
 
-Object.values( ASUCareersBlocks ).map( ( ASUCareersBlock ) => {
-	const siteType = ASUCareersBlock.dataset.sitetype;
-	const depList = ASUCareersBlock.dataset.deplist;
+careers.forEach( ( block ) => {
+	const listType = block.dataset.listtype;
+	const deptList = block.dataset.deptlist;
 
-	const props = {
-		siteType,
-		depList,
-	};
-
-	let result = (
-		<>
-			<ASUCareers { ...props } />
-		</>
-	);
-	if ( siteType === 'all' ) {
-		result = (
-			<div className="uds-asu-careers-selection-wrapper">
-				<Selection />
-				<div className="uds-asu-careers-selection">
-					<ASUCareers siteType="staff" depList={ depList } />
-					<ASUCareers siteType="student" depList={ depList } />
-				</div>
-			</div>
-		);
-	}
-	return render( result, ASUCareersBlock );
+	render( <ASUCareers listType={ listType } deptList={ deptList } />, block );
 } );
