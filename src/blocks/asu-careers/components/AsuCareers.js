@@ -12,7 +12,7 @@ const AsuCareers = ( props ) => {
 	// If Editor overrides this, then use our Select dropdown to ask user for their choice.
 	const [ selected, setSelected ] = useState( 'user-choice' );
 
-	const { payload, error, isLoading } = useBrassring( listType, deptList );
+	const { payload, isError, isLoading } = useBrassring( selected, deptList );
 
 	const jobs = payload?.jobs ?? [];
 
@@ -40,7 +40,7 @@ const AsuCareers = ( props ) => {
 			) }
 			<ul className="list-unstyled">
 				<>
-					{ error && (
+					{ isError && (
 						<li>
 							There has been a server error, please try again!
 						</li>
