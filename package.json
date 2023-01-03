@@ -52,7 +52,9 @@
     "graphql-request": "^4.1.0",
     "lodash-es": "^4.17.21",
     "prop-types": "^15.7.2",
+    "react-loader-spinner": "^5.3.4",
     "react-router-dom": "^6.6.1",
+    "react-select": "^5.7.0",
     "styled-components": "^5.3.3",
     "swr": "^1.2.2"
   },
