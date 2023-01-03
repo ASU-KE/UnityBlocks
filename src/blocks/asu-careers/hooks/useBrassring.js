@@ -59,6 +59,11 @@ const useBrassring = ( listType, deptList ) => {
 
 	const { data, error, isLoading } = useSWR( inputXml, fetcher );
 
+	console.error(
+		`swr data:`,
+		data?.string?.Envelope?.Unit?.Packet?.Payload?.ResultSet?.Jobs
+	);
+
 	let jobs;
 	let queryInfo;
 	if ( ! isLoading ) {

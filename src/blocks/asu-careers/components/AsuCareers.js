@@ -17,7 +17,13 @@ const AsuCareers = ( props ) => {
 		deptList
 	);
 
-	const jobs = payload?.jobs ?? [];
+	console.error( `payload:`, payload );
+	console.error( `isError:`, isError );
+	console.error( `isLoading: `, isLoading );
+
+	const jobs = payload?.jobs;
+
+	// console.error( `jobs: ${ jobs }` );
 
 	const dropdownOptions = [
 		{ value: 'user-choice', label: '-- Choose Listing --' },
