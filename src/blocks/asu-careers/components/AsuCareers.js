@@ -6,13 +6,16 @@ import Select from 'react-select';
 import { useBrassring } from '../hooks/useBrassring';
 
 const AsuCareers = ( props ) => {
-	const { listType, deptList } = props;
+	const { editorListType, deptList } = props;
 
 	// default list type selection is user-choice.
-	// If Editor overrides this, then use our Select dropdown to ask user for their choice.
-	const [ selected, setSelected ] = useState( 'user-choice' );
+	// Unless Editor overrides this, use our Select dropdown to ask user for their choice.
+	const [ userSelection, setUserSelection ] = useState( 'user-choice' );
 
-	const { payload, isError, isLoading } = useBrassring( selected, deptList );
+	const { payload, isError, isLoading } = useBrassring(
+		userSelection,
+		deptList
+	);
 
 	const jobs = payload?.jobs ?? [];
 
@@ -22,14 +25,14 @@ const AsuCareers = ( props ) => {
 		{ value: 'students', label: 'Student postings' },
 	];
 
-	const handleSelection = ( selectedOption ) => {
-		setSelected( selectedOption );
-		console.log( `Option selected:`, selectedOption );
+	const handleSelection = ( userSelectionOption ) => {
+		setUserSelection( userSelectionOption );
+		console.error( `Option userSelection:`, userSelectionOption );
 	};
 
 	return (
 		<div className="uds-asu-careers-listing">
-			{ 'user-choice' === listType && (
+			{ 'user-choice' === editorListType && (
 				<div className="uds-asu-careers-selection-wrapper">
 					<Select
 						options={ dropdownOptions }
@@ -91,12 +94,12 @@ const AsuCareers = ( props ) => {
 };
 
 AsuCareers.propTypes = {
-	listType: PropTypes.oneOf( [ 'user-choice', 'staff', 'students' ] ),
+	editorListType: PropTypes.oneOf( [ 'user-choice', 'staff', 'students' ] ),
 	deptList: PropTypes.string.isRequired,
 };
 
 AsuCareers.defaultProps = {
-	listType: 'user-choice',
+	editorListType: 'user-choice',
 };
 
 export { AsuCareers };
