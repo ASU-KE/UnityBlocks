@@ -6,11 +6,6 @@ import { AsuCareers } from './components/AsuCareers';
 import Inspector from './inspector';
 
 /**
- * WordPress dependencies
- */
-// import { __ } from '@wordpress/i18n';
-
-/**
  * Block edit function
  *
  * @param {Object} props
