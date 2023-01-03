@@ -20,11 +20,9 @@ const AsuCareers = ( props ) => {
 
 	return (
 		<div className="uds-asu-careers-listing">
-			{ 'user-choice' === listType && (
-				<div className="uds-asu-careers-selection-wrapper">
+			<div className="uds-asu-careers-selection-wrapper">
 					<Select options={ dropdownOptions } />
-				</div>
-			) }
+			</div>
 			<ul className="list-unstyled">
 				<>
 					{ error && (
