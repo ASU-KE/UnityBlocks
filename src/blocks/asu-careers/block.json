@@ -2,7 +2,7 @@
   "name": "unityblocks/asu-careers",
   "category": "widgets",
   "attributes": {
-    "listingType": {
+    "listType": {
       "type": "string",
       "enum": [
         "user-choice",
