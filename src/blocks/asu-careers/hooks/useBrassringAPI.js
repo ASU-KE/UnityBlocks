@@ -42,9 +42,9 @@ const useBrassring = ( listType, depList ) => {
 	// only query Brassring if the listType has been chosen (either in the Editor or by the user)
 	if ( 'user-choice' === listType ) {
 		return {
-			payload: {},
+			payload: null,
 			isLoading: false,
-			isError: null,
+			isError: false,
 		};
 	}
 
