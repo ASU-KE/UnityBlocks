@@ -11,10 +11,7 @@ const AsuCareers = ( props ) => {
 	// default current selection to the editor list setting
 	const [ selection, setSelection ] = useState( editorListType );
 
-	const { payload, isError, isLoading } = useBrassring(
-		userSelection,
-		deptList
-	);
+	const { payload, isError, isLoading } = useBrassring( selection, deptList );
 
 	const jobs = payload?.jobs;
 
@@ -55,7 +52,7 @@ const AsuCareers = ( props ) => {
 					) }
 
 					{ ! isLoading &&
-						'user-choice' !== userSelection &&
+						'user-choice' !== selection &&
 						! jobs?.length && (
 							<div>No postings available at this time!</div>
 						) }
