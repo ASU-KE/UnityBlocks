@@ -31,9 +31,8 @@ const AsuCareers = ( props ) => {
 		{ value: 'students', label: 'Student postings' },
 	];
 
-	const handleSelection = ( userSelectionOption ) => {
-		setUserSelection( userSelectionOption );
-		console.error( `Option userSelection:`, userSelectionOption );
+	const handleSelection = ( event ) => {
+		setUserSelection( event.value );
 	};
 
 	return (
