@@ -11,5 +11,8 @@ careers.forEach( ( block ) => {
 	const listType = block.dataset.listtype;
 	const deptList = block.dataset.deptlist;
 
-	render( <AsuCareers listType={ listType } deptList={ deptList } />, block );
+	render(
+		<AsuCareers editorListType={ listType } deptList={ deptList } />,
+		block
+	);
 } );

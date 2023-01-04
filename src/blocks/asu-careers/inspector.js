@@ -17,7 +17,7 @@ import {
  */
 const Inspector = ( props ) => {
 	const {
-		attributes: { siteType, depList },
+		attributes: { listType, deptList },
 		setAttributes,
 	} = props;
 
@@ -27,7 +27,7 @@ const Inspector = ( props ) => {
 				<PanelRow>
 					<SelectControl
 						label={ __( 'Staff or Students?' ) }
-						value={ siteType }
+						value={ listType }
 						options={ [
 							{ label: 'User choice', value: 'user-choice' },
 							{ label: 'Staff', value: 'staff' },
@@ -35,7 +35,7 @@ const Inspector = ( props ) => {
 						] }
 						onChange={ ( value ) => {
 							return setAttributes( {
-								siteType: value,
+								listType: value,
 							} );
 						} }
 					/>
@@ -47,9 +47,9 @@ const Inspector = ( props ) => {
 						help={
 							'List department names separated by commas (,).'
 						}
-						value={ depList }
+						value={ deptList }
 						onChange={ ( value ) =>
-							setAttributes( { depList: value } )
+							setAttributes( { deptList: value } )
 						}
 					/>
 				</PanelRow>

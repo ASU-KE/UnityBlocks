@@ -16,16 +16,11 @@ const Edit = ( props ) => {
 		className,
 	} = props;
 
-	const args = {
-		listType,
-		deptList,
-	};
-
 	return (
 		<>
 			<Inspector { ...props } />
 			<div className={ className }>
-				<AsuCareers { ...args } />
+				<AsuCareers editorListType={ listType } deptList={ deptList } />
 			</div>
 		</>
 	);
