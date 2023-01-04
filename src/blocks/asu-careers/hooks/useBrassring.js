@@ -68,9 +68,14 @@ const useBrassring = ( listType, deptList ) => {
 	let queryInfo;
 	if ( ! isLoading ) {
 		jobs =
-			data?.string?.Envelope?.Unit?.Packet?.Payload?.ResultSet?.Jobs?.map(
-				transformBrassringJobs()
-			);
+			data?.string?.Envelope?.Unit?.Packet?.Payload?.ResultSet?.Jobs?.Job;
+
+		// check if jobs result is an array or not, push into array if needed
+		if ( jobs && ! Array.isArray( jobs ) ) {
+			jobs = [ jobs ];
+		}
+
+		jobs = jobs?.map( transformBrassringJobs );
 
 		queryInfo =
 			data?.string.Envelope.Unit.Packet.Payload.ResultSet
