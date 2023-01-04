@@ -25,10 +25,6 @@ const AsuCareers = ( props ) => {
 		{ value: 'students', label: 'Student postings' },
 	];
 
-	const handleSelection = ( event ) => {
-		setUserSelection( event.value );
-	};
-
 	return (
 		<div className="uds-asu-careers-listing">
 			{ 'user-choice' === editorListType && (
@@ -36,7 +32,9 @@ const AsuCareers = ( props ) => {
 					<Select
 						options={ dropdownOptions }
 						defaultValue={ dropdownOptions[ 0 ] }
-						onChange={ handleSelection }
+						onChange={ ( event ) => {
+							setSelection( event.value );
+						} }
 					/>
 				</div>
 			) }
