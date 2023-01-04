@@ -8,9 +8,8 @@ import { useBrassring } from '../hooks/useBrassring';
 const AsuCareers = ( props ) => {
 	const { editorListType, deptList } = props;
 
-	// default list type selection is user-choice.
-	// Unless Editor overrides this, use our Select dropdown to ask user for their choice.
-	const [ userSelection, setUserSelection ] = useState( 'user-choice' );
+	// default current selection to the editor list setting
+	const [ selection, setSelection ] = useState( editorListType );
 
 	const { payload, isError, isLoading } = useBrassring(
 		userSelection,
