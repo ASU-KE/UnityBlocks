@@ -59,9 +59,11 @@ const AsuCareers = ( props ) => {
 							/>
 						) }
 
-						{ ! isLoading && ! jobs?.length && (
-							<div>No postings available at this time!</div>
-						) }
+						{ ! isLoading &&
+							'user-choice' !== userSelection &&
+							! jobs?.length && (
+								<div>No postings available at this time!</div>
+							) }
 
 						{ ! isLoading &&
 							jobs?.length &&
