@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { RotatingLines } from 'react-loader-spinner';
 import Select from 'react-select';
-import { SWRDevTools } from 'swr-devtools';
 
 import { useBrassring } from '../hooks/useBrassring';
 
@@ -31,69 +30,67 @@ const AsuCareers = ( props ) => {
 	};
 
 	return (
-		<SWRDevTools>
-			<div className="uds-asu-careers-listing">
-				{ 'user-choice' === editorListType && (
-					<div className="uds-asu-careers-selection-wrapper">
-						<Select
-							options={ dropdownOptions }
-							defaultValue={ dropdownOptions[ 0 ] }
-							onChange={ handleSelection }
+		<div className="uds-asu-careers-listing">
+			{ 'user-choice' === editorListType && (
+				<div className="uds-asu-careers-selection-wrapper">
+					<Select
+						options={ dropdownOptions }
+						defaultValue={ dropdownOptions[ 0 ] }
+						onChange={ handleSelection }
+					/>
+				</div>
+			) }
+			<ul className="list-unstyled">
+				<>
+					{ isError && (
+						<li>
+							There has been a server error, please try again!
+						</li>
+					) }
+					{ isLoading && (
+						<RotatingLines
+							strokeColor="grey"
+							strokeWidth="5"
+							animationDuration="0.75"
+							width="96"
+							visible={ true }
 						/>
-					</div>
-				) }
-				<ul className="list-unstyled">
-					<>
-						{ isError && (
-							<li>
-								There has been a server error, please try again!
-							</li>
-						) }
-						{ isLoading && (
-							<RotatingLines
-								strokeColor="grey"
-								strokeWidth="5"
-								animationDuration="0.75"
-								width="96"
-								visible={ true }
-							/>
+					) }
+
+					{ ! isLoading &&
+						'user-choice' !== userSelection &&
+						! jobs?.length && (
+							<div>No postings available at this time!</div>
 						) }
 
-						{ ! isLoading &&
-							'user-choice' !== userSelection &&
-							! jobs?.length && (
-								<div>No postings available at this time!</div>
-							) }
-
-						{ ! isLoading &&
-							jobs?.length &&
-							jobs.map( ( job ) => (
-								<li key={ job.id }>
+					{ ! isLoading &&
+						jobs?.length &&
+						jobs.map( ( job ) => (
+							<li key={ job.id }>
+								<div>
 									<div>
-										<div>
-											<a
-												target="_blank"
-												rel="noreferrer"
-												href={ job.postingLink }
-											>
-												{ job.titleFull }
-											</a>
-										</div>
-										<div>
-											<strong>Department: </strong>
-											{ job.department }
-										</div>
-										<div>
-											<strong>Close date: </strong>
-											{ job.closeDate }
-										</div>
+										<a
+											target="_blank"
+											rel="noreferrer"
+											href={ job.postingLink }
+										>
+											{ job.titleFull }
+										</a>
 									</div>
-								</li>
-							) ) }
-					</>
-				</ul>
-			</div>
-		</SWRDevTools>
+									<div>
+										<strong>Department: </strong>
+										{ job.department }
+									</div>
+									<div>
+										<strong>Close date: </strong>
+										{ job.closeDate }
+									</div>
+								</div>
+							</li>
+						) ) }
+				</>
+			</ul>
+		</div>
 	);
 };
 
