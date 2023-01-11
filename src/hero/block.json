@@ -1,0 +1,102 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "unityblocks/hero",
+  "version": "1.0.0",
+  "title": "Unity Hero",
+  "category": "uds",
+  "keywords": ["unityblocks", "images", "layout"],
+  "icon": "cover-image",
+  "description": "Provide Hero for page headers.",
+  "supports": {
+    "html": false,
+    "align": ["wide", "full"]
+  },
+  "textdomain": "unityblocks",
+  "viewScript": ["file:./frontend.js", "unityblocks-hero-view-script"],
+  "editorScript": "file:./index.js",
+  "attributes": {
+    "heroType": {
+      "type": "string",
+      "enum": ["heading-hero", "story-hero"],
+      "default": "heading-hero"
+    },
+    "mediaId": {
+      "type": "number",
+      "default": 0
+    },
+    "mediaUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "mediaAltText": {
+      "type": "string",
+      "default": ""
+    },
+    "mediaCssClass": {
+      "type": "array",
+      "default": []
+    },
+    "mediaSize": {
+      "type": "string",
+      "enum": ["small", "medium", "large"],
+      "default": "medium"
+    },
+    "subTitleText": {
+      "type": "string",
+      "default": ""
+    },
+    "subTitleHighlightColor": {
+      "type": "string",
+      "enum": ["gold", "white", "black"],
+      "default": "white"
+    },
+    "subTitleMaxWidth": {
+      "type": "string",
+      "default": ""
+    },
+    "subTitleCssClass": {
+      "type": "array",
+      "default": []
+    },
+    "titleText": {
+      "type": "string",
+      "default": ""
+    },
+    "titleHighlightColor": {
+      "type": "string",
+      "enum": ["gold", "white", "black"],
+      "default": "gold"
+    },
+    "titleMaxWidth": {
+      "type": "string",
+      "default": ""
+    },
+    "titleCssClass": {
+      "type": "array",
+      "default": []
+    },
+    "contentsText": {
+      "type": "string",
+      "default": ""
+    },
+    "contentsMaxWidth": {
+      "type": "string",
+      "default": ""
+    },
+    "contentsCssClass": {
+      "type": "array",
+      "default": []
+    },
+    "contentsHighlightColor": {
+      "type": "string",
+      "enum": ["gold", "white", "black"],
+      "default": "white"
+    },
+    "contentsColor": {
+      "type": "string",
+      "enum": ["gold", "white", "black"],
+      "default": "white"
+    }
+  }
+}
