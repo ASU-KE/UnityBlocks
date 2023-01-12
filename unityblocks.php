@@ -27,7 +27,6 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @see https://developer.wordpress.org/reference/functions/register_block_type/
  */
 function unityblocks_block_init() {
-	register_block_type( __DIR__ . '/build/example-block' );
 	register_block_type( __DIR__ . '/build/anchor-menu' );
 	register_block_type( __DIR__ . '/build/hero' );
 	register_block_type( __DIR__ . '/build/events-grid' );
