@@ -1,0 +1,117 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "unityblocks/degree-rfi-form",
+  "version": "1.0.0",
+  "title": "Unity Degree RFI Form",
+  "category": "uds",
+  "keywords": [
+    "unityblocks",
+    "rfi",
+    "form",
+    "degree"
+  ],
+  "icon": "list-view",
+  "description": "Provide a degree RFI block",
+  "supports": {
+    "html": false,
+    "align": [
+      "wide",
+      "full"
+    ]
+  },
+  "textdomain": "unityblocks",
+  "viewScript": [
+    "file:./frontend.js",
+    "unityblocks-news-list-view-script"
+  ],
+  "editorScript": "file:./index.js",
+  "attributes": {
+    "campus": {
+      "enum": [
+        "ONLNE",
+        "GROUND",
+        "NOPREF"
+      ],
+      "default": "NOPREF"
+    },
+    "actualCampus": {
+      "enum": [
+        "TEMPE",
+        "DTPHX",
+        "POLY",
+        "WEST",
+        "ONLNE"
+      ],
+      "default": "NOPREF"
+    },
+    "college": {
+      "type": "array",
+      "default": []
+    },
+    "department": {
+      "type": "array",
+      "default": []
+    },
+    "studentType": {
+      "enum": [
+        "undergrad",
+        "graduate"
+      ],
+      "default": ""
+    },
+    "areaOfInterest": {
+      "type": "array",
+      "default": []
+    },
+    "programOfInterest": {
+      "type": "array",
+      "default": []
+    },
+    "programOfInterestOptional": {
+      "type": "boolean",
+      "default": false
+    },
+    "isCertMinor": {
+      "type": "boolean",
+      "default": false
+    },
+    "country": {
+      "type": "array",
+      "default": []
+    },
+    "stateProvince": {
+      "type": "array",
+      "default": []
+    },
+    "successMsg": {
+      "type": "string",
+      "default": "Keep an eye on your inbox and in the meantime, check out some more of the <a href=\"https://www.asu.edu/about\">amazing facts, figures, or other links</a> that ASU has to offer."
+    },
+    "test": {
+      "type": "boolean",
+      "default": false
+    },
+    "dataSourceDegreeSearch": {
+      "type": "string",
+      "default": "https://degrees.apps.asu.edu/t5/service"
+    },
+    "dataSourceAsuOnline": {
+      "type": "string",
+      "default": "https://cms.asuonline.asu.edu/lead-submissions-v3.5/programs"
+    },
+    "dataSourceCountriesStates": {
+      "type": "string",
+      "default": "https://api.myasuplat-dpl.asu.edu/api/codeset/countries"
+    },
+    "submissionUrl": {
+      "type": "string",
+      "default": "https://httpbin.org/post"
+    },
+    "example": {
+      "attributes": {
+        "cover": "https://image.shutterstock.com/image-vector/example-sign-paper-origami-speech-260nw-1164503347.jpg"
+      }
+    }
+  }
+}
