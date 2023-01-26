@@ -161,7 +161,6 @@ const RfiMainForm = ( {
 	);
 };
 
-// Props
 RfiMainForm.defaultProps = {
 	campus: undefined,
 	actualCampus: undefined,

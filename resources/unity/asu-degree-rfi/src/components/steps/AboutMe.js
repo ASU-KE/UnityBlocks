@@ -318,8 +318,6 @@ const aboutMeForm = {
 	},
 };
 
-// Props
-
 RfiGdpr.propTypes = {
 	campus: PropTypes.string.isRequired,
 };

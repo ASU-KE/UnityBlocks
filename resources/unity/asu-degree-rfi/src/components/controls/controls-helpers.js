@@ -56,4 +56,5 @@ RfiError.propTypes = {
 	isError: PropTypes.bool,
 	metaError: PropTypes.string,
 };
+
 export { RfiLabel, RfiError };

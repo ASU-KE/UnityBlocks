@@ -756,7 +756,12 @@ __webpack_require__.r(__webpack_exports__);
    * @see ./save.js
    */
   save: _save__WEBPACK_IMPORTED_MODULE_3__["default"],
-  example: () => {}
+  example: {
+    attributes: {
+      itemTexts: ["test item"],
+      itemTargets: ["#"]
+    }
+  }
 });
 })();
 

@@ -42,7 +42,7 @@
 		},
 		"programOfInterest": {
 			"type": "array",
-			"default": []
+			"default": ["test 1", "test 2"]
 		},
 		"programOfInterestOptional": {
 			"type": "boolean",

@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { Button, Progress } from 'reactstrap';
 import * as Yup from 'yup';
-
 import { trackGAEvent } from '../../core/services/googleAnalytics';
 
 const defaultButtonEvent = {

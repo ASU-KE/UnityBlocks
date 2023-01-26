@@ -8,7 +8,6 @@ import { RfiRadioGroup } from './RfiRadioGroup';
 import { RfiSelect } from './RfiSelect';
 import { RfiTextArea } from './RfiTextArea';
 import { RfiTextInput } from './RfiTextInput';
-
 export {
 	RfiCheckboxMulti,
 	RfiCheckboxSingle,

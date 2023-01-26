@@ -4,7 +4,6 @@
 import { Field, useFormikContext } from 'formik';
 import PropTypes from 'prop-types';
 import React from 'react';
-
 import { RfiLabel, RfiError } from './controls-helpers';
 
 const RfiTextInput = ( {

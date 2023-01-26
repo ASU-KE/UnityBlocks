@@ -36,5 +36,11 @@ registerBlockType(metadata.name, {
    * @see ./save.js
    */
   save,
-  example: () => {},
+  example: {
+    attributes: {
+			itemTexts: ["test item"],
+      itemTargets: ["#"],
+
+		},
+  },
 });
