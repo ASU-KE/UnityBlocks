@@ -9,7 +9,7 @@ import React from 'react';
 // tweaking a few styles
 
 import { RfiMainForm } from '../stepper/RfiMainForm';
-import './index.css';
+//import './style.css';
 
 /**
  * @typedef {import("../../core/types/rfi-types").RFIProps} RFIProps

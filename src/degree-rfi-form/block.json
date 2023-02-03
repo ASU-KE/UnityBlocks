@@ -13,8 +13,10 @@
     "align": ["wide", "full"]
   },
   "textdomain": "unityblocks",
-  "viewScript": ["file:./frontend.js", "unityblocks-news-list-view-script"],
+  "viewScript": ["file:./frontend.js", "unityblocks-degree-rfi-form-view-script"],
   "editorScript": "file:./index.js",
+  "editorStyle": "file:../../resources/unity/asu-degree-rfi/src/components/AsuRfi/style.css",
+    "style": [ "file:../../resources/unity/asu-degree-rfi/src/components/AsuRfi/style.css", "asu-rfi-style" ],
 	"attributes": {
 		"campus": {
 			"enum": [ "ONLNE", "GROUND", "NOPREF" ],
@@ -42,7 +44,7 @@
 		},
 		"programOfInterest": {
 			"type": "array",
-			"default": ["test 1", "test 2"]
+			"default": []
 		},
 		"programOfInterestOptional": {
 			"type": "boolean",

@@ -296,19 +296,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/unity/asu-degree-rfi/src/components/AsuRfi/index.css":
-/*!************************************************************************!*\
-  !*** ./resources/unity/asu-degree-rfi/src/components/AsuRfi/index.css ***!
-  \************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
-
-
-/***/ }),
-
 /***/ "./resources/unity/asu-degree-rfi/src/components/AsuRfi/index.js":
 /*!***********************************************************************!*\
   !*** ./resources/unity/asu-degree-rfi/src/components/AsuRfi/index.js ***!
@@ -322,12 +309,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _stepper_RfiMainForm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../stepper/RfiMainForm */ "./resources/unity/asu-degree-rfi/src/components/stepper/RfiMainForm.js");
-/* harmony import */ var _index_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./index.css */ "./resources/unity/asu-degree-rfi/src/components/AsuRfi/index.css");
 
 // @ts-check
 /* eslint react/jsx-props-no-spreading: "off" */
@@ -340,7 +326,7 @@ __webpack_require__.r(__webpack_exports__);
 // tweaking a few styles
 
 
-
+//import './style.css';
 
 /**
  * @typedef {import("../../core/types/rfi-types").RFIProps} RFIProps
@@ -350,6 +336,7 @@ __webpack_require__.r(__webpack_exports__);
  * @param {RFIProps} props
  * @return {JSX.Element}
  */
+
 const AsuRfi = _ref => {
   let {
     appPathFolder,
@@ -414,24 +401,24 @@ AsuRfi.defaultProps = {
   dataSourceCountriesStates: 'https://api.myasuplat-dpl.asu.edu/api/codeset/countries'
 };
 AsuRfi.propTypes = {
-  appPathFolder: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().string),
-  campus: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().string),
-  actualCampus: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().string),
-  college: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().string),
-  department: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().string),
-  studentType: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().string),
-  areaOfInterest: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().string),
-  programOfInterest: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().string),
-  programOfInterestOptional: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().bool),
-  isCertMinor: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().bool),
-  country: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().string),
-  stateProvince: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().string),
-  successMsg: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().string),
-  test: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().bool),
-  dataSourceDegreeSearch: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().string),
-  dataSourceAsuOnline: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().string),
-  dataSourceCountriesStates: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().string),
-  submissionUrl: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().string.isRequired)
+  appPathFolder: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().string),
+  campus: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().string),
+  actualCampus: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().string),
+  college: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().string),
+  department: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().string),
+  studentType: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().string),
+  areaOfInterest: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().string),
+  programOfInterest: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().string),
+  programOfInterestOptional: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().bool),
+  isCertMinor: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().bool),
+  country: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().string),
+  stateProvince: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().string),
+  successMsg: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().string),
+  test: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().bool),
+  dataSourceDegreeSearch: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().string),
+  dataSourceAsuOnline: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().string),
+  dataSourceCountriesStates: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().string),
+  submissionUrl: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().string.isRequired)
 };
 
 /***/ }),
@@ -1508,8 +1495,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _asu_design_system_components_core_dist_libCore_es__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @asu-design-system/components-core/dist/libCore.es */ "./node_modules/@asu-design-system/components-core/dist/libCore.es.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_11__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _core_utils_google_analytics__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../core/utils/google-analytics */ "./resources/unity/asu-degree-rfi/src/core/utils/google-analytics.js");
@@ -1519,8 +1506,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _steps_ProgramInterest__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../steps/ProgramInterest */ "./resources/unity/asu-degree-rfi/src/components/steps/ProgramInterest.js");
 /* harmony import */ var _steps_Success__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../steps/Success */ "./resources/unity/asu-degree-rfi/src/components/steps/Success.js");
 /* harmony import */ var _RfiStepper__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./RfiStepper */ "./resources/unity/asu-degree-rfi/src/components/stepper/RfiStepper.js");
+/* harmony import */ var _assets_img_rfi_default_png__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../assets/img/rfi-default.png */ "./resources/unity/asu-degree-rfi/src/assets/img/rfi-default.png");
 
 // @ts-check
+
 
 
 
@@ -1553,7 +1542,6 @@ const RfiMainForm = _ref => {
     dataSourceCountriesStates,
     submissionUrl
   } = _ref;
-  const RfiImage = `${appPathFolder || currentScript}/resources/unity/asu-degree-rfi/src/assets/img/WS2-DefaultImagev01-Final.png`;
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "container rfi-container-inner"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -1565,7 +1553,7 @@ const RfiMainForm = _ref => {
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "uds-image-text-block-image-container"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
-    src: RfiImage,
+    src: _assets_img_rfi_default_png__WEBPACK_IMPORTED_MODULE_10__,
     className: "img-fluid",
     alt: ""
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -1627,8 +1615,6 @@ const RfiMainForm = _ref => {
     }
   }))))));
 };
-
-// Props
 RfiMainForm.defaultProps = {
   campus: undefined,
   actualCampus: undefined,
@@ -1645,24 +1631,24 @@ RfiMainForm.defaultProps = {
   test: false
 };
 RfiMainForm.propTypes = {
-  appPathFolder: (prop_types__WEBPACK_IMPORTED_MODULE_10___default().string),
-  campus: (prop_types__WEBPACK_IMPORTED_MODULE_10___default().string),
-  actualCampus: (prop_types__WEBPACK_IMPORTED_MODULE_10___default().string),
-  college: (prop_types__WEBPACK_IMPORTED_MODULE_10___default().string),
-  department: (prop_types__WEBPACK_IMPORTED_MODULE_10___default().string),
-  studentType: (prop_types__WEBPACK_IMPORTED_MODULE_10___default().string),
-  areaOfInterest: (prop_types__WEBPACK_IMPORTED_MODULE_10___default().string),
-  programOfInterest: (prop_types__WEBPACK_IMPORTED_MODULE_10___default().string),
-  programOfInterestOptional: (prop_types__WEBPACK_IMPORTED_MODULE_10___default().bool),
-  isCertMinor: (prop_types__WEBPACK_IMPORTED_MODULE_10___default().bool),
-  country: (prop_types__WEBPACK_IMPORTED_MODULE_10___default().string),
-  stateProvince: (prop_types__WEBPACK_IMPORTED_MODULE_10___default().string),
-  successMsg: (prop_types__WEBPACK_IMPORTED_MODULE_10___default().string),
-  test: (prop_types__WEBPACK_IMPORTED_MODULE_10___default().bool),
-  dataSourceDegreeSearch: (prop_types__WEBPACK_IMPORTED_MODULE_10___default().string.isRequired),
-  dataSourceAsuOnline: (prop_types__WEBPACK_IMPORTED_MODULE_10___default().string.isRequired),
-  dataSourceCountriesStates: (prop_types__WEBPACK_IMPORTED_MODULE_10___default().string.isRequired),
-  submissionUrl: (prop_types__WEBPACK_IMPORTED_MODULE_10___default().string.isRequired)
+  appPathFolder: (prop_types__WEBPACK_IMPORTED_MODULE_11___default().string),
+  campus: (prop_types__WEBPACK_IMPORTED_MODULE_11___default().string),
+  actualCampus: (prop_types__WEBPACK_IMPORTED_MODULE_11___default().string),
+  college: (prop_types__WEBPACK_IMPORTED_MODULE_11___default().string),
+  department: (prop_types__WEBPACK_IMPORTED_MODULE_11___default().string),
+  studentType: (prop_types__WEBPACK_IMPORTED_MODULE_11___default().string),
+  areaOfInterest: (prop_types__WEBPACK_IMPORTED_MODULE_11___default().string),
+  programOfInterest: (prop_types__WEBPACK_IMPORTED_MODULE_11___default().string),
+  programOfInterestOptional: (prop_types__WEBPACK_IMPORTED_MODULE_11___default().bool),
+  isCertMinor: (prop_types__WEBPACK_IMPORTED_MODULE_11___default().bool),
+  country: (prop_types__WEBPACK_IMPORTED_MODULE_11___default().string),
+  stateProvince: (prop_types__WEBPACK_IMPORTED_MODULE_11___default().string),
+  successMsg: (prop_types__WEBPACK_IMPORTED_MODULE_11___default().string),
+  test: (prop_types__WEBPACK_IMPORTED_MODULE_11___default().bool),
+  dataSourceDegreeSearch: (prop_types__WEBPACK_IMPORTED_MODULE_11___default().string.isRequired),
+  dataSourceAsuOnline: (prop_types__WEBPACK_IMPORTED_MODULE_11___default().string.isRequired),
+  dataSourceCountriesStates: (prop_types__WEBPACK_IMPORTED_MODULE_11___default().string.isRequired),
+  submissionUrl: (prop_types__WEBPACK_IMPORTED_MODULE_11___default().string.isRequired)
 };
 
 
@@ -2301,9 +2287,6 @@ const aboutMeForm = {
     GdprConsent: undefined
   }
 };
-
-// Props
-
 RfiGdpr.propTypes = {
   campus: (prop_types__WEBPACK_IMPORTED_MODULE_6___default().string.isRequired)
 };
@@ -18280,6 +18263,17 @@ function sortFields(fields, excludes) {
 
 /***/ }),
 
+/***/ "./resources/unity/asu-degree-rfi/src/assets/img/rfi-default.png":
+/*!***********************************************************************!*\
+  !*** ./resources/unity/asu-degree-rfi/src/assets/img/rfi-default.png ***!
+  \***********************************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "images/rfi-default.99bc18b2.png";
+
+/***/ }),
+
 /***/ "react":
 /*!************************!*\
   !*** external "React" ***!
@@ -18675,6 +18669,26 @@ function _typeof(obj) {
 /******/ 			if (!module.children) module.children = [];
 /******/ 			return module;
 /******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/publicPath */
+/******/ 	(() => {
+/******/ 		var scriptUrl;
+/******/ 		if (__webpack_require__.g.importScripts) scriptUrl = __webpack_require__.g.location + "";
+/******/ 		var document = __webpack_require__.g.document;
+/******/ 		if (!scriptUrl && document) {
+/******/ 			if (document.currentScript)
+/******/ 				scriptUrl = document.currentScript.src
+/******/ 			if (!scriptUrl) {
+/******/ 				var scripts = document.getElementsByTagName("script");
+/******/ 				if(scripts.length) scriptUrl = scripts[scripts.length - 1].src
+/******/ 			}
+/******/ 		}
+/******/ 		// When supporting browsers where an automatic publicPath is not supported you must specify an output.publicPath manually via configuration
+/******/ 		// or pass an empty string ("") and set the __webpack_public_path__ variable from your code to use your own logic.
+/******/ 		if (!scriptUrl) throw new Error("Automatic publicPath is not supported in this browser");
+/******/ 		scriptUrl = scriptUrl.replace(/#.*$/, "").replace(/\?.*$/, "").replace(/\/[^\/]+$/, "/");
+/******/ 		__webpack_require__.p = scriptUrl + "../";
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/jsonp chunk loading */
