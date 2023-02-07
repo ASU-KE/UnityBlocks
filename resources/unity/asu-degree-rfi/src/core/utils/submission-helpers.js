@@ -51,7 +51,7 @@ export function submissionFormFieldPrep( payload ) {
 	return output;
 }
 
-export function submissionSetHiddenFields( payload, test ) {
+export function submissionSetHiddenFields( payload, test, sourceID ) {
 	// "HIDDEN" FIELDS THAT DON'T APPEAR IN THE FORM.
 
 	const output = payload;
@@ -61,7 +61,7 @@ export function submissionSetHiddenFields( payload, test ) {
 	output.Source = 'mock';
 
 	// Whether we're in test mode or not: 1 or nothing. A prop value passed down.
-	output.Test = test ? 1 : undefined;
+	output.Test = test;
 
 	// URL. Full URL, including path and params so campaign details can be
 	// harvested by downstream apps.
@@ -69,6 +69,9 @@ export function submissionSetHiddenFields( payload, test ) {
 
 	// datetime : timestamp
 	output.datetime = Date.now();
+
+  // source ID to complete submission
+  output.sourceID = sourceID
 
 	// enterpriseclientid, sourceid and ga_clientid hidden fields added
 	// seperately in submit handler from where this function is also called.

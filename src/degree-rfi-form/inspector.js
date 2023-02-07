@@ -243,6 +243,7 @@ const Inspector = ( props ) => {
 							}
 							checked={ test }
 							onChange={ ( value ) => {
+                value ? false : true
 								setAttributes( {
 									test: value,
 								} );

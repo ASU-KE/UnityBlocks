@@ -356,7 +356,8 @@ const AsuRfi = _ref => {
     dataSourceDegreeSearch,
     dataSourceAsuOnline,
     dataSourceCountriesStates,
-    submissionUrl
+    submissionUrl,
+    sourceID
   } = _ref;
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_stepper_RfiMainForm__WEBPACK_IMPORTED_MODULE_2__.RfiMainForm, {
     appPathFolder: appPathFolder,
@@ -376,7 +377,8 @@ const AsuRfi = _ref => {
     dataSourceDegreeSearch: dataSourceDegreeSearch,
     dataSourceAsuOnline: dataSourceAsuOnline,
     dataSourceCountriesStates: dataSourceCountriesStates,
-    submissionUrl: submissionUrl
+    submissionUrl: submissionUrl,
+    sourceID: sourceID
   }));
 };
 
@@ -398,7 +400,8 @@ AsuRfi.defaultProps = {
   test: false,
   dataSourceDegreeSearch: 'https://degrees.apps.asu.edu/t5/service',
   dataSourceAsuOnline: 'https://cms.asuonline.asu.edu/lead-submissions-v3.5/programs',
-  dataSourceCountriesStates: 'https://api.myasuplat-dpl.asu.edu/api/codeset/countries'
+  dataSourceCountriesStates: 'https://api.myasuplat-dpl.asu.edu/api/codeset/countries',
+  sourceID: '123456789'
 };
 AsuRfi.propTypes = {
   appPathFolder: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().string),
@@ -418,7 +421,8 @@ AsuRfi.propTypes = {
   dataSourceDegreeSearch: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().string),
   dataSourceAsuOnline: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().string),
   dataSourceCountriesStates: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().string),
-  submissionUrl: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().string.isRequired)
+  submissionUrl: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().string.isRequired),
+  sourceID: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().string.isRequired)
 };
 
 /***/ }),
@@ -1540,7 +1544,8 @@ const RfiMainForm = _ref => {
     dataSourceDegreeSearch,
     dataSourceAsuOnline,
     dataSourceCountriesStates,
-    submissionUrl
+    submissionUrl,
+    sourceID
   } = _ref;
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "container rfi-container-inner"
@@ -1571,6 +1576,7 @@ const RfiMainForm = _ref => {
     country: country,
     stateProvince: stateProvince,
     successMsg: successMsg,
+    sourceID: sourceID,
     test: test,
     dataSourceDegreeSearch: dataSourceDegreeSearch,
     dataSourceAsuOnline: dataSourceAsuOnline,
@@ -1583,7 +1589,7 @@ const RfiMainForm = _ref => {
 
       let payload = value;
       payload = (0,_core_utils_submission_helpers__WEBPACK_IMPORTED_MODULE_4__.submissionFormFieldPrep)(payload);
-      payload = (0,_core_utils_submission_helpers__WEBPACK_IMPORTED_MODULE_4__.submissionSetHiddenFields)(payload, test);
+      payload = (0,_core_utils_submission_helpers__WEBPACK_IMPORTED_MODULE_4__.submissionSetHiddenFields)(payload, test, sourceID);
 
       // Patch ASUOnline clientid or enterpriseclientid and also
       // ga_clientid onto payload.
@@ -1628,7 +1634,8 @@ RfiMainForm.defaultProps = {
   country: undefined,
   stateProvince: undefined,
   successMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
-  test: false
+  test: false,
+  sourceID: "123456789"
 };
 RfiMainForm.propTypes = {
   appPathFolder: (prop_types__WEBPACK_IMPORTED_MODULE_11___default().string),
@@ -1648,7 +1655,8 @@ RfiMainForm.propTypes = {
   dataSourceDegreeSearch: (prop_types__WEBPACK_IMPORTED_MODULE_11___default().string.isRequired),
   dataSourceAsuOnline: (prop_types__WEBPACK_IMPORTED_MODULE_11___default().string.isRequired),
   dataSourceCountriesStates: (prop_types__WEBPACK_IMPORTED_MODULE_11___default().string.isRequired),
-  submissionUrl: (prop_types__WEBPACK_IMPORTED_MODULE_11___default().string.isRequired)
+  submissionUrl: (prop_types__WEBPACK_IMPORTED_MODULE_11___default().string.isRequired),
+  sourceID: (prop_types__WEBPACK_IMPORTED_MODULE_11___default().string.isRequired)
 };
 
 
@@ -3339,7 +3347,7 @@ function submissionFormFieldPrep(payload) {
   }
   return output;
 }
-function submissionSetHiddenFields(payload, test) {
+function submissionSetHiddenFields(payload, test, sourceID) {
   // "HIDDEN" FIELDS THAT DON'T APPEAR IN THE FORM.
 
   const output = payload;
@@ -3349,7 +3357,7 @@ function submissionSetHiddenFields(payload, test) {
   output.Source = 'mock';
 
   // Whether we're in test mode or not: 1 or nothing. A prop value passed down.
-  output.Test = test ? 1 : undefined;
+  output.Test = test;
 
   // URL. Full URL, including path and params so campaign details can be
   // harvested by downstream apps.
@@ -3357,6 +3365,9 @@ function submissionSetHiddenFields(payload, test) {
 
   // datetime : timestamp
   output.datetime = Date.now();
+
+  // source ID to complete submission
+  output.sourceID = sourceID;
 
   // enterpriseclientid, sourceid and ga_clientid hidden fields added
   // seperately in submit handler from where this function is also called.
