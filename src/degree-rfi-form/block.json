@@ -86,6 +86,10 @@
 			"type": "string",
 			"default": "https://httpbin.org/post"
 		},
+    "sourceID": {
+      "type": "string",
+      "default": "123456789"
+    },
     "example": {
       "attributes": {
         "cover": "https://image.shutterstock.com/image-vector/example-sign-paper-origami-speech-260nw-1164503347.jpg"
