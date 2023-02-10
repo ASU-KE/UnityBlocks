@@ -11,6 +11,7 @@ import React from 'react';
 import { RfiMainForm } from '../stepper/RfiMainForm';
 //import './style.css';
 
+
 /**
  * @typedef {import("../../core/types/rfi-types").RFIProps} RFIProps
  */
@@ -88,7 +89,9 @@ AsuRfi.defaultProps = {
 		'https://cms.asuonline.asu.edu/lead-submissions-v3.5/programs',
 	dataSourceCountriesStates:
 		'https://api.myasuplat-dpl.asu.edu/api/codeset/countries',
-    sourceID: '123456789'
+
+    sourceID: '123456789',
+    submissionUrl: 'https://httpbin.org/post'
 };
 
 AsuRfi.propTypes = {

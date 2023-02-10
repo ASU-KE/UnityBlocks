@@ -401,7 +401,8 @@ AsuRfi.defaultProps = {
   dataSourceDegreeSearch: 'https://degrees.apps.asu.edu/t5/service',
   dataSourceAsuOnline: 'https://cms.asuonline.asu.edu/lead-submissions-v3.5/programs',
   dataSourceCountriesStates: 'https://api.myasuplat-dpl.asu.edu/api/codeset/countries',
-  sourceID: '123456789'
+  sourceID: '123456789',
+  submissionUrl: 'https://httpbin.org/post'
 };
 AsuRfi.propTypes = {
   appPathFolder: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().string),
