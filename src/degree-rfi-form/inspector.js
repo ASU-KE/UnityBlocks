@@ -10,10 +10,6 @@ import {
 	TextControl,
 	ToggleControl,
 } from '@wordpress/components';
-// import { useFetchCountryIsoCodes } from '../../utils/hooks/use-fetch-country-iso-codes';
-import { countries } from '../../resources/unity/asu-degree-rfi/src/assets/countries';
-import { statesCan } from '../../resources/unity/asu-degree-rfi/src/assets/states-can';
-import { statesUsa } from '../../resources/unity/asu-degree-rfi/src/assets/states-usa';
 
 /**
  * Inspector controls
@@ -45,15 +41,6 @@ const Inspector = ( props ) => {
 		setAttributes,
 	} = props;
 
-	// Fetch Countries ISO codes.
-	// const {
-	// 	payload: countries,
-	// 	loading: countriesLoading,
-	// 	error: countriesError,
-	// } = useFetchCountryIsoCodes();
-
-	// console.error( countries );
-
 	return (
 		<>
 			<InspectorControls>
@@ -71,34 +58,6 @@ const Inspector = ( props ) => {
 							}
 						/>
 					</PanelRow>
-					{/* <PanelRow>
-						<TextControl
-							label={ 'Campus' }
-							help={ 'Physical campus' }
-							value={ actualCampus }
-							onChange={ ( value ) =>
-								setAttributes( { actualCampus: value } )
-							}
-						/>
-					</PanelRow>
-					<PanelRow>
-						<TextControl
-							label={ 'College' }
-							value={ college }
-							onChange={ ( value ) =>
-								setAttributes( { college: value } )
-							}
-						/>
-					</PanelRow>
-					<PanelRow>
-						<TextControl
-							label={ 'Department' }
-							value={ department }
-							onChange={ ( value ) =>
-								setAttributes( { department: value } )
-							}
-						/>
-					</PanelRow> */}
 					<PanelRow>
 						<TextControl
 							label={ 'Student type' }
@@ -156,63 +115,11 @@ const Inspector = ( props ) => {
 							checked={ isCertMinor }
               onChange={ (value) => {
                 value ? false : true
-                 setAttributes( {isCertMinor: value} );
+                setAttributes( {isCertMinor: value} );
             } }
 
 						/>
 					</PanelRow>
-					{/* <PanelRow>
-						<SelectControl
-							multiple
-							label={ __( 'Select Country' ) }
-							value={ country }
-							options={ countries?.map( ( row ) => ( {
-								value: row.slug,
-								label: row.name,
-							} ) ) }
-							onChange={ ( newValue ) => {
-								return setAttributes( {
-									country: newValue,
-								} );
-							} }
-						/>
-					</PanelRow> */}
-					{ ( country && 'CAN' === country ) ?? (
-						<PanelRow>
-							<SelectControl
-								multiple
-								label={ __( 'Select Province' ) }
-								value={ stateProvince }
-								options={ statesCan?.map( ( row ) => ( {
-									value: row.slug,
-									label: row.name,
-								} ) ) }
-								onChange={ ( newValue ) => {
-									return setAttributes( {
-										stateProvince: newValue,
-									} );
-								} }
-							/>
-						</PanelRow>
-					) }
-					{ ( country && 'USA' === country ) ?? (
-						<PanelRow>
-							<SelectControl
-								multiple
-								label={ __( 'Select State' ) }
-								value={ stateProvince }
-								options={ statesUsa?.map( ( row ) => ( {
-									value: row.slug,
-									label: row.name,
-								} ) ) }
-								onChange={ ( newValue ) => {
-									return setAttributes( {
-										stateProvince: newValue,
-									} );
-								} }
-							/>
-						</PanelRow>
-					) }
 				</PanelBody>
 
 				<PanelBody
@@ -263,9 +170,7 @@ const Inspector = ( props ) => {
               value={ test }
 							onChange={ ( value ) => {
                 value ? false : true
-								setAttributes( {
-									test: {value}
-								} );
+								setAttributes( { test: value } );
 							} }
 						/>
 					</PanelRow>
