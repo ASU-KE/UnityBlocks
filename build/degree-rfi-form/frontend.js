@@ -3400,22 +3400,23 @@ const {
 const rfiForms = document.querySelectorAll('.wp-block-unityblocks-degree-rfi-form');
 rfiForms.forEach(form => {
   const campus = form.dataset.campus;
-  const actualCampus = form.dataset.actualCampus;
+  const actualCampus = form.dataset.actualcampus;
   const college = form.dataset.college;
   const department = form.dataset.department;
-  const studentType = form.dataset.studentType;
-  const areaOfInterest = form.dataset.areaOfInterest;
-  const programOfInterest = form.dataset.programOfInterest;
-  const programOfInterestOptional = form.dataset.programOfInterestOptional;
-  const isCertMinor = form.dataset.isCertMinor;
+  const studentType = form.dataset.studenttype;
+  const areaOfInterest = form.dataset.areaofinterest;
+  const programOfInterest = form.dataset.programofinterest;
+  const programOfInterestOptional = "true" === form.dataset.programofinterestoptional;
+  const isCertMinor = "true" === form.dataset.iscertminor;
   const country = form.dataset.country;
-  const stateProvince = form.dataset.stateProvince;
-  const successMsg = form.dataset.successMsg;
-  const test = form.dataset.test;
-  const dataSourceDegreeSearch = form.dataset.dataSourceDegreeSearch;
-  const dataSourceAsuOnline = form.dataset.dataSourceAsuOnline;
-  const dataSourceCountriesStates = form.dataset.dataSourceCountriesStates;
-  const submissionUrl = form.dataset.submissionUrl;
+  const stateProvince = form.dataset.stateprovince;
+  const successMsg = form.dataset.successmsg;
+  const test = "true" === form.dataset.test;
+  const dataSourceDegreeSearch = form.dataset.datasourcedegreesearch;
+  const dataSourceAsuOnline = form.dataset.datasourceasuonline;
+  const dataSourceCountriesStates = form.dataset.datasourcecountriesstates;
+  const submissionUrl = form.dataset.submissionurl;
+  const sourceID = form.dataset.sourceid;
   render((0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_resources_unity_asu_degree_rfi_src_components_AsuRfi__WEBPACK_IMPORTED_MODULE_1__.AsuRfi, {
     campus: campus,
     actualCampus: actualCampus,
@@ -3433,7 +3434,8 @@ rfiForms.forEach(form => {
     dataSourceDegreeSearch: dataSourceDegreeSearch,
     dataSourceAsuOnline: dataSourceAsuOnline,
     dataSourceCountriesStates: dataSourceCountriesStates,
-    submissionUrl: submissionUrl
+    submissionUrl: submissionUrl,
+    sourceID: sourceID
   }), form);
 });
 

@@ -4690,7 +4690,8 @@ const Edit = props => {
       dataSourceDegreeSearch,
       dataSourceAsuOnline,
       dataSourceCountriesStates,
-      submissionUrl
+      submissionUrl,
+      sourceID
     },
     className
   } = props;
@@ -4711,7 +4712,8 @@ const Edit = props => {
     dataSourceDegreeSearch,
     dataSourceAsuOnline,
     dataSourceCountriesStates,
-    submissionUrl
+    submissionUrl,
+    sourceID
   };
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_inspector__WEBPACK_IMPORTED_MODULE_2__["default"], props), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: className
@@ -4862,13 +4864,13 @@ const Inspector = props => {
       country,
       stateProvince,
       successMsg,
-      test
+      test,
       // dataSourceDegreeSearch,
       // dataSourceAsuOnline,
       // dataSourceCountriesStates,
-      // submissionUrl,
+      submissionUrl,
+      sourceID
     },
-
     setAttributes
   } = props;
 
@@ -4886,32 +4888,14 @@ const Inspector = props => {
     initialOpen: false
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
     label: 'Campus type',
-    help: 'General type of campus',
+    help: 'Type of campus: GROUND, ONLNE, NOPREF',
     value: campus,
     onChange: value => setAttributes({
       campus: value
     })
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
-    label: 'Campus',
-    help: 'Physical campus',
-    value: actualCampus,
-    onChange: value => setAttributes({
-      actualCampus: value
-    })
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
-    label: 'College',
-    value: college,
-    onChange: value => setAttributes({
-      college: value
-    })
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
-    label: 'Department',
-    value: department,
-    onChange: value => setAttributes({
-      department: value
-    })
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
     label: 'Student type',
+    help: 'Student type: undergrad, graduate',
     value: studentType,
     onChange: value => setAttributes({
       studentType: value
@@ -4921,45 +4905,36 @@ const Inspector = props => {
     initialOpen: false
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
     label: 'Area of Interest',
+    help: 'Available fields depend on if student is ground or online, and grad or undergrad. example: "Arts" is ground only, "Arts and design" is online only',
     value: areaOfInterest,
     onChange: value => setAttributes({
       areaOfInterest: value
     })
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
     label: 'Program of Interest',
+    help: 'Use catalog code, example: UGHI-FAARTHBA',
     value: programOfInterest,
     onChange: value => setAttributes({
       programOfInterest: value
     })
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToggleControl, {
     label: 'Is Program Optional?',
-    help: programOfInterestOptional ? 'Program optional.' : 'Program optional.',
+    help: 'Set selection of program field to optional.',
     checked: programOfInterestOptional,
     onChange: value => {
+      value ? false : true;
       setAttributes({
         programOfInterestOptional: value
       });
     }
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToggleControl, {
     label: 'Is Cert Minor?',
-    help: isCertMinor ? 'Certifical minor.' : 'Certificate not minor.',
+    help: 'Sets RFI to success message, certificates and minors inquiries do not run through ASU RFI system. If the program code of a specific certificate or minor is entered in the program of interest field, the system will attempt to populate the message with the email address associated with the certificate or minor.',
     checked: isCertMinor,
     onChange: value => {
+      value ? false : true;
       setAttributes({
         isCertMinor: value
-      });
-    }
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SelectControl, {
-    multiple: true,
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Select Country'),
-    value: country,
-    options: _resources_unity_asu_degree_rfi_src_assets_countries__WEBPACK_IMPORTED_MODULE_4__.countries?.map(row => ({
-      value: row.slug,
-      label: row.name
-    })),
-    onChange: newValue => {
-      return setAttributes({
-        country: newValue
       });
     }
   })), (_ref = country && 'CAN' === country) !== null && _ref !== void 0 ? _ref : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SelectControl, {
@@ -4993,19 +4968,36 @@ const Inspector = props => {
     initialOpen: false
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
     label: 'Submission Success Message',
-    help: 'Customize the success message displayed when form is submitted.',
+    help: 'Customize the success message displayed when form is submitted. HTML is allowed in this field.',
     value: successMsg,
     onChange: value => setAttributes({
       successMsg: value
     })
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
+    label: 'Source ID',
+    help: 'Routes form submissions to appropriate department. DO NOT CHANGE WITHOUT APPROVAL, unintended BEHAVIORS WILL OCCUR.',
+    value: sourceID,
+    onChange: value => setAttributes({
+      sourceID: value
+    })
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
+    label: 'Submission URL',
+    help: 'URL target of POST request. DO NOT CHANGE WITHOUT APPROVAL, unintended BEHAVIORS WILL OCCUR.',
+    value: submissionUrl,
+    onChange: value => setAttributes({
+      submissionUrl: value
+    })
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToggleControl, {
     label: 'Enable Test Mode?',
-    help: test ? 'Test mode enabled.' : 'Test mode disabled.',
+    help: 'For developers, alerts submission json.',
     checked: test,
+    value: test,
     onChange: value => {
       value ? false : true;
       setAttributes({
-        test: value
+        test: {
+          value
+        }
       });
     }
   })))));
@@ -5056,7 +5048,8 @@ const save = props => {
       dataSourceDegreeSearch,
       dataSourceAsuOnline,
       dataSourceCountriesStates,
-      submissionUrl
+      submissionUrl,
+      sourceID
     },
     className
   } = props;
@@ -5068,9 +5061,9 @@ const save = props => {
     "data-college": college,
     "data-department": department,
     "data-studenttype": studentType,
-    "data-areainterest": areaOfInterest,
-    "data-programinterest": programOfInterest,
-    "data-programinterestoptional": programOfInterestOptional,
+    "data-areaofinterest": areaOfInterest,
+    "data-programofinterest": programOfInterest,
+    "data-programofinterestoptional": programOfInterestOptional,
     "data-iscertminor": isCertMinor,
     "data-country": country,
     "data-stateprovince": stateProvince,
@@ -5079,7 +5072,8 @@ const save = props => {
     "data-datasource": dataSourceDegreeSearch,
     "data-datasourceonline": dataSourceAsuOnline,
     "data-datasourcecountriesstates": dataSourceCountriesStates,
-    "data-submissionurl": submissionUrl
+    "data-submissionurl": submissionUrl,
+    "data-sourceid": sourceID
   }));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (save);

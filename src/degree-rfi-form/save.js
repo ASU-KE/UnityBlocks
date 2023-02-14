@@ -25,6 +25,7 @@ const save = ( props ) => {
 			dataSourceAsuOnline,
 			dataSourceCountriesStates,
 			submissionUrl,
+      sourceID
 		},
 		className,
 	} = props;
@@ -38,9 +39,9 @@ const save = ( props ) => {
 			data-college={ college }
 			data-department={ department }
 			data-studenttype={ studentType }
-			data-areainterest={ areaOfInterest }
-			data-programinterest={ programOfInterest }
-			data-programinterestoptional={ programOfInterestOptional }
+			data-areaofinterest={ areaOfInterest }
+			data-programofinterest={ programOfInterest }
+			data-programofinterestoptional={ programOfInterestOptional }
 			data-iscertminor={ isCertMinor }
 			data-country={ country }
 			data-stateprovince={ stateProvince }
@@ -50,6 +51,7 @@ const save = ( props ) => {
 			data-datasourceonline={ dataSourceAsuOnline }
 			data-datasourcecountriesstates={ dataSourceCountriesStates }
 			data-submissionurl={ submissionUrl }
+      data-sourceid={ sourceID }
 		></div>
 	);
 };

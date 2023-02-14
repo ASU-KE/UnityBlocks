@@ -63,22 +63,16 @@ const RfiMainForm = ( {
 								studentType={ studentType }
 								areaOfInterest={ areaOfInterest }
 								programOfInterest={ programOfInterest }
-								programOfInterestOptional={
-									programOfInterestOptional
-								}
+								programOfInterestOptional={ programOfInterestOptional }
 								isCertMinor={ isCertMinor }
 								country={ country }
 								stateProvince={ stateProvince }
 								successMsg={ successMsg }
                 sourceID={sourceID}
 								test={ test }
-								dataSourceDegreeSearch={
-									dataSourceDegreeSearch
-								}
+								dataSourceDegreeSearch={ dataSourceDegreeSearch }
 								dataSourceAsuOnline={ dataSourceAsuOnline }
-								dataSourceCountriesStates={
-									dataSourceCountriesStates
-								}
+								dataSourceCountriesStates={ dataSourceCountriesStates }
 								validationSchemas={ [
 									programInterestForm.validationSchema,
 									aboutMeForm.validationSchema,
