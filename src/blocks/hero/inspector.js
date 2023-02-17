@@ -294,7 +294,7 @@ const Inspector = ( props ) => {
 					<PanelRow>
 						<RadioControl
 							label={ __(
-								'Hide contents on mobile?',
+								'Hide content on mobile?',
 								'unityblocks'
 							) }
 							selected={ hideContents }
