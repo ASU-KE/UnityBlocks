@@ -8,6 +8,7 @@ import {
 	PanelRow,
 	TextareaControl,
 	SelectControl,
+	TextControl,
 } from '@wordpress/components';
 
 /**
@@ -17,7 +18,7 @@ import {
  */
 const Inspector = ( props ) => {
 	const {
-		attributes: { siteType, depList },
+		attributes: { listType, deptList, titleText },
 		setAttributes,
 	} = props;
 
@@ -25,17 +26,29 @@ const Inspector = ( props ) => {
 		<InspectorControls>
 			<PanelBody title={ __( 'ASU Careers', 'unityblocks' ) }>
 				<PanelRow>
+					<TextControl
+						className="Career block__title-text"
+						label={ 'Title text' }
+						placeholder="Text"
+						value={ titleText }
+						onChange={ ( titleText ) =>
+							setAttributes( { titleText } )
+						}
+					/>
+				</PanelRow>
+
+				<PanelRow>
 					<SelectControl
-						label={ __( 'Staff or Student?' ) }
-						value={ siteType }
+						label={ __( 'Staff or Students?' ) }
+						value={ listType }
 						options={ [
-							{ label: 'Client can select', value: 'all' },
+							{ label: 'User choice', value: 'user-choice' },
 							{ label: 'Staff', value: 'staff' },
-							{ label: 'Student', value: 'student' },
+							{ label: 'Students', value: 'students' },
 						] }
 						onChange={ ( value ) => {
 							return setAttributes( {
-								siteType: value,
+								listType: value,
 							} );
 						} }
 					/>
@@ -47,9 +60,9 @@ const Inspector = ( props ) => {
 						help={
 							'List department names separated by commas (,).'
 						}
-						value={ depList }
+						value={ deptList }
 						onChange={ ( value ) =>
-							setAttributes( { depList: value } )
+							setAttributes( { deptList: value } )
 						}
 					/>
 				</PanelRow>

@@ -5,7 +5,7 @@ import classnames from 'classnames';
 
 const save = ( props ) => {
 	const {
-		attributes: { siteType, depList },
+		attributes: { listType, deptList, titleText },
 		className,
 	} = props;
 
@@ -13,8 +13,9 @@ const save = ( props ) => {
 		<div
 			id="wp-block-unityblocks-asu-careers"
 			className={ classnames( className ) }
-			data-siteType={ siteType }
-			data-depList={ depList }
+			data-listtype={ listType }
+			data-deptlist={ deptList }
+			data-titletext={ titleText }
 		></div>
 	);
 };

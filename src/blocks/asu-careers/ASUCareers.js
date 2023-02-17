@@ -11,39 +11,36 @@ const options = {
 const parser = new XMLParser( options );
 
 function ASUCareers( props ) {
-	const siteType = props.siteType;
-	const depList = props.depList;
+	const listType = props.listType;
+	const deptList = props.deptList;
 	//	'Office of Univ Events&Protocol, Solar Fab, Knowledge Enterprise Events';
-	//props.depList;
+	//props.deptList;
 
 	const [ jobs, setJobs ] = useState( [] );
 	const [ info, setInfo ] = useState( [] );
 
-	function makeXML( siteID, depList ) {
-		return `<Envelope version='01.00'><Sender><Id>12345</Id><Credential>25620</Credential></Sender><TransactInfo transactId='1' transactType='data'><TransactId>01/27/2010</TransactId><TimeStamp>12:00:00 AM</TimeStamp></TransactInfo><Unit UnitProcessor='SearchAPI'><Packet><PacketInfo packetType='data'><packetId>1</packetId></PacketInfo><Payload><InputString> <ClientId>25620</ClientId><SiteId>${ siteID }</SiteId><PageNumber>1</PageNumber><OutputXMLFormat>0</OutputXMLFormat> <AuthenticationToken/><HotJobs/><ProximitySearch><Distance/><Measurement/><Country/><State/><City/><zipCode/></ProximitySearch><JobMatchCriteriaText/><SelectedSearchLocaleId/><Questions><Question Sortorder='ASC' Sort='No'><Id>8318</Id> <Value><![CDATA[${ depList }]]></Value></Question></Questions></InputString></Payload></Packet></Unit></Envelope>`;
+	function makeXML( siteID, deptList ) {
+		return `<Envelope version='01.00'><Sender><Id>12345</Id><Credential>25620</Credential></Sender><TransactInfo transactId='1' transactType='data'><TransactId>01/27/2010</TransactId><TimeStamp>12:00:00 AM</TimeStamp></TransactInfo><Unit UnitProcessor='SearchAPI'><Packet><PacketInfo packetType='data'><packetId>1</packetId></PacketInfo><Payload><InputString> <ClientId>25620</ClientId><SiteId>${ siteID }</SiteId><PageNumber>1</PageNumber><OutputXMLFormat>0</OutputXMLFormat> <AuthenticationToken/><HotJobs/><ProximitySearch><Distance/><Measurement/><Country/><State/><City/><zipCode/></ProximitySearch><JobMatchCriteriaText/><SelectedSearchLocaleId/><Questions><Question Sortorder='ASC' Sort='No'><Id>8318</Id> <Value><![CDATA[${ deptList }]]></Value></Question></Questions></InputString></Payload></Packet></Unit></Envelope>`;
 	}
 
 	let siteID = ''; //For student jobs
-	if ( siteType === 'staff' ) siteID = '5494'; //For staff jobs
-	else if ( siteType === 'student' ) siteID = '5495'; //For student jobs
+	if ( listType === 'staff' ) siteID = '5494'; //For staff jobs
+	else if ( listType === 'student' ) siteID = '5495'; //For student jobs
 
 	useEffect( () => {
 		fetchData();
 	}, [] );
 
 	async function fetchData() {
-		const result = await fetch(
-			'https://import.brassring.com/WebRouter/WebRouter.asmx/route',
-			{
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/x-www-form-urlencoded',
-				},
-				body: new URLSearchParams( {
-					inputXml: makeXML( siteID, depList ),
-				} ),
-			}
-		);
+		const result = await fetch( 'https://brassring.api.rtd.asu.edu/', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/x-www-form-urlencoded',
+			},
+			body: new URLSearchParams( {
+				inputXml: makeXML( siteID, deptList ),
+			} ),
+		} );
 		const text = await result.text();
 		let jobs = parser.parse( decode( text ) ).string.Envelope.Unit.Packet
 			.Payload.ResultSet.Jobs.Job;
@@ -82,7 +79,7 @@ function ASUCareers( props ) {
 
 				const thisJobPosts = el
 					.closest( '.uds-asu-careers-selection-wrapper' )
-					.querySelectorAll( '[sitetype="' + selected + '"]' );
+					.querySelectorAll( '[listType="' + selected + '"]' );
 
 				Object.values( thisJobPosts ).map( ( thisJobPost ) => {
 					return ( thisJobPost.style.display = 'block' );
@@ -97,17 +94,20 @@ function ASUCareers( props ) {
 			PageNumber={ info.PageNumber }
 			StartDoc={ info.StartDoc }
 			TotalRecordsFound={ info.TotalRecordsFound }
-			siteType={ siteType }
+			listType={ listType }
 		>
 			<ul className="list-unstyled">
 				{ siteID === '' ? (
 					<div className="uds-asu-careers-selection-wrapper">
 						<Selection />
 						<div className="uds-asu-careers-selection">
-							<ASUCareers siteType="staff" depList={ depList } />
 							<ASUCareers
-								siteType="student"
-								depList={ depList }
+								listType="staff"
+								deptList={ deptList }
+							/>
+							<ASUCareers
+								listType="student"
+								deptList={ deptList }
 							/>
 						</div>
 					</div>
