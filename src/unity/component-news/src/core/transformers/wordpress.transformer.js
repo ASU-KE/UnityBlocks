@@ -15,7 +15,10 @@ const transformData = ( post ) => ( {
 	content: post.content.rendered,
 	excerpt: post.excerpt.rendered,
 	date: format( parseISO( post.date ), 'MMM d, yyyy' ),
-	dateIso: formatISO( parseISO( post.date ), { format: 'basic', representation: 'date' } ),
+	dateIso: formatISO( parseISO( post.date ), {
+		format: 'basic',
+		representation: 'date',
+	} ),
 	storyLink: post.storyLink,
 	interests: post.interest,
 	newsUnits: post.college_unit,
