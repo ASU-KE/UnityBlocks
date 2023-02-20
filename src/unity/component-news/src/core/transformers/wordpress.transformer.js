@@ -19,7 +19,7 @@ const transformData = ( post ) => ( {
 		format: 'basic',
 		representation: 'date',
 	} ),
-	storyLink: post.storyLink,
+	storyLink: post?.storyLink,
 	interests: post.interest,
 	newsUnits: post.college_unit,
 	author: {
