@@ -8,7 +8,7 @@ const transformData = ( post ) => ( {
 	headerImageUrl: post.uds_story_hero?.background_image?.sizes?.medium,
 	heroImageUrl: post.uds_story_hero?.background_image?.url,
 	featuredImageUrl:
-		post.uds_featured_image?.media_details.sizes.medium.source_url,
+		post.uds_featured_image?.media_details?.sizes?.medium?.source_url,
 	featuredImageAltText: post.uds_featured_image?.alt_text,
 	title: shortenText( post.title.rendered, 80 ),
 	slug: post.slug,
