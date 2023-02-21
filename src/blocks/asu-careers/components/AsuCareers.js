@@ -9,17 +9,26 @@ import { useBrassring } from '../hooks/useBrassring';
 const AsuCareers = ( props ) => {
 	const { editorListType, deptList, titleText } = props;
 	const selectedDeptList = deptList.split( ',' );
-	const newS = [
+	const newSelectedDeptList = [
 		{
 			value: deptList,
 			label: 'All departments',
 		},
 	];
+
 	selectedDeptList.map( ( departmentName ) => {
-		newS.push( {
-			value: departmentName,
-			label: departmentName,
-		} );
+		const displayName = departmentName.split( ':' );
+		if ( displayName[ 1 ] ) {
+			newSelectedDeptList.push( {
+				value: displayName[ 1 ],
+				label: displayName[ 0 ],
+			} );
+		} else {
+			newSelectedDeptList.push( {
+				value: displayName[ 0 ],
+				label: displayName[ 0 ],
+			} );
+		}
 	} );
 
 	// default current selection to the editor list setting
@@ -113,7 +122,7 @@ const AsuCareers = ( props ) => {
 					</div>
 					<div className={ classNames( 'col-8', 'form-check' ) }>
 						<Select
-							options={ newS }
+							options={ newSelectedDeptList }
 							defaultValue={ deptList }
 							onChange={ ( event ) => {
 								setNewDeptList( event.value );
