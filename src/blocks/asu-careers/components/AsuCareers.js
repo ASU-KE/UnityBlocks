@@ -9,12 +9,8 @@ import { useBrassring } from '../hooks/useBrassring';
 const AsuCareers = ( props ) => {
 	const { editorListType, deptList, titleText } = props;
 	const selectedDeptList = deptList.split( ',' );
-	const newSelectedDeptList = [
-		{
-			value: deptList,
-			label: 'All departments',
-		},
-	];
+	const newSelectedDeptList = [];
+	let allDept = '';
 
 	selectedDeptList.map( ( departmentName ) => {
 		const displayName = departmentName.split( ':' );
@@ -23,12 +19,19 @@ const AsuCareers = ( props ) => {
 				value: displayName[ 1 ],
 				label: displayName[ 0 ],
 			} );
+			allDept = allDept + ', ' + displayName[ 1 ];
 		} else {
 			newSelectedDeptList.push( {
 				value: displayName[ 0 ],
 				label: displayName[ 0 ],
 			} );
+			allDept = allDept + ', ' + displayName[ 0 ];
 		}
+	} );
+	allDept = allDept.substring( 2 );
+	newSelectedDeptList.unshift( {
+		value: allDept,
+		label: 'All departments',
 	} );
 
 	// default current selection to the editor list setting
@@ -38,14 +41,11 @@ const AsuCareers = ( props ) => {
 
 	useEffect( () => {
 		setSelection( 'staff' );
-		setNewDeptList( deptList );
+		setNewDeptList( allDept );
 		setIcon( 'bg-maroon' );
 	}, [] );
 
-	const { payload, isError, isLoading, data } = useBrassring(
-		selection,
-		newDeptList
-	);
+	const { payload, isError, data } = useBrassring( selection, newDeptList );
 
 	const jobs = payload?.jobs;
 
@@ -123,7 +123,7 @@ const AsuCareers = ( props ) => {
 					<div className={ classNames( 'col-8', 'form-check' ) }>
 						<Select
 							options={ newSelectedDeptList }
-							defaultValue={ deptList }
+							defaultValue={ allDept }
 							onChange={ ( event ) => {
 								setNewDeptList( event.value );
 							} }
