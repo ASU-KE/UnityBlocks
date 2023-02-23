@@ -6,7 +6,7 @@ import { InspectorControls } from '@wordpress/block-editor';
 import {
 	PanelBody,
 	PanelRow,
-	SelectControl,
+	// SelectControl,
 	TextControl,
 	ToggleControl,
 } from '@wordpress/components';
