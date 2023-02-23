@@ -23,6 +23,7 @@
 			"default": "NOPREF"
 		},
 		"actualCampus": {
+			"type": "string",
 			"enum": [ "TEMPE", "DTPHX", "POLY", "WEST", "ONLNE" ],
 			"default": "NOPREF"
 		},
@@ -35,6 +36,7 @@
 			"default": []
 		},
 		"studentType": {
+			"type": "string",
 			"enum": [ "undergrad", "graduate" ],
 			"default": ""
 		},
