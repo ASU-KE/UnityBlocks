@@ -1,6 +1,6 @@
 const { render } = wp.element;
 
-import { Testimonial } from "@asu-design-system/components-core/dist/libCore.es";
+import { Testimonial } from "@asu/components-core/dist/libCore.es";
 
 // It is possible to load multiple testimonials onto a page.
 // Load each DOM element on page using the Gutenberg-generated class for the Testimonial block

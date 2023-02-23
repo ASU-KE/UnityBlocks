@@ -1,6 +1,6 @@
 const { render } = wp.element;
 
-import { ImageGalleryCarousel } from "@asu-design-system/component-carousel/dist/asuCarousel.es";
+import { ImageGalleryCarousel } from "@asu/component-carousel/dist/asuCarousel.es";
 
 // It is possible to load multiple galleries onto a page.
 // Load each DOM element on page using the Gutenberg-generated class for the Testimonial block
