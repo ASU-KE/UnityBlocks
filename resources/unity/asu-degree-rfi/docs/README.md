@@ -16,7 +16,7 @@ You must have a Source ID configured in your host site in order to successfully 
 
 RECOMMENDED: See /example/rfi.html for a complete, HTML + vanilla Javascript example of incorporating the RFI component into an HTML page and launching it. Includes example and description of the props to use to configure the RFI form. It should work if you open the file in your browser, allowing you to get to know the RFI component.
 
-See the the [Unity Storybook for the RFI component](https://unity.web.asu.edu/@asu-design-system/app-rfi/index.html?path=/story/uds-asurfi--rfi-default) for example configurations to match various use-cases.
+See the the [Unity Storybook for the RFI component](https://unity.web.asu.edu/@asu/app-rfi/index.html?path=/story/uds-asurfi--rfi-default) for example configurations to match various use-cases.
 
 ## Important docs:
 
