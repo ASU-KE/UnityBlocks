@@ -1,4 +1,4 @@
-import { CardCarousel } from "@asu-design-system/component-carousel";
+import { CardCarousel } from "@asu/component-carousel";
 import React, { useContext } from "react";
 
 import { FeedContext } from "../../../../components-core/src";

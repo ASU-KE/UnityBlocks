@@ -1,6 +1,6 @@
 const { render } = wp.element;
 
-import { Hero } from "@asu-design-system/components-core/dist/libCore.es";
+import { Hero } from "@asu/components-core/dist/libCore.es";
 
 // Load first element with the unityblocks-hero id
 const hero = document.querySelector("#unityblocks-hero");
