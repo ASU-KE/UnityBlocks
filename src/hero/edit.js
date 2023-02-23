@@ -16,7 +16,7 @@ import { useBlockProps } from "@wordpress/block-editor";
 /**
  * External dependencies
  */
-import { Hero } from "@asu-design-system/components-core/dist/libCore.es";
+import { Hero } from "@asu/components-core/dist/libCore.es";
 
 /**
  * Internal dependencies

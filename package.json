@@ -24,10 +24,10 @@
     "start": "wp-scripts start"
   },
   "dependencies": {
-    "@asu-design-system/component-carousel": "^1.16.0",
-    "@asu-design-system/component-events": "^1.4.0",
-    "@asu-design-system/component-news": "^1.4.0",
-    "@asu-design-system/components-core": "^1.26.8"
+    "@asu/component-carousel": "^1.2.1",
+    "@asu/component-events": "^1.1.2",
+    "@asu/component-news": "^1.1.2",
+    "@asu/components-core": "^1.5.0"
   },
   "devDependencies": {
     "@wordpress/scripts": "^25.0.0",

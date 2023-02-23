@@ -16,7 +16,7 @@ import { useBlockProps } from "@wordpress/block-editor";
 /**
  * External dependencies
  */
-import { AnchorMenu } from "@asu-design-system/components-core/dist/libCore.es";
+import { AnchorMenu } from "@asu/components-core/dist/libCore.es";
 
 /**
  * Internal dependencies

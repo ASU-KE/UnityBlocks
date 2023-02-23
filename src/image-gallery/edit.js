@@ -16,7 +16,7 @@ import { useBlockProps } from "@wordpress/block-editor";
 /**
  * External dependencies
  */
-import { ImageGalleryCarousel } from "@asu-design-system/component-carousel/dist/asuCarousel.es";
+import { ImageGalleryCarousel } from "@asu/component-carousel/dist/asuCarousel.es";
 
 /**
  * Internal dependencies
