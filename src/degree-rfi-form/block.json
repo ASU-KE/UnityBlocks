@@ -27,14 +27,6 @@
 			"enum": [ "TEMPE", "DTPHX", "POLY", "WEST", "ONLNE" ],
 			"default": "NOPREF"
 		},
-		"college": {
-			"type": "array",
-			"default": []
-		},
-		"department": {
-			"type": "array",
-			"default": []
-		},
 		"studentType": {
 			"type": "string",
 			"enum": [ "undergrad", "graduate" ],
@@ -55,14 +47,6 @@
 		"isCertMinor": {
 			"type": "boolean",
 			"default": false
-		},
-		"country": {
-			"type": "array",
-			"default": []
-		},
-		"stateProvince": {
-			"type": "array",
-			"default": []
 		},
 		"successMsg": {
 			"type": "string",
@@ -91,11 +75,6 @@
     "sourceID": {
       "type": "string",
       "default": "123456789"
-    },
-    "example": {
-      "attributes": {
-        "cover": "https://image.shutterstock.com/image-vector/example-sign-paper-origami-speech-260nw-1164503347.jpg"
-    }
     }
 	}
 }

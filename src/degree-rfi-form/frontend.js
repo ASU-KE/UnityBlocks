@@ -31,15 +31,12 @@ rfiForms.forEach( ( form ) => {
 		<AsuRfi
 			campus={ campus }
 			actualCampus={ actualCampus }
-			college={ college }
-			department={ department }
 			studentType={ studentType }
 			areaOfInterest={ areaOfInterest }
 			programOfInterest={ programOfInterest }
 			programOfInterestOptional={ programOfInterestOptional }
 			isCertMinor={ isCertMinor }
 			country={ country }
-			stateProvince={ stateProvince }
 			successMsg={ successMsg }
 			test={ test }
 			dataSourceDegreeSearch={ dataSourceDegreeSearch }

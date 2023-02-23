@@ -23,15 +23,15 @@ const Edit = ( props ) => {
 		attributes: {
 			campus,
 			actualCampus,
-			college,
-			department,
+			// college,
+			// department,
 			studentType,
 			areaOfInterest,
 			programOfInterest,
 			programOfInterestOptional,
 			isCertMinor,
-			country,
-			stateProvince,
+			// country,
+			// stateProvince,
 			successMsg,
 			test,
 			dataSourceDegreeSearch,
@@ -46,15 +46,15 @@ const Edit = ( props ) => {
 	const args = {
 		campus,
 		actualCampus,
-		college,
-		department,
+		// college,
+		// department,
 		studentType,
 		areaOfInterest,
 		programOfInterest,
 		programOfInterestOptional,
 		isCertMinor,
-		country,
-		stateProvince,
+		// country,
+		// stateProvince,
 		successMsg,
 		test,
 		dataSourceDegreeSearch,
@@ -71,7 +71,6 @@ const Edit = ( props ) => {
 			<div className={ className }>
       <BlockPreview block={ AsuRfi } viewportWidth={ 800 } />
 				<AsuRfi { ...args } />
-
 			</div>
 		</>
 	);

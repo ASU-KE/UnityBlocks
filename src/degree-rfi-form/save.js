@@ -10,15 +10,15 @@ const save = ( props ) => {
 		attributes: {
 			campus,
 			actualCampus,
-			college,
-			department,
+			// college,
+			// department,
 			studentType,
 			areaOfInterest,
 			programOfInterest,
 			programOfInterestOptional,
 			isCertMinor,
-			country,
-			stateProvince,
+			// country,
+			// stateProvince,
 			successMsg,
 			test,
 			dataSourceDegreeSearch,
@@ -36,15 +36,11 @@ const save = ( props ) => {
       {...useBlockProps.save()}
 			data-campus={ campus }
 			data-actualcampus={ actualCampus }
-			data-college={ college }
-			data-department={ department }
 			data-studenttype={ studentType }
 			data-areaofinterest={ areaOfInterest }
 			data-programofinterest={ programOfInterest }
 			data-programofinterestoptional={ programOfInterestOptional }
 			data-iscertminor={ isCertMinor }
-			data-country={ country }
-			data-stateprovince={ stateProvince }
 			data-successmsg={ successMsg }
 			data-test={ test }
 			data-datasource={ dataSourceDegreeSearch }
