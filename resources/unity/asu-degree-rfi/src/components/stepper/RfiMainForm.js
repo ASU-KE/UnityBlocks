@@ -1,5 +1,6 @@
 // @ts-check
-import { getCurrentScriptPath } from "@asu/components-core/dist/libCore.es";
+// import { getCurrentScriptPath } from "@asu/components-core/dist/libCore.es";
+import { getCurrentScriptPath } from "../../../../components-core/src";
 import PropTypes from "prop-types";
 import React from "react";
 

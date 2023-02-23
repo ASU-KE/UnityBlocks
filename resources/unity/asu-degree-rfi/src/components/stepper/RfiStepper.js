@@ -1,6 +1,7 @@
 // @ts-check
 /* eslint-disable no-unused-vars, react/no-danger, react/no-unused-prop-types */
-import { sanitizeDangerousMarkup } from "@asu/components-core/dist/libCore.es";
+// import { sanitizeDangerousMarkup } from "@asu/components-core/dist/libCore.es";
+import { sanitizeDangerousMarkup } from "../../../../components-core/src";
 import { Formik, Form } from "formik";
 import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";

@@ -1,7 +1,8 @@
 /**
  * External dependencies
  */
-import { AsuRfi } from '../../resources/unity/asu-degree-rfi/src/components/AsuRfi';
+import { AsuRfi } from "../../resources/unity/asu-degree-rfi/src/components/AsuRfi";
+// import { AsuRfi } from "@asu/app-rfi/dist/appRfi.es";
 
 /**
  * Internal dependencies

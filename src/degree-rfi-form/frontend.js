@@ -1,6 +1,7 @@
 const { render } = wp.element;
 
 import { AsuRfi } from '../../resources/unity/asu-degree-rfi/src/components/AsuRfi';
+// import { AsuRfi } from "@asu/app-rfi/dist/appRfi.es";
 
 // It is possible to load multiple forms onto a page.
 // Load each DOM element on page using the Gutenberg-generated class for the Testimonial block
