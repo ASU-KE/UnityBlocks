@@ -26,6 +26,10 @@ const Inspector = ( props ) => {
 
 	const options = [
 		{
+			label: 'all departments',
+			value: 'Advanced Materials Initiative, Advncd Electronics & Photonics, ASU Banner NDRC, ASU International Development, ASU Wrigley Inst Development, ASU Wrigley Inst Outreach, Biodesign Admin Support Ops, Biodesign Administration, Biodesign ASD, Biodesign BB, Biodesign BE, Biodesign Beus CXFEL Lab, Biodesign BSS, Biodesign CTL, Biodesign CXLS Operations, Biodesign EHE, Biodesign Facilities, Biodesign FAM, Biodesign HTM, Biodesign IM, Biodesign Institute, Biodesign ITS, Biodesign IVV, Biodesign MDB, Biodesign ME, Biodesign PC, Biodesign Resrch Opp Adv & Dev, Biodesign SM3, Biodesign SMB, Biodesign Swette EB, Biodesign Virginia G Piper PD, Biosciences, Business Services, CAP LTER, Center Biodiversity Outcomes, Center for Engagement Science, CGF Admin Support, CGF Ambassador SW, CGF Career & Alumni Services, CGF Executive & Prof Education, CGF Instructional Support, CGF Recrt Admissions Outreach, CGF Student Services SW, CGF Undergrad Student Services, Clinical Initiatives Dignity, College of Global Futures, Collg Research Eval Serv Team, Communications & Marketing, Complex Adaptive Systems, Cores Sales & Marketing, Corp Engagemt & Strat Partnshp, CSPO Grad Assists Assocs, Ctr Accelerating Op Efficiency, Ctr Cybersec Digital Forensics, Ctr Human AI & Robot Teaming, Ctr Narr, Decision Center Desert City, Decision Theater, Dept Animal Care Technologies, Disinfo & Strat Infl, E+I Venture Mentors, Economic Development, Education for Humanity, Engagement & Prof Development, Entrepreneurship + Innovation, Events, Eyring Materials Center, Flexible Electronics Display, Future H2O, Global Consort Sustain Outcome, Global Drylands Center, Global Futures Laboratory, Global Futures Staff, Global Inst of Sustain & Innov, Global Locust Initiative, Global Operations, Global Partnerships, Global Security Initiative, Health & Clinical Partnerships, Health and Clinical Services, Healthy Urban Environments, Industry Contracts, Instrument Design Fabrication, International Projects & Mgmt, Interplanetary Initiative, KE Biodesign Institute Finance, KE Business Units Finance, KE Core Facilities, KE Finance Process Development, KE Financial Services, KE Global Futures Finance, KE Initiatives Finance, KE Luminosity Lab, KE Planning Budget, KE Procurement, KE Serv & Rechg Ctrs Finan, KE Staff Support, KE Web Services, Knowldg Enterprise Initiatives, Knowldg Enterprise Operations, Knowledge Enterprise Analytics, Knowledge Enterprise Events, Knowledge Enterprise HR, LightWorks, Materials of the Universe Ctr, McCain Inst Intl Leadership, NanoFabrication, Ofc EVP Knowldge Enterprise, Ofc Research/Sponsored Project, Office of VP Research Develop, Operations PMO, ORSPA Award Management, ORSPA Fiscal Oversight, ORSPA Proposals & Negotiations, R&M Walton Sust Solutions Svc, Research Advancement Services, Research Development, Research Integrity & Assurance, Research Project Management, Research Tech Development, Research Tech Support, Research Technology Office, RTO Business Intelligence, RTO Enterprise Architecture, RTO Information Security, RTO Research Computing, RTO Research Editing, RTO Scientific Software Engrng, RTO Strategic Solutions, RTO Training, Sch Complex Adaptive Systems, Sch Future of Innov in Society, School of Sustainability, Sci & Imag-Grad Assist/Assocs, SFAz Center for STEM, SkySong M+E Logistics, Solar Fab, SOS Faculty & Researchers, SOS Grad Student Services, SOS Graduate Assistants Assocs, SOS Instructional Support, SOS Instructional SW, SOS International Programs, SOS Outreach & Relations, SOS Student Services, SOS Student Workers, Strategic Marketing and Comms, Sustainable Cities Network, Sustainbl Phosphorus Alliance, Swette Ctr Sust Food Systems, The Global KAITEKI Center, The Sustainability Consortium, Univ Research Space Planning, University Innovation Alliance, UREx Sustainability Research, Walton Sust Teachers Academics, Wetland Ecosystem Ecology Lab',
+		},
+		{
 			label: 'Advanced Materials Initiative',
 			value: 'Advanced Materials Initiative',
 		},
@@ -671,6 +675,15 @@ const Inspector = ( props ) => {
 						options={ options }
 						value={ deptList }
 						onChange={ ( value ) => {
+							if ( value[ 0 ][ 'label' ] == 'All departments' ) {
+								let deptListCodes = '';
+								value.slice( 1 ).map( ( singleCode ) => {
+									deptListCodes += ', ' + singleCode.value;
+								} );
+								deptListCodes = deptListCodes.substring( 2 );
+								value[ 0 ][ 'value' ] = deptListCodes;
+								//console.log( value[ 0 ][ 'value' ] );
+							}
 							return setAttributes( {
 								deptList: value,
 							} );

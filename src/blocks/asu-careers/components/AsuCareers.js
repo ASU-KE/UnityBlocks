@@ -19,16 +19,10 @@ const AsuCareers = ( props ) => {
 	const [ newDeptList, setNewDeptList ] = useState( deptList );
 	const [ icon, setIcon ] = useState();
 
-	const newSelectDeptList = deptList;
-
 	useEffect( () => {
 		setSelection( 'staff' );
 		setNewDeptList( deptListCodes );
 		setIcon( 'bg-maroon' );
-		newSelectDeptList.unshift( {
-			label: 'All departments',
-			value: deptListCodes,
-		} );
 	}, [] );
 
 	const { payload, isError, data } = useBrassring( selection, newDeptList );
@@ -108,7 +102,7 @@ const AsuCareers = ( props ) => {
 					</div>
 					<div className={ classNames( 'col-8', 'form-check' ) }>
 						<Select
-							options={ newSelectDeptList }
+							options={ deptList }
 							defaultValue={ deptListCodes }
 							onChange={ ( event ) => {
 								setNewDeptList( event.value );
