@@ -12,8 +12,11 @@
       "default": "user-choice"
     },
     "deptList": {
-      "type": "string",
-      "default": "Biodesign Research Opportunity Advancement and Development:Biodesign Resrch Opp Adv & Dev"
+      "type": "array",
+      "default": [{
+        "label":"All department",
+    "value":"Biodesign Admin Support Ops"
+      }]
     },
     "titleText": {
       "type": "string",

@@ -14,7 +14,7 @@ const save = ( props ) => {
 			id="wp-block-unityblocks-asu-careers"
 			className={ classnames( className ) }
 			data-listtype={ listType }
-			data-deptlist={ deptList }
+			data-deptlist={ JSON.stringify( deptList ) }
 			data-titletext={ titleText }
 		></div>
 	);

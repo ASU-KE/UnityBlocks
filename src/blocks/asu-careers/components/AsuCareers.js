@@ -8,41 +8,27 @@ import { useBrassring } from '../hooks/useBrassring';
 
 const AsuCareers = ( props ) => {
 	const { editorListType, deptList, titleText } = props;
-	const selectedDeptList = deptList.split( ',' );
-	const newSelectedDeptList = [];
-	let allDept = '';
-
-	selectedDeptList.map( ( departmentName ) => {
-		const displayName = departmentName.split( ':' );
-		if ( displayName[ 1 ] ) {
-			newSelectedDeptList.push( {
-				value: displayName[ 1 ],
-				label: displayName[ 0 ],
-			} );
-			allDept = allDept + ', ' + displayName[ 1 ];
-		} else {
-			newSelectedDeptList.push( {
-				value: displayName[ 0 ],
-				label: displayName[ 0 ],
-			} );
-			allDept = allDept + ', ' + displayName[ 0 ];
-		}
+	let deptListCodes = '';
+	deptList.map( ( singleCode ) => {
+		deptListCodes += ', ' + singleCode.value;
 	} );
-	allDept = allDept.substring( 2 );
-	newSelectedDeptList.unshift( {
-		value: allDept,
-		label: 'All departments',
-	} );
+	deptListCodes = deptListCodes.substring( 2 );
 
 	// default current selection to the editor list setting
 	const [ selection, setSelection ] = useState( editorListType );
 	const [ newDeptList, setNewDeptList ] = useState( deptList );
 	const [ icon, setIcon ] = useState();
 
+	const newSelectDeptList = deptList;
+
 	useEffect( () => {
 		setSelection( 'staff' );
-		setNewDeptList( allDept );
+		setNewDeptList( deptListCodes );
 		setIcon( 'bg-maroon' );
+		newSelectDeptList.unshift( {
+			label: 'All departments',
+			value: deptListCodes,
+		} );
 	}, [] );
 
 	const { payload, isError, data } = useBrassring( selection, newDeptList );
@@ -122,8 +108,8 @@ const AsuCareers = ( props ) => {
 					</div>
 					<div className={ classNames( 'col-8', 'form-check' ) }>
 						<Select
-							options={ newSelectedDeptList }
-							defaultValue={ allDept }
+							options={ newSelectDeptList }
+							defaultValue={ deptListCodes }
 							onChange={ ( event ) => {
 								setNewDeptList( event.value );
 							} }

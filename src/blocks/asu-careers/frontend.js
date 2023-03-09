@@ -9,7 +9,7 @@ const careers = document.querySelectorAll(
 
 careers.forEach( ( block ) => {
 	const listType = block.dataset.listtype;
-	const deptList = block.dataset.deptlist;
+	const deptList = JSON.parse( block.dataset.deptlist );
 	const titleText = block.dataset.titletext;
 
 	render(
