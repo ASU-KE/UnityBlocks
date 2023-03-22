@@ -27,7 +27,7 @@ const Inspector = ( props ) => {
 	const options = [
 		{
 			label: 'All departments',
-			value: 'Advanced Materials Initiative, Advncd Electronics & Photonics, ASU Banner NDRC, ASU International Development, ASU Wrigley Inst Development, ASU Wrigley Inst Outreach, Biodesign Admin Support Ops, Biodesign Administration, Biodesign ASD, Biodesign BB, Biodesign BE, Biodesign Beus CXFEL Lab, Biodesign BSS, Biodesign CTL, Biodesign CXLS Operations, Biodesign EHE, Biodesign Facilities, Biodesign FAM, Biodesign HTM, Biodesign IM, Biodesign Institute, Biodesign ITS, Biodesign IVV, Biodesign MDB, Biodesign ME, Biodesign PC, Biodesign Resrch Opp Adv & Dev, Biodesign SM3, Biodesign SMB, Biodesign Swette EB, Biodesign Virginia G Piper PD, Biosciences, Business Services, CAP LTER, Center Biodiversity Outcomes, Center for Engagement Science, CGF Admin Support, CGF Ambassador SW, CGF Career & Alumni Services, CGF Executive & Prof Education, CGF Instructional Support, CGF Recrt Admissions Outreach, CGF Student Services SW, CGF Undergrad Student Services, Clinical Initiatives Dignity, College of Global Futures, Collg Research Eval Serv Team, Communications & Marketing, Complex Adaptive Systems, Cores Sales & Marketing, Corp Engagemt & Strat Partnshp, CSPO Grad Assists Assocs, Ctr Accelerating Op Efficiency, Ctr Cybersec Digital Forensics, Ctr Human AI & Robot Teaming, Ctr Narr, Decision Center Desert City, Decision Theater, Dept Animal Care Technologies, Disinfo & Strat Infl, E+I Venture Mentors, Economic Development, Education for Humanity, Engagement & Prof Development, Entrepreneurship + Innovation, Events, Eyring Materials Center, Flexible Electronics Display, Future H2O, Global Consort Sustain Outcome, Global Drylands Center, Global Futures Laboratory, Global Futures Staff, Global Inst of Sustain & Innov, Global Locust Initiative, Global Operations, Global Partnerships, Global Security Initiative, Health & Clinical Partnerships, Health and Clinical Services, Healthy Urban Environments, Industry Contracts, Instrument Design Fabrication, International Projects & Mgmt, Interplanetary Initiative, KE Biodesign Institute Finance, KE Business Units Finance, KE Core Facilities, KE Finance Process Development, KE Financial Services, KE Global Futures Finance, KE Initiatives Finance, KE Luminosity Lab, KE Planning Budget, KE Procurement, KE Serv & Rechg Ctrs Finan, KE Staff Support, KE Web Services, Knowldg Enterprise Initiatives, Knowldg Enterprise Operations, Knowledge Enterprise Analytics, Knowledge Enterprise Events, Knowledge Enterprise HR, LightWorks, Materials of the Universe Ctr, McCain Inst Intl Leadership, NanoFabrication, Ofc EVP Knowldge Enterprise, Ofc Research/Sponsored Project, Office of VP Research Develop, Operations PMO, ORSPA Award Management, ORSPA Fiscal Oversight, ORSPA Proposals & Negotiations, R&M Walton Sust Solutions Svc, Research Advancement Services, Research Development, Research Integrity & Assurance, Research Project Management, Research Tech Development, Research Tech Support, Research Technology Office, RTO Business Intelligence, RTO Enterprise Architecture, RTO Information Security, RTO Research Computing, RTO Research Editing, RTO Scientific Software Engrng, RTO Strategic Solutions, RTO Training, Sch Complex Adaptive Systems, Sch Future of Innov in Society, School of Sustainability, Sci & Imag-Grad Assist/Assocs, SFAz Center for STEM, SkySong M+E Logistics, Solar Fab, SOS Faculty & Researchers, SOS Grad Student Services, SOS Graduate Assistants Assocs, SOS Instructional Support, SOS Instructional SW, SOS International Programs, SOS Outreach & Relations, SOS Student Services, SOS Student Workers, Strategic Marketing and Comms, Sustainable Cities Network, Sustainbl Phosphorus Alliance, Swette Ctr Sust Food Systems, The Global KAITEKI Center, The Sustainability Consortium, Univ Research Space Planning, University Innovation Alliance, UREx Sustainability Research, Walton Sust Teachers Academics, Wetland Ecosystem Ecology Lab',
+			value: 'Advanced Materials Initiative , Advncd Electronics & Photonics , ASU Banner NDRC , Biodesign CTL , Biosciences , ASU International Development , ASU Wrigley Inst Development , ASU Wrigley Inst Outreach , Biodesign Admin Support Ops, Biodesign Administration , Biodesign ASD , Biodesign BSS , Biodesign BB , Biodesign BE , Biodesign EHE , Biodesign FAM , Biodesign HTM , Biodesign IVV , Biodesign IM , Biodesign ME , Biodesign MDB , Biodesign SMB , Biodesign SM3 , Biodesign Institute , Biodesign PC , Biodesign Resrch Opp Adv & Dev , Biodesign Swette EB , Biodesign Virginia G Piper PD , Business Services , CAP LTER , Center Biodiversity Outcomes , Center for Engagement Science , CGF Admin Support , CGF Ambassador SW , CGF Career & Alumni Services , CGF Executive & Prof Education , CGF Instructional Support , CGF Recrt Admissions Outreach , CGF Student Services SW , CGF Undergrad Student Services , Clinical Initiatives Dignity , College of Global Futures , Collg Research Eval Serv Team , Communications & Marketing , Complex Adaptive Systems , Cores Sales & Marketing , Corp Engagemt & Strat Partnshp , CSPO Grad Assists Assocs , Ctr Accelerating Op Efficiency , Ctr Cybersec Digital Forensics , Ctr Human AI & Robot Teaming , Ctr Narr , Biodesign Beus CXFEL Lab, Biodesign CXLS Operations , Decision Center Desert City , Decision Theater , Dept Animal Care Technologies , Disinfo & Strat Infl , E+I Venture Mentors , Economic Development , Education for Humanity , Engagement & Prof Development , Entrepreneurship + Innovation , Events , Eyring Materials Center , Flexible Electronics Display , Future H2O , Global Consort Sustain Outcome , Global Drylands Center , Global Futures Laboratory , Global Futures Staff , Global Inst of Sustain & Innov , Global Locust Initiative , Global Operations , Global Partnerships , Global Security Initiative , Health & Clinical Partnerships , Health and Clinical Services , Healthy Urban Environments , Industry Contracts , Instrument Design Fabrication , International Projects & Mgmt , Interplanetary Initiative , KE Biodesign Institute Finance , KE Business Units Finance , KE Core Facilities , Biodesign Facilities , KE Finance Process Development , KE Financial Services , KE Global Futures Finance , KE Initiatives Finance , KE Luminosity Lab , KE Planning Budget , KE Procurement , Biodesign ITS , KE Serv & Rechg Ctrs Finan , KE Staff Support , KE Web Services , Knowldg Enterprise Initiatives , Knowldg Enterprise Operations , Knowledge Enterprise Analytics , Knowledge Enterprise Events , Knowledge Enterprise HR , LightWorks , Materials of the Universe Ctr , McCain Inst Intl Leadership , NanoFabrication , Ofc EVP Knowldge Enterprise , Ofc Research/Sponsored Project , Office of VP Research Develop , Operations PMO , ORSPA Award Management , ORSPA Fiscal Oversight , ORSPA Proposals & Negotiations , R&M Walton Sust Solutions Svc , Research Advancement Services , Research Development , Research Integrity & Assurance , Research Project Management , Research Tech Development , Research Tech Support , Research Technology Office , RTO Business Intelligence , RTO Enterprise Architecture , RTO Information Security , RTO Research Computing , RTO Research Editing , RTO Scientific Software Engrng , RTO Strategic Solutions , RTO Training , Sch Complex Adaptive Systems , Sch Future of Innov in Society , School of Sustainability , Sci & Imag-Grad Assist/Assocs , SFAz Center for STEM , SkySong M+E Logistics , Solar Fab , SOS Faculty & Researchers , SOS Grad Student Services , SOS Graduate Assistants Assocs , SOS Instructional Support , SOS Instructional SW , SOS International Programs , SOS Outreach & Relations , SOS Student Services , SOS Student Workers , Strategic Marketing and Comms , Sustainable Cities Network , Sustainbl Phosphorus Alliance , Swette Ctr Sust Food Systems , The Global KAITEKI Center , The Sustainability Consortium , Univ Research Space Planning , University Innovation Alliance , UREx Sustainability Research , Walton Sust Teachers Academics , Wetland Ecosystem Ecology Lab',
 		},
 		{
 			label: 'Advanced Materials Initiative',
@@ -38,9 +38,14 @@ const Inspector = ( props ) => {
 			value: 'Advncd Electronics & Photonics',
 		},
 		{
-			label: 'ASU Banner NDRC',
+			label: 'ASU-Banner Neurodegenerative Disease Research Center',
 			value: 'ASU Banner NDRC',
 		},
+		{
+			label: 'ASU Biodesign Clinical Testing Laboratory',
+			value: 'Biodesign CTL',
+		},
+		{ label: 'ASU Core Facilities', value: 'Biosciences' },
 		{
 			label: 'ASU International Development',
 			value: 'ASU International Development',
@@ -62,36 +67,17 @@ const Inspector = ( props ) => {
 			value: 'Biodesign ASD',
 		},
 		{
-			label: 'Biodesign Center for Bioelectronics and Biosensors',
-			value: 'Biodesign BB',
-		},
-		{
-			label: 'Biodesign Center for Bioenergetics',
-			value: 'Biodesign BE',
-		},
-		{
-			label: 'CXFEL Labs',
-			value: 'Biodesign Beus CXFEL Lab, Biodesign CXLS Operations',
-		},
-		{
 			label: 'Biodesign Center for Biocomputing Security and Society',
 			value: 'Biodesign BSS',
 		},
 		{
-			label: 'Biodesign Center for Biomaterials Innovation and Translation',
-			value: 'Biodesign BIT',
+			label: 'Biodesign Center for Bioelectronics and Biosensors',
+			value: 'Biodesign BB',
 		},
-		{
-			label: 'ASU Biodesign Clinical Testing Laboratory',
-			value: 'Biodesign CTL',
-		},
+		{ label: 'Biodesign Center for Bioenergetics', value: 'Biodesign BE' },
 		{
 			label: 'Biodesign Center for Environmental Health Engineering',
 			value: 'Biodesign EHE',
-		},
-		{
-			label: 'KE Facilities Service FM',
-			value: 'Biodesign Facilities',
 		},
 		{
 			label: 'Biodesign Center for Fundamental and Applied Microbiomics',
@@ -102,44 +88,34 @@ const Inspector = ( props ) => {
 			value: 'Biodesign HTM',
 		},
 		{
-			label: 'Biodesign Center for Innovations in Medicine',
-			value: 'Biodesign IM',
-		},
-		{
-			label: 'Biodesign Institute',
-			value: 'Biodesign Institute',
-		},
-		{
-			label: 'KE Research Technology Support',
-			value: 'Biodesign ITS',
-		},
-		{
 			label: 'Biodesign Center for Immunotherapy, Vaccines and Virotherapy',
 			value: 'Biodesign IVV',
 		},
 		{
-			label: 'Biodesign Center for Molecular Design and Biomimetics',
-			value: 'Biodesign MDB',
+			label: 'Biodesign Center for Innovations in Medicine',
+			value: 'Biodesign IM',
 		},
 		{
 			label: 'Biodesign Center for Mechanisms of Evolution',
 			value: 'Biodesign ME',
 		},
 		{
-			label: 'Biodesign Pathfinder Center',
-			value: 'Biodesign PC',
+			label: 'Biodesign Center for Molecular Design and Biomimetics',
+			value: 'Biodesign MDB',
 		},
 		{
-			label: 'Biodesign Research Opportunity Advancement and Development',
-			value: 'Biodesign Resrch Opp Adv & Dev',
+			label: 'Biodesign Center for Single Molecule Biophysics',
+			value: 'Biodesign SMB',
 		},
 		{
 			label: 'Biodesign Center for Sustainable Macromolecular Materials and Manufacturing',
 			value: 'Biodesign SM3',
 		},
+		{ label: 'Biodesign Institute', value: 'Biodesign Institute' },
+		{ label: 'Biodesign Pathfinder Center', value: 'Biodesign PC' },
 		{
-			label: 'Biodesign Center for Single Molecule Biophysics',
-			value: 'Biodesign SMB',
+			label: 'Biodesign Research Opportunity Advancement and Development',
+			value: 'Biodesign Resrch Opp Adv & Dev',
 		},
 		{
 			label: 'Biodesign Swette Center for Environmental Biotechnology',
@@ -149,14 +125,7 @@ const Inspector = ( props ) => {
 			label: 'Biodesign Virginia G. Piper Center for Personalized Diagnostics',
 			value: 'Biodesign Virginia G Piper PD',
 		},
-		{
-			label: 'ASU Core Facilities',
-			value: 'Biosciences',
-		},
-		{
-			label: 'Business Services',
-			value: 'Business Services',
-		},
+		{ label: 'Business Services', value: 'Business Services' },
 		{ label: 'CAP LTER', value: 'CAP LTER' },
 		{
 			label: 'Center Biodiversity Outcomes',
@@ -166,14 +135,8 @@ const Inspector = ( props ) => {
 			label: 'Center for Engagement Science',
 			value: 'Center for Engagement Science',
 		},
-		{
-			label: 'CGF Admin Support',
-			value: 'CGF Admin Support',
-		},
-		{
-			label: 'CGF Ambassador SW',
-			value: 'CGF Ambassador SW',
-		},
+		{ label: 'CGF Admin Support', value: 'CGF Admin Support' },
+		{ label: 'CGF Ambassador SW', value: 'CGF Ambassador SW' },
 		{
 			label: 'CGF Career & Alumni Services',
 			value: 'CGF Career & Alumni Services',
@@ -190,10 +153,7 @@ const Inspector = ( props ) => {
 			label: 'CGF Recrt Admissions Outreach',
 			value: 'CGF Recrt Admissions Outreach',
 		},
-		{
-			label: 'CGF Student Services SW',
-			value: 'CGF Student Services SW',
-		},
+		{ label: 'CGF Student Services SW', value: 'CGF Student Services SW' },
 		{
 			label: 'CGF Undergrad Student Services',
 			value: 'CGF Undergrad Student Services',
@@ -218,10 +178,7 @@ const Inspector = ( props ) => {
 			label: 'Complex Adaptive Systems',
 			value: 'Complex Adaptive Systems',
 		},
-		{
-			label: 'Cores Sales & Marketing',
-			value: 'Cores Sales & Marketing',
-		},
+		{ label: 'Cores Sales & Marketing', value: 'Cores Sales & Marketing' },
 		{
 			label: 'Corp Engagemt & Strat Partnshp',
 			value: 'Corp Engagemt & Strat Partnshp',
@@ -244,33 +201,22 @@ const Inspector = ( props ) => {
 		},
 		{ label: 'Ctr Narr', value: 'Ctr Narr' },
 		{
+			label: 'CXFEL Labs',
+			value: 'Biodesign Beus CXFEL Lab, Biodesign CXLS Operations',
+		},
+		{
 			label: 'Decision Center Desert City',
 			value: 'Decision Center Desert City',
 		},
-		{
-			label: 'Decision Theater',
-			value: 'Decision Theater',
-		},
+		{ label: 'Decision Theater', value: 'Decision Theater' },
 		{
 			label: 'Dept Animal Care Technologies',
 			value: 'Dept Animal Care Technologies',
 		},
-		{
-			label: 'Disinfo & Strat Infl',
-			value: 'Disinfo & Strat Infl',
-		},
-		{
-			label: 'E+I Venture Mentors',
-			value: 'E+I Venture Mentors',
-		},
-		{
-			label: 'Economic Development',
-			value: 'Economic Development',
-		},
-		{
-			label: 'Education for Humanity',
-			value: 'Education for Humanity',
-		},
+		{ label: 'Disinfo & Strat Infl', value: 'Disinfo & Strat Infl' },
+		{ label: 'E+I Venture Mentors', value: 'E+I Venture Mentors' },
+		{ label: 'Economic Development', value: 'Economic Development' },
+		{ label: 'Education for Humanity', value: 'Education for Humanity' },
 		{
 			label: 'Engagement & Prof Development',
 			value: 'Engagement & Prof Development',
@@ -280,10 +226,7 @@ const Inspector = ( props ) => {
 			value: 'Entrepreneurship + Innovation',
 		},
 		{ label: 'Events', value: 'Events' },
-		{
-			label: 'Eyring Materials Center',
-			value: 'Eyring Materials Center',
-		},
+		{ label: 'Eyring Materials Center', value: 'Eyring Materials Center' },
 		{
 			label: 'Flexible Electronics Display',
 			value: 'Flexible Electronics Display',
@@ -293,18 +236,12 @@ const Inspector = ( props ) => {
 			label: 'Global Consort Sustain Outcome',
 			value: 'Global Consort Sustain Outcome',
 		},
-		{
-			label: 'Global Drylands Center',
-			value: 'Global Drylands Center',
-		},
+		{ label: 'Global Drylands Center', value: 'Global Drylands Center' },
 		{
 			label: 'Global Futures Laboratory',
 			value: 'Global Futures Laboratory',
 		},
-		{
-			label: 'Global Futures Staff',
-			value: 'Global Futures Staff',
-		},
+		{ label: 'Global Futures Staff', value: 'Global Futures Staff' },
 		{
 			label: 'Global Inst of Sustain & Innov',
 			value: 'Global Inst of Sustain & Innov',
@@ -313,14 +250,8 @@ const Inspector = ( props ) => {
 			label: 'Global Locust Initiative',
 			value: 'Global Locust Initiative',
 		},
-		{
-			label: 'Global Operations',
-			value: 'Global Operations',
-		},
-		{
-			label: 'Global Partnerships',
-			value: 'Global Partnerships',
-		},
+		{ label: 'Global Operations', value: 'Global Operations' },
+		{ label: 'Global Partnerships', value: 'Global Partnerships' },
 		{
 			label: 'Global Security Initiative',
 			value: 'Global Security Initiative',
@@ -337,10 +268,7 @@ const Inspector = ( props ) => {
 			label: 'Healthy Urban Environments',
 			value: 'Healthy Urban Environments',
 		},
-		{
-			label: 'Industry Contracts',
-			value: 'Industry Contracts',
-		},
+		{ label: 'Industry Contracts', value: 'Industry Contracts' },
 		{
 			label: 'Instrument Design Fabrication',
 			value: 'Instrument Design Fabrication',
@@ -361,50 +289,28 @@ const Inspector = ( props ) => {
 			label: 'KE Business Units Finance',
 			value: 'KE Business Units Finance',
 		},
-		{
-			label: 'KE Core Facilities',
-			value: 'KE Core Facilities',
-		},
+		{ label: 'KE Core Facilities', value: 'KE Core Facilities' },
+		{ label: 'KE Facilities Service FM', value: 'Biodesign Facilities' },
 		{
 			label: 'KE Finance Process Development',
 			value: 'KE Finance Process Development',
 		},
-		{
-			label: 'KE Financial Services',
-			value: 'KE Financial Services',
-		},
+		{ label: 'KE Financial Services', value: 'KE Financial Services' },
 		{
 			label: 'KE Global Futures Finance',
 			value: 'KE Global Futures Finance',
 		},
-		{
-			label: 'KE Initiatives Finance',
-			value: 'KE Initiatives Finance',
-		},
-		{
-			label: 'KE Luminosity Lab',
-			value: 'KE Luminosity Lab',
-		},
-		{
-			label: 'KE Planning Budget',
-			value: 'KE Planning Budget',
-		},
-		{
-			label: 'KE Procurement',
-			value: 'KE Procurement',
-		},
+		{ label: 'KE Initiatives Finance', value: 'KE Initiatives Finance' },
+		{ label: 'KE Luminosity Lab', value: 'KE Luminosity Lab' },
+		{ label: 'KE Planning Budget', value: 'KE Planning Budget' },
+		{ label: 'KE Procurement', value: 'KE Procurement' },
+		{ label: 'KE Research Technology Support', value: 'Biodesign ITS' },
 		{
 			label: 'KE Serv & Rechg Ctrs Finan',
 			value: 'KE Serv & Rechg Ctrs Finan',
 		},
-		{
-			label: 'KE Staff Support',
-			value: 'KE Staff Support',
-		},
-		{
-			label: 'KE Web Services',
-			value: 'KE Web Services',
-		},
+		{ label: 'KE Staff Support', value: 'KE Staff Support' },
+		{ label: 'KE Web Services', value: 'KE Web Services' },
 		{
 			label: 'Knowldg Enterprise Initiatives',
 			value: 'Knowldg Enterprise Initiatives',
@@ -421,10 +327,7 @@ const Inspector = ( props ) => {
 			label: 'Knowledge Enterprise Events',
 			value: 'Knowledge Enterprise Events',
 		},
-		{
-			label: 'Knowledge Enterprise HR',
-			value: 'Knowledge Enterprise HR',
-		},
+		{ label: 'Knowledge Enterprise HR', value: 'Knowledge Enterprise HR' },
 		{ label: 'LightWorks', value: 'LightWorks' },
 		{
 			label: 'Materials of the Universe Ctr',
@@ -434,10 +337,7 @@ const Inspector = ( props ) => {
 			label: 'McCain Inst Intl Leadership',
 			value: 'McCain Inst Intl Leadership',
 		},
-		{
-			label: 'NanoFabrication',
-			value: 'NanoFabrication',
-		},
+		{ label: 'NanoFabrication', value: 'NanoFabrication' },
 		{
 			label: 'Ofc EVP Knowldge Enterprise',
 			value: 'Ofc EVP Knowldge Enterprise',
@@ -450,18 +350,9 @@ const Inspector = ( props ) => {
 			label: 'Office of VP Research Develop',
 			value: 'Office of VP Research Develop',
 		},
-		{
-			label: 'Operations PMO',
-			value: 'Operations PMO',
-		},
-		{
-			label: 'ORSPA Award Management',
-			value: 'ORSPA Award Management',
-		},
-		{
-			label: 'ORSPA Fiscal Oversight',
-			value: 'ORSPA Fiscal Oversight',
-		},
+		{ label: 'Operations PMO', value: 'Operations PMO' },
+		{ label: 'ORSPA Award Management', value: 'ORSPA Award Management' },
+		{ label: 'ORSPA Fiscal Oversight', value: 'ORSPA Fiscal Oversight' },
 		{
 			label: 'ORSPA Proposals & Negotiations',
 			value: 'ORSPA Proposals & Negotiations',
@@ -474,10 +365,7 @@ const Inspector = ( props ) => {
 			label: 'Research Advancement Services',
 			value: 'Research Advancement Services',
 		},
-		{
-			label: 'Research Development',
-			value: 'Research Development',
-		},
+		{ label: 'Research Development', value: 'Research Development' },
 		{
 			label: 'Research Integrity & Assurance',
 			value: 'Research Integrity & Assurance',
@@ -490,10 +378,7 @@ const Inspector = ( props ) => {
 			label: 'Research Tech Development',
 			value: 'Research Tech Development',
 		},
-		{
-			label: 'Research Tech Support',
-			value: 'Research Tech Support',
-		},
+		{ label: 'Research Tech Support', value: 'Research Tech Support' },
 		{
 			label: 'Research Technology Office',
 			value: 'Research Technology Office',
@@ -510,22 +395,13 @@ const Inspector = ( props ) => {
 			label: 'RTO Information Security',
 			value: 'RTO Information Security',
 		},
-		{
-			label: 'RTO Research Computing',
-			value: 'RTO Research Computing',
-		},
-		{
-			label: 'RTO Research Editing',
-			value: 'RTO Research Editing',
-		},
+		{ label: 'RTO Research Computing', value: 'RTO Research Computing' },
+		{ label: 'RTO Research Editing', value: 'RTO Research Editing' },
 		{
 			label: 'RTO Scientific Software Engrng',
 			value: 'RTO Scientific Software Engrng',
 		},
-		{
-			label: 'RTO Strategic Solutions',
-			value: 'RTO Strategic Solutions',
-		},
+		{ label: 'RTO Strategic Solutions', value: 'RTO Strategic Solutions' },
 		{ label: 'RTO Training', value: 'RTO Training' },
 		{
 			label: 'Sch Complex Adaptive Systems',
@@ -543,14 +419,8 @@ const Inspector = ( props ) => {
 			label: 'Sci & Imag-Grad Assist/Assocs',
 			value: 'Sci & Imag-Grad Assist/Assocs',
 		},
-		{
-			label: 'SFAz Center for STEM',
-			value: 'SFAz Center for STEM',
-		},
-		{
-			label: 'SkySong M+E Logistics',
-			value: 'SkySong M+E Logistics',
-		},
+		{ label: 'SFAz Center for STEM', value: 'SFAz Center for STEM' },
+		{ label: 'SkySong M+E Logistics', value: 'SkySong M+E Logistics' },
 		{ label: 'Solar Fab', value: 'Solar Fab' },
 		{
 			label: 'SOS Faculty & Researchers',
@@ -568,10 +438,7 @@ const Inspector = ( props ) => {
 			label: 'SOS Instructional Support',
 			value: 'SOS Instructional Support',
 		},
-		{
-			label: 'SOS Instructional SW',
-			value: 'SOS Instructional SW',
-		},
+		{ label: 'SOS Instructional SW', value: 'SOS Instructional SW' },
 		{
 			label: 'SOS International Programs',
 			value: 'SOS International Programs',
@@ -580,14 +447,8 @@ const Inspector = ( props ) => {
 			label: 'SOS Outreach & Relations',
 			value: 'SOS Outreach & Relations',
 		},
-		{
-			label: 'SOS Student Services',
-			value: 'SOS Student Services',
-		},
-		{
-			label: 'SOS Student Workers',
-			value: 'SOS Student Workers',
-		},
+		{ label: 'SOS Student Services', value: 'SOS Student Services' },
+		{ label: 'SOS Student Workers', value: 'SOS Student Workers' },
 		{
 			label: 'Strategic Marketing and Comms',
 			value: 'Strategic Marketing and Comms',
