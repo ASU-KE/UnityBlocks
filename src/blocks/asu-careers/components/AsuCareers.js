@@ -155,6 +155,10 @@ const AsuCareers = ( props ) => {
 										<strong>Location: </strong>
 										{ job.campus }
 									</div>
+									<div className="mb-2">
+										<strong>Job number: </strong>
+										{ job.id }
+									</div>
 									<div className="mb-4">
 										<a
 											target="_blank"
