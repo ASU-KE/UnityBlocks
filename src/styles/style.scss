@@ -87,3 +87,17 @@ li:not(:last-child){
 	}
 }
 }
+
+
+/*--------------------------------------------------------------
+UDS Hero block
+--------------------------------------------------------------*/
+@media (max-width: 768px){
+.wp-block-unityblocks-hero.hide-content .uds-hero {
+	    grid-template-rows: 1fr auto auto auto auto;
+.content{
+	    display: none;
+}
+}
+
+}
