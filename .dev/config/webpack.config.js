@@ -71,6 +71,10 @@ module.exports = {
 			process.cwd(),
 			'src/blocks/testimonial/frontend.js'
 		),
+		'js/unityblocks-asu-careers': path.resolve(
+			process.cwd(),
+			'src/blocks/asu-careers/frontend.js'
+		),
 	},
 
 	output: {
