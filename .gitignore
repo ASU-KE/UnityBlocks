@@ -28,3 +28,9 @@ node_modules/
 
 # dotenv environment variables file
 .env
+
+# MacOS metadata
+.DS_Store
+
+# WP-CLI
+vendor/
