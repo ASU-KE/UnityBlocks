@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Select from 'react-select';
 import classNames from 'classnames';
 
-import { useBrassring } from '../hooks/useBrassring';
+import { useBrassring } from '../../utils/hooks/useBrassring';
 
 const AsuCareers = ( props ) => {
 	const { editorListType, deptList, titleText } = props;

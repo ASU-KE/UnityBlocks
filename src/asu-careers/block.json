@@ -1,6 +1,19 @@
 {
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
   "name": "unityblocks/asu-careers",
+  "version": "1.0.0",
+  "title": "ASU Careers Brassring",
   "category": "widgets",
+  "keywords": ["unityblocks", "job", "brassring"],
+  "icon": "menu",
+  "supports": {
+    "html": false,
+    "align": ["wide", "full"]
+  },
+  "textdomain": "unityblocks",
+  "viewScript": ["file:./frontend.js", "unityblocks-asu-careers-view-script"],
+  "editorScript": "file:./index.js",
   "attributes": {
     "listType": {
       "type": "string",

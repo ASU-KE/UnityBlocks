@@ -1,4 +1,4 @@
-import { AsuCareers } from './components/AsuCareers';
+import { AsuCareers } from '../../resources/unity/component-careers/AsuCareers';
 
 /**
  * Internal dependencies
