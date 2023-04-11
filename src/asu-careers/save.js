@@ -1,22 +1,36 @@
 /**
- * External dependencies
+ * React hook that is used to mark the block wrapper element.
+ * It provides all the necessary props like the class name.
+ *
+ * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import classnames from 'classnames';
-
+import { useBlockProps } from "@wordpress/block-editor";
+/**
+ * The save function defines the way in which the different attributes should
+ * be combined into the final markup, which is then serialized by the block
+ * editor into `post_content`.
+ *
+ * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-edit-save/#save
+ *
+ * @return {WPElement} Element to render.
+ */
 const save = ( props ) => {
 	const {
-		attributes: { listType, deptList, titleText },
-		className,
+		attributes: {
+      listType,
+      deptList,
+      titleText,
+    },
 	} = props;
 
+  const dataAttributes = {
+    "data-listtype": listType,
+    "data-deptlist": JSON.stringify(deptList),
+    "data-titletext": titleText,
+  }
+
 	return (
-		<div
-			id="wp-block-unityblocks-asu-careers"
-			className={ classnames( className ) }
-			data-listtype={ listType }
-			data-deptlist={ JSON.stringify( deptList ) }
-			data-titletext={ titleText }
-		></div>
+		<div {...useBlockProps.save()} {...dataAttributes}></div>
 	);
 };
 
