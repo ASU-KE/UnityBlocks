@@ -4,6 +4,7 @@
   "name": "unityblocks/asu-careers",
   "version": "1.0.0",
   "title": "ASU Careers Brassring",
+  "description": "Display an interactive job listings blocks for ASU Careers, organized by departments.",
   "category": "widgets",
   "keywords": ["unityblocks", "job", "brassring"],
   "icon": "menu",

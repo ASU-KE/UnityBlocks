@@ -1,6 +1,7 @@
 const { render } = wp.element;
 
-import { AnchorMenu } from "@asu/components-core/dist/libCore.es";
+//import { AnchorMenu } from "@asu/components-core/dist/libCore.es";
+import { AnchorMenu } from "../../resources/unity/components-core/src/components/AnchorMenu"
 
 var stickyMenu = document.getElementsByClassName("uds-anchor-menu");
 

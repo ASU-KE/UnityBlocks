@@ -16,8 +16,8 @@ import { useBlockProps } from "@wordpress/block-editor";
 /**
  * External dependencies
  */
-import { Testimonial } from "@asu/components-core/dist/libCore.es";
-
+//import { Testimonial } from "@asu/components-core/dist/libCore.es";
+import { Testimonial } from "../../resources/unity/components-core/src/components/Testimonial"
 /**
  * Internal dependencies
  */

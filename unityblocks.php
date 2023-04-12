@@ -35,5 +35,6 @@ function unityblocks_block_init() {
 	register_block_type( __DIR__ . '/build/news-grid' );
 	register_block_type( __DIR__ . '/build/news-list' );
 	register_block_type( __DIR__ . '/build/testimonial' );
+	register_block_type( __DIR__ . '/build/asu-careers' );
 }
 add_action( 'init', 'unityblocks_block_init' );
