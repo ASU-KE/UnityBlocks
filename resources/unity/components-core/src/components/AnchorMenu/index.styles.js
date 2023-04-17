@@ -3,7 +3,7 @@ import styled from "styled-components";
 const AnchorMenuWrapper = styled.div`
   &.sticky {
     position: fixed;
-    top: 89px;
+    top: 0;
     left: 0;
     width: 100%;
     &.with-header {
