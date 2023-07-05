@@ -3,18 +3,18 @@ const { render } = wp.element;
 // import { WebDirectoryComponent } from "@asu/app-webdir-ui";
 import { WebDirectoryComponent } from "../../resources/unity/app-webdir-ui/src/WebDirectoryComponent/withRouter";
 
-// It is possible to load multiple events grids onto a page.
-// Load each DOM element on page using the Gutenberg-generated class for the News Grid block
-const directory = document.querySelectorAll(".wp-block-unityblocks-web-directory");
+// It is possible to load multiple Directory blocks onto a page.
+// Load each DOM element on page using the Gutenberg-generated class
+const blocks = document.querySelectorAll(".wp-block-unityblocks-web-directory");
 
-directory.forEach((webdir) => {
-  const searchType = webdir.dataset.searchtype;
-  const API_URL = webdir.dataset.apiurl;
-  const searchApiVersion = webdir.dataset.apiversion;
-  const deptIds = webdir.dataset.deptids;
-  const ids = webdir.dataset.ids;
-  const display = webdir.dataset.display;
-  const filters = webdir.dataset.filters;
+blocks.forEach((block) => {
+  const searchType = block.dataset.searchtype;
+  const API_URL = block.dataset.apiurl;
+  const searchApiVersion = block.dataset.apiversion;
+  const deptIds = block.dataset.deptids;
+  const ids = block.dataset.ids;
+  const display = block.dataset.display;
+  const filters = block.dataset.filters;
 
   const props = searchType === "departments"
     ? {
@@ -33,5 +33,5 @@ directory.forEach((webdir) => {
         filters,
       };
 
-  render(<WebDirectoryComponent {...props} />, directory);
+  render(<WebDirectoryComponent {...props} />, block);
 });
