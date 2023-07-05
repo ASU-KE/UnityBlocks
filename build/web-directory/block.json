@@ -1,0 +1,99 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "unityblocks/web-directory",
+  "version": "1.0.0",
+  "title": "Unity People Directory",
+  "category": "uds",
+  "keywords": [
+    "unityblocks",
+    "people",
+    "directory"
+  ],
+  "icon": "grid-view",
+  "description": "ASU Directory listing for a department.",
+  "supports": {
+    "html": false,
+    "align": [
+      "wide",
+      "full"
+    ]
+  },
+  "textdomain": "unityblocks",
+  "viewScript": [
+    "file:./frontend.js",
+    "unityblocks-web-directory-view-script"
+  ],
+  "editorScript": "file:./index.js",
+  "attributes": {
+    "searchType": {
+      "type": "string",
+      "enum": [
+        "departments",
+        "people",
+        "people_departments"
+      ],
+      "default": "departments"
+    },
+    "API_URL": {
+      "type": "string",
+      "enum": [
+        "https://test-asu-isearch.ws.asu.edu",
+        "TBD"
+      ],
+      "default": "https://test-asu-isearch.ws.asu.edu"
+    },
+    "searchApiVersion": {
+      "type": "string",
+      "default": "/api/v1/"
+    },
+    "deptIds": {
+      "type": "string",
+      "default": "1349,1353,32397,1518,1520,3534,1350,334996,1504,2000,2003,159390"
+    },
+    "ids": {
+      "type": "string",
+      "default": ""
+    },
+    "profileURLBase": {
+      "type": "string",
+      "default": ""
+    },
+    "appPathFolder": {
+      "type": "string",
+      "default": ""
+    },
+    "displayDefaultSort": {
+      "type": "string",
+      "default": "last_name"
+    },
+    "displayDoNotDisplay": {
+      "type": "string",
+      "default": ""
+    },
+    "displayProfilesPerPage": {
+      "type": "string",
+      "default": "10"
+    },
+    "displayUsePager": {
+      "type": "string",
+      "default": "1"
+    },
+    "filtersEmployee": {
+      "type": "string",
+      "default": ""
+    },
+    "filtersExpertise": {
+      "type": "string",
+      "default": ""
+    },
+    "filtersTitle": {
+      "type": "string",
+      "default": ""
+    },
+    "filtersCampuses": {
+      "type": "string",
+      "default": ""
+    }
+  }
+}
