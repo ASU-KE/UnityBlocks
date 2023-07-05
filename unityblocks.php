@@ -28,6 +28,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 function unityblocks_block_init() {
 	register_block_type( __DIR__ . '/build/anchor-menu' );
+	register_block_type( __DIR__ . '/build/asu-careers' );
 	register_block_type( __DIR__ . '/build/hero' );
 	register_block_type( __DIR__ . '/build/events-grid' );
 	register_block_type( __DIR__ . '/build/events-list' );
@@ -35,6 +36,6 @@ function unityblocks_block_init() {
 	register_block_type( __DIR__ . '/build/news-grid' );
 	register_block_type( __DIR__ . '/build/news-list' );
 	register_block_type( __DIR__ . '/build/testimonial' );
-	register_block_type( __DIR__ . '/build/asu-careers' );
+	register_block_type( __DIR__ . '/build/web-directory' );
 }
 add_action( 'init', 'unityblocks_block_init' );

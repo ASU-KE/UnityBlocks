@@ -24,6 +24,7 @@
     "start": "wp-scripts start"
   },
   "dependencies": {
+    "@asu/app-webdir-ui": "2.1.0",
     "@asu/component-carousel": "^1.2.1",
     "@asu/component-events": "^1.1.2",
     "@asu/component-news": "^1.1.2",
