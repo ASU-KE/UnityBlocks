@@ -11,6 +11,8 @@
  * Requires at least: 5.8
  * Requires PHP:      7.0
  *
+ * GitHub Plugin URI: ASU-KE/UnityBlocks
+ *
  * @package UnityBlocks
  */
 
