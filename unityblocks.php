@@ -41,3 +41,18 @@ function unityblocks_block_init() {
 	register_block_type( __DIR__ . '/build/web-directory' );
 }
 add_action( 'init', 'unityblocks_block_init' );
+
+/**
+ * Register a custom category in the Block Editor that we can use for organizing our blocks.
+ */
+function unityblocks_register_block_category($categories)
+{
+	// Adding a new category.
+	$categories[] = array(
+		'slug'  => 'unityblocks',
+		'title' => 'ASU Unity'
+	);
+
+	return $categories;
+}
+add_filter('block_categories_all', 'unityblocks_register_block_category');
