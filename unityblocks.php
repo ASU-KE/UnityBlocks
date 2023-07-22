@@ -33,10 +33,10 @@ function unityblocks_block_init() {
 	register_block_type( __DIR__ . '/build/asu-careers' );
 	register_block_type( __DIR__ . '/build/hero' );
 	register_block_type( __DIR__ . '/build/events-grid' );
-	register_block_type( __DIR__ . '/build/events-list' );
-	register_block_type( __DIR__ . '/build/image-gallery' );
+	// register_block_type( __DIR__ . '/build/events-list' );   // DISABLED -- DEPRECATED
+	// register_block_type( __DIR__ . '/build/image-gallery' ); // DISABLED -- DEPRECATED
 	register_block_type( __DIR__ . '/build/news-grid' );
-	register_block_type( __DIR__ . '/build/news-list' );
+	// register_block_type( __DIR__ . '/build/news-list' );     // DISABLED -- DEPRECATED
 	register_block_type( __DIR__ . '/build/testimonial' );
 	register_block_type( __DIR__ . '/build/web-directory' );
 }
