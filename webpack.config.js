@@ -5,6 +5,7 @@ const defaultConfig = require("@wordpress/scripts/config/webpack.config");
 
 module.exports = merge(defaultConfig, {
   plugins: [
+    // TEMPORARILY DISABLED: we need asu-unity-stack repo fixes for this to work
     // new CopyPlugin({
     //   patterns: [
     //     {
