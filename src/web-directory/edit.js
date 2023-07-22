@@ -16,8 +16,7 @@ import { useBlockProps } from "@wordpress/block-editor";
 /**
  * External dependencies
  */
-// import { WebDirectoryComponent } from "@asu/app-webdir-ui";
-import { WebDirectoryComponent } from "../../resources/unity/app-webdir-ui/src/WebDirectoryComponent/withRouter";
+import { WebDirectoryComponent } from "Unity/app-webdir-ui/webdirUI.es.js";
 
 /**
  * Internal dependencies

@@ -1,7 +1,6 @@
 const { render } = wp.element;
 
-// import { WebDirectoryComponent } from "@asu/app-webdir-ui";
-import { WebDirectoryComponent } from "../../resources/unity/app-webdir-ui/src/WebDirectoryComponent/withRouter";
+import { WebDirectoryComponent } from "Unity/app-webdir-ui/webdirUI.es.js";
 
 // It is possible to load multiple Directory blocks onto a page.
 // Load each DOM element on page using the Gutenberg-generated class
