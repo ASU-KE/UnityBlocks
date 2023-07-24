@@ -4,7 +4,7 @@
   "name": "unityblocks/anchor-menu",
   "version": "1.0.0",
   "title": "Unity Anchor Menu",
-  "category": "uds",
+  "category": "unityblocks",
   "keywords": ["unityblocks", "menu", "navigation"],
   "icon": "menu",
   "description": "Provide sticky menu bar to jump to anchor points on the current page.",
