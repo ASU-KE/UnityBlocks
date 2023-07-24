@@ -23,13 +23,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Load current theme and check if it is Pitchfork or a Pitchfork Child
- */
-$theme_data = wp_get_theme();
-$pitchfork_theme = ( 'pitchfork' === $theme_data->get( 'TextDomain' ) || 'pitchfork' === $theme_data->get( 'Template' ) );
-
-
-/**
  * Registers the block using the metadata loaded from the `block.json` file.
  * Behind the scenes, it also registers all assets so they can be enqueued
  * through the block editor in the corresponding context.
@@ -37,6 +30,10 @@ $pitchfork_theme = ( 'pitchfork' === $theme_data->get( 'TextDomain' ) || 'pitchf
  * @see https://developer.wordpress.org/reference/functions/register_block_type/
  */
 function unityblocks_block_init() {
+	// Load current theme and check if it is Pitchfork or a Pitchfork Child
+	$theme_data = wp_get_theme();
+	$pitchfork_theme = ( 'pitchfork' === $theme_data->get( 'TextDomain' ) || 'pitchfork' === $theme_data->get( 'Template' ) );
+
 	// Register these blocks only if not using Pitchfork
 	// Pitchfork already has these blocks
 	if ( $pitchfork_theme ) {
