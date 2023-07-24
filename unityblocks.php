@@ -36,7 +36,7 @@ function unityblocks_block_init() {
 
 	// Register these blocks only if not using Pitchfork
 	// Pitchfork already has these blocks
-	if ( $pitchfork_theme ) {
+	if ( ! $pitchfork_theme ) {
 		register_block_type( __DIR__ . '/build/hero' );
 	}
 
