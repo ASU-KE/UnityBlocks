@@ -12,6 +12,7 @@
  * Text Domain:       unityblocks
  *
  * GitHub Plugin URI: ASU-KE/UnityBlocks
+ * Primary Branch: main
  *
  * @package           unityblocks
  */
@@ -29,15 +30,26 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @see https://developer.wordpress.org/reference/functions/register_block_type/
  */
 function unityblocks_block_init() {
+	// Load current theme and check if it is Pitchfork or a Pitchfork Child
+	$theme_data = wp_get_theme();
+	$pitchfork_theme = ( 'pitchfork' === $theme_data->get( 'TextDomain' ) || 'pitchfork' === $theme_data->get( 'Template' ) );
+
+	// Register these blocks only if not using Pitchfork
+	// Pitchfork already has these blocks
+	if ( ! $pitchfork_theme ) {
+		register_block_type( __DIR__ . '/build/hero' );
+	}
+
 	register_block_type( __DIR__ . '/build/anchor-menu' );
 	register_block_type( __DIR__ . '/build/asu-careers' );
-	register_block_type( __DIR__ . '/build/hero' );
 	register_block_type( __DIR__ . '/build/events-grid' );
+	register_block_type( __DIR__ . '/build/news-grid' );
+	register_block_type( __DIR__ . '/build/testimonial' );
+
+	// Archived/Deprecated blocks
 	// register_block_type( __DIR__ . '/build/events-list' );   // DISABLED -- DEPRECATED
 	// register_block_type( __DIR__ . '/build/image-gallery' ); // DISABLED -- DEPRECATED
-	register_block_type( __DIR__ . '/build/news-grid' );
 	// register_block_type( __DIR__ . '/build/news-list' );     // DISABLED -- DEPRECATED
-	register_block_type( __DIR__ . '/build/testimonial' );
 	register_block_type( __DIR__ . '/build/web-directory' );
 }
 add_action( 'init', 'unityblocks_block_init' );
@@ -50,7 +62,7 @@ function unityblocks_register_block_category($categories)
 	// Adding a new category.
 	$categories[] = array(
 		'slug'  => 'unityblocks',
-		'title' => 'ASU Unity'
+		'title' => 'KE Unity'
 	);
 
 	return $categories;
