@@ -1,5 +1,6 @@
 const { render } = wp.element;
-import { AsuCareers } from '../../resources/unity/component-careers/AsuCareers';
+
+import { AsuCareers } from './components/AsuCareers';
 
 // It is possible to load multiple Careers blocks onto a page.
 // Load each DOM element on the page using the Gutenberg-generated class for the ASU Careers block

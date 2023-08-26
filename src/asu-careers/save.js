@@ -5,6 +5,8 @@
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
 import { useBlockProps } from "@wordpress/block-editor";
+
+
 /**
  * The save function defines the way in which the different attributes should
  * be combined into the final markup, which is then serialized by the block
@@ -16,21 +18,17 @@ import { useBlockProps } from "@wordpress/block-editor";
  */
 const save = ( props ) => {
 	const {
-		attributes: {
-      listType,
-      deptList,
-      titleText,
-    },
+		attributes: { listType, deptList, titleText },
 	} = props;
 
-  const dataAttributes = {
-    "data-listtype": listType,
-    "data-deptlist": JSON.stringify(deptList),
-    "data-titletext": titleText,
-  }
-
 	return (
-		<div {...useBlockProps.save()} {...dataAttributes}></div>
+		<div
+			id="wp-block-unityblocks-asu-careers"
+			{...useBlockProps.save()}
+			data-listtype={ listType }
+			data-deptlist={ JSON.stringify( deptList ) }
+			data-titletext={ titleText }
+		></div>
 	);
 };
 

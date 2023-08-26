@@ -12,31 +12,25 @@ import { __ } from "@wordpress/i18n";
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
 import { useBlockProps } from "@wordpress/block-editor";
+
 /**
  * External dependencies
  */
-import { AsuCareers } from '../../resources/unity/component-careers/AsuCareers';
+import { AsuCareers } from './components/AsuCareers';
+
 /**
  * Internal dependencies
  */
 import Inspector from './inspector';
-import './editor.scss';
 
 /**
- * The edit function describes the structure of your block in the context of the
- * editor. This represents what the editor will render when the block is used.
+ * Block edit function
  *
- * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-edit-save/#edit
- *
- * @return {WPElement} Element to render.
+ * @param {Object} props
  */
 const Edit = ( props ) => {
 	const {
-		attributes: {
-      listType,
-      deptList,
-      titleText,
-    },
+		attributes: { listType, deptList, titleText },
 	} = props;
 
 	return (
