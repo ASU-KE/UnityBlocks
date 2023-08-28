@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Plugin Name:       UnityBlocks
  * Description:       UnityBlocks is a suite of page building content blocks for the ASU Web Standards Unity (UDS) WordPress theme.
@@ -18,7 +19,7 @@
  */
 
 // Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) {
+if (!defined('ABSPATH')) {
 	exit;
 }
 
@@ -29,15 +30,22 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @see https://developer.wordpress.org/reference/functions/register_block_type/
  */
-function unityblocks_block_init() {
-	register_block_type( __DIR__ . '/build/anchor-menu' );
-	register_block_type( __DIR__ . '/build/hero' );
-	register_block_type( __DIR__ . '/build/events-grid' );
-	register_block_type( __DIR__ . '/build/events-list' );
-	register_block_type( __DIR__ . '/build/image-gallery' );
-	register_block_type( __DIR__ . '/build/news-grid' );
-	register_block_type( __DIR__ . '/build/news-list' );
-	register_block_type( __DIR__ . '/build/testimonial' );
-	register_block_type( __DIR__ . '/build/asu-careers' );
+function unityblocks_block_init()
+{
+	register_block_type(__DIR__ . '/build/anchor-menu');
+	register_block_type(__DIR__ . '/build/hero');
+	register_block_type(__DIR__ . '/build/events-grid');
+	register_block_type(__DIR__ . '/build/events-list');
+	register_block_type(__DIR__ . '/build/image-gallery');
+	register_block_type(__DIR__ . '/build/news-grid');
+	register_block_type(__DIR__ . '/build/news-list');
+	register_block_type(__DIR__ . '/build/testimonial');
+	register_block_type(__DIR__ . '/build/asu-careers');
 }
-add_action( 'init', 'unityblocks_block_init' );
+add_action('init', 'unityblocks_block_init');
+
+wp_register_style('editor-styles-asu-career',  plugin_dir_url(__FILE__) . 'build/asu-careers/index.css');
+wp_enqueue_style('editor-styles-asu-career');
+
+wp_register_style('styles-asu-career',  plugin_dir_url(__FILE__) . 'build/asu-careers/style-index.css');
+wp_enqueue_style('styles-asu-career');
