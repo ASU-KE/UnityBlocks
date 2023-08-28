@@ -3,15 +3,17 @@
   "apiVersion": 2,
   "name": "unityblocks/asu-careers",
   "version": "1.0.0",
-  "title": "ASU Careers Brassring",
-  "description": "Display an interactive job listings blocks for ASU Careers, organized by departments.",
-  "category": "widgets",
+  "title": "ASU Careers",
+  "category": "uds",
   "keywords": [
+    "asu",
     "unityblocks",
-    "job",
+    "careers",
+    "jobs",
     "brassring"
   ],
-  "icon": "menu",
+  "icon": "database-import",
+  "description": "Display an interactive job listings blocks for ASU Careers, organized by departments.",
   "supports": {
     "html": false,
     "align": [
@@ -22,11 +24,11 @@
   "textdomain": "unityblocks",
   "viewScript": [
     "file:./frontend.js",
-    "unityblocks-asu-careers-view-script"
+    "unityblocks-careers-view-script"
   ],
   "editorScript": "file:./index.js",
-  "editorStyle": "file:../../build/asu-careers/index.css",
-  "style": "file:../../build/asu-careers/style-index.css",
+  "editorStyle": "file:./build/asu-careers/index.css",
+  "style": "file:./build/asu-careers/style-index.css",
   "attributes": {
     "listType": {
       "type": "string",
