@@ -1,9 +1,19 @@
 /**
  * The following styles get applied inside the editor only.
- *
- * Replace them with your own styles or remove the file completely.
  */
 
+.components-input-control__container > select[multiple] {
+  height: auto  !important;
+  padding-right: 8px;
+
+  option {
+    white-space: normal;
+
+    // &:nth-of-type(2n) {
+    // 	background-color: #efefef;
+    // }
+  }
+}
 .uds-w-100 {
 	width:100%;
 }
