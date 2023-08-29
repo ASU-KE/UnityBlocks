@@ -21,8 +21,8 @@
   "textdomain": "unityblocks",
   "viewScript": ["file:./frontend.js", "unityblocks-careers-view-script"],
   "editorScript": "file:./index.js",
-  "editorStyle": "file:./build/asu-careers/index.css",
-	"style": "file:./build/asu-careers/style-index.css",
+  "editorStyle": "editor-styles-asu-career",
+	"style": "styles-asu-career",
   "attributes": {
     "listType": {
       "type": "string",
