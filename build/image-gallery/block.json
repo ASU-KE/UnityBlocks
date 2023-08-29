@@ -1,0 +1,50 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "unityblocks/image-gallery",
+  "version": "1.0.0",
+  "title": "Unity Image Gallery (UNFINISHED)",
+  "category": "uds",
+  "keywords": [
+    "unityblocks",
+    "images",
+    "gallery"
+  ],
+  "icon": "cover-image",
+  "description": "Renders an ASU-branded image gallery.",
+  "supports": {
+    "html": false,
+    "align": [
+      "wide",
+      "full"
+    ]
+  },
+  "textdomain": "unityblocks",
+  "viewScript": [
+    "file:./frontend.js",
+    "unityblocks-image-gallery-view-script"
+  ],
+  "editorScript": "file:./index.js",
+  "attributes": {
+    "images": {
+      "type": "array",
+      "default": []
+    },
+    "hasContent": {
+      "type": "boolean",
+      "default": true
+    },
+    "imageAutoSize": {
+      "type": "boolean",
+      "default": true
+    },
+    "width": {
+      "type": "string",
+      "default": ""
+    },
+    "maxWidth": {
+      "type": "string",
+      "default": ""
+    }
+  }
+}

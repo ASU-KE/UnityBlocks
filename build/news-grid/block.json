@@ -1,0 +1,152 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "unityblocks/news-grid",
+  "version": "1.0.0",
+  "title": "Unity News Grid",
+  "category": "uds",
+  "keywords": [
+    "unityblocks",
+    "news",
+    "grid"
+  ],
+  "icon": "grid-view",
+  "description": "Provide a grid layout for ASU and KE News.",
+  "supports": {
+    "html": false,
+    "align": [
+      "wide",
+      "full"
+    ]
+  },
+  "textdomain": "unityblocks",
+  "viewScript": [
+    "file:./frontend.js",
+    "unityblocks-news-grid-view-script"
+  ],
+  "editorScript": "file:./index.js",
+  "attributes": {
+    "enableHeader": {
+      "type": "boolean",
+      "default": true
+    },
+    "headerText": {
+      "type": "string",
+      "default": "News Grid"
+    },
+    "headerColor": {
+      "type": "string",
+      "enum": [
+        "dark",
+        "white"
+      ],
+      "default": "dark"
+    },
+    "ctaText": {
+      "type": "string",
+      "default": "Click to see more news"
+    },
+    "ctaUrl": {
+      "type": "string",
+      "default": "https://news.asu.edu/"
+    },
+    "ctaColor": {
+      "type": "string",
+      "enum": [
+        "gold",
+        "maroon",
+        "gray",
+        "dark"
+      ],
+      "default": "maroon"
+    },
+    "cardButtonText": {
+      "type": "string",
+      "default": "Read news"
+    },
+    "cardButtonColor": {
+      "type": "string",
+      "enum": [
+        "gold",
+        "maroon",
+        "gray",
+        "dark"
+      ],
+      "default": "gold"
+    },
+    "cardButtonSize": {
+      "type": "string",
+      "enum": [
+        "default",
+        "small",
+        "medium",
+        "large"
+      ],
+      "default": "default"
+    },
+    "enableStoryDate": {
+      "type": "boolean",
+      "default": true
+    },
+    "enableStoryAuthor": {
+      "type": "boolean",
+      "default": false
+    },
+    "enableCardTags": {
+      "type": "boolean",
+      "default": false
+    },
+    "enableAsuDataSource": {
+      "type": "boolean",
+      "default": true
+    },
+    "asuDataSourceUrl": {
+      "type": "string",
+      "default": "https://cors.api.rtd.asu.edu/asunow.asu.edu:443/feeds-json/"
+    },
+    "asuDataSourceFeed": {
+      "type": "string",
+      "default": ""
+    },
+    "asuDataSourceFilters": {
+      "type": "string",
+      "default": ""
+    },
+    "enableKeDataSource": {
+      "type": "boolean",
+      "default": false
+    },
+    "keDataSourceUrl": {
+      "type": "string",
+      "default": "https://ke.news.prod.rtd.asu.edu/wp-json/wp/v2/"
+    },
+    "keStoryBasePath": {
+      "type": "string",
+      "default": "news/story"
+    },
+    "keDataSourceUnits": {
+      "type": "array",
+      "default": []
+    },
+    "keDataSourceInterests": {
+      "type": "array",
+      "default": []
+    },
+    "keDataSourceLocations": {
+      "type": "array",
+      "default": []
+    },
+    "maxItems": {
+      "type": "number",
+      "default": 6
+    },
+    "numberColumns": {
+      "type": "string",
+      "enum": [
+        "2",
+        "3"
+      ],
+      "default": "3"
+    }
+  }
+}
