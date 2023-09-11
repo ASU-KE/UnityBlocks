@@ -34,3 +34,5 @@ node_modules/
 
 # WP-CLI
 vendor/
+
+*.map
