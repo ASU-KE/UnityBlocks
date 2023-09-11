@@ -1,0 +1,70 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "unityblocks/testimonial",
+  "version": "1.0.0",
+  "title": "Unity Testimonial",
+  "category": "uds",
+  "keywords": [
+    "unityblocks",
+    "quotes",
+    "testimonials"
+  ],
+  "icon": "format-quote",
+  "description": "Provide Testimonial block.",
+  "supports": {
+    "html": false,
+    "align": [
+      "wide",
+      "full"
+    ]
+  },
+  "textdomain": "unityblocks",
+  "viewScript": [
+    "file:./frontend.js",
+    "unityblocks-testimonial-view-script"
+  ],
+  "editorScript": "file:./index.js",
+  "attributes": {
+    "quoteTitle": {
+      "type": "string",
+      "default": ""
+    },
+    "quoteContent": {
+      "type": "string",
+      "default": ""
+    },
+    "quoteCiteName": {
+      "type": "string",
+      "default": ""
+    },
+    "quoteCiteDescription": {
+      "type": "string",
+      "default": ""
+    },
+    "mediaId": {
+      "type": "number",
+      "default": 0
+    },
+    "mediaUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "mediaAltText": {
+      "type": "string",
+      "default": ""
+    },
+    "containerCssClass": {
+      "type": "string",
+      "default": ""
+    },
+    "titleCssClass": {
+      "type": "string",
+      "default": ""
+    },
+    "contentCssClass": {
+      "type": "string",
+      "default": ""
+    }
+  }
+}
