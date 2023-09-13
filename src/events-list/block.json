@@ -4,7 +4,7 @@
   "name": "unityblocks/events-list",
   "version": "1.0.0",
   "title": "Unity Events List (DEPRECATED)",
-  "category": "uds",
+  "category": "unityblocks",
   "keywords": ["unityblocks", "events", "list"],
   "icon": "list-view",
   "description": "Provide a list layout for ASU and KE Events. This view is no longer recommended.",

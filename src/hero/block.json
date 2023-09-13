@@ -4,7 +4,7 @@
   "name": "unityblocks/hero",
   "version": "1.0.0",
   "title": "Unity Hero",
-  "category": "uds",
+  "category": "unityblocks",
   "keywords": ["unityblocks", "images", "layout"],
   "icon": "cover-image",
   "description": "Provide Hero for page headers.",
