@@ -38,6 +38,12 @@ $pitchfork_theme = ( 'pitchfork' === $theme_data->get( 'TextDomain' ) || 'pitchf
  */
 function unityblocks_block_init()
 {
+	/**
+	 * Load current theme and check if it is Pitchfork or a Pitchfork Child
+	 */
+	$theme_data = wp_get_theme();
+	$pitchfork_theme = ( 'pitchfork' === $theme_data->get( 'TextDomain' ) || 'pitchfork' === $theme_data->get( 'Template' ) );
+
 	// Register these blocks only if not using Pitchfork
 	// Pitchfork already has these blocks
 	if ( $pitchfork_theme ) {
