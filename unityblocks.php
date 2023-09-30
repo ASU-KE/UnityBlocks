@@ -56,10 +56,6 @@ function unityblocks_block_init()
 	register_block_type(__DIR__ . '/build/image-gallery');
 	register_block_type(__DIR__ . '/build/news-grid');
 	register_block_type(__DIR__ . '/build/testimonial');
-
-	// Disable obsolete blocks - We may want to remove these blocks entirely
-	// register_block_type(__DIR__ . '/build/events-list');
-	// register_block_type(__DIR__ . '/build/news-list');
 }
 add_action('init', 'unityblocks_block_init');
 
