@@ -1,0 +1,62 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "unityblocks/asu-events",
+  "version": "1.0.0",
+  "title": "ASU Events",
+  "category": "unityblocks",
+  "keywords": ["unityblocks", "events", "grid"],
+  "icon": "grid-view",
+  "description": "Provide a grid layout for ASU and KE Events.",
+  "supports": {
+    "html": false,
+    "align": ["wide", "full"]
+  },
+  "textdomain": "unityblocks",
+  "viewScript": ["file:./frontend.js", "unityblocks-asu-events-view-script"],
+  "editorScript": "file:./index.js",
+  "attributes": {
+    "enableHeader": {
+      "type": "boolean",
+      "default": true
+    },
+    "headerText": {
+      "type": "string",
+      "default": "Events Grid"
+    },
+    "headerColor": {
+      "type": "string",
+      "enum": ["white", "dark"],
+      "default": "dark"
+    },
+    "ctaColor": {
+      "type": "string",
+      "enum": ["gold", "maroon", "gray", "dark"],
+      "default": "maroon"
+    },
+    "ctaText": {
+      "type": "string",
+      "default": "Click to see more events"
+    },
+    "ctaUrl": {
+      "type": "string",
+      "default": "https://asuevents.asu.edu/"
+    },
+    "dataSourceUrl": {
+      "type": "string",
+      "default": "https://cors.api.rtd.asu.edu/asuevents.asu.edu/feed-json/"
+    },
+    "dataSourceFilters": {
+      "type": "string",
+      "default": ""
+    },
+    "noResultsText": {
+      "type": "string",
+      "default": "No events found."
+    },
+    "maxItems": {
+      "type": "number",
+      "default": 6
+    }
+  }
+}
