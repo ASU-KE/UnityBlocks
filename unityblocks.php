@@ -5,7 +5,7 @@
  * Description:       UnityBlocks is a suite of page building content blocks for the ASU Web Standards Unity (UDS) WordPress theme.
  * Requires at least: 6.1
  * Requires PHP:      7.0
- * Version:           2.0.2
+ * Version:           2.0.3
  * Author:            ASU KE Web Services
  * Author URI:        https://rto.asu.edu/web-services
  * License:           GPL-2.0-or-later
@@ -24,12 +24,6 @@ if (!defined('ABSPATH')) {
 }
 
 /**
- * Load current theme and check if it is Pitchfork or a Pitchfork Child
- */
-$theme_data = wp_get_theme();
-$pitchfork_theme = ( 'pitchfork' === $theme_data->get( 'TextDomain' ) || 'pitchfork' === $theme_data->get( 'Template' ) );
-
-/**
  * Registers the block using the metadata loaded from the `block.json` file.
  * Behind the scenes, it also registers all assets so they can be enqueued
  * through the block editor in the corresponding context.
@@ -46,7 +40,7 @@ function unityblocks_block_init()
 
 	// Register these blocks only if not using Pitchfork
 	// Pitchfork already has these blocks
-	if ( $pitchfork_theme ) {
+	if ( ! $pitchfork_theme ) {
 		register_block_type( __DIR__ . '/build/hero' );
 	}
 
