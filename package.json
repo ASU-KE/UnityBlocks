@@ -25,7 +25,7 @@
   },
   "dependencies": {
     "@asu/component-carousel": "^1.2.1",
-    "@asu/component-events": "^1.1.2",
+    "@asu/component-events": "2.0.3",
     "@asu/component-news": "^1.1.2",
     "@asu/components-core": "^1.5.0",
     "@fortawesome/fontawesome-svg-core": "^6.3.0",
