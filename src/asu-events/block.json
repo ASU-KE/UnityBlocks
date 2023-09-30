@@ -7,7 +7,7 @@
   "category": "unityblocks",
   "keywords": ["unityblocks", "events", "grid"],
   "icon": "grid-view",
-  "description": "Provide a grid layout for ASU and KE Events.",
+  "description": "Dsiplay a grid layout for ASU Events.",
   "supports": {
     "html": false,
     "align": ["wide", "full"]
