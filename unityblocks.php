@@ -65,7 +65,7 @@ function unityblocks_register_block_category($categories)
 	// Adding a new category.
 	$categories[] = array(
 		'slug'  => 'unityblocks',
-		'title' => 'KE Unity'
+		'title' => 'UnityBlocks'
 	);
 
 	return $categories;
