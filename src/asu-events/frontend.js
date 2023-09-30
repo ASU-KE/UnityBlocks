@@ -3,8 +3,8 @@ const { render } = wp.element;
 import { CardsGridEvents } from "@asu/component-events/dist/asuEvents.es";
 
 // It is possible to load multiple events grids onto a page.
-// Load each DOM element on page using the Gutenberg-generated class for the News Grid block
-const grids = document.querySelectorAll(".wp-block-unityblocks-events-grid");
+// Load each DOM element on page using the Gutenberg-generated class for the Events Grid block
+const grids = document.querySelectorAll(".wp-block-unityblocks-asu-events");
 
 grids.forEach((eventsGrid) => {
   const enableHeader = eventsGrid.dataset.enableheader === "true";
