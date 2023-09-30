@@ -17,7 +17,7 @@ import { useBlockProps } from "@wordpress/block-editor";
  * External dependencies
  */
 import { formatISO, startOfToday } from "date-fns";
-import { CardsGridEvents } from "../../resources/unity/component-events/src/components/CardsGridEvents";
+import { CardsGridEvents } from "../../resources/unity/component-ke-events/src/components/CardsGridEvents";
 
 /**
  * Internal dependencies

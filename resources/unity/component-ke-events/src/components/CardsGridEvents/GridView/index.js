@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 
-import { Card, FeedContext } from "../../../../../components-core/src/";
+import { Card, FeedContext } from "../../../../../components-core/src";
 
 import { GridViewWrapper } from "./index.styles";
 
