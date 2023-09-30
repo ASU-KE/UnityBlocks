@@ -4,7 +4,7 @@
   "name": "unityblocks/testimonial",
   "version": "1.0.0",
   "title": "Unity Testimonial",
-  "category": "uds",
+  "category": "unityblocks",
   "keywords": ["unityblocks", "quotes", "testimonials"],
   "icon": "format-quote",
   "description": "Provide Testimonial block.",
