@@ -24,12 +24,6 @@ if (!defined('ABSPATH')) {
 }
 
 /**
- * Load current theme and check if it is Pitchfork or a Pitchfork Child
- */
-$theme_data = wp_get_theme();
-$pitchfork_theme = ( 'pitchfork' === $theme_data->get( 'TextDomain' ) || 'pitchfork' === $theme_data->get( 'Template' ) );
-
-/**
  * Registers the block using the metadata loaded from the `block.json` file.
  * Behind the scenes, it also registers all assets so they can be enqueued
  * through the block editor in the corresponding context.
