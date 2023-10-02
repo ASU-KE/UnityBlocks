@@ -46,21 +46,26 @@ form.jobTypeSelect {
     padding: 0.25rem;
   }
 
-  .career-icon{
+  .career-icon {
     width: 55px;
     height: 55px;
     position: relative;
-    svg{
-      transform: translate(-50%,-50%);
+    svg {
+      transform: translate(-50%, -50%);
       position: absolute;
       top: 50%;
       left: 50%;
     }
   }
 
-  li:not(:last-child){
-    .single-job{
+  li:not(:last-child) {
+    .single-job {
       border-bottom: 1px solid #dee2e6;
+    }
+  }
+  .list-unstyled.w-50 {
+    @media (max-width: 992px) {
+      width: 100% !important;
     }
   }
 }
