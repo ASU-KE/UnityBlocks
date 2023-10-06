@@ -46,6 +46,7 @@ function unityblocks_block_init()
 
 	register_block_type(__DIR__ . '/build/anchor-menu');
 	register_block_type(__DIR__ . '/build/asu-careers');
+	register_block_type(__DIR__ . '/build/asu-events');
 	register_block_type(__DIR__ . '/build/events-grid');
 	register_block_type(__DIR__ . '/build/image-gallery');
 	register_block_type(__DIR__ . '/build/news-grid');
@@ -64,7 +65,7 @@ function unityblocks_register_block_category($categories)
 	// Adding a new category.
 	$categories[] = array(
 		'slug'  => 'unityblocks',
-		'title' => 'KE Unity'
+		'title' => 'UnityBlocks'
 	);
 
 	return $categories;

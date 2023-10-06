@@ -12,7 +12,7 @@ import {
   ToggleControl,
 } from "@wordpress/components";
 import { useFetchKeGraphql } from "../../resources/unity/components-core/src/core/hooks/use-fetch-ke-graphql";
-import { LIST_GROUPS_QUERY } from "../../resources/unity/component-events/src/core/graphql";
+import { LIST_GROUPS_QUERY } from "../../resources/unity/component-ke-events/src/core/graphql";
 
 /**
  * Inspector controls

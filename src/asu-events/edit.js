@@ -16,8 +16,7 @@ import { useBlockProps } from "@wordpress/block-editor";
 /**
  * External dependencies
  */
-import { formatISO, startOfToday } from "date-fns";
-import { CardsGridEvents } from "../../resources/unity/component-ke-events/src/components/CardsGridEvents";
+import { CardsGridEvents } from "@asu/component-events/dist/asuEvents.es";
 
 /**
  * Internal dependencies
@@ -46,19 +45,11 @@ const Edit = (props) => {
       enableHeader,
       headerText,
       headerColor,
-      ctaText,
       ctaColor,
+      ctaText,
       ctaUrl,
-      dataSourceType,
-      dataSourceAsuUrl,
-      dataSourceKeUrl,
-      dataSourceFeed,
-      asuFilterUnits,
-      keFilterUnits,
-      keSortEvents,
-      keShowPastEvents,
-      keShowFutureEvents,
-      keEventBasePath,
+      dataSourceUrl,
+      dataSourceFilters,
       noResultsText,
       maxItems,
     },
@@ -79,40 +70,10 @@ const Edit = (props) => {
       }
     : null;
 
-  const keFilter = {
-    categorySlugs: keFilterUnits,
+  const dataSource = {
+    url: dataSourceUrl,
+    filters: dataSourceFilters,
   };
-
-  if (!keShowPastEvents) {
-    keFilter.endAt_gt = formatISO(startOfToday());
-  }
-
-  if (!keShowFutureEvents) {
-    keFilter.endAt_lt = formatISO(startOfToday());
-  }
-
-  const keSort = {
-    table: "event",
-    field: "startAt",
-    order: keSortEvents,
-  };
-
-  let dataSource;
-  if (dataSourceType === "asuDrupal") {
-    dataSource = {
-      type: "asuDrupal",
-      url: dataSourceAsuUrl + dataSourceFeed,
-      filters: asuFilterUnits,
-    };
-  } else {
-    dataSource = {
-      type: "keGraphql",
-      url: dataSourceKeUrl,
-      filter: keFilter,
-      sort: keSort,
-      eventBasePath: keEventBasePath,
-    };
-  }
 
   const args = {
     header,
