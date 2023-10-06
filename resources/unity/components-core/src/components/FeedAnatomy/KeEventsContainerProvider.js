@@ -6,7 +6,7 @@ import styled from "styled-components";
 
 import { FeedContext } from "./FeedContext";
 import { useFetchKeGraphql } from "../../core/hooks/use-fetch-ke-graphql";
-import { LIST_EVENTS_QUERY } from "../../../../component-events/src/core/graphql";
+import { LIST_EVENTS_QUERY } from "../../../../component-ke-events/src/core/graphql";
 import { Loader } from "../Loader";
 
 const Container = styled.section``;

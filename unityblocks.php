@@ -5,7 +5,7 @@
  * Description:       UnityBlocks is a suite of page building content blocks for the ASU Web Standards Unity (UDS) WordPress theme.
  * Requires at least: 6.1
  * Requires PHP:      7.0
- * Version:           2.0.3
+ * Version:           2.1.0
  * Author:            ASU KE Web Services
  * Author URI:        https://rto.asu.edu/web-services
  * License:           GPL-2.0-or-later
@@ -46,6 +46,7 @@ function unityblocks_block_init()
 
 	register_block_type(__DIR__ . '/build/anchor-menu');
 	register_block_type(__DIR__ . '/build/asu-careers');
+	register_block_type(__DIR__ . '/build/asu-events');
 	register_block_type(__DIR__ . '/build/events-grid');
 	register_block_type(__DIR__ . '/build/image-gallery');
 	register_block_type(__DIR__ . '/build/news-grid');
@@ -64,7 +65,7 @@ function unityblocks_register_block_category($categories)
 	// Adding a new category.
 	$categories[] = array(
 		'slug'  => 'unityblocks',
-		'title' => 'KE Unity'
+		'title' => 'UnityBlocks'
 	);
 
 	return $categories;
