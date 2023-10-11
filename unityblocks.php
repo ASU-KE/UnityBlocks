@@ -36,12 +36,12 @@ function unityblocks_block_init()
 	 * Load current theme and check if it is Pitchfork or a Pitchfork Child
 	 */
 	$theme_data = wp_get_theme();
-	$pitchfork_theme = ( 'pitchfork' === $theme_data->get( 'TextDomain' ) || 'pitchfork' === $theme_data->get( 'Template' ) );
+	$pitchfork_theme = ('pitchfork' === $theme_data->get('TextDomain') || 'pitchfork' === $theme_data->get('Template'));
 
 	// Register these blocks only if not using Pitchfork
 	// Pitchfork already has these blocks
-	if ( ! $pitchfork_theme ) {
-		register_block_type( __DIR__ . '/build/hero' );
+	if (!$pitchfork_theme) {
+		register_block_type(__DIR__ . '/build/hero');
 	}
 
 	register_block_type(__DIR__ . '/build/anchor-menu');
@@ -56,6 +56,7 @@ add_action('init', 'unityblocks_block_init');
 
 wp_register_style('editor-styles-asu-career',  plugin_dir_url(__FILE__) . 'build/asu-careers/index.css');
 wp_register_style('styles-asu-career',  plugin_dir_url(__FILE__) . 'build/asu-careers/style-index.css');
+wp_register_style('styles-hero',  plugin_dir_url(__FILE__) . 'build/hero/style-index.css');
 
 /**
  * Register a custom category in the Block Editor that we can use for organizing our blocks.
