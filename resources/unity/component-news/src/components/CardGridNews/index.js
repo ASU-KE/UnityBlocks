@@ -59,7 +59,9 @@ const gridRow = (
         clickable={false}
         title={story.title}
         body={storyBody(story, enableStoryAuthor, enableStoryDate)}
-        image={story.headerImageUrl}
+        image={
+          story.featuredImageUrl ? story.featuredImageUrl : story.headerImageUrl
+        }
         imageAltText={story.title}
         linkLabel={"Read"}
         linkUrl={story.storyLink}
