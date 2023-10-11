@@ -17,7 +17,7 @@ import { useBlockProps } from "@wordpress/block-editor";
  * External dependencies
  */
 //import { Hero } from "@asu/components-core/dist/libCore.es";
-import { Hero } from "../../resources/unity/components-core/src/components/Hero"
+import { Hero } from "../../resources/unity/components-core/src/components/Hero";
 
 /**
  * Internal dependencies
@@ -60,6 +60,7 @@ const Edit = (props) => {
       titleCssClass,
       contentsText,
       contentsMaxWidth,
+      hideContents,
       contentsCssClass,
       contentsHighlightColor,
       contentsColor,
@@ -96,6 +97,14 @@ const Edit = (props) => {
     ],
     contentsColor,
   };
+  let hideContent = "";
+  if (!contentsText || hideContents === "yes") {
+    hideContent = "hide-content";
+  }
+
+  const blockProps = useBlockProps({
+    className: hideContent,
+  });
 
   return (
     <>
@@ -103,7 +112,7 @@ const Edit = (props) => {
       <Controls {...props} />
 
       {mediaId !== 0 && (
-        <div {...useBlockProps()}>
+        <div {...blockProps}>
           <Hero {...args} />
         </div>
       )}

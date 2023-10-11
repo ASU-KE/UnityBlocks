@@ -14,6 +14,8 @@ import { registerBlockType } from "@wordpress/blocks";
  */
 // import "./style.scss";
 
+import "./style.scss";
+
 /**
  * Internal dependencies
  */
