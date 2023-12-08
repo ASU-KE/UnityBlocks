@@ -1,0 +1,16 @@
+/**
+ * The following styles get applied on the frontend only.
+ */
+
+.uds-wchm-list input {
+  padding: 15px;
+  width: 80%;
+  background: #fff;
+  border: 1px solid #bfbfbf;
+  + div {
+    z-index: 999;
+    div {
+      padding: 10px 15px;
+    }
+  }
+}

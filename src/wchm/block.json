@@ -1,0 +1,19 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "unityblocks/wchm",
+  "version": "1.0.0",
+  "title": "WCHM",
+  "category": "unityblocks",
+  "keywords": ["asu", "unityblocks", "ho", "can", "help", "me", "wchm"],
+  "icon": "database-import",
+  "description": "Display a contact list for WCHM",
+  "supports": {
+    "html": false,
+    "align": ["wide", "full"]
+  },
+  "textdomain": "unityblocks",
+  "viewScript": ["file:./frontend.js", "unityblocks-careers-view-script"],
+  "editorScript": "file:./index.js",
+  "style": "styles-wchm"
+}
