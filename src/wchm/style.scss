@@ -9,8 +9,12 @@
   border: 1px solid #bfbfbf;
   + div {
     z-index: 999;
+    position: relative !important;
+    left: 0 !important;
+    top: 0 !important;
     div {
       padding: 10px 15px;
+      cursor: pointer;
     }
   }
 }
