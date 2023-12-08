@@ -52,7 +52,7 @@ const Autocomplete = () => {
             }
           );
           const data = await response.json();
-          console.log(data);
+          //console.log(data);
           setRasData(data);
         } catch (error) {
           console.error("Error fetching data by ID:", error);
@@ -79,7 +79,7 @@ const Autocomplete = () => {
             }
           );
           const data = await response.json();
-          //console.log(data);
+          console.log(data);
           setOfficerData(data);
         } catch (error) {
           console.error("Error fetching data from API 2:", error);
@@ -119,7 +119,7 @@ const Autocomplete = () => {
 
       {selectedItemId && (
         <div className="mt-8">
-          {rasData && (
+          {rasData && rasData.length !== 0 && (
             <div className="mb-8">
               <h3>
                 <span className="highlight-gold">
@@ -141,7 +141,7 @@ const Autocomplete = () => {
             </div>
           )}
 
-          {officerData && (
+          {officerData && officerData.length !== 0 && (
             <div className="mb-8">
               <h3>
                 <span className="highlight-gold">ORSPA Contacts</span>
@@ -151,15 +151,31 @@ const Autocomplete = () => {
                 <div className="mb-4">
                   <h4 className="mb-1">{contactInfo.Officer}</h4>
                   <p className="mb-1">{contactInfo.name}</p>
-                  <p>
-                    <a href={`mailto:${contactInfo.userId}@asu.edu`}>
-                      {contactInfo.userId}@asu.edu
-                    </a>
-                  </p>
+                  {contactInfo.userId && (
+                    <p>
+                      <a href={`mailto:${contactInfo.userId}@asu.edu`}>
+                        {contactInfo.userId}@asu.edu
+                      </a>
+                    </p>
+                  )}
                 </div>
               ))}
             </div>
           )}
+
+          {/* <div>
+            {officerData.length === 0 || rasData.length === 0 ? (
+              <p>
+                Text to display when either the first or second value is equal
+                to 0.
+              </p>
+            ) : (
+              <p>
+                Text to display when both the first and second values are not
+                equal to 0.
+              </p>
+            )}
+          </div> */}
         </div>
       )}
     </div>
