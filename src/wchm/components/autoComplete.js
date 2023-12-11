@@ -23,7 +23,7 @@ const Autocomplete = () => {
           }
         );
         const data = await response.json();
-        // console.log(data);
+        //console.log(data);
         setSuggestions(data);
       } catch (error) {
         console.error("Error fetching suggestions:", error);
@@ -96,11 +96,14 @@ const Autocomplete = () => {
       <ReactAutocomplete
         inputProps={{ placeholder: "Unit Name ..." }}
         items={suggestions}
+        shouldItemRender={(item, inputValue) =>
+          item.name.toLowerCase().indexOf(inputValue.toLowerCase()) > -1
+        }
         getItemValue={(item) => item.name}
-        renderItem={(item, highlighted) => (
+        renderItem={(item, isHighlighted) => (
           <div
             key={item.Deptid}
-            style={{ backgroundColor: highlighted ? "#eee" : "transparent" }}
+            style={{ backgroundColor: isHighlighted ? "#eee" : "transparent" }}
           >
             {item.name}
           </div>
@@ -177,19 +180,10 @@ const Autocomplete = () => {
             </div>
           )}
 
-          <div>
-            {/* {officerData.length === 0 && rasData.length === 0 && (
-              <p>
-                Text to display when either the first or second value is equal
-                to 0.
-              </p>
-            )} */}
-
-            {/* {rasData.length === 0 && <p>No contacts found!</p>} */}
-          </div>
+          <div></div>
         </div>
       )}
-      {/* {selectedItemId === "" && <p className="mt-4">No contacts were found.</p>} */}
+      {selectedItemId === "" && <p className="mt-4">No contacts were found.</p>}
     </div>
   );
 };
