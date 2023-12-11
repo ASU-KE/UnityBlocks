@@ -15,6 +15,9 @@ import { useBlockProps } from "@wordpress/block-editor";
  *
  * @return {WPElement} Element to render.
  */
+
+//import classnames from "classnames";
+
 const save = (props) => {
   const {
     attributes: {
@@ -33,10 +36,12 @@ const save = (props) => {
       titleCssClass,
       contentsText,
       contentsMaxWidth,
+      hideContents,
       contentsCssClass,
       contentsHighlightColor,
       contentsColor,
     },
+    //className,
   } = props;
 
   const image = {
@@ -69,10 +74,17 @@ const save = (props) => {
     },
   ];
 
+  let hideContent = "";
+  if (!contentsText || hideContents === "yes") {
+    hideContent = "hide-content";
+  }
+
   return (
     <div
       id="unityblocks-hero"
-      {...useBlockProps.save()}
+      {...useBlockProps.save({
+        className: hideContent,
+      })}
       data-herotype={heroType}
       data-image={JSON.stringify(image)}
       data-subtitle={JSON.stringify(subTitle)}
