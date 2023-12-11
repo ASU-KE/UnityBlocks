@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import ReactAutocomplete from "react-autocomplete";
 
 const Autocomplete = () => {
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState(" ");
   const [suggestions, setSuggestions] = useState([]);
   const [selectedItemId, setSelectedItemId] = useState(null);
   const [rasData, setRasData] = useState(null);
