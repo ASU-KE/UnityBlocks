@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import ReactAutocomplete from "react-autocomplete";
 
 const Autocomplete = () => {
-  const [inputValue, setInputValue] = useState(" ");
+  const [inputValue, setInputValue] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [selectedItemId, setSelectedItemId] = useState(null);
   const [rasData, setRasData] = useState(null);
@@ -23,8 +23,9 @@ const Autocomplete = () => {
           }
         );
         const data = await response.json();
-        //console.log(data);
+
         setSuggestions(data);
+        //console.log(suggestions);
       } catch (error) {
         console.error("Error fetching suggestions:", error);
       }
@@ -102,7 +103,7 @@ const Autocomplete = () => {
         getItemValue={(item) => item.name}
         renderItem={(item, isHighlighted) => (
           <div
-            key={item.Deptid}
+            key={item.id}
             style={{ backgroundColor: isHighlighted ? "#eee" : "transparent" }}
           >
             {item.name}
