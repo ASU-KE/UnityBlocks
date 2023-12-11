@@ -23,6 +23,7 @@ const Autocomplete = () => {
           }
         );
         const data = await response.json();
+        // console.log(data);
         setSuggestions(data);
       } catch (error) {
         console.error("Error fetching suggestions:", error);
@@ -79,7 +80,7 @@ const Autocomplete = () => {
             }
           );
           const data = await response.json();
-          console.log(data);
+          //console.log(data);
           setOfficerData(data);
         } catch (error) {
           console.error("Error fetching data from API 2:", error);
@@ -150,34 +151,45 @@ const Autocomplete = () => {
               {officerData.map((contactInfo) => (
                 <div className="mb-4">
                   <h4 className="mb-1">{contactInfo.Officer}</h4>
-                  <p className="mb-1">{contactInfo.name}</p>
                   {contactInfo.userId && (
-                    <p>
-                      <a href={`mailto:${contactInfo.userId}@asu.edu`}>
-                        {contactInfo.userId}@asu.edu
-                      </a>
-                    </p>
+                    <>
+                      <p className="mb-1">{contactInfo.name}</p>
+                      <p>
+                        <a href={`mailto:${contactInfo.userId}@asu.edu`}>
+                          {contactInfo.userId}@asu.edu
+                        </a>
+                      </p>
+                    </>
+                  )}
+
+                  {contactInfo.userId === null && (
+                    <>
+                      <p>Proposal and PreAward Items </p>
+                      <p>
+                        <a href="mailto:ProposalandNegotiation@asu.edu">
+                          ProposalandNegotiation@asu.edu
+                        </a>
+                      </p>
+                    </>
                   )}
                 </div>
               ))}
             </div>
           )}
 
-          {/* <div>
-            {officerData.length === 0 || rasData.length === 0 ? (
+          <div>
+            {/* {officerData.length === 0 && rasData.length === 0 && (
               <p>
                 Text to display when either the first or second value is equal
                 to 0.
               </p>
-            ) : (
-              <p>
-                Text to display when both the first and second values are not
-                equal to 0.
-              </p>
-            )}
-          </div> */}
+            )} */}
+
+            {/* {rasData.length === 0 && <p>No contacts found!</p>} */}
+          </div>
         </div>
       )}
+      {/* {selectedItemId === "" && <p className="mt-4">No contacts were found.</p>} */}
     </div>
   );
 };
