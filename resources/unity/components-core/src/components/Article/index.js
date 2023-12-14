@@ -160,16 +160,6 @@ export const Article = ({
 
   return (
     <>
-      {headerImageUrl && type !== "event" && (
-        <div
-          data-testid="uds-hero"
-          className="uds-hero uds-hero-md"
-          style={{
-            backgroundImage: `linear-gradient(180deg, #19191900 0%, #191919c9 100%), url(${headerImageUrl})`,
-          }}
-        />
-      )}
-
       <Wrapper className={`container ${type}-container wrapper-container`}>
         <div className="row pb-2 pt-3">
           <div className={hClasses}>
