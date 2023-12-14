@@ -11,7 +11,6 @@ import {
   TwitterIcon,
   TwitterShareButton,
 } from "react-share";
-// import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
 
 import { sanitizeDangerousMarkup } from "../../core/utils/html-utils";
 import { Button } from "../Button";
@@ -32,7 +31,6 @@ export const Article = ({
   title,
   body,
   author,
-  // breadcrumbs,
   calendarUrl,
   eventLocation,
   eventTime,
@@ -133,14 +131,6 @@ export const Article = ({
               />
             </TwitterShareButton>
             {/* @ts-ignore */}
-            {/* <EmailShareButton url={ author?.email } quote={ title }>
-							<EmailIcon
-								size={ 28 }
-								borderRadius={ 4 }
-								bgStyle={ { fill: 'maroon' } }
-							/>
-						</EmailShareButton> */}
-            {/* @ts-ignore */}
             <LinkedinShareButton url={articleUrl} quote={title}>
               <LinkedinIcon
                 size={28}
@@ -168,24 +158,6 @@ export const Article = ({
     );
   };
 
-  // const activeBreadcrumb = ( item ) => {
-  // 	if ( item.active ) {
-  // 		return (
-  // 			<BreadcrumbItem active tag="li" className="breadcrumb-item">
-  // 				{ item.title }
-  // 			</BreadcrumbItem>
-  // 		);
-  // 	}
-
-  // 	return (
-  // 		<BreadcrumbItem tag="li" className="breadcrumb-item">
-  // 			<BreadcrumbItem tag="a" href={ item.url }>
-  // 				{ item.title }
-  // 			</BreadcrumbItem>
-  // 		</BreadcrumbItem>
-  // 	);
-  // };
-
   return (
     <>
       {headerImageUrl && type !== "event" && (
@@ -199,18 +171,6 @@ export const Article = ({
       )}
 
       <Wrapper className={`container ${type}-container wrapper-container`}>
-        {/* { breadcrumbs && (
-					<div className="row pt-4" data-testid="breadcrumbs">
-						<div className="col col-12">
-							<Breadcrumb listClassName="breadcrumb">
-								{ breadcrumbs.map( ( item ) =>
-									activeBreadcrumb( item )
-								) }
-							</Breadcrumb>
-						</div>
-					</div>
-				) } */}
-
         <div className="row pb-2 pt-3">
           <div className={hClasses}>
             <h2 data-testid="title">{title}</h2>
