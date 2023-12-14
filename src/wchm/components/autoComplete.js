@@ -12,12 +12,12 @@ const Autocomplete = () => {
     const fetchSuggestions = async () => {
       try {
         const response = await fetch(
-          `https://okedweb3.asu.edu/attask/api/wchm/departments/${inputValue}`,
+          `https://api-dev-wus2.azure-api.net/wchm/wchm/departments/${inputValue}`,
           {
             method: "GET",
             headers: {
               "Content-Type": "application/json",
-              "API-Token": "ja0OWEbXz78K",
+              //"API-Token": "ja0OWEbXz78K",
               "Ocp-Apim-Subscription-Key": "8dd787c43de54148bf5e10686b6b6e20",
             },
           }
@@ -43,12 +43,12 @@ const Autocomplete = () => {
       if (selectedItemId) {
         try {
           const response = await fetch(
-            `https://okedweb3.asu.edu/attask/api/wchm/ras/${selectedItemId}`,
+            `https://api-dev-wus2.azure-api.net/wchm/wchm/ras/${selectedItemId}`,
             {
               method: "GET",
               headers: {
                 "Content-Type": "application/json",
-                "API-Token": "ja0OWEbXz78K",
+                // "API-Token": "ja0OWEbXz78K",
                 "Ocp-Apim-Subscription-Key": "8dd787c43de54148bf5e10686b6b6e20",
               },
             }
@@ -70,12 +70,12 @@ const Autocomplete = () => {
       if (selectedItemId) {
         try {
           const response = await fetch(
-            `https://okedweb3.asu.edu/attask/api/wchm/officer/${selectedItemId}`,
+            `https://api-dev-wus2.azure-api.net/wchm/wchm/officer/${selectedItemId}`,
             {
               method: "GET",
               headers: {
                 "Content-Type": "application/json",
-                "API-Token": "ja0OWEbXz78K",
+                //"API-Token": "ja0OWEbXz78K",
                 "Ocp-Apim-Subscription-Key": "8dd787c43de54148bf5e10686b6b6e20",
               },
             }
