@@ -10,7 +10,7 @@ grids.forEach((newsGrid) => {
   const enableHeader = newsGrid.dataset.enableheader === "true";
   const cardButton = JSON.parse(newsGrid.dataset.cardbutton);
   const enableStoryDate = newsGrid.dataset.enablestorydate === "true";
-  const enableStoryAuthor = newsGrid.dataset.enablestoryauthor === "false";
+  const enableStoryAuthor = newsGrid.dataset.enablestoryauthor === "true";
   const enableCardTags = newsGrid.dataset.enablecardtags === "true";
   const enableAsuSource = newsGrid.dataset.enableasusource === "true";
   const enableKeSource = newsGrid.dataset.enablekesource === "true";
