@@ -17,7 +17,6 @@ const Autocomplete = ({ baseApiPath }) => {
             method: "GET",
             headers: {
               "Content-Type": "application/json",
-              //"API-Token": "ja0OWEbXz78K",
               "Ocp-Apim-Subscription-Key": "8dd787c43de54148bf5e10686b6b6e20",
             },
           }
@@ -48,7 +47,6 @@ const Autocomplete = ({ baseApiPath }) => {
               method: "GET",
               headers: {
                 "Content-Type": "application/json",
-                // "API-Token": "ja0OWEbXz78K",
                 "Ocp-Apim-Subscription-Key": "8dd787c43de54148bf5e10686b6b6e20",
               },
             }
@@ -75,7 +73,6 @@ const Autocomplete = ({ baseApiPath }) => {
               method: "GET",
               headers: {
                 "Content-Type": "application/json",
-                //"API-Token": "ja0OWEbXz78K",
                 "Ocp-Apim-Subscription-Key": "8dd787c43de54148bf5e10686b6b6e20",
               },
             }
