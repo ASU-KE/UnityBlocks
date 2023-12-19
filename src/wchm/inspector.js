@@ -10,6 +10,7 @@ const Inspector = (props) => {
     attributes: {
       useProdApi,
     },
+    setAttributes,
   } = props;
 
   return (
