@@ -15,7 +15,7 @@ import { useBlockProps } from "@wordpress/block-editor";
  *
  * @return {WPElement} Element to render.
  */
-const save = () => {
+const save = (props) => {
   return <div id="wp-block-unityblocks-wchm" {...useBlockProps.save()}></div>;
 };
 
