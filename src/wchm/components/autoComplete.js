@@ -52,7 +52,6 @@ const Autocomplete = ({ baseApiPath }) => {
             }
           );
           const data = await response.json();
-          //console.log(data);
           setRasData(data);
         } catch (error) {
           console.error("Error fetching data by ID:", error);
@@ -78,7 +77,6 @@ const Autocomplete = ({ baseApiPath }) => {
             }
           );
           const data = await response.json();
-          //console.log(data);
           setOfficerData(data);
         } catch (error) {
           console.error("Error fetching data from API 2:", error);
