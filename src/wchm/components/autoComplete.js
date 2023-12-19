@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ReactAutocomplete from "react-autocomplete";
 
-const Autocomplete = () => {
+const Autocomplete = ({ baseApiPath }) => {
   const [inputValue, setInputValue] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [selectedItemId, setSelectedItemId] = useState(null);
@@ -12,7 +12,7 @@ const Autocomplete = () => {
     const fetchSuggestions = async () => {
       try {
         const response = await fetch(
-          `https://api-dev-wus2.azure-api.net/wchm/wchm/departments/${inputValue}`,
+          `${baseApiPath}departments/${inputValue}`,
           {
             method: "GET",
             headers: {
@@ -43,7 +43,7 @@ const Autocomplete = () => {
       if (selectedItemId) {
         try {
           const response = await fetch(
-            `https://api-dev-wus2.azure-api.net/wchm/wchm/ras/${selectedItemId}`,
+            `${baseApiPath}ras/${selectedItemId}`,
             {
               method: "GET",
               headers: {
@@ -70,7 +70,7 @@ const Autocomplete = () => {
       if (selectedItemId) {
         try {
           const response = await fetch(
-            `https://api-dev-wus2.azure-api.net/wchm/wchm/officer/${selectedItemId}`,
+            `${baseApiPath}officer/${selectedItemId}`,
             {
               method: "GET",
               headers: {

@@ -40,11 +40,22 @@ import Inspector from "./inspector";
  * @return {WPElement} Element to render.
  */
 const Edit = (props) => {
+  const {
+    attributes: {
+      useProdApi,
+    },
+  } = props;
+
+  // Prod API endpoint hasn't been created yet, so we will have to use Dev for both options, for now.
+  const baseApiPath = useProdApi
+    ? 'https://api-dev-wus2.azure-api.net/wchm/wchm/'
+    : 'https://api-dev-wus2.azure-api.net/wchm/wchm/';
+
   return (
     <>
       <Inspector {...props} />
       <div {...useBlockProps()}>
-        <WCHM />
+        <WCHM baseApiPath={baseApiPath} />
       </div>
     </>
   );

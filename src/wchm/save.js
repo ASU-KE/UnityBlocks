@@ -16,7 +16,22 @@ import { useBlockProps } from "@wordpress/block-editor";
  * @return {WPElement} Element to render.
  */
 const save = (props) => {
-  return <div id="wp-block-unityblocks-wchm" {...useBlockProps.save()}></div>;
+  const {
+    attributes: {
+      useProdApi,
+    },
+  } = props;
+
+  // Prod API endpoint hasn't been created yet, so we will have to use Dev for both options, for now.
+  const baseApiPath = useProdApi
+    ? 'https://api-dev-wus2.azure-api.net/wchm/wchm/'
+    : 'https://api-dev-wus2.azure-api.net/wchm/wchm/';
+
+  const dataAttributes = {
+    "data-baseapipath": baseApiPath,
+  };
+
+  return <div {...useBlockProps.save()} {...dataAttributes}></div>;
 };
 
 export default save;
