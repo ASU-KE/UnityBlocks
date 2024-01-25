@@ -1,88 +1,84 @@
-import { decode } from 'html-entities';
-import useSWR from 'swr';
-import { XMLParser } from 'fast-xml-parser';
+import { decode } from "html-entities";
+import useSWR from "swr";
+import { XMLParser } from "fast-xml-parser";
 
-import { transformBrassringJobs } from '../transformers/brassring-jobs.transformer';
+import { transformBrassringJobs } from "../transformers/brassring-jobs.transformer";
 
-const xmlParser = new XMLParser( {
-	ignoreAttributes: false,
-} );
+const xmlParser = new XMLParser({
+  ignoreAttributes: false,
+});
 
-const fetcher = async ( inputXml ) => {
-	try {
-		const response = await fetch( 'https://brassring.api.rtd.asu.edu/', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/x-www-form-urlencoded',
-			},
-			body: new URLSearchParams( {
-				inputXml,
-			} ),
-		} );
+const fetcher = async (inputXml) => {
+  try {
+    const response = await fetch(
+      "https://proxy-manager.rtd.asu.edu/brassring/",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: new URLSearchParams({
+          inputXml,
+        }),
+      }
+    );
 
-		const encodedXml = await response.text();
-		const jsonResult = xmlParser.parse( decode( encodedXml ) ); //decode html entities in string and parse into JS object
-		return jsonResult;
-	} catch ( e ) {
-		if (
-			! process.env.NODE_ENV ||
-			process.env.NODE_ENV === 'development'
-		) {
-			console.log(
-				'***** Problem with fetch that resulted in an exception'
-			);
-			console.error( e );
-		}
-		throw new Error( 'Invalid response from server' );
-	}
+    const encodedXml = await response.text();
+    const jsonResult = xmlParser.parse(decode(encodedXml)); //decode html entities in string and parse into JS object
+    return jsonResult;
+  } catch (e) {
+    if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
+      console.log("***** Problem with fetch that resulted in an exception");
+      console.error(e);
+    }
+    throw new Error("Invalid response from server");
+  }
 };
 
-const useBrassring = ( listType, deptList ) => {
-	let siteID = '5494'; // Default to Staff listing
-	if ( 'students' === listType ) {
-		siteID = '5495'; // select Student listing
-	}
+const useBrassring = (listType, deptList) => {
+  let siteID = "5494"; // Default to Staff listing
+  if ("students" === listType) {
+    siteID = "5495"; // select Student listing
+  }
 
-	const inputXml = `<Envelope version='01.00'><Sender><Id>12345</Id><Credential>25620</Credential></Sender><TransactInfo transactId='1' transactType='data'><TransactId>01/27/2010</TransactId><TimeStamp>12:00:00 AM</TimeStamp></TransactInfo><Unit UnitProcessor='SearchAPI'><Packet><PacketInfo packetType='data'><packetId>1</packetId></PacketInfo><Payload><InputString> <ClientId>25620</ClientId><SiteId>${ siteID }</SiteId><PageNumber>1</PageNumber><OutputXMLFormat>0</OutputXMLFormat> <AuthenticationToken/><HotJobs/><ProximitySearch><Distance/><Measurement/><Country/><State/><City/><zipCode/></ProximitySearch><JobMatchCriteriaText/><SelectedSearchLocaleId/><Questions><Question Sortorder='ASC' Sort='No'><Id>8318</Id> <Value><![CDATA[${ deptList }]]></Value></Question></Questions></InputString></Payload></Packet></Unit></Envelope>`;
+  const inputXml = `<Envelope version='01.00'><Sender><Id>12345</Id><Credential>25620</Credential></Sender><TransactInfo transactId='1' transactType='data'><TransactId>01/27/2010</TransactId><TimeStamp>12:00:00 AM</TimeStamp></TransactInfo><Unit UnitProcessor='SearchAPI'><Packet><PacketInfo packetType='data'><packetId>1</packetId></PacketInfo><Payload><InputString> <ClientId>25620</ClientId><SiteId>${siteID}</SiteId><PageNumber>1</PageNumber><OutputXMLFormat>0</OutputXMLFormat> <AuthenticationToken/><HotJobs/><ProximitySearch><Distance/><Measurement/><Country/><State/><City/><zipCode/></ProximitySearch><JobMatchCriteriaText/><SelectedSearchLocaleId/><Questions><Question Sortorder='ASC' Sort='No'><Id>8318</Id> <Value><![CDATA[${deptList}]]></Value></Question></Questions></InputString></Payload></Packet></Unit></Envelope>`;
 
-	// only query Brassring if the listType has been chosen (either in the Editor or by the user)
-	const shouldFetch = 'user-choice' !== listType;
+  // only query Brassring if the listType has been chosen (either in the Editor or by the user)
+  const shouldFetch = "user-choice" !== listType;
 
-	const { data, error, isLoading } = useSWR(
-		shouldFetch ? inputXml : null,
-		fetcher
-	);
+  const { data, error, isLoading } = useSWR(
+    shouldFetch ? inputXml : null,
+    fetcher
+  );
 
-	let jobs;
-	let queryInfo;
-	if ( ! isLoading ) {
-		jobs =
-			data?.string?.Envelope?.Unit?.Packet?.Payload?.ResultSet?.Jobs?.Job;
+  let jobs;
+  let queryInfo;
+  if (!isLoading) {
+    jobs = data?.string?.Envelope?.Unit?.Packet?.Payload?.ResultSet?.Jobs?.Job;
 
-		// check if jobs result is an array or not, push into array if needed
-		if ( jobs && ! Array.isArray( jobs ) ) {
-			jobs = [ jobs ];
-		}
+    // check if jobs result is an array or not, push into array if needed
+    if (jobs && !Array.isArray(jobs)) {
+      jobs = [jobs];
+    }
 
-		jobs = jobs?.map( transformBrassringJobs );
+    jobs = jobs?.map(transformBrassringJobs);
 
-		queryInfo =
-			data?.string.Envelope.Unit.Packet.Payload.ResultSet
-				.OtherInformation;
-	}
+    queryInfo =
+      data?.string.Envelope.Unit.Packet.Payload.ResultSet.OtherInformation;
+  }
 
-	return {
-		payload: {
-			jobs,
-			totalRecords: queryInfo?.TotalRecordsFound,
-			maxPages: queryInfo?.MaxPages,
-			startDoc: queryInfo?.StartDoc,
-			pageNumber: queryInfo?.PageNumber,
-		},
-		isLoading,
-		data,
-		isError: error,
-	};
+  return {
+    payload: {
+      jobs,
+      totalRecords: queryInfo?.TotalRecordsFound,
+      maxPages: queryInfo?.MaxPages,
+      startDoc: queryInfo?.StartDoc,
+      pageNumber: queryInfo?.PageNumber,
+    },
+    isLoading,
+    data,
+    isError: error,
+  };
 };
 
 export { useBrassring };
