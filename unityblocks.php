@@ -5,7 +5,7 @@
  * Description:       UnityBlocks is a suite of page building content blocks for the ASU Web Standards Unity (UDS) WordPress theme.
  * Requires at least: 6.1
  * Requires PHP:      7.0
- * Version:           2.1.0
+ * Version:           2.1.3
  * Author:            ASU KE Web Services
  * Author URI:        https://rto.asu.edu/web-services
  * License:           GPL-2.0-or-later
