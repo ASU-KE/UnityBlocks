@@ -11,7 +11,7 @@ const xmlParser = new XMLParser({
 const fetcher = async (inputXml) => {
   try {
     const response = await fetch(
-      "https://proxy-manager.rtd.asu.edu/brassring/",
+      "https://proxy-manager.rtd.asu.edu/brassring",
       {
         method: "POST",
         headers: {
