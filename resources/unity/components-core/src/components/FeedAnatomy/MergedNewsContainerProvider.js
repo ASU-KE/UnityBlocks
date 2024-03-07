@@ -94,12 +94,12 @@ const MergedNewsContainerProvider = ({
           <span>Error, try again!</span>
         ) : (
           <>
-            {(drupalLoading || wpLoading) && !finalStories?.length && (
+            {(drupalLoading || wpLoading) && (
               <div className="text-center mt-4">
                 <Loader />
               </div>
             )}
-            {finalStories?.length
+            {finalStories?.length && !drupalLoading && !wpLoading
               ? renderBody
               : !drupalLoading &&
                 !wpLoading && <p className="text-center">{noResultsText}</p>}
