@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ReactAutocomplete from "react-autocomplete";
 
-const Autocomplete = () => {
+const Autocomplete = ({ baseApiPath }) => {
   const [inputValue, setInputValue] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [selectedItemId, setSelectedItemId] = useState(null);
@@ -12,12 +12,11 @@ const Autocomplete = () => {
     const fetchSuggestions = async () => {
       try {
         const response = await fetch(
-          `https://okedweb3.asu.edu/attask/api/wchm/departments/${inputValue}`,
+          `${baseApiPath}departments/${inputValue}`,
           {
             method: "GET",
             headers: {
               "Content-Type": "application/json",
-              "API-Token": "ja0OWEbXz78K",
               "Ocp-Apim-Subscription-Key": "8dd787c43de54148bf5e10686b6b6e20",
             },
           }
@@ -43,18 +42,16 @@ const Autocomplete = () => {
       if (selectedItemId) {
         try {
           const response = await fetch(
-            `https://okedweb3.asu.edu/attask/api/wchm/ras/${selectedItemId}`,
+            `${baseApiPath}ras/${selectedItemId}`,
             {
               method: "GET",
               headers: {
                 "Content-Type": "application/json",
-                "API-Token": "ja0OWEbXz78K",
                 "Ocp-Apim-Subscription-Key": "8dd787c43de54148bf5e10686b6b6e20",
               },
             }
           );
           const data = await response.json();
-          //console.log(data);
           setRasData(data);
         } catch (error) {
           console.error("Error fetching data by ID:", error);
@@ -70,18 +67,16 @@ const Autocomplete = () => {
       if (selectedItemId) {
         try {
           const response = await fetch(
-            `https://okedweb3.asu.edu/attask/api/wchm/officer/${selectedItemId}`,
+            `${baseApiPath}officer/${selectedItemId}`,
             {
               method: "GET",
               headers: {
                 "Content-Type": "application/json",
-                "API-Token": "ja0OWEbXz78K",
                 "Ocp-Apim-Subscription-Key": "8dd787c43de54148bf5e10686b6b6e20",
               },
             }
           );
           const data = await response.json();
-          //console.log(data);
           setOfficerData(data);
         } catch (error) {
           console.error("Error fetching data from API 2:", error);

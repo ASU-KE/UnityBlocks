@@ -3,13 +3,29 @@
  */
 import { __ } from "@wordpress/i18n";
 import { InspectorControls } from "@wordpress/block-editor";
-import { PanelBody, PanelRow } from "@wordpress/components";
+import { PanelBody, PanelRow, ToggleControl } from "@wordpress/components";
 
-const Inspector = () => {
+const Inspector = (props) => {
+  const {
+    attributes: {
+      useProdApi,
+    },
+    setAttributes,
+  } = props;
+
   return (
     <InspectorControls>
-      <PanelBody title={__("WCHMs", "unityblocks")}>
-        <PanelRow></PanelRow>
+      <PanelBody title={__("Who Can Help Me", "unityblocks")}>
+        <PanelRow>
+          <ToggleControl
+            label={"Use Prod API?"}
+            help={useProdApi ? "Prod API enabled." : "Dev API disabled."}
+            checked={useProdApi}
+            onChange={(value) => {
+              setAttributes({ useProdApi: value });
+            }}
+          />
+        </PanelRow>
       </PanelBody>
     </InspectorControls>
   );

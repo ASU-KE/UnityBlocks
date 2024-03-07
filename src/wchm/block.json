@@ -15,5 +15,11 @@
   "textdomain": "unityblocks",
   "viewScript": ["file:./frontend.js", "unityblocks-careers-view-script"],
   "editorScript": "file:./index.js",
-  "style": "styles-wchm"
+  "style": "styles-wchm",
+  "attributes": {
+    "useProdApi": {
+      "type": "boolean",
+      "default": true
+    }
+  }
 }

@@ -3,10 +3,10 @@ import classNames from "classnames";
 
 import { Autocomplete } from "../components/autoComplete";
 
-const WCHM = () => {
+const WCHM = ({baseApiPath}) => {
   return (
     <div className={classNames("uds-wchm-list", "bg-white", "py-4", "my-2")}>
-      <Autocomplete />
+      <Autocomplete baseApiPath={baseApiPath} />
     </div>
   );
 };

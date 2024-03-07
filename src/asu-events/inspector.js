@@ -154,7 +154,7 @@ const Inspector = (props) => {
           <PanelRow>
             <TextControl
               label={"Url"}
-              help={"Data source url requires CORS proxy."}
+              help={"For the master list of feeds, refer to: https://asuevents.asu.edu/reports/taxonomy-terms"}
               value={dataSourceUrl}
               onChange={(value) =>
                 setAttributes({
@@ -167,7 +167,7 @@ const Inspector = (props) => {
             <TextControl
               label={"Events filters"}
               help={
-                "Enter taxonomy terms, separated by commas. For the master list of available filtering terms, refer to: https://asuevents.asu.edu/reports/taxonomy-terms"
+                "Users can filter the feed to specific items. Fields where the filter will be applied: eventTopics, eventUnits, interests, audiences, eventTypes"
               }
               value={dataSourceFilters}
               onChange={(value) =>

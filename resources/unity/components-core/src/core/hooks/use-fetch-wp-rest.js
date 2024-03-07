@@ -6,7 +6,7 @@ const fetcher = async (url, filters, pagination) => {
   const locations = filters.locations ?? [];
 
   const page = 1;
-  const perPage = 10;
+  const perPage = 100;
   // const { page, perPage, order, orderBy } = pagination;
   // const order = 'DESC';
   // const orderBy = ''

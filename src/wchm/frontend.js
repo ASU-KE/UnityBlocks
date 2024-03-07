@@ -7,5 +7,7 @@ import { WCHM } from "./components/WCHM";
 const wchmBlocks = document.querySelectorAll(".wp-block-unityblocks-wchm");
 
 wchmBlocks.forEach((block) => {
-  render(<WCHM />, block);
+  const baseApiPath = block.dataset.baseapipath;
+
+  render(<WCHM baseApiPath={baseApiPath} />, block);
 });

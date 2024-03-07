@@ -449,6 +449,10 @@ const Inspector = (props) => {
     { label: "SkySong M+E Logistics", value: "SkySong M+E Logistics" },
     { label: "Solar Fab", value: "Solar Fab" },
     {
+      label: "Southwest Advanced Prototyping Hub",
+      value: "SWAPHub",
+    },
+    {
       label: "SOS Faculty & Researchers",
       value: "SOS Faculty & Researchers",
     },
