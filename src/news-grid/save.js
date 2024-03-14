@@ -40,6 +40,8 @@ const save = (props) => {
       keDataSourceUnits,
       keDataSourceInterests,
       keDataSourceLocations,
+      keDataSourcePage,
+      keDataSourcePerPage,
       maxItems,
       numberColumns,
     },
@@ -79,18 +81,16 @@ const save = (props) => {
     locations: keDataSourceLocations,
   };
 
-  // const keSourcePagination = {
-  // 	page,
-  // 	perPage,
-  //   order,
-  //   orderBy
-  // };
+  const keSourcePagination = {
+  	page: keDataSourcePage,
+  	perPage: keDataSourcePerPage,
+  };
 
   const keDataSource = {
     url: keDataSourceUrl,
     storyBasePath: keStoryBasePath,
     filters: keSourceFilters,
-    // pagination: keSourcePagination
+    pagination: keSourcePagination
   };
 
   const dataAttributes = {
