@@ -4,10 +4,8 @@ const fetcher = async (url, filters, pagination) => {
   const units = filters.units ?? [];
   const interests = filters.interests ?? [];
   const locations = filters.locations ?? [];
-
-  const page = 1;
-  const perPage = 100;
-  // const { page, perPage, order, orderBy } = pagination;
+  const page = pagination.page
+  const perPage = pagination.perPage;
   // const order = 'DESC';
   // const orderBy = ''
 
@@ -103,8 +101,8 @@ const fetcher = async (url, filters, pagination) => {
  * @template T
  * @returns {FetchResponse<T>}
  */
-const useFetchWpRest = (url, storyBasePath, filters) => {
-  const { data: response, error } = useSWR([url, filters], fetcher);
+const useFetchWpRest = (url, storyBasePath, filters, pagination) => {
+  const { data: response, error } = useSWR([url, filters, pagination], fetcher);
 
   return {
     payload: {
