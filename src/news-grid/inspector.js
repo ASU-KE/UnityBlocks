@@ -43,6 +43,8 @@ const Inspector = (props) => {
       keDataSourceUnits,
       keDataSourceInterests,
       keDataSourceLocations,
+      keDataSourcePage,
+      keDataSourcePerPage,
       maxItems,
       numberColumns,
     },
@@ -459,6 +461,30 @@ const Inspector = (props) => {
                       keDataSourceLocations: newValue,
                     });
                   }}
+                />
+              </PanelRow>
+              <PanelRow>
+                <TextControl
+                  label={"Page"}
+                  help={"Page number of the results to return. Default 100 items per page. Example: to return items 101-200, set page to 2."}
+                  value={keDataSourcePage}
+                  onChange={(newValue) =>
+                    setAttributes({
+                      keDataSourcePage: newValue,
+                    })
+                  }
+                />
+              </PanelRow>
+              <PanelRow>
+                <TextControl
+                  label={"Per page"}
+                  help={"Number of items returned per page. Recommended to leave at 100."}
+                  value={keDataSourcePerPage}
+                  onChange={(newValue) =>
+                    setAttributes({
+                      keDataSourcePerPage: newValue,
+                    })
+                  }
                 />
               </PanelRow>
             </>
