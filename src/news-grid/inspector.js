@@ -43,6 +43,8 @@ const Inspector = (props) => {
       keDataSourceUnits,
       keDataSourceInterests,
       keDataSourceLocations,
+      keDataSourcePage,
+      keDataSourcePerPage,
       maxItems,
       numberColumns,
     },
@@ -73,7 +75,73 @@ const Inspector = (props) => {
   return (
     <>
       <InspectorControls>
-        <PanelBody title={__("Header", "unityblocks")} initialOpen={true}>
+        <PanelBody title={__("Card and Grid Settings", "unityblocks")} initialOpen={true}>
+        <PanelRow>
+            <TextControl
+              label={"Max items to load in view"}
+              value={maxItems}
+              onChange={(newValue) =>
+                setAttributes({
+                  maxItems: Number(newValue), // Force attribute to number because this input field returns value as string.
+                })
+              }
+            />
+          </PanelRow>
+          <PanelRow>
+            <RadioControl
+              label={__("Grid column width", "unityblocks")}
+              selected={numberColumns}
+              options={[
+                {
+                  label: __("Two (2)", "unityblocks"),
+                  value: "2",
+                },
+                {
+                  label: __("Three (3)", "unityblocks"),
+                  value: "3",
+                },
+              ]}
+              onChange={(newValue) =>
+                setAttributes({
+                  numberColumns: newValue,
+                })
+              }
+            />
+          </PanelRow>
+          <PanelRow>
+            <ToggleControl
+              label={"Enable Story Date"}
+              help={enableStoryDate ? "Date enabled." : "Date disabled."}
+              checked={enableStoryDate}
+              onChange={(newValue) => {
+                setAttributes({ enableStoryDate: newValue });
+              }}
+            />
+          </PanelRow>
+          <PanelRow>
+            <ToggleControl
+              label={"Enable Story Author"}
+              help={enableStoryAuthor ? "Author enabled." : "Author disabled."}
+              checked={enableStoryAuthor}
+              onChange={(newValue) => {
+                setAttributes({
+                  enableStoryAuthor: newValue,
+                });
+              }}
+            />
+          </PanelRow>
+          {/* <PanelRow>
+            <ToggleControl
+              label={"Enable Card Tags"}
+              help={enableCardTags ? "Tags enabled." : "Tags disabled."}
+              checked={enableCardTags}
+              onChange={(newValue) => {
+                setAttributes({ enableCardTags: newValue });
+              }}
+            />
+          </PanelRow> */}
+        </PanelBody>
+        <PanelBody title={__("Header", "unityblocks")} initialOpen={false}>
           <PanelRow>
             <ToggleControl
               label={"Enable Header"}
@@ -118,196 +186,53 @@ const Inspector = (props) => {
                   }
                 />
               </PanelRow>
+              <PanelBody
+                title={__("CTA button", "unityblocks")}
+                initialOpen={false}
+              >
+                <PanelRow>
+                  <TextControl
+                    label={"CTA text"}
+                    value={ctaText}
+                    onChange={(newValue) => setAttributes({ ctaText: newValue })}
+                  />
+                </PanelRow>
+                <PanelRow>
+                  <TextControl
+                    label={"CTA URL"}
+                    value={ctaUrl}
+                    onChange={(newValue) => setAttributes({ ctaUrl: newValue })}
+                  />
+                </PanelRow>
+                <PanelRow>
+                  <RadioControl
+                    label={__("CTA button color", "unityblocks")}
+                    selected={ctaColor}
+                    options={[
+                      {
+                        label: __("Gold", "unityblocks"),
+                        value: "gold",
+                      },
+                      {
+                        label: __("Maroon", "unityblocks"),
+                        value: "maroon",
+                      },
+                      {
+                        label: __("Gray", "unityblocks"),
+                        value: "gray",
+                      },
+                      {
+                        label: __("Dark", "unityblocks"),
+                        value: "dark",
+                      },
+                    ]}
+                    onChange={(newValue) => setAttributes({ ctaColor: newValue })}
+                  />
+                </PanelRow>
+              </PanelBody>
             </>
           )}
         </PanelBody>
-
-        {enableHeader && (
-          <PanelBody
-            title={__("CTA button", "unityblocks")}
-            initialOpen={false}
-          >
-            <PanelRow>
-              <TextControl
-                label={"CTA text"}
-                value={ctaText}
-                onChange={(newValue) => setAttributes({ ctaText: newValue })}
-              />
-            </PanelRow>
-            <PanelRow>
-              <TextControl
-                label={"CTA URL"}
-                value={ctaUrl}
-                onChange={(newValue) => setAttributes({ ctaUrl: newValue })}
-              />
-            </PanelRow>
-            <PanelRow>
-              <RadioControl
-                label={__("CTA button color", "unityblocks")}
-                selected={ctaColor}
-                options={[
-                  {
-                    label: __("Gold", "unityblocks"),
-                    value: "gold",
-                  },
-                  {
-                    label: __("Maroon", "unityblocks"),
-                    value: "maroon",
-                  },
-                  {
-                    label: __("Gray", "unityblocks"),
-                    value: "gray",
-                  },
-                  {
-                    label: __("Dark", "unityblocks"),
-                    value: "dark",
-                  },
-                ]}
-                onChange={(newValue) => setAttributes({ ctaColor: newValue })}
-              />
-            </PanelRow>
-          </PanelBody>
-        )}
-
-        <PanelBody>
-          <PanelRow>
-            <ToggleControl
-              label={"Enable Story Date"}
-              help={enableStoryDate ? "Date enabled." : "Date disabled."}
-              checked={enableStoryDate}
-              onChange={(newValue) => {
-                setAttributes({ enableStoryDate: newValue });
-              }}
-            />
-          </PanelRow>
-          <PanelRow>
-            <ToggleControl
-              label={"Enable Story Author"}
-              help={enableStoryAuthor ? "Author enabled." : "Author disabled."}
-              checked={enableStoryAuthor}
-              onChange={(newValue) => {
-                setAttributes({
-                  enableStoryAuthor: newValue,
-                });
-              }}
-            />
-          </PanelRow>
-          <PanelRow>
-            <ToggleControl
-              label={"Enable Card Tags"}
-              help={enableCardTags ? "Tags enabled." : "Tags disabled."}
-              checked={enableCardTags}
-              onChange={(newValue) => {
-                setAttributes({ enableCardTags: newValue });
-              }}
-            />
-          </PanelRow>
-          <PanelRow>
-            <TextControl
-              label={"Max items to load"}
-              help={
-                "Changing this value doesn't update the Edit view immediately. Update and reload to refresh the editor."
-              }
-              value={maxItems}
-              onChange={(newValue) =>
-                setAttributes({
-                  maxItems: Number(newValue), // Force attribute to number because this input field returns value as string.
-                })
-              }
-            />
-          </PanelRow>
-          <PanelRow>
-            <RadioControl
-              label={__("Grid column width", "unityblocks")}
-              selected={numberColumns}
-              options={[
-                {
-                  label: __("Two (2)", "unityblocks"),
-                  value: "2",
-                },
-                {
-                  label: __("Three (3)", "unityblocks"),
-                  value: "3",
-                },
-              ]}
-              onChange={(newValue) =>
-                setAttributes({
-                  numberColumns: newValue,
-                })
-              }
-            />
-          </PanelRow>
-        </PanelBody>
-
-        {/* <PanelBody
-					title={ __( 'Card buttons', 'unityblocks' ) }
-					initialOpen={ false }
-				>
-					<PanelRow>
-						<TextControl
-							label={ 'Button text' }
-							value={ cardButtonText }
-							onChange={ ( newValue ) =>
-								setAttributes( { cardButtonText: newValue } )
-							}
-						/>
-					</PanelRow>
-					<PanelRow>
-						<RadioControl
-							label={ __( 'Button color', 'unityblocks' ) }
-							selected={ cardButtonColor }
-							options={ [
-								{
-									label: __( 'Gold', 'unityblocks' ),
-									value: 'gold',
-								},
-								{
-									label: __( 'Maroon', 'unityblocks' ),
-									value: 'maroon',
-								},
-								{
-									label: __( 'Gray', 'unityblocks' ),
-									value: 'gray',
-								},
-								{
-									label: __( 'Dark', 'unityblocks' ),
-									value: 'dark',
-								},
-							] }
-							onChange={ ( newValue ) =>
-								setAttributes( { cardButtonColor: newValue } )
-							}
-						/>
-					</PanelRow>
-					<PanelRow>
-						<RadioControl
-							label={ __( 'Button size', 'unityblocks' ) }
-							selected={ cardButtonSize }
-							options={ [
-								{
-									label: __( 'Default', 'unityblocks' ),
-									value: 'default',
-								},
-								{
-									label: __( 'Small', 'unityblocks' ),
-									value: 'small',
-								},
-								{
-									label: __( 'Medium', 'unityblocks' ),
-									value: 'medium',
-								},
-								{
-									label: __( 'Large', 'unityblocks' ),
-									value: 'large',
-								},
-							] }
-							onChange={ ( newValue ) =>
-								setAttributes( { cardButtonSize: newValue } )
-							}
-						/>
-					</PanelRow>
-				</PanelBody> */}
-
         <PanelBody
           title={__("ASU Data Source", "unityblocks")}
           initialOpen={false}
@@ -459,6 +384,30 @@ const Inspector = (props) => {
                       keDataSourceLocations: newValue,
                     });
                   }}
+                />
+              </PanelRow>
+              <PanelRow>
+                <TextControl
+                  label={"Page"}
+                  help={"Page number of the results to return. Default 100 items per page. Example: to return items 101-200, set page to 2."}
+                  value={keDataSourcePage}
+                  onChange={(newValue) =>
+                    setAttributes({
+                      keDataSourcePage: newValue,
+                    })
+                  }
+                />
+              </PanelRow>
+              <PanelRow>
+                <TextControl
+                  label={"Per page"}
+                  help={"Number of items returned per page. Recommended to leave at 100."}
+                  value={keDataSourcePerPage}
+                  onChange={(newValue) =>
+                    setAttributes({
+                      keDataSourcePerPage: newValue,
+                    })
+                  }
                 />
               </PanelRow>
             </>

@@ -14,6 +14,8 @@ grids.forEach((newsGrid) => {
   const enableCardTags = newsGrid.dataset.enablecardtags === "true";
   const enableAsuSource = newsGrid.dataset.enableasusource === "true";
   const enableKeSource = newsGrid.dataset.enablekesource === "true";
+  const keDataSourcePage = newsGrid.dataset.kedatasourcepage;
+  const keDataSourcePerPage = newsGrid.dataset.kedatasourceperpage;
 
   const asuDataSource = enableAsuSource
     ? JSON.parse(newsGrid.dataset.asudatasource)
@@ -36,6 +38,8 @@ grids.forEach((newsGrid) => {
         wpDataSource: keDataSource,
         maxItems,
         numberColumns,
+        keDataSourcePage,
+        keDataSourcePerPage,
       }
     : {
         cardButton,
@@ -46,6 +50,8 @@ grids.forEach((newsGrid) => {
         wpDataSource: keDataSource,
         maxItems,
         numberColumns,
+        keDataSourcePage,
+        keDataSourcePerPage,
       };
 
   render(<CardGridNews {...props} />, newsGrid);
