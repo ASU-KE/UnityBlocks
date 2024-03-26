@@ -109,12 +109,12 @@
       "default": []
     },
     "keDataSourcePage": {
-      "type": "number",
-      "default": 1
+      "type": "string",
+      "default": "1"
     },
     "keDataSourcePerPage": {
-      "type": "number",
-      "default": 100
+      "type": "string",
+      "default": "100"
     },
     "maxItems": {
       "type": "number",
