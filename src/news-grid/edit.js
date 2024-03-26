@@ -65,6 +65,8 @@ const Edit = (props) => {
       keDataSourceUnits,
       keDataSourceInterests,
       keDataSourceLocations,
+      keDataSourcePage,
+      keDataSourcePerPage,
       maxItems,
       numberColumns,
     },
@@ -104,19 +106,17 @@ const Edit = (props) => {
     locations: keDataSourceLocations,
   };
 
-  // const keSourcePagination = {
-  // 	page,
-  // 	perPage,
-  //   order,
-  //   orderBy
-  // };
+  const keSourcePagination = {
+  	page: keDataSourcePage,
+  	perPage: keDataSourcePerPage,
+  };
 
   const keDataSource = enableKeDataSource
     ? {
         url: keDataSourceUrl,
         storyBasePath: keStoryBasePath,
         filters: keSourceFilters,
-        // pagination: keSourcePagination
+        pagination: keSourcePagination
       }
     : null;
 
@@ -131,6 +131,8 @@ const Edit = (props) => {
     wpDataSource: keDataSource,
     maxItems,
     numberColumns,
+    keDataSourcePage,
+    keDataSourcePerPage,
   };
 
   return (

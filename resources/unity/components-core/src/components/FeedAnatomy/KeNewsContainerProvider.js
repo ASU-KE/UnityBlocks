@@ -39,8 +39,8 @@ const KeNewsContainerProvider = ({
   } = useFetchWpRest(
     wpDataSource.url,
     wpDataSource.storyBasePath,
-    wpDataSource.filters
-    // wpDataSource.pagination
+    wpDataSource.filters,
+    wpDataSource.pagination
   );
 
   // Work all the data and set the filtered and mapped feeds

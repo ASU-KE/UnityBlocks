@@ -67,8 +67,8 @@ const MergedNewsContainerProvider = ({
   } = useFetchWpRest(
     wpDataSource.url,
     wpDataSource.storyBasePath,
-    wpDataSource.filters
-    // wpDataSource.pagination
+    wpDataSource.filters,
+    wpDataSource.pagination
   );
 
   const wpStories =
