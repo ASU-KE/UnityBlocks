@@ -111,6 +111,8 @@ const save = (props) => {
       : null,
     "data-maxitems": maxItems,
     "data-numbercolumns": numberColumns,
+    "data-kedatasourcepage": keDataSourcePage,
+    "data-kedatasourceperpage": keDataSourcePerPage,
   };
 
   return <div {...useBlockProps.save()} {...dataAttributes}></div>;

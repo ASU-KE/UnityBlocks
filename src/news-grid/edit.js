@@ -131,6 +131,8 @@ const Edit = (props) => {
     wpDataSource: keDataSource,
     maxItems,
     numberColumns,
+    keDataSourcePage,
+    keDataSourcePerPage,
   };
 
   return (
