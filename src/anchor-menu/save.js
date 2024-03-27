@@ -22,6 +22,7 @@ const save = (props) => {
       focusFirstFocusableElement,
       itemTexts,
       itemTargets,
+      itemIcons
     },
   } = props;
 
@@ -29,6 +30,7 @@ const save = (props) => {
     return {
       text: itemText,
       targetIdName: itemTargets[index],
+      faIcon: itemIcons[index]
     };
   });
 

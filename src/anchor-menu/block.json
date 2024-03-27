@@ -20,6 +20,10 @@
       "type": "array",
       "default": []
     },
+    "itemIcons": {
+      "type": "array",
+      "default": []
+    },
     "itemTargets": {
       "type": "array",
       "default": []

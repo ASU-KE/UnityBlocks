@@ -18,18 +18,24 @@ import {
  */
 const Inspector = (props) => {
   const handleAddItem = () => {
+    const itemIcons = [...props.attributes.itemIcons];
     const itemTexts = [...props.attributes.itemTexts];
     const itemTargets = [...props.attributes.itemTargets];
+    itemIcons.push("");
     itemTexts.push("");
     itemTargets.push("");
+    props.setAttributes({ itemIcons });
     props.setAttributes({ itemTexts });
   };
 
   const handleRemoveItem = (index) => {
+    const itemIcons = [...props.attributes.itemIcons];
     const itemTexts = [...props.attributes.itemTexts];
     const itemTargets = [...props.attributes.itemTargets];
+    itemIcons.splice(index, 1);
     itemTexts.splice(index, 1);
     itemTargets.splice(index, 1);
+    props.setAttributes({ itemIcons });
     props.setAttributes({ itemTexts });
     props.setAttributes({ itemTargets });
   };
@@ -45,6 +51,12 @@ const Inspector = (props) => {
     itemTargets[index] = targetIdName;
     props.setAttributes({ itemTargets });
   };
+  
+  const handleItemIconChange = (faIcon, index) => {
+    const itemIcons = [...props.attributes.itemIcons];
+    itemIcons[index] = faIcon;
+    props.setAttributes({ itemIcons });
+  };
 
   let itemFields;
 
@@ -52,6 +64,12 @@ const Inspector = (props) => {
     itemFields = props.attributes.itemTexts.map((itemText, index) => {
       return (
         <PanelRow key={index}>
+          <TextControl
+            className="anchormenu__item-fa-icon"
+            placeholder="Fontawesome Icon for menu item"
+            value={props.attributes.itemIcons[index]} 
+            onChange={(faIcon) => handleItemIconChange(faIcon, index)}
+          />
           <TextControl
             className="anchormenu__item-text"
             placeholder="Text for menu item"

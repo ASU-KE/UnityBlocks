@@ -17,6 +17,7 @@ export const Accordion: React.FunctionComponent< AccordionProps >;
 export interface AnchorMenuItem {
 	text: string;
 	targetIdName: string;
+	faIcon?: string;
 	icon?: string[];
 }
 export interface AnchorMenuProps {

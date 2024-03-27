@@ -40,6 +40,7 @@ registerBlockType(metadata.name, {
     attributes: {
 			itemTexts: ["test item"],
       itemTargets: ["#"],
+      itemIcons: ["fa fa-solid fa-info-circle"]
 
 		},
   },

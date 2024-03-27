@@ -45,6 +45,7 @@ const Edit = (props) => {
     attributes: {
       firstElementId,
       focusFirstFocusableElement,
+      itemIcons,
       itemTexts,
       itemTargets,
     },
@@ -52,6 +53,7 @@ const Edit = (props) => {
 
   const items = itemTexts.map((itemText, index) => {
     return {
+      faIcon: itemIcons[index],
       text: itemText,
       targetIdName: itemTargets[index],
     };

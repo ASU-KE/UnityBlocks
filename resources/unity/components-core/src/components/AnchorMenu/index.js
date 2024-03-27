@@ -121,9 +121,8 @@ export const AnchorMenu = ({
   return (
     <AnchorMenuWrapper
       ref={anchorMenuRef}
-      className={`uds-anchor-menu uds-anchor-menu-expanded-lg ${
-        hasHeader ? "with-header " : ""
-      }mb-4`}
+      className={`uds-anchor-menu uds-anchor-menu-expanded-lg ${hasHeader ? "with-header " : ""
+        }mb-4`}
       style={showMenu ? { borderBottom: 0 } : {}}
     >
       <div className="container-xl uds-anchor-menu-wrapper">
@@ -168,6 +167,7 @@ export const AnchorMenu = ({
                 ariaLabel={item.text}
                 label={item.text}
                 icon={item.icon}
+                faIcon={item.faIcon ? item.faIcon : null}
                 onClick={() => handleClickLink(item.targetIdName)}
               />
             ))}
@@ -187,6 +187,7 @@ AnchorMenu.propTypes = {
       text: PropTypes.string.isRequired,
       targetIdName: PropTypes.string.isRequired,
       icon: PropTypes.arrayOf(PropTypes.string),
+      faIcon: PropTypes.string,
     })
   ).isRequired,
   /**
