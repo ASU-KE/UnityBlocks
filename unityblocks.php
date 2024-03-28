@@ -52,6 +52,7 @@ function unityblocks_block_init()
 	register_block_type(__DIR__ . '/build/news-grid');
 	register_block_type(__DIR__ . '/build/testimonial');
 	register_block_type(__DIR__ . '/build/wchm');
+	register_block_type(__DIR__ . '/build/asu-news');
 }
 add_action('init', 'unityblocks_block_init');
 
