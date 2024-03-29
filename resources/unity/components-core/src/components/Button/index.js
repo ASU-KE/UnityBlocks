@@ -66,7 +66,6 @@ export const Button = ({
       aria-label={ariaLabel}
       target={Tag === "a" ? target : null}
     >
-      {props.faIcon && <i className={props.faIcon} />}
       {icon && <i className={`${icon?.[0]} fa-${icon?.[1]} mr-1`} />}
       {label}
     </Tag>

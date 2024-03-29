@@ -167,7 +167,6 @@ export const AnchorMenu = ({
                 ariaLabel={item.text}
                 label={item.text}
                 icon={item.icon}
-                faIcon={item.faIcon ? item.faIcon : null}
                 onClick={() => handleClickLink(item.targetIdName)}
               />
             ))}
@@ -187,7 +186,6 @@ AnchorMenu.propTypes = {
       text: PropTypes.string.isRequired,
       targetIdName: PropTypes.string.isRequired,
       icon: PropTypes.arrayOf(PropTypes.string),
-      faIcon: PropTypes.string,
     })
   ).isRequired,
   /**

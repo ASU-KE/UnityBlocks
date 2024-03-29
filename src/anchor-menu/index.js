@@ -38,10 +38,9 @@ registerBlockType(metadata.name, {
   save,
   example: {
     attributes: {
-			itemTexts: ["test item"],
+      itemTexts: ["test item"],
       itemTargets: ["#"],
-      itemIcons: ["fa fa-solid fa-info-circle"]
-
-		},
+      itemIcons: ["fa", "info-circle"]
+    },
   },
 });

@@ -95,7 +95,6 @@
  * @typedef {Object} AnchorMenuItem
  * @property {string} text
  * @property {string} targetIdName
- * @property {string} faIcon
  * @property {Array.<string>} [icon]
  */
 

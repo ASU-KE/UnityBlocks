@@ -51,46 +51,73 @@ const Inspector = (props) => {
     itemTargets[index] = targetIdName;
     props.setAttributes({ itemTargets });
   };
-  
-  const handleItemIconChange = (faIcon, index) => {
-    const itemIcons = [...props.attributes.itemIcons];
-    itemIcons[index] = faIcon;
+
+  const handleItemIconChange = (icon, index) => {
+    const itemIcons = [...props.attributes.itemTargets];
+    itemIcons[index] = icon;
     props.setAttributes({ itemIcons });
-  };
+  }
+
+  const handleItemIconValueChange = (index, value, itemIndex) => {
+    const itemIcons = [...props.attributes.itemIcons];
+    let icon = itemIcons[itemIndex];
+    if (!Array.isArray(icon) || icon.length !== 2) {
+      icon = ["", ""];
+    }
+    icon[index] = value;
+    itemIcons[itemIndex] = icon;
+    handleItemIconChange(icon, itemIndex);
+  }
 
   let itemFields;
 
   if (props.attributes.itemTexts.length) {
     itemFields = props.attributes.itemTexts.map((itemText, index) => {
       return (
-        <PanelRow key={index}>
-          <TextControl
-            className="anchormenu__item-fa-icon"
-            placeholder="Fontawesome Icon for menu item"
-            value={props.attributes.itemIcons[index]} 
-            onChange={(faIcon) => handleItemIconChange(faIcon, index)}
-          />
-          <TextControl
-            className="anchormenu__item-text"
-            placeholder="Text for menu item"
-            value={props.attributes.itemTexts[index]}
-            onChange={(text) => handleItemTextChange(text, index)}
-          />
-          <TextControl
-            className="anchormenu__item-targetIdName"
-            placeholder="Target ID for menu item"
-            value={props.attributes.itemTargets[index]}
-            onChange={(targetIdName) =>
-              handleItemTargetChange(targetIdName, index)
-            }
-          />
-          <IconButton
-            className="anchormenu__remove-item-text"
-            icon="no-alt"
-            label="Delete item"
-            onClick={() => handleRemoveItem(index)}
-          />
-        </PanelRow>
+        <PanelBody>
+          <PanelRow key={index}>
+            <TextControl
+              className="anchormenu__item-icon-prefix"
+              placeholder="Prefix for Fontawesome icon"
+              value={props.attributes.itemIcons[index[0]]}
+              onChange={(text) => handleItemIconValueChange(0, text, index)}
+            />
+            </PanelRow>
+            <PanelRow>
+            <TextControl
+              className="anchormenu__item-icon-name"
+              placeholder="Name for fontawesome icon"
+              value={props.attributes.itemIcons[index[1]]}
+              onChange={(text) => handleItemIconValueChange(1, text, index)}
+            />
+          </PanelRow>
+          <PanelRow key={index}>
+            <TextControl
+              className="anchormenu__item-text"
+              placeholder="Text for menu item"
+              value={props.attributes.itemTexts[index]}
+              onChange={(text) => handleItemTextChange(text, index)}
+            />
+          </PanelRow>
+          <PanelRow>
+            <TextControl
+              className="anchormenu__item-targetIdName"
+              placeholder="Target ID for menu item"
+              value={props.attributes.itemTargets[index]}
+              onChange={(targetIdName) =>
+                handleItemTargetChange(targetIdName, index)
+              }
+            />
+          </PanelRow>
+          <PanelRow>
+            <IconButton
+              className="anchormenu__remove-item-text"
+              icon="no-alt"
+              label="Delete item"
+              onClick={() => handleRemoveItem(index)}
+            />
+          </PanelRow>
+        </PanelBody>
       );
     });
   }

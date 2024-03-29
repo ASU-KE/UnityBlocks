@@ -30,7 +30,7 @@ const save = (props) => {
     return {
       text: itemText,
       targetIdName: itemTargets[index],
-      faIcon: itemIcons[index]
+      icon: itemIcons[index]
     };
   });
 

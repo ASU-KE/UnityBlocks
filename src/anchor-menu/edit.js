@@ -18,6 +18,7 @@ import { useBlockProps } from "@wordpress/block-editor";
  */
 //import { AnchorMenu } from "@asu/components-core/dist/libCore.es";
 import { AnchorMenu } from "../../resources/unity/components-core/src/components/AnchorMenu"
+// TODO: Ramon - refactor to use new library
 /**
  * Internal dependencies
  */
@@ -53,7 +54,7 @@ const Edit = (props) => {
 
   const items = itemTexts.map((itemText, index) => {
     return {
-      faIcon: itemIcons[index],
+      icon: itemIcons[index],
       text: itemText,
       targetIdName: itemTargets[index],
     };
