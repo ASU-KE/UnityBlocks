@@ -76,32 +76,36 @@ const Inspector = (props) => {
         <PanelBody>
           <PanelRow key={index}>
             <TextControl
+              label="Icon prefix"
               className="anchormenu__item-icon-prefix"
-              placeholder="Prefix for Fontawesome icon"
+              placeholder="(optional) 'fa', 'fas', 'fa-solid'"
               value={props.attributes.itemIcons[index][0]}
               onChange={(text) => handleItemIconValueChange(0, text, index)}
             />
             </PanelRow>
             <PanelRow>
             <TextControl
+              label="Icon class name"
               className="anchormenu__item-icon-name"
-              placeholder="Name for fontawesome icon"
+              placeholder="(optional) 'users', 'tasks'"
               value={props.attributes.itemIcons[index][1]}
               onChange={(text) => handleItemIconValueChange(1, text, index)}
             />
           </PanelRow>
           <PanelRow key={index}>
             <TextControl
+              label="Text for menu item"
               className="anchormenu__item-text"
-              placeholder="Text for menu item"
+              placeholder="'About'"
               value={props.attributes.itemTexts[index]}
               onChange={(text) => handleItemTextChange(text, index)}
             />
           </PanelRow>
           <PanelRow>
             <TextControl
+              label="Target ID for menu item"
               className="anchormenu__item-targetIdName"
-              placeholder="Target ID for menu item"
+              placeholder="'about'"
               value={props.attributes.itemTargets[index]}
               onChange={(targetIdName) =>
                 handleItemTargetChange(targetIdName, index)
