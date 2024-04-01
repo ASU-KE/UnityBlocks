@@ -53,7 +53,7 @@ const Inspector = (props) => {
   };
 
   const handleItemIconChange = (icon, index) => {
-    const itemIcons = [...props.attributes.itemTargets];
+    const itemIcons = [...props.attributes.itemIcons];
     itemIcons[index] = icon;
     props.setAttributes({ itemIcons });
   }
@@ -65,7 +65,6 @@ const Inspector = (props) => {
       icon = ["", ""];
     }
     icon[index] = value;
-    itemIcons[itemIndex] = icon;
     handleItemIconChange(icon, itemIndex);
   }
 
@@ -79,7 +78,7 @@ const Inspector = (props) => {
             <TextControl
               className="anchormenu__item-icon-prefix"
               placeholder="Prefix for Fontawesome icon"
-              value={props.attributes.itemIcons[index[0]]}
+              value={props.attributes.itemIcons[index][0]}
               onChange={(text) => handleItemIconValueChange(0, text, index)}
             />
             </PanelRow>
@@ -87,7 +86,7 @@ const Inspector = (props) => {
             <TextControl
               className="anchormenu__item-icon-name"
               placeholder="Name for fontawesome icon"
-              value={props.attributes.itemIcons[index[1]]}
+              value={props.attributes.itemIcons[index][1]}
               onChange={(text) => handleItemIconValueChange(1, text, index)}
             />
           </PanelRow>

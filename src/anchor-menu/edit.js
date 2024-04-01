@@ -16,9 +16,7 @@ import { useBlockProps } from "@wordpress/block-editor";
 /**
  * External dependencies
  */
-//import { AnchorMenu } from "@asu/components-core/dist/libCore.es";
-import { AnchorMenu } from "../../resources/unity/components-core/src/components/AnchorMenu"
-// TODO: Ramon - refactor to use new library
+import { AnchorMenu } from "../../resources/asu-unity-stack/packages/components-core/src/components/AnchorMenu"
 /**
  * Internal dependencies
  */
