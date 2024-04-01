@@ -16,8 +16,7 @@ import { useBlockProps } from "@wordpress/block-editor";
 /**
  * External dependencies
  */
-//import { AnchorMenu } from "@asu/components-core/dist/libCore.es";
-import { AnchorMenu } from "../../resources/unity/components-core/src/components/AnchorMenu"
+import { AnchorMenu } from "../../resources/asu-unity-stack/packages/components-core/src/components/AnchorMenu"
 /**
  * Internal dependencies
  */
@@ -45,6 +44,7 @@ const Edit = (props) => {
     attributes: {
       firstElementId,
       focusFirstFocusableElement,
+      itemIcons,
       itemTexts,
       itemTargets,
     },
@@ -52,6 +52,7 @@ const Edit = (props) => {
 
   const items = itemTexts.map((itemText, index) => {
     return {
+      icon: itemIcons[index],
       text: itemText,
       targetIdName: itemTargets[index],
     };
