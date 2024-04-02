@@ -10,7 +10,7 @@
     "news",
     "ke"
   ],
-  "icon": "grid-view",
+  "icon": "admin-site-alt3",
   "description": "A block for ASU and KE News services.",
   "supports": {
     "html": false,
@@ -22,7 +22,7 @@
   "textdomain": "unityblocks",
   "viewScript": [
     "file:./frontend.js",
-    "unityblocks-news-grid-view-script"
+    "unityblocks-asu-news-view-script"
   ],
   "editorScript": "file:./index.js",
   "attributes": {
