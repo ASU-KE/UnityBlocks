@@ -6,14 +6,14 @@
   "title": "ASU News",
   "category": "unityblocks",
   "keywords": ["unityblocks", "news", "ke"],
-  "icon": "grid-view",
+  "icon": "admin-site-alt3",
   "description": "A block for ASU and KE News services.",
   "supports": {
     "html": false,
     "align": ["wide", "full"]
   },
   "textdomain": "unityblocks",
-  "viewScript": ["file:./frontend.js", "unityblocks-news-grid-view-script"],
+  "viewScript": ["file:./frontend.js", "unityblocks-asu-news-view-script"],
   "editorScript": "file:./index.js",
   "attributes": {
     "enableHeader": {
