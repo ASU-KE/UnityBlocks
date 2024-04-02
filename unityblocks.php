@@ -47,12 +47,12 @@ function unityblocks_block_init()
 	register_block_type(__DIR__ . '/build/anchor-menu');
 	register_block_type(__DIR__ . '/build/asu-careers');
 	register_block_type(__DIR__ . '/build/asu-events');
+	register_block_type(__DIR__ . '/build/asu-news');
 	register_block_type(__DIR__ . '/build/events-grid');
 	register_block_type(__DIR__ . '/build/image-gallery');
 	register_block_type(__DIR__ . '/build/news-grid');
 	register_block_type(__DIR__ . '/build/testimonial');
 	register_block_type(__DIR__ . '/build/wchm');
-	register_block_type(__DIR__ . '/build/asu-news');
 }
 add_action('init', 'unityblocks_block_init');
 
