@@ -4,7 +4,7 @@ import { CardGridNews } from "../../resources/asu-unity-stack/packages/component
 
 // It is possible to load multiple news grids onto a page.
 // Load each DOM element on page using the Gutenberg-generated class for the News Grid block
-const grids = document.querySelectorAll(".wp-block-unityblocks-news-grid");
+const grids = document.querySelectorAll(".wp-block-unityblocks-asu-news");
 
 grids.forEach((newsGrid) => {
   const enableHeader = newsGrid.dataset.enableheader === "true";
