@@ -4,7 +4,7 @@ A suite of page building content blocks for the ASU Web Standards Unity WordPres
 ## ASU News
 ### Initial setup/build
 - Change git branch in `resources/asu-unity-stack` to branch with custom news components
-- fix import "." in `UnityBlocks/node_modules/package.json` `".": "./dist/libCore.es.js"`
+- fix import "." in `package.json` that error (follow error message for path) `".": "./dist/libCore.es.js"`
 - `npm i --legacy-peer-deps` in `resources/asu-unity-stack/components-core`
 - `npm i --legacy-peer-deps` in `resources/asu-unity-stack/components-carousel`
 - `npm i --legacy-peer-deps` in `resources/asu-unity-stack/component-news`
