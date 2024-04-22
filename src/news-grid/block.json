@@ -78,7 +78,7 @@
     },
     "asuDataSourceFeed": {
       "type": "string",
-      "default": ""
+      "default": "biodesign_institute"
     },
     "asuDataSourceFilters": {
       "type": "string",
