@@ -20,6 +20,7 @@ const save = (props) => {
     attributes: {
       firstElementId,
       focusFirstFocusableElement,
+      itemIcons,
       itemTexts,
       itemTargets,
     },
@@ -27,6 +28,7 @@ const save = (props) => {
 
   const items = itemTexts.map((itemText, index) => {
     return {
+      icon: itemIcons[index],
       text: itemText,
       targetIdName: itemTargets[index],
     };
