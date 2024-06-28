@@ -1,19 +1,26 @@
-import { format, formatISO, parse } from "date-fns";
+import { format, formatISO, parseISO } from "date-fns";
 import { shortenText } from "../utils/shorten-text";
-
 // Transformer data function provided to the high order component
-const transformData = ({ node }, index) => ({
+const parser = new DOMParser()
+let dateText = ''
+let trimmedDate = ''
+let trimmedDateIso = ''
+let trimmedDateAttr = ''
+const transformData = ({ node }, index) => (
+  dateText = parser.parseFromString(node.post_date, "text/html"),
+  trimmedDate = dateText.body.firstChild.textContent.split('-')[0],
+  trimmedDate = new Date(trimmedDate).toLocaleString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
+  trimmedDateAttr =dateText.body.firstChild.getAttribute('datetime'),
+  trimmedDateIso = new Date(trimmedDateAttr).toISOString(),
+  {
   index,
   id: node.nid,
   headerImageUrl: node.image_url,
   headerImageAltText: node.title,
   title: shortenText(node.title, 80),
   excerpt: shortenText(node?.clas_teaser, 140),
-  date: format(
-    parse(node.post_date, "MM/dd/yyyy-h:mmaa", new Date()),
-    "MMM d, yyyy"
-  ),
-  dateIso: formatISO(parse(node.post_date, "MM/dd/yyyy-h:mmaa", new Date()), {
+  date: trimmedDate,
+  dateIso:formatISO(parseISO(trimmedDateIso), {
     format: "basic",
     representation: "date",
   }),
