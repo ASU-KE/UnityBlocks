@@ -27,7 +27,6 @@ const Autocomplete = ({ baseApiPath }) => {
         const activeData = data.filter((item) => item.isActive === "Y");
 
         setSuggestions(activeData);
-        //console.log(suggestions);
       } catch (error) {
         console.error("Error fetching suggestions:", error);
       }
@@ -77,7 +76,13 @@ const Autocomplete = ({ baseApiPath }) => {
             }
           );
           const data = await response.json();
-          setOfficerData(data);
+
+          // Filter the data to include only active items with officer info
+          const filteredData = data.filter(
+            (item) => item.isActive === "Y" && item.Officer
+          );
+
+          setOfficerData(filteredData);
         } catch (error) {
           console.error("Error fetching data from API 2:", error);
         }
