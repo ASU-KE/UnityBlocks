@@ -78,9 +78,7 @@ const Autocomplete = ({ baseApiPath }) => {
           const data = await response.json();
 
           // Filter the data to include only active items with officer info
-          const filteredData = data.filter(
-            (item) => item.isActive === "Y" && item.Officer
-          );
+          const filteredData = data.filter((item) => item.Officer !== "");
 
           setOfficerData(filteredData);
         } catch (error) {
