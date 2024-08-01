@@ -23,8 +23,10 @@ const Autocomplete = ({ baseApiPath }) => {
         );
         const data = await response.json();
 
-        setSuggestions(data);
-        //console.log(suggestions);
+        // Filter the data to include only active items
+        const activeData = data.filter((item) => item.isActive === "Y");
+
+        setSuggestions(activeData);
       } catch (error) {
         console.error("Error fetching suggestions:", error);
       }
@@ -41,16 +43,13 @@ const Autocomplete = ({ baseApiPath }) => {
     const fetchRasById = async () => {
       if (selectedItemId) {
         try {
-          const response = await fetch(
-            `${baseApiPath}ras/${selectedItemId}`,
-            {
-              method: "GET",
-              headers: {
-                "Content-Type": "application/json",
-                "Ocp-Apim-Subscription-Key": "8dd787c43de54148bf5e10686b6b6e20",
-              },
-            }
-          );
+          const response = await fetch(`${baseApiPath}ras/${selectedItemId}`, {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              "Ocp-Apim-Subscription-Key": "8dd787c43de54148bf5e10686b6b6e20",
+            },
+          });
           const data = await response.json();
           setRasData(data);
         } catch (error) {
@@ -77,7 +76,11 @@ const Autocomplete = ({ baseApiPath }) => {
             }
           );
           const data = await response.json();
-          setOfficerData(data);
+
+          // Filter the data to include only active items with officer info
+          const filteredData = data.filter((item) => item.Officer !== "");
+
+          setOfficerData(filteredData);
         } catch (error) {
           console.error("Error fetching data from API 2:", error);
         }
