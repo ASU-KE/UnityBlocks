@@ -24,8 +24,11 @@ const save = (props) => {
 
   // Prod API endpoint hasn't been created yet, so we will have to use Dev for both options, for now.
   const baseApiPath = useProdApi
-    ? 'https://api-dev-wus2.azure-api.net/wchm/wchm/'
-    : 'https://api-dev-wus2.azure-api.net/wchm/wchm/';
+    // ? 'https://api-dev-wus2.azure-api.net/wchm/wchm/'
+    // : 'https://api-dev-wus2.azure-api.net/wchm/wchm/';
+    ? 'https://api-dev-wus2.azure-api.net/wchm/'
+    : 'https://localhost:7275/';
+    console.log('baseApiPath:', baseApiPath);
 
   const dataAttributes = {
     "data-baseapipath": baseApiPath,
