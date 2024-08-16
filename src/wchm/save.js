@@ -23,11 +23,10 @@ const save = (props) => {
   } = props;
 
   // Prod API endpoint hasn't been created yet, so we will have to use Dev for both options, for now.
+  // Using local host for now, but will need to change to the actual API endpoint when it is created.
   const baseApiPath = useProdApi
-    // ? 'https://api-dev-wus2.azure-api.net/wchm/wchm/'
-    // : 'https://api-dev-wus2.azure-api.net/wchm/wchm/';
     ? 'https://api-dev-wus2.azure-api.net/wchm/'
-    : 'https://localhost:7275/';
+    : 'https://localhost:7275/WCHM/';
     console.log('baseApiPath:', baseApiPath);
 
   const dataAttributes = {
