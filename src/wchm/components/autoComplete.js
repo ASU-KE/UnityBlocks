@@ -173,14 +173,14 @@ const Autocomplete = ({ baseApiPath }) => {
             <div className="mb-8">
               <h3>
                 <span className="highlight-gold">
-                  Pre-Award Research Advancement Representatives
+                  Pre-Award Research Advancement Representative
                 </span>
               </h3>
 
               {preAwardRasData.map((contactInfo) => (
                 <div className="mb-4">
                   <h4 className="mb-1">{contactInfo.contactFullName}</h4>
-                  <p className="mb-1">{contactInfo.title ? contactInfo.title : '<title pending>'}</p>
+                  <p className="mb-1">{contactInfo.title}</p>
                   <p>
                     <a href={`mailto:${contactInfo.userID}@asu.edu`}>
                       {contactInfo.userID}@asu.edu
@@ -194,14 +194,14 @@ const Autocomplete = ({ baseApiPath }) => {
             <div className="mb-8">
               <h3>
                 <span className="highlight-gold">
-                  Post Award research Advancement Representatives
+                  Post-Award Research Advancement Representative
                 </span>
               </h3>
 
               {postAwardRasData.map((contactInfo) => (
                 <div className="mb-4">
                   <h4 className="mb-1">{contactInfo.contactFullName}</h4>
-                  <p className="mb-1">{contactInfo.title ? contactInfo.title : '<title pending>'}</p>
+                  <p className="mb-1">{contactInfo.title}</p>
                   <p>
                     <a href={`mailto:${contactInfo.userID}@asu.edu`}>
                       {contactInfo.userID}@asu.edu
@@ -215,14 +215,14 @@ const Autocomplete = ({ baseApiPath }) => {
             <div className="mb-8">
               <h3>
                 <span className="highlight-gold">
-                  After The Fact Research Advancement Representatives
+                  After-the-Fact Reporting Contact
                 </span>
               </h3>
 
               {atfRasData.map((contactInfo) => (
                 <div className="mb-4">
                   <h4 className="mb-1">{contactInfo.contactFullName}</h4>
-                  <p className="mb-1">{contactInfo.title ? contactInfo.title : '<title pending>'}</p>
+                  <p className="mb-1">{contactInfo.title}</p>
                   <p>
                     <a href={`mailto:${contactInfo.userID}@asu.edu`}>
                       {contactInfo.userID}@asu.edu
@@ -236,7 +236,7 @@ const Autocomplete = ({ baseApiPath }) => {
           {officerData && officerData.length !== 0 && (
             <div className="mb-8">
               <h3>
-                <span className="highlight-gold">ORSPA Contacts</span>
+                <span className="highlight-gold">AMT Customer Service Liaison</span>
               </h3>
 
               {officerData.map((contactInfo) => (
@@ -244,7 +244,7 @@ const Autocomplete = ({ baseApiPath }) => {
                   <h4 className="mb-1">{contactInfo.contactFullName}</h4>
                   {contactInfo.userID && (
                     <>
-                      <p className="mb-1">{contactInfo.name}</p>
+                      <p className="mb-1">{contactInfo.title}</p>
                       <p>
                         <a href={`mailto:${contactInfo.userID}@asu.edu`}>
                           {contactInfo.userID}@asu.edu
