@@ -57,7 +57,6 @@ add_action('init', 'unityblocks_block_init');
 
 wp_register_style('editor-styles-asu-career',  plugin_dir_url(__FILE__) . 'build/asu-careers/index.css');
 wp_register_style('styles-asu-career',  plugin_dir_url(__FILE__) . 'build/asu-careers/style-index.css');
-wp_register_style('styles-hero',  plugin_dir_url(__FILE__) . 'build/hero/style-index.css');
 wp_register_style('styles-wchm',  plugin_dir_url(__FILE__) . 'build/wchm/style-index.css');
 
 /**
