@@ -31,7 +31,6 @@ const Inspector = (props) => {
       // titleCssClass,
       contentsText,
       contentsMaxWidth,
-      hideContents,
       // contentsCssClass,
       contentsHighlightColor,
       contentsColor,
@@ -249,27 +248,6 @@ const Inspector = (props) => {
               value={contentsMaxWidth}
               onChange={(contentsMaxWidth) =>
                 setAttributes({ contentsMaxWidth })
-              }
-            />
-          </PanelRow>
-          <PanelRow>
-            <RadioControl
-              label={__("Hide content on mobile?", "unityblocks")}
-              selected={hideContents}
-              options={[
-                {
-                  label: __("No", "unityblocks"),
-                  value: "no",
-                },
-                {
-                  label: __("Yes", "unityblocks"),
-                  value: "yes",
-                },
-              ]}
-              onChange={(hideContents) =>
-                setAttributes({
-                  hideContents,
-                })
               }
             />
           </PanelRow>
