@@ -51,7 +51,6 @@ const Edit = (props) => {
       titleCssClass,
       contentsText,
       contentsMaxWidth,
-      hideContents,
       contentsCssClass,
       contentsHighlightColor,
       contentsColor,
@@ -88,14 +87,6 @@ const Edit = (props) => {
     ],
     contentsColor,
   };
-  let hideContent = "";
-  if (!contentsText || hideContents === "yes") {
-    hideContent = "hide-content";
-  }
-
-  const blockProps = useBlockProps({
-    className: hideContent,
-  });
 
   return (
     <>
@@ -103,7 +94,7 @@ const Edit = (props) => {
       <Controls {...props} />
 
       {mediaId !== 0 && (
-        <div {...blockProps}>
+        <div {...useBlockProps()}>
           <Hero {...args} />
         </div>
       )}
