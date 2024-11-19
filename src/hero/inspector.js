@@ -18,20 +18,15 @@ import {
 const Inspector = (props) => {
   const {
     attributes: {
-      heroType,
-      // mediaCssClass,
       mediaSize,
       subTitleText,
       subTitleHighlightColor,
       subTitleMaxWidth,
-      // subTitleCssClass,
       titleText,
       titleHighlightColor,
       titleMaxWidth,
-      // titleCssClass,
       contentsText,
       contentsMaxWidth,
-      // contentsCssClass,
       contentsHighlightColor,
       contentsColor,
     },
@@ -42,7 +37,7 @@ const Inspector = (props) => {
     <>
       <InspectorControls>
         <PanelBody title={__("Hero format", "unityblocks")} initialOpen={false}>
-          <PanelRow>
+          {/* <PanelRow>
             <RadioControl
               label={__("Type", "unityblocks")}
               selected={heroType}
@@ -58,7 +53,7 @@ const Inspector = (props) => {
               ]}
               onChange={(heroType) => setAttributes({ heroType })}
             />
-          </PanelRow>
+          </PanelRow> */}
           <PanelRow>
             <RadioControl
               label={__("Size", "unityblocks")}
