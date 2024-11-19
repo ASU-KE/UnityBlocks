@@ -78,7 +78,7 @@ const Inspector = (props) => {
             <TextControl
               label="Icon prefix"
               className="anchormenu__item-icon-prefix"
-              placeholder="(optional) 'fa', 'fas', 'fa-solid'"
+              placeholder="'fa', 'fas', 'fa-solid'"
               value={props.attributes.itemIcons[index][0]}
               onChange={(text) => handleItemIconValueChange(0, text, index)}
             />
@@ -87,7 +87,7 @@ const Inspector = (props) => {
             <TextControl
               label="Icon class name"
               className="anchormenu__item-icon-name"
-              placeholder="(optional) 'users', 'tasks'"
+              placeholder="'users', 'tasks'"
               value={props.attributes.itemIcons[index][1]}
               onChange={(text) => handleItemIconValueChange(1, text, index)}
             />
