@@ -15,7 +15,6 @@
   "textdomain": "unityblocks",
   "viewScript": ["file:./frontend.js", "unityblocks-hero-view-script"],
   "editorScript": "file:./index.js",
-  "style": "styles-hero",
   "attributes": {
     "heroType": {
       "type": "string",
