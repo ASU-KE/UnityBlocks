@@ -16,22 +16,13 @@ import { useBlockProps } from "@wordpress/block-editor";
 /**
  * External dependencies
  */
-//import { Hero } from "@asu/components-core/dist/libCore.es";
-import { Hero } from "../../resources/unity/components-core/src/components/Hero";
+import { Hero } from "../../resources/asu-unity-stack/packages/components-core/src/components/Hero";
 
 /**
  * Internal dependencies
  */
 import Controls from "./controls";
 import Inspector from "./inspector";
-
-/**
- * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
- * Those files can contain any CSS code that gets applied to the editor.
- *
- * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
- */
-// import "./editor.scss";
 
 /**
  * The edit function describes the structure of your block in the context of the
