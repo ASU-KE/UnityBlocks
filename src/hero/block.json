@@ -85,11 +85,6 @@
       "type": "string",
       "default": ""
     },
-    "hideContents": {
-      "type": "string",
-      "enum": ["no", "yes"],
-      "default": "no"
-    },
     "contentsCssClass": {
       "type": "array",
       "default": []
