@@ -48,7 +48,7 @@
     },
     "subTitleHighlightColor": {
       "type": "string",
-      "enum": ["gold", "white", "black"],
+      "enum": ["gold", "white", "black", "none"],
       "default": "white"
     },
     "subTitleMaxWidth": {
@@ -65,7 +65,7 @@
     },
     "titleHighlightColor": {
       "type": "string",
-      "enum": ["gold", "white", "black"],
+      "enum": ["gold", "white", "black", "none"],
       "default": "gold"
     },
     "titleMaxWidth": {
