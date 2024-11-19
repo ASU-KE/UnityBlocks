@@ -104,6 +104,10 @@ const Inspector = (props) => {
                   label: __("Black", "unityblocks"),
                   value: "black",
                 },
+                {
+                  label: __("None", "unityblocks"),
+                  value: "none",
+                }
               ]}
               onChange={(titleHighlightColor) =>
                 setAttributes({ titleHighlightColor })
@@ -151,6 +155,10 @@ const Inspector = (props) => {
                   label: __("Black", "unityblocks"),
                   value: "black",
                 },
+                {
+                  label: __("None", "unityblocks"),
+                  value: "none",
+                }
               ]}
               onChange={(subTitleHighlightColor) =>
                 setAttributes({
