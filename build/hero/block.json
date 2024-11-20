@@ -25,7 +25,6 @@
     "unityblocks-hero-view-script"
   ],
   "editorScript": "file:./index.js",
-  "style": "styles-hero",
   "attributes": {
     "heroType": {
       "type": "string",
@@ -69,7 +68,8 @@
       "enum": [
         "gold",
         "white",
-        "black"
+        "black",
+        "none"
       ],
       "default": "white"
     },
@@ -90,7 +90,8 @@
       "enum": [
         "gold",
         "white",
-        "black"
+        "black",
+        "none"
       ],
       "default": "gold"
     },
@@ -126,7 +127,6 @@
     "contentsColor": {
       "type": "string",
       "enum": [
-        "gold",
         "white",
         "black"
       ],
