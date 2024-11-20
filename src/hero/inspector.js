@@ -203,10 +203,6 @@ const Inspector = (props) => {
                   value: "white",
                 },
                 {
-                  label: __("Gold", "unityblocks"),
-                  value: "gold",
-                },
-                {
                   label: __("Black", "unityblocks"),
                   value: "black",
                 },
