@@ -1,9 +1,9 @@
 # unityblocks
 A suite of page building content blocks for the ASU Web Standards Unity WordPress theme.
 
-## News grid
-### Development
-#### initial submodule setup
+## Development
+Delete all `src/` folders execept the block needed to avoid build conflicts.
+### initial submodule setup
 - `git submodule update --init`
 - `cd resources/asu-unity-stack`
 - `git pull`
