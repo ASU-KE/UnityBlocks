@@ -95,7 +95,7 @@
     },
     "contentsColor": {
       "type": "string",
-      "enum": ["gold", "white", "black"],
+      "enum": ["white", "black"],
       "default": "white"
     }
   }
