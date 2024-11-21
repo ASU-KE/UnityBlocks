@@ -5,7 +5,7 @@
  * Description:       UnityBlocks is a suite of page building content blocks for the ASU Web Standards Unity (UDS) WordPress theme.
  * Requires at least: 6.1
  * Requires PHP:      7.0
- * Version:           2.3.2
+ * Version:           2.4
  * Author:            ASU KE Web Services
  * Author URI:        https://rto.asu.edu/web-services
  * License:           GPL-2.0-or-later
@@ -55,10 +55,12 @@ function unityblocks_block_init()
 }
 add_action('init', 'unityblocks_block_init');
 
-wp_register_style('editor-styles-asu-career',  plugin_dir_url(__FILE__) . 'build/asu-careers/index.css');
-wp_register_style('styles-asu-career',  plugin_dir_url(__FILE__) . 'build/asu-careers/style-index.css');
-wp_register_style('styles-hero',  plugin_dir_url(__FILE__) . 'build/hero/style-index.css');
-wp_register_style('styles-wchm',  plugin_dir_url(__FILE__) . 'build/wchm/style-index.css');
+function unity_blocks_scripts() {
+	wp_register_style('editor-styles-asu-career',  plugin_dir_url(__FILE__) . 'build/asu-careers/index.css');
+	wp_register_style('styles-asu-career',  plugin_dir_url(__FILE__) . 'build/asu-careers/style-index.css');
+	wp_register_style('styles-wchm',  plugin_dir_url(__FILE__) . 'build/wchm/style-index.css');
+}
+add_action( 'wp_enqueue_scripts', 'unity_blocks_scripts' );
 
 /**
  * Register a custom category in the Block Editor that we can use for organizing our blocks.

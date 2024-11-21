@@ -1,8 +1,8 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
-  "apiVersion": 2,
+  "apiVersion": 3,
   "name": "unityblocks/hero",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "title": "Unity Hero",
   "category": "unityblocks",
   "keywords": [
@@ -25,7 +25,6 @@
     "unityblocks-hero-view-script"
   ],
   "editorScript": "file:./index.js",
-  "style": "styles-hero",
   "attributes": {
     "heroType": {
       "type": "string",
@@ -69,7 +68,8 @@
       "enum": [
         "gold",
         "white",
-        "black"
+        "black",
+        "none"
       ],
       "default": "white"
     },
@@ -90,7 +90,8 @@
       "enum": [
         "gold",
         "white",
-        "black"
+        "black",
+        "none"
       ],
       "default": "gold"
     },
@@ -110,14 +111,6 @@
       "type": "string",
       "default": ""
     },
-    "hideContents": {
-      "type": "string",
-      "enum": [
-        "no",
-        "yes"
-      ],
-      "default": "no"
-    },
     "contentsCssClass": {
       "type": "array",
       "default": []
@@ -134,7 +127,6 @@
     "contentsColor": {
       "type": "string",
       "enum": [
-        "gold",
         "white",
         "black"
       ],

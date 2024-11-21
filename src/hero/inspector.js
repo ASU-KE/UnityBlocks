@@ -18,21 +18,15 @@ import {
 const Inspector = (props) => {
   const {
     attributes: {
-      heroType,
-      // mediaCssClass,
       mediaSize,
       subTitleText,
       subTitleHighlightColor,
       subTitleMaxWidth,
-      // subTitleCssClass,
       titleText,
       titleHighlightColor,
       titleMaxWidth,
-      // titleCssClass,
       contentsText,
       contentsMaxWidth,
-      hideContents,
-      // contentsCssClass,
       contentsHighlightColor,
       contentsColor,
     },
@@ -43,7 +37,7 @@ const Inspector = (props) => {
     <>
       <InspectorControls>
         <PanelBody title={__("Hero format", "unityblocks")} initialOpen={false}>
-          <PanelRow>
+          {/* <PanelRow>
             <RadioControl
               label={__("Type", "unityblocks")}
               selected={heroType}
@@ -59,7 +53,7 @@ const Inspector = (props) => {
               ]}
               onChange={(heroType) => setAttributes({ heroType })}
             />
-          </PanelRow>
+          </PanelRow> */}
           <PanelRow>
             <RadioControl
               label={__("Size", "unityblocks")}
@@ -110,6 +104,10 @@ const Inspector = (props) => {
                   label: __("Black", "unityblocks"),
                   value: "black",
                 },
+                {
+                  label: __("None", "unityblocks"),
+                  value: "none",
+                }
               ]}
               onChange={(titleHighlightColor) =>
                 setAttributes({ titleHighlightColor })
@@ -157,6 +155,10 @@ const Inspector = (props) => {
                   label: __("Black", "unityblocks"),
                   value: "black",
                 },
+                {
+                  label: __("None", "unityblocks"),
+                  value: "none",
+                }
               ]}
               onChange={(subTitleHighlightColor) =>
                 setAttributes({
@@ -199,10 +201,6 @@ const Inspector = (props) => {
                 {
                   label: __("White", "unityblocks"),
                   value: "white",
-                },
-                {
-                  label: __("Gold", "unityblocks"),
-                  value: "gold",
                 },
                 {
                   label: __("Black", "unityblocks"),
@@ -249,27 +247,6 @@ const Inspector = (props) => {
               value={contentsMaxWidth}
               onChange={(contentsMaxWidth) =>
                 setAttributes({ contentsMaxWidth })
-              }
-            />
-          </PanelRow>
-          <PanelRow>
-            <RadioControl
-              label={__("Hide content on mobile?", "unityblocks")}
-              selected={hideContents}
-              options={[
-                {
-                  label: __("No", "unityblocks"),
-                  value: "no",
-                },
-                {
-                  label: __("Yes", "unityblocks"),
-                  value: "yes",
-                },
-              ]}
-              onChange={(hideContents) =>
-                setAttributes({
-                  hideContents,
-                })
               }
             />
           </PanelRow>
