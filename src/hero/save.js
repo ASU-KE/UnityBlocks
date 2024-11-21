@@ -36,7 +36,6 @@ const save = (props) => {
       titleCssClass,
       contentsText,
       contentsMaxWidth,
-      hideContents,
       contentsCssClass,
       contentsHighlightColor,
       contentsColor,
@@ -74,17 +73,10 @@ const save = (props) => {
     },
   ];
 
-  let hideContent = "";
-  if (!contentsText || hideContents === "yes") {
-    hideContent = "hide-content";
-  }
-
   return (
     <div
       id="unityblocks-hero"
-      {...useBlockProps.save({
-        className: hideContent,
-      })}
+      {...useBlockProps.save()}
       data-herotype={heroType}
       data-image={JSON.stringify(image)}
       data-subtitle={JSON.stringify(subTitle)}
