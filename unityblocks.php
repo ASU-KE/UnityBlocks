@@ -55,9 +55,12 @@ function unityblocks_block_init()
 }
 add_action('init', 'unityblocks_block_init');
 
-wp_register_style('editor-styles-asu-career',  plugin_dir_url(__FILE__) . 'build/asu-careers/index.css');
-wp_register_style('styles-asu-career',  plugin_dir_url(__FILE__) . 'build/asu-careers/style-index.css');
-wp_register_style('styles-wchm',  plugin_dir_url(__FILE__) . 'build/wchm/style-index.css');
+function unity_blocks_scripts() {
+	wp_register_style('editor-styles-asu-career',  plugin_dir_url(__FILE__) . 'build/asu-careers/index.css');
+	wp_register_style('styles-asu-career',  plugin_dir_url(__FILE__) . 'build/asu-careers/style-index.css');
+	wp_register_style('styles-wchm',  plugin_dir_url(__FILE__) . 'build/wchm/style-index.css');
+}
+add_action( 'wp_enqueue_scripts', 'unity_blocks_scripts' );
 
 /**
  * Register a custom category in the Block Editor that we can use for organizing our blocks.
