@@ -34,7 +34,7 @@
     "react-autocomplete": "^1.8.1"
   },
   "devDependencies": {
-    "@wordpress/scripts": "^30.4.0",
+    "@wordpress/scripts": "^30.11.0",
     "date-fns": "^2.28.0",
     "dompurify": "^2.5.7",
     "fast-xml-parser": "^4.1.3",
