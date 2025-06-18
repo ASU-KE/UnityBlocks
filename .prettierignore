@@ -1,0 +1,2 @@
+# Ignore the 'my-custom-folder' directory during the build
+my-custom-folder/
