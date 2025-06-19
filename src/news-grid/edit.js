@@ -16,7 +16,7 @@ import { useBlockProps } from "@wordpress/block-editor";
 /**
  * External dependencies
  */
-import { CardGridNews } from "../../resources/unity/component-news/src/components";
+import { CardGridNews } from "../../resources/asu-unity-stack/packages/component-news/src/components";
 
 /**
  * Internal dependencies
