@@ -1,6 +1,6 @@
 const { render } = wp.element;
 
-import { CardGridNews } from "../../resources/unity/component-news/src/components";
+import { CardGridNews } from "../../resources/asu-unity-stack/packages/component-news/src/components";
 
 // It is possible to load multiple news grids onto a page.
 // Load each DOM element on page using the Gutenberg-generated class for the News Grid block
