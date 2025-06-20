@@ -267,6 +267,7 @@ const Inspector = (props) => {
               label={__("Button Size", "unityblocks")}
               selected={cardButtonSize}
               options={[
+                { label: __("Default", "unityblocks"), value: "default" },
                 { label: __("Small", "unityblocks"), value: "small" },
                 { label: __("Medium", "unityblocks"), value: "medium" },
                 { label: __("Large", "unityblocks"), value: "large" },
