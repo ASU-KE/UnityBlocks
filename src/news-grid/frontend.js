@@ -8,7 +8,7 @@ const grids = document.querySelectorAll(".wp-block-unityblocks-news-grid");
 
 grids.forEach((newsGrid) => {
   const enableHeader = newsGrid.dataset.enableheader === "true";
-  const cardButton = JSON.parse(newsGrid.dataset.cardbutton);
+  //const cardButton = JSON.parse(newsGrid.dataset.cardbutton);
   const enableStoryDate = newsGrid.dataset.enablestorydate === "true";
   const enableStoryAuthor = newsGrid.dataset.enablestoryauthor === "true";
   const enableCardTags = newsGrid.dataset.enablecardtags === "true";
@@ -30,7 +30,7 @@ grids.forEach((newsGrid) => {
     ? {
         header: JSON.parse(newsGrid.dataset.header),
         ctaButton: JSON.parse(newsGrid.dataset.ctabutton),
-        cardButton,
+        cardButton: JSON.parse(newsGrid.dataset.cardbutton),
         enableStoryDate,
         enableStoryAuthor,
         enableCardTags,
@@ -42,7 +42,7 @@ grids.forEach((newsGrid) => {
         keDataSourcePerPage,
       }
     : {
-        cardButton,
+        cardButton: JSON.parse(newsGrid.dataset.cardbutton),
         enableStoryDate,
         enableStoryAuthor,
         enableCardTags,
