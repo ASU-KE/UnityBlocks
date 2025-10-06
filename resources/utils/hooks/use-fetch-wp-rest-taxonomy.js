@@ -6,7 +6,11 @@ const fetcher = async (url, taxonomy) => {
   const query = `${taxonomy}?per_page=1000&page=1`;
 
   try {
-    response = await fetch(`${url}${query}`);
+    response = await fetch(`${url}${query}`, {
+      headers: {
+        'X-Requested-With': 'XMLHttpRequest'
+      }
+    });
   } catch (e) {
     if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
       console.log("***** Problem with fetch that results in an exception");

@@ -52,7 +52,11 @@ const fetcher = async (url, filters, pagination) => {
   // params += `&orderby=${ orderBy }`;
 
   try {
-    response = await fetch(`${url}${query}${params}`);
+    response = await fetch(`${url}${query}${params}`, {
+      headers: {
+        'X-Requested-With': 'XMLHttpRequest'
+      }
+    });
   } catch (e) {
     if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
       console.log("***** Problem with fetch that results in an exception");

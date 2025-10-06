@@ -6,7 +6,11 @@ const fetcher = async (url, storySlug) => {
   const query = `posts?slug=${storySlug}`;
 
   try {
-    response = await fetch(url + query);
+    response = await fetch(url + query, {
+      headers: {
+        'X-Requested-With': 'XMLHttpRequest'
+      }
+    });
   } catch (e) {
     if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
       console.log("***** Problem with fetch that results in an exception");
