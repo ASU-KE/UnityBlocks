@@ -90,7 +90,7 @@ const Edit = (props) => {
   const cardButton = {
     color: cardButtonColor,
     text: cardButtonText,
-    url: cardButtonSize,
+    size: cardButtonSize,
   };
 
   const asuDataSource = enableAsuDataSource
