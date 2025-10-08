@@ -71,6 +71,7 @@ const Edit = (props) => {
     : null;
 
   const dataSource = {
+    type: "asuDrupal",
     url: dataSourceUrl,
     filters: dataSourceFilters,
   };

@@ -47,6 +47,7 @@ const save = (props) => {
     : null;
 
   let dataSource = JSON.stringify({
+    type: "asuDrupal",
     url: dataSourceUrl,
     filters: dataSourceFilters,
   });
