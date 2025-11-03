@@ -10,7 +10,7 @@ const defaultProps = {
     color: "gold",
     size: "default",
     text: "More stories and videos",
-    href: "https://news.asu.edu",
+    url: "https://news.asu.edu",
   },
   cardButton: {
     color: "maroon",
