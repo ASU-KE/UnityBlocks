@@ -1,3 +1,4 @@
+// @ts-check
 import { filterFields } from "../constants/filter-fields";
 
 /**

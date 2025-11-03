@@ -1,3 +1,4 @@
+// @ts-check
 import {
   FeedContext,
   Card,
@@ -83,7 +84,7 @@ const gridRow = (
 /**
  * @param {import("../../core/types/news-types").TemplateProps} props
  */
-// eslint-disable-next-line react/prop-types
+
 const GridTemplate = ({
   enableCardTags,
   enableStoryAuthor,
@@ -95,7 +96,6 @@ const GridTemplate = ({
   return (
     <NewsWrapper className="row row-spaced" data-testid="grid-view-container">
       {stories?.map((story, index) => (
-        // eslint-disable-next-line react/no-array-index-key
         <React.Fragment key={index}>
           {gridRow(
             story,

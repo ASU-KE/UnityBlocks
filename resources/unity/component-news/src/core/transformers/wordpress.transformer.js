@@ -1,3 +1,4 @@
+// @ts-check
 import { format, formatISO, parseISO } from "date-fns";
 import { shortenText } from "../utils/shorten-text";
 
