@@ -2,13 +2,10 @@
 import {
   FeedContext,
   Card,
-  // feedCardButtonShape,
 } from "../../../../components-core/src";
 import React, { useContext } from "react";
 import classNames from "classnames";
-
 import { BaseFeed } from "../../core/components/BaseFeed";
-// import { defaultProps } from '../../core/constants/default-props';
 import { parseInterests } from "../../core/utils";
 import { NewsWrapper } from "./index.styles";
 
