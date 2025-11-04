@@ -11,7 +11,7 @@ import {
   TextControl,
   ToggleControl,
 } from "@wordpress/components";
-import { useFetchWpRestTaxonomy } from "../../resources/utils/hooks/use-fetch-wp-rest-taxonomy";
+import { useFetchWpRestTaxonomy } from "@resources/utils/hooks/use-fetch-wp-rest-taxonomy";
 
 /**
  * Inspector controls
