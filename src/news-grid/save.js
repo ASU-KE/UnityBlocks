@@ -24,9 +24,9 @@ const save = (props) => {
       ctaText,
       ctaUrl,
       ctaColor,
-      // cardButtonText,
-      // cardButtonColor,
-      // cardButtonSize,
+      cardButtonText,
+      cardButtonColor,
+      cardButtonSize,
       enableStoryDate,
       enableStoryAuthor,
       enableCardTags,
@@ -62,13 +62,11 @@ const save = (props) => {
       }
     : null;
 
-  // const cardButton = {
-  // 	color: cardButtonColor,
-  // 	text: cardButtonText,
-  // 	size: cardButtonSize,
-  // };
-
-  const cardButton = "";
+  const cardButton = {
+    color: cardButtonColor,
+    text: cardButtonText,
+    size: cardButtonSize,
+  };
 
   const asuDataSource = {
     url: asuDataSourceUrl + asuDataSourceFeed,

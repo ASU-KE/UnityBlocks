@@ -27,9 +27,9 @@ const Inspector = (props) => {
       ctaText,
       ctaUrl,
       ctaColor,
-      // cardButtonText,
-      // cardButtonColor,
-      // cardButtonSize,
+      cardButtonText,
+      cardButtonColor,
+      cardButtonSize,
       enableStoryDate,
       enableStoryAuthor,
       enableCardTags,
@@ -232,6 +232,53 @@ const Inspector = (props) => {
               </PanelBody>
             </>
           )}
+        </PanelBody>
+           <PanelBody title={__(\"Card Button\", \"unityblocks\")} initialOpen={false}>
+          <PanelRow>
+            <TextControl
+              label={__(\"Button Text\", \"unityblocks\")}
+              value={cardButtonText}
+              onChange={(newValue) =>
+                setAttributes({
+                  cardButtonText: newValue,
+                })
+              }
+            />
+          </PanelRow>
+          <PanelRow>
+            <RadioControl
+              label={__(\"Button Color\", \"unityblocks\")}
+              selected={cardButtonColor}
+              options={[
+                { label: __(\"Gold\", \"unityblocks\"), value: \"gold\" },
+                { label: __(\"Maroon\", \"unityblocks\"), value: \"maroon\" },
+                { label: __(\"Gray\", \"unityblocks\"), value: \"gray\" },
+                { label: __(\"Dark\", \"unityblocks\"), value: \"dark\" },
+              ]}
+              onChange={(newValue) =>
+                setAttributes({
+                  cardButtonColor: newValue,
+                })
+              }
+            />
+          </PanelRow>
+          <PanelRow>
+            <RadioControl
+              label={__(\"Button Size\", \"unityblocks\")}
+              selected={cardButtonSize}
+              options={[
+                { label: __(\"Default\", \"unityblocks\"), value: \"default\" },
+                { label: __(\"Small\", \"unityblocks\"), value: \"small\" },
+                { label: __(\"Medium\", \"unityblocks\"), value: \"medium\" },
+                { label: __(\"Large\", \"unityblocks\"), value: \"large\" },
+              ]}
+              onChange={(newValue) =>
+                setAttributes({
+                  cardButtonSize: newValue,
+                })
+              }
+            />
+          </PanelRow>
         </PanelBody>
         <PanelBody
           title={__("ASU Data Source", "unityblocks")}
