@@ -34,13 +34,19 @@ const storyBody = (story, enableStoryAuthor, enableStoryDate) => {
  * @param {Boolean} enableStoryAuthor
  * @param {Boolean} enableStoryDate
  * @param {String} numberColumns
+ * @param {Object} cardButton
+ * @param {Boolean} useCardButton
+ * @param {String} cardLinkText
  */
 const gridRow = (
   story,
   enableCardTags,
   enableStoryAuthor,
   enableStoryDate,
-  numberColumns
+  numberColumns,
+  cardButton,
+  useCardButton,
+  cardLinkText
 ) => {
   const cardClasses = classNames(
     "col",
@@ -52,6 +58,7 @@ const gridRow = (
       "col-lg-4": numberColumns === "3",
     }
   );
+  
   return (
     <div className={cardClasses} key={story.id}>
       <Card
@@ -63,17 +70,17 @@ const gridRow = (
           story.featuredImageUrl ? story.featuredImageUrl : story.headerImageUrl
         }
         imageAltText={story.title}
-        linkLabel={"Read"}
-        linkUrl={story.storyLink}
-        // buttons={ [
-        // 	{
-        // 		ariaLabel: cardButton.text,
-        // 		color: cardButton.color,
-        // 		label: cardButton.text,
-        // 		size: cardButton.size,
-        // 		href: story.storyLink,
-        // 	},
-        // ] }
+        linkLabel={useCardButton ? undefined : cardLinkText}
+        linkUrl={useCardButton ? undefined : story.storyLink}
+        buttons={useCardButton ? [
+          {
+            ariaLabel: cardButton.text,
+            color: cardButton.color,
+            label: cardButton.text,
+            size: cardButton.size,
+            href: story.storyLink,
+          },
+        ] : undefined}
         tags={enableCardTags ? parseInterests(story?.interests) : null}
       />
     </div>
@@ -83,33 +90,36 @@ const gridRow = (
 /**
  * @param {import("../../core/types/news-types").TemplateProps} props
  */
-// eslint-disable-next-line react/prop-types
 const GridTemplate = ({
   enableCardTags,
   enableStoryAuthor,
   enableStoryDate,
   numberColumns,
+  cardButton,
+  useCardButton,
+  cardLinkText,
 }) => {
   const { stories } = useContext(FeedContext); // Reading the "stories" object from the context
 
   return (
     <NewsWrapper className="row row-spaced" data-testid="grid-view-container">
       {stories?.map((story, index) => (
-        // eslint-disable-next-line react/no-array-index-key
         <React.Fragment key={index}>
           {gridRow(
             story,
             enableCardTags,
             enableStoryAuthor,
             enableStoryDate,
-            numberColumns
+            numberColumns,
+            cardButton,
+            useCardButton,
+            cardLinkText
           )}
         </React.Fragment>
       ))}
     </NewsWrapper>
   );
 };
-// eslint-enable-next-line react/prop-types
 
 /**
  * @typedef {import("../../core/types/news-types").FeedType} FeedType
@@ -123,18 +133,38 @@ const CardGridNews = ({
   enableStoryAuthor,
   enableStoryDate,
   numberColumns,
+  cardButton,
+  useCardButton,
+  cardLinkText,
+  drupalDataSource,
+  wpDataSource,
   ...props
-}) => (
-  // Calling the high order component that fetch the data
-  <BaseFeed {...props}>
-    <GridTemplate
-      enableCardTags={enableCardTags}
-      enableStoryAuthor={enableStoryAuthor}
-      enableStoryDate={enableStoryDate}
-      numberColumns={numberColumns}
-    />
-  </BaseFeed>
-);
+}) => {
+  // Determine which data sources are active
+  const hasAsuNews = !!drupalDataSource;
+  const hasKeNews = !!wpDataSource;
+  
+  // Logic for button vs link:
+  // - Only ASU: always use buttons
+  // - Only KE: use user's choice (useCardButton)
+  // - Both: use user's choice (useCardButton)
+  const shouldUseButton = hasAsuNews && !hasKeNews ? true : useCardButton;
+  
+  return (
+    // Calling the high order component that fetch the data
+    <BaseFeed drupalDataSource={drupalDataSource} wpDataSource={wpDataSource} {...props}>
+      <GridTemplate
+        enableCardTags={enableCardTags}
+        enableStoryAuthor={enableStoryAuthor}
+        enableStoryDate={enableStoryDate}
+        numberColumns={numberColumns}
+        cardButton={cardButton}
+        useCardButton={shouldUseButton}
+        cardLinkText={cardLinkText}
+      />
+    </BaseFeed>
+  );
+};
 
 // CardGridNews.propTypes = {
 // 	...BaseFeed.propTypes,
