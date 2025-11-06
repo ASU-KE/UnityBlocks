@@ -238,35 +238,19 @@ const Inspector = (props) => {
         <PanelBody
           title={__("Card Button / Link", "unityblocks")} initialOpen={false}
         >
-          {enableKeDataSource && !enableAsuDataSource && (
-            <PanelRow>
-              <ToggleControl
-                label={__("Use Button Instead of Link", "unityblocks")}
-                help={useCardButton ? "Button enabled." : "Link enabled."}
-                checked={useCardButton}
-                onChange={(newValue) =>
-                  setAttributes({
-                    useCardButton: newValue,
-                  })
-                }
-              />
-            </PanelRow>
-          )}
-          {enableAsuDataSource && enableKeDataSource && (
-            <PanelRow>
-              <ToggleControl
-                label={__("Use Button for All Cards", "unityblocks")}
-                help={useCardButton ? "Buttons enabled for both ASU and KE news." : "Links enabled for KE news, buttons for ASU news."}
-                checked={useCardButton}
-                onChange={(newValue) =>
-                  setAttributes({
-                    useCardButton: newValue,
-                  })
-                }
-              />
-            </PanelRow>
-          )}
-          {(enableAsuDataSource || (enableKeDataSource && useCardButton)) && (
+          <PanelRow>
+            <ToggleControl
+              label={__("Use Button Instead of Link", "unityblocks")}
+              help={useCardButton ? "Button enabled." : "Link enabled."}
+              checked={useCardButton}
+              onChange={(newValue) =>
+                setAttributes({
+                  useCardButton: newValue,
+                })
+              }
+            />
+          </PanelRow>
+          {useCardButton && (
             <>
               <PanelRow>
                 <TextControl
@@ -315,7 +299,7 @@ const Inspector = (props) => {
               </PanelRow>
             </>
           )}
-          {(enableKeDataSource && !useCardButton) && (
+          {!useCardButton && (
             <PanelRow>
               <TextControl
                 label={__("Link Text", "unityblocks")}

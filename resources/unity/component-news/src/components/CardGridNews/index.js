@@ -133,30 +133,18 @@ const CardGridNews = ({
   cardButton,
   useCardButton,
   cardLinkText,
-  drupalDataSource,
-  wpDataSource,
   ...props
 }) => {
-  // Determine which data sources are active
-  const hasAsuNews = !!drupalDataSource;
-  const hasKeNews = !!wpDataSource;
-
-  // Logic for button vs link:
-  // - Only ASU: always use buttons
-  // - Only KE: use user's choice (useCardButton)
-  // - Both: use user's choice (useCardButton)
-  const shouldUseButton = hasAsuNews && !hasKeNews ? true : useCardButton;
-
   return (
     // Calling the high order component that fetch the data
-    <BaseFeed drupalDataSource={drupalDataSource} wpDataSource={wpDataSource} {...props}>
+    <BaseFeed {...props}>
       <GridTemplate
         enableCardTags={enableCardTags}
         enableStoryAuthor={enableStoryAuthor}
         enableStoryDate={enableStoryDate}
         numberColumns={numberColumns}
         cardButton={cardButton}
-        useCardButton={shouldUseButton}
+        useCardButton={useCardButton}
         cardLinkText={cardLinkText}
       />
     </BaseFeed>

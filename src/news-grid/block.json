@@ -44,7 +44,7 @@
     },
     "cardButtonText": {
       "type": "string",
-      "default": "Read at ASU News"
+      "default": "Read"
     },
     "cardButtonColor": {
       "type": "string",
@@ -58,7 +58,7 @@
     },
     "useCardButton": {
       "type": "boolean",
-      "default": false
+      "default": true
     },
     "cardLinkText": {
       "type": "string",
