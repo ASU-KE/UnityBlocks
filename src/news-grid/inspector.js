@@ -27,9 +27,11 @@ const Inspector = (props) => {
       ctaText,
       ctaUrl,
       ctaColor,
-      // cardButtonText,
-      // cardButtonColor,
-      // cardButtonSize,
+      cardButtonText,
+      cardButtonColor,
+      cardButtonSize,
+      useCardButton,
+      cardLinkText,
       enableStoryDate,
       enableStoryAuthor,
       enableCardTags,
@@ -231,6 +233,100 @@ const Inspector = (props) => {
                 </PanelRow>
               </PanelBody>
             </>
+          )}
+        </PanelBody>
+        <PanelBody
+          title={__("Card Button / Link", "unityblocks")} initialOpen={false}
+        >
+          {enableKeDataSource && !enableAsuDataSource && (
+            <PanelRow>
+              <ToggleControl
+                label={__("Use Button Instead of Link", "unityblocks")}
+                help={useCardButton ? "Button enabled." : "Link enabled."}
+                checked={useCardButton}
+                onChange={(newValue) =>
+                  setAttributes({
+                    useCardButton: newValue,
+                  })
+                }
+              />
+            </PanelRow>
+          )}
+          {enableAsuDataSource && enableKeDataSource && (
+            <PanelRow>
+              <ToggleControl
+                label={__("Use Button for All Cards", "unityblocks")}
+                help={useCardButton ? "Buttons enabled for both ASU and KE news." : "Links enabled for KE news, buttons for ASU news."}
+                checked={useCardButton}
+                onChange={(newValue) =>
+                  setAttributes({
+                    useCardButton: newValue,
+                  })
+                }
+              />
+            </PanelRow>
+          )}
+          {(enableAsuDataSource || (enableKeDataSource && useCardButton)) && (
+            <>
+              <PanelRow>
+                <TextControl
+                  label={__("Button Text", "unityblocks")}
+                  value={cardButtonText}
+                  onChange={(newValue) =>
+                    setAttributes({
+                      cardButtonText: newValue,
+                    })
+                  }
+                />
+              </PanelRow>
+              <PanelRow>
+                <RadioControl
+                  label={__("Button Color", "unityblocks")}
+                  selected={cardButtonColor}
+                  options={[
+                    { label: __("Gold", "unityblocks"), value: "gold" },
+                    { label: __("Maroon", "unityblocks"), value: "maroon" },
+                    { label: __("Gray", "unityblocks"), value: "gray" },
+                    { label: __("Dark", "unityblocks"), value: "dark" },
+                  ]}
+                  onChange={(newValue) =>
+                    setAttributes({
+                      cardButtonColor: newValue,
+                    })
+                  }
+                />
+              </PanelRow>
+              <PanelRow>
+                <RadioControl
+                  label={__("Button Size", "unityblocks")}
+                  selected={cardButtonSize}
+                  options={[
+                    { label: __("Default", "unityblocks"), value: "default" },
+                    { label: __("Small", "unityblocks"), value: "small" },
+                    { label: __("Medium", "unityblocks"), value: "medium" },
+                    { label: __("Large", "unityblocks"), value: "large" },
+                  ]}
+                  onChange={(newValue) =>
+                    setAttributes({
+                      cardButtonSize: newValue,
+                    })
+                  }
+                />
+              </PanelRow>
+            </>
+          )}
+          {(enableKeDataSource && !useCardButton) && (
+            <PanelRow>
+              <TextControl
+                label={__("Link Text", "unityblocks")}
+                value={cardLinkText}
+                onChange={(newValue) =>
+                  setAttributes({
+                    cardLinkText: newValue,
+                  })
+                }
+              />
+            </PanelRow>
           )}
         </PanelBody>
         <PanelBody
