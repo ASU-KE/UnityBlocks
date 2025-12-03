@@ -1,3 +1,4 @@
+// @ts-check
 import { CardCarousel } from "@asu/component-carousel";
 import React, { useContext } from "react";
 
@@ -31,7 +32,7 @@ const cardRow = (feed, index, cardButton) => ({
 /**
  * @param {import("../../core/types/news-types").TemplateProps} props
  */
-// eslint-disable-next-line react/prop-types
+
 const CarouselTemplate = ({ cardButton }) => {
   const { feeds } = useContext(FeedContext); // Reading the "feeds" object from the context
   const cardItems = feeds?.map((feed, index) =>

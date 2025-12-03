@@ -1,8 +1,9 @@
+// @ts-check
+
 const shortenText = (text, maxLength) => {
   let newText = text;
   if (newText.length > maxLength) {
-    newText = newText.substr(0, newText.lastIndexOf(" ", maxLength));
-    newText += "...";
+    newText = `${newText.substring(0, maxLength)}...`;
   }
   return newText;
 };

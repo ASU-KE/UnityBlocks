@@ -16,7 +16,7 @@ import { useBlockProps } from "@wordpress/block-editor";
 /**
  * External dependencies
  */
-import { CardGridNews } from "../../resources/unity/component-news/src/components";
+import { CardGridNews } from "@unity-components/CardGridNews";
 
 /**
  * Internal dependencies
@@ -52,6 +52,8 @@ const Edit = (props) => {
       cardButtonText,
       cardButtonColor,
       cardButtonSize,
+      useCardButton,
+      cardLinkText,
       enableStoryDate,
       enableStoryAuthor,
       enableCardTags,
@@ -124,6 +126,8 @@ const Edit = (props) => {
     header,
     ctaButton,
     cardButton,
+    useCardButton,
+    cardLinkText,
     enableStoryDate,
     enableStoryAuthor,
     enableCardTags,
