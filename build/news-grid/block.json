@@ -1,8 +1,8 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
-  "apiVersion": 2,
+  "apiVersion": 3,
   "name": "unityblocks/news-grid",
-  "version": "1.3.2",
+  "version": "2.0.0",
   "title": "Unity News Grid",
   "category": "unityblocks",
   "keywords": [
@@ -62,7 +62,7 @@
     },
     "cardButtonText": {
       "type": "string",
-      "default": "Read news"
+      "default": "Read"
     },
     "cardButtonColor": {
       "type": "string",
@@ -83,6 +83,14 @@
         "large"
       ],
       "default": "default"
+    },
+    "useCardButton": {
+      "type": "boolean",
+      "default": true
+    },
+    "cardLinkText": {
+      "type": "string",
+      "default": "Read"
     },
     "enableStoryDate": {
       "type": "boolean",
