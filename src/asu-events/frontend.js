@@ -1,6 +1,6 @@
 const { render } = wp.element;
 
-import { CardsGridEvents } from "@asu/component-events/dist/asuEvents.es";
+import { CardsGridEvents } from "../../resources/unity/component-ke-events/src/components/CardsGridEvents";
 
 // It is possible to load multiple events grids onto a page.
 // Load each DOM element on page using the Gutenberg-generated class for the Events Grid block

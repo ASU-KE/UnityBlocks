@@ -16,7 +16,7 @@ import { useBlockProps } from "@wordpress/block-editor";
 /**
  * External dependencies
  */
-import { CardsGridEvents } from "@asu/component-events/dist/asuEvents.es";
+import { CardsGridEvents } from "../../resources/unity/component-ke-events/src/components/CardsGridEvents";
 
 /**
  * Internal dependencies
