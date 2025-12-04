@@ -15,6 +15,7 @@
  * @property {Boolean} enableStoryAuthor
  * @property {Boolean} enableStoryDate
  * @property {String} numberColumns
+ * @property {CardButton} cardButton
  */
 
 /**
