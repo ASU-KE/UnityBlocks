@@ -8,23 +8,23 @@ import { defaultProps } from "../../core/constants/default-props";
 import { NewsWrapper } from "./index.styles";
 
 /**
- * @param {Object} story
+ * @param {Object} feed
  * @param {number} index
  * @param {import("../../core/types/news-types").CardButton} cardButton
  */
-const cardRow = (story, index, cardButton) => ({
+const cardRow = (feed, index, cardButton) => ({
   id: index,
-  imageSource: story.featuredImageUrl ? story.featuredImageUrl : story.headerImageUrl,
-  imageAltText: story.title,
-  title: story.title,
-  content: story.excerpt,
+  imageSource: feed.imageUrl,
+  imageAltText: feed.imageAltText,
+  title: feed.title,
+  content: feed.content,
   buttons: [
     {
       ariaLabel: cardButton.text,
       color: cardButton.color,
       label: cardButton.text,
       size: cardButton.size,
-      href: story.storyLink,
+      href: feed.buttonLink,
     },
   ],
 });
@@ -34,9 +34,9 @@ const cardRow = (story, index, cardButton) => ({
  */
 
 const CarouselTemplate = ({ cardButton }) => {
-  const { stories } = useContext(FeedContext); // Reading the "stories" object from the context
-  const cardItems = stories?.map((story, index) =>
-    cardRow(story, index, cardButton)
+  const { feeds } = useContext(FeedContext); // Reading the "feeds" object from the context
+  const cardItems = feeds?.map((feed, index) =>
+    cardRow(feed, index, cardButton)
   );
 
   return (
