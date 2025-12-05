@@ -21,6 +21,7 @@ import { useFetchWpRestTaxonomy } from "@resources/utils/hooks/use-fetch-wp-rest
 const Inspector = (props) => {
   const {
     attributes: {
+      displayType,
       enableHeader,
       headerText,
       headerColor,
@@ -78,6 +79,31 @@ const Inspector = (props) => {
     <>
       <InspectorControls>
         <PanelBody title={__("Card and Grid Settings", "unityblocks")} initialOpen={true}>
+          <PanelRow>
+            <RadioControl
+              label={__("Display Type", "unityblocks")}
+              selected={displayType}
+              options={[
+                {
+                  label: __("Card Grid", "unityblocks"),
+                  value: "grid",
+                },
+                {
+                  label: __("Card List", "unityblocks"),
+                  value: "list",
+                },
+                {
+                  label: __("Card Carousel", "unityblocks"),
+                  value: "carousel",
+                },
+              ]}
+              onChange={(newValue) =>
+                setAttributes({
+                  displayType: newValue,
+                })
+              }
+            />
+          </PanelRow>
         <PanelRow>
             <TextControl
               label={"Max items to load in view"}
@@ -89,6 +115,7 @@ const Inspector = (props) => {
               }
             />
           </PanelRow>
+          {displayType === "grid" && (
           <PanelRow>
             <RadioControl
               label={__("Grid column width", "unityblocks")}
@@ -110,6 +137,7 @@ const Inspector = (props) => {
               }
             />
           </PanelRow>
+          )}
           <PanelRow>
             <ToggleControl
               label={"Enable Story Date"}

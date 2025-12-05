@@ -25,6 +25,11 @@
     }
   },
   "attributes": {
+    "displayType": {
+      "type": "string",
+      "enum": ["grid", "list", "carousel"],
+      "default": "grid"
+    },
     "enableHeader": {
       "type": "boolean",
       "default": true

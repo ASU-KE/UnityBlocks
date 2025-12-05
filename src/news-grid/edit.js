@@ -17,6 +17,8 @@ import { useBlockProps } from "@wordpress/block-editor";
  * External dependencies
  */
 import { CardGridNews } from "@unity-components/CardGridNews";
+import { CardListlNews } from "@unity-components/CardListlNews";
+import { CardCarouselNews } from "@unity-components/CardCarouselNews";
 
 /**
  * Internal dependencies
@@ -43,6 +45,7 @@ import Inspector from "./inspector";
 const Edit = (props) => {
   const {
     attributes: {
+      displayType,
       enableHeader,
       headerText,
       headerColor,
@@ -139,11 +142,26 @@ const Edit = (props) => {
     keDataSourcePerPage,
   };
 
+  // Select the appropriate component based on displayType
+  let NewsComponent;
+  switch (displayType) {
+    case "list":
+      NewsComponent = CardListlNews;
+      break;
+    case "carousel":
+      NewsComponent = CardCarouselNews;
+      break;
+    case "grid":
+    default:
+      NewsComponent = CardGridNews;
+      break;
+  }
+
   return (
     <>
       <Inspector {...props} />
       <div {...useBlockProps()}>
-        <CardGridNews {...args} />
+        <NewsComponent {...args} />
       </div>
     </>
   );
