@@ -24,9 +24,11 @@ const save = (props) => {
       ctaText,
       ctaUrl,
       ctaColor,
-      // cardButtonText,
-      // cardButtonColor,
-      // cardButtonSize,
+      cardButtonText,
+      cardButtonColor,
+      cardButtonSize,
+      useCardButton,
+      cardLinkText,
       enableStoryDate,
       enableStoryAuthor,
       enableCardTags,
@@ -62,13 +64,11 @@ const save = (props) => {
       }
     : null;
 
-  // const cardButton = {
-  // 	color: cardButtonColor,
-  // 	text: cardButtonText,
-  // 	size: cardButtonSize,
-  // };
-
-  const cardButton = "";
+  const cardButton = {
+    color: cardButtonColor,
+    text: cardButtonText,
+    size: cardButtonSize,
+  };
 
   const asuDataSource = {
     url: asuDataSourceUrl + asuDataSourceFeed,
@@ -98,6 +98,8 @@ const save = (props) => {
     "data-header": JSON.stringify(header),
     "data-ctabutton": JSON.stringify(ctaButton),
     "data-cardbutton": JSON.stringify(cardButton),
+    "data-usecardbutton": useCardButton,
+    "data-cardlinktext": cardLinkText,
     "data-enablestorydate": enableStoryDate,
     "data-enablestoryauthor": enableStoryAuthor,
     "data-enablecardtags": enableCardTags,

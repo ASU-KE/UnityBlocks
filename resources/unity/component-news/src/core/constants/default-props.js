@@ -1,3 +1,5 @@
+// @ts-check
+
 /** @type {import("../types/news-types").FeedType} */
 const defaultProps = {
   header: {
@@ -6,6 +8,7 @@ const defaultProps = {
   },
   ctaButton: {
     color: "gold",
+    size: "default",
     text: "More stories and videos",
     url: "https://news.asu.edu",
   },
