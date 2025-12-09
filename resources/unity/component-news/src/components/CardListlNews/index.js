@@ -12,33 +12,31 @@ import { parseInterests } from "../../core/utils";
 import { NewsWrapper } from "./index.styles";
 
 /**
- * @param {object} feed
+ * @param {object} story
  * @param {import("../../core/types/news-types").CardButton} cardButton
  */
-const listRow = (feed, cardButton) => (
-  <div className="card card-hover cards-items-container" key={feed.id}>
+const listRow = (story, cardButton) => (
+  <div className="card card-hover cards-items-container" key={story.id}>
     <Card
       type="story"
       horizontal
-      eventFormat="inline"
-      eventLocation={feed.location}
-      clickable={!!feed.buttonLink}
-      title={feed.title}
-      body={`<p class="card-text text-dark">${feed.content}</p>`}
-      image={feed.imageUrl}
-      imageAltText={feed.imageAltText}
-      linkLabel={feed.eventButtonText}
-      linkUrl={feed.eventButtonUrl || feed?.buttonLink}
+      clickable={!!story.storyLink}
+      title={story.title}
+      body={`<p class="card-text text-dark">${story.excerpt}</p>`}
+      image={story.featuredImageUrl ? story.featuredImageUrl : story.headerImageUrl}
+      imageAltText={story.title}
+      linkLabel={cardButton.text}
+      linkUrl={story.storyLink}
       buttons={[
         {
           ariaLabel: cardButton.text,
           color: cardButton.color,
           label: cardButton.text,
           size: cardButton.size,
-          href: feed.buttonLink,
+          href: story.storyLink,
         },
       ]}
-      tags={parseInterests(feed?.interests)}
+      tags={parseInterests(story?.interests)}
     />
   </div>
 );
@@ -48,12 +46,12 @@ const listRow = (feed, cardButton) => (
  */
 
 const ListTemplate = ({ cardButton }) => {
-  const { feeds } = useContext(FeedContext); // Reading the "feeds" object from the context
+  const { stories } = useContext(FeedContext); // Reading the "stories" object from the context
 
   return (
     <NewsWrapper className="row-spaced" data-testid="list-view-container">
-      {feeds?.map((feed, index) => (
-        <React.Fragment key={index}>{listRow(feed, cardButton)}</React.Fragment>
+      {stories?.map((story, index) => (
+        <React.Fragment key={index}>{listRow(story, cardButton)}</React.Fragment>
       ))}
     </NewsWrapper>
   );
