@@ -58,9 +58,13 @@ const CarouselTemplate = ({ cardButton }) => {
 
 /**
  * @param {FeedType} props
+ * Note: CardCarouselNews always uses buttons. The useCardButton and cardLinkText props 
+ * are ignored as carousel display only supports button interactions.
  */
-const CardCarouselNews = ({ cardButton, ...props }) => (
+const CardCarouselNews = ({ cardButton, useCardButton, cardLinkText, ...props }) => (
   // Calling the high order component that fetches the data
+  // Note: useCardButton and cardLinkText are intentionally not passed to CarouselTemplate
+  // Carousel always displays buttons for consistent user interaction
   <BaseFeed {...props}>
     <CarouselTemplate
       cardButton={{ ...defaultProps.cardButton, ...cardButton }}
