@@ -9,8 +9,12 @@ const grids = document.querySelectorAll(".wp-block-unityblocks-news-grid");
 grids.forEach((newsGrid) => {
   const enableHeader = newsGrid.dataset.enableheader === "true";
   const cardButton = JSON.parse(newsGrid.dataset.cardbutton);
-  const useCardButton = newsGrid.dataset.usecardbutton === "true";
-  const cardLinkText = newsGrid.dataset.cardlinktext;
+  // Handle old blocks that don't have useCardButton attribute - default to true (use buttons)
+  const useCardButton = newsGrid.dataset.usecardbutton !== undefined 
+    ? newsGrid.dataset.usecardbutton === "true" 
+    : true;
+  // Handle old blocks that don't have cardLinkText attribute - default to "Read"
+  const cardLinkText = newsGrid.dataset.cardlinktext || "Read";
   const enableStoryDate = newsGrid.dataset.enablestorydate === "true";
   const enableStoryAuthor = newsGrid.dataset.enablestoryauthor === "true";
   const enableCardTags = newsGrid.dataset.enablecardtags === "true";
