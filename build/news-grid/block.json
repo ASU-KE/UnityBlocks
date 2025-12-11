@@ -25,6 +25,15 @@
     "unityblocks-news-grid-view-script"
   ],
   "editorScript": "file:./index.js",
+  "example": {
+    "attributes": {
+      "enableHeader": true,
+      "headerText": "News Grid",
+      "enableAsuDataSource": true,
+      "maxItems": 6,
+      "numberColumns": "3"
+    }
+  },
   "attributes": {
     "enableHeader": {
       "type": "boolean",
