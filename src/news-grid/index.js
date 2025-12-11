@@ -20,6 +20,7 @@ import { registerBlockType } from "@wordpress/blocks";
 import edit from "./edit";
 import metadata from "./block.json";
 import save from "./save";
+import deprecated from "./deprecated";
 
 /**
  * Every block starts by registering a new block type definition.
@@ -36,5 +37,11 @@ registerBlockType(metadata.name, {
    * @see ./save.js
    */
   save,
+
+  /**
+   * @see ./deprecated.js
+   */
+  deprecated,
+
   example: () => {},
 });
