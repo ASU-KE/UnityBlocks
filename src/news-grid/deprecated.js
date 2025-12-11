@@ -155,7 +155,8 @@ const deprecated_v1 = {
         }
       : null;
 
-    // Old version had a simple cardButton structure
+    // Old version had a simple cardButton structure with fixed defaults
+    // These values must match what was historically saved to ensure proper block validation
     const cardButton = {
       color: "gold",
       text: "Read",
@@ -213,12 +214,13 @@ const deprecated_v1 = {
 
   migrate: (attributes) => {
     // Migrate old attributes to new structure
-    // Add the new attributes with sensible defaults
+    // Add the new attributes with sensible defaults that match the old behavior
+    // These values must match the hardcoded cardButton values in the deprecated save function
     return {
       ...attributes,
       // Set useCardButton to true to maintain button behavior (old default)
       useCardButton: true,
-      // Use default values for new button attributes
+      // Use default values for new button attributes (matching old hardcoded values)
       cardButtonText: "Read",
       cardButtonColor: "gold",
       cardButtonSize: "default",
