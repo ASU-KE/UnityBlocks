@@ -5,11 +5,13 @@ import { useBlockProps } from "@wordpress/block-editor";
 
 /**
  * Deprecated version 1: Before the addition of useCardButton, cardButtonText,
- * cardButtonColor, cardButtonSize, and cardLinkText attributes (Nov 2025).
- *
+ * cardButtonColor, cardButtonSize, and cardLinkText attributes.
+ * 
+ * These attributes were added in November 2025 (commits: acaaee48, 305b9942, 48b798cd).
  * This deprecated version handles blocks saved before the button/link toggle
  * functionality was added. The old version didn't support customizing button
  * text, color, or size, and didn't have a toggle between buttons and links.
+ * Instead, it always rendered buttons with hardcoded "Read" text and "gold" color.
  */
 const deprecated_v1 = {
   attributes: {
@@ -39,7 +41,11 @@ const deprecated_v1 = {
       enum: ["gold", "maroon", "gray", "dark"],
       default: "maroon",
     },
-    // Old version didn't have: cardButtonText, cardButtonColor, cardButtonSize, useCardButton, cardLinkText
+    // The following attributes don't exist in this deprecated version and will be
+    // added by the migrate() function when the block is loaded in the editor:
+    // - cardButtonText, cardButtonColor, cardButtonSize: Allow button customization
+    // - useCardButton: Toggles between button and link display
+    // - cardLinkText: Text for link when useCardButton is false
     enableStoryDate: {
       type: "boolean",
       default: true,
@@ -191,7 +197,11 @@ const deprecated_v1 = {
       "data-header": JSON.stringify(header),
       "data-ctabutton": JSON.stringify(ctaButton),
       "data-cardbutton": JSON.stringify(cardButton),
-      // Old version didn't have: usecardbutton, cardlinktext
+      // The following data attributes don't exist in the old block's saved HTML.
+      // When frontend.js loads this block on the live site, it will handle these
+      // missing attributes by defaulting to button mode (useCardButton: true) with
+      // "Read" text. This ensures buttons display correctly even before users re-save.
+      // Missing: data-usecardbutton, data-cardlinktext
       "data-enablestorydate": enableStoryDate,
       "data-enablestoryauthor": enableStoryAuthor,
       "data-enablecardtags": enableCardTags,
