@@ -8,7 +8,22 @@ const grids = document.querySelectorAll(".wp-block-unityblocks-news-grid");
 
 grids.forEach((newsGrid) => {
   const enableHeader = newsGrid.dataset.enableheader === "true";
-  const cardButton = JSON.parse(newsGrid.dataset.cardbutton);
+  
+  // Parse cardButton and ensure it has required properties with defaults
+  let cardButton = {};
+  try {
+    cardButton = JSON.parse(newsGrid.dataset.cardbutton) || {};
+  } catch (e) {
+    console.warn('Failed to parse cardButton data attribute', e);
+  }
+  
+  // Ensure cardButton has all required properties with proper defaults
+  cardButton = {
+    text: cardButton.text || "Read",
+    color: cardButton.color || "gold",
+    size: cardButton.size || "default",
+  };
+  
   // Handle old blocks that don't have useCardButton attribute - default to true (use buttons)
   const useCardButton = newsGrid.dataset.usecardbutton !== undefined 
     ? newsGrid.dataset.usecardbutton === "true" 
