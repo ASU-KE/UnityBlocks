@@ -32,22 +32,18 @@ if (!defined('ABSPATH')) {
  */
 function unityblocks_block_init()
 {
-	/**
-	 * Load current theme and check if it is Pitchfork or a Pitchfork Child
-	 */
-	//$theme_data = wp_get_theme();
-	//$pitchfork_theme = ('pitchfork' === $theme_data->get('TextDomain') || 'pitchfork' === $theme_data->get('Template'));
-
-	// Register these blocks only if not using Pitchfork
-	// Pitchfork already has these blocks
-	// if (!$pitchfork_theme) {
-	// 	register_block_type(__DIR__ . '/build/hero');
-	// } find new solution that works with block manifest
-
-	wp_register_block_types_from_metadata_collection(
-    plugin_dir_path( __FILE__ ) . 'build',
-    plugin_dir_path( __FILE__ ) . 'build/blocks-manifest.php'
-);
+	// check WP version: v6.8+, v6.7, pre 6.7
+	if ( function_exists( 'wp_register_block_types_from_metadata_collection' ) ) {
+    wp_register_block_types_from_metadata_collection( __DIR__ . '/build', __DIR__ . '/build/blocks-manifest.php' );
+	} else {
+    if ( function_exists( 'wp_register_block_metadata_collection' ) ) {
+        wp_register_block_metadata_collection( __DIR__ . '/build', __DIR__ . '/build/blocks-manifest.php' );
+    }
+    $manifest_data = require __DIR__ . '/build/blocks-manifest.php';
+    foreach ( array_keys( $manifest_data ) as $block_type ) {
+        register_block_type( __DIR__ . "/build/{$block_type}" );
+    }
+}
 
 }
 add_action('init', 'unityblocks_block_init');
