@@ -1,0 +1,24 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "unityblocks/ranking-card",
+  "version": "1.0.0",
+  "title": "Ranking Card",
+  "category": "unityblocks",
+  "keywords": ["unityblocks", "ranking", "card"],
+  "icon": "index-card",
+  "description": "A UDS default design - ranking card with an interactive show more.",
+  "supports": {
+    "html": false,
+    "align": ["wide", "full"]
+  },
+  "textdomain": "unityblocks",
+  "viewScript": ["file:./frontend.js", "unityblocks-ranking-card-view-script"],
+  "editorScript": "file:./index.js",
+  "attributes": {
+    "maxItems": {
+      "type": "number",
+      "default": 6
+    }
+  }
+}
