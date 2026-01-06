@@ -18,46 +18,24 @@ import { useBlockProps } from "@wordpress/block-editor";
 const save = (props) => {
   const {
     attributes: {
-      enableHeader,
-      headerText,
-      headerColor,
-      ctaColor,
-      ctaText,
-      ctaUrl,
-      dataSourceUrl,
-      dataSourceFilters,
-      noResultsText,
-      maxItems,
+      imageSize,
+      image,
+      imageAlt,
+      heading,
+      body,
+      readMoreLink,
+      citation,
     },
   } = props;
 
-  const header = enableHeader
-    ? JSON.stringify({
-        color: headerColor,
-        text: headerText,
-      })
-    : null;
-
-  const ctaButton = enableHeader
-    ? JSON.stringify({
-        color: ctaColor,
-        text: ctaText,
-        url: ctaUrl,
-      })
-    : null;
-
-  let dataSource = JSON.stringify({
-    url: dataSourceUrl,
-    filters: dataSourceFilters,
-  });
-
   const dataAttributes = {
-    "data-enableheader": enableHeader,
-    "data-header": header,
-    "data-ctabutton": ctaButton,
-    "data-datasource": dataSource,
-    "data-noresultstext": noResultsText,
-    "data-maxitems": maxItems,
+    "data-imagesize": imageSize,
+    "data-image": image,
+    "data-imagealt": imageAlt,
+    "data-heading": heading,
+    "data-body": body,
+    "data-readmorelink": readMoreLink,
+    "data-citation": citation,
   };
 
   return <div {...useBlockProps.save()} {...dataAttributes}></div>;

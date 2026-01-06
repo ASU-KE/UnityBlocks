@@ -16,9 +16,34 @@
   "viewScript": ["file:./frontend.js", "unityblocks-ranking-card-view-script"],
   "editorScript": "file:./index.js",
   "attributes": {
-    "maxItems": {
-      "type": "number",
-      "default": 6
+    "imageSize": {
+      "type": "string",
+      "enum": ["small", "large"],
+      "default": "large"
+    },
+    "image": {
+      "type": "string",
+      "default": ""
+    },
+    "imageAlt": {
+      "type": "string",
+      "default": ""
+    },
+    "heading": {
+      "type": "string",
+      "default": ""
+    },
+    "body": {
+      "type": "string",
+      "default": ""
+    },
+    "readMoreLink": {
+      "type": "string",
+      "default": ""
+    },
+    "citation": {
+      "type": "string",
+      "default": ""
     }
   }
 }

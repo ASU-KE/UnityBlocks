@@ -16,7 +16,7 @@ import { useBlockProps } from "@wordpress/block-editor";
 /**
  * External dependencies
  */
-import { RankingCard } from "@asu/unity-react-core/dist/unityReactCore.es";
+import { RankingCard } from "@asu/unity-react-core/dist/esm/components/RankingCard.es";
 
 /**
  * Internal dependencies
@@ -42,43 +42,31 @@ import Inspector from "./inspector";
 const Edit = (props) => {
   const {
     attributes: {
-      maxItems,
+      imageSize,
+      image,
+      imageAlt,
+      heading,
+      body,
+      readMoreLink,
+      citation,
     },
   } = props;
 
-  const header = enableHeader
-    ? {
-        color: headerColor,
-        text: headerText,
-      }
-    : null;
-
-  const ctaButton = enableHeader
-    ? {
-        color: ctaColor,
-        text: ctaText,
-        url: ctaUrl,
-      }
-    : null;
-
-  const dataSource = {
-    url: dataSourceUrl,
-    filters: dataSourceFilters,
-  };
-
   const args = {
-    header,
-    ctaButton,
-    dataSource,
-    noResultsText,
-    maxItems,
+    imageSize,
+    image,
+    imageAlt,
+    heading,
+    body,
+    readMoreLink,
+    citation,
   };
 
   return (
     <>
       <Inspector {...props} />
       <div {...useBlockProps()}>
-        <RankingCard {...args} />
+        <RankingCard key={imageSize} {...args} />
       </div>
     </>
   );
