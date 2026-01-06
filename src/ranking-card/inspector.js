@@ -110,16 +110,15 @@ const Inspector = (props) => {
               onChange={(value) => setAttributes({ readMoreLink: value })}
             />
           </PanelRow>
-          {imageSize === "small" && (
-            <PanelRow>
-              <TextControl
-                label={__("Citation", "unityblocks")}
-                help={__("Required for small image size", "unityblocks")}
-                value={citation}
-                onChange={(value) => setAttributes({ citation: value })}
-              />
-            </PanelRow>
-          )}
+          <PanelRow>
+            <TextControl
+              label={__("Citation", "unityblocks")}
+              help={imageSize === "small" ? __("Required for small image size", "unityblocks") : __("Only shown when image size is small", "unityblocks")}
+              value={citation}
+              onChange={(value) => setAttributes({ citation: value })}
+              disabled={imageSize !== "small"}
+            />
+          </PanelRow>
         </PanelBody>
       </InspectorControls>
     </>
