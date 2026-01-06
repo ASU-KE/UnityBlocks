@@ -42,36 +42,24 @@ import Inspector from "./inspector";
 const Edit = (props) => {
   const {
     attributes: {
-      maxItems,
+      imageSize,
+      image,
+      imageAlt,
+      heading,
+      body,
+      readMoreLink,
+      citation,
     },
   } = props;
 
-  const header = enableHeader
-    ? {
-        color: headerColor,
-        text: headerText,
-      }
-    : null;
-
-  const ctaButton = enableHeader
-    ? {
-        color: ctaColor,
-        text: ctaText,
-        url: ctaUrl,
-      }
-    : null;
-
-  const dataSource = {
-    url: dataSourceUrl,
-    filters: dataSourceFilters,
-  };
-
   const args = {
-    header,
-    ctaButton,
-    dataSource,
-    noResultsText,
-    maxItems,
+    imageSize,
+    image,
+    imageAlt,
+    heading,
+    body,
+    readMoreLink,
+    citation,
   };
 
   return (

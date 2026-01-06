@@ -2,13 +2,14 @@
  * WordPress dependencies
  */
 import { __ } from "@wordpress/i18n";
-import { InspectorControls } from "@wordpress/block-editor";
+import { InspectorControls, MediaUpload, MediaUploadCheck } from "@wordpress/block-editor";
 import {
   PanelBody,
   PanelRow,
   RadioControl,
   TextControl,
-  ToggleControl,
+  TextareaControl,
+  Button,
 } from "@wordpress/components";
 
 /**
@@ -19,16 +20,13 @@ import {
 const Inspector = (props) => {
   const {
     attributes: {
-      enableHeader,
-      headerText,
-      headerColor,
-      ctaColor,
-      ctaText,
-      ctaUrl,
-      dataSourceUrl,
-      dataSourceFilters,
-      noResultsText,
-      maxItems,
+      imageSize,
+      image,
+      imageAlt,
+      heading,
+      body,
+      readMoreLink,
+      citation,
     },
     setAttributes,
   } = props;
@@ -36,147 +34,92 @@ const Inspector = (props) => {
   return (
     <>
       <InspectorControls>
-        <PanelBody title={__("Header", "unityblocks")} initialOpen={true}>
+        <PanelBody title={__("Image Settings", "unityblocks")} initialOpen={true}>
           <PanelRow>
-            <ToggleControl
-              label={"Enable Header"}
-              help={enableHeader ? "Header enabled." : "Header disabled."}
-              checked={enableHeader}
-              onChange={(value) => {
-                setAttributes({ enableHeader: value });
-              }}
+            <RadioControl
+              label={__("Image size", "unityblocks")}
+              selected={imageSize}
+              options={[
+                {
+                  label: __("Large", "unityblocks"),
+                  value: "large",
+                },
+                {
+                  label: __("Small", "unityblocks"),
+                  value: "small",
+                },
+              ]}
+              onChange={(value) => setAttributes({ imageSize: value })}
             />
           </PanelRow>
-          {enableHeader && (
-            <>
-              <PanelRow>
-                <TextControl
-                  label={"Header text"}
-                  value={headerText}
-                  onChange={(value) => setAttributes({ headerText: value })}
-                />
-              </PanelRow>
-              <PanelRow>
-                <RadioControl
-                  label={__("Header text color", "unityblocks")}
-                  selected={headerColor}
-                  options={[
-                    {
-                      label: __("White", "unityblocks"),
-                      value: "white",
-                    },
-                    {
-                      label: __("Dark", "unityblocks"),
-                      value: "dark",
-                    },
-                  ]}
-                  onChange={(value) => setAttributes({ headerColor: value })}
-                />
-              </PanelRow>
-            </>
+          <PanelRow>
+            <MediaUploadCheck>
+              <MediaUpload
+                onSelect={(media) => {
+                  setAttributes({
+                    image: media.url,
+                    imageAlt: media.alt || "",
+                  });
+                }}
+                allowedTypes={["image"]}
+                value={image}
+                render={({ open }) => (
+                  <div>
+                    <Button onClick={open} variant="secondary">
+                      {image ? __("Change Image", "unityblocks") : __("Select Image", "unityblocks")}
+                    </Button>
+                    {image && (
+                      <div style={{ marginTop: "10px" }}>
+                        <img src={image} alt={imageAlt} style={{ maxWidth: "100%", height: "auto" }} />
+                      </div>
+                    )}
+                  </div>
+                )}
+              />
+            </MediaUploadCheck>
+          </PanelRow>
+          <PanelRow>
+            <TextControl
+              label={__("Image Alt Text", "unityblocks")}
+              value={imageAlt}
+              onChange={(value) => setAttributes({ imageAlt: value })}
+            />
+          </PanelRow>
+        </PanelBody>
+
+        <PanelBody title={__("Content", "unityblocks")} initialOpen={true}>
+          <PanelRow>
+            <TextControl
+              label={__("Heading", "unityblocks")}
+              value={heading}
+              onChange={(value) => setAttributes({ heading: value })}
+            />
+          </PanelRow>
+          <PanelRow>
+            <TextareaControl
+              label={__("Body", "unityblocks")}
+              value={body}
+              onChange={(value) => setAttributes({ body: value })}
+              rows={6}
+            />
+          </PanelRow>
+          <PanelRow>
+            <TextControl
+              label={__("Read More Link", "unityblocks")}
+              value={readMoreLink}
+              onChange={(value) => setAttributes({ readMoreLink: value })}
+            />
+          </PanelRow>
+          {imageSize === "small" && (
+            <PanelRow>
+              <TextControl
+                label={__("Citation", "unityblocks")}
+                help={__("Required for small image size", "unityblocks")}
+                value={citation}
+                onChange={(value) => setAttributes({ citation: value })}
+              />
+            </PanelRow>
           )}
-        </PanelBody>
-
-        {enableHeader && (
-          <PanelBody
-            title={__("CTA button", "unityblocks")}
-            initialOpen={false}
-          >
-            <PanelRow>
-              <TextControl
-                label={"CTA text"}
-                placeholder="Click to see more events"
-                value={ctaText}
-                onChange={(value) => setAttributes({ ctaText: value })}
-              />
-            </PanelRow>
-            <PanelRow>
-              <TextControl
-                className="eventsgrid__cardbutton-url"
-                label={"CTA URL"}
-                value={ctaUrl}
-                onChange={(value) => setAttributes({ ctaUrl: value })}
-              />
-            </PanelRow>
-            <PanelRow>
-              <RadioControl
-                label={__("CTA button color", "unityblocks")}
-                selected={ctaColor}
-                options={[
-                  {
-                    label: __("Gold", "unityblocks"),
-                    value: "gold",
-                  },
-                  {
-                    label: __("Maroon", "unityblocks"),
-                    value: "maroon",
-                  },
-                  {
-                    label: __("Gray", "unityblocks"),
-                    value: "gray",
-                  },
-                  {
-                    label: __("Dark", "unityblocks"),
-                    value: "dark",
-                  },
-                ]}
-                onChange={(value) => setAttributes({ ctaColor: value })}
-              />
-            </PanelRow>
-          </PanelBody>
-        )}
-
-        <PanelBody>
-          <PanelRow>
-            <TextControl
-              label={"Text to display when no results found"}
-              value={noResultsText}
-              onChange={(value) => setAttributes({ noResultsText: value })}
-            />
-          </PanelRow>
-          <PanelRow>
-            <TextControl
-              label={"Max items to load"}
-              help={
-                "Changing this value doesn't update the Edit view immediately. Update and reload to refresh the editor."
-              }
-              value={maxItems}
-              onChange={(value) =>
-                setAttributes({
-                  maxItems: Number(value), // Force attribute to number because this input field returns value as string.
-                })
-              }
-            />
-          </PanelRow>
-        </PanelBody>
-
-        <PanelBody title={__("Data Source", "unityblocks")} initialOpen={false}>
-          <PanelRow>
-            <TextControl
-              label={"Url"}
-              help={"For the master list of feeds, refer to: https://asuevents.asu.edu/reports/taxonomy-terms"}
-              value={dataSourceUrl}
-              onChange={(value) =>
-                setAttributes({
-                  dataSourceUrl: value,
-                })
-              }
-            />
-          </PanelRow>
-          <PanelRow>
-            <TextControl
-              label={"Events filters"}
-              help={
-                "Users can filter the feed to specific items. Fields where the filter will be applied: eventTopics, eventUnits, interests, audiences, eventTypes"
-              }
-              value={dataSourceFilters}
-              onChange={(value) =>
-                setAttributes({
-                  dataSourceFilters: value,
-                })
-              }
-            />
-          </PanelRow>
         </PanelBody>
       </InspectorControls>
     </>

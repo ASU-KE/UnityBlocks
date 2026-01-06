@@ -2,29 +2,28 @@ const { render } = wp.element;
 
 import { RankingCard } from "@asu/unity-react-core/dist/unityReactCore.es";
 
-// It is possible to load multiple events grids onto a page.
-// Load each DOM element on page using the Gutenberg-generated class for the Events Grid block
+// It is possible to load multiple ranking cards onto a page.
+// Load each DOM element on page using the Gutenberg-generated class for the Ranking Card block
 const cards = document.querySelectorAll(".wp-block-unityblocks-ranking-card");
 
 cards.forEach((rankingCard) => {
-  const enableHeader = rankingCard.dataset.enableheader === "true";
-  const dataSource = JSON.parse(rankingCard.dataset.datasource);
-  const noResultsText = rankingCard.dataset.noresultstext;
-  const maxItems = rankingCard.dataset.maxitems;
+  const imageSize = rankingCard.dataset.imagesize;
+  const image = rankingCard.dataset.image;
+  const imageAlt = rankingCard.dataset.imagealt;
+  const heading = rankingCard.dataset.heading;
+  const body = rankingCard.dataset.body;
+  const readMoreLink = rankingCard.dataset.readmorelink;
+  const citation = rankingCard.dataset.citation;
 
-  const props = enableHeader
-    ? {
-        header: JSON.parse(rankingCard.dataset.header),
-        ctaButton: JSON.parse(rankingCard.dataset.ctabutton),
-        dataSource,
-        noResultsText,
-        maxItems,
-      }
-    : {
-        dataSource,
-        noResultsText,
-        maxItems,
-      };
+  const props = {
+    imageSize,
+    image,
+    imageAlt,
+    heading,
+    body,
+    readMoreLink,
+    citation,
+  };
 
   render(<RankingCard {...props} />, rankingCard);
 });
