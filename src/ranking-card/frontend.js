@@ -1,6 +1,6 @@
 const { render } = wp.element;
 
-import { RankingCard } from "@asu/unity-react-core/dist/unityReactCore.es";
+import { RankingCard } from "@asu/unity-react-core/dist/esm/components/RankingCard.es";
 
 // It is possible to load multiple ranking cards onto a page.
 // Load each DOM element on page using the Gutenberg-generated class for the Ranking Card block

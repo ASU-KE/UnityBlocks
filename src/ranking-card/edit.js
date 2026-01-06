@@ -16,7 +16,7 @@ import { useBlockProps } from "@wordpress/block-editor";
 /**
  * External dependencies
  */
-import { RankingCard } from "@asu/unity-react-core/dist/unityReactCore.es";
+import { RankingCard } from "@asu/unity-react-core/dist/esm/components/RankingCard.es";
 
 /**
  * Internal dependencies
