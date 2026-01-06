@@ -66,7 +66,7 @@ const Edit = (props) => {
     <>
       <Inspector {...props} />
       <div {...useBlockProps()}>
-        <RankingCard {...args} />
+        <RankingCard key={imageSize} {...args} />
       </div>
     </>
   );
