@@ -694,6 +694,68 @@ return array(
 			)
 		)
 	),
+	'ranking-card' => array(
+		'$schema' => 'https://schemas.wp.org/trunk/block.json',
+		'apiVersion' => 3,
+		'name' => 'unityblocks/ranking-card',
+		'version' => '1.0.0',
+		'title' => 'Ranking Card',
+		'category' => 'unityblocks',
+		'keywords' => array(
+			'unityblocks',
+			'ranking',
+			'card'
+		),
+		'icon' => 'index-card',
+		'description' => 'A UDS default design - ranking card with an interactive show more.',
+		'supports' => array(
+			'html' => false,
+			'align' => array(
+				'wide',
+				'full'
+			)
+		),
+		'textdomain' => 'unityblocks',
+		'viewScript' => array(
+			'file:./frontend.js',
+			'unityblocks-ranking-card-view-script'
+		),
+		'editorScript' => 'file:./index.js',
+		'attributes' => array(
+			'imageSize' => array(
+				'type' => 'string',
+				'enum' => array(
+					'small',
+					'large'
+				),
+				'default' => 'large'
+			),
+			'image' => array(
+				'type' => 'string',
+				'default' => ''
+			),
+			'imageAlt' => array(
+				'type' => 'string',
+				'default' => ''
+			),
+			'heading' => array(
+				'type' => 'string',
+				'default' => ''
+			),
+			'body' => array(
+				'type' => 'string',
+				'default' => ''
+			),
+			'readMoreLink' => array(
+				'type' => 'string',
+				'default' => ''
+			),
+			'citation' => array(
+				'type' => 'string',
+				'default' => ''
+			)
+		)
+	),
 	'testimonial' => array(
 		'$schema' => 'https://schemas.wp.org/trunk/block.json',
 		'apiVersion' => 2,
