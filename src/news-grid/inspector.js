@@ -138,28 +138,32 @@ const Inspector = (props) => {
             />
           </PanelRow>
           )}
-          <PanelRow>
-            <ToggleControl
-              label={"Enable Story Date"}
-              help={enableStoryDate ? "Date enabled." : "Date disabled."}
-              checked={enableStoryDate}
-              onChange={(newValue) => {
-                setAttributes({ enableStoryDate: newValue });
-              }}
-            />
-          </PanelRow>
-          <PanelRow>
-            <ToggleControl
-              label={"Enable Story Author"}
-              help={enableStoryAuthor ? "Author enabled." : "Author disabled."}
-              checked={enableStoryAuthor}
-              onChange={(newValue) => {
-                setAttributes({
-                  enableStoryAuthor: newValue,
-                });
-              }}
-            />
-          </PanelRow>
+          {displayType === "grid" && (
+            <>
+              <PanelRow>
+                <ToggleControl
+                  label={"Enable Story Date"}
+                  help={enableStoryDate ? "Date enabled." : "Date disabled."}
+                  checked={enableStoryDate}
+                  onChange={(newValue) => {
+                    setAttributes({ enableStoryDate: newValue });
+                  }}
+                />
+              </PanelRow>
+              <PanelRow>
+                <ToggleControl
+                  label={"Enable Story Author"}
+                  help={enableStoryAuthor ? "Author enabled." : "Author disabled."}
+                  checked={enableStoryAuthor}
+                  onChange={(newValue) => {
+                    setAttributes({
+                      enableStoryAuthor: newValue,
+                    });
+                  }}
+                />
+              </PanelRow>
+            </>
+          )}
           {/* <PanelRow>
             <ToggleControl
               label={"Enable Card Tags"}
