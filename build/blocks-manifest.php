@@ -548,6 +548,15 @@ return array(
 			)
 		),
 		'attributes' => array(
+			'displayType' => array(
+				'type' => 'string',
+				'enum' => array(
+					'grid',
+					'list',
+					'carousel'
+				),
+				'default' => 'grid'
+			),
 			'enableHeader' => array(
 				'type' => 'boolean',
 				'default' => true
