@@ -18,6 +18,7 @@ import { useBlockProps } from "@wordpress/block-editor";
 const save = (props) => {
   const {
     attributes: {
+      displayType,
       enableHeader,
       headerText,
       headerColor,
@@ -94,6 +95,7 @@ const save = (props) => {
   };
 
   const dataAttributes = {
+    "data-displaytype": displayType,
     "data-enableheader": enableHeader,
     "data-header": JSON.stringify(header),
     "data-ctabutton": JSON.stringify(ctaButton),

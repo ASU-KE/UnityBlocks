@@ -1,5 +1,5 @@
 // @ts-check
-import { CardCarousel } from "@asu/component-carousel";
+import { CardCarousel } from "@asu/component-carousel/dist/asuCarousel.es";
 import React, { useContext } from "react";
 
 import { FeedContext } from "../../../../components-core/src";
@@ -8,23 +8,23 @@ import { defaultProps } from "../../core/constants/default-props";
 import { NewsWrapper } from "./index.styles";
 
 /**
- * @param {Object} feed
+ * @param {Object} story
  * @param {number} index
  * @param {import("../../core/types/news-types").CardButton} cardButton
  */
-const cardRow = (feed, index, cardButton) => ({
+const cardRow = (story, index, cardButton) => ({
   id: index,
-  imageSource: feed.imageUrl,
-  imageAltText: feed.imageAltText,
-  title: feed.title,
-  content: feed.content,
+  imageSource: story.featuredImageUrl ? story.featuredImageUrl : story.headerImageUrl,
+  imageAltText: story.title,
+  title: story.title,
+  content: story.excerpt,
   buttons: [
     {
       ariaLabel: cardButton.text,
       color: cardButton.color,
       label: cardButton.text,
       size: cardButton.size,
-      href: feed.buttonLink,
+      href: story.storyLink,
     },
   ],
 });
@@ -34,9 +34,9 @@ const cardRow = (feed, index, cardButton) => ({
  */
 
 const CarouselTemplate = ({ cardButton }) => {
-  const { feeds } = useContext(FeedContext); // Reading the "feeds" object from the context
-  const cardItems = feeds?.map((feed, index) =>
-    cardRow(feed, index, cardButton)
+  const { stories } = useContext(FeedContext); // Reading the "stories" object from the context
+  const cardItems = stories?.map((story, index) =>
+    cardRow(story, index, cardButton)
   );
 
   return (
@@ -58,9 +58,13 @@ const CarouselTemplate = ({ cardButton }) => {
 
 /**
  * @param {FeedType} props
+ * Note: CardCarouselNews always uses buttons. The useCardButton and cardLinkText props 
+ * are ignored as carousel display only supports button interactions.
  */
-const CardCarouselNews = ({ cardButton, ...props }) => (
+const CardCarouselNews = ({ cardButton, useCardButton, cardLinkText, ...props }) => (
   // Calling the high order component that fetches the data
+  // Note: useCardButton and cardLinkText are intentionally not passed to CarouselTemplate
+  // Carousel always displays buttons for consistent user interaction
   <BaseFeed {...props}>
     <CarouselTemplate
       cardButton={{ ...defaultProps.cardButton, ...cardButton }}
