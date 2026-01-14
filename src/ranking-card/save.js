@@ -1,0 +1,44 @@
+/**
+ * React hook that is used to mark the block wrapper element.
+ * It provides all the necessary props like the class name.
+ *
+ * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
+ */
+import { useBlockProps } from "@wordpress/block-editor";
+
+/**
+ * The save function defines the way in which the different attributes should
+ * be combined into the final markup, which is then serialized by the block
+ * editor into `post_content`.
+ *
+ * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-edit-save/#save
+ *
+ * @return {WPElement} Element to render.
+ */
+const save = (props) => {
+  const {
+    attributes: {
+      imageSize,
+      image,
+      imageAlt,
+      heading,
+      body,
+      readMoreLink,
+      citation,
+    },
+  } = props;
+
+  const dataAttributes = {
+    "data-imagesize": imageSize,
+    "data-image": image,
+    "data-imagealt": imageAlt,
+    "data-heading": heading,
+    "data-body": body,
+    "data-readmorelink": readMoreLink,
+    "data-citation": citation,
+  };
+
+  return <div {...useBlockProps.save()} {...dataAttributes}></div>;
+};
+
+export default save;
