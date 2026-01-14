@@ -1,12 +1,15 @@
 const { render } = wp.element;
 
 import { CardGridNews } from "@unity-components/CardGridNews";
+import { CardListlNews } from "@unity-components/CardListlNews";
+import { CardCarouselNews } from "@unity-components/CardCarouselNews";
 
 // It is possible to load multiple news grids onto a page.
 // Load each DOM element on page using the Gutenberg-generated class for the News Grid block
 const grids = document.querySelectorAll(".wp-block-unityblocks-news-grid");
 
 grids.forEach((newsGrid) => {
+  const displayType = newsGrid.dataset.displaytype || "grid";
   const enableHeader = newsGrid.dataset.enableheader === "true";
 
   // Parse cardButton and ensure it has required properties with defaults
@@ -79,5 +82,20 @@ grids.forEach((newsGrid) => {
         keDataSourcePerPage,
       };
 
-  render(<CardGridNews {...props} />, newsGrid);
+  // Select the appropriate component based on displayType
+  let NewsComponent;
+  switch (displayType) {
+    case "list":
+      NewsComponent = CardListlNews;
+      break;
+    case "carousel":
+      NewsComponent = CardCarouselNews;
+      break;
+    case "grid":
+    default:
+      NewsComponent = CardGridNews;
+      break;
+  }
+
+  render(<NewsComponent {...props} />, newsGrid);
 });

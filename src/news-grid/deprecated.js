@@ -240,4 +240,253 @@ const deprecated_v1 = {
   },
 };
 
-export default [deprecated_v1];
+/**
+ * Deprecated version 2: Before the addition of displayType attribute.
+ * 
+ * The displayType attribute was added in December 2025 to allow users to choose
+ * between grid, list, and carousel display modes. This deprecated version handles
+ * blocks saved before this feature was added. The old version only supported grid
+ * display mode, so the migrate function will default to "grid" to maintain the
+ * original behavior.
+ */
+const deprecated_v2 = {
+  attributes: {
+    enableHeader: {
+      type: "boolean",
+      default: true,
+    },
+    headerText: {
+      type: "string",
+      default: "News Grid",
+    },
+    headerColor: {
+      type: "string",
+      enum: ["dark", "white"],
+      default: "dark",
+    },
+    ctaText: {
+      type: "string",
+      default: "Click to see more news",
+    },
+    ctaUrl: {
+      type: "string",
+      default: "https://news.asu.edu/",
+    },
+    ctaColor: {
+      type: "string",
+      enum: ["gold", "maroon", "gray", "dark"],
+      default: "maroon",
+    },
+    cardButtonText: {
+      type: "string",
+      default: "Read",
+    },
+    cardButtonColor: {
+      type: "string",
+      enum: ["gold", "maroon", "gray", "dark"],
+      default: "gold",
+    },
+    cardButtonSize: {
+      type: "string",
+      enum: ["default", "small", "medium", "large"],
+      default: "default",
+    },
+    useCardButton: {
+      type: "boolean",
+      default: true,
+    },
+    cardLinkText: {
+      type: "string",
+      default: "Read",
+    },
+    enableStoryDate: {
+      type: "boolean",
+      default: true,
+    },
+    enableStoryAuthor: {
+      type: "boolean",
+      default: false,
+    },
+    enableCardTags: {
+      type: "boolean",
+      default: false,
+    },
+    enableAsuDataSource: {
+      type: "boolean",
+      default: true,
+    },
+    asuDataSourceUrl: {
+      type: "string",
+      default: "https://cors.api.rtd.asu.edu/news.asu.edu:443/feeds-json/",
+    },
+    asuDataSourceFeed: {
+      type: "string",
+      default: "biodesign_institute",
+    },
+    asuDataSourceFilters: {
+      type: "string",
+      default: "",
+    },
+    enableKeDataSource: {
+      type: "boolean",
+      default: false,
+    },
+    keDataSourceUrl: {
+      type: "string",
+      default: "https://ke.news.prod.rtd.asu.edu/wp-json/wp/v2/",
+    },
+    keStoryBasePath: {
+      type: "string",
+      default: "news/story",
+    },
+    keDataSourceUnits: {
+      type: "array",
+      default: [],
+    },
+    keDataSourceInterests: {
+      type: "array",
+      default: [],
+    },
+    keDataSourceLocations: {
+      type: "array",
+      default: [],
+    },
+    keDataSourcePage: {
+      type: "string",
+      default: "1",
+    },
+    keDataSourcePerPage: {
+      type: "string",
+      default: "100",
+    },
+    maxItems: {
+      type: "number",
+      default: 6,
+    },
+    numberColumns: {
+      type: "string",
+      enum: ["2", "3"],
+      default: "3",
+    },
+    // Note: displayType attribute doesn't exist in this version
+  },
+
+  save: (props) => {
+    const {
+      attributes: {
+        enableHeader,
+        headerText,
+        headerColor,
+        ctaText,
+        ctaUrl,
+        ctaColor,
+        cardButtonText,
+        cardButtonColor,
+        cardButtonSize,
+        useCardButton,
+        cardLinkText,
+        enableStoryDate,
+        enableStoryAuthor,
+        enableCardTags,
+        enableAsuDataSource,
+        asuDataSourceUrl,
+        asuDataSourceFeed,
+        asuDataSourceFilters,
+        enableKeDataSource,
+        keDataSourceUrl,
+        keStoryBasePath,
+        keDataSourceUnits,
+        keDataSourceInterests,
+        keDataSourceLocations,
+        keDataSourcePage,
+        keDataSourcePerPage,
+        maxItems,
+        numberColumns,
+      },
+    } = props;
+
+    const header = enableHeader
+      ? {
+          color: headerColor,
+          text: headerText,
+        }
+      : null;
+
+    const ctaButton = enableHeader
+      ? {
+          color: ctaColor,
+          text: ctaText,
+          url: ctaUrl,
+        }
+      : null;
+
+    const cardButton = {
+      color: cardButtonColor,
+      text: cardButtonText,
+      size: cardButtonSize,
+    };
+
+    const asuDataSource = {
+      url: asuDataSourceUrl + asuDataSourceFeed,
+      filters: asuDataSourceFilters,
+    };
+
+    const keSourceFilters = {
+      units: keDataSourceUnits,
+      interests: keDataSourceInterests,
+      locations: keDataSourceLocations,
+    };
+
+    const keSourcePagination = {
+      page: keDataSourcePage,
+      perPage: keDataSourcePerPage,
+    };
+
+    const keDataSource = {
+      url: keDataSourceUrl,
+      storyBasePath: keStoryBasePath,
+      filters: keSourceFilters,
+      pagination: keSourcePagination,
+    };
+
+    const dataAttributes = {
+      // Note: data-displaytype doesn't exist in this deprecated version
+      "data-enableheader": enableHeader,
+      "data-header": JSON.stringify(header),
+      "data-ctabutton": JSON.stringify(ctaButton),
+      "data-cardbutton": JSON.stringify(cardButton),
+      "data-usecardbutton": useCardButton,
+      "data-cardlinktext": cardLinkText,
+      "data-enablestorydate": enableStoryDate,
+      "data-enablestoryauthor": enableStoryAuthor,
+      "data-enablecardtags": enableCardTags,
+      "data-enableasusource": enableAsuDataSource,
+      "data-enablekesource": enableKeDataSource,
+      "data-asudatasource": enableAsuDataSource
+        ? JSON.stringify(asuDataSource)
+        : null,
+      "data-kedatasource": enableKeDataSource
+        ? JSON.stringify(keDataSource)
+        : null,
+      "data-maxitems": maxItems,
+      "data-numbercolumns": numberColumns,
+      "data-kedatasourcepage": keDataSourcePage,
+      "data-kedatasourceperpage": keDataSourcePerPage,
+    };
+
+    return <div {...useBlockProps.save()} {...dataAttributes}></div>;
+  },
+
+  migrate: (attributes) => {
+    // Migrate old attributes to new structure
+    // Add the displayType attribute with "grid" as default to maintain the original behavior
+    // since the old version only displayed grid layout
+    return {
+      ...attributes,
+      // Default to "grid" to maintain the original display behavior
+      displayType: "grid",
+    };
+  },
+};
+
+export default [deprecated_v2, deprecated_v1];
