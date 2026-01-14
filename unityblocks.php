@@ -3,9 +3,9 @@
 /**
  * Plugin Name:       UnityBlocks
  * Description:       UnityBlocks is a suite of page building content blocks for the ASU Web Standards Unity (UDS) WordPress theme.
- * Requires at least: 6.1
- * Requires PHP:      7.0
- * Version:           2.6.0
+ * Requires at least: 6.6
+ * Requires PHP:      7.4
+ * Version:           3.1.0
  * Author:            ASU KE Web Services
  * Author URI:        https://rto.asu.edu/web-services
  * License:           GPL-2.0-or-later
@@ -32,26 +32,19 @@ if (!defined('ABSPATH')) {
  */
 function unityblocks_block_init()
 {
-	/**
-	 * Load current theme and check if it is Pitchfork or a Pitchfork Child
-	 */
-	$theme_data = wp_get_theme();
-	$pitchfork_theme = ('pitchfork' === $theme_data->get('TextDomain') || 'pitchfork' === $theme_data->get('Template'));
-
-	// Register these blocks only if not using Pitchfork
-	// Pitchfork already has these blocks
-	if (!$pitchfork_theme) {
-		register_block_type(__DIR__ . '/build/hero');
+	// check WP version: v6.8+, v6.7, pre 6.7
+	if ( function_exists( 'wp_register_block_types_from_metadata_collection' ) ) {
+		wp_register_block_types_from_metadata_collection( __DIR__ . '/build', __DIR__ . '/build/blocks-manifest.php' );
+	} else {
+		if ( function_exists( 'wp_register_block_metadata_collection' ) ) {
+			wp_register_block_metadata_collection( __DIR__ . '/build', __DIR__ . '/build/blocks-manifest.php' );
+		}
+		$manifest_data = require __DIR__ . '/build/blocks-manifest.php';
+		foreach ( array_keys( $manifest_data ) as $block_type ) {
+			register_block_type( __DIR__ . "/build/{$block_type}" );
+		}
 	}
 
-	register_block_type(__DIR__ . '/build/anchor-menu');
-	register_block_type(__DIR__ . '/build/asu-careers');
-	register_block_type(__DIR__ . '/build/asu-events');
-	register_block_type(__DIR__ . '/build/events-grid');
-	register_block_type(__DIR__ . '/build/image-gallery');
-	register_block_type(__DIR__ . '/build/news-grid');
-	register_block_type(__DIR__ . '/build/testimonial');
-	register_block_type(__DIR__ . '/build/wchm');
 }
 add_action('init', 'unityblocks_block_init');
 
