@@ -1,21 +1,21 @@
 const { render } = wp.element;
 
 
-import { AnchorMenu } from "../../resources/asu-unity-stack/packages/components-core/src/components/AnchorMenu"
+import { AnchorMenu } from "@asu-unity-stack/packages/unity-react-core/src/components/AnchorMenu/AnchorMenu";
 
-var stickyMenu = document.getElementsByClassName("uds-anchor-menu");
+// var stickyMenu = document.getElementsByClassName("uds-anchor-menu");
 
-const onScroll = () => {
-  const scroll = document.documentElement.scrollTop;
+// const onScroll = () => {
+//   const scroll = document.documentElement.scrollTop;
 
-  if (scroll > 500) {
-    stickyMenu[0].classList.add("sticky");
-  } else {
-    stickyMenu[0].classList.remove("sticky");
-  }
-};
+//   if (scroll > 500) {
+//     stickyMenu[0].classList.add("sticky");
+//   } else {
+//     stickyMenu[0].classList.remove("sticky");
+//   }
+// };
 
-window.addEventListener("scroll", onScroll);
+// window.addEventListener("scroll", onScroll);
 
 /*
 Load the block attributes from the dom element attributes.
@@ -33,7 +33,7 @@ const menu = document.querySelector("#unityblocks-anchor-menu");
 
 const items = JSON.parse(menu.dataset.items);
 const firstElementId = menu.dataset.firstElementId;
-const focusFirstFocusableElement = menu.dataset.focusFirstFocusableElement;
+const focusFirstFocusableElement = menu.dataset.focusFirstFocusableElement === "true";
 
 render(
   <AnchorMenu
