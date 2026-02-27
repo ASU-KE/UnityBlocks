@@ -17,6 +17,9 @@ import {
  * @param {Object} props
  */
 const Inspector = (props) => {
+    const handleFirstElementIdChange = (value) => {
+      props.setAttributes({ firstElementId: value });
+    };
   const handleAddItem = () => {
     const itemIcons = [...props.attributes.itemIcons];
     const itemTexts = [...props.attributes.itemTexts];
@@ -133,6 +136,17 @@ const Inspector = (props) => {
           <Button isDefault onClick={handleAddItem.bind(this)}>
             {__("Add Item")}
           </Button>
+        </PanelRow>
+      </PanelBody>
+      <PanelBody title={__("AnchorMenu Settings", "unityblocks")}>
+        <PanelRow>
+          <TextControl
+            label="First Element ID"
+            className="anchormenu__first-element-id"
+            placeholder="first-container"
+            value={props.attributes.firstElementId}
+            onChange={handleFirstElementIdChange}
+          />
         </PanelRow>
       </PanelBody>
     </InspectorControls>
