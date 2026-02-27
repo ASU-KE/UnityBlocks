@@ -16,8 +16,8 @@ import { useBlockProps } from "@wordpress/block-editor";
 /**
  * External dependencies
  */
-import { AnchorMenu } from "../../resources/asu-unity-stack/packages/components-core/src/components/AnchorMenu"
-/**
+import { AnchorMenu } from "@asu-unity-stack/packages/unity-react-core/src/components/AnchorMenu/AnchorMenu";
+/** resources/asu-unity-stack/packages/unity-react-core/src/components
  * Internal dependencies
  */
 // import Controls from './controls';
