@@ -39,7 +39,7 @@
     "@wordpress/scripts": "^30.4.0",
     "date-fns": "^2.28.0",
     "dompurify": "^3.2.4",
-    "fast-xml-parser": "^5.3.6",
+    "fast-xml-parser": "^5.3.8",
     "graphql": "^16.8.1",
     "graphql-request": "^4.1.0",
     "lodash-es": "^4.17.23",
