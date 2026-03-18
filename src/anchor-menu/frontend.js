@@ -1,6 +1,4 @@
-const { render } = wp.element;
-
-
+import { createRoot } from 'react-dom/client'
 import { AnchorMenu } from "@asu-unity-stack/packages/unity-react-core/src/components/AnchorMenu/AnchorMenu";
 
 // var stickyMenu = document.getElementsByClassName("uds-anchor-menu");
@@ -31,15 +29,15 @@ id.
 // Load first element with the unityblocks-anchormenu id
 const menu = document.querySelector("#unityblocks-anchor-menu");
 
-const items = JSON.parse(menu.dataset.items);
-const firstElementId = menu.dataset.firstElementId;
-const focusFirstFocusableElement = menu.dataset.focusFirstFocusableElement === "true";
+  const items = JSON.parse(menu.dataset.items);
+  const firstElementId = menu.dataset.firstelementid;
+  const focusFirstFocusableElement = menu.dataset.focusfirstfocusableelement === "true";
 
-render(
-  <AnchorMenu
-    items={items}
-    firstElementId={firstElementId}
-    focusFirstFocusableElement={focusFirstFocusableElement}
-  />,
-  menu
-);
+  const root = createRoot(menu);
+  root.render(
+    <AnchorMenu
+      items={items}
+      firstElementId={firstElementId}
+      focusFirstFocusableElement={focusFirstFocusableElement}
+    />
+  );
