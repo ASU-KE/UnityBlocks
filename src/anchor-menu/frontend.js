@@ -3,6 +3,18 @@ import { AnchorMenu } from "@asu-unity-stack/packages/unity-react-core/src/compo
 
 const menu = document.querySelector("#unityblocks-anchor-menu");
 
+const onScroll = () => {
+  const scroll = document.documentElement.scrollTop;
+
+  if (scroll > 500) {
+    menu.classList.add("sticky");
+  } else {
+    menu.classList.remove("sticky");
+  }
+};
+
+window.addEventListener("scroll", onScroll);
+
   const items = JSON.parse(menu.dataset.items);
   const firstElementId = menu.dataset.firstelementid;
   const focusFirstFocusableElement = menu.dataset.focusfirstfocusableelement === "true";
