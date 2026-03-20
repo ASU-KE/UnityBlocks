@@ -26,22 +26,53 @@ const save = (props) => {
     },
   } = props;
 
-  const items = itemTexts.map((itemText, index) => {
-    return {
-      icon: itemIcons[index],
-      text: itemText,
-      targetIdName: itemTargets[index],
-    };
-  });
-
   return (
     <div
       id="unityblocks-anchor-menu"
-      {...useBlockProps.save()}
-      data-items={JSON.stringify(items)}
-      data-firstElementId={firstElementId}
-      data-focusFirstFocusableElement={focusFirstFocusableElement}
-    ></div>
+      {...useBlockProps.save({
+        className: "uds-anchor-menu uds-anchor-menu-expanded-lg mb-4",
+      })}
+      data-first-element-id={firstElementId}
+      data-focus-first-focusable-element={focusFirstFocusableElement}
+    >
+      <div className="container-xl uds-anchor-menu-wrapper">
+        <h2>On This Page:</h2>
+        <div
+          data-testid="anchor-menu-container"
+          id="collapseAnchorMenu"
+          className="card card-body collapse"
+        >
+          <nav data-testid="anchor-menu" className="nav" aria-label="On This Page">
+            {itemTexts.map((itemText, index) => (
+              <button
+                key={itemTargets[index]}
+                type="button"
+                data-testid={`anchor-item-${itemTargets[index]}`}
+                className="nav-link"
+                aria-label={itemText}
+                data-ga={itemText}
+                data-ga-name="onclick"
+                data-ga-event="link"
+                data-ga-action="click"
+                data-ga-type="internal link"
+                data-ga-region="main content"
+                data-ga-section=""
+                data-target={itemTargets[index]}
+              >
+                {Array.isArray(itemIcons[index]) &&
+                  itemIcons[index][0] &&
+                  itemIcons[index][1] && (
+                    <i
+                      className={`${itemIcons[index][0]} fa-${itemIcons[index][1]} me-1`}
+                    />
+                  )}
+                {itemText}
+              </button>
+            ))}
+          </nav>
+        </div>
+      </div>
+    </div>
   );
 };
 
