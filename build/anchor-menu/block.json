@@ -21,8 +21,6 @@
   },
   "textdomain": "unityblocks",
   "viewScript": [
-    "file:./frontend.js",
-    "file:./get-anchors.js",
     "unityblocks-anchor-menu-view-script"
   ],
   "editorScript": "file:./index.js",

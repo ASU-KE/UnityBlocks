@@ -1,1 +1,0 @@
-window.addEventListener("DOMContentLoaded",(t=>{const e="anchor-item-";document.querySelectorAll(`[class*="${e}"]`).forEach((t=>{const n=t.className.split(" ").find((t=>t.startsWith(e)));t.id=n}))}));
