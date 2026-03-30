@@ -1,29 +1,3 @@
-import { createRoot } from 'react-dom/client'
-import { AnchorMenu } from "@asu-unity-stack/packages/unity-react-core/src/components/AnchorMenu/AnchorMenu";
-
-const menu = document.querySelector("#unityblocks-anchor-menu");
-
-const onScroll = () => {
-  const scroll = document.documentElement.scrollTop;
-
-  if (scroll > 500) {
-    menu.classList.add("sticky");
-  } else {
-    menu.classList.remove("sticky");
-  }
-};
-
-window.addEventListener("scroll", onScroll);
-
-  const items = JSON.parse(menu.dataset.items);
-  const firstElementId = menu.dataset.firstelementid;
-  const focusFirstFocusableElement = menu.dataset.focusfirstfocusableelement === "true";
-
-  const root = createRoot(menu);
-  root.render(
-    <AnchorMenu
-      items={items}
-      firstElementId={firstElementId}
-      focusFirstFocusableElement={focusFirstFocusableElement}
-    />
-  );
+// The anchor menu is automatically initialized by the Unity Bootstrap Theme JS
+// (loaded via the unityblocks-anchor-menu-view-script handle) when an element
+// with id="uds-anchor-menu" is present in the DOM.
