@@ -17,43 +17,54 @@ import { useBlockProps } from "@wordpress/block-editor";
  */
 const save = (props) => {
   const {
-    attributes: {
-      firstElementId,
-      focusFirstFocusableElement,
-      itemIcons,
-      itemTexts,
-      itemTargets,
-    },
+    attributes: { itemIcons, itemTexts, itemTargets },
   } = props;
 
-  const items = itemTexts.map((itemText, index) => {
-    const item = {
-      text: itemText,
-      targetIdName: itemTargets[index],
-    };
-    if (Array.isArray(itemIcons[index]) && itemIcons[index].length > 0) {
-      item.icon = itemIcons[index];
-    }
-    return item;
-  });
-
-  const propsJson = JSON.stringify(
-    { items, firstElementId, focusFirstFocusableElement },
-    null,
-    2
-  ).replace(/<\//g, "<\\/");
-
-  const initScript = `unityReactCore.initAnchorMenu({
-  targetSelector: "#anchor-menu-component",
-  props: ${propsJson}
-});`;
-
   return (
-    <div {...useBlockProps.save()}>
-      <div id="anchor-menu-component"></div>
-      <script
-        dangerouslySetInnerHTML={{ __html: initScript }}
-      />
+    <div
+      id="uds-anchor-menu"
+      {...useBlockProps.save({
+        className: "uds-anchor-menu uds-anchor-menu-expanded-lg",
+      })}
+    >
+      <div className="container">
+        <div className="uds-anchor-menu-wrapper">
+          <h2
+            data-bs-toggle="collapse"
+            data-bs-target="#anchorMenuNav"
+            aria-expanded="false"
+            aria-controls="anchorMenuNav"
+          >
+            On This Page: <span className="fas fa-chevron-down"></span>
+          </h2>
+          <div id="anchorMenuNav" className="card card-body collapse">
+            <nav className="nav" aria-label="Page navigation">
+              {itemTexts.map((itemText, index) => (
+                <a
+                  key={itemTargets[index]}
+                  className="nav-link"
+                  href={`#${itemTargets[index]}`}
+                  data-ga-name="onclick"
+                  data-ga-event="link"
+                  data-ga-action="click"
+                  data-ga-type="internal link"
+                  data-ga-region="main content"
+                  data-ga-section={itemText}
+                  data-ga-text={itemText}
+                >
+                  {Array.isArray(itemIcons[index]) &&
+                    itemIcons[index].length >= 2 && (
+                      <span
+                        className={`${itemIcons[index][0]} fa-${itemIcons[index][1]}`}
+                      ></span>
+                    )}
+                  {itemText}
+                </a>
+              ))}
+            </nav>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
