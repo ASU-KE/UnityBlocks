@@ -49,7 +49,7 @@ const save = (props) => {
                   data-ga-action="click"
                   data-ga-type="internal link"
                   data-ga-region="main content"
-                  data-ga-section={itemText}
+                  data-ga-section="on this page"
                   data-ga-text={itemText}
                 >
                   {Array.isArray(itemIcons[index]) &&
