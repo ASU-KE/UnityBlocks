@@ -1,8 +1,8 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
-  "apiVersion": 2,
+  "apiVersion": 3,
   "name": "unityblocks/anchor-menu",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "title": "Unity Anchor Menu",
   "category": "unityblocks",
   "keywords": ["unityblocks", "menu", "navigation"],
@@ -13,7 +13,7 @@
     "align": ["wide", "full"]
   },
   "textdomain": "unityblocks",
-  "viewScript": ["file:./frontend.js", "unityblocks-anchor-menu-view-script"],
+  "viewScript": ["unityblocks-anchor-menu-view-script"],
   "editorScript": "file:./index.js",
   "attributes": {
     "itemIcons": {
