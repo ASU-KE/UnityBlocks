@@ -1,5 +1,5 @@
 import { createRoot } from 'react-dom/client'
-import { Hero } from "../../resources/asu-unity-stack/packages/components-core/src/components/Hero"
+import { Hero } from "@asu-unity-stack/packages/unity-react-core/src/components/Hero/Hero"
 
 const hero = document.getElementById("unityblocks-hero")
 const root = createRoot(hero)

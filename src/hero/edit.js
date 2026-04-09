@@ -16,7 +16,7 @@ import { useBlockProps } from "@wordpress/block-editor";
 /**
  * External dependencies
  */
-import { Hero } from "../../resources/asu-unity-stack/packages/components-core/src/components/Hero";
+import { Hero } from "@asu-unity-stack/packages/unity-react-core/src/components/Hero/Hero";
 
 /**
  * Internal dependencies
