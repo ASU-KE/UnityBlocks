@@ -14,7 +14,7 @@ const Autocomplete = ({ baseApiPath }) => {
     const fetchSuggestions = async () => {
       try {
         const response = await fetch(
-          `${baseApiPath}v2/departments/${inputValue}`,
+          `${baseApiPath}v2/departments/${encodeURIComponent(inputValue)}`,
           {
             method: "GET",
             headers: {
@@ -89,7 +89,6 @@ const Autocomplete = ({ baseApiPath }) => {
     const fetchAtfRasByDeptId = async () => {
       if (selectedItemId) {
         try {
-          console.log(baseApiPath);
           const response = await fetch(`${baseApiPath}v2/after-the-fact-ras/${selectedItemId}`, {
             method: "GET",
             headers: {
