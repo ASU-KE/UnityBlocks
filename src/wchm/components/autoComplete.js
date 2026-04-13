@@ -176,8 +176,11 @@ const Autocomplete = ({ baseApiPath }) => {
                 </span>
               </h3>
 
-              {preAwardRasData.map((contactInfo) => (
-                <div className="mb-4">
+              {preAwardRasData.map((contactInfo, index) => (
+                <div
+                  className="mb-4"
+                  key={`pre-award-${contactInfo.userID || contactInfo.contactFullName || index}`}
+                >
                   <h4 className="mb-1">{contactInfo.contactFullName}</h4>
                   <p className="mb-1">{contactInfo.title}</p>
                   <p>
@@ -197,8 +200,11 @@ const Autocomplete = ({ baseApiPath }) => {
                 </span>
               </h3>
 
-              {postAwardRasData.map((contactInfo) => (
-                <div className="mb-4">
+              {postAwardRasData.map((contactInfo, index) => (
+                <div
+                  className="mb-4"
+                  key={`post-award-${contactInfo.userID || contactInfo.contactFullName || index}`}
+                >
                   <h4 className="mb-1">{contactInfo.contactFullName}</h4>
                   <p className="mb-1">{contactInfo.title}</p>
                   <p>
@@ -218,8 +224,11 @@ const Autocomplete = ({ baseApiPath }) => {
                 </span>
               </h3>
 
-              {atfRasData.map((contactInfo) => (
-                <div className="mb-4">
+              {atfRasData.map((contactInfo, index) => (
+                <div
+                  className="mb-4"
+                  key={`atf-${contactInfo.userID || contactInfo.contactFullName || index}`}
+                >
                   <h4 className="mb-1">{contactInfo.contactFullName}</h4>
                   <p className="mb-1">{contactInfo.title}</p>
                   <p>
@@ -238,8 +247,11 @@ const Autocomplete = ({ baseApiPath }) => {
                 <span className="highlight-gold">AMT Customer Service Liaison</span>
               </h3>
 
-              {officerData.map((contactInfo) => (
-                <div className="mb-4">
+              {officerData.map((contactInfo, index) => (
+                <div
+                  className="mb-4"
+                  key={`officer-${contactInfo.userID || contactInfo.contactFullName || index}`}
+                >
                   <h4 className="mb-1">{contactInfo.contactFullName}</h4>
                   {contactInfo.userID && (
                     <>
