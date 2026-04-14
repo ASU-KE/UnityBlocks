@@ -3,9 +3,9 @@
 return array(
 	'anchor-menu' => array(
 		'$schema' => 'https://schemas.wp.org/trunk/block.json',
-		'apiVersion' => 2,
+		'apiVersion' => 3,
 		'name' => 'unityblocks/anchor-menu',
-		'version' => '2.1.0',
+		'version' => '3.0.0',
 		'title' => 'Unity Anchor Menu',
 		'category' => 'unityblocks',
 		'keywords' => array(
@@ -24,7 +24,6 @@ return array(
 		),
 		'textdomain' => 'unityblocks',
 		'viewScript' => array(
-			'file:./frontend.js',
 			'unityblocks-anchor-menu-view-script'
 		),
 		'editorScript' => 'file:./index.js',
@@ -515,7 +514,7 @@ return array(
 		'$schema' => 'https://schemas.wp.org/trunk/block.json',
 		'apiVersion' => 3,
 		'name' => 'unityblocks/news-grid',
-		'version' => '2.1.0',
+		'version' => '2.2.0',
 		'title' => 'Unity News Grid',
 		'category' => 'unityblocks',
 		'keywords' => array(
@@ -837,9 +836,9 @@ return array(
 	),
 	'wchm' => array(
 		'$schema' => 'https://schemas.wp.org/trunk/block.json',
-		'apiVersion' => 2,
+		'apiVersion' => 3,
 		'name' => 'unityblocks/wchm',
-		'version' => '1.0.0',
+		'version' => '2.0.0',
 		'title' => 'WCHM',
 		'category' => 'unityblocks',
 		'keywords' => array(
@@ -863,7 +862,7 @@ return array(
 		'textdomain' => 'unityblocks',
 		'viewScript' => array(
 			'file:./frontend.js',
-			'unityblocks-careers-view-script'
+			'unityblocks-wchm-view-script'
 		),
 		'editorScript' => 'file:./index.js',
 		'style' => 'styles-wchm',

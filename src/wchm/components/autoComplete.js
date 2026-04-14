@@ -5,14 +5,16 @@ const Autocomplete = ({ baseApiPath }) => {
   const [inputValue, setInputValue] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [selectedItemId, setSelectedItemId] = useState(null);
-  const [rasData, setRasData] = useState(null);
   const [officerData, setOfficerData] = useState(null);
+  const [preAwardRasData, setPreAwardRasData] = useState(null);
+  const [postAwardRasData, setPostAwardRasData] = useState(null);
+  const [atfRasData, setAtfRasData] = useState(null);
 
   useEffect(() => {
     const fetchSuggestions = async () => {
       try {
         const response = await fetch(
-          `${baseApiPath}departments/${inputValue}`,
+          `${baseApiPath}v2/departments/${encodeURIComponent(inputValue)}`,
           {
             method: "GET",
             headers: {
@@ -40,10 +42,10 @@ const Autocomplete = ({ baseApiPath }) => {
   }, [inputValue]);
 
   useEffect(() => {
-    const fetchRasById = async () => {
+    const fetchPreAwardRasByDeptId = async () => {
       if (selectedItemId) {
         try {
-          const response = await fetch(`${baseApiPath}ras/${selectedItemId}`, {
+          const response = await fetch(`${baseApiPath}v2/pre-award-ras/${selectedItemId}`, {
             method: "GET",
             headers: {
               "Content-Type": "application/json",
@@ -51,14 +53,58 @@ const Autocomplete = ({ baseApiPath }) => {
             },
           });
           const data = await response.json();
-          setRasData(data);
+          setPreAwardRasData(data);
         } catch (error) {
           console.error("Error fetching data by ID:", error);
         }
       }
     };
 
-    fetchRasById();
+    fetchPreAwardRasByDeptId();
+  }, [selectedItemId]);
+
+  useEffect(() => {
+    const fetchPostAwardRasByDeptId = async () => {
+      if (selectedItemId) {
+        try {
+          const response = await fetch(`${baseApiPath}v2/post-award-ras/${selectedItemId}`, {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              "Ocp-Apim-Subscription-Key": "8dd787c43de54148bf5e10686b6b6e20",
+            },
+          });
+          const data = await response.json();
+          setPostAwardRasData(data);
+        } catch (error) {
+          console.error("Error fetching data by ID:", error);
+        }
+      }
+    };
+
+    fetchPostAwardRasByDeptId();
+  }, [selectedItemId]);
+
+  useEffect(() => {
+    const fetchAtfRasByDeptId = async () => {
+      if (selectedItemId) {
+        try {
+          const response = await fetch(`${baseApiPath}v2/after-the-fact-ras/${selectedItemId}`, {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              "Ocp-Apim-Subscription-Key": "8dd787c43de54148bf5e10686b6b6e20",
+            },
+          });
+          const data = await response.json();
+          setAtfRasData(data);
+        } catch (error) {
+          console.error("Error fetching data by ID:", error);
+        }
+      }
+    };
+
+    fetchAtfRasByDeptId();
   }, [selectedItemId]);
 
   useEffect(() => {
@@ -66,7 +112,7 @@ const Autocomplete = ({ baseApiPath }) => {
       if (selectedItemId) {
         try {
           const response = await fetch(
-            `${baseApiPath}officer/${selectedItemId}`,
+            `${baseApiPath}v2/officers/${selectedItemId}`,
             {
               method: "GET",
               headers: {
@@ -122,21 +168,72 @@ const Autocomplete = ({ baseApiPath }) => {
 
       {selectedItemId && (
         <div className="mt-8">
-          {rasData && rasData.length !== 0 && (
+          {preAwardRasData && preAwardRasData.length !== 0 && (
             <div className="mb-8">
               <h3>
                 <span className="highlight-gold">
-                  Department Research Advancement Representatives
+                  Pre-Award Research Advancement Representative
                 </span>
               </h3>
 
-              {rasData.map((contactInfo) => (
-                <div className="mb-4">
-                  <h4 className="mb-1">{contactInfo.Name}</h4>
-                  <p className="mb-1">{contactInfo.Title}</p>
+              {preAwardRasData.map((contactInfo, index) => (
+                <div
+                  className="mb-4"
+                  key={`pre-award-${contactInfo.userID || contactInfo.contactFullName || index}`}
+                >
+                  <h4 className="mb-1">{contactInfo.contactFullName}</h4>
+                  <p className="mb-1">{contactInfo.title}</p>
                   <p>
-                    <a href={`mailto:${contactInfo.userId}@asu.edu`}>
-                      {contactInfo.userId}@asu.edu
+                    <a href={`mailto:${contactInfo.userID}@asu.edu`}>
+                      {contactInfo.userID}@asu.edu
+                    </a>
+                  </p>
+                </div>
+              ))}
+            </div>
+          )}
+          {postAwardRasData && postAwardRasData.length !== 0 && (
+            <div className="mb-8">
+              <h3>
+                <span className="highlight-gold">
+                  Post-Award Research Advancement Representative
+                </span>
+              </h3>
+
+              {postAwardRasData.map((contactInfo, index) => (
+                <div
+                  className="mb-4"
+                  key={`post-award-${contactInfo.userID || contactInfo.contactFullName || index}`}
+                >
+                  <h4 className="mb-1">{contactInfo.contactFullName}</h4>
+                  <p className="mb-1">{contactInfo.title}</p>
+                  <p>
+                    <a href={`mailto:${contactInfo.userID}@asu.edu`}>
+                      {contactInfo.userID}@asu.edu
+                    </a>
+                  </p>
+                </div>
+              ))}
+            </div>
+          )}
+          {atfRasData && atfRasData.length !== 0 && (
+            <div className="mb-8">
+              <h3>
+                <span className="highlight-gold">
+                  After-the-Fact Reporting Contact
+                </span>
+              </h3>
+
+              {atfRasData.map((contactInfo, index) => (
+                <div
+                  className="mb-4"
+                  key={`atf-${contactInfo.userID || contactInfo.contactFullName || index}`}
+                >
+                  <h4 className="mb-1">{contactInfo.contactFullName}</h4>
+                  <p className="mb-1">{contactInfo.title}</p>
+                  <p>
+                    <a href={`mailto:${contactInfo.userID}@asu.edu`}>
+                      {contactInfo.userID}@asu.edu
                     </a>
                   </p>
                 </div>
@@ -147,24 +244,27 @@ const Autocomplete = ({ baseApiPath }) => {
           {officerData && officerData.length !== 0 && (
             <div className="mb-8">
               <h3>
-                <span className="highlight-gold">ORSPA Contacts</span>
+                <span className="highlight-gold">AMT Customer Service Liaison</span>
               </h3>
 
-              {officerData.map((contactInfo) => (
-                <div className="mb-4">
-                  <h4 className="mb-1">{contactInfo.Officer}</h4>
-                  {contactInfo.userId && (
+              {officerData.map((contactInfo, index) => (
+                <div
+                  className="mb-4"
+                  key={`officer-${contactInfo.userID || contactInfo.contactFullName || index}`}
+                >
+                  <h4 className="mb-1">{contactInfo.contactFullName}</h4>
+                  {contactInfo.userID && (
                     <>
-                      <p className="mb-1">{contactInfo.name}</p>
+                      <p className="mb-1">{contactInfo.title}</p>
                       <p>
-                        <a href={`mailto:${contactInfo.userId}@asu.edu`}>
-                          {contactInfo.userId}@asu.edu
+                        <a href={`mailto:${contactInfo.userID}@asu.edu`}>
+                          {contactInfo.userID}@asu.edu
                         </a>
                       </p>
                     </>
                   )}
 
-                  {contactInfo.userId === null && (
+                  {contactInfo.userID === null && (
                     <>
                       <p>Proposal and PreAward Items </p>
                       <p>

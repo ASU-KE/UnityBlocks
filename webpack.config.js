@@ -15,6 +15,8 @@ module.exports = (env, argv) => {
           __dirname,
           "resources/unity/component-news/src/components"
         ),
+        "@asu-unity-stack": path.resolve(__dirname, "resources/asu-unity-stack"),
+
       },
       extensions: [
         ".js",
@@ -48,6 +50,9 @@ module.exports = (env, argv) => {
         }
         return rule;
       }),
+    },
+    stats: {
+      errorDetails: true,
     },
   };
 
