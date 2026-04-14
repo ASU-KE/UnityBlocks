@@ -836,9 +836,9 @@ return array(
 	),
 	'wchm' => array(
 		'$schema' => 'https://schemas.wp.org/trunk/block.json',
-		'apiVersion' => 2,
+		'apiVersion' => 3,
 		'name' => 'unityblocks/wchm',
-		'version' => '1.0.0',
+		'version' => '2.0.0',
 		'title' => 'WCHM',
 		'category' => 'unityblocks',
 		'keywords' => array(
@@ -862,7 +862,7 @@ return array(
 		'textdomain' => 'unityblocks',
 		'viewScript' => array(
 			'file:./frontend.js',
-			'unityblocks-careers-view-script'
+			'unityblocks-wchm-view-script'
 		),
 		'editorScript' => 'file:./index.js',
 		'style' => 'styles-wchm',
