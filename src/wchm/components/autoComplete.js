@@ -25,6 +25,11 @@ const Autocomplete = ({ baseApiPath }) => {
         );
         const data = await response.json();
 
+        if (!Array.isArray(data)) {
+          setSuggestions([]);
+          return;
+        }
+
         // Filter the data to include only active items
         const activeData = data.filter((item) => item.isActive === "Y");
 
@@ -53,7 +58,7 @@ const Autocomplete = ({ baseApiPath }) => {
             },
           });
           const data = await response.json();
-          setPreAwardRasData(data);
+          setPreAwardRasData(Array.isArray(data) ? data : []);
         } catch (error) {
           console.error("Error fetching data by ID:", error);
         }
@@ -75,7 +80,7 @@ const Autocomplete = ({ baseApiPath }) => {
             },
           });
           const data = await response.json();
-          setPostAwardRasData(data);
+          setPostAwardRasData(Array.isArray(data) ? data : []);
         } catch (error) {
           console.error("Error fetching data by ID:", error);
         }
@@ -97,7 +102,7 @@ const Autocomplete = ({ baseApiPath }) => {
             },
           });
           const data = await response.json();
-          setAtfRasData(data);
+          setAtfRasData(Array.isArray(data) ? data : []);
         } catch (error) {
           console.error("Error fetching data by ID:", error);
         }
@@ -122,6 +127,11 @@ const Autocomplete = ({ baseApiPath }) => {
             }
           );
           const data = await response.json();
+
+          if (!Array.isArray(data)) {
+            setOfficerData([]);
+            return;
+          }
 
           // Filter the data to include only active items with officer info
           const filteredData = data.filter((item) => item.Officer !== "");
@@ -181,11 +191,11 @@ const Autocomplete = ({ baseApiPath }) => {
                   className="mb-4"
                   key={`pre-award-${contactInfo.userID || contactInfo.contactFullName || index}`}
                 >
-                  <h4 className="mb-1">{contactInfo.contactFullName}</h4>
-                  <p className="mb-1">{contactInfo.title}</p>
+                  <h4 className="mb-1">{String(contactInfo.contactFullName || "")}</h4>
+                  <p className="mb-1">{String(contactInfo.title || "")}</p>
                   <p>
-                    <a href={`mailto:${contactInfo.email}`}>
-                      {contactInfo.email}
+                    <a href={`mailto:${String(contactInfo.email || "")}`}>
+                      {String(contactInfo.email || "")}
                     </a>
                   </p>
                 </div>
@@ -205,11 +215,11 @@ const Autocomplete = ({ baseApiPath }) => {
                   className="mb-4"
                   key={`post-award-${contactInfo.userID || contactInfo.contactFullName || index}`}
                 >
-                  <h4 className="mb-1">{contactInfo.contactFullName}</h4>
-                  <p className="mb-1">{contactInfo.title}</p>
+                  <h4 className="mb-1">{String(contactInfo.contactFullName || "")}</h4>
+                  <p className="mb-1">{String(contactInfo.title || "")}</p>
                   <p>
-                    <a href={`mailto:${contactInfo.email}`}>
-                      {contactInfo.email}
+                    <a href={`mailto:${String(contactInfo.email || "")}`}>
+                      {String(contactInfo.email || "")}
                     </a>
                   </p>
                 </div>
@@ -229,11 +239,11 @@ const Autocomplete = ({ baseApiPath }) => {
                   className="mb-4"
                   key={`atf-${contactInfo.userID || contactInfo.contactFullName || index}`}
                 >
-                  <h4 className="mb-1">{contactInfo.contactFullName}</h4>
-                  <p className="mb-1">{contactInfo.title}</p>
+                  <h4 className="mb-1">{String(contactInfo.contactFullName || "")}</h4>
+                  <p className="mb-1">{String(contactInfo.title || "")}</p>
                   <p>
-                    <a href={`mailto:${contactInfo.email}`}>
-                      {contactInfo.email}
+                    <a href={`mailto:${String(contactInfo.email || "")}`}>
+                      {String(contactInfo.email || "")}
                     </a>
                   </p>
                 </div>
@@ -252,13 +262,13 @@ const Autocomplete = ({ baseApiPath }) => {
                   className="mb-4"
                   key={`officer-${contactInfo.userID || contactInfo.contactFullName || index}`}
                 >
-                  <h4 className="mb-1">{contactInfo.contactFullName}</h4>
+                  <h4 className="mb-1">{String(contactInfo.contactFullName || "")}</h4>
                   {contactInfo.userID && (
                     <>
-                      <p className="mb-1">{contactInfo.title}</p>
+                      <p className="mb-1">{String(contactInfo.title || "")}</p>
                       <p>
-                        <a href={`mailto:${contactInfo.email}`}>
-                          {contactInfo.email}
+                        <a href={`mailto:${String(contactInfo.email || "")}`}>
+                          {String(contactInfo.email || "")}
                         </a>
                       </p>
                     </>
