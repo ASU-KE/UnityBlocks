@@ -9,6 +9,12 @@ const Autocomplete = ({ baseApiPath }) => {
   const [preAwardRasData, setPreAwardRasData] = useState(null);
   const [postAwardRasData, setPostAwardRasData] = useState(null);
   const [atfRasData, setAtfRasData] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const apiHeaders = {
+    "Content-Type": "application/json",
+    "Ocp-Apim-Subscription-Key": "8dd787c43de54148bf5e10686b6b6e20",
+  };
 
   useEffect(() => {
     const fetchSuggestions = async () => {
@@ -17,13 +23,15 @@ const Autocomplete = ({ baseApiPath }) => {
           `${baseApiPath}v2/departments/${encodeURIComponent(inputValue)}`,
           {
             method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-              "Ocp-Apim-Subscription-Key": "8dd787c43de54148bf5e10686b6b6e20",
-            },
+            headers: apiHeaders,
           }
         );
         const data = await response.json();
+
+        if (!Array.isArray(data)) {
+          setSuggestions([]);
+          return;
+        }
 
         // Filter the data to include only active items
         const activeData = data.filter((item) => item.isActive === "Y");
@@ -42,98 +50,65 @@ const Autocomplete = ({ baseApiPath }) => {
   }, [inputValue]);
 
   useEffect(() => {
-    const fetchPreAwardRasByDeptId = async () => {
-      if (selectedItemId) {
-        try {
-          const response = await fetch(`${baseApiPath}v2/pre-award-ras/${selectedItemId}`, {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-              "Ocp-Apim-Subscription-Key": "8dd787c43de54148bf5e10686b6b6e20",
-            },
-          });
-          const data = await response.json();
-          setPreAwardRasData(data);
-        } catch (error) {
-          console.error("Error fetching data by ID:", error);
-        }
-      }
-    };
+    if (!selectedItemId) return;
 
-    fetchPreAwardRasByDeptId();
-  }, [selectedItemId]);
+    setIsLoading(true);
+    setPreAwardRasData(null);
+    setPostAwardRasData(null);
+    setAtfRasData(null);
+    setOfficerData(null);
 
-  useEffect(() => {
-    const fetchPostAwardRasByDeptId = async () => {
-      if (selectedItemId) {
-        try {
-          const response = await fetch(`${baseApiPath}v2/post-award-ras/${selectedItemId}`, {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-              "Ocp-Apim-Subscription-Key": "8dd787c43de54148bf5e10686b6b6e20",
-            },
-          });
-          const data = await response.json();
-          setPostAwardRasData(data);
-        } catch (error) {
-          console.error("Error fetching data by ID:", error);
-        }
-      }
-    };
-
-    fetchPostAwardRasByDeptId();
-  }, [selectedItemId]);
-
-  useEffect(() => {
-    const fetchAtfRasByDeptId = async () => {
-      if (selectedItemId) {
-        try {
-          const response = await fetch(`${baseApiPath}v2/after-the-fact-ras/${selectedItemId}`, {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-              "Ocp-Apim-Subscription-Key": "8dd787c43de54148bf5e10686b6b6e20",
-            },
-          });
-          const data = await response.json();
-          setAtfRasData(data);
-        } catch (error) {
-          console.error("Error fetching data by ID:", error);
-        }
-      }
-    };
-
-    fetchAtfRasByDeptId();
-  }, [selectedItemId]);
-
-  useEffect(() => {
-    const fetchOfficerById = async () => {
-      if (selectedItemId) {
-        try {
-          const response = await fetch(
-            `${baseApiPath}v2/officers/${selectedItemId}`,
-            {
+    const fetchContactData = async () => {
+      try {
+        const [preAwardRes, postAwardRes, atfRes, officerRes] =
+          await Promise.all([
+            fetch(`${baseApiPath}v2/pre-award-ras/${selectedItemId}`, {
               method: "GET",
-              headers: {
-                "Content-Type": "application/json",
-                "Ocp-Apim-Subscription-Key": "8dd787c43de54148bf5e10686b6b6e20",
-              },
-            }
-          );
-          const data = await response.json();
+              headers: apiHeaders,
+            }),
+            fetch(`${baseApiPath}v2/post-award-ras/${selectedItemId}`, {
+              method: "GET",
+              headers: apiHeaders,
+            }),
+            fetch(`${baseApiPath}v2/after-the-fact-ras/${selectedItemId}`, {
+              method: "GET",
+              headers: apiHeaders,
+            }),
+            fetch(`${baseApiPath}v2/officers/${selectedItemId}`, {
+              method: "GET",
+              headers: apiHeaders,
+            }),
+          ]);
 
+        const [preAward, postAward, atf, officers] = await Promise.all([
+          preAwardRes.json(),
+          postAwardRes.json(),
+          atfRes.json(),
+          officerRes.json(),
+        ]);
+
+        setPreAwardRasData(Array.isArray(preAward) ? preAward : []);
+        setPostAwardRasData(Array.isArray(postAward) ? postAward : []);
+        setAtfRasData(Array.isArray(atf) ? atf : []);
+
+        if (Array.isArray(officers)) {
           // Filter the data to include only active items with officer info
-          const filteredData = data.filter((item) => item.Officer !== "");
-
-          setOfficerData(filteredData);
-        } catch (error) {
-          console.error("Error fetching data from API 2:", error);
+          setOfficerData(officers.filter((item) => item.Officer !== ""));
+        } else {
+          setOfficerData([]);
         }
+      } catch (error) {
+        console.error("Error fetching contact data:", error);
+        setPreAwardRasData([]);
+        setPostAwardRasData([]);
+        setAtfRasData([]);
+        setOfficerData([]);
+      } finally {
+        setIsLoading(false);
       }
     };
 
-    fetchOfficerById();
+    fetchContactData();
   }, [selectedItemId]);
 
   return (
@@ -168,6 +143,22 @@ const Autocomplete = ({ baseApiPath }) => {
 
       {selectedItemId && (
         <div className="mt-8">
+          {isLoading && (
+            <p className="mt-4" role="status" aria-live="polite"><em>Loading contacts...</em></p>
+          )}
+
+          {!isLoading &&
+            preAwardRasData &&
+            preAwardRasData.length === 0 &&
+            postAwardRasData &&
+            postAwardRasData.length === 0 &&
+            atfRasData &&
+            atfRasData.length === 0 &&
+            officerData &&
+            officerData.length === 0 && (
+              <p className="mt-4" role="status" aria-live="polite">No contacts were found for this unit.</p>
+            )}
+
           {preAwardRasData && preAwardRasData.length !== 0 && (
             <div className="mb-8">
               <h3>
@@ -181,11 +172,11 @@ const Autocomplete = ({ baseApiPath }) => {
                   className="mb-4"
                   key={`pre-award-${contactInfo.userID || contactInfo.contactFullName || index}`}
                 >
-                  <h4 className="mb-1">{contactInfo.contactFullName}</h4>
-                  <p className="mb-1">{contactInfo.title}</p>
+                  <h4 className="mb-1">{String(contactInfo.contactFullName || "")}</h4>
+                  <p className="mb-1">{String(contactInfo.title || "")}</p>
                   <p>
-                    <a href={`mailto:${contactInfo.email}`}>
-                      {contactInfo.email}
+                    <a href={`mailto:${String(contactInfo.email || "")}`}>
+                      {String(contactInfo.email || "")}
                     </a>
                   </p>
                 </div>
@@ -205,11 +196,11 @@ const Autocomplete = ({ baseApiPath }) => {
                   className="mb-4"
                   key={`post-award-${contactInfo.userID || contactInfo.contactFullName || index}`}
                 >
-                  <h4 className="mb-1">{contactInfo.contactFullName}</h4>
-                  <p className="mb-1">{contactInfo.title}</p>
+                  <h4 className="mb-1">{String(contactInfo.contactFullName || "")}</h4>
+                  <p className="mb-1">{String(contactInfo.title || "")}</p>
                   <p>
-                    <a href={`mailto:${contactInfo.email}`}>
-                      {contactInfo.email}
+                    <a href={`mailto:${String(contactInfo.email || "")}`}>
+                      {String(contactInfo.email || "")}
                     </a>
                   </p>
                 </div>
@@ -229,11 +220,11 @@ const Autocomplete = ({ baseApiPath }) => {
                   className="mb-4"
                   key={`atf-${contactInfo.userID || contactInfo.contactFullName || index}`}
                 >
-                  <h4 className="mb-1">{contactInfo.contactFullName}</h4>
-                  <p className="mb-1">{contactInfo.title}</p>
+                  <h4 className="mb-1">{String(contactInfo.contactFullName || "")}</h4>
+                  <p className="mb-1">{String(contactInfo.title || "")}</p>
                   <p>
-                    <a href={`mailto:${contactInfo.email}`}>
-                      {contactInfo.email}
+                    <a href={`mailto:${String(contactInfo.email || "")}`}>
+                      {String(contactInfo.email || "")}
                     </a>
                   </p>
                 </div>
@@ -252,13 +243,13 @@ const Autocomplete = ({ baseApiPath }) => {
                   className="mb-4"
                   key={`officer-${contactInfo.userID || contactInfo.contactFullName || index}`}
                 >
-                  <h4 className="mb-1">{contactInfo.contactFullName}</h4>
+                  <h4 className="mb-1">{String(contactInfo.contactFullName || "")}</h4>
                   {contactInfo.userID && (
                     <>
-                      <p className="mb-1">{contactInfo.title}</p>
+                      <p className="mb-1">{String(contactInfo.title || "")}</p>
                       <p>
-                        <a href={`mailto:${contactInfo.email}`}>
-                          {contactInfo.email}
+                        <a href={`mailto:${String(contactInfo.email || "")}`}>
+                          {String(contactInfo.email || "")}
                         </a>
                       </p>
                     </>
@@ -282,7 +273,6 @@ const Autocomplete = ({ baseApiPath }) => {
           <div></div>
         </div>
       )}
-      {selectedItemId === "" && <p className="mt-4">No contacts were found.</p>}
     </div>
   );
 };
