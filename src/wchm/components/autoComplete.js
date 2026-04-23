@@ -184,8 +184,8 @@ const Autocomplete = ({ baseApiPath }) => {
                   <h4 className="mb-1">{contactInfo.contactFullName}</h4>
                   <p className="mb-1">{contactInfo.title}</p>
                   <p>
-                    <a href={`mailto:${contactInfo.userID}@asu.edu`}>
-                      {contactInfo.userID}@asu.edu
+                    <a href={`mailto:${contactInfo.email}`}>
+                      {contactInfo.email}
                     </a>
                   </p>
                 </div>
@@ -208,8 +208,8 @@ const Autocomplete = ({ baseApiPath }) => {
                   <h4 className="mb-1">{contactInfo.contactFullName}</h4>
                   <p className="mb-1">{contactInfo.title}</p>
                   <p>
-                    <a href={`mailto:${contactInfo.userID}@asu.edu`}>
-                      {contactInfo.userID}@asu.edu
+                    <a href={`mailto:${contactInfo.email}`}>
+                      {contactInfo.email}
                     </a>
                   </p>
                 </div>
@@ -232,8 +232,8 @@ const Autocomplete = ({ baseApiPath }) => {
                   <h4 className="mb-1">{contactInfo.contactFullName}</h4>
                   <p className="mb-1">{contactInfo.title}</p>
                   <p>
-                    <a href={`mailto:${contactInfo.userID}@asu.edu`}>
-                      {contactInfo.userID}@asu.edu
+                    <a href={`mailto:${contactInfo.email}`}>
+                      {contactInfo.email}
                     </a>
                   </p>
                 </div>
@@ -257,8 +257,8 @@ const Autocomplete = ({ baseApiPath }) => {
                     <>
                       <p className="mb-1">{contactInfo.title}</p>
                       <p>
-                        <a href={`mailto:${contactInfo.userID}@asu.edu`}>
-                          {contactInfo.userID}@asu.edu
+                        <a href={`mailto:${contactInfo.email}`}>
+                          {contactInfo.email}
                         </a>
                       </p>
                     </>
