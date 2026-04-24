@@ -38,7 +38,7 @@
   "devDependencies": {
     "@wordpress/scripts": "^31.8.0",
     "date-fns": "^2.28.0",
-    "dompurify": "^3.3.2",
+    "dompurify": "^3.4.0",
     "fast-xml-parser": "^5.5.7",
     "graphql": "^16.8.1",
     "graphql-request": "^4.1.0",
