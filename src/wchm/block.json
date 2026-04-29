@@ -2,7 +2,7 @@
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
   "name": "unityblocks/wchm",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "title": "WCHM",
   "category": "unityblocks",
   "keywords": ["asu", "unityblocks", "ho", "can", "help", "me", "wchm"],
@@ -15,7 +15,7 @@
   "textdomain": "unityblocks",
   "viewScript": ["file:./frontend.js", "unityblocks-wchm-view-script"],
   "editorScript": "file:./index.js",
-  "style": "styles-wchm",
+  "style": "file:./style-index.css",
   "attributes": {
     "useProdApi": {
       "type": "boolean",

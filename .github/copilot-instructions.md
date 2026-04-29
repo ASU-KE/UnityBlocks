@@ -16,7 +16,6 @@ src/                          # Block source code (one folder per block)
   hero/                       # Example: block.json, index.js, edit.js, save.js, inspector.js, controls.js, frontend.js, icon.js
   news-grid/
   testimonial/
-  asu-careers/
   asu-events/
   events-grid/
   image-gallery/
@@ -27,7 +26,6 @@ resources/                    # Shared libraries and utilities
   unity/                      # Local component library (Hero, Testimonial, Card, etc.)
     components-core/          # Shared React components (used in edit.js and frontend.js)
     component-news/           # News-specific display components (Grid, List, Carousel)
-    component-careers/        # ASU Careers display component
     component-events/         # Events display component
     component-ke-events/      # KE Events variant
   asu-unity-stack/            # Git submodule → github.com/ASU/asu-unity-stack
